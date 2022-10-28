@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello World</title>
+    <url>/2022/10/27/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>关于博客</title>
+    <url>/2022/10/27/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容">
+  <script id="hbeData" type="hbeData" data-hmacdigest="91361f84661f42657778ce0c90d49ab1113201fdf5dab02db6e8205290958d59">a17b4de793b95f7877066d2186f5861555e2d6b9cb5641947e36c8450a9062244141303af7f6ac122ca280e580e95da40c8ee95d99d2439c2f200eaab162cbb1875108085071c26de1a7a2252b96fcbe0f08370a21f14470abd2a2d2b018211a390d4a79c82cf2a64ae884fb7caded6082fa0005ef84e7ea431151015e2060bda837f3b622c77b40ee17a251d882f100278d00b9963489c074d217f528b9e8e054d830314c2ebd97fa3c76a53976dbdc3aa54c7b15ce70a5882de8489603f7173418c015d0ef7e8aa5ae4a33046644b0e563b4499cb8d0d6173282b0a21575c27f9144f5086203cb49e7bd9f84fa510fa7ca67502f97fdebb306ef8a69773c81e40bf148ee8b9d8ad2d1bdf194c6075caa40305d045fbb2a1c2119103f08f156ceaebc719357118924dd869dcd27372f3549487bee4f166e5c77adcb1ac7794dbe0a673ebfa66aa2595818250b9851cbcad400d4687e30b48667a8013245d51dce6aae77d5905b91f53b574fc443b1684c92af0bac92b0aacfa2311b89865521de7bc0054eeb9670d5568a2e98652854cf0ed9fc027967d196f3a30f8b2b14066b2b52b741727573fadde89b47e0d9fa69fed76a226477fc8a2f55fb32f9e4a53348a2747f494b15c8d7565c27afbb068f7ce813b4e1ddedada52692a9c6d917f278d17b970668263eeaaefcc44df89bcde5edc1ad4988985ab067b75e6cd1d6f6083dd6b1ce8e775db02a7d9533537b178a63ec573a5043bc15bbd2fc963c4f3aa122ec4f0b3fc30cca5257817db4bd4ffccc7a43fd006bc392e64e161e7b59542881b1b7db7805b0003d89224d2ef64a29bbcbd982ea90041c78c6f87bee6da444542e072c9c6786ea8101f8bf295aee03c0d6033a3e19116bae338e4be2520f564c69e09cabcbd5249b3c4c50d66ab39b30dd90f909ea126d2b48f8245d175a365531c939ef6e9a42c17a33a69c8b52de48e4757f5f25a4fef9493350305d558c5c0c806c0698893aaa568476e50e6079fe997df4194d8fb35a21ea8958bff697c158b049a30bd3bcd0e162772f352d83b202daafb229c098c33cda25c04e715a81f80f6673a1a70c6f17a033b3ddcd772068cce43302f1602f71d2b7a5e121056818a837126e27c0990955f13ad5ed1fe26d0e0aee808c0717a47a38999c20411f7ce53f8b1bc86018e5b9287eeaa3caf58b4244ae291f351667c000a7830273ef3d8a17f8c1254d819d16bcb2a2d9683972c91763ebbda2a379442d0b07437cfe123ac3be67f7318fb7803470146435bd3d593263e5e37c32705f6ad8b8d0decb68839c28c9a838f97b8613f4c483eee116afbea3097e72e0077f5a4ed396ad4c4be49ee36f3726809e0efa9aa8a9e0e3181b1126675c191b7b9a7fcf1ff115b2e87efd6ec64274d47cbdbd09c899a776819132d9566fea583fa1897209395d8dfb78cf6cdc2819d6c0e75da888e88ad236667388f965855fd7fc36d1249a1a1d24eab917be709ea423f9491f59038c726eac3ffed3707f0d3bdb8c90e1951f96ef89d1abfd2d4679259ea0d69c9a1f152594c71981fcc4dece41fa6dbc07cd2a1a3a0949396cebc5a8a3f13d0033e3ed78f7473fa5c9d6d5802e15232fa8b6bdd1feee2a12f22c2449c68bb1e7d8052c8ae42bfcc1f65444565986cbc63a4381f9bb0b27d0f5387f2f04a80432645dcd2a57c171892bdd3ffce03a5852a2768dfd5d53ac1fa5e321da9dba979819096a00897281370689f9e75e450560f86f506e598fff748d42ec26aab61b453561f9facad5af053d0c77652e200b75d59620b32899f0977b4d7f947cf1fd9beb68e8280f53cbfcdf2ef9ab67cdbb3bba405d77af100b02287ea616c931799fd7eb8c65b4843c926b2651e5d68b33e0e8cde998c763b06347c459de9fc8b6d5b10460a3388c750b194669523e2e6628d25d736b401ce307f71cc25241f4c82561bc6fa56eb3924f23148fbf518a80344233e7f71a3fe7150d9566a5b2d78802878628dcbe3aae5d400d10be685cf3015c07fa9981fe3645873b7089878cf1743cb0f6eb1796b83b00fe30bb78a6d55e94b4d4f0a2ededbfc36e8de15a8c68506befc43dc69e9abaaa7cd55a6b0f6e6792c45997a7acc30f602b783f1c2d9e0a430ab0a3fe4708ccebd7296c44cfbbed6e7cdf13078753bfd0f6d1866bcb3909c3a07cbdb5faa777ce9e8229c9f734f9bd4b8345ac641766ecb4180dff676c9eb4ac91e0330e530705671b54027ce8d3d33fc6fc9a01753866b28e5bcb8d028adb423edbaf834b45079379af6dbf75c379ec6cbe97f5acab496506713300ee2fa1d677ec006f8460d04a3a797a316a88ba832955f99e291cda035b1663c676618e95cc59dcd3414befa5426a4c35a12f9f95d1bf2fb1b12fe350b0b1b3bc504578eb3ab16aaff15505b218ec2b0fbc933d9034bea8be11ca2ace22f04b861883fd863a5ec6c16ab8ff90a72fbc89fe91f9c2b84601a8dd28de98bfe0d12ebbfbb14b201090325fbfdd352e276c6fbbdc989d94ee96b47b57a5aeff3af3e8bf9f7a0cafd74b8a28cf11b86ae485563e16bc071035388116b04012ae9d36e259252145eaf552be23a474c5c6069c29b15df7194f40734f61e4f0f9e7da86c08944a68a2b6e7768e608d01145a35e4973f948119045948996df2410aa5c019c24fbb7c8615d0409ea313ebeb78d6ee8c9ea6fabd9c504713c21c54b21e773fee2c29468af30e00839978e769b07780286f5ba0b35971772053de944880873743e8073f3ca90778c45d558733835666daba6285c05162bbf1873a03e9a29994cc53678aca15cddcc1d2d8ca360828c2dc48f9a536ab4d309b01814f0a7627862f3b718b4b95fad03b8299e80e08b96e73105d9198cefc55bf0a26c8e13906b900bebc96b87960b5763d31f03f411ef027006cdae44aef11472578447a913034088d6d861c71de18fb99a9ce6932e0072cfd030bb49c34cb8286c90aed1408f146dbc39e78b0ffe602096c078d6c92ca59e264608df236ad9ee41f99c24f97b379a8d06636842e2d54008152997c8beb6cb86971dbd8b476596e0fec9229e959c1ad4a20259b1d1580e789a16c5b860e447a97f6c6daa850e83715e9236f6fa882a6adf7daee4e66d54b0ddf0966b181098e9998014905ba6b79e76f0c7cb3a6ffc3bf6640b20551704fe94216a732df2642e8d1fa25aebe51b04b3eb634a9e00f307e266f3cf9271e3faab8a828182a0e514f37888a805a4d3cc60c3ce428e9db37be132155b55740d4f93b7addd70d38ba8ac286921ab9ca32690350d35098782c618a7a6aef460e67652366c7b919d0a0aac2646daf741e55bfc9c650539dd6d755574cad07af9359895132f201d2eda1229b7540487750ba60e705158636e473b1a7ecb944b98587de86c6eebfc6a7e64291374129bcd142da570765bdb65cbc046c0a07cee6a59d7153a389ff2c27e0ce590808f50429d5877bcf24e2f1e2a72d63b464ad6bb91eac128ee19d1ed8bd6143604eae097c485dbeb04c56de34f94d28846fd5621c08a6609e7d408b1fd03e36defa8d59dc0cb9400a4a7e614d4aace51ebd7252c40a67ce237573a934fdeb1b9e0e127f5718fe4315a5026a455e2dacd45ae5e352aac9a03e56e8aba77b182194d330a5e68dda7b4202a9ccaf2864a34814a2cb060cfec55b655b899e7f66f11348acf51964d5603025054b1be35317c7de9a4941b5ed3fc3c3038be497bd3762134b9e892b01fe7791b0037cd8a6d15476c3b22aed3e7276c5ff1f8fdb1a7ae77715a81f0dd955e18fc54c6d1d28e4a6779546eb93449b288da309947a747dfed8c497520513b1bc7d271cbae4bf199355f37b5964535f0be92998aea448384e17cf990b8b339c8301edf9ac37219ebf580e1c60a7d2b7719d0856e8dc8c1e56141c0abd47916b1cf6a9f735b60278b3bd02567a54d01ccc1926134111fe7184a54d872ce230aca60f6625700d5bfc925d2d178b3251a1a5dfa97d824b585dbdfdd24303f1af300c79882c82ac677764761dbf2497fc2692ef13eabf8f75914376ae2d870c272f8d50828f1ad29d5f39d2d17a5f40b62d01cc10f9067e72fbf8a64abf11db7a154fcfdc2a246a074cf4fad6058df30d63893581dd4e643a4067a26cf9ad99dc00a2428d4fc1ea6269371358a98ac96075883b5afb47da32a16d1e710ca17171b9d9a672106c8ffd65a3d736314ef7f7565d9b5a5167b09b964647bb16d64acca1f5fb4e4d7c77d7231b2ffd44f49b26114450ff399482595e7e4944fcd2aa8b51db1817d1c85672ffdd06128a6cea9979d6f5d21e0c776773bf98664fe200a1385f15fc747a5109614c79d8e5ddaea38beeae3df3dc66a9609ca51b4b77421c29e270f13b470fb9064eb2c7337f8b8cadd7f8f46db0e885d8a6c2fdadb226ccbcc963d128198eea37b72c738b0617ec7b706bf2e1319ced1c4bed6b9f89d4f9f8fce6253b8c0718eefa341caf689c11a3b7e9e2468c390141a75123a22a9778686b5fb9153a16ae9aaebcf1efe2e65097a27e392be7c40eef4f89a21ef027a2b02848cceabd148899cc00feef565c7ca4763ccf8df0cc725e504442b7762b816a28abf87cc691b04aff02609c24a3096f6cda6f10934092d210c80253b7ab0aa094f07b2bde74027c08628d4be8c0d1d694f4281a80942a0513c4bf7d69a5710da1bff7162f55481ebc01412afb661d4f15e9b852485209297a86917ae77f93da5dfb61f3c28caf621d2bb6b774e504b25e1cca8bc4fba4779b37fd53beb9e32702f607a3da09f57d5c29cf3f9ba342f9ec2ea03ccc920</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 请输入密码</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>关于博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Golang面试题</title>
     <url>/2022/10/28/Golang%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
     <content><![CDATA[<p>Golang常见面试题分享，涵盖了常见的Golang面试八股文</p>
@@ -111,13 +148,13 @@
 <li>使用通道，每次执行的go之前向通道写入值，直到通道满的时候就阻塞了</li>
 <li>但是新的问题于是就出现了，因为并不是所有的goroutine都执行完了，在main函数退出之后，还有一些goroutine没有执行完就被强制结束了。这个时候我们就需要用到sync.WaitGroup。使用WaitGroup等待所有的goroutine退出</li>
 <li>Go的GOMAXPROCS默认值已经设置为CPU的核数， 这里允许我们的Go程序充分使用机器的每一个CPU，最大程度的提高我们程序的并发性能。<code>runtime.NumGoroutine</code>函数在被调用后，会返回系统中的处于特定状态的Goroutine的数量。这里的特指是指<code>Grunnable\Gruning\Gsyscall\Gwaition</code>。处于这些状态的Groutine即被看做是活跃的或者说正在被调度</li>
-<li>注意：垃圾回收所在Groutine的状态也处于这个范围内的话，也会被纳入该计数器</li>
+<li><strong>注意：</strong> 垃圾回收所在Groutine的状态也处于这个范围内的话，也会被纳入该计数器</li>
 </ul>
-<h4 id="12-Goroutine和线程的区别"><a href="#12-Goroutine和线程的区别" class="headerlink" title="12. Goroutine和线程的区别"></a>12. Goroutine和线程的区别</h4><h4 id="13-Goroutine发生了泄漏如何检测"><a href="#13-Goroutine发生了泄漏如何检测" class="headerlink" title="13. Goroutine发生了泄漏如何检测"></a>13. Goroutine发生了泄漏如何检测</h4><p>内存泄漏，指的是能够预期的能很快被释放的内存由于附着在了长期存活的内存上、或生命期意外地被延长，导致预计能够立即回收的内存而长时间得不到回收</p>
+<h4 id="12-Goroutine和线程的区别"><a href="#12-Goroutine和线程的区别" class="headerlink" title="12. Goroutine和线程的区别"></a>12. Goroutine和线程的区别</h4><h4 id="13-在Go函数中为什么会发生内存泄露，Goroutine发生了泄漏如何检测"><a href="#13-在Go函数中为什么会发生内存泄露，Goroutine发生了泄漏如何检测" class="headerlink" title="13. 在Go函数中为什么会发生内存泄露，Goroutine发生了泄漏如何检测"></a>13. 在Go函数中为什么会发生内存泄露，Goroutine发生了泄漏如何检测</h4><p>内存泄漏，指的是能够预期的能很快被释放的内存由于附着在了长期存活的内存上、或生命期意外地被延长，导致预计能够立即回收的内存而长时间得不到回收</p>
 <ul>
 <li>预期能被快速释放的内存因被根对象引用而没有得到迅速释放；当有一个全局对象时，可能不经意间将某个变量附着在其上，且忽略的将其进行释放，则该内存永远不会得到释放</li>
 <li>Goroutine泄漏；Goroutine作为一种逻辑上理解的轻量级线程，需要维护执行用户代码的上下文信息。在运行过程中也需要消耗一定的内存来保存这类信息，而这些内存在目前版本的 Go 中是不会被释放的。因此，如果一个程序持续不断地产生新的 goroutine、且不结束已经创建的goroutine并复用这部分内存，就会造成内存泄漏的现象</li>
-<li>方法：通过Go自带的工具pprof或者使用Gops去检测诊断当前在系统上运行的Go进程的占用的资源</li>
+<li>检测方法：通过Go自带的工具pprof或者使用Gops去检测诊断当前在系统上运行的Go进程的占用的资源</li>
 </ul>
 <h4 id="14-Goroutine和KernelThread之间是什么关系"><a href="#14-Goroutine和KernelThread之间是什么关系" class="headerlink" title="14. Goroutine和KernelThread之间是什么关系"></a>14. Goroutine和KernelThread之间是什么关系</h4><h4 id="15-协程和线程和进程的区别"><a href="#15-协程和线程和进程的区别" class="headerlink" title="15. 协程和线程和进程的区别"></a>15. 协程和线程和进程的区别</h4><ul>
 <li>进程：是具有一定独立功能的程序关于某个数据集合上的一次运行活动，进程是系统进行资源分配和调度的一个独立单位。<br>每个进程都有自己的独立内存空间，不同进程通过进程间通信来通信。由于进程比较重量，占据独立的内存，所以上下文进程间的切换开销（栈、寄存器、虚拟内存、文件句柄等）比较大，但相对比较稳定安全</li>
@@ -130,7 +167,131 @@
 <li>g0 其他的一些“职责”有：创建 <code>goroutine</code>、<code>deferproc</code> 函数里新建 <code>_defer</code>、垃圾回收相关的工作（例如stw、扫描goroutine的执行栈、一些标识清扫的工作、栈增长）等等</li>
 </ul>
 <h4 id="17-Golang的内存模型中为什么小对象多了会造成GC压力"><a href="#17-Golang的内存模型中为什么小对象多了会造成GC压力" class="headerlink" title="17. Golang的内存模型中为什么小对象多了会造成GC压力"></a>17. Golang的内存模型中为什么小对象多了会造成GC压力</h4><p>通常小对象过多会导致GC三色法消耗过多的CPU。优化思路：减少对象分配</p>
-<h4 id="18-Go的对象在内存中是怎样分配的"><a href="#18-Go的对象在内存中是怎样分配的" class="headerlink" title="18. Go的对象在内存中是怎样分配的"></a>18. Go的对象在内存中是怎样分配的</h4><h4 id="19-栈的内存是怎么分配的"><a href="#19-栈的内存是怎么分配的" class="headerlink" title="19. 栈的内存是怎么分配的"></a>19. 栈的内存是怎么分配的</h4><h4 id="20-堆内存管理怎么分配的"><a href="#20-堆内存管理怎么分配的" class="headerlink" title="20. 堆内存管理怎么分配的"></a>20. 堆内存管理怎么分配的</h4><h4 id="21-在Go函数中为什么会发生内存泄露"><a href="#21-在Go函数中为什么会发生内存泄露" class="headerlink" title="21. 在Go函数中为什么会发生内存泄露"></a>21. 在Go函数中为什么会发生内存泄露</h4><h4 id="22-Go语言的栈空间管理是怎么样的"><a href="#22-Go语言的栈空间管理是怎么样的" class="headerlink" title="22. Go语言的栈空间管理是怎么样的"></a>22. Go语言的栈空间管理是怎么样的</h4><h4 id="23-Go中的逃逸分析是什么"><a href="#23-Go中的逃逸分析是什么" class="headerlink" title="23. Go中的逃逸分析是什么"></a>23. Go中的逃逸分析是什么</h4><h4 id="24-Go函数返回局部变量的指针是否安全"><a href="#24-Go函数返回局部变量的指针是否安全" class="headerlink" title="24. Go函数返回局部变量的指针是否安全"></a>24. Go函数返回局部变量的指针是否安全</h4><h4 id="25-Golang中除了加Mutex锁以外还有哪些方式安全读写共享变量"><a href="#25-Golang中除了加Mutex锁以外还有哪些方式安全读写共享变量" class="headerlink" title="25. Golang中除了加Mutex锁以外还有哪些方式安全读写共享变量"></a>25. Golang中除了加Mutex锁以外还有哪些方式安全读写共享变量</h4><h4 id="26-Go中的锁有哪些"><a href="#26-Go中的锁有哪些" class="headerlink" title="26. Go中的锁有哪些"></a>26. Go中的锁有哪些</h4><h4 id="27-Go中的锁如何实现"><a href="#27-Go中的锁如何实现" class="headerlink" title="27. Go中的锁如何实现"></a>27. Go中的锁如何实现</h4><h4 id="28-Go中数据竞争问题怎么解决"><a href="#28-Go中数据竞争问题怎么解决" class="headerlink" title="28. Go中数据竞争问题怎么解决"></a>28. Go中数据竞争问题怎么解决</h4><h4 id="29-Go中CAS是怎么回事"><a href="#29-Go中CAS是怎么回事" class="headerlink" title="29. Go中CAS是怎么回事"></a>29. Go中CAS是怎么回事</h4><h4 id="30-Go主协程如何等其余协程完再操作"><a href="#30-Go主协程如何等其余协程完再操作" class="headerlink" title="30. Go主协程如何等其余协程完再操作"></a>30. Go主协程如何等其余协程完再操作</h4><h4 id="31-Go的Context包的用途是什么"><a href="#31-Go的Context包的用途是什么" class="headerlink" title="31. Go的Context包的用途是什么"></a>31. Go的Context包的用途是什么</h4><h4 id="32-Go中对nil的Slice和空Slice的处理是一致的吗"><a href="#32-Go中对nil的Slice和空Slice的处理是一致的吗" class="headerlink" title="32. Go中对nil的Slice和空Slice的处理是一致的吗"></a>32. Go中对nil的Slice和空Slice的处理是一致的吗</h4><h4 id="33-Go的Slice如何扩容"><a href="#33-Go的Slice如何扩容" class="headerlink" title="33. Go的Slice如何扩容"></a>33. Go的Slice如何扩容</h4><h4 id="34-Go的Struct能不能比较"><a href="#34-Go的Struct能不能比较" class="headerlink" title="34. Go的Struct能不能比较"></a>34. Go的Struct能不能比较</h4><h4 id="35-Go中的map的实现"><a href="#35-Go中的map的实现" class="headerlink" title="35. Go中的map的实现"></a>35. Go中的map的实现</h4><h4 id="36-Go中的map如何实现顺序读取"><a href="#36-Go中的map如何实现顺序读取" class="headerlink" title="36. Go中的map如何实现顺序读取"></a>36. Go中的map如何实现顺序读取</h4><h4 id="37-Go中new和make的区别"><a href="#37-Go中new和make的区别" class="headerlink" title="37. Go中new和make的区别"></a>37. Go中new和make的区别</h4><h4 id="38-Go的defer原理是什么"><a href="#38-Go的defer原理是什么" class="headerlink" title="38. Go的defer原理是什么"></a>38. Go的defer原理是什么</h4><h4 id="39-Go的select可以用于什么"><a href="#39-Go的select可以用于什么" class="headerlink" title="39. Go的select可以用于什么"></a>39. Go的select可以用于什么</h4><h4 id="40-Go值接收者和指针接收者的区别"><a href="#40-Go值接收者和指针接收者的区别" class="headerlink" title="40. Go值接收者和指针接收者的区别"></a>40. Go值接收者和指针接收者的区别</h4><h4 id="41-Go中两个Nil可能不相等吗"><a href="#41-Go中两个Nil可能不相等吗" class="headerlink" title="41. Go中两个Nil可能不相等吗"></a>41. Go中两个Nil可能不相等吗</h4><h4 id="42-Golang垃圾回收算法"><a href="#42-Golang垃圾回收算法" class="headerlink" title="42. Golang垃圾回收算法"></a>42. Golang垃圾回收算法</h4><h4 id="43-GC的触发条件"><a href="#43-GC的触发条件" class="headerlink" title="43. GC的触发条件"></a>43. GC的触发条件</h4><h4 id="44-Go中的http包的实现原理"><a href="#44-Go中的http包的实现原理" class="headerlink" title="44. Go中的http包的实现原理"></a>44. Go中的http包的实现原理</h4><h4 id="45-Go中的defer函数使用下面的两种情况下结果是什么"><a href="#45-Go中的defer函数使用下面的两种情况下结果是什么" class="headerlink" title="45. Go中的defer函数使用下面的两种情况下结果是什么"></a>45. Go中的defer函数使用下面的两种情况下结果是什么</h4><hr>
+<h4 id="18-Go的对象在内存中是怎样分配的"><a href="#18-Go的对象在内存中是怎样分配的" class="headerlink" title="18. Go的对象在内存中是怎样分配的"></a>18. Go的对象在内存中是怎样分配的</h4><h4 id="19-栈的内存是怎么分配的"><a href="#19-栈的内存是怎么分配的" class="headerlink" title="19. 栈的内存是怎么分配的"></a>19. 栈的内存是怎么分配的</h4><h4 id="20-堆内存管理怎么分配的"><a href="#20-堆内存管理怎么分配的" class="headerlink" title="20. 堆内存管理怎么分配的"></a>20. 堆内存管理怎么分配的</h4><h4 id="21-在Go函数中为什么会发生内存泄露"><a href="#21-在Go函数中为什么会发生内存泄露" class="headerlink" title="21. 在Go函数中为什么会发生内存泄露"></a>21. 在Go函数中为什么会发生内存泄露</h4><p>同上13</p>
+<h4 id="22-Go语言的栈空间管理是怎么样的"><a href="#22-Go语言的栈空间管理是怎么样的" class="headerlink" title="22. Go语言的栈空间管理是怎么样的"></a>22. Go语言的栈空间管理是怎么样的</h4><h4 id="23-Go中的逃逸分析是什么"><a href="#23-Go中的逃逸分析是什么" class="headerlink" title="23. Go中的逃逸分析是什么"></a>23. Go中的逃逸分析是什么</h4><h4 id="24-Go函数返回局部变量的指针是否安全"><a href="#24-Go函数返回局部变量的指针是否安全" class="headerlink" title="24. Go函数返回局部变量的指针是否安全"></a>24. Go函数返回局部变量的指针是否安全</h4><p>在Go中是安全的，Go编译器将会对每个局部变量进行逃逸分析。如果发现局部变量的作用域超出该函数，则不会将内存分配在栈上，而是分配在堆上</p>
+<h4 id="25-Golang中除了加Mutex锁以外还有哪些方式安全读写共享变量"><a href="#25-Golang中除了加Mutex锁以外还有哪些方式安全读写共享变量" class="headerlink" title="25. Golang中除了加Mutex锁以外还有哪些方式安全读写共享变量"></a>25. Golang中除了加Mutex锁以外还有哪些方式安全读写共享变量</h4><p>Golang中Goroutine可以通过Channel进行安全读写共享变量，还可以通过原子性操作进行</p>
+<h4 id="26-Go中的锁有哪些"><a href="#26-Go中的锁有哪些" class="headerlink" title="26. Go中的锁有哪些"></a>26. Go中的锁有哪些</h4><p>Go中的三种锁包括：</p>
+<ul>
+<li>互斥锁</li>
+<li>读写锁</li>
+<li>sync.Map安全锁</li>
+</ul>
+<ol>
+<li><p>互斥锁</p>
+<p>Go并发程序对共享资源进行访问控制的主要手段，由标准库代码包中sync中的Mutex结构体表示，sync.Mutex包中的类型只有两个公开的指针方法Lock和Unlock</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Locker表示可以锁定和解锁的对象。</span></span><br><span class="line"> <span class="keyword">type</span> Locker <span class="keyword">interface</span> &#123;</span><br><span class="line">    Lock()</span><br><span class="line">    Unlock()</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 锁定当前的互斥量</span></span><br><span class="line"> <span class="comment">// 如果锁已被使用，则调用goroutine</span></span><br><span class="line"> <span class="comment">// 阻塞直到互斥锁可用。</span></span><br><span class="line"> <span class="function"><span class="keyword">func</span> <span class="params">(m *Mutex)</span></span> Lock() </span><br><span class="line"></span><br><span class="line"> <span class="comment">// 对当前互斥量进行解锁</span></span><br><span class="line"> <span class="comment">// 如果在进入解锁时未锁定m，则为运行时错误。</span></span><br><span class="line"> <span class="comment">// 锁定的互斥锁与特定的goroutine无关。</span></span><br><span class="line"> <span class="comment">// 允许一个goroutine锁定Mutex然后安排另一个goroutine来解锁它。</span></span><br><span class="line"> <span class="function"><span class="keyword">func</span> <span class="params">(m *Mutex)</span></span> Unlock()</span><br></pre></td></tr></table></figure>
+
+<p>如果对一个已经上锁的对象再次上锁，那么就会导致该锁定操作被阻塞，直到该互斥锁回到被解锁状态。互斥锁锁定操作的逆操作并不会导致协程阻塞，但是有可能导致引发一个无法恢复的运行时的panic，比如对一个未锁定的互斥锁进行解锁时就会发生panic。避免这种情况的最有效方式就是使用defer</p>
+<hr>
+</li>
+<li><p>读写锁</p>
+<p>读写锁是针对读写操作的互斥锁，可以分别针对读操作与写操作进行锁定和解锁操作 。读写锁的访问控制规则如下：</p>
+<ul>
+<li>多个写操作之间是互斥的</li>
+<li>写操作与读操作之间也是互斥的</li>
+<li>多个读操作之间不是互斥的</li>
+</ul>
+<p>在这样的控制规则下，读写锁可以大大降低性能损耗。sync中的RWMutex有以下几种方法：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//对读操作的锁定</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rw *RWMutex)</span></span> RLock()</span><br><span class="line"></span><br><span class="line"><span class="comment">//对读操作的解锁</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rw *RWMutex)</span></span> RUnlock()</span><br><span class="line"></span><br><span class="line"><span class="comment">//对写操作的锁定</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rw *RWMutex)</span></span> Lock()</span><br><span class="line"></span><br><span class="line"><span class="comment">//对写操作的解锁</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rw *RWMutex)</span></span> Unlock()</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回一个实现了sync.Locker接口类型的值，实际上是回调rw.RLock and rw.RUnlock.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rw *RWMutex)</span></span> RLocker() Locker</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>若对一个未被写锁定的读写锁进行写解锁，就会引发一个不可恢复的panic，同理对一个未被读锁定的读写锁进行读写锁也会如此。</li>
+<li>由于读写锁控制下的多个读操作之间不是互斥的，因此对于读解锁更容易被忽视。对于同一个读写锁，添加多少个读锁定，就必要有等量的读解锁，这样才能其他协程有机会进行操作</li>
+<li>因此Go中读写锁，在多个读线程可以同时访问共享数据,写线程必须等待所有读线程都释放锁以后，才能取得锁</li>
+<li>同样的，读线程必须等待写线程释放锁后，才能取得锁，也就是说读写锁要确保的是如下互斥关系，可以同时读，但是读-写，写-写都是互斥的</li>
+</ul>
+<hr>
+</li>
+<li><p>sync.Map安全锁</p>
+<p>golang中的sync.Map是并发安全的，其实也就是sync包中golang自定义的一个名叫Map的结构体</p>
+<ul>
+<li>Delete 方法</li>
+<li>Store 方法</li>
+<li>Load方法</li>
+</ul>
+<p>sync.Map是通过冗余的两个数据结构(read、dirty)，实现性能的提升。为了提升性能，load、delete、store等操作尽量使用只读的read；为了提高read的key击中概率，采用动态调整，将dirty数据提升为read；对于数据的删除，采用延迟标记删除法，只有在提升dirty的时候才删除</p>
+</li>
+</ol>
+<h4 id="27-Go中的锁如何实现"><a href="#27-Go中的锁如何实现" class="headerlink" title="27. Go中的锁如何实现"></a>27. Go中的锁如何实现</h4><h4 id="28-Go中数据竞争问题怎么解决"><a href="#28-Go中数据竞争问题怎么解决" class="headerlink" title="28. Go中数据竞争问题怎么解决"></a>28. Go中数据竞争问题怎么解决</h4><ul>
+<li>数据竞争问题可以使用互斥锁sync.Mutex，或者也可以通过CAS无锁并发解决</li>
+<li>其中使用同步访问共享数据或者CAS无锁并发是处理数据竞争的一种有效的方法</li>
+<li>golang在1.1之后引入了竞争检测机制，可以使用 <code>go run -race</code> 或者 <code>go build -race</code>来进行静态检测。其在内部的实现是，开启多个协程执行同一个命令， 并且记录下每个变量的状态</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">go</span> test -race mypkg    <span class="comment">// 测试包</span></span><br><span class="line"><span class="keyword">go</span> run -race mysrc.<span class="keyword">go</span>  <span class="comment">// 编译和运行程序</span></span><br><span class="line"><span class="keyword">go</span> build -race mycmd   <span class="comment">// 构建程序</span></span><br><span class="line"><span class="keyword">go</span> install -race mypkg <span class="comment">// 安装程序</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="29-Go中CAS是怎么回事"><a href="#29-Go中CAS是怎么回事" class="headerlink" title="29. Go中CAS是怎么回事"></a>29. Go中CAS是怎么回事</h4><h4 id="30-Go主协程如何等其余协程完再操作"><a href="#30-Go主协程如何等其余协程完再操作" class="headerlink" title="30. Go主协程如何等其余协程完再操作"></a>30. Go主协程如何等其余协程完再操作</h4><ul>
+<li>Go提供了更简单的方法——使用<code>sync.WaitGroup</code>。<code>WaitGroup</code>，就是用来等待一组操作完成的。<code>WaitGroup</code>内部实现了一个计数器，用来记录未完成的操作个数</li>
+<li>它提供了三个方法，<code>Add()</code>用来添加计数。<code>Done()</code>用来在操作结束时调用，使计数减一。<code>Wait()</code>用来等待所有的操作结束，即计数变为0，该函数会在计数不为0时等待，在计数为0时立即返回</li>
+</ul>
+<h4 id="31-Context包的用途是什么"><a href="#31-Context包的用途是什么" class="headerlink" title="31. Context包的用途是什么"></a>31. Context包的用途是什么</h4><h4 id="32-Go中对nil的Slice和空Slice的处理是一致的吗"><a href="#32-Go中对nil的Slice和空Slice的处理是一致的吗" class="headerlink" title="32. Go中对nil的Slice和空Slice的处理是一致的吗"></a>32. Go中对nil的Slice和空Slice的处理是一致的吗</h4><p>首先Go的JSON 标准库对 <code>nil slice</code> 和 空 <code>slice</code> 的处理是不一致</p>
+<p>通常错误的用法，会报数组越界的错误，因为只是声明了slice，却没有给实例化的对象。nil的slice定义如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> slice []<span class="type">int</span></span><br></pre></td></tr></table></figure>
+
+<p>此时slice的值是nil，这种情况可以用于需要返回slice的函数，当函数出现异常的时候，保证函数依然会有nil的返回值</p>
+<hr>
+<p>空的slice是指slice不为nil，但是slice没有值，slice的底层的空间是空的，空的slice定义如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">slice := <span class="built_in">make</span>([]<span class="type">int</span>,<span class="number">0</span>）</span><br><span class="line">slice := []<span class="type">int</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当我们查询或者处理一个空的列表的时候，这非常有用，它会告诉我们返回的是一个列表，但是列表内没有任何值</p>
+<p><strong>总结：</strong> nil的slice和空的slice是不同的东西，需要我们加以区分</p>
+<h4 id="33-Go的Slice如何扩容"><a href="#33-Go的Slice如何扩容" class="headerlink" title="33. Go的Slice如何扩容"></a>33. Go的Slice如何扩容</h4><ul>
+<li>slice是Go中的一种基本的数据结构，使用这种结构可以用来管理数据集合。但是slice本身并不是动态数据或者数组指针。slice常见的操作有 reslice、append、copy</li>
+<li>slice自身并不是动态数组或者数组指针。它内部实现的数据结构通过指针引用底层数组，设定相关属性将数据读写操作限定在指定的区域内。slice本身是一个只读对象，其工作机制类似数组指针的一种封装</li>
+<li>slice是对数组一个连续片段的引用，所以切片是一个引用类型。这个片段可以是整个数组，或者是由起始和终止索引标识的一些项的子集</li>
+<li>slice的结构体由3部分构成，Pointer 是指向一个数组的指针，len 代表当前切片的长度，cap 是当前切片的容量。cap 总是大于等于 len 的</li>
+</ul>
+<p>通常我们在对slice进行append等操作时，可能会造成slice的自动扩容。</p>
+<p><strong>1.18版本之前：</strong></p>
+<p>当原slice容量小于1024的时候，新slice容量变成原来的2倍；原slice容量超过1024，新slice容量变成原来的1.25倍</p>
+<p><strong>1.18版本之后：</strong></p>
+<p>当原slice容量(oldcap)小于256的时候，新slice(newcap)容量为原来的2倍；原slice容量超过256，新slice容量newcap &#x3D; oldcap+(oldcap+3*256)&#x2F;4</p>
+<p><strong>最后：</strong></p>
+<p>如果扩容之后，还没有触及原数组的容量，那么，切片中的指针指向的位置，就还是原数组，如果扩容之后，超过了原数组的容量，那么，Go就会开辟一块新的内存，把原来的值拷贝过来，这种情况丝毫不会影响到原数组。</p>
+<h4 id="34-Go的Struct能不能比较"><a href="#34-Go的Struct能不能比较" class="headerlink" title="34. Go的Struct能不能比较"></a>34. Go的Struct能不能比较</h4><ul>
+<li>相同struct类型的可以比较</li>
+<li>不同struct类型的不可以比较，编译都不过，类型不匹配</li>
+</ul>
+<h4 id="35-Go中的map的实现"><a href="#35-Go中的map的实现" class="headerlink" title="35. Go中的map的实现"></a>35. Go中的map的实现</h4><h4 id="36-Go中的map如何实现顺序读取"><a href="#36-Go中的map如何实现顺序读取" class="headerlink" title="36. Go中的map如何实现顺序读取"></a>36. Go中的map如何实现顺序读取</h4><p>Go中map如果要实现顺序读取的话，先把map中的key添加到数组（array）或切片（slice）中，然后通过sort包对数组或切片进行排序，最后在遍历数组或切片的时候将map中key所对应的value取出来</p>
+<h4 id="37-Go中new和make的区别"><a href="#37-Go中new和make的区别" class="headerlink" title="37. Go中new和make的区别"></a>37. Go中new和make的区别</h4><ul>
+<li>值类型：int，float，bool，string，struct和array。变量直接存储值，分配栈区的内存空间，这些变量所占据的空间在函数被调用完后会自动释放</li>
+<li>引用类型：slice，map，chan和值类型对应的指针。变量存储的是一个地址（或者理解为指针），指针指向内存中真正存储数据的首地址。内存通常在堆上分配，通过GC回收</li>
+<li><strong>注意：</strong> 对于引用类型的变量，我们不仅要声明变量，更重要的是，我们得手动为它分配空间</li>
+</ul>
+<ol>
+<li>new该方法的参数要求传入一个类型，而不是一个值，它会申请一个该类型大小的内存空间，并会初始化为对应的零值，返回指向该内存空间的一个指针</li>
+<li>make也是用于内存分配，但是和new不同，只用来引用对象slice、map和channel的内存创建，它返回的类型就是类型本身，而不是它们的指针类型</li>
+</ol>
+<h4 id="38-Go的defer原理是什么"><a href="#38-Go的defer原理是什么" class="headerlink" title="38. Go的defer原理是什么"></a>38. Go的defer原理是什么</h4><h4 id="39-Go的select可以用于什么"><a href="#39-Go的select可以用于什么" class="headerlink" title="39. Go的select可以用于什么"></a>39. Go的select可以用于什么</h4><h4 id="40-Go值接收者和指针接收者的区别"><a href="#40-Go值接收者和指针接收者的区别" class="headerlink" title="40. Go值接收者和指针接收者的区别"></a>40. Go值接收者和指针接收者的区别</h4><h4 id="41-Go中两个Nil可能不相等吗"><a href="#41-Go中两个Nil可能不相等吗" class="headerlink" title="41. Go中两个Nil可能不相等吗"></a>41. Go中两个Nil可能不相等吗</h4><h4 id="42-Golang垃圾回收算法"><a href="#42-Golang垃圾回收算法" class="headerlink" title="42. Golang垃圾回收算法"></a>42. Golang垃圾回收算法</h4><p>Golang1.5版本后，采取的是“非分代的、非移动的、并发的、三色的”标记清除垃圾回收算法</p>
+<p>垃圾回收算法分类：</p>
+<ul>
+<li>引用计数</li>
+<li>标记-清除</li>
+<li>分代回收</li>
+</ul>
+<p>golang的垃圾回收是基于标记清扫算法，这种算法需要进行 STW（stop the world)，这个过程就会导致程序是卡顿的，频繁的 GC 会严重影响程序性能，golang在此基础上进行了改进，通过三色标记清扫法与写屏障来减少STW的时间</p>
+<p>gc的过程一共分为四个阶段：</p>
+<ol>
+<li>栈扫描（开始时STW） 所有对象最开始都是白色</li>
+<li>从 root 开始找到所有可达对象，标记为灰色，放入待处理队列</li>
+<li>遍历灰色对象队列，将其引用对象标记为灰色放入待处理队列，自身标记为黑色</li>
+<li>清除（并发） 循环步骤3直到灰色队列为空为止，此时所有引用对象都被标记为黑色，所有不可达的对象依然为白色，白色的就是需要进行回收的对象</li>
+</ol>
+<p>三色标记法相对于普通标记清扫，减少了STW时间. 这主要得益于标记过程是 “on-the-fly” 的，在标记过程中是不需要STW的，它与程序是并发执行的，这就大大缩短了STW的时间</p>
+<p>写屏障：</p>
+<ul>
+<li>当标记和程序是并发执行的，这就会造成一个问题. 在标记过程中，有新的引用产生，可能会导致误清扫</li>
+<li>清扫开始前，标记为黑色的对象引用了一个新申请的对象，它肯定是白色的，而黑色对象不会被再次扫描，那么这个白色对象无法被扫描变成灰色、黑色，它就会最终被清扫，而实际它不应该被清扫</li>
+<li>golang采用了写屏障，其作用就是为了避免这类误清扫问题. 写屏障即在内存写操作前，维护一个约束，从而确保清扫开始前，黑色的对象不能引用白色对象</li>
+</ul>
+<h4 id="43-GC的触发条件"><a href="#43-GC的触发条件" class="headerlink" title="43. GC的触发条件"></a>43. GC的触发条件</h4><ul>
+<li>主动触发(手动触发)，通过调用<code>runtime.GC</code> 来触发<code>GC</code>，此调用阻塞式地等待当前<code>GC</code>运行完毕.</li>
+<li>被动触发，分为两种方式：<ul>
+<li>使用系统监控，当超过两分钟没有产生任何<code>GC</code>时，强制触发 <code>GC</code></li>
+<li>使用步调（Pacing）算法，其核心思想是控制内存增长的比例,当前内存分配达到一定比例则触发</li>
+</ul>
+</li>
+</ul>
+<h4 id="44-Go中的http包的实现原理"><a href="#44-Go中的http包的实现原理" class="headerlink" title="44. Go中的http包的实现原理"></a>44. Go中的http包的实现原理</h4><h4 id="45-Go中的defer函数使用下面的两种情况下结果是什么"><a href="#45-Go中的defer函数使用下面的两种情况下结果是什么" class="headerlink" title="45. Go中的defer函数使用下面的两种情况下结果是什么"></a>45. Go中的defer函数使用下面的两种情况下结果是什么</h4><hr>
 ]]></content>
       <categories>
         <category>面试</category>
@@ -138,43 +299,6 @@
       <tags>
         <tag>Golang</tag>
         <tag>八股文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2022/10/27/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>关于博客</title>
-    <url>/2022/10/27/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容">
-  <script id="hbeData" type="hbeData" data-hmacdigest="47abf174ea695f740b9f7f08b137840c5d4bc07e010236c5f38fdf2f0ee5b2fb">a17b4de793b95f7877066d2186f5861555e2d6b9cb5641947e36c8450a9062244141303af7f6ac122ca280e580e95da40c8ee95d99d2439c2f200eaab162cbb1875108085071c26de1a7a2252b96fcbe0f08370a21f14470abd2a2d2b018211a390d4a79c82cf2a64ae884fb7caded6082fa0005ef84e7ea431151015e2060bda837f3b622c77b40ee17a251d882f100278d00b9963489c074d217f528b9e8e054d830314c2ebd97fa3c76a53976dbdc3aa54c7b15ce70a5882de8489603f7173418c015d0ef7e8aa5ae4a33046644b0e563b4499cb8d0d6173282b0a21575c27f9144f5086203cb49e7bd9f84fa510fa7ca67502f97fdebb306ef8a69773c81e40bf148ee8b9d8ad2d1bdf194c6075caa40305d045fbb2a1c2119103f08f156ceaebc719357118924dd869dcd27372f3549487bee4f166e5c77adcb1ac7794dbe0a673ebfa66aa2595818250b9851cbcad400d4687e30b48667a8013245d51dce6aae77d5905b91f53b574fc443b1684c92af0bac92b0aacfa2311b89865521de7bc0054eeb9670d5568a2e98652854cf0ed9fc027967d196f3a30f8b2b14066b2b52b741727573fadde89b47e0d9fa69fed76a226477fc8a2f55fb32f9e4a53348a2747f494b15c8d7565c27afbb068f7ce813b4e1ddedada52692a9c6d917f278d17b970668263eeaaefcc44df89bcde5edc1ad4988985ab067b75e6cd1d6f6083dd6b1ce8e775db02a7d9533537b178a63ec573a5043bc15bbd2fc963c4f3aa122ec4f0b3fc30cca5257817db4bd4ffccc7a43fd006bc392e64e161e7b59542881b1b7db7805b0003d89224d2ef64a29bbcbd982ea90041c78c6f87bee6da444542e072c9c6786ea8101f8bf295aee03c0d6033a3e19116bae338e4be2520f564c69e09cabcbd5249b3c4c50d66ab39b30dd90f909ea126d2b48f8245d175a365531c939ef6e9a42c17a33a69c8b52de48e4757f5f25a4fef9493350305d558c5c0c806c0698893aaa568476e50e6079fe997df4194d8fb35a21ea8958bff697c158b049a30bd3bcd0e162772f352d83b202daafb229c098c33cda25c04e715a81f80f6673a1a70c6f17a033b3ddcd772068cce43302f1602f71d2b7a5e121056818a837126e27c0990955f13ad5ed1fe26d0e0aee808c0717a47a38999c20411f7ce53f8b1bc86018e5b9287eeaa3caf58b4244ae291f351667c000a7830273ef3d8a17f8c1254d819d16bcb2a2d9683972c91763ebbda2a379442d0b07437cfe123ac3be67f7318fb7803470146435bd3d593263e5e37c32705f6ad8b8d0decb68839c28c9a838f97b8613f4c483eee116afbea3097e72e0077f5a4ed396ad4c4be49ee36f3726809e0efa9aa8a9e0e3181b1126675c191b7b9a7fcf1ff115b2e87efd6ec64274d47cbdbd09c899a776819132d9566fea583fa1897209395d8dfb78cf6cdc2819d6c0e75da888e88ad236667388f965855fd7fc36d1249a1a1d24eab917be709ea423f9491f59038c726eac3ffed3707f0d3bdb8c90e1951f96ef89d1abfd2d4679259ea0d69c9a1f152594c71981fcc4dece41fa6dbc07cd2a1a3a0949396cebc5a8a3f13d0033e3ed78f7473fa5c9d6d5802e15232fa8b6bdd1feee2a12f22c2449c68bb1e7d8052c8ae42bfcc1f65444565986cbc63a4381f9bb0b27d0f5387f2f04a80432645dcd2a57c171892bdd3ffce03a5852a2768dfd5d53ac1fa5e321da9dba979819096a00897281370689f9e75e450560f86f506e598fff748d42ec26aab61b453561f9facad5af053d0c77652e200b75d59620b32899f0977b4d7f947cf1fd9beb68e8280f53cbfcdf2ef9ab67cdbb3bba405d77af100b02287ea616c931799fd7eb8c65b4843c926b2651e5d68b33e0e8cde998c763b06347c459de9fc8b6d5b10460a3388c750b194669523e2e6628d25d736b401ce307f71cc25241f4c82561bc6fa56eb3924f23148fbf518a80344233e7f71a3fe7150d9566a5b2d78802878628dcbe3aae5d400d10be685cf3015c07fa9981fe3645873b7089878cf1743cb0f6eb1796b83b00fe30bb78a6d55e94b4d4f0a2ededbfc36e8de15a8c68506befc43dc69e9abaaa7cd55a6b0f6e6792c45997a7acc30f602b783f1c2d9e0a430ab0a3fe4708ccebd7296c44cfbbed6e7cdf13078753bfd0f6d1866bcb3909c3a07cbdb5faa777ce9e8229c9f734f9bd4b8345ac641766ecb4180dff676c9eb4ac91e0330e530705671b54027ce8d3d33fc6fc9a01753866b28e5bcb8d028adb423edbaf834b45079379af6dbf75c379ec6cbe97f5acab496506713300ee2fa1d677ec006f8460d04a3a797a316a88ba832955f99e291cda035b1663c676618e95cc59dcd3414befa5426a4c35a12f9f95d1bf2fb1b12fe350b0b1b3bc504578eb3ab16aaff15505b218ec2b0fbc933d9034bea8be11ca2ace22f04b861883fd863a5ec6c16ab8ff90a72fbc89fe91f9c2b84601a8dd28de98bfe0d12ebbfbb14b201090325fbfdd352e276c6fbbdc989d94ee96b47b57a5aeff3af3e8bf9f7a0cafd74b8a28cf11b86ae485563e16bc071035388116b04012ae9d36e259252145eaf552be23a474c5c6069c29b15df7194f40734f61e4f0f9e7da86c08944a68a2b6e7768e608d01145a35e4973f948119045948996df2410aa5c019c24fbb7c8615d0409ea313ebeb78d6ee8c9ea6fabd9c504713c21c54b21e773fee2c29468af30e00839978e769b07780286f5ba0b35971772053de944880873743e8073f3ca90778c45d558733835666daba6285c05162bbf1873a03e9a29994cc53678aca15cddcc1d2d8ca360828c2dc48f9a536ab4d309b01814f0a7627862f3b718b4b95fad03b8299e80e08b96e73105d9198cefc55bf0a26c8e13906b900bebc96b87960b5763d31f03f411ef027006cdae44aef11472578447a913034088d6d861c71de18fb99a9ce6932e0072cfd030bb49c34cb8286c90aed1408f146dbc39e78b0ffe602096c078d6c92ca59e264608df236ad9ee41f99c24f97b379a8d06636842e2d54008152997c8beb6cb86971dbd8b476596e0fec9229e959c1ad4a20259b1d1580e789a16c5b860e447a97f6c6daa850e83715e9236f6fa882a6adf7daee4e66d54b0ddf0966b181098e9998014905ba6b79e76f0c7cb3a6ffc3bf6640b20551704fe94216a732df2642e8d1fa25aebe51b04b3eb634a9e00f307e266f3cf9271e3faab8a828182a0e514f37888a805a4d3cc60c3ce428e9db37be132155b55740d4f93b7addd70d38ba8ac286921ab9ca32690350d35098782c618a7a6aef460e67652366c7b919d0a0aac2646daf741e55bfc9c650539dd6d755574cad07af9359895132f201d2eda1229b7540487750ba60e705158636e473b1a7ecb944b98587de86c6eebfc6a7e64291374129bcd142da570765bdb65cbc046c0a07cee6a59d7153a389ff2c27e0ce590808f50429d5877bcf24e2f1e2a72d63b464ad6bb91eac128ee19d1ed8bd6143604eae097c485dbeb04c56de34f94d28846fd5621c08a6609e7d408b1fd03e36defa8d59dc0cb9400a4a7e614d4aace51ebd7252c40a67ce237573a934fdeb1b9e0e127f5718fe4315a5026a455e2dacd45ae5e352aac9a03e56e8aba77b182194d330a5e68dda7b4202a9ccaf2864a34814a2cb060cfec55b655b899e7f66f11348acf51964d5603025054b1be35317c7de9a4941b5ed3fc3c3038be497bd3762134b9e892b01fe7791b0037cd8a6d15476c3b22aed3e7276c5ff1f8fdb1a7ae77715a81f0dd955e18fc54c6d1d28e4a6779546eb93449b288da309947a747dfed8c497520513b1bc7d271cbae4bf199355f37b5964535f0be92998aea448384e17cf990b8b339c8301edf9ac37219ebf580e1c60a7d2b7719d0856e8dc8c1e56141c0abd47916b1cf6a9f735b60278b3bd02567a54d01ccc1926134111fe7184a54d872ce230aca60f6625700d5bfc925d2d178b3251a1a5dfa97d824b585dbdfdd24303f1af300c79882c82ac677764761dbf2497fc2692ef13eabf8f75914376ae2d870c272f8d50828f1ad29d5f39d2d17a5f40b62d01cc10f9067e72fbf8a64abf11db7a154fcfdc2a246a074cf4fad6058df30d63893581dd4e643a4067a26cf9ad99dc00a2428d4fc1ea6269371358a98ac96075883b5afb47da32a16d1e710ca17171b9d9a672106c8ffd65a3d736314ef7f7565d9b5a5167b09b964647bb16d64acca1f5fb4e4d7c77d7231b2ffd44f49b26114450ff399482595e7e4944fcd2aa8b51db1817d1c85672ffdd06128a6cea9979d6f5d21e0c776773bf98664fe200a1385f15fc747a5109614c79d8e5ddaea38beeae3df3dc66a9609ca51b4b77421c29e270f13b470fb9064eb2c7337f8b8cadd7f8f46db0e885d8a6c2fdadb226ccbcc963d128198eea37b72c738b0617ec7b706bf2e1319ced1c4bed6b9f89d4f9f8fce6253b8c0718eefa341caf689c11a3b7e9e2468c390141a75123a22a9778686b5fb9153a16ae9aaebcf1efe2e65097a27e392be7c40eef4f89a21ef027a2b02848cceabd148899cc00feef565c7ca4763ccf8df0cc725e504442b7762b816a28abf87cc691b04aff02609c24a3096f6cda6f10934092d210c80253b7ab0aa094f07b2bde74027c08628d4be8c0d1d694f4281a80942a0513c4bf7d69a5710da1bff7162f55481ebc01412afb661d4f15e9b852485209297a86917ae77f93da5dfb61f3c28caf621d2bb6b774e504b25e1cca8bc4fba03f25307d7a9683cf765c0ebf0017b61</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 请输入密码</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <tags>
-        <tag>关于博客</tag>
       </tags>
   </entry>
 </search>

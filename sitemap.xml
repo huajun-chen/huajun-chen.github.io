@@ -92,15 +92,6 @@
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/2022/10/27/hello-world/</loc>
-    
-    <lastmod>2022-10-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://huajun-chen.github.io/timeline/index.html</loc>
     
     <lastmod>2022-10-27</lastmod>
@@ -142,6 +133,13 @@
   </url>
   
   <url>
+    <loc>https://huajun-chen.github.io/tags/MySQL/</loc>
+    <lastmod>2022-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://huajun-chen.github.io/tags/Redis/</loc>
     <lastmod>2022-10-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -150,13 +148,6 @@
   
   <url>
     <loc>https://huajun-chen.github.io/tags/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2022-10-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://huajun-chen.github.io/tags/MySQL/</loc>
     <lastmod>2022-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

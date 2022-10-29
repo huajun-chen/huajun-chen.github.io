@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://huajun-chen.github.io/about/index.html</loc>
+    <loc>https://huajun-chen.github.io/2022/10/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
     
     <lastmod>2022-10-29</lastmod>
     
@@ -13,16 +13,7 @@
   <url>
     <loc>https://huajun-chen.github.io/2022/10/27/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/</loc>
     
-    <lastmod>2022-10-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://huajun-chen.github.io/2022/10/28/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
-    
-    <lastmod>2022-10-28</lastmod>
+    <lastmod>2022-10-29</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -30,6 +21,24 @@
   
   <url>
     <loc>https://huajun-chen.github.io/2022/10/28/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
+    
+    <lastmod>2022-10-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://huajun-chen.github.io/about/index.html</loc>
+    
+    <lastmod>2022-10-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://huajun-chen.github.io/2022/10/28/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
     
     <lastmod>2022-10-28</lastmod>
     
@@ -66,15 +75,6 @@
   
   <url>
     <loc>https://huajun-chen.github.io/2022/10/28/Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
-    
-    <lastmod>2022-10-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://huajun-chen.github.io/2022/10/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
     
     <lastmod>2022-10-28</lastmod>
     
@@ -133,13 +133,6 @@
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/tags/MySQL/</loc>
-    <lastmod>2022-10-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://huajun-chen.github.io/tags/Redis/</loc>
     <lastmod>2022-10-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -148,6 +141,20 @@
   
   <url>
     <loc>https://huajun-chen.github.io/tags/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2022-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://huajun-chen.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2022-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://huajun-chen.github.io/tags/MySQL/</loc>
     <lastmod>2022-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

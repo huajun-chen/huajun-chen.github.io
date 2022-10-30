@@ -23,7 +23,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h7lczbhkshj318611ik0y.jpg">
 <meta property="article:published_time" content="2022-10-28T06:09:46.000Z">
-<meta property="article:modified_time" content="2022-10-29T06:46:08.821Z">
+<meta property="article:modified_time" content="2022-10-30T13:51:41.025Z">
 <meta property="article:author" content="可可西里">
 <meta property="article:tag" content="八股文">
 <meta property="article:tag" content="MySQL">
@@ -189,7 +189,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-13.png" style="max-height: 240px;">
+      <img src="/images/random/material-2.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">MySQL面试题</div>
@@ -698,6 +698,80 @@
 </ul>
 </li>
 </ul>
+<h4 id="25-MySQL优化"><a href="#25-MySQL优化" class="headerlink" title="25. MySQL优化"></a>25. MySQL优化</h4><ul>
+<li>避免不走索引的场景</li>
+<li>select语句其他优化</li>
+<li>增删改DML语句优化</li>
+<li>查询条件优化</li>
+<li>建表优化</li>
+</ul>
+<h5 id="25-1-避免不走索引的场景"><a href="#25-1-避免不走索引的场景" class="headerlink" title="25.1 避免不走索引的场景"></a>25.1 避免不走索引的场景</h5><ol>
+<li>尽量避免在字段开头模糊查询，会导致数据库引擎放弃索引进行全表扫描</li>
+<li>尽量避免使用<code>in</code>和<code>not in </code>，会导致引擎走全表扫描</li>
+<li>尽量避免使用<code>or</code>，会导致数据库引擎放弃索引进行全表扫描</li>
+<li>尽量避免进行<code>null</code>值的判断，会导致数据库引擎放弃索引进行全表扫描</li>
+<li>尽量避免在<code>where</code>条件中等号的左侧进行表达式、函数操作，会导致数据库引擎放弃索引进行全表扫描</li>
+<li>当数据量大时，避免使用<code>where 1=1</code>的条件，通常为了方便拼装查询条件，我们会默认使用该条件，数据库引擎会放弃索引进行全表扫描</li>
+<li>条件查询不能用<code>&lt;&gt;</code>或者<code>!=</code></li>
+<li><code>where</code>条件仅包含复合索引非前置列</li>
+<li>隐式类型转换造成不使用索引</li>
+<li><code>order by</code>条件要与<code>where</code>中条件一致，否则<code>order by</code>不会利用索引进行排序</li>
+<li>正确使用<code>hint</code>优化语句</li>
+</ol>
+<h5 id="25-2-select语句其他优化"><a href="#25-2-select语句其他优化" class="headerlink" title="25.2 select语句其他优化"></a>25.2 select语句其他优化</h5><ol>
+<li>避免出现<code>select *</code></li>
+<li>避免出现不确定结果的函数</li>
+<li>多表关联查询时，小表在前，大表在后</li>
+<li>使用表的别名</li>
+<li>用<code>where</code>语句替换<code>HAVING</code>字句</li>
+<li>调整<code>where</code>字句中的连接顺序</li>
+</ol>
+<h5 id="25-3-增删改DML语句优化"><a href="#25-3-增删改DML语句优化" class="headerlink" title="25.3 增删改DML语句优化"></a>25.3 增删改DML语句优化</h5><ol>
+<li>大批量插入数据</li>
+<li>适当使用<code>commit</code></li>
+<li>避免重复查询更新的数据</li>
+<li>查询优先还是更新<code>(insert、update、delete)</code>优先</li>
+</ol>
+<h5 id="25-4-查询条件优化"><a href="#25-4-查询条件优化" class="headerlink" title="25.4 查询条件优化"></a>25.4 查询条件优化</h5><ol>
+<li>对于复杂的查询，可以使用中间临时表暂存数据</li>
+<li>优化<code>group by</code>语句</li>
+<li>优化<code>join</code>语句</li>
+<li>优化<code>union</code>语句</li>
+<li>拆分复杂<code>SQL</code>为多个小<code>SQL</code>，避免大事务</li>
+<li>使用<code>truncate</code>代替<code>delete</code></li>
+<li>使用合理的分页方式以提高分页效率</li>
+</ol>
+<h5 id="25-5-建表优化"><a href="#25-5-建表优化" class="headerlink" title="25.5 建表优化"></a>25.5 建表优化</h5><ol>
+<li>在表中建立索引，优先考虑<code>where、order by</code>使用到的字段</li>
+<li>尽量使用数字类型（性别：男：1，女：2），若只含数值信息的字段尽量不要设计为字符型，这会降低查询和连接的性能，并会增加存储的开销</li>
+<li>查询数据量大的表，会造成查询缓慢。主要的原因是扫描行数过多，这个时候可以通过程序，分段分页进行查询，循环遍历，将结果合并处理进行展示</li>
+<li>用<code>varchar/nvarchar</code>代替<code>char/nchar</code></li>
+</ol>
+<h4 id="26-SQL注入"><a href="#26-SQL注入" class="headerlink" title="26. SQL注入"></a>26. SQL注入</h4><p>Sql注入攻击是通过将恶意的Sql查询或添加语句插入到应用的输入参数中，再在后台Sql服务器上解析执行进行的攻击，它目前黑客对数据库进行攻击的最常用手段之一。</p>
+<p><strong>避免SQL注入：</strong></p>
+<ul>
+<li>参数校验，校验数据的类型，长度，特殊字符，数据库关键词等</li>
+<li>代码层面防止SQL注入攻击的最佳方案是SQL预编译，尽量不写SQL原生语句，使用ORM</li>
+<li>严格限制数据库权限</li>
+<li>避免直接响应一些SQL异常信息，SQL发生异常后，自定义异常进行响应</li>
+</ul>
+<h4 id="27-MySQL、MongoDB、Redis区别，适用场景"><a href="#27-MySQL、MongoDB、Redis区别，适用场景" class="headerlink" title="27. MySQL、MongoDB、Redis区别，适用场景"></a>27. MySQL、MongoDB、Redis区别，适用场景</h4><h5 id="27-1-MySQL"><a href="#27-1-MySQL" class="headerlink" title="27.1 MySQL"></a>27.1 MySQL</h5><ol>
+<li>高度事务性系统。例如银行或会计系统，传统的关系型数据库目前还是更适用于需要大量原子性复杂事务的应用程序</li>
+<li>传统的商业智能应用，针对特定问题的<code>BI</code>数据库会产生高度优化的查询方式，对于此类应用，数据仓库可能是更合适的选择</li>
+</ol>
+<h5 id="27-2-MongoDB"><a href="#27-2-MongoDB" class="headerlink" title="27.2 MongoDB"></a>27.2 MongoDB</h5><ol>
+<li>网站数据：适合实时的插入，更新与查询，并具备网站实时数据存储所需的复制及高度伸缩性</li>
+<li>缓存：由于性能很高，也适合作为信息基础设施的缓存层，在系统重启之后，搭建的持久化缓存可以避免下层的数据源过载</li>
+<li>大尺寸、低价值的数据也是<code>MongoDB</code>的最佳选择，使用传统的关系型数据库存储一些数据时可能会比较贵，在此之前很多程序员往往会选择传统的文件进行存储</li>
+<li>高伸缩的场景，非常适合由数十台或数百台服务器组成的数据库</li>
+<li>用于对象及<code>json</code>数据的存储，<code>MongoDB</code>的<code>bson</code>数据格式非常适合文档格式化的存储及查询</li>
+</ol>
+<h5 id="27-3-Redis"><a href="#27-3-Redis" class="headerlink" title="27.3 Redis"></a>27.3 Redis</h5><ol>
+<li>用来做缓存：<code>Redis</code>的所有数据是存放在内存中的</li>
+<li>可以在某些特定应用场景下替代传统数据库：比如社交类的应用</li>
+<li>在一些大型系统中，巧妙的实现一些特定的功能：<code>session</code>共享、购物车</li>
+<li><code>MongoDB</code>不支持<code>SQL</code>语句</li>
+</ol>
 <hr>
 
       
@@ -745,7 +819,7 @@
   <div style="position: fixed !important; left: 240px; top: 30%;">
     <button class="mdui-fab mdui-fab-mini mdui-ripple" mdui-menu="{target: '#toc'}"><i class="mdui-icon material-icons">toc</i></button>
     <ul class="mdui-menu" id="toc">
-      <li class="mdui-menu-item" disabled><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Mysql%E7%B4%A2%E5%BC%95%E7%94%A8%E7%9A%84%E6%98%AF%E4%BB%80%E4%B9%88%E7%AE%97%E6%B3%95"><span class="toc-text">1. Mysql索引用的是什么算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Mysql%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A6%81%E7%B4%A0"><span class="toc-text">2. Mysql事务的基本要素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Mysql%E7%9A%84%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-text">3. Mysql的存储引擎</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Mysql%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-text">4. Mysql事务隔离级别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Mysql%E9%AB%98%E5%8F%AF%E7%94%A8%E6%96%B9%E6%A1%88%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-text">5. Mysql高可用方案有哪些</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Mysql%E4%B8%ADutf8%E5%92%8Cutf8mb4%E5%8C%BA%E5%88%AB"><span class="toc-text">6. Mysql中utf8和utf8mb4区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-Mysql%E4%B8%AD%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E5%8C%BA%E5%88%AB"><span class="toc-text">7. Mysql中乐观锁和悲观锁区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-Mysql%E7%B4%A2%E5%BC%95%E4%B8%BB%E8%A6%81%E6%98%AF%E5%93%AA%E4%BA%9B"><span class="toc-text">8. Mysql索引主要是哪些</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#8-1-%E7%B4%A2%E5%BC%95%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-text">8.1 索引的缺点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-2-%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="toc-text">8.2 索引使用技巧</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-3-%E7%BB%84%E5%90%88%E7%B4%A2%E5%BC%95%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">8.3 组合索引的作用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-Mysql%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E6%9C%80%E5%B7%A6%E5%8C%B9%E9%85%8D%E5%8E%9F%E5%88%99"><span class="toc-text">9. Mysql联合索引最左匹配原则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E5%92%8C%E9%9D%9E%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E5%8C%BA%E5%88%AB"><span class="toc-text">10. 聚簇索引和非聚簇索引区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-%E5%A6%82%E4%BD%95%E6%9F%A5%E8%AF%A2%E4%B8%80%E4%B8%AA%E5%AD%97%E6%AE%B5%E6%98%AF%E5%90%A6%E5%91%BD%E4%B8%AD%E4%BA%86%E7%B4%A2%E5%BC%95"><span class="toc-text">11. 如何查询一个字段是否命中了索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-Mysql%E4%B8%AD%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%B8%8D%E4%BC%9A%E5%91%BD%E4%B8%AD%E7%B4%A2%E5%BC%95"><span class="toc-text">12. Mysql中查询数据什么情况下不会命中索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-Mysql%E4%B8%AD%E7%9A%84MVCC%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">13. Mysql中的MVCC是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14-Mvcc%E5%92%8CRedolog%E5%92%8CUndolog%E4%BB%A5%E5%8F%8ABinlog%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C"><span class="toc-text">14. Mvcc和Redolog和Undolog以及Binlog有什么不同</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#15-Mysql%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E4%BB%A5%E5%8F%8A%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5"><span class="toc-text">15. Mysql读写分离以及主从同步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16-InnoDB%E7%9A%84%E5%85%B3%E9%94%AE%E7%89%B9%E6%80%A7"><span class="toc-text">16. InnoDB的关键特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#17-Mysql%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E4%B8%80%E8%87%B4%E6%80%A7%E5%92%8C%E6%8C%81%E4%B9%85%E6%80%A7"><span class="toc-text">17. Mysql如何保证一致性和持久性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#18-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9B-%E6%A0%91%E4%BD%9C%E4%B8%BA%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84"><span class="toc-text">18. 为什么选择B+树作为索引结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#19-InnoDB%E7%9A%84%E8%A1%8C%E9%94%81%E6%A8%A1%E5%BC%8F"><span class="toc-text">19. InnoDB的行锁模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#20-%E5%93%88%E5%B8%8C-hash-%E6%AF%94%E6%A0%91-tree-%E6%9B%B4%E5%BF%AB%EF%BC%8C%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%AE%BE%E8%AE%A1%E6%88%90%E6%A0%91%E5%9E%8B"><span class="toc-text">20. 哈希(hash)比树(tree)更快，索引结构为什么要设计成树型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#21-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%B4%A2%E5%BC%95%E7%9A%84key%E9%95%BF%E5%BA%A6%E4%B8%8D%E8%83%BD%E5%A4%AA%E9%95%BF"><span class="toc-text">21. 为什么索引的key长度不能太长</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22-Mysql%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E6%81%A2%E5%A4%8D%E5%88%B0%E4%BB%BB%E6%84%8F%E6%97%B6%E9%97%B4%E7%82%B9"><span class="toc-text">22. Mysql的数据如何恢复到任意时间点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#23-Mysql%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8A%A0%E4%BA%86%E7%B4%A2%E5%BC%95%E5%8F%AF%E4%BB%A5%E5%8A%A0%E5%BF%AB%E6%9F%A5%E8%AF%A2"><span class="toc-text">23. Mysql为什么加了索引可以加快查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#24-Explain%E5%91%BD%E4%BB%A4%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8"><span class="toc-text">24. Explain命令有什么用</span></a></li></ol></li>
+      <li class="mdui-menu-item" disabled><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Mysql%E7%B4%A2%E5%BC%95%E7%94%A8%E7%9A%84%E6%98%AF%E4%BB%80%E4%B9%88%E7%AE%97%E6%B3%95"><span class="toc-text">1. Mysql索引用的是什么算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Mysql%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A6%81%E7%B4%A0"><span class="toc-text">2. Mysql事务的基本要素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Mysql%E7%9A%84%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-text">3. Mysql的存储引擎</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Mysql%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-text">4. Mysql事务隔离级别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Mysql%E9%AB%98%E5%8F%AF%E7%94%A8%E6%96%B9%E6%A1%88%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-text">5. Mysql高可用方案有哪些</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Mysql%E4%B8%ADutf8%E5%92%8Cutf8mb4%E5%8C%BA%E5%88%AB"><span class="toc-text">6. Mysql中utf8和utf8mb4区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-Mysql%E4%B8%AD%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E5%8C%BA%E5%88%AB"><span class="toc-text">7. Mysql中乐观锁和悲观锁区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-Mysql%E7%B4%A2%E5%BC%95%E4%B8%BB%E8%A6%81%E6%98%AF%E5%93%AA%E4%BA%9B"><span class="toc-text">8. Mysql索引主要是哪些</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#8-1-%E7%B4%A2%E5%BC%95%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-text">8.1 索引的缺点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-2-%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="toc-text">8.2 索引使用技巧</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-3-%E7%BB%84%E5%90%88%E7%B4%A2%E5%BC%95%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">8.3 组合索引的作用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-Mysql%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E6%9C%80%E5%B7%A6%E5%8C%B9%E9%85%8D%E5%8E%9F%E5%88%99"><span class="toc-text">9. Mysql联合索引最左匹配原则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E5%92%8C%E9%9D%9E%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E5%8C%BA%E5%88%AB"><span class="toc-text">10. 聚簇索引和非聚簇索引区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-%E5%A6%82%E4%BD%95%E6%9F%A5%E8%AF%A2%E4%B8%80%E4%B8%AA%E5%AD%97%E6%AE%B5%E6%98%AF%E5%90%A6%E5%91%BD%E4%B8%AD%E4%BA%86%E7%B4%A2%E5%BC%95"><span class="toc-text">11. 如何查询一个字段是否命中了索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-Mysql%E4%B8%AD%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%B8%8D%E4%BC%9A%E5%91%BD%E4%B8%AD%E7%B4%A2%E5%BC%95"><span class="toc-text">12. Mysql中查询数据什么情况下不会命中索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-Mysql%E4%B8%AD%E7%9A%84MVCC%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">13. Mysql中的MVCC是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14-Mvcc%E5%92%8CRedolog%E5%92%8CUndolog%E4%BB%A5%E5%8F%8ABinlog%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C"><span class="toc-text">14. Mvcc和Redolog和Undolog以及Binlog有什么不同</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#15-Mysql%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E4%BB%A5%E5%8F%8A%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5"><span class="toc-text">15. Mysql读写分离以及主从同步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16-InnoDB%E7%9A%84%E5%85%B3%E9%94%AE%E7%89%B9%E6%80%A7"><span class="toc-text">16. InnoDB的关键特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#17-Mysql%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E4%B8%80%E8%87%B4%E6%80%A7%E5%92%8C%E6%8C%81%E4%B9%85%E6%80%A7"><span class="toc-text">17. Mysql如何保证一致性和持久性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#18-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9B-%E6%A0%91%E4%BD%9C%E4%B8%BA%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84"><span class="toc-text">18. 为什么选择B+树作为索引结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#19-InnoDB%E7%9A%84%E8%A1%8C%E9%94%81%E6%A8%A1%E5%BC%8F"><span class="toc-text">19. InnoDB的行锁模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#20-%E5%93%88%E5%B8%8C-hash-%E6%AF%94%E6%A0%91-tree-%E6%9B%B4%E5%BF%AB%EF%BC%8C%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%AE%BE%E8%AE%A1%E6%88%90%E6%A0%91%E5%9E%8B"><span class="toc-text">20. 哈希(hash)比树(tree)更快，索引结构为什么要设计成树型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#21-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%B4%A2%E5%BC%95%E7%9A%84key%E9%95%BF%E5%BA%A6%E4%B8%8D%E8%83%BD%E5%A4%AA%E9%95%BF"><span class="toc-text">21. 为什么索引的key长度不能太长</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22-Mysql%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E6%81%A2%E5%A4%8D%E5%88%B0%E4%BB%BB%E6%84%8F%E6%97%B6%E9%97%B4%E7%82%B9"><span class="toc-text">22. Mysql的数据如何恢复到任意时间点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#23-Mysql%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8A%A0%E4%BA%86%E7%B4%A2%E5%BC%95%E5%8F%AF%E4%BB%A5%E5%8A%A0%E5%BF%AB%E6%9F%A5%E8%AF%A2"><span class="toc-text">23. Mysql为什么加了索引可以加快查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#24-Explain%E5%91%BD%E4%BB%A4%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8"><span class="toc-text">24. Explain命令有什么用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#25-MySQL%E4%BC%98%E5%8C%96"><span class="toc-text">25. MySQL优化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#25-1-%E9%81%BF%E5%85%8D%E4%B8%8D%E8%B5%B0%E7%B4%A2%E5%BC%95%E7%9A%84%E5%9C%BA%E6%99%AF"><span class="toc-text">25.1 避免不走索引的场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#25-2-select%E8%AF%AD%E5%8F%A5%E5%85%B6%E4%BB%96%E4%BC%98%E5%8C%96"><span class="toc-text">25.2 select语句其他优化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#25-3-%E5%A2%9E%E5%88%A0%E6%94%B9DML%E8%AF%AD%E5%8F%A5%E4%BC%98%E5%8C%96"><span class="toc-text">25.3 增删改DML语句优化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#25-4-%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6%E4%BC%98%E5%8C%96"><span class="toc-text">25.4 查询条件优化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#25-5-%E5%BB%BA%E8%A1%A8%E4%BC%98%E5%8C%96"><span class="toc-text">25.5 建表优化</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#26-SQL%E6%B3%A8%E5%85%A5"><span class="toc-text">26. SQL注入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#27-MySQL%E3%80%81MongoDB%E3%80%81Redis%E5%8C%BA%E5%88%AB%EF%BC%8C%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">27. MySQL、MongoDB、Redis区别，适用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#27-1-MySQL"><span class="toc-text">27.1 MySQL</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#27-2-MongoDB"><span class="toc-text">27.2 MongoDB</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#27-3-Redis"><span class="toc-text">27.3 Redis</span></a></li></ol></li></ol></li>
     </ul>
   </div>
 

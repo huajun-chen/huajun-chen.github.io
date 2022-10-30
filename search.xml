@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Linux操作系统面试题</title>
-    <url>/2022/10/28/Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p>Linux常见面试题整理</p>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>八股文</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Golang面试题</title>
     <url>/2022/10/28/Golang%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
     <content><![CDATA[<p>Golang常见面试题分享，涵盖了常见的Golang面试八股文</p>
@@ -272,8 +259,21 @@
         <category>面试</category>
       </categories>
       <tags>
-        <tag>八股文</tag>
         <tag>Golang</tag>
+        <tag>八股文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux操作系统面试题</title>
+    <url>/2022/10/28/Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<p>Linux常见面试题整理</p>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>八股文</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1851,7 +1851,7 @@
       </categories>
       <tags>
         <tag>八股文</tag>
-        <tag>数据结构与算法</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>

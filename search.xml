@@ -687,6 +687,784 @@
       </tags>
   </entry>
   <entry>
+    <title>Redis面试题</title>
+    <url>/2022/10/28/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<p>Redis面试常见问题汇总</p>
+<h4 id="1-Redis的数据结构及使用场景"><a href="#1-Redis的数据结构及使用场景" class="headerlink" title="1. Redis的数据结构及使用场景"></a>1. Redis的数据结构及使用场景</h4><ul>
+<li><p>String字符串</p>
+<p>字符串类型是 Redis 最基础的数据结构，首先键都是字符串类型，而且 其他几种数据结构都是在字符串类型基础上构建的，我们常使用的 set key value 命令就是字符串。常用在缓存、计数、共享Session、限速等</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>Hash哈希</p>
+<p>在Redis中，哈希类型是指键值本身又是一个键值对结构，哈希可以用来存放用户信息，比如实现购物车</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>List列表（双向链表）</p>
+<p>列表（list）类型是用来存储多个有序的字符串。可以做简单的消息队列的功能</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>Set集合</p>
+<p>集合（set）类型也是用来保存多个的字符串元素，但和列表类型不一 样的是，集合中不允许有重复元素，并且集合中的元素是无序的，不能通过索引下标获取元素。利用 Set 的交集、并集、差集等操作，可以计算共同喜好，全部的喜好，自己独有的喜好等功能</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>Sorted Set有序集合（跳表实现）</p>
+<p>Sorted Set 多了一个权重参数 Score，集合中的元素能够按 Score 进行排列。可以做排行榜应用，取 TOP N 操作</p>
+</li>
+</ul>
+<h4 id="2-Redis持久化的几种方式"><a href="#2-Redis持久化的几种方式" class="headerlink" title="2. Redis持久化的几种方式"></a>2. Redis持久化的几种方式</h4><p>Redis为了保证效率，数据缓存在了内存中，但是会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件中，以保证数据的持久化。Redis的持久化策略有两种：</p>
+<ul>
+<li><strong>RDB：</strong> 快照形式是直接把内存中的数据保存到一个dump的文件中，定时保存，保存策略<ul>
+<li>当Redis需要做持久化时，Redis会fork一个子进程，子进程将数据写到磁盘上一个临时RDB文件中。当子进程完成写临时文件后，将原来的RDB替换掉</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>AOF：</strong> 把所有的对Redis的服务器进行修改的命令都存到一个文件里，命令的集合<ul>
+<li>使用AOF做持久化，每一个写命令都通过write函数追加到<code>appendonly.aof</code>中</li>
+<li>aof的默认策略是每秒钟fsync一次，在这种配置下，就算发生故障停机，也最多丢失一秒钟的数据</li>
+<li>缺点是对于相同的数据集来说，AOF的文件体积通常要大于RDB文件的体积。根据所使用的fsync策略，AOF的速度可能会慢于RDB</li>
+</ul>
+</li>
+</ul>
+<p>Redis默认是快照RDB的持久化方式。对于主从同步来说，主从刚刚连接的时候，进行全量同步（RDB），全同步结束后，进行增量同步(AOF)</p>
+<h4 id="3-Redis的LRU具体实现"><a href="#3-Redis的LRU具体实现" class="headerlink" title="3. Redis的LRU具体实现"></a>3. Redis的LRU具体实现</h4><ul>
+<li>传统的LRU是使用栈的形式，每次都将最新使用的移入栈顶，但是用栈的形式会导致执行<code>select *</code>的时候大量非热点数据占领头部数据，所以需要改进</li>
+<li>Redis每次按key获取一个值的时候，都会更新value中的lru字段为当前秒级别的时间戳。Redis初始的实现算法很简单，随机从dict中取出五个key，淘汰一个lru字段值最小的</li>
+<li>在3.0的时候，又改进了一版算法，首先第一次随机选取的key都会放入一个pool中(pool的大小为16)，pool中的key是按lru大小顺序排列的</li>
+<li>接下来每次随机选取的keylru值必须小于pool中最小的lru才会继续放入，直到将pool放满。放满之后，每次如果有新的key需要放入，需要将pool中lru最大的一个key取出。淘汰的时候，直接从pool中选取一个lru最小的值然后将其淘汰</li>
+</ul>
+<h4 id="4-单线程的Redis为什么快"><a href="#4-单线程的Redis为什么快" class="headerlink" title="4. 单线程的Redis为什么快"></a>4. 单线程的Redis为什么快</h4><ul>
+<li>纯内存操作</li>
+<li>单线程操作，避免了频繁的上下文切换</li>
+<li>合理高效的数据结构</li>
+<li>采用了非阻塞I&#x2F;O多路复用机制</li>
+</ul>
+<h4 id="5-Redis的数据过期策略"><a href="#5-Redis的数据过期策略" class="headerlink" title="5. Redis的数据过期策略"></a>5. Redis的数据过期策略</h4><p>Redis 中数据过期策略采用<strong>定期删除</strong>和<strong>惰性删除</strong>策略：</p>
+<ul>
+<li>定期删除策略<ul>
+<li>Redis 启用一个定时器定时监视所有的 key，判断key是否过期，过期的话就删除</li>
+<li>这种策略可以保证过期的 key 最终都会被删除，但是也存在严重的缺点：每次都遍历内存中所有的数据，非常消耗 CPU资源，并且当 key 已过期，但是定时器还处于未唤起状态，这段时间内 key 仍然可以用</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>惰性删除策略<ul>
+<li>在获取 key 时，先判断 key 是否过期，如果过期则删除</li>
+<li>这种方式存在一个缺点：如果这个 key一直未被使用，那么它一直在内存中，其实它已经过期了，会浪费大量的空间</li>
+</ul>
+</li>
+</ul>
+<p>这两种策略天然的互补，结合起来之后，定时删除策略就发生了一些改变，不在是每次扫描全部的 key 了，而是随机抽取一部分 key 进行检查，这样就降低了对 CPU 资源的损耗，惰性删除策略互补了为检查到的key，基本上满足了所有要求</p>
+<p>但是有时候就是那么的巧，既没有被定时器抽取到，又没有被使用，这些数据又如何从内存中消失？这个时候就需要用到了，内存淘汰机制</p>
+<h5 id="5-1-内存淘汰机制"><a href="#5-1-内存淘汰机制" class="headerlink" title="5.1 内存淘汰机制"></a>5.1 内存淘汰机制</h5><ul>
+<li>当内存不足以容纳新写入数据时，新写入操作会报错。（Redis 默认策略）</li>
+<li>当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的 Key。（LRU推荐使用）</li>
+<li>当内存不足以容纳新写入数据时，在键空间中，随机移除某个 Key</li>
+<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，移除最近最少使用的 Key。这种情况一般是把 Redis 既当缓存，又做持久化存储的时候才用</li>
+<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，随机移除某个 Key</li>
+<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，有更早过期时间的 Key 优先移除</li>
+</ul>
+<h4 id="6-如何解决Redis缓存雪崩问题"><a href="#6-如何解决Redis缓存雪崩问题" class="headerlink" title="6. 如何解决Redis缓存雪崩问题"></a>6. 如何解决Redis缓存雪崩问题</h4><ul>
+<li>使用 Redis 高可用架构：使用 Redis 集群来保证 Redis 服务不会挂掉</li>
+<li>缓存时间不一致，给缓存的失效时间，加上一个随机值，避免集体失效</li>
+<li>限流降级策略：有一定的备案，比如个性推荐服务不可用了，换成热点数据推荐服务</li>
+</ul>
+<h4 id="7-如何解决Redis缓存穿透问题"><a href="#7-如何解决Redis缓存穿透问题" class="headerlink" title="7. 如何解决Redis缓存穿透问题"></a>7. 如何解决Redis缓存穿透问题</h4><ul>
+<li>在接口层做校验</li>
+<li>存null值（缓存击穿加锁）</li>
+<li>布隆过滤器拦截：将所有可能的查询key 先映射到布隆过滤器中，查询时先判断key是否存在布隆过滤器中，存在才继续向下执行，如果不存在，则直接返回<br>布隆过滤器将值进行多次哈希bit存储，布隆过滤器说某个元素在，可能会被误判。布隆过滤器说某个元素不在，那么一定不在</li>
+</ul>
+<h4 id="8-Redis并发竞争key如何解决"><a href="#8-Redis并发竞争key如何解决" class="headerlink" title="8. Redis并发竞争key如何解决"></a>8. Redis并发竞争key如何解决</h4><ul>
+<li>可以利用分布式锁和时间戳来解决</li>
+<li>利用消息队列解决</li>
+</ul>
+<h4 id="9-Redis的主从模式和哨兵模式和集群模式区别"><a href="#9-Redis的主从模式和哨兵模式和集群模式区别" class="headerlink" title="9. Redis的主从模式和哨兵模式和集群模式区别"></a>9. Redis的主从模式和哨兵模式和集群模式区别</h4><p>Redis集群方式共有三种：<strong>主从模式</strong>，<strong>哨兵模式</strong>，<strong>集群(cluster)模式</strong></p>
+<ul>
+<li><p>主从模式</p>
+<p>主从模式是三种集群方式里最简单的。它主要是基于Redis的主从复制特性架构的。通常我们会设置一个主节点，N个从节点;默认情况下，主节点负责处理使用者的IO操作，而从节点则会对主节点的数据进行备份，并且也会对外提供读操作的处理。主要的特点如下：</p>
+<ul>
+<li>主从模式下，当某一节点损坏时，因为其会将数据备份到其它Redis实例上，这样做在很大程度上可以恢复丢失的数据</li>
+<li>主从模式下，可以保证负载均衡.</li>
+<li>主从模式下，主节点和从节点是读写分离的。使用者不仅可以从主节点上读取数据，还可以很方便的从从节点上读取到数据，这在一定程度上缓解了主机的压力</li>
+</ul>
+<p>从节点也是能够支持写入数据的，只不过从从节点写入的数据不会同步到主节点以及其它的从节点下。从以上，我们不难看出Redis在主从模式下，必须保证主节点不会宕机——一旦主节点宕机，其它节点不会竞争称为主节点，此时，Redis将丧失写的能力。这点在生产环境中，是致命的</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>哨兵模式</p>
+<p>哨兵模式是基于主从模式做的一定变化，它能够为Redis提供了高可用性</p>
+<p>在实际生产中，服务器难免不会遇到一些突发状况：服务器宕机，停电，硬件损坏等。这些情况一旦发生，其后果往往是不可估量的</p>
+<p>而哨兵模式在一定程度上能够帮我们规避掉这些意外导致的灾难性后果。其实，哨兵模式的核心还是主从复制</p>
+<p>只不过相对于主从模式在主节点宕机导致不可写的情况下，多了一个竞选机制——从所有的从节点竞选出新的主节点。竞选机制的实现，是依赖于在系统中启动一个sentinel进程。sentinel特点：</p>
+<ul>
+<li>监控：它会监听主服务器和从服务器之间是否在正常工作</li>
+<li>通知：它能够通过API告诉系统管理员或者程序，集群中某个实例出了问题。</li>
+<li>故障转移：它在主节点出了问题的情况下，会在所有的从节点中竞选出一个节点，并将其作为新的主节点。</li>
+<li>提供主服务器地址：它还能够向使用者提供当前主节点的地址。这在故障转移后，使用者不用做任何修改就可以知道当前主节点地址</li>
+</ul>
+<p>sentinel，也可以集群，部署多个哨兵，sentinel可以通过发布与订阅来自动发现Redis集群上的其它sentinel。sentinel在发现其它sentinel进程后，会将其放入一个列表中，这个列表存储了所有已被发现的sentinel</p>
+<p>集群中的所有sentinel不会并发着去对同一个主节点进行故障转移。故障转移只会从第一个sentinel开始，当第一个故障转移失败后，才会尝试下一个</p>
+<p>当选择一个从节点作为新的主节点后，故障转移即成功了(而不会等到所有的从节点配置了新的主节点后)。这过程中，如果重启了旧的主节点，那么就会出现无主节点的情况，这种情况下，只能重启集群</p>
+<p>当竞选出新的主节点后，被选为新的主节点的从节点的配置信息会被sentinel改写为旧的主节点的配置信息。完成改写后，再将新主节点的配置广播给所有的从节点</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>集群模式</p>
+<p>Redis 集群是一个提供在多个Redis间节点间共享数据的程序集， 其中Redis集群分为主节点和从节点。主节点用于处理槽，而从节点用于复制某个主节点，并在被复制的主节点下线时，代替下线的主节点继续处理命令请求</p>
+<p>Redis集群并不支持处理多个keys的命令，因为这需要在不同的节点间移动数据，从而达不到像Redis那样的性能，在高负载的情况下可能会导致不可预料的错误</p>
+<p>Redis 集群通过分区来提供一定程度的可用性，在实际环境中当某个节点宕机或者不可达的情况下继续处理命令. Redis 集群的优势：自动分割数据到不同的节点上</p>
+<p>整个集群的部分节点失败或者不可达的情况下能够继续处理命令</p>
+<p>Redis集群的数据分片 Redis 集群没有使用一致性hash， 而是引入了哈希槽的概念</p>
+<p>Redis 集群有16384个哈希槽，每个key通过CRC16校验后对16384取模来决定放置哪个槽.集群的每个节点负责一部分hash槽</p>
+</li>
+</ul>
+<h4 id="10-Redis事物的了解CheckAndSet操作实现乐观锁"><a href="#10-Redis事物的了解CheckAndSet操作实现乐观锁" class="headerlink" title="10. Redis事物的了解CheckAndSet操作实现乐观锁"></a>10. Redis事物的了解CheckAndSet操作实现乐观锁</h4><p>和众多其它数据库一样，Redis作为NoSQL数据库也同样提供了事务机制。在Redis中，<code>MULTI</code>，<code>EXEC</code>，<code>DISCARD</code>，<code>WATCH</code>这四个命令是我们实现事务的基石。相信对有关系型数据库开发经验的开发者而言这一概念并不陌生，即便如此，我们还是会简要的列出 Redis中事务的实现特征 ：</p>
+<ul>
+<li>在事务中的所有命令都将会被串行化的顺序执行，事务执行期间，Redis不会再为其它客户端的请求提供任何服务，从而保证了事物中的所有命令被原子的执行</li>
+<li>和关系型数据库中的事务相比，在Redis事务中如果有某一条命令执行失败，其后的命令仍然会被继续执行</li>
+<li>我们可以通过MULTI命令开启一个事务，有关系型数据库开发经验的人可以将其理解为”BEGIN TRANSACTION”语句。在该语句之后执行的命令都将被视为事务之内的操作，最后我们可以通过执行<code>EXEC</code>，<code>DISCARD</code>命令来提交，回滚该事务内的所有操作。这两个Redis命令可被视为等同于关系型数据库中的COMMIT&#x2F;ROLLBACK语句</li>
+<li>在事务开启之前，如果客户端与服务器之间出现通讯故障并导致网络断开，其后所有待执行的语句都将不会被服务器执行。然而如果网络中断事件是发生在客户端执行EXEC命令之后，那么该事务中的所有命令都会被服务器执行</li>
+<li>当使用<code>Append-Only</code>模式时，Redis会通过调用系统函数write将该事务内的所有写操作在本次调用中全部写入磁盘。然而如果在写入的过程中出现系统崩溃，如电源故障导致的宕机，那么此时也许只有部分数据被写入到磁盘，而另外一部分数据却已经丢失。Redis服务器会在重新启动时执行一系列必要的一致性检测，一旦发现类似问题，就会立即退出并给出相应的错误提示。此时，我们就要充分利用Redis工具包中提供的<code>redis-check-aof</code>工具，该工具可以帮助我们定位到数据不一致的错误，并将已经写入的部分数据进行回滚。修复之后我们就可以再次重新启动Redis服务器了</li>
+</ul>
+<h4 id="11-Redis有序集合zset底层怎么实现的"><a href="#11-Redis有序集合zset底层怎么实现的" class="headerlink" title="11. Redis有序集合zset底层怎么实现的"></a>11. Redis有序集合zset底层怎么实现的</h4><ul>
+<li>跳表是一个随机化的数据结构，实质就是一种可以进行二分查找的有序链表</li>
+<li>跳表在原有的有序链表上面增加了多级索引，通过索引来实现快速查找</li>
+<li>跳表不仅能提高搜索性能，同时也可以提高插入和删除操作的性能</li>
+</ul>
+<hr>
+<ul>
+<li>跳表是可以实现二分查找的有序链表</li>
+<li>每个元素插入时随机生成它的level</li>
+<li>最低层包含所有的元素</li>
+<li>如果一个元素出现在level(x)，那么它肯定出现在x以下的level中</li>
+<li>每个索引节点包含两个指针，一个向下，一个向右</li>
+<li>跳表查询、插入、删除的时间复杂度为O(log n)，与平衡二叉树接近</li>
+</ul>
+<hr>
+<h5 id="11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN"><a href="#11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN" class="headerlink" title="11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))"></a>11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))</h5><p>首先，我们来分析下Redis的有序集合支持的操作：</p>
+<ul>
+<li>插入元素</li>
+<li>删除元素</li>
+<li>查找元素</li>
+<li>有序输出所有元素</li>
+<li>查找区间内所有元素</li>
+</ul>
+<p>其中，前4项红黑树都可以完成，且时间复杂度与跳表一致。但是，最后一项，红黑树的效率就没有跳表高了。在跳表中，要查找区间的元素，我们只要定位到两个区间端点在最低层级的位置，然后按顺序遍历元素就可以了，非常高效</p>
+<p>而红黑树只能定位到端点后，再从首位置开始每次都要查找后继节点，相对来说是比较耗时的。此外，跳表实现起来很容易且易读，红黑树实现起来相对困难，所以Redis选择使用跳表来实现有序集合</p>
+<h4 id="12-跳表的查询过程是怎么样的，查询和插入的时间复杂度"><a href="#12-跳表的查询过程是怎么样的，查询和插入的时间复杂度" class="headerlink" title="12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度"></a>12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度</h4><p>先从第一层查找，不满足就下沉到第二层找，因为每一层都是有序的，写入和插入的时间复杂度都是O(logN)</p>
+<hr>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>八股文</tag>
+        <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL面试题</title>
+    <url>/2022/10/28/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<p>MySQL常见面试题、八股文</p>
+<h4 id="1-Mysql索引用的是什么算法"><a href="#1-Mysql索引用的是什么算法" class="headerlink" title="1. Mysql索引用的是什么算法"></a>1. Mysql索引用的是什么算法</h4><ul>
+<li>Mysql索引选用的是B+树，平衡二叉树的高度太高，查找可能需要较多的磁盘IO。B树索引占用内存较高(非叶子节点存储数据)</li>
+<li>B+树，主要是查询效率高，O(logN)，可以充分利用磁盘预读的特性，多叉树，深度小，叶子结点有序且存储数据</li>
+</ul>
+<h4 id="2-Mysql事务的基本要素"><a href="#2-Mysql事务的基本要素" class="headerlink" title="2. Mysql事务的基本要素"></a>2. Mysql事务的基本要素</h4><ul>
+<li>原子性：事务是一个原子操作单元，其对数据的修改，要么全都执行，要么全都不执行</li>
+<li>一致性：事务开始前和结束后，数据库的完整性约束没有被破坏</li>
+<li>隔离性：同一时间，只允许一个事务请求同一数据，不同的事务之间彼此没有任何干扰</li>
+<li>持久性：事务完成后，事务对数据库的所有更新将被保存到数据库，不能回滚</li>
+</ul>
+<h4 id="3-Mysql的存储引擎"><a href="#3-Mysql的存储引擎" class="headerlink" title="3. Mysql的存储引擎"></a>3. Mysql的存储引擎</h4><ul>
+<li>InnoDB存储引擎<ul>
+<li>InnoDB存储引擎支持事务，其设计目标主要面向在线事务处理（OLTP）的应用</li>
+<li>其特点是行锁设计，支持外键，并支持非锁定锁，即默认读取操作不会产生锁。从Mysql5.5.8版本开始，InnoDB存储引擎是默认的存储引擎</li>
+</ul>
+</li>
+<li>MyISAM存储引擎<ul>
+<li>MyISAM存储引擎不支持事务、表锁设计，支持全文索引，主要面向一些OLAP数据库应用</li>
+<li>InnoDB的数据文件本身就是主索引文件，而MyISAM的主索引和数据是分开的</li>
+</ul>
+</li>
+<li>NDB存储引擎<ul>
+<li>NDB存储引擎是一个集群存储引擎，其结构是share nothing的集群架构，能提供更高的可用性</li>
+<li>NDB的特点是数据全部放在内存中（从MySQL 5.1版本开始，可以将非索引数据放在磁盘上），因此主键查找的速度极快，并且通过添加NDB数据存储节点可以线性地提高数据库性能，是高可用、高性能的集群系统</li>
+<li>NDB存储引擎的连接操作是在MySQL数据库层完成的，而不是在存储引擎层完成的。这意味着，复杂的连接操作需要巨大的网络开销，因此查询速度很慢。如果解决了这个问题，NDB存储引擎的市场应该是非常巨大的</li>
+</ul>
+</li>
+<li>Memory存储引擎<ul>
+<li>Memory存储引擎（之前称HEAP存储引擎）将表中的数据存放在内存中，如果数据库重启或发生崩溃，表中的数据都将消失</li>
+<li>它非常适合用于存储临时数据的临时表，以及数据仓库中的纬度表。Memory存储引擎默认使用哈希索引，而不是我们熟悉的B+树索引</li>
+<li>虽然Memory存储引擎速度非常快，但在使用上还是有一定的限制。比如，只支持表锁，并发性能较差，并且不支持TEXT和BLOB列类型。最重要的是，存储变长字段时是按照定常字段的方式进行的，因此会浪费内存</li>
+</ul>
+</li>
+<li>Archive存储引擎<ul>
+<li>Archive存储引擎只支持INSERT和SELECT操作，从MySQL 5.1开始支持索引</li>
+<li>Archive存储引擎使用zlib算法将数据行（row）进行压缩后存储，压缩比一般可达1∶10。正如其名字所示，Archive存储引擎非常适合存储归档数据，如日志信息</li>
+<li>Archive存储引擎使用行锁来实现高并发的插入操作，但是其本身并不是事务安全的存储引擎，其设计目标主要是提供高速的插入和压缩功能</li>
+</ul>
+</li>
+<li>Maria存储引擎<ul>
+<li>Maria存储引擎是新开发的引擎，设计目标主要是用来取代原有的MyISAM存储引擎，从而成为MySQL的默认存储引擎。它可以看做是MyISAM的后续版本</li>
+<li>Maria存储引擎的特点是：支持缓存数据和索引文件，应用了行锁设计，提供了MVCC功能，支持事务和非事务安全的选项，以及更好的BLOB字符类型的处理性能</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-Mysql事务隔离级别"><a href="#4-Mysql事务隔离级别" class="headerlink" title="4. Mysql事务隔离级别"></a>4. Mysql事务隔离级别</h4><p>Mysql有四种事务隔离级别，默认的是可重复读</p>
+<table>
+<thead>
+<tr>
+<th align="left">事务隔离级别</th>
+<th align="left">脏读</th>
+<th align="left">不可重复读</th>
+<th align="left">幻读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">读未提交</td>
+<td align="left">是</td>
+<td align="left">是</td>
+<td align="left">是</td>
+</tr>
+<tr>
+<td align="left">读已提交</td>
+<td align="left">否</td>
+<td align="left">是</td>
+<td align="left">是</td>
+</tr>
+<tr>
+<td align="left">可重复读</td>
+<td align="left">否</td>
+<td align="left">否</td>
+<td align="left">是</td>
+</tr>
+<tr>
+<td align="left">串行</td>
+<td align="left">否</td>
+<td align="left">否</td>
+<td align="left">否</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>读未提交(Read uncommitted)</p>
+<p>一个事务可以读取另一个未提交事务的数据，最低级别，任何情况都无法保证</p>
+<ul>
+<li>所有事务都可以看到其他未提交事务的执行结果</li>
+<li>本隔离级别很少用于实际应用，因为它的性能也不比其他级别好多少</li>
+<li>该级别引发的问题是——脏读(Dirty Read)：读取到了未提交的数据</li>
+</ul>
+</li>
+<li><p>读已提交(Read committed)</p>
+<p>一个事务要等另一个事务提交后才能读取数据，可避免脏读的发生</p>
+<ul>
+<li>这是大多数数据库系统的默认隔离级别（但不是MySQL默认的）</li>
+<li>它满足了隔离的简单定义：一个事务只能看见已经提交事务所做的改变</li>
+<li>这种隔离级别出现的问题是——不可重复读(Nonrepeatable Read)，不可重复读意味着我们在同一个事务中执行完全相同的select语句时可能看到不一样的结果</li>
+</ul>
+<p>导致这种情况的原因可能有：</p>
+<ul>
+<li>有一个交叉的事务有新的commit，导致了数据的改变</li>
+<li>一个数据库被多个实例操作时，同一事务的其他实例在该实例处理其间可能会有新的commit</li>
+</ul>
+</li>
+<li><p>可重复读(Repeatable read)</p>
+<p>就是在开始读取数据（事务开启）时，不再允许修改操作，可避免脏读、不可重复读的发生</p>
+<ul>
+<li>这是MySQL的默认事务隔离级别</li>
+<li>它确保同一事务的多个实例在并发读取数据时，会看到同样的数据行</li>
+<li>此级别可能出现的问题——幻读(Phantom Read)：当用户读取某一范围的数据行时，另一个事务又在该范围内插入了新行，当用户再读取该范围的数据行时，会发现有新的“幻影” 行</li>
+<li>InnoDB和Falcon存储引擎通过多版本并发控制(MVCC，Multiversion Concurrency Control)机制解决了该问题.InnoDB采用MVCC来支持高并发，实现了四个标准隔离级别。默认基本是可重复读，并且提供间隙锁（next-key locks）策略防止幻读出现</li>
+</ul>
+</li>
+<li><p>串行(Serializable)</p>
+<p>串行(Serializable)，是最高的事务隔离级别，在该级别下，事务串行化顺序执行，可以避免脏读、不可重复读与幻读。但是这种事务隔离级别效率低下，比较耗数据库性能，一般不使用。Mysql的默认隔离级别是Repeatable read</p>
+<ul>
+<li>这是最高的隔离级别</li>
+<li>它通过强制事务排序，使之不可能相互冲突，从而解决幻读问题。简言之，它是在每个读的数据行上加上共享锁</li>
+<li>在这个级别，可能导致大量的超时现象和锁竞争</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-Mysql高可用方案有哪些"><a href="#5-Mysql高可用方案有哪些" class="headerlink" title="5. Mysql高可用方案有哪些"></a>5. Mysql高可用方案有哪些</h4><ul>
+<li>主从复制方案<ul>
+<li>这是MySQL自身提供的一种高可用解决方案，数据同步方法采用的是<code>MySQL replication</code>技术。<code>MySQL replication</code>就是从服务器到主服务器拉取二进制日志文件，然后再将日志文件解析成相应的SQL在从服务器上重新执行一遍主服务器的操作，通过这种方式保证数据的一致性</li>
+<li>为了达到更高的可用性，在实际的应用环境中，一般都是采用<code>MySQL replication</code>技术配合高可用集群软件<code>keepalived</code>来实现自动<code>failover</code>，这种方式可以实现95.000%的SLA</li>
+</ul>
+</li>
+<li>MMM&#x2F;MHA高可用方案<ul>
+<li>MMM提供了MySQL主主复制配置的监控、故障转移和管理的一套可伸缩的脚本套件。在MMM高可用方案中，典型的应用是双主多从架构，通过MySQL replication技术可以实现两个服务器互为主从，且在任何时候只有一个节点可以被写入，避免了多点写入的数据冲突</li>
+<li>同时，当可写的主节点故障时，MMM套件可以立刻监控到，然后将服务自动切换到另一个主节点，继续提供服务，从而实现MySQL的高可用</li>
+</ul>
+</li>
+<li>Heartbeat&#x2F;SAN高可用方案<ul>
+<li>在这个方案中，处理failover的方式是高可用集群软件Heartbeat，它监控和管理各个节点间连接的网络，并监控集群服务，当节点出现故障或者服务不可用时，自动在其他节点启动集群服务</li>
+<li>在数据共享方面，通过SAN（Storage Area Network）存储来共享数据，这种方案可以实现99.990%的SLA</li>
+</ul>
+</li>
+<li>Heartbeat&#x2F;DRBD高可用方案<ul>
+<li>这个方案处理failover的方式上依旧采用Heartbeat，不同的是，在数据共享方面，采用了基于块级别的数据同步软件DRBD来实现</li>
+<li>DRBD是一个用软件实现的、无共享的、服务器之间镜像块设备内容的存储复制解决方案。和SAN网络不同，它并不共享存储，而是通过服务器之间的网络复制数据</li>
+</ul>
+</li>
+<li>NDB CLUSTER高可用方案<ul>
+<li>国内用NDB集群的公司非常少，貌似有些银行有用。NDB集群不需要依赖第三方组件，全部都使用官方组件，能保证数据的一致性，某个数据节点挂掉，其他数据节点依然可以提供服务，管理节点需要做冗余以防挂掉</li>
+<li>缺点是：管理和配置都很复杂，而且某些SQL语句例如join语句需要避免</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-Mysql中utf8和utf8mb4区别"><a href="#6-Mysql中utf8和utf8mb4区别" class="headerlink" title="6. Mysql中utf8和utf8mb4区别"></a>6. Mysql中utf8和utf8mb4区别</h4><ul>
+<li>MySQL在5.5.3之后增加了这个utf8mb4的编码，mb4就是most bytes 4的意思，专门用来兼容四字节的unicode。好在utf8mb4是utf8的超集，除了将编码改为utf8mb4外不需要做其他转换。当然，为了节省空间，一般情况下使用utf8也就可以了</li>
+<li>Mysql支持的utf8编码最大字符长度为3字节，如果遇到4字节的宽字符就会插入异常了。三个字节的UTF-8最大能编码的Unicode字符是0xffff，也就是Unicode中的基本多文种平面(BMP)。任何不在基本多文本平面的Unicode字符，都无法使用Mysql的utf8字符集存储</li>
+<li>包括 Emoji 表情(Emoji是一种特殊的Unicode编码，常见于ios和android手机上)，和很多不常用的汉字，以及任何新增的Unicode字符等等</li>
+<li>Mysql中保存4字节长度的UTF-8字符，需要使用utf8mb4字符集，但只有5.5.3版本以后的才支持(查看版本： select version();)。因此呢，为了获取更好的兼容性，应该总是使用utf8mb4而非utf8</li>
+<li>对于CHAR类型数据，utf8mb4会多消耗一些空间，根据Mysql官方建议，使用VARCHAR替代CHAR</li>
+</ul>
+<h4 id="7-Mysql中乐观锁和悲观锁区别"><a href="#7-Mysql中乐观锁和悲观锁区别" class="headerlink" title="7. Mysql中乐观锁和悲观锁区别"></a>7. Mysql中乐观锁和悲观锁区别</h4><ul>
+<li><p>悲观锁(Pessimistic Lock)</p>
+<ul>
+<li>悲观锁顾名思义，就是很悲观，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会block直到它拿到锁</li>
+<li>传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁</li>
+</ul>
+</li>
+<li><p>乐观锁(Optimistic Lock)</p>
+<ul>
+<li>乐观锁顾名思义，就是很乐观，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号等机制</li>
+<li>乐观锁适用于多读的应用类型，这样可以提高吞吐量，像数据库如果提供类似于<code>write_condition</code>机制的其实都是提供的乐观锁</li>
+<li>乐观锁的特点先进行业务操作，不到万不得已不去拿锁。即“乐观”的认为拿锁多半是会成功的，因此在进行完业务操作需要实际更新数据的最后一步再去拿一下锁就好</li>
+</ul>
+</li>
+<li><p>两种锁各有优缺点，不可认为一种好于另一种，像乐观锁适用于写比较少的情况下，即冲突真的很少发生的时候，这样可以省去了锁的开销，加大了系统的整个吞吐量。但如果经常产生冲突，上层应用会不断的进行retry，这样反倒是降低了性能，所以这种情况下用悲观锁就比较合适</p>
+</li>
+</ul>
+<h4 id="8-Mysql索引主要是哪些"><a href="#8-Mysql索引主要是哪些" class="headerlink" title="8. Mysql索引主要是哪些"></a>8. Mysql索引主要是哪些</h4><p>索引的目的在于提高查询效率</p>
+<ul>
+<li>UNIQUE(唯一索引)：不可以出现相同的值，可以有NULL值</li>
+<li>INDEX(普通索引)：允许出现相同的索引内容</li>
+<li>PROMARY KEY(主键索引)：不允许出现相同的值</li>
+<li>fulltext index(全文索引)：可以针对值中的某个单词，但效率确实不敢恭维</li>
+<li>组合索引：实质上是将多个字段建到一个索引里，列值的组合必须唯一</li>
+</ul>
+<hr>
+<h5 id="8-1-索引的缺点"><a href="#8-1-索引的缺点" class="headerlink" title="8.1 索引的缺点"></a>8.1 索引的缺点</h5><ul>
+<li>虽然索引大大提高了查询速度，同时却会降低更新表的速度，如对表进行INSERT，UPDATE和DELETE。因为更新表时，mysql不仅要保存数据，还要保存一下索引文件</li>
+<li>建立索引会占用磁盘空间的索引文件。一般情况这个问题不太严重，但如果你在要给大表上建了多种组合索引，索引文件会膨胀很宽， 索引只是提高效率的一个方式，如果mysql有大数据量的表，就要花时间研究建立最优的索引，或优化查询语句</li>
+</ul>
+<hr>
+<h5 id="8-2-索引使用技巧"><a href="#8-2-索引使用技巧" class="headerlink" title="8.2 索引使用技巧"></a>8.2 索引使用技巧</h5><ul>
+<li><strong>索引不会包含有NULL的列：</strong> 只要列中包含有NULL值，都将不会被包含在索引中，复合索引中只要有一列含有NULL值，那么这一列对于此符合索引就是无效的</li>
+<li><strong>使用短索引：</strong> 对串列进行索引，如果可以就应该指定一个前缀长度。例如，如果有一个char（255）的列，如果在前10个或20个字符内，多数值是唯一的，那么就不要对整个列进行索引。短索引不仅可以提高查询速度而且可以节省磁盘空间和I&#x2F;O操作</li>
+<li><strong>索引列排序：</strong>mysql查询只使用一个索引，因此如果where子句中已经使用了索引的话，那么order by中的列是不会使用索引的。因此数据库默认排序可以符合要求的情况下不要使用排序操作，尽量不要包含多个列的排序，如果需要最好给这些列建复合索引</li>
+<li><strong>like语句操作：</strong>一般情况下不鼓励使用like操作，如果非使用不可，注意正确的使用方式。<code>like ‘%aaa%’</code>不会使用索引，而<code>like ‘aaa%’</code>可以使用索引</li>
+<li>不要在列上进行运算</li>
+<li>不使用<code>NOT IN</code> 、<code>&lt;&gt;</code>、<code>！=</code>操作，但<code>&lt;</code>，<code>&lt;=</code>，<code>=</code>，<code>&gt;</code>，<code>&gt;=</code>，BETWEEN，IN是可以用到索引的</li>
+<li>索引要建立在经常进行select操作的字段上。这是因为，如果这些列很少用到，那么有无索引并不能明显改变查询速度。相反，由于增加了索引，反而降低了系统的维护速度和增大了空间需求</li>
+<li>索引要建立在值比较唯一的字段上。</li>
+<li>对于那些定义为text、image和bit数据类型的列不应该增加索引。因为这些列的数据量要么相当大，要么取值很少</li>
+<li>在where和join中出现的列需要建立索引。</li>
+<li>where的查询条件里有不等号(where column !&#x3D; …)，mysql将无法使用索引。</li>
+<li>如果where字句的查询条件里使用了函数(如：where DAY(column)&#x3D;…)，mysql将无法使用索引</li>
+<li>在join操作中(需要从多个数据表提取数据时)，mysql只有在主键和外键的数据类型相同时才能使用索引，否则及时建立了索引也不会使用</li>
+</ul>
+<hr>
+<h5 id="8-3-组合索引的作用"><a href="#8-3-组合索引的作用" class="headerlink" title="8.3 组合索引的作用"></a>8.3 组合索引的作用</h5><ul>
+<li>减少开销<ul>
+<li>建一个组合索引(col1，col2，col3)，实际相当于建了(col1)，(col1，col2)，(col1，col2，col3)三个索引。每多一个索引，都会增加写操作的开销和磁盘空间的开销。对于大量数据的表，使用组合索引会大大的减少开销</li>
+</ul>
+</li>
+<li>覆盖索引<ul>
+<li>通常指一个查询语句的执行只用从索引中就能够取得，不必从数据表中读取。也可以称之为实现了索引覆盖</li>
+<li>对组合索引(col1，col2，col3)，如果有如下的<code>sql: select col1，col2，col3 from test where col1=1 and col2=2</code></li>
+<li>那么MySQL可以直接通过遍历索引取得数据，而无需回表，这减少了很多的随机io操作。减少io操作，特别的随机io其实是dba主要的优化策略。所以，在真正的实际应用中，覆盖索引是主要的提升性能的优化手段之一</li>
+</ul>
+</li>
+<li>效率高<ul>
+<li>索引列越多，通过索引筛选出的数据越快</li>
+</ul>
+</li>
+</ul>
+<h4 id="9-Mysql联合索引最左匹配原则"><a href="#9-Mysql联合索引最左匹配原则" class="headerlink" title="9. Mysql联合索引最左匹配原则"></a>9. Mysql联合索引最左匹配原则</h4><ul>
+<li>在MySQL建立联合索引时会遵守最左前缀匹配原则，即最左优先<ul>
+<li>在检索数据时从联合索引的最左边开始匹配，Mysql会一直向右匹配直到遇到范围查询（<code>&gt;、&lt;、between、like</code>）就停止匹配了</li>
+<li>就比如 <code>a=3 and b=4 and c&gt;5 and d=6</code>如果建立(abcd)顺序的索引，d就用不到索引了，如果建立(abdc)的索引则都可以用到索引，其中abd的顺序可以任意调整，因为查询优化器会重新编排（即使是c&gt;5 and b&#x3D;4 and d&#x3D;6 and a&#x3D;3也会全部用到 abdc索引 ）</li>
+</ul>
+</li>
+<li><code>=</code>和<code>in</code>可以乱序，比如<code>a=1 and b=2 and c=3</code> 建立(abc)索引可以任意顺序，mysql查询优化器会优化顺序<ul>
+<li>这里需要注意下，比如abc索引 那么只要查询条件有a即可用到abc索引（如abc ab ac a），没有a就用不到</li>
+<li>最左前缀匹配成因：Mysql是创建复合索引的规则是根据索引最左边的字段进行排序，在第一个字段排序的基础上再进行第二个字段排序，类似于order by col1，col2… 所以第一个字段是绝对有序的 第二个字段就是无序的了，所以Mysql强调最左前缀匹配</li>
+</ul>
+</li>
+</ul>
+<h4 id="10-聚簇索引和非聚簇索引区别"><a href="#10-聚簇索引和非聚簇索引区别" class="headerlink" title="10. 聚簇索引和非聚簇索引区别"></a>10. 聚簇索引和非聚簇索引区别</h4><ul>
+<li>聚簇索引与非聚簇索引的区别是：叶子节点是否存放一整行记录</li>
+<li>InnoDB 主键使用的是聚簇索引，MyISAM 不管是主键索引，还是二级索引使用的都是非聚簇索引</li>
+<li>对于聚簇索引表来说（左图），表数据是和主键一起存储的，主键索引的叶结点存储行数据(包含了主键值)，二级索引的叶结点存储行的主键值。使用的是B+树作为索引的存储结构，非叶子节点都是索引关键字，但非叶子节点中的关键字中不存储对应记录的具体内容或内容地址。叶子节点上的数据是主键与具体记录(数据内容)</li>
+<li>对于非聚簇索引表来说（右图），表数据和索引是分成两部分存储的，主键索引和二级索引存储上没有任何区别。使用的是B+树作为索引的存储结构，所有的节点都是索引，叶子节点存储的是索引+索引对应的记录的数据</li>
+<li>因此，聚簇索引的叶子节点就是数据节点，而非聚簇索引的叶子节点仍然是索引节点，只不过有指向对应数据块的指针</li>
+</ul>
+<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7lczbhkshj318611ik0y.jpg" alt="image.png" style="zoom: 20%;" /></div>
+
+<h4 id="11-如何查询一个字段是否命中了索引"><a href="#11-如何查询一个字段是否命中了索引" class="headerlink" title="11. 如何查询一个字段是否命中了索引"></a>11. 如何查询一个字段是否命中了索引</h4><ul>
+<li>通过explain sql可看下SQL是否走了索引，很快对比出来 </li>
+<li>当一个sql中索引字段为int类型时，例如搜索条件<code>where num=&quot;111&quot;</code>与<code>where num=111</code>都可以使用该字段的索引。当一个中索引字段为varchar类型时，例如搜索条件<code>where num=&quot;111&quot;</code>可以使用索引，<code>where num=111</code>不可以使用索引</li>
+</ul>
+<h4 id="12-Mysql中查询数据什么情况下不会命中索引"><a href="#12-Mysql中查询数据什么情况下不会命中索引" class="headerlink" title="12. Mysql中查询数据什么情况下不会命中索引"></a>12. Mysql中查询数据什么情况下不会命中索引</h4><ul>
+<li>索引规范不合理，sql解析器不命中索引</li>
+<li>表中索引是以表中数据量字段最多的建立的索引，sql解析器不命中索引(实际就是索引没用，最后全局查找了)</li>
+<li>bool的字段做索引，sql选择器不命中索引</li>
+<li>模糊查询 %like</li>
+<li>索引列参与计算，使用了函数</li>
+<li>非最左前缀顺序</li>
+<li>where对null判断</li>
+<li>where不等于</li>
+<li>or操作有至少一个字段没有索引</li>
+<li>需要回表的查询结果集过大（超过配置的范围）</li>
+</ul>
+<h4 id="13-Mysql中的MVCC是什么"><a href="#13-Mysql中的MVCC是什么" class="headerlink" title="13. Mysql中的MVCC是什么"></a>13. Mysql中的MVCC是什么</h4><p>数据库并发控制——锁:Multiversion (version) concurrency control (MCC or MVCC) 多版本并发控制 ，它是数据库管理系统一种常见的并发控制</p>
+<p>并发控制常用的是锁，当线程要对一个共享资源进行操作的时候，加锁是一种非常简单粗暴的方法(事务开始时给 DQL 加读锁，给 DML 加写锁)，这种锁是一种 悲观 的实现方式，也就是说这会给其他事务造成堵塞，从而影响数据库性能</p>
+<p>其中在数据库中最常见的就是悲观锁和乐观锁：</p>
+<ul>
+<li>悲观锁：当一个线程需要对共享资源进行操作的时候，首先对共享资源进行加锁，当该线程持有该资源的锁的时候，其他线程对该资源进行操作的时候会被阻塞.</li>
+<li>乐观锁：当一个线程需要对一个共享资源进行操作的时候，不对它进行加锁，而是在操作完成之后进行判断。比如乐观锁会通过一个版本号控制，如果操作完成后通过版本号进行判断在该线程操作过程中是否有其他线程已经对该共享资源进行操作了，如果有则通知操作失败，如果没有则操作成功，当然除了版本号还有CAS，如果不了解的可以去学习一下，这里不做过多涉及</li>
+</ul>
+<p>MVCC的两种读形式：</p>
+<ul>
+<li>快照读：读取的只是当前事务的可见版本，不用加锁。而你只要记住 简单的 <code>select</code>操作就是快照读(select * from table where id &#x3D; xxx)</li>
+<li>当前读：读取的是当前版本，比如 特殊的读操作，更新&#x2F;插入&#x2F;删除操作</li>
+</ul>
+<p>MVCC的实现原理：</p>
+<p>MVCC 使用了“三个隐藏字段”来实现版本并发控制，MySQL在创建建表的时候 innoDB 创建的真正的三个隐藏列吧</p>
+<table>
+<thead>
+<tr>
+<th align="left">RowID</th>
+<th align="left">DB_TRX_ID</th>
+<th align="left">DB_ROLL_PTR</th>
+<th align="left">id</th>
+<th align="left">name</th>
+<th align="left">password</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">自动创建的id</td>
+<td align="left">事务id</td>
+<td align="left">回滚指针</td>
+<td align="left">id</td>
+<td align="left">name</td>
+<td align="left">password</td>
+</tr>
+</tbody></table>
+<ul>
+<li>RowID：隐藏的自增ID，当建表没有指定主键，InnoDB会使用该RowID创建一个聚簇索引</li>
+<li>DB_TRX_ID：最近修改（更新&#x2F;删除&#x2F;插入）该记录的事务ID</li>
+<li>DB_ROLL_PTR：回滚指针，指向这条记录的上一个版本</li>
+</ul>
+<p>其实还有一个删除的flag字段，用来判断该行记录是否已经被删除。而 MVCC 使用的是其中的 事务字段，回滚指针字段，是否删除字段</p>
+<h4 id="14-Mvcc和Redolog和Undolog以及Binlog有什么不同"><a href="#14-Mvcc和Redolog和Undolog以及Binlog有什么不同" class="headerlink" title="14. Mvcc和Redolog和Undolog以及Binlog有什么不同"></a>14. Mvcc和Redolog和Undolog以及Binlog有什么不同</h4><ul>
+<li>Mvcc<ul>
+<li>MVCC多版本并发控制是MySQL中基于乐观锁理论实现隔离级别的方式，用于读已提交和可重复读取隔离级别的实现</li>
+<li>在MySQL中，会在表中每一条数据后面添加两个字段，最近修改该行数据的事务ID，指向该行（undolog表中）回滚段的指针</li>
+<li>Read View判断行的可见性，创建一个新事务时，copy一份当前系统中的活跃事务列表。意思是，当前不应该被本事务看到的其他事务id列表</li>
+</ul>
+</li>
+<li>UndoLog<ul>
+<li>UndoLog也就是我们常说的回滚日志文件 主要用于事务中执行失败，进行回滚，以及MVCC中对于数据历史版本的查看</li>
+<li>由引擎层的InnoDB引擎实现，是逻辑日志，记录数据修改被修改前的值，比如”把id&#x3D;’B’ 修改为id &#x3D; ‘B2’ ，那么undo日志就会用来存放id &#x3D;’B’的记录”</li>
+<li>当一条数据需要更新前，会先把修改前的记录存储在undolog中，如果这个修改出现异常，则会使用undo日志来实现回滚操作，保证事务的一致性</li>
+<li>当事务提交之后，undo log并不能立马被删除，而是会被放到待清理链表中，待判断没有事物用到该版本的信息时才可以清理相应undolog。它保存了事务发生之前的数据的一个版本，用于回滚，同时可以提供多版本并发控制下的读（MVCC），也即非锁定读</li>
+</ul>
+</li>
+<li>Redolog<ul>
+<li>Redolog是重做日志文件是记录数据修改之后的值，用于持久化到磁盘中</li>
+<li>Redolog包括两部分：一：是内存中的日志缓冲(redo log buffer)，该部分日志是易失性的；二：是磁盘上的重做日志文件(redo log file)，该部分日志是持久的</li>
+<li>由引擎层的InnoDB引擎实现，是物理日志，记录的是物理数据页修改的信息，比如“某个数据页上内容发生了哪些改动”。当一条数据需要更新时，InnoDB会先将数据更新，然后记录redoLog 在内存中，然后找个时间将redoLog的操作执行到磁盘上的文件上</li>
+<li>不管是否提交成功我都记录，你要是回滚了，那我连回滚的修改也记录。它确保了事务的持久性</li>
+</ul>
+</li>
+<li>Binlog<ul>
+<li>Binlog由Mysql的Server层实现，是逻辑日志，记录的是sql语句的原始逻辑，比如”把id&#x3D;’B’ 修改为id &#x3D; ‘B2’</li>
+<li>Binlog会写入指定大小的物理文件中，是追加写入的，当前文件写满则会创建新的文件写入</li>
+<li>产生:事务提交的时候，一次性将事务中的sql语句，按照一定的格式记录到binlog中</li>
+<li>用于复制和恢复在主从复制中，从库利用主库上的binlog进行重播(执行日志中记录的修改逻辑)，实现主从同步。业务数据不一致或者错了，用binlog恢复</li>
+</ul>
+</li>
+</ul>
+<h4 id="15-Mysql读写分离以及主从同步"><a href="#15-Mysql读写分离以及主从同步" class="headerlink" title="15. Mysql读写分离以及主从同步"></a>15. Mysql读写分离以及主从同步</h4><ul>
+<li>原理：主库将变更写binlog日志，然后从库连接到主库后，从库有一个IO线程，将主库的binlog日志拷贝到自己本地，写入一个中继日志中，接着从库中有一个sql线程会从中继日志读取binlog，然后执行binlog日志中的内容，也就是在自己本地再执行一遍sql，这样就可以保证自己跟主库的数据一致</li>
+<li>问题：这里有很重要一点，就是从库同步主库数据的过程是串行化的，也就是说主库上并行操作，在从库上会串行化执行，由于从库从主库拷贝日志以及串行化执行sql特点，在高并发情况下，从库数据一定比主库慢一点，是有延时的，所以经常出现，刚写入主库的数据可能读不到了，要过几十毫秒，甚至几百毫秒才能读取到。还有一个问题，如果突然主库宕机了，然后恰巧数据还没有同步到从库，那么有些数据可能在从库上是没有的，有些数据可能就丢失了。所以mysql实际上有两个机制，一个是半同步复制，用来解决主库数据丢失问题，一个是并行复制，用来解决主从同步延时问题</li>
+<li>半同步复制：semi-sync复制，指的就是主库写入binlog日志后，就会将强制此时立即将数据同步到从库，从库将日志写入自己本地的relay log之后，接着会返回一个ack给主库，主库接收到至少一个从库ack之后才会认为写完成</li>
+<li>并发复制：指的是从库开启多个线程，并行读取relay log中不同库的日志，然后并行重放不同库的日志，这样库级别的并行。（将主库分库也可缓解延迟问题）</li>
+</ul>
+<h4 id="16-InnoDB的关键特性"><a href="#16-InnoDB的关键特性" class="headerlink" title="16. InnoDB的关键特性"></a>16. InnoDB的关键特性</h4><ul>
+<li>插入缓冲：对于非聚集索引的插入或更新操作，不是每一次直接插入到索引页中，而是先判断插入的非聚集索引页是否在缓冲池中，若在，则直接插入；若不在，则先放入到一个Insert Buffer对象中。然后再以一定的频率和情况进行Insert Buffer和辅助索引页子节点的merge（合并）操作，这时通常能将多个插入合并到一个操作中（因为在一个索引页中），这就大大提高了对于非聚集索引插入的性能</li>
+<li>两次写：两次写带给InnoDB存储引擎的是数据页的可靠性，有经验的DBA也许会想，如果发生写失效，可以通过重做日志进行恢复。这是一个办法。但是必须清楚地认识到，如果这个页本身已经发生了损坏（物理到page页的物理日志成功页内逻辑日志失败），再对其进行重做是没有意义的。这就是说，在应用（apply）重做日志前，用户需要一个页的副本，当写入失效发生时，先通过页的副本来还原该页，再进行重做。在对缓冲池的脏页进行刷新时，并不直接写磁盘，而是会通过memcpy函数将脏页先复制到内存中的doublewrite buffer，之后通过doublewrite buffer再分两次，每次1MB顺序地写入共享表空间的物理磁盘上，这就是doublewrite</li>
+<li>自适应哈希索引：InnoDB存储引擎会监控对表上各索引页的查询。如果观察到建立哈希索引可以带来速度提升，则建立哈希索引，称之为自适应哈希索引</li>
+<li>异步IO：为了提高磁盘操作性能，当前的数据库系统都采用异步IO（AIO）的方式来处理磁盘操作。AIO的另一个优势是可以进行IO Merge操作，也就是将多个IO合并为1个IO，这样可以提高IOPS的性能</li>
+<li>刷新邻接页：当刷新一个脏页时，InnoDB存储引擎会检测该页所在区（extent）的所有页，如果是脏页，那么一起进行刷新。这样做的好处显而易见，通过AIO可以将多个IO写入操作合并为一个IO操作，故该工作机制在传统机械磁盘下有着显著的优势</li>
+</ul>
+<h4 id="17-Mysql如何保证一致性和持久性"><a href="#17-Mysql如何保证一致性和持久性" class="headerlink" title="17. Mysql如何保证一致性和持久性"></a>17. Mysql如何保证一致性和持久性</h4><ul>
+<li>Mysql为了保证<code>ACID</code>中的一致性和持久性，使用了WAL(<code>Write-Ahead Logging</code>，先写日志再写磁盘)。<code>Redo log</code>就是一种WAL的应用</li>
+<li>当数据库忽然掉电，再重新启动时，Mysql可以通过<code>Redo log</code>还原数据。也就是说，每次事务提交时，不用同步刷新磁盘数据文件，只需要同步刷新<code>Redo log</code>就足够了</li>
+</ul>
+<h4 id="18-为什么选择B-树作为索引结构"><a href="#18-为什么选择B-树作为索引结构" class="headerlink" title="18. 为什么选择B+树作为索引结构"></a>18. 为什么选择B+树作为索引结构</h4><ul>
+<li>Hash索引：Hash索引底层是哈希表，哈希表是一种以key-value存储数据的结构，所以多个数据在存储关系上是完全没有任何顺序关系的，所以，对于区间查询是无法直接通过索引查询的，就需要全表扫描。所以，哈希索引只适用于等值查询的场景。而B+ 树是一种多路平衡查询树，所以他的节点是天然有序的（左子节点小于父节点、父节点小于右子节点），所以对于范围查询的时候不需要做全表扫描</li>
+<li>二叉查找树：解决了排序的基本问题，但是由于无法保证平衡，可能退化为链表</li>
+<li>平衡二叉树：通过旋转解决了平衡的问题，但是旋转操作效率太低</li>
+<li>红黑树：通过舍弃严格的平衡和引入红黑节点，解决了AVL旋转效率过低的问题，但是在磁盘等场景下，树仍然太高，IO次数太多</li>
+<li>B+树：在B树的基础上，将非叶节点改造为不存储数据纯索引节点，进一步降低了树的高度；此外将叶节点使用指针连接成链表，范围查询更加高效。此外，B+树，主要是查询效率高，O(logN)，可以充分利用磁盘预读的特性，多叉树，深度小，叶子结点有序且存储数据</li>
+</ul>
+<h4 id="19-InnoDB的行锁模式"><a href="#19-InnoDB的行锁模式" class="headerlink" title="19. InnoDB的行锁模式"></a>19. InnoDB的行锁模式</h4><ul>
+<li>共享锁(S)：用法lock in share mode，又称读锁，允许一个事务去读一行，阻止其他事务获得相同数据集的排他锁<ul>
+<li>若事务T对数据对象A加上S锁，则事务T可以读A但不能修改A，其他事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁。这保证了其他事务可以读A，但在T释放A上的S锁之前不能对A做任何修改</li>
+</ul>
+</li>
+<li>排他锁(X)：用法for update，又称写锁，允许获取排他锁的事务更新数据，阻止其他事务取得相同的数据集共享读锁和排他写锁<ul>
+<li>若事务T对数据对象A加上X锁，事务T可以读A也可以修改A，其他事务不能再对A加任何锁，直到T释放A上的锁。在没有索引的情况下，InnoDB只能使用表锁</li>
+</ul>
+</li>
+</ul>
+<h4 id="20-哈希-hash-比树-tree-更快，索引结构为什么要设计成树型"><a href="#20-哈希-hash-比树-tree-更快，索引结构为什么要设计成树型" class="headerlink" title="20. 哈希(hash)比树(tree)更快，索引结构为什么要设计成树型"></a>20. 哈希(hash)比树(tree)更快，索引结构为什么要设计成树型</h4><p>加速查找速度的数据结构，常见的有两类：</p>
+<ul>
+<li>哈希，例如HashMap，查询&#x2F;插入&#x2F;修改&#x2F;删除的平均时间复杂度都是O(1)</li>
+<li>树，例如平衡二叉搜索树，查询&#x2F;插入&#x2F;修改&#x2F;删除的平均时间复杂度都是O(lg(n))</li>
+</ul>
+<p>哈希只能满足等值查询，不满足范围和大小查询，其次哈希不可以排序。Mysql是用等值查询，用树的话，等值查询只需要顺序遍历即可。但是对于排序查询的sql需求：分组：<code>group by</code> ，排序：<code>order by</code> ，比较：<code>&lt;、&gt;</code>等，哈希型的索引，时间复杂度会退化为O(n)，而树型的“有序”特性，依然能够保持O(log(n)) 的高效率</p>
+<h4 id="21-为什么索引的key长度不能太长"><a href="#21-为什么索引的key长度不能太长" class="headerlink" title="21. 为什么索引的key长度不能太长"></a>21. 为什么索引的key长度不能太长</h4><p>key 太长会导致一个页当中能够存放的 key 的数目变少，间接导致索引树的页数目变多，索引层次增加，从而影响整体查询变更的效率</p>
+<h4 id="22-Mysql的数据如何恢复到任意时间点"><a href="#22-Mysql的数据如何恢复到任意时间点" class="headerlink" title="22. Mysql的数据如何恢复到任意时间点"></a>22. Mysql的数据如何恢复到任意时间点</h4><p>恢复到任意时间点以定时的做全量备份，以及备份增量的 binlog 日志为前提。恢复到任意时间点首先将全量备份恢复之后，再此基础上回放增加的 binlog 直至指定的时间点</p>
+<h4 id="23-Mysql为什么加了索引可以加快查询"><a href="#23-Mysql为什么加了索引可以加快查询" class="headerlink" title="23. Mysql为什么加了索引可以加快查询"></a>23. Mysql为什么加了索引可以加快查询</h4><p>在数据十分庞大的时候，索引可以大大加快查询的速度，这是因为使用索引后可以不用扫描全表来定位某行的数据，而是先通过索引表找到该行数据对应的物理地址然后访问相应的数据</p>
+<ul>
+<li>优势：可以快速检索，减少I&#x2F;O次数，加快检索速度；根据索引分组和排序，可以加快分组和排序</li>
+<li>劣势：索引本身也是表，因此会占用存储空间，一般来说，索引表占用的空间的数据表的1.5倍；索引表的维护和创建需要时间成本，这个成本随着数据量增大而增大；构建索引会降低数据表的修改操作（删除，添加，修改）的效率，因为在修改数据表的同时还需要修改索引表</li>
+</ul>
+<h4 id="24-Explain命令有什么用"><a href="#24-Explain命令有什么用" class="headerlink" title="24. Explain命令有什么用"></a>24. Explain命令有什么用</h4><p>在开发的过程中，我们有时会用<strong>慢查询</strong>去记录一些执行时间比较久的Sql语句，找出这些Sql语句并不意味着完事了，这个时候我们就需要用到explain这个命令来查看一个这些Sql语句的执行计划，查看该Sql语句有没有使用上了索引，有没有做全表扫描，这些都可以通过explain命令来查看</p>
+<p>expain出来的信息有10列，分别是<code>id、select_type、table、type、possible_keys、key、key_len、ref、rows、Extra</code></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">- <span class="built_in">id</span>：select选择标识符</span><br><span class="line">- select_type：表示查询的类型</span><br><span class="line">- table：输出结果集的表</span><br><span class="line">- partitions：匹配的分区</span><br><span class="line">- <span class="built_in">type</span>：表示表的连接类型</span><br><span class="line">- possible_keys：表示查询时，可能使用的索引</span><br><span class="line">- key：表示实际使用的索引</span><br><span class="line">- key_len：索引字段的长度</span><br><span class="line">- ref：列与索引的比较</span><br><span class="line">- rows：扫描出的行数(估算的行数)</span><br><span class="line">- filtered：按表条件过滤的行百分比</span><br><span class="line">- Extra：执行情况的描述和说明</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>id：select选择标识符</p>
+<p>id是Sql执行的顺序的标识，Sql从大到小的执行</p>
+<ul>
+<li>id相同时，执行顺序由上至下</li>
+<li>如果是子查询，id的序号会递增，id值越大优先级越高，越先被执行</li>
+<li>id如果相同，可以认为是一组，从上往下顺序执行；在所有组中，id值越大，优先级越高，越先执行</li>
+</ul>
+</li>
+<li><p>select_type：表示查询的类型</p>
+<p>查询中每个select子句的类型</p>
+<ul>
+<li>SIMPLE(简单SELECT，不使用UNION或子查询等)</li>
+<li>PRIMARY(查询中若包含任何复杂的子部分，最外层的select被标记为PRIMARY)</li>
+<li>UNION(UNION中的第二个或后面的SELECT语句)</li>
+<li>DEPENDENT UNION(UNION中的第二个或后面的SELECT语句，取决于外面的查询)</li>
+<li>UNION RESULT(UNION的结果)</li>
+<li>SUBQUERY(子查询中的第一个SELECT)</li>
+<li>DEPENDENT SUBQUERY(子查询中的第一个SELECT，取决于外面的查询)</li>
+<li>DERIVED(派生表的SELECT，FROM子句的子查询)</li>
+<li>UNCACHEABLE SUBQUERY(一个子查询的结果不能被缓存，必须重新评估外链接的第一行)</li>
+</ul>
+</li>
+<li><p>table：输出结果集的表</p>
+<ul>
+<li>table显示这一行的数据是关于哪张表的，有时不是真实的表名字，看到的是derivedx</li>
+</ul>
+</li>
+<li><p>partitions：匹配的分区</p>
+</li>
+<li><p>type：表示表的连接类型</p>
+<p>type表示Mysql在表中找到所需行的方式，又称“访问类型”。常用的类型有： ALL， index， range， ref， eq_ref， const， system， NULL（从左到右，性能从差到好）</p>
+<ul>
+<li>ALL：Full Table Scan， Mysql将遍历全表以找到匹配的行</li>
+<li>index：Full Index Scan，index与ALL区别为index类型只遍历索引树</li>
+<li>range：只检索给定范围的行，使用一个索引来选择行</li>
+<li>ref：表示上述表的连接匹配条件，即哪些列或常量被用于查找索引列上的值</li>
+<li>eq_ref：类似ref，区别就在使用的索引是唯一索引，对于每个索引键值，表中只有一条记录匹配，简单来说，就是多表连接中使用primary key或者 unique key作为关联条件</li>
+<li>const、system：当Mysql对查询某部分进行优化，并转换为一个常量时，使用这些类型访问。如将主键置于where列表中，Mysql就能将该查询转换为一个常量，system是const类型的特例，当查询的表只有一行的情况下，使用system</li>
+<li>NULL：Mysql在优化过程中分解语句，执行时甚至不用访问表或索引，例如从一个索引列里选取最小值可以通过单独索引查找完成</li>
+</ul>
+</li>
+<li><p>possible_keys：表示查询时，可能使用的索引</p>
+<ul>
+<li>possible_keys指出Mysql能使用哪个索引在表中找到记录，查询涉及到的字段上若存在索引，则该索引将被列出，但不一定被查询使用</li>
+<li>该列完全独立于<code>EXPLAIN</code>输出所示的表的次序。这意味着在<code>possible_keys</code>中的某些键实际上不能按生成的表次序使用</li>
+<li>如果该列是NULL，则没有相关的索引。在这种情况下，可以通过检查WHERE子句看是否它引用某些列或适合索引的列来提高你的查询性能。如果是这样，创造一个适当的索引并且再次用EXPLAIN检查查询</li>
+</ul>
+</li>
+<li><p>key：表示实际使用的索引</p>
+<ul>
+<li>key列显示MySql实际决定使用的键（索引）</li>
+<li>如果没有选择索引，键是NULL。要想强制Mysql使用或忽视<code>possible_keys</code>列中的索引，在查询中使用<code>FORCE INDEX、USE INDEX</code>或者<code>IGNORE INDEX</code></li>
+</ul>
+</li>
+<li><p>key_len：索引字段的长度</p>
+<ul>
+<li>key_len表示索引中使用的字节数，可通过该列计算查询中使用的索引的长度（key_len显示的值为索引字段的最大可能长度，并非实际使用长度，即key_len是根据表定义计算而得，不是通过表内检索出的）不损失精确性的情况下，长度越短越好</li>
+</ul>
+</li>
+<li><p>ref：列与索引的比较</p>
+<ul>
+<li>ref表示上述表的连接匹配条件，即哪些列或常量被用于查找索引列上的值</li>
+</ul>
+</li>
+<li><p>rows：扫描出的行数(估算的行数)</p>
+<ul>
+<li>rows表示Mysql根据表统计信息及索引选用情况，估算的找到所需的记录所需要读取的行数</li>
+</ul>
+</li>
+<li><p>filtered：按表条件过滤的行百分比</p>
+</li>
+<li><p>Extra：执行情况的描述和说明</p>
+<p>该列包含Mysql解决查询的详细信息，有以下几种情况：</p>
+<ul>
+<li>Using where：列数据是从仅仅使用了索引中的信息而没有读取实际的行动的表返回的，这发生在对表的全部的请求列都是同一个索引的部分的时候，表示mysql服务器将在存储引擎检索行后再进行过滤</li>
+<li>Using temporary：表示Mysql需要使用临时表来存储结果集，常见于排序和分组查询</li>
+<li>Using filesort：Mysql中无法利用索引完成的排序操作称为“文件排序”</li>
+<li>Using join buffer：改值强调了在获取连接条件时没有使用索引，并且需要连接缓冲区来存储中间结果。如果出现了这个值，那应该注意，根据查询的具体情况可能需要添加索引来改进能</li>
+<li>Impossible where：这个值强调了where语句会导致没有符合条件的行</li>
+<li>Select tables optimized away：这个值意味着仅通过使用索引，优化器可能仅从聚合函数结果中返回一行</li>
+</ul>
+</li>
+</ul>
+<h4 id="25-MySQL优化"><a href="#25-MySQL优化" class="headerlink" title="25. MySQL优化"></a>25. MySQL优化</h4><ul>
+<li>避免不走索引的场景</li>
+<li>select语句其他优化</li>
+<li>增删改DML语句优化</li>
+<li>查询条件优化</li>
+<li>建表优化</li>
+</ul>
+<h5 id="25-1-避免不走索引的场景"><a href="#25-1-避免不走索引的场景" class="headerlink" title="25.1 避免不走索引的场景"></a>25.1 避免不走索引的场景</h5><ol>
+<li>尽量避免在字段开头模糊查询，会导致数据库引擎放弃索引进行全表扫描</li>
+<li>尽量避免使用<code>in</code>和<code>not in </code>，会导致引擎走全表扫描</li>
+<li>尽量避免使用<code>or</code>，会导致数据库引擎放弃索引进行全表扫描</li>
+<li>尽量避免进行<code>null</code>值的判断，会导致数据库引擎放弃索引进行全表扫描</li>
+<li>尽量避免在<code>where</code>条件中等号的左侧进行表达式、函数操作，会导致数据库引擎放弃索引进行全表扫描</li>
+<li>当数据量大时，避免使用<code>where 1=1</code>的条件，通常为了方便拼装查询条件，我们会默认使用该条件，数据库引擎会放弃索引进行全表扫描</li>
+<li>条件查询不能用<code>&lt;&gt;</code>或者<code>!=</code></li>
+<li><code>where</code>条件仅包含复合索引非前置列</li>
+<li>隐式类型转换造成不使用索引</li>
+<li><code>order by</code>条件要与<code>where</code>中条件一致，否则<code>order by</code>不会利用索引进行排序</li>
+<li>正确使用<code>hint</code>优化语句</li>
+</ol>
+<h5 id="25-2-select语句其他优化"><a href="#25-2-select语句其他优化" class="headerlink" title="25.2 select语句其他优化"></a>25.2 select语句其他优化</h5><ol>
+<li>避免出现<code>select *</code></li>
+<li>避免出现不确定结果的函数</li>
+<li>多表关联查询时，小表在前，大表在后</li>
+<li>使用表的别名</li>
+<li>用<code>where</code>语句替换<code>HAVING</code>字句</li>
+<li>调整<code>where</code>字句中的连接顺序</li>
+</ol>
+<h5 id="25-3-增删改DML语句优化"><a href="#25-3-增删改DML语句优化" class="headerlink" title="25.3 增删改DML语句优化"></a>25.3 增删改DML语句优化</h5><ol>
+<li>大批量插入数据</li>
+<li>适当使用<code>commit</code></li>
+<li>避免重复查询更新的数据</li>
+<li>查询优先还是更新<code>(insert、update、delete)</code>优先</li>
+</ol>
+<h5 id="25-4-查询条件优化"><a href="#25-4-查询条件优化" class="headerlink" title="25.4 查询条件优化"></a>25.4 查询条件优化</h5><ol>
+<li>对于复杂的查询，可以使用中间临时表暂存数据</li>
+<li>优化<code>group by</code>语句</li>
+<li>优化<code>join</code>语句</li>
+<li>优化<code>union</code>语句</li>
+<li>拆分复杂<code>SQL</code>为多个小<code>SQL</code>，避免大事务</li>
+<li>使用<code>truncate</code>代替<code>delete</code></li>
+<li>使用合理的分页方式以提高分页效率</li>
+</ol>
+<h5 id="25-5-建表优化"><a href="#25-5-建表优化" class="headerlink" title="25.5 建表优化"></a>25.5 建表优化</h5><ol>
+<li>在表中建立索引，优先考虑<code>where、order by</code>使用到的字段</li>
+<li>尽量使用数字类型（性别：男：1，女：2），若只含数值信息的字段尽量不要设计为字符型，这会降低查询和连接的性能，并会增加存储的开销</li>
+<li>查询数据量大的表，会造成查询缓慢。主要的原因是扫描行数过多，这个时候可以通过程序，分段分页进行查询，循环遍历，将结果合并处理进行展示</li>
+<li>用<code>varchar/nvarchar</code>代替<code>char/nchar</code></li>
+</ol>
+<h4 id="26-SQL注入"><a href="#26-SQL注入" class="headerlink" title="26. SQL注入"></a>26. SQL注入</h4><p>Sql注入攻击是通过将恶意的Sql查询或添加语句插入到应用的输入参数中，再在后台Sql服务器上解析执行进行的攻击，它目前黑客对数据库进行攻击的最常用手段之一。</p>
+<p><strong>避免SQL注入：</strong></p>
+<ul>
+<li>参数校验，校验数据的类型，长度，特殊字符，数据库关键词等</li>
+<li>代码层面防止SQL注入攻击的最佳方案是SQL预编译，尽量不写SQL原生语句，使用ORM</li>
+<li>严格限制数据库权限</li>
+<li>避免直接响应一些SQL异常信息，SQL发生异常后，自定义异常进行响应</li>
+</ul>
+<h4 id="27-MySQL、MongoDB、Redis区别，适用场景"><a href="#27-MySQL、MongoDB、Redis区别，适用场景" class="headerlink" title="27. MySQL、MongoDB、Redis区别，适用场景"></a>27. MySQL、MongoDB、Redis区别，适用场景</h4><h5 id="27-1-MySQL"><a href="#27-1-MySQL" class="headerlink" title="27.1 MySQL"></a>27.1 MySQL</h5><ol>
+<li>高度事务性系统。例如银行或会计系统，传统的关系型数据库目前还是更适用于需要大量原子性复杂事务的应用程序</li>
+<li>传统的商业智能应用，针对特定问题的<code>BI</code>数据库会产生高度优化的查询方式，对于此类应用，数据仓库可能是更合适的选择</li>
+</ol>
+<h5 id="27-2-MongoDB"><a href="#27-2-MongoDB" class="headerlink" title="27.2 MongoDB"></a>27.2 MongoDB</h5><ol>
+<li>网站数据：适合实时的插入，更新与查询，并具备网站实时数据存储所需的复制及高度伸缩性</li>
+<li>缓存：由于性能很高，也适合作为信息基础设施的缓存层，在系统重启之后，搭建的持久化缓存可以避免下层的数据源过载</li>
+<li>大尺寸、低价值的数据也是<code>MongoDB</code>的最佳选择，使用传统的关系型数据库存储一些数据时可能会比较贵，在此之前很多程序员往往会选择传统的文件进行存储</li>
+<li>高伸缩的场景，非常适合由数十台或数百台服务器组成的数据库</li>
+<li>用于对象及<code>json</code>数据的存储，<code>MongoDB</code>的<code>bson</code>数据格式非常适合文档格式化的存储及查询</li>
+</ol>
+<h5 id="27-3-Redis"><a href="#27-3-Redis" class="headerlink" title="27.3 Redis"></a>27.3 Redis</h5><ol>
+<li>用来做缓存：<code>Redis</code>的所有数据是存放在内存中的</li>
+<li>可以在某些特定应用场景下替代传统数据库：比如社交类的应用</li>
+<li>在一些大型系统中，巧妙的实现一些特定的功能：<code>session</code>共享、购物车</li>
+<li><code>MongoDB</code>不支持<code>SQL</code>语句</li>
+</ol>
+<hr>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>八股文</tag>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于博客</title>
+    <url>/2022/10/27/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容">
+  <script id="hbeData" type="hbeData" data-hmacdigest="4fd5a5bd8707a0a1cd39307dad6cd98e03fded9ba27a54a5b61e9696d84ea268">a17b4de793b95f7877066d2186f5861555e2d6b9cb5641947e36c8450a9062244141303af7f6ac122ca280e580e95da40c8ee95d99d2439c2f200eaab162cbb1875108085071c26de1a7a2252b96fcbe0f08370a21f14470abd2a2d2b018211a390d4a79c82cf2a64ae884fb7caded6082fa0005ef84e7ea431151015e2060bda837f3b622c77b40ee17a251d882f100278d00b9963489c074d217f528b9e8e054d830314c2ebd97fa3c76a53976dbdc3aa54c7b15ce70a5882de8489603f7173418c015d0ef7e8aa5ae4a33046644b0e563b4499cb8d0d6173282b0a21575c27f9144f5086203cb49e7bd9f84fa510fa7ca67502f97fdebb306ef8a69773c81e40bf148ee8b9d8ad2d1bdf194c6075caa40305d045fbb2a1c2119103f08f156ceaebc719357118924dd869dcd27372f3549487bee4f166e5c77adcb1ac7794dbe0a673ebfa66aa2595818250b9851cbcad400d4687e30b48667a8013245d51dce6aae77d5905b91f53b574fc443b1684c92af0bac92b0aacfa2311b89865521de7bc0054eeb9670d5568a2e98652854cf0ed9fc027967d196f3a30f8b2b14066b2b52b741727573fadde89b47e0d9fa69fed76a226477fc8a2f55fb32f9e4a53348a2747f494b15c8d7565c27afbb068f7ce813b4e1ddedada52692a9c6d917f278d17b970668263eeaaefcc44df89bcde5edc1ad4988985ab067b75e6cd1d6f6083dd6b1ce8e775db02a7d9533537b178a63ec573a5043bc15bbd2fc963c4f3aa122ec4f0b3fc30cca5257817db4bd4ffccc7a43fd006bc392e64e161e7b59542881b1b7db7805b0003d89224d2ef64a29bbcbd982ea90041c78c6f87bee6da444542e072c9c6786ea8101f8bf295aee03c0d6033a3e19116bae338e4be2520f564c69e09cabcbd5249b3c4c50d66ab39b30dd90f909ea126d2b48f8245d175a365531c939ef6e9a42c17a33a69c8b52de48e4757f5f25a4fef9493350305d558c5c0c806c0698893aaa568476e50e6079fe997df4194d8fb35a21ea8958bff697c158b049a30bd3bcd0e162772f352d83b202daafb229c098c33cda25c04e715a81f80f6673a1a70c6f17a033b3ddcd772068cce43302f1602f71d2b7a5e121056818a837126e27c0990955f13ad5ed1fe26d0e0aee808c0717a47a38999c20411f7ce53f8b1bc86018e5b9287eeaa3caf58b4244ae291f351667c000a7830273ef3d8a17f8c1254d819d16bcb2a2d9683972c91763ebbda2a379442d0b07437cfe123ac3be67f7318fb7803470146435bd3d593263e5e37c32705f6ad8b8d0decb68839c28c9a838f97b8613f4c483eee116afbea3097e72e0077f5a4ed396ad4c4be49ee36f3726809e0efa9aa8a9e0e3181b1126675c191b7b9a7fcf1ff115b2e87efd6ec64274d47cbdbd09c899a776819132d9566fea583fa1897209395d8dfb78cf6cdc2819d6c0e75da888e88ad236667388f965855fd7fc36d1249a1a1d24eab917be709ea423f9491f59038c726eac3ffed3707f0d3bdb8c90e1951f96ef89d1abfd2d4679259ea0d69c9a1f152594c71981fcc4dece41fa6dbc07cd2a1a3a0949396cebc5a8a3f13d0033e3ed78f7473fa5c9d6d5802e15232fa8b6bdd1feee2a12f22c2449c68bb1e7d8052c8ae42bfcc1f65444565986cbc63a4381f9bb0b27d0f5387f2f04a80432645dcd2a57c171892bdd3ffce03a5852a2768dfd5d53ac1fa5e321da9dba979819096a00897281370689f9e75e450560f86f506e598fff748d42ec26aab61b453561f9facad5af053d0c77652e200b75d59620b32899f0977b4d7f947cf1fd9beb68e8280f53cbfcdf2ef9ab67cdbb3bba405d77af100b02287ea616c931799fd7eb8c65b4843c926b2651e5d68b33e0e8cde998c763b06347c459de9fc8b6d5b10460a3388c750b194669523e2e6628d25d736b401ce307f71cc25241f4c82561bc6fa56eb3924f23148fbf518a80344233e7f71a3fe7150d9566a5b2d78802878628dcbe3aae5d400d10be685cf3015c07fa9981fe3645873b7089878cf1743cb0f6eb1796b83b00fe30bb78a6d55e94b4d4f0a2ededbfc36e8de15a8c68506befc43dc69e9abaaa7cd55a6b0f6e6792c45997a7acc30f602b783f1c2d9e0a430ab0a3fe4708ccebd7296c44cfbbed6e7cdf13078753bfd0f6d1866bcb3909c3a07cbdb5faa777ce9e8229c9f734f9bd4b8345ac641766ecb4180dff676c9eb4ac91e0330e530705671b54027ce8d3d33fc6fc9a01753866b28e5bcb8d028adb423edbaf834b45079379af6dbf75c379ec6cbe97f5acab496506713300ee2fa1d677ec006f8460d04a3a797a316a88ba832955f99e291cda035b1663c676618e95cc59dcd3414befa5426a4c35a12f9f95d1bf2fb1b12fe350b0b1b3bc504578eb3ab16aaff15505b218ec2b0fbc933d9034bea8be11ca2ace22f04b861883fd863a5ec6c16ab8ff90a72fbc89fe91f9c2b84601a8dd28de98bfe0d12ebbfbb14b201090325fbfdd352e276c6fbbdc989d94ee96b47b57a5aeff3af3e8bf9f7a0cafd74b8a28cf11b86ae485563e16bc071035388116b04012ae9d36e259252145eaf552be23a474c5c6069c29b15df7194f40734f61e4f0f9e7da86c08944a68a2b6e7768e608d01145a35e4973f948119045948996df2410aa5c019c24fbb7c8615d0409ea313ebeb78d6ee8c9ea6fabd9c504713c21c54b21e773fee2c29468af30e00839978e769b07780286f5ba0b35971772053de944880873743e8073f3ca90778c45d558733835666daba6285c05162bbf1873a03e9a29994cc53678aca15cddcc1d2d8ca360828c2dc48f9a536ab4d309b01814f0a7627862f3b718b4b95fad03b8299e80e08b96e73105d9198cefc55bf0a26c8e13906b900bebc96b87960b5763d31f03f411ef027006cdae44aef11472578447a913034088d6d861c71de18fb99a9ce6932e0072cfd030bb49c34cb8286c90aed1408f146dbc39e78b0ffe602096c078d6c92ca59e264608df236ad9ee41f99c24f97b379a8d06636842e2d54008152997c8beb6cb86971dbd8b476596e0fec9229e959c1ad4a20259b1d1580e789a16c5b860e447a97f6c6daa850e83715e9236f6fa882a6adf7daee4e66d54b0ddf0966b181098e9998014905ba6b79e76f0c7cb3a6ffc3bf6640b20551704fe94216a732df2642e8d1fa25aebe51b04b3eb634a9e00f307e266f3cf9271e3faab8a828182a0e514f37888a805a4d3cc60c3ce428e9db37be132155b55740d4f93b7addd70d38ba8ac286921ab9ca32690350d35098782c618a7a6aef460e67652366c7b919d0a0aac2646daf741e55bfc9c650539dd6d755574cad07af9359895132f201d2eda1229b7540487750ba60e705158636e473b1a7ecb944b98587de86c6eebfc6a7e64291374129bcd142da570765bdb65cbc046c0a07cee6a59d7153a389ff2c27e0ce590808f50429d5877bcf24e2f1e2a72d63b464ad6bb91eac128ee19d1ed8bd6143604eae097c485dbeb04c56de34f94d28846fd5621c08a6609e7d408b1fd03e36defa8d59dc0cb9400a4a7e614d4aace51ebd7252c40a67ce237573a934fdeb1b9e0e127f5718fe4315a5026a455e2dacd45ae5e352aac9a03e56e8aba77b182194d330a5e68dda7b4202a9ccaf2864a34814a2cb060cfec55b655b899e7f66f11348acf51964d5603025054b1be35317c7de9a4941b5ed3fc3c3038be497bd3762134b9e892b01fe7791b0037cd8a6d15476c3b22aed3e7276c5ff1f8fdb1a7ae77715a81f0dd955e18fc54c6d1d28e4a6779546eb93449b288da309947a747dfed8c497520513b1bc7d271cbae4bf199355f37b5964535f0be92998aea448384e17cf990b8b339c8301edf9ac37219ebf580e1c60a7d2b7719d0856e8dc8c1e56141c0abd47916b1cf6a9f735b60278b3bd02567a54d01ccc1926134111fe7184a54d872ce230aca60f6625700d5bfc925d2d178b3251a1a5dfa97d824b585dbdfdd24303f1af300c79882c82ac677764761dbf2497fc2692ef13eabf8f75914376ae2d870c272f8d50828f1ad29d5f39d2d17a5f40b62d01cc10f9067e72fbf8a64abf11db7a154fcfdc2a246a074cf4fad6058df30d63893581dd4e643a4067a26cf9ad99dc00a2428d4fc1ea6269371358a98ac96075883b5afb47da32a16d1e710ca17171b9d9a672106c8ffd65a3d736314ef7f7565d9b5a5167b09b964647bb16d64acca1f5fb4e4d7c77d7231b2ffd44f49b26114450ff399482595e7e4944fcd2aa8b51db1817d1c85672ffdd06128a6cea9979d6f5d21e0c776773bf98664fe200a1385f15fc747a5109614c79d8e5ddaea38beeae3df3dc66a9609ca51b4b77421c29e270f13b470fb9064eb2c7337f8b8cadd7f8f46db0e885d8a6c2fdadb226ccbcc963d128198eea37b72c738b0617ec7b706bf2e1319ced1c4bed6b9f89d4f9f8fce6253b8c0718eefa341caf689c11a3b7e9e2468c390141a75123a22a9778686b5fb9153a16ae9aaebcf1efe2e65097a27e392be7c40eef4f89a21ef027a2b02848cceabd148899cc00feef565c7ca4763ccf8df0cc725e504442b7762b816a28abf87cc691b04aff02609c24a3096f6cda6f10934092d210c80253b7ab0aa094f07b2bde74027c08628d4be8c0d1d694f4281a80942a0513c4bf7d69a5710da1bff7162f55481ebc01412afb661d4f15e9b852485209297a86917ae77f93da5dfb61f3c28caf621d2bb6b774e504b25e1cca8bc4fba4779b37fd53beb9e32702f607a3da09f36e4627a85c705326704f75fde436e9e0027506bff83a24ba9b9435d9996a20bc04f57af90ce584828fedd43668ce9edf082e80c9c0a5304f197cc2dc850438269c0ba4f59fce714ff2ad759aa04e0d269af9349539dd6637523a7cd0346623af4f10b3c9eee6b52243ec6645277a27a0b9b530c24c3edc9ba1329e8ec7af7760c9194d276264915df27ad0e40e0b2d4ba0ece0c256cacbe276f3194e7baa25fd5c3b24488f71a4351a3cda0d12f137f22dcb53b0505b4dc2480242ca0153b5e1a681cfe8650460984367b1d6d57adefd262fe260091dd41a4aa954d33742a76ea453feaf354be02c6ef52cb72a5a8d95bf83c57ae34722a45a9058138303aa098b2ee8cca5739b3f79d9529b047f3606a52cc396a159181aea8d341d332aa993ef449926b0608c5356ce90a9867cbcc409ad57c13d97687377876c95a82720dd6bcc77804a65e45a11f5628b8299ca1f4ea9fafc7991e7be9b4d85c9772604e6dcbee78cc0fe3ef7b7ce5d65a4d616c548b6dcf260e2c45e90122cad56a82cb877214e943a45da00a6d6ce6ff7bc36b41075f493ccd5ddc1ed24e1b29fa197e502ee6c10a2adfbff8e87aa0368e6b4ffce4473e4b06c534a48e6005b862a7b1c4904cc354a15b81328e8784e0d88fea417f3bbae96950897714d1b18b566ad8969919082522a2154502441c3c8934903296d249e57bc2d0fe910b429072fbfd644037ccd8f20a462b4d78aafd35b00288279cd49012099279759ddde53c64f36348b03f3eb9ca3ffa5d57c069d20d9c02014b3a5e070672d4084f71494c0e4017aeb6c80fa9f1504e50e566994efd59468621d27a50159a5be9f8273c1af878f8b3d27316ff01c0916259138c84bf87db48d65922edb92f3e5ff3e796dad9ad7acc1a8553f88166817330681804213f94285cd1b9a4a19880ffc0f5409d8051e09b4c38d484256d15b410f4bd85f398c9e5ea6fa06fe6f7c442015b12af608c083a9389fcc978c3b0b72be782ea75e558f9492ca03f42645cf4c84c30fe9b3e0d31ea7c96065a733ae5e71fccb1b41c78799f0953b7a97694c577c41f99666ab1b13606c59df11835b8ab5d60206cc9a029bf5030e59b851893dd77a9f3bef6f26ee1a0686501dcf07985e61b13c359f74f87729376c1566f335c4a8860eeb77b86a9fc33ccf349bd63e1d2a50cb0e3674a9e51dab971d24c4ba0d01f93a121c3b03875a27d00bafa27bcc77eee7891924e9d0dabbc7b6948dc6d45cc37a0628a3d445bde5b07a8667abb8c4187a289326086f171ea977491e2b7b9119f37979e02bc6926f92f820662abf7bd04ee3fe815eecce462b2acd8f5eb4ccc1e5b793fa6499a2d55a614748af7ec575bccfc8054b2badb60dad287f6e32ba592887ca5e0b9ece58168aa5f2b77e334653610b5342b8dd94f06d3eeef00bd56f2f711de41e78ce734603eb0269b65a00c672bce48de2bfb5e83a0cac5300c47b5d544a2d62fcf328e0f40a4cb18bf4292e3623be68ac6bb2b581f05e2c65dae7ce2edb404e914412fadddc9476cb1b6b5c023177fe0e7248a4bcd8a222115517848f2d6fdfb81b3d20d925ff88a9799ae38c590aada4cfe5adaf3b8f45ce6c957c9bab1737868b147fa36403773dc4bb6f6f170380562d18533ec749f2f03faa0b8d924bd93bb44f5aea2c36c513d61413be17f86cb3021fcb23d97bc5d58932f4da260637cb39af923ded689b56b416ee9e26c96b119387795e0be305649a6269f69adbca4b68ce1eb71333f72f3bfcfa9ffdd2ab1cb518c915673aebca636de222320a9f5614b03f70ded338730fedcbed02e001fce23ad923a7a4f75fa2d77315ac28f367d7cfde727e093b718f705dce54a2182f78832fe9ef5d10fcb31b3a1c82287bdf4c2daa0309e9895ad84d3080868731988e86fddafc4f9a349c5f129e79fa33af93fa39c5133e204769041e176bdf9288ddd693565661cc6b7be831248b6896c603b4e194b8e660eb6bdb7c3d906f390984fabdd6f81e8d6e9a5ff50846c06fea899c54e83a4649f769f0651e8891ad4f1dac53bff77d82e5d475ec69ac300b1e05ac272c15da0dcd41ce58d875849be6b9a979ddffd828fcd7fb3e74ce3f2ce616fca13395c763c4ce01472f0696d1cfaff030451c29c04da6b619c012926cc60bb0e8a7984183f8a2a55e1ee754634de1c29917809ff8a3033d7af4bbc4e0a458e5d58ea6f2b7ba6f4abc9726729d17873dc265c20653e7b15b79eb011bf1b0611311b731a779328368426bc7fb81f067a370db788e75a6daffef469d8e5f9a5f4d26405b75b0c040fa79ef5bf098bd2157137b5b99f77b860f4a11603e8341efe2a8c8d7468408cf592a9256c6a443ca92195fa0f6df7c70cfaba30916e460849763ce3f4e384cfc88c36413144bf8770772fb334004290fa323b6ac11e74305f186d1dbe3b1fff8b84fe6368b74cd86cc128458b56730f2049b8ac0d3ebbd96f3dfc14edf2add9e8d37db12461bb916703b3ebfa709d8b0cf8b06fba97e906c2b109449f068e2207fac229b18b54ffbeef14d85776ffb6ceeb34394ef61a9941efe0161506f0c6b886d99b590e747316a8cc86e55f5504c18370d4997d06a369bf3a8b1285ae3b65bdb4f2c4038efd9483a536f2646479730cf5d1354af87b433a9aaafaf821b20fdca525f6a8080cfcf3046cd0bb0c7cd97b2f63df488489b4e6f20dfc454bc3c33efd1427fb13ffc6b267b8642a958b22797509250487d5bc9af3ded8cefbfb699e65c524bcff4b3f20877dc483b4fb38708a96ee8ff514b23ed9a125c6019c8a7f478b9700232de75127f8197d7510808d422fb1ff54d2b60402b45d50c7b9d0c298d768dfb0fa22b766896e33c6ded40d81c3294e0abf6ea504370acabf80d1c60e0e7715b2e75c9f9d70682dd65b10f4cbd99af36fd255a74f295ccbef3994f5223f34a6342a4acd2c882dc85885e86adf795fc48d6a1d97991eb078cc0e5e6b199f79269c141f906082a8bf33bf2aa23071fc955cde1d3dea8d3254dbb7595ec6483e3562d5c6ce7dd0fcd7d296b34e6838eecb760962ac701aa7523d2ff580801c728efd293cdf1ef59b18a86b141d1bbc1df64f9769708ea7cd29462a91dac8a82d9861fba6bc5eba08a0d13132cf9a8e2eef1c2cfae6aff5e9e7864cb40f8e8a6eb3d14509bd3351c24bed9a8bbd0128731b5fdd6eb46910919c5a33fd359233ea0aae5986a1ac602514e52afbe2804cf44fe02b1cbc2fa16910c7f92e97de3fd25ffc7a1f7b54b7a665b9d7697b868d25f67c41b54c383eb058faf3001286af328deec84df499058f0bb102c89db333e787b97efb4d580ebc0ae9ad7bd61668db7c4d64ef698830dadaabd2eff5a28ae57521ba5b67d21f13f8b6452ca5ca349a25fbf4794b31bb4735c3862605c783c90a6106697e04c7e720c9fb200d4f793b58e9f29f9654c37123dc617dd7888217d9d06252bd1bd5d2bb51341b63f276bd8f8f961916166cbd95c36e0f22a8335b1e2aa0cd8b01e6661abb341335da444c845f7f1b08a0f25784d8de5a6c040e4a555946c4630f3e48a73f99d0ba8cf1b89c68c5d75ec1de68a68b4fc7d16f6532c9a2730d136c5de5e05bf5678515709a92ec064dd24b9d09c8eb9fb92ae91651af967d757a0c197ec529a1a9fb4c2b7f59cdab7565bf1490235eb1544b9b57725075db54711678ccf8175229720ae451fbffa80cf3415a520d305ab5abe9002e6adb2b02c740dc2790fd63b0c58d78dd38550f76e783ea61d2623f23853e3341905b08ac9315adcd36e63ed988e1038e8f890ac479a60dc6711c6d3436bffb4098799aaa352093437d6c01c1d954b2338262a51ead3d59699d57622f1030f8a743ec181975fd555b06a9db300b2e75342f5de28f963779bffba61220516e2a408c0785ea4525f5db81c2f6838a05838a8686a82d6eef7ab9219b016df863ac38a83e7e6813ed1d82e5d2ebb98bf684666dd95a4812e7c2ecb6bdccf88ced478379fd05690d3566c0f49a7bc5255288ba01818f1278016807f0da8630a1a65ed948e0c9b2f03698c50681f66c59df879d579fce22f69e134cd83aaa32ece279b29db338eacc2479f08bb59b8fb1cb76dd3e7145ca4163c00452cfdd63117047f7f26544aee248e85261c67bc5e60ef56482f02dc39082f80de245ab7b6fb5af1002666e330e6330af51b5f9a66d5515db849f457414b7a46dfeb656b81f483b12eba2e661e32003b4c85b6c652b48a1a25db319fc47613dc70fbccbe046c3fb257ce3b797ef87723f833ac66d09130395e6319011a160b4a1d5ca181e757663aa406ec3d000dc7882b56804c22841ee166f391b90dcce1dd7e84dc1f9a81ea059285333139da28baf02d1edd7338473abc659df8b0eb94c55bb1bb3f35c48eb77f209db33caf0a7a4a4d1f2a77b16e1eba464712136d5de927e5e722a6b152b63ff116db3f8e223b191651fe89c3e8d16c90ddc1f16736867ab63f3041a70118b6dbae31d76acdd9593824612dc2d17f7cc47b765615ef94c7dcb9ce4518200c6db166ab4f47114d42a2e07016ed8f2ea113e241b3fc7229fa1367a1130b3cbca18a863daba67663fac30a3e77e03a20f453c357e88947dc7f7ed9888e23aa2e1c2d79a16de6d1a3d1fc838416925c26f5721da53c73e2a6ea061972799559fcb8d6f6ac297becf76da9447a2155eb4152f64245ec2ff77ffccaa12c64f1d35cc189b37412b6f69d128d4fea170549ba0a9efb05bb403144991c099cfe95776f8b97da8e46581f40791597e717423bf9a3ebc50079392762f9617efacfe7c4540dec20313f02692132d0e72f56ac0324b5cbfb982fd7acc9fa34556b5a351f8dbabd6f3eb4db4cb51fbe3a9a6ff6bc36e0d9049d0b67a5c7a1b5b80692617d3f38a981ed41db4ef6cfcb28c844cce61c0caf3214f7e37929ab7104ca4830984a879a3532b583e3e29d7921483d656cd7cb346d06657e61919e10b70230697f1b2cec444f901543ee766d912f39e725de506a5b1eb8bec4c6132fdb74b1554229c98b110489502f836e46d1db766e08c773162f92b3abb821220f3a056dceae32f0bf50727b0fd83aa315379ca6dcac30e0df93bfab49bdc1a70be126cf1301b49d5394dc65ae825f1e64738e15afb29c14a9563fe78c2b2024486188a298729d9a04a091d3a1810e36a90d84e36c21fde351c68549ee72ab413f009bc7a6ad699ea8bd641704d14d1e53d592a268dc09848c18e17fb0e190a2c1de5579ca182e42ef3f8cb5bbed17196fa699344aed7c7520dfec39db96182c558b6aebd771c1bced8ad493b25ba6dee9a46e97541144a0874085ca349792400375c1a4d3c0684e0a9f3aa9ca56dda8c005b89fd0da32689859928ddde493711700d7cfc2e27d1aa7d0aa7142d1800986fb59ae9e1c93b98100689a76f1055a00f4a8cdbb2df1d31f5ed08f6cd4f7a417d1bd3c2d5df39e59d0f6c765f6f5612e8c91e8fd20fb0d533e5309893ad792aaa7f3b1a0bb7c0429ba6fc3542e324aea8d565622c700795f717c8ae9bc308317b3c4660cf9338671b959c441a7220e1c5ec88aa056d74fefd626d7b507fa7204e95f0bd198bbcffadd8f6ace30b9c8764edc17f1578d439dc6546388106817b138de9aa5e70450f1cd36adca672eff94e8cc28227b8afea563d456f14ec3e6042a3ad8f0dcb0ed90cd51f4c6587e4919f444f03f73dfc51f64a52261fdb4e4751cb511d071663c2f884e6ccc350f60d2df0e5fadc28b44c9acdaf9d917d97f28b8b9e7f10d16aa4cd041694fe6c8a34090b5b26db4bef222ba8d541a5d09d32799a619dafd24834b345ce924cea15a2a4e064edcdf35f6fac6d5c749a6a99ad139f5577abe58652e9721c65163c700cb1efa24c820d33d9f23ff4b7196c5f3260b88f06604247868e71f9269d845072c4ecb8dcd1385b4abf90b36b97f8e7d99fbea4fbc415</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 请输入密码</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>关于博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>项目经验面试题</title>
+    <url>/2022/10/28/%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容">
+  <script id="hbeData" type="hbeData" data-hmacdigest="89f675e3c9ee01fca90366988f63a47d028b160e9fe14a94ca94f994eb8ce28d">a17b4de793b95f7877066d2186f5861555e2d6b9cb5641947e36c8450a9062241bff23f016a5658fa4702bb8625e1a64927d2e249a90caaa62600a11f5dcd3f66c53fe7239ac25300620da5c82ec4d458706cb81b1903f8a8894fb74b7b49e178b1ed12b5113c92743dd83f16334b11a519cb4937b1f6ca060c3c1602c2e5ab00497eeb7b7d7a4a4a45ca9b9fdc711a262177b0d5ff4bf6e4c9c47d80447f23cd18eb13e8c28580fd1c2934f779e5086f01f803a4ba6bb4a6371d982998985660d5e9b2cf961c1e882ad1c8a8aa710dd432f2230184282005f3cf944af4755a25a3afa8390b4846e22e0c1344ab3b49b32905d7a0b7b3d57bc134676a5f95bb0dac112457d1ff1baa0748602ed6acea81a1644595c8dabb2237e7dfe4b74ac6ff80dfad29602cdb7e29dd4231532cd59a7a98f7f65299dcfe64d5994d79830a9a55e40f90473ea96085cf8352db10806f20c766362c05efdd8e74d8c881ea0ddc387a76ce4bef6288cd709e9616eac194dfbd36930bf49f966568e3747c080b7a1a7ac6c9f996a1e407272e137d22d669d9966d6a6fb0476d04bf59df903b3430fbde42913ce18dbb0f77e7b78192746b2f7c5481cddc741cc7bbef8a44c59c2b3deafb2f06fc0fb2ab69ac65be6f67946ead0c4bd7966629d441238e166742e33d9f6d73430a28fa1077777e863dd000ef7ec4d692930e9b562acaa53e9c738b55cf7258331f79e3f63c47c45147d7f8d0635cab43fa82bbe470eecaec98617b92281a05d93b92f489332383de12333f59eefbaa918bb6b38be2895ae3b7861bcd02398eb42cda366c7edb297284672cbf1cbfc2f60766010b21f17f7bd23ef57f225611ac5ea8d2dc7584f2aeb16f0a50e99daadcfaffdbc7b94544ae0c2267917cabfa0b25e3e059e79e8017126d985133428c9a3ca2808f29155cc987d25ee968d63f58e7c1a34db327fd0b61f6ef2194d97c3c9907a9c1f6d8d35819b4eea39a6908d2da7fd6968a8040a9441260e04c43c9dc6f1b9a3880d7607aece4a3d6e181aa5978796603c3d3bbdc8058e6bea6dd2ab6802395cdacd440fc527781853f21f72b171060b271fd81139d3af25926b4cf8b612ab34e5ce9cf85c92d5d87aad45282f1d038d80afc25c95f5ee3dddaec2ccaeeeecadf6c449d14152e3223d2723b3187e41e90d3c57c1975741a63b9f2e37ea1fa66f43eb5df7dc3afae2f630a6fca55a3d4d319078f74fdca366ee0a8cfc006d5de6ce7db111d2c071f32e290d523cd99ce434003b28fd8fc7118a64b255ae3a0235925e842d72ac7962dcbad744aee5a7a8a0c69e597d8af7189c92b354f19d2b11c2a9bc5f9f81c77545ec44b54b18efdce08f8ded84a6a1baa8f224803d0b32cda4f41b4a0d6cd053407266d47937baa6029abfa0777c14a582cca4f70946d1d78ffabefcf9f7481d5eea5eb81926aeb8defd70bc342e03f16bf75782063290a61febaad44f9bec65f070b75c8aaabc05514eb1d1dda550528acc2ee8d21b6264440dfb5585bf9764756324cc1c60722913de487fdc0654d35f1c893fa6bc41456053dca7fdb2c9b961ba8128009947320da3c0821481a4f1fba49bb5160c0b0797c0a4bc1b16848c67fa80843bd7f9e0aaa43e63e109cedcc3a8d27ea2765e51438ade4c286b9c1e77a2de8c55a130af196af8b2839b6f97dd08edfffc3ace18304b60f0935269390c7d5a574d2f12d5d9771c9f466f27dd51ea488fe37c34d6aa112843a7fb0029adca1704baf3e21979f858c33e3f0027cb10c9b0ab7cfeab84869b4ddc7964c7a87f95091e769a0cc8ec95cd6eadb56f6acd9e624cac4811fb82d586d459a41891b75b910ca8217bf71fc047bc5160cfaae7b472cdee7d3b74fa7d419fa45ec40a12ff8ff0a47f6b2992d4d425058c23cb58154b8c421719fef35d035e7c13adb0e3535025fd6482019d43e567b0e9585fba7b60ab9ee1ce5a59bfe7d4bab77e10f1afae9740fce16dba0a5a05ceb5cadc358721260d5f6aae39011b7a578f575e9b9e15b6862b7932b756aabb5713b6f7f92ee9d54e7cfc83cd012107ea6e823b983fd276bd1b75fd1d95ec9da057f56fc0827333649368ff709f0491e12b9cb3cf73d9c1e4efcf2a1a83975e7056774a686fd3e8b78120d5092712f7a09eed7d94b42931734618ad041b97fd57c2f87c3cf9b085ab0cf50920b30067ddf7d5b15d045bda3434611a0521d062da41315756094b800c12cb30aa8514f7568a759b8dba31ab691c016328b0f31bdbfa6019da0b0dce6e57842e8bdf4532e641306ee62659b40c437a6bc56ae8134ad7815a20d9a08805766b827210b4046af906cb1606fee5f5af499f85835cf11fd6f309132375a12f054e2a355deef4e4c14a9aab3cedece4a39a62770e8cee493d8b8fda7b73fb8f3391590a060d0d243ddd044ddefab9932958f07c1941859f1ff11d2eee0bdadfafd267f7f7e71ae92fd48ac5c9043a98653780b4a7509ee2902b3899df7fc06600787a367b7de6bbc07b74d2fb21a0ce15adae8158c800dec8c16eef115b8a751a47a741cf720f5f99541675861a5cec80064e4d7f80e6dfc0e64b6bd8b31104e19a35611030f75a910832460fbfd8e92b3a00401dde53f04a0d68e036e03391c613f71caaa686b5018bae56a3662b2424913483176f4f7b132fed435fc140d267b2c2a24844cf1b6e204fd66f58bf4704771bb5a8ba565e4b9f0e431c0bfd46e798437e1c9005a9a2023b8e14e189f3248cd885120dc2f7e54d8f1cb5e7238c6389966059f717071ac6f40c9d99941450472583c242dfb270d315f220e76744df9e78d8cc97249748dde500391cc59ead8a37bb048e4d69a54798d688a504c9d8cc4ae569691126880e0ca35390191ca509ade324f261fcc5f3d2abae39bfb0aed31aee7572bb3a9c94bc06f9a12cfb43c0f80265e3512c3c6eae3152e470bcf95d1569b1c67af9940a80d6f7f6c0f801e4820968ab7477ce0686f878cbd42a8bd612a4363321666a37b0b3be1e5cb89c273036e42ff9017a27ad865aa23455d990a9c04fe5c9dde60618b7148754ff57fb8e4c761a55d9af36a8423eb497b3b2a4459b7bf39cc43bfd461ab645a054bbce1ea8574e5c838c0398766637b115486e2dc87e49081751ba667e31ecd4b6656eb8b68befdf263ad0f539c2d98dcbc6a87540c8f789056f7b0050e5e4b77f70578e431feb5fce9d6ad8240b3396804460526db54c50f33d9dcd1dbc280d56164703c87b7965b915d3d6e4bd80a89ef23c2fc4f9ccb34bfdda2c1e2197036a59b5d0aec1f1817cf0c1751d7b81855ce4785c93b17fc39ae1b4a6dd84eec81946bb2c2c55136a64ef191b5bf8ce83dd8f79f48df6838640ca93ccd98eacb737c837e754ac167611d44d7329488486573fdc46cc7db215fa0e616a4b9bac76a020e929cd8a02bd4ae444feb38a85b427a5c5870c2aa0ef32f50f0c93b09018de6ad7bf7e28ddc70e87030dd3d52f505f67e70d6326913c932bd6d6992634c000c17a9fc3ef33321555f7674c636af090706370fbc97a92a9c87c15185bf20bc9a2be6adb50d4e705e7463cac947fef21856e4539cd52cb46a5f91d9b798cbc2758dd55d119e909f894f6f9661d65e8f5c077741b89075bbe409f42b4be1fcf5dfd9369bb291c03c6f6d4d282949b628e48a265dba3331ba79c4fc13647277ee40cc679478849507ce308aef7ed22855c6841436b38047ffc6d121cfc65e6aa5041f29f4b97fd6c43a891462cf28d3979b230d2b275ad43801575f27a3d30355dbc14a168d06c1a113e97da2b8c8d1e178963a0e3c2d4be95ce2dadab8526c84dfd250a14b957c612db88a6f5ea155cd97f00ae41aa2ccbe51b169263f3071e47870b92bba0944a81cbd4df6a047df6bea085f99665459bc110408cb27c4b65e5dbd8b349a01173ff1dcb23727149be25f5a71bc3a18fd6b3d073cf1ca8188155aedaf9cf93942db0586273363df220c1b50adc025244bfcadc2cb9b700c70bc06440ea6e74a58cdba1af305eae67a7d1b752d564cf8e48b0750bc6549baf9544aae4532c46394b85474d884be2278fea72970b5374c3783e297b37d65b2652e7d844675f962e58945cf385a9ba695ed72653251af60c4069ffc793b31a198474e51d7b1acf6b1ef762b8a3e1d851b5b820300a810ab1c668e54a6cc4698aa6dd51a14341dbeeb7c964901a0eaa71d3f3ae0d9bf95b35ba8c345729085dc321a1065a73a457892015f3f61e838ca068d6ce08ec264d0df5b551a1c4b19a8a2da3cd06d1b50a05402c1a008b66e709990c9ec13224a19d024faa5b9150cf5e9c0e15b6de76b2884a8ab22822336584bac8fbd37a4436b9ec328f892ae653febbc08f7099f976e1b2a7965b20068e41c4f60fb150473f5d2350f4f44b3af88ab755f8f28b4be29a3cd92c51838fec9459aea6e47d480247b144e87dc7bceb8cc009fe65653150dbabb49b2fdf1ae3e22ed164b87ca7422f0783a00680a609b168743896206d70600b7a60da66bf0ab9fdebe090fddd229663139005763f6d6e8e8bfdd6354203310d2e2ea3213b2075e5430ee65143557118e8b60f7335d793e998d6c6e6cdfb9e1a95c33fcd7751798eee3deda08efae582c0a0c8f87e59f3b47d85fc4835117a37f3731b36d846fa2abdd20bab0af39441a4729a4e445c267da65d63726b6ff527f9e64485256fc12b7d4a3e7b1f7cff29da98023cee82f8dbdf8dcc9f884fffb2b1427132fd95fdce3f53b178a9751595ce6297788f4a4a8aa7621b71dd79c2a01af38d395ca2cdf50404030987c404fe606103ae929cc59681d41f0e890081fa5318</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 请输入密码</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>项目经验</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据结构与算法面试题</title>
     <url>/2022/10/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
     <content><![CDATA[<p>常见高频面试数据结构与算法题</p>
@@ -1798,6 +2576,21 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">spiralOrder</span><span class="params">(matrix [][]<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(matrix) == <span class="number">0</span> || <span class="built_in">len</span>(matrix[<span class="number">0</span>]) == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> []<span class="type">int</span>&#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    rows, columns := <span class="built_in">len</span>(matrix), <span class="built_in">len</span>(matrix[<span class="number">0</span>])</span><br><span class="line">    visited := <span class="built_in">make</span>([][]<span class="type">bool</span>, rows)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; rows; i++ &#123;</span><br><span class="line">        visited[i] = <span class="built_in">make</span>([]<span class="type">bool</span>, columns)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> (</span><br><span class="line">        total = rows * columns</span><br><span class="line">        order = <span class="built_in">make</span>([]<span class="type">int</span>, total)</span><br><span class="line">        row, column = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        directions = [][]<span class="type">int</span>&#123;[]<span class="type">int</span>&#123;<span class="number">0</span>, <span class="number">1</span>&#125;, []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">0</span>&#125;, []<span class="type">int</span>&#123;<span class="number">0</span>, <span class="number">-1</span>&#125;, []<span class="type">int</span>&#123;<span class="number">-1</span>, <span class="number">0</span>&#125;&#125;</span><br><span class="line">        directionIndex = <span class="number">0</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; total; i++ &#123;</span><br><span class="line">        order[i] = matrix[row][column]</span><br><span class="line">        visited[row][column] = <span class="literal">true</span></span><br><span class="line">        nextRow, nextColumn := row + directions[directionIndex][<span class="number">0</span>],</span><br><span class="line">        column + directions[directionIndex][<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> nextRow &lt; <span class="number">0</span> || nextRow &gt;= rows || nextColumn &lt; <span class="number">0</span> ||</span><br><span class="line">        nextColumn &gt;= columns || visited[nextRow][nextColumn] &#123;</span><br><span class="line">            directionIndex = (directionIndex + <span class="number">1</span>) % <span class="number">4</span></span><br><span class="line">        &#125;</span><br><span class="line">        row += directions[directionIndex][<span class="number">0</span>]</span><br><span class="line">        column += directions[directionIndex][<span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> order</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
+<p><strong>下面的题为面试经历过的题目</strong></p>
+<h4 id="41-Golang合并2个切片并去重排序"><a href="#41-Golang合并2个切片并去重排序" class="headerlink" title="41. Golang合并2个切片并去重排序"></a>41. Golang合并2个切片并去重排序</h4><p><strong>代码：</strong></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;sort&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Solution</span><span class="params">(nums1, nums2 []<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">	nums1 = <span class="built_in">append</span>(nums1, nums2...)</span><br><span class="line">	hashMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="keyword">struct</span>&#123;&#125;)</span><br><span class="line">	<span class="keyword">var</span> result []<span class="type">int</span></span><br><span class="line">	<span class="keyword">for</span> _, num := <span class="keyword">range</span> nums1 &#123;</span><br><span class="line">		<span class="comment">// 先计算Map长度，然后再往Map里添加数据</span></span><br><span class="line">		hashMapLen := <span class="built_in">len</span>(hashMap)</span><br><span class="line">		hashMap[num] = <span class="keyword">struct</span>&#123;&#125;&#123;&#125;</span><br><span class="line">		<span class="comment">// 如何Map的长度有变化，说明num没有重复，可以将其添加到切片里</span></span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(hashMap) != hashMapLen &#123;</span><br><span class="line">			result = <span class="built_in">append</span>(result, num)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 内置方法排序</span></span><br><span class="line">	sort.Ints(result)</span><br><span class="line">	<span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	nums1 := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">2</span>&#125;</span><br><span class="line">	nums2 := []<span class="type">int</span>&#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">10</span>, <span class="number">1</span>&#125;</span><br><span class="line">	fmt.Println(<span class="string">&quot;结果为：&quot;</span>, Solution(nums1, nums2))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="42-约瑟夫环问题"><a href="#42-约瑟夫环问题" class="headerlink" title="42. 约瑟夫环问题"></a>42. 约瑟夫环问题</h4><p><strong>题目：</strong>有n个人围成一圈，顺序排号。从第1个人开始报数（从1到3报数），凡报到3的人退出圈子，循环报数，问最后剩下的人是开始围圈时的第几号</p>
+<p><strong>思路：</strong></p>
+<p><strong>代码：</strong></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">JosephRing</span><span class="params">(nums [13]<span class="type">int</span>, n, m <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> front, rear, round = <span class="number">0</span>, n, <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="comment">// 队不为空</span></span><br><span class="line">		<span class="keyword">if</span> rear-front == <span class="number">0</span> &#123;</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; m<span class="number">-1</span>; i++ &#123;</span><br><span class="line">			front = (front + <span class="number">1</span>) % n</span><br><span class="line">			rear = (rear + <span class="number">1</span>) % n</span><br><span class="line">			nums[rear] = nums[front]</span><br><span class="line">		&#125;</span><br><span class="line">		front = (front + <span class="number">1</span>) % n</span><br><span class="line">		round++</span><br><span class="line">		fmt.Printf(<span class="string">&quot;第%d轮：%d\n&quot;</span>, round, nums[front])</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> nums [<span class="number">13</span>]<span class="type">int</span></span><br><span class="line">	<span class="keyword">var</span> n, m = <span class="number">12</span>, <span class="number">3</span></span><br><span class="line">	nums[<span class="number">0</span>] = n</span><br><span class="line">	<span class="comment">// 初始化队列，入队</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">1</span>; i &lt; n+<span class="number">1</span>; i++ &#123;</span><br><span class="line">		nums[i] = i</span><br><span class="line">	&#125;</span><br><span class="line">	JosephRing(nums, n, m)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="43-一个单链表，如何求倒数第n-1个节点的值"><a href="#43-一个单链表，如何求倒数第n-1个节点的值" class="headerlink" title="43. 一个单链表，如何求倒数第n-1个节点的值"></a>43. 一个单链表，如何求倒数第n-1个节点的值</h4><p><strong>代码：</strong></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ListNode <span class="keyword">struct</span> &#123;</span><br><span class="line">	Value <span class="type">int</span></span><br><span class="line">	Next  *ListNode</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ListNodeLen 求单链表长度</span></span><br><span class="line"><span class="comment">// 参数：</span></span><br><span class="line"><span class="comment">// 	head：单链表</span></span><br><span class="line"><span class="comment">// 返回值：</span></span><br><span class="line"><span class="comment">// 	lenght：单链表长度</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ListNodeLen</span><span class="params">(head *ListNode)</span></span> (lenght <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">for</span> ; head != <span class="literal">nil</span>; head = head.Next &#123;</span><br><span class="line">		lenght++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> lenght</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ToSlice 将链表转化切片，然后直接下标取值</span></span><br><span class="line"><span class="comment">// 参数：</span></span><br><span class="line"><span class="comment">// 	head：单链表；n：第n个元素</span></span><br><span class="line"><span class="comment">// 返回值：</span></span><br><span class="line"><span class="comment">// 	result：单链表第倒数n-1个元素的值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ToSlice</span><span class="params">(head *ListNode, n <span class="type">int</span>)</span></span> (result <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> values []<span class="type">int</span></span><br><span class="line">	<span class="keyword">for</span> ; head != <span class="literal">nil</span>; head = head.Next &#123;</span><br><span class="line">		values = <span class="built_in">append</span>(values, head.Value)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 切片长度=链表长度</span></span><br><span class="line">	valuesLen := <span class="built_in">len</span>(values)</span><br><span class="line">	<span class="comment">// 判断是否会越界，左右都需要判断</span></span><br><span class="line">	<span class="keyword">if</span> n<span class="number">-1</span> &gt;= <span class="number">1</span> &amp;&amp; n &lt;= valuesLen+<span class="number">1</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> values[valuesLen-n+<span class="number">1</span>]</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// FastSlow 快慢指针</span></span><br><span class="line"><span class="comment">// 参数：</span></span><br><span class="line"><span class="comment">// 	head：单链表；n：第n个元素</span></span><br><span class="line"><span class="comment">// 返回值：</span></span><br><span class="line"><span class="comment">// 	result：单链表第倒数n-1个元素的值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">FastSlow</span><span class="params">(head *ListNode, n <span class="type">int</span>)</span></span> (result <span class="type">int</span>) &#123;</span><br><span class="line">	dummy := &amp;ListNode&#123;<span class="number">0</span>, head&#125;</span><br><span class="line">	first, second := head, dummy</span><br><span class="line">	<span class="comment">// 需要判断是否会越界</span></span><br><span class="line">	listNodeLen := ListNodeLen(head)</span><br><span class="line">	<span class="keyword">if</span> n<span class="number">-1</span> &gt;= <span class="number">1</span> &amp;&amp; n &lt;= listNodeLen+<span class="number">1</span> &#123;</span><br><span class="line">		<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n<span class="number">-1</span>; i++ &#123;</span><br><span class="line">			first = first.Next</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> ; first != <span class="literal">nil</span>; first = first.Next &#123;</span><br><span class="line">			second = second.Next</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> second.Next.Value</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// DoublePointer 双指针，优化后，不需要判断临界值</span></span><br><span class="line"><span class="comment">// 参数：</span></span><br><span class="line"><span class="comment">// 	head：单链表；n：第n个元素</span></span><br><span class="line"><span class="comment">// 返回值：</span></span><br><span class="line"><span class="comment">// 	result：单链表第倒数n-1个元素的值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">DoublePointer</span><span class="params">(head *ListNode, n <span class="type">int</span>)</span></span> (result <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> second, first *ListNode</span><br><span class="line">	first = head</span><br><span class="line">	second = head</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">1</span>; first.Next != <span class="literal">nil</span>; i++ &#123;</span><br><span class="line">		<span class="comment">//间隔n-1才赋值</span></span><br><span class="line">		<span class="keyword">if</span> i &gt;= n<span class="number">-1</span> &#123;</span><br><span class="line">			second = second.Next</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//头部往后移动</span></span><br><span class="line">		first = first.Next</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> second.Value</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ReverseList 反转链表，链表反转后，未反转的链表的倒数第n-1个节点的值就是反转后链表的第n-1个的值</span></span><br><span class="line"><span class="comment">// 参数：</span></span><br><span class="line"><span class="comment">// 	head：单链表；n：第n个元素</span></span><br><span class="line"><span class="comment">// 返回值：</span></span><br><span class="line"><span class="comment">// 	result：单链表第倒数n-1个元素的值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ReverseList</span><span class="params">(head *ListNode, n <span class="type">int</span>)</span></span> (result <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> prev *ListNode</span><br><span class="line">	curr := head</span><br><span class="line">	<span class="keyword">for</span> curr != <span class="literal">nil</span> &#123;</span><br><span class="line">		next := curr.Next</span><br><span class="line">		curr.Next = prev</span><br><span class="line">		prev = curr</span><br><span class="line">		curr = next</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 遍历反转后的链表，然后取出第n-1个的值</span></span><br><span class="line">	i := <span class="number">1</span></span><br><span class="line">	<span class="keyword">for</span> prev != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> i == n<span class="number">-1</span> &#123;</span><br><span class="line">			result = prev.Value</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">		i++</span><br><span class="line">		prev = prev.Next</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// CreateListNode 使用slice生成单链表</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CreateListNode</span><span class="params">(nums []<span class="type">int</span>)</span></span> *ListNode &#123;</span><br><span class="line">	<span class="keyword">var</span> head ListNode</span><br><span class="line">	<span class="keyword">var</span> pre ListNode</span><br><span class="line">	<span class="keyword">for</span> _, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">		node := ListNode&#123;Value: num, Next: <span class="literal">nil</span>&#125;</span><br><span class="line">		<span class="keyword">if</span> head.Next == <span class="literal">nil</span> &#123;</span><br><span class="line">			head.Next = &amp;node</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> pre.Next == <span class="literal">nil</span> &#123;</span><br><span class="line">			pre.Next = &amp;node</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			pre.Next.Next = &amp;node</span><br><span class="line">			pre = *pre.Next</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> head.Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	nums := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">8</span>&#125;</span><br><span class="line">	n := <span class="number">5</span></span><br><span class="line">	head := CreateListNode(nums)</span><br><span class="line">	<span class="comment">// n值如果不在临界值内，返回0</span></span><br><span class="line">	toSlice := ToSlice(head, n)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;链表转切片，链表倒数第%d-1个：%d\n&quot;</span>, n, toSlice)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// n值如果不在临界值内，返回0</span></span><br><span class="line">	fastSlow := FastSlow(head, n)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;快慢指针，链表倒数第%d-1个：%d\n&quot;</span>, n, fastSlow)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// n值如果小于临界值指向链表最后一个元素，大于临界值指向链表第一个元素（倒数第n-1个元素）</span></span><br><span class="line">	doublePointer := DoublePointer(head, n)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;双指针优化后，链表倒数第%d-1个：%d\n&quot;</span>, n, doublePointer)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// n值如果不在临界值内，返回0</span></span><br><span class="line">	reverseList := ReverseList(head, n)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;反转链表，链表倒数第%d-1个：%d\n&quot;</span>, n, reverseList)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// ToDo</span></span><br><span class="line">	<span class="comment">// 将单链表转为双链表，只需要找到第n个节点，然后取出双链表的第n个节点的上一个节点的值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
 ]]></content>
       <categories>
         <category>面试</category>
@@ -1805,784 +2598,6 @@
       <tags>
         <tag>八股文</tag>
         <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于博客</title>
-    <url>/2022/10/27/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容">
-  <script id="hbeData" type="hbeData" data-hmacdigest="4fd5a5bd8707a0a1cd39307dad6cd98e03fded9ba27a54a5b61e9696d84ea268">a17b4de793b95f7877066d2186f5861555e2d6b9cb5641947e36c8450a9062244141303af7f6ac122ca280e580e95da40c8ee95d99d2439c2f200eaab162cbb1875108085071c26de1a7a2252b96fcbe0f08370a21f14470abd2a2d2b018211a390d4a79c82cf2a64ae884fb7caded6082fa0005ef84e7ea431151015e2060bda837f3b622c77b40ee17a251d882f100278d00b9963489c074d217f528b9e8e054d830314c2ebd97fa3c76a53976dbdc3aa54c7b15ce70a5882de8489603f7173418c015d0ef7e8aa5ae4a33046644b0e563b4499cb8d0d6173282b0a21575c27f9144f5086203cb49e7bd9f84fa510fa7ca67502f97fdebb306ef8a69773c81e40bf148ee8b9d8ad2d1bdf194c6075caa40305d045fbb2a1c2119103f08f156ceaebc719357118924dd869dcd27372f3549487bee4f166e5c77adcb1ac7794dbe0a673ebfa66aa2595818250b9851cbcad400d4687e30b48667a8013245d51dce6aae77d5905b91f53b574fc443b1684c92af0bac92b0aacfa2311b89865521de7bc0054eeb9670d5568a2e98652854cf0ed9fc027967d196f3a30f8b2b14066b2b52b741727573fadde89b47e0d9fa69fed76a226477fc8a2f55fb32f9e4a53348a2747f494b15c8d7565c27afbb068f7ce813b4e1ddedada52692a9c6d917f278d17b970668263eeaaefcc44df89bcde5edc1ad4988985ab067b75e6cd1d6f6083dd6b1ce8e775db02a7d9533537b178a63ec573a5043bc15bbd2fc963c4f3aa122ec4f0b3fc30cca5257817db4bd4ffccc7a43fd006bc392e64e161e7b59542881b1b7db7805b0003d89224d2ef64a29bbcbd982ea90041c78c6f87bee6da444542e072c9c6786ea8101f8bf295aee03c0d6033a3e19116bae338e4be2520f564c69e09cabcbd5249b3c4c50d66ab39b30dd90f909ea126d2b48f8245d175a365531c939ef6e9a42c17a33a69c8b52de48e4757f5f25a4fef9493350305d558c5c0c806c0698893aaa568476e50e6079fe997df4194d8fb35a21ea8958bff697c158b049a30bd3bcd0e162772f352d83b202daafb229c098c33cda25c04e715a81f80f6673a1a70c6f17a033b3ddcd772068cce43302f1602f71d2b7a5e121056818a837126e27c0990955f13ad5ed1fe26d0e0aee808c0717a47a38999c20411f7ce53f8b1bc86018e5b9287eeaa3caf58b4244ae291f351667c000a7830273ef3d8a17f8c1254d819d16bcb2a2d9683972c91763ebbda2a379442d0b07437cfe123ac3be67f7318fb7803470146435bd3d593263e5e37c32705f6ad8b8d0decb68839c28c9a838f97b8613f4c483eee116afbea3097e72e0077f5a4ed396ad4c4be49ee36f3726809e0efa9aa8a9e0e3181b1126675c191b7b9a7fcf1ff115b2e87efd6ec64274d47cbdbd09c899a776819132d9566fea583fa1897209395d8dfb78cf6cdc2819d6c0e75da888e88ad236667388f965855fd7fc36d1249a1a1d24eab917be709ea423f9491f59038c726eac3ffed3707f0d3bdb8c90e1951f96ef89d1abfd2d4679259ea0d69c9a1f152594c71981fcc4dece41fa6dbc07cd2a1a3a0949396cebc5a8a3f13d0033e3ed78f7473fa5c9d6d5802e15232fa8b6bdd1feee2a12f22c2449c68bb1e7d8052c8ae42bfcc1f65444565986cbc63a4381f9bb0b27d0f5387f2f04a80432645dcd2a57c171892bdd3ffce03a5852a2768dfd5d53ac1fa5e321da9dba979819096a00897281370689f9e75e450560f86f506e598fff748d42ec26aab61b453561f9facad5af053d0c77652e200b75d59620b32899f0977b4d7f947cf1fd9beb68e8280f53cbfcdf2ef9ab67cdbb3bba405d77af100b02287ea616c931799fd7eb8c65b4843c926b2651e5d68b33e0e8cde998c763b06347c459de9fc8b6d5b10460a3388c750b194669523e2e6628d25d736b401ce307f71cc25241f4c82561bc6fa56eb3924f23148fbf518a80344233e7f71a3fe7150d9566a5b2d78802878628dcbe3aae5d400d10be685cf3015c07fa9981fe3645873b7089878cf1743cb0f6eb1796b83b00fe30bb78a6d55e94b4d4f0a2ededbfc36e8de15a8c68506befc43dc69e9abaaa7cd55a6b0f6e6792c45997a7acc30f602b783f1c2d9e0a430ab0a3fe4708ccebd7296c44cfbbed6e7cdf13078753bfd0f6d1866bcb3909c3a07cbdb5faa777ce9e8229c9f734f9bd4b8345ac641766ecb4180dff676c9eb4ac91e0330e530705671b54027ce8d3d33fc6fc9a01753866b28e5bcb8d028adb423edbaf834b45079379af6dbf75c379ec6cbe97f5acab496506713300ee2fa1d677ec006f8460d04a3a797a316a88ba832955f99e291cda035b1663c676618e95cc59dcd3414befa5426a4c35a12f9f95d1bf2fb1b12fe350b0b1b3bc504578eb3ab16aaff15505b218ec2b0fbc933d9034bea8be11ca2ace22f04b861883fd863a5ec6c16ab8ff90a72fbc89fe91f9c2b84601a8dd28de98bfe0d12ebbfbb14b201090325fbfdd352e276c6fbbdc989d94ee96b47b57a5aeff3af3e8bf9f7a0cafd74b8a28cf11b86ae485563e16bc071035388116b04012ae9d36e259252145eaf552be23a474c5c6069c29b15df7194f40734f61e4f0f9e7da86c08944a68a2b6e7768e608d01145a35e4973f948119045948996df2410aa5c019c24fbb7c8615d0409ea313ebeb78d6ee8c9ea6fabd9c504713c21c54b21e773fee2c29468af30e00839978e769b07780286f5ba0b35971772053de944880873743e8073f3ca90778c45d558733835666daba6285c05162bbf1873a03e9a29994cc53678aca15cddcc1d2d8ca360828c2dc48f9a536ab4d309b01814f0a7627862f3b718b4b95fad03b8299e80e08b96e73105d9198cefc55bf0a26c8e13906b900bebc96b87960b5763d31f03f411ef027006cdae44aef11472578447a913034088d6d861c71de18fb99a9ce6932e0072cfd030bb49c34cb8286c90aed1408f146dbc39e78b0ffe602096c078d6c92ca59e264608df236ad9ee41f99c24f97b379a8d06636842e2d54008152997c8beb6cb86971dbd8b476596e0fec9229e959c1ad4a20259b1d1580e789a16c5b860e447a97f6c6daa850e83715e9236f6fa882a6adf7daee4e66d54b0ddf0966b181098e9998014905ba6b79e76f0c7cb3a6ffc3bf6640b20551704fe94216a732df2642e8d1fa25aebe51b04b3eb634a9e00f307e266f3cf9271e3faab8a828182a0e514f37888a805a4d3cc60c3ce428e9db37be132155b55740d4f93b7addd70d38ba8ac286921ab9ca32690350d35098782c618a7a6aef460e67652366c7b919d0a0aac2646daf741e55bfc9c650539dd6d755574cad07af9359895132f201d2eda1229b7540487750ba60e705158636e473b1a7ecb944b98587de86c6eebfc6a7e64291374129bcd142da570765bdb65cbc046c0a07cee6a59d7153a389ff2c27e0ce590808f50429d5877bcf24e2f1e2a72d63b464ad6bb91eac128ee19d1ed8bd6143604eae097c485dbeb04c56de34f94d28846fd5621c08a6609e7d408b1fd03e36defa8d59dc0cb9400a4a7e614d4aace51ebd7252c40a67ce237573a934fdeb1b9e0e127f5718fe4315a5026a455e2dacd45ae5e352aac9a03e56e8aba77b182194d330a5e68dda7b4202a9ccaf2864a34814a2cb060cfec55b655b899e7f66f11348acf51964d5603025054b1be35317c7de9a4941b5ed3fc3c3038be497bd3762134b9e892b01fe7791b0037cd8a6d15476c3b22aed3e7276c5ff1f8fdb1a7ae77715a81f0dd955e18fc54c6d1d28e4a6779546eb93449b288da309947a747dfed8c497520513b1bc7d271cbae4bf199355f37b5964535f0be92998aea448384e17cf990b8b339c8301edf9ac37219ebf580e1c60a7d2b7719d0856e8dc8c1e56141c0abd47916b1cf6a9f735b60278b3bd02567a54d01ccc1926134111fe7184a54d872ce230aca60f6625700d5bfc925d2d178b3251a1a5dfa97d824b585dbdfdd24303f1af300c79882c82ac677764761dbf2497fc2692ef13eabf8f75914376ae2d870c272f8d50828f1ad29d5f39d2d17a5f40b62d01cc10f9067e72fbf8a64abf11db7a154fcfdc2a246a074cf4fad6058df30d63893581dd4e643a4067a26cf9ad99dc00a2428d4fc1ea6269371358a98ac96075883b5afb47da32a16d1e710ca17171b9d9a672106c8ffd65a3d736314ef7f7565d9b5a5167b09b964647bb16d64acca1f5fb4e4d7c77d7231b2ffd44f49b26114450ff399482595e7e4944fcd2aa8b51db1817d1c85672ffdd06128a6cea9979d6f5d21e0c776773bf98664fe200a1385f15fc747a5109614c79d8e5ddaea38beeae3df3dc66a9609ca51b4b77421c29e270f13b470fb9064eb2c7337f8b8cadd7f8f46db0e885d8a6c2fdadb226ccbcc963d128198eea37b72c738b0617ec7b706bf2e1319ced1c4bed6b9f89d4f9f8fce6253b8c0718eefa341caf689c11a3b7e9e2468c390141a75123a22a9778686b5fb9153a16ae9aaebcf1efe2e65097a27e392be7c40eef4f89a21ef027a2b02848cceabd148899cc00feef565c7ca4763ccf8df0cc725e504442b7762b816a28abf87cc691b04aff02609c24a3096f6cda6f10934092d210c80253b7ab0aa094f07b2bde74027c08628d4be8c0d1d694f4281a80942a0513c4bf7d69a5710da1bff7162f55481ebc01412afb661d4f15e9b852485209297a86917ae77f93da5dfb61f3c28caf621d2bb6b774e504b25e1cca8bc4fba4779b37fd53beb9e32702f607a3da09f36e4627a85c705326704f75fde436e9e0027506bff83a24ba9b9435d9996a20bc04f57af90ce584828fedd43668ce9edf082e80c9c0a5304f197cc2dc850438269c0ba4f59fce714ff2ad759aa04e0d269af9349539dd6637523a7cd0346623af4f10b3c9eee6b52243ec6645277a27a0b9b530c24c3edc9ba1329e8ec7af7760c9194d276264915df27ad0e40e0b2d4ba0ece0c256cacbe276f3194e7baa25fd5c3b24488f71a4351a3cda0d12f137f22dcb53b0505b4dc2480242ca0153b5e1a681cfe8650460984367b1d6d57adefd262fe260091dd41a4aa954d33742a76ea453feaf354be02c6ef52cb72a5a8d95bf83c57ae34722a45a9058138303aa098b2ee8cca5739b3f79d9529b047f3606a52cc396a159181aea8d341d332aa993ef449926b0608c5356ce90a9867cbcc409ad57c13d97687377876c95a82720dd6bcc77804a65e45a11f5628b8299ca1f4ea9fafc7991e7be9b4d85c9772604e6dcbee78cc0fe3ef7b7ce5d65a4d616c548b6dcf260e2c45e90122cad56a82cb877214e943a45da00a6d6ce6ff7bc36b41075f493ccd5ddc1ed24e1b29fa197e502ee6c10a2adfbff8e87aa0368e6b4ffce4473e4b06c534a48e6005b862a7b1c4904cc354a15b81328e8784e0d88fea417f3bbae96950897714d1b18b566ad8969919082522a2154502441c3c8934903296d249e57bc2d0fe910b429072fbfd644037ccd8f20a462b4d78aafd35b00288279cd49012099279759ddde53c64f36348b03f3eb9ca3ffa5d57c069d20d9c02014b3a5e070672d4084f71494c0e4017aeb6c80fa9f1504e50e566994efd59468621d27a50159a5be9f8273c1af878f8b3d27316ff01c0916259138c84bf87db48d65922edb92f3e5ff3e796dad9ad7acc1a8553f88166817330681804213f94285cd1b9a4a19880ffc0f5409d8051e09b4c38d484256d15b410f4bd85f398c9e5ea6fa06fe6f7c442015b12af608c083a9389fcc978c3b0b72be782ea75e558f9492ca03f42645cf4c84c30fe9b3e0d31ea7c96065a733ae5e71fccb1b41c78799f0953b7a97694c577c41f99666ab1b13606c59df11835b8ab5d60206cc9a029bf5030e59b851893dd77a9f3bef6f26ee1a0686501dcf07985e61b13c359f74f87729376c1566f335c4a8860eeb77b86a9fc33ccf349bd63e1d2a50cb0e3674a9e51dab971d24c4ba0d01f93a121c3b03875a27d00bafa27bcc77eee7891924e9d0dabbc7b6948dc6d45cc37a0628a3d445bde5b07a8667abb8c4187a289326086f171ea977491e2b7b9119f37979e02bc6926f92f820662abf7bd04ee3fe815eecce462b2acd8f5eb4ccc1e5b793fa6499a2d55a614748af7ec575bccfc8054b2badb60dad287f6e32ba592887ca5e0b9ece58168aa5f2b77e334653610b5342b8dd94f06d3eeef00bd56f2f711de41e78ce734603eb0269b65a00c672bce48de2bfb5e83a0cac5300c47b5d544a2d62fcf328e0f40a4cb18bf4292e3623be68ac6bb2b581f05e2c65dae7ce2edb404e914412fadddc9476cb1b6b5c023177fe0e7248a4bcd8a222115517848f2d6fdfb81b3d20d925ff88a9799ae38c590aada4cfe5adaf3b8f45ce6c957c9bab1737868b147fa36403773dc4bb6f6f170380562d18533ec749f2f03faa0b8d924bd93bb44f5aea2c36c513d61413be17f86cb3021fcb23d97bc5d58932f4da260637cb39af923ded689b56b416ee9e26c96b119387795e0be305649a6269f69adbca4b68ce1eb71333f72f3bfcfa9ffdd2ab1cb518c915673aebca636de222320a9f5614b03f70ded338730fedcbed02e001fce23ad923a7a4f75fa2d77315ac28f367d7cfde727e093b718f705dce54a2182f78832fe9ef5d10fcb31b3a1c82287bdf4c2daa0309e9895ad84d3080868731988e86fddafc4f9a349c5f129e79fa33af93fa39c5133e204769041e176bdf9288ddd693565661cc6b7be831248b6896c603b4e194b8e660eb6bdb7c3d906f390984fabdd6f81e8d6e9a5ff50846c06fea899c54e83a4649f769f0651e8891ad4f1dac53bff77d82e5d475ec69ac300b1e05ac272c15da0dcd41ce58d875849be6b9a979ddffd828fcd7fb3e74ce3f2ce616fca13395c763c4ce01472f0696d1cfaff030451c29c04da6b619c012926cc60bb0e8a7984183f8a2a55e1ee754634de1c29917809ff8a3033d7af4bbc4e0a458e5d58ea6f2b7ba6f4abc9726729d17873dc265c20653e7b15b79eb011bf1b0611311b731a779328368426bc7fb81f067a370db788e75a6daffef469d8e5f9a5f4d26405b75b0c040fa79ef5bf098bd2157137b5b99f77b860f4a11603e8341efe2a8c8d7468408cf592a9256c6a443ca92195fa0f6df7c70cfaba30916e460849763ce3f4e384cfc88c36413144bf8770772fb334004290fa323b6ac11e74305f186d1dbe3b1fff8b84fe6368b74cd86cc128458b56730f2049b8ac0d3ebbd96f3dfc14edf2add9e8d37db12461bb916703b3ebfa709d8b0cf8b06fba97e906c2b109449f068e2207fac229b18b54ffbeef14d85776ffb6ceeb34394ef61a9941efe0161506f0c6b886d99b590e747316a8cc86e55f5504c18370d4997d06a369bf3a8b1285ae3b65bdb4f2c4038efd9483a536f2646479730cf5d1354af87b433a9aaafaf821b20fdca525f6a8080cfcf3046cd0bb0c7cd97b2f63df488489b4e6f20dfc454bc3c33efd1427fb13ffc6b267b8642a958b22797509250487d5bc9af3ded8cefbfb699e65c524bcff4b3f20877dc483b4fb38708a96ee8ff514b23ed9a125c6019c8a7f478b9700232de75127f8197d7510808d422fb1ff54d2b60402b45d50c7b9d0c298d768dfb0fa22b766896e33c6ded40d81c3294e0abf6ea504370acabf80d1c60e0e7715b2e75c9f9d70682dd65b10f4cbd99af36fd255a74f295ccbef3994f5223f34a6342a4acd2c882dc85885e86adf795fc48d6a1d97991eb078cc0e5e6b199f79269c141f906082a8bf33bf2aa23071fc955cde1d3dea8d3254dbb7595ec6483e3562d5c6ce7dd0fcd7d296b34e6838eecb760962ac701aa7523d2ff580801c728efd293cdf1ef59b18a86b141d1bbc1df64f9769708ea7cd29462a91dac8a82d9861fba6bc5eba08a0d13132cf9a8e2eef1c2cfae6aff5e9e7864cb40f8e8a6eb3d14509bd3351c24bed9a8bbd0128731b5fdd6eb46910919c5a33fd359233ea0aae5986a1ac602514e52afbe2804cf44fe02b1cbc2fa16910c7f92e97de3fd25ffc7a1f7b54b7a665b9d7697b868d25f67c41b54c383eb058faf3001286af328deec84df499058f0bb102c89db333e787b97efb4d580ebc0ae9ad7bd61668db7c4d64ef698830dadaabd2eff5a28ae57521ba5b67d21f13f8b6452ca5ca349a25fbf4794b31bb4735c3862605c783c90a6106697e04c7e720c9fb200d4f793b58e9f29f9654c37123dc617dd7888217d9d06252bd1bd5d2bb51341b63f276bd8f8f961916166cbd95c36e0f22a8335b1e2aa0cd8b01e6661abb341335da444c845f7f1b08a0f25784d8de5a6c040e4a555946c4630f3e48a73f99d0ba8cf1b89c68c5d75ec1de68a68b4fc7d16f6532c9a2730d136c5de5e05bf5678515709a92ec064dd24b9d09c8eb9fb92ae91651af967d757a0c197ec529a1a9fb4c2b7f59cdab7565bf1490235eb1544b9b57725075db54711678ccf8175229720ae451fbffa80cf3415a520d305ab5abe9002e6adb2b02c740dc2790fd63b0c58d78dd38550f76e783ea61d2623f23853e3341905b08ac9315adcd36e63ed988e1038e8f890ac479a60dc6711c6d3436bffb4098799aaa352093437d6c01c1d954b2338262a51ead3d59699d57622f1030f8a743ec181975fd555b06a9db300b2e75342f5de28f963779bffba61220516e2a408c0785ea4525f5db81c2f6838a05838a8686a82d6eef7ab9219b016df863ac38a83e7e6813ed1d82e5d2ebb98bf684666dd95a4812e7c2ecb6bdccf88ced478379fd05690d3566c0f49a7bc5255288ba01818f1278016807f0da8630a1a65ed948e0c9b2f03698c50681f66c59df879d579fce22f69e134cd83aaa32ece279b29db338eacc2479f08bb59b8fb1cb76dd3e7145ca4163c00452cfdd63117047f7f26544aee248e85261c67bc5e60ef56482f02dc39082f80de245ab7b6fb5af1002666e330e6330af51b5f9a66d5515db849f457414b7a46dfeb656b81f483b12eba2e661e32003b4c85b6c652b48a1a25db319fc47613dc70fbccbe046c3fb257ce3b797ef87723f833ac66d09130395e6319011a160b4a1d5ca181e757663aa406ec3d000dc7882b56804c22841ee166f391b90dcce1dd7e84dc1f9a81ea059285333139da28baf02d1edd7338473abc659df8b0eb94c55bb1bb3f35c48eb77f209db33caf0a7a4a4d1f2a77b16e1eba464712136d5de927e5e722a6b152b63ff116db3f8e223b191651fe89c3e8d16c90ddc1f16736867ab63f3041a70118b6dbae31d76acdd9593824612dc2d17f7cc47b765615ef94c7dcb9ce4518200c6db166ab4f47114d42a2e07016ed8f2ea113e241b3fc7229fa1367a1130b3cbca18a863daba67663fac30a3e77e03a20f453c357e88947dc7f7ed9888e23aa2e1c2d79a16de6d1a3d1fc838416925c26f5721da53c73e2a6ea061972799559fcb8d6f6ac297becf76da9447a2155eb4152f64245ec2ff77ffccaa12c64f1d35cc189b37412b6f69d128d4fea170549ba0a9efb05bb403144991c099cfe95776f8b97da8e46581f40791597e717423bf9a3ebc50079392762f9617efacfe7c4540dec20313f02692132d0e72f56ac0324b5cbfb982fd7acc9fa34556b5a351f8dbabd6f3eb4db4cb51fbe3a9a6ff6bc36e0d9049d0b67a5c7a1b5b80692617d3f38a981ed41db4ef6cfcb28c844cce61c0caf3214f7e37929ab7104ca4830984a879a3532b583e3e29d7921483d656cd7cb346d06657e61919e10b70230697f1b2cec444f901543ee766d912f39e725de506a5b1eb8bec4c6132fdb74b1554229c98b110489502f836e46d1db766e08c773162f92b3abb821220f3a056dceae32f0bf50727b0fd83aa315379ca6dcac30e0df93bfab49bdc1a70be126cf1301b49d5394dc65ae825f1e64738e15afb29c14a9563fe78c2b2024486188a298729d9a04a091d3a1810e36a90d84e36c21fde351c68549ee72ab413f009bc7a6ad699ea8bd641704d14d1e53d592a268dc09848c18e17fb0e190a2c1de5579ca182e42ef3f8cb5bbed17196fa699344aed7c7520dfec39db96182c558b6aebd771c1bced8ad493b25ba6dee9a46e97541144a0874085ca349792400375c1a4d3c0684e0a9f3aa9ca56dda8c005b89fd0da32689859928ddde493711700d7cfc2e27d1aa7d0aa7142d1800986fb59ae9e1c93b98100689a76f1055a00f4a8cdbb2df1d31f5ed08f6cd4f7a417d1bd3c2d5df39e59d0f6c765f6f5612e8c91e8fd20fb0d533e5309893ad792aaa7f3b1a0bb7c0429ba6fc3542e324aea8d565622c700795f717c8ae9bc308317b3c4660cf9338671b959c441a7220e1c5ec88aa056d74fefd626d7b507fa7204e95f0bd198bbcffadd8f6ace30b9c8764edc17f1578d439dc6546388106817b138de9aa5e70450f1cd36adca672eff94e8cc28227b8afea563d456f14ec3e6042a3ad8f0dcb0ed90cd51f4c6587e4919f444f03f73dfc51f64a52261fdb4e4751cb511d071663c2f884e6ccc350f60d2df0e5fadc28b44c9acdaf9d917d97f28b8b9e7f10d16aa4cd041694fe6c8a34090b5b26db4bef222ba8d541a5d09d32799a619dafd24834b345ce924cea15a2a4e064edcdf35f6fac6d5c749a6a99ad139f5577abe58652e9721c65163c700cb1efa24c820d33d9f23ff4b7196c5f3260b88f06604247868e71f9269d845072c4ecb8dcd1385b4abf90b36b97f8e7d99fbea4fbc415</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 请输入密码</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-      <tags>
-        <tag>关于博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Redis面试题</title>
-    <url>/2022/10/28/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p>Redis面试常见问题汇总</p>
-<h4 id="1-Redis的数据结构及使用场景"><a href="#1-Redis的数据结构及使用场景" class="headerlink" title="1. Redis的数据结构及使用场景"></a>1. Redis的数据结构及使用场景</h4><ul>
-<li><p>String字符串</p>
-<p>字符串类型是 Redis 最基础的数据结构，首先键都是字符串类型，而且 其他几种数据结构都是在字符串类型基础上构建的，我们常使用的 set key value 命令就是字符串。常用在缓存、计数、共享Session、限速等</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>Hash哈希</p>
-<p>在Redis中，哈希类型是指键值本身又是一个键值对结构，哈希可以用来存放用户信息，比如实现购物车</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>List列表（双向链表）</p>
-<p>列表（list）类型是用来存储多个有序的字符串。可以做简单的消息队列的功能</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>Set集合</p>
-<p>集合（set）类型也是用来保存多个的字符串元素，但和列表类型不一 样的是，集合中不允许有重复元素，并且集合中的元素是无序的，不能通过索引下标获取元素。利用 Set 的交集、并集、差集等操作，可以计算共同喜好，全部的喜好，自己独有的喜好等功能</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>Sorted Set有序集合（跳表实现）</p>
-<p>Sorted Set 多了一个权重参数 Score，集合中的元素能够按 Score 进行排列。可以做排行榜应用，取 TOP N 操作</p>
-</li>
-</ul>
-<h4 id="2-Redis持久化的几种方式"><a href="#2-Redis持久化的几种方式" class="headerlink" title="2. Redis持久化的几种方式"></a>2. Redis持久化的几种方式</h4><p>Redis为了保证效率，数据缓存在了内存中，但是会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件中，以保证数据的持久化。Redis的持久化策略有两种：</p>
-<ul>
-<li><strong>RDB：</strong> 快照形式是直接把内存中的数据保存到一个dump的文件中，定时保存，保存策略<ul>
-<li>当Redis需要做持久化时，Redis会fork一个子进程，子进程将数据写到磁盘上一个临时RDB文件中。当子进程完成写临时文件后，将原来的RDB替换掉</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><strong>AOF：</strong> 把所有的对Redis的服务器进行修改的命令都存到一个文件里，命令的集合<ul>
-<li>使用AOF做持久化，每一个写命令都通过write函数追加到<code>appendonly.aof</code>中</li>
-<li>aof的默认策略是每秒钟fsync一次，在这种配置下，就算发生故障停机，也最多丢失一秒钟的数据</li>
-<li>缺点是对于相同的数据集来说，AOF的文件体积通常要大于RDB文件的体积。根据所使用的fsync策略，AOF的速度可能会慢于RDB</li>
-</ul>
-</li>
-</ul>
-<p>Redis默认是快照RDB的持久化方式。对于主从同步来说，主从刚刚连接的时候，进行全量同步（RDB），全同步结束后，进行增量同步(AOF)</p>
-<h4 id="3-Redis的LRU具体实现"><a href="#3-Redis的LRU具体实现" class="headerlink" title="3. Redis的LRU具体实现"></a>3. Redis的LRU具体实现</h4><ul>
-<li>传统的LRU是使用栈的形式，每次都将最新使用的移入栈顶，但是用栈的形式会导致执行<code>select *</code>的时候大量非热点数据占领头部数据，所以需要改进</li>
-<li>Redis每次按key获取一个值的时候，都会更新value中的lru字段为当前秒级别的时间戳。Redis初始的实现算法很简单，随机从dict中取出五个key，淘汰一个lru字段值最小的</li>
-<li>在3.0的时候，又改进了一版算法，首先第一次随机选取的key都会放入一个pool中(pool的大小为16)，pool中的key是按lru大小顺序排列的</li>
-<li>接下来每次随机选取的keylru值必须小于pool中最小的lru才会继续放入，直到将pool放满。放满之后，每次如果有新的key需要放入，需要将pool中lru最大的一个key取出。淘汰的时候，直接从pool中选取一个lru最小的值然后将其淘汰</li>
-</ul>
-<h4 id="4-单线程的Redis为什么快"><a href="#4-单线程的Redis为什么快" class="headerlink" title="4. 单线程的Redis为什么快"></a>4. 单线程的Redis为什么快</h4><ul>
-<li>纯内存操作</li>
-<li>单线程操作，避免了频繁的上下文切换</li>
-<li>合理高效的数据结构</li>
-<li>采用了非阻塞I&#x2F;O多路复用机制</li>
-</ul>
-<h4 id="5-Redis的数据过期策略"><a href="#5-Redis的数据过期策略" class="headerlink" title="5. Redis的数据过期策略"></a>5. Redis的数据过期策略</h4><p>Redis 中数据过期策略采用<strong>定期删除</strong>和<strong>惰性删除</strong>策略：</p>
-<ul>
-<li>定期删除策略<ul>
-<li>Redis 启用一个定时器定时监视所有的 key，判断key是否过期，过期的话就删除</li>
-<li>这种策略可以保证过期的 key 最终都会被删除，但是也存在严重的缺点：每次都遍历内存中所有的数据，非常消耗 CPU资源，并且当 key 已过期，但是定时器还处于未唤起状态，这段时间内 key 仍然可以用</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li>惰性删除策略<ul>
-<li>在获取 key 时，先判断 key 是否过期，如果过期则删除</li>
-<li>这种方式存在一个缺点：如果这个 key一直未被使用，那么它一直在内存中，其实它已经过期了，会浪费大量的空间</li>
-</ul>
-</li>
-</ul>
-<p>这两种策略天然的互补，结合起来之后，定时删除策略就发生了一些改变，不在是每次扫描全部的 key 了，而是随机抽取一部分 key 进行检查，这样就降低了对 CPU 资源的损耗，惰性删除策略互补了为检查到的key，基本上满足了所有要求</p>
-<p>但是有时候就是那么的巧，既没有被定时器抽取到，又没有被使用，这些数据又如何从内存中消失？这个时候就需要用到了，内存淘汰机制</p>
-<h5 id="5-1-内存淘汰机制"><a href="#5-1-内存淘汰机制" class="headerlink" title="5.1 内存淘汰机制"></a>5.1 内存淘汰机制</h5><ul>
-<li>当内存不足以容纳新写入数据时，新写入操作会报错。（Redis 默认策略）</li>
-<li>当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的 Key。（LRU推荐使用）</li>
-<li>当内存不足以容纳新写入数据时，在键空间中，随机移除某个 Key</li>
-<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，移除最近最少使用的 Key。这种情况一般是把 Redis 既当缓存，又做持久化存储的时候才用</li>
-<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，随机移除某个 Key</li>
-<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，有更早过期时间的 Key 优先移除</li>
-</ul>
-<h4 id="6-如何解决Redis缓存雪崩问题"><a href="#6-如何解决Redis缓存雪崩问题" class="headerlink" title="6. 如何解决Redis缓存雪崩问题"></a>6. 如何解决Redis缓存雪崩问题</h4><ul>
-<li>使用 Redis 高可用架构：使用 Redis 集群来保证 Redis 服务不会挂掉</li>
-<li>缓存时间不一致，给缓存的失效时间，加上一个随机值，避免集体失效</li>
-<li>限流降级策略：有一定的备案，比如个性推荐服务不可用了，换成热点数据推荐服务</li>
-</ul>
-<h4 id="7-如何解决Redis缓存穿透问题"><a href="#7-如何解决Redis缓存穿透问题" class="headerlink" title="7. 如何解决Redis缓存穿透问题"></a>7. 如何解决Redis缓存穿透问题</h4><ul>
-<li>在接口层做校验</li>
-<li>存null值（缓存击穿加锁）</li>
-<li>布隆过滤器拦截：将所有可能的查询key 先映射到布隆过滤器中，查询时先判断key是否存在布隆过滤器中，存在才继续向下执行，如果不存在，则直接返回<br>布隆过滤器将值进行多次哈希bit存储，布隆过滤器说某个元素在，可能会被误判。布隆过滤器说某个元素不在，那么一定不在</li>
-</ul>
-<h4 id="8-Redis并发竞争key如何解决"><a href="#8-Redis并发竞争key如何解决" class="headerlink" title="8. Redis并发竞争key如何解决"></a>8. Redis并发竞争key如何解决</h4><ul>
-<li>可以利用分布式锁和时间戳来解决</li>
-<li>利用消息队列解决</li>
-</ul>
-<h4 id="9-Redis的主从模式和哨兵模式和集群模式区别"><a href="#9-Redis的主从模式和哨兵模式和集群模式区别" class="headerlink" title="9. Redis的主从模式和哨兵模式和集群模式区别"></a>9. Redis的主从模式和哨兵模式和集群模式区别</h4><p>Redis集群方式共有三种：<strong>主从模式</strong>，<strong>哨兵模式</strong>，<strong>集群(cluster)模式</strong></p>
-<ul>
-<li><p>主从模式</p>
-<p>主从模式是三种集群方式里最简单的。它主要是基于Redis的主从复制特性架构的。通常我们会设置一个主节点，N个从节点;默认情况下，主节点负责处理使用者的IO操作，而从节点则会对主节点的数据进行备份，并且也会对外提供读操作的处理。主要的特点如下：</p>
-<ul>
-<li>主从模式下，当某一节点损坏时，因为其会将数据备份到其它Redis实例上，这样做在很大程度上可以恢复丢失的数据</li>
-<li>主从模式下，可以保证负载均衡.</li>
-<li>主从模式下，主节点和从节点是读写分离的。使用者不仅可以从主节点上读取数据，还可以很方便的从从节点上读取到数据，这在一定程度上缓解了主机的压力</li>
-</ul>
-<p>从节点也是能够支持写入数据的，只不过从从节点写入的数据不会同步到主节点以及其它的从节点下。从以上，我们不难看出Redis在主从模式下，必须保证主节点不会宕机——一旦主节点宕机，其它节点不会竞争称为主节点，此时，Redis将丧失写的能力。这点在生产环境中，是致命的</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>哨兵模式</p>
-<p>哨兵模式是基于主从模式做的一定变化，它能够为Redis提供了高可用性</p>
-<p>在实际生产中，服务器难免不会遇到一些突发状况：服务器宕机，停电，硬件损坏等。这些情况一旦发生，其后果往往是不可估量的</p>
-<p>而哨兵模式在一定程度上能够帮我们规避掉这些意外导致的灾难性后果。其实，哨兵模式的核心还是主从复制</p>
-<p>只不过相对于主从模式在主节点宕机导致不可写的情况下，多了一个竞选机制——从所有的从节点竞选出新的主节点。竞选机制的实现，是依赖于在系统中启动一个sentinel进程。sentinel特点：</p>
-<ul>
-<li>监控：它会监听主服务器和从服务器之间是否在正常工作</li>
-<li>通知：它能够通过API告诉系统管理员或者程序，集群中某个实例出了问题。</li>
-<li>故障转移：它在主节点出了问题的情况下，会在所有的从节点中竞选出一个节点，并将其作为新的主节点。</li>
-<li>提供主服务器地址：它还能够向使用者提供当前主节点的地址。这在故障转移后，使用者不用做任何修改就可以知道当前主节点地址</li>
-</ul>
-<p>sentinel，也可以集群，部署多个哨兵，sentinel可以通过发布与订阅来自动发现Redis集群上的其它sentinel。sentinel在发现其它sentinel进程后，会将其放入一个列表中，这个列表存储了所有已被发现的sentinel</p>
-<p>集群中的所有sentinel不会并发着去对同一个主节点进行故障转移。故障转移只会从第一个sentinel开始，当第一个故障转移失败后，才会尝试下一个</p>
-<p>当选择一个从节点作为新的主节点后，故障转移即成功了(而不会等到所有的从节点配置了新的主节点后)。这过程中，如果重启了旧的主节点，那么就会出现无主节点的情况，这种情况下，只能重启集群</p>
-<p>当竞选出新的主节点后，被选为新的主节点的从节点的配置信息会被sentinel改写为旧的主节点的配置信息。完成改写后，再将新主节点的配置广播给所有的从节点</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>集群模式</p>
-<p>Redis 集群是一个提供在多个Redis间节点间共享数据的程序集， 其中Redis集群分为主节点和从节点。主节点用于处理槽，而从节点用于复制某个主节点，并在被复制的主节点下线时，代替下线的主节点继续处理命令请求</p>
-<p>Redis集群并不支持处理多个keys的命令，因为这需要在不同的节点间移动数据，从而达不到像Redis那样的性能，在高负载的情况下可能会导致不可预料的错误</p>
-<p>Redis 集群通过分区来提供一定程度的可用性，在实际环境中当某个节点宕机或者不可达的情况下继续处理命令. Redis 集群的优势：自动分割数据到不同的节点上</p>
-<p>整个集群的部分节点失败或者不可达的情况下能够继续处理命令</p>
-<p>Redis集群的数据分片 Redis 集群没有使用一致性hash， 而是引入了哈希槽的概念</p>
-<p>Redis 集群有16384个哈希槽，每个key通过CRC16校验后对16384取模来决定放置哪个槽.集群的每个节点负责一部分hash槽</p>
-</li>
-</ul>
-<h4 id="10-Redis事物的了解CheckAndSet操作实现乐观锁"><a href="#10-Redis事物的了解CheckAndSet操作实现乐观锁" class="headerlink" title="10. Redis事物的了解CheckAndSet操作实现乐观锁"></a>10. Redis事物的了解CheckAndSet操作实现乐观锁</h4><p>和众多其它数据库一样，Redis作为NoSQL数据库也同样提供了事务机制。在Redis中，<code>MULTI</code>，<code>EXEC</code>，<code>DISCARD</code>，<code>WATCH</code>这四个命令是我们实现事务的基石。相信对有关系型数据库开发经验的开发者而言这一概念并不陌生，即便如此，我们还是会简要的列出 Redis中事务的实现特征 ：</p>
-<ul>
-<li>在事务中的所有命令都将会被串行化的顺序执行，事务执行期间，Redis不会再为其它客户端的请求提供任何服务，从而保证了事物中的所有命令被原子的执行</li>
-<li>和关系型数据库中的事务相比，在Redis事务中如果有某一条命令执行失败，其后的命令仍然会被继续执行</li>
-<li>我们可以通过MULTI命令开启一个事务，有关系型数据库开发经验的人可以将其理解为”BEGIN TRANSACTION”语句。在该语句之后执行的命令都将被视为事务之内的操作，最后我们可以通过执行<code>EXEC</code>，<code>DISCARD</code>命令来提交，回滚该事务内的所有操作。这两个Redis命令可被视为等同于关系型数据库中的COMMIT&#x2F;ROLLBACK语句</li>
-<li>在事务开启之前，如果客户端与服务器之间出现通讯故障并导致网络断开，其后所有待执行的语句都将不会被服务器执行。然而如果网络中断事件是发生在客户端执行EXEC命令之后，那么该事务中的所有命令都会被服务器执行</li>
-<li>当使用<code>Append-Only</code>模式时，Redis会通过调用系统函数write将该事务内的所有写操作在本次调用中全部写入磁盘。然而如果在写入的过程中出现系统崩溃，如电源故障导致的宕机，那么此时也许只有部分数据被写入到磁盘，而另外一部分数据却已经丢失。Redis服务器会在重新启动时执行一系列必要的一致性检测，一旦发现类似问题，就会立即退出并给出相应的错误提示。此时，我们就要充分利用Redis工具包中提供的<code>redis-check-aof</code>工具，该工具可以帮助我们定位到数据不一致的错误，并将已经写入的部分数据进行回滚。修复之后我们就可以再次重新启动Redis服务器了</li>
-</ul>
-<h4 id="11-Redis有序集合zset底层怎么实现的"><a href="#11-Redis有序集合zset底层怎么实现的" class="headerlink" title="11. Redis有序集合zset底层怎么实现的"></a>11. Redis有序集合zset底层怎么实现的</h4><ul>
-<li>跳表是一个随机化的数据结构，实质就是一种可以进行二分查找的有序链表</li>
-<li>跳表在原有的有序链表上面增加了多级索引，通过索引来实现快速查找</li>
-<li>跳表不仅能提高搜索性能，同时也可以提高插入和删除操作的性能</li>
-</ul>
-<hr>
-<ul>
-<li>跳表是可以实现二分查找的有序链表</li>
-<li>每个元素插入时随机生成它的level</li>
-<li>最低层包含所有的元素</li>
-<li>如果一个元素出现在level(x)，那么它肯定出现在x以下的level中</li>
-<li>每个索引节点包含两个指针，一个向下，一个向右</li>
-<li>跳表查询、插入、删除的时间复杂度为O(log n)，与平衡二叉树接近</li>
-</ul>
-<hr>
-<h5 id="11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN"><a href="#11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN" class="headerlink" title="11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))"></a>11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))</h5><p>首先，我们来分析下Redis的有序集合支持的操作：</p>
-<ul>
-<li>插入元素</li>
-<li>删除元素</li>
-<li>查找元素</li>
-<li>有序输出所有元素</li>
-<li>查找区间内所有元素</li>
-</ul>
-<p>其中，前4项红黑树都可以完成，且时间复杂度与跳表一致。但是，最后一项，红黑树的效率就没有跳表高了。在跳表中，要查找区间的元素，我们只要定位到两个区间端点在最低层级的位置，然后按顺序遍历元素就可以了，非常高效</p>
-<p>而红黑树只能定位到端点后，再从首位置开始每次都要查找后继节点，相对来说是比较耗时的。此外，跳表实现起来很容易且易读，红黑树实现起来相对困难，所以Redis选择使用跳表来实现有序集合</p>
-<h4 id="12-跳表的查询过程是怎么样的，查询和插入的时间复杂度"><a href="#12-跳表的查询过程是怎么样的，查询和插入的时间复杂度" class="headerlink" title="12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度"></a>12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度</h4><p>先从第一层查找，不满足就下沉到第二层找，因为每一层都是有序的，写入和插入的时间复杂度都是O(logN)</p>
-<hr>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>八股文</tag>
-        <tag>Redis</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>项目经验面试题</title>
-    <url>/2022/10/28/%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容">
-  <script id="hbeData" type="hbeData" data-hmacdigest="89f675e3c9ee01fca90366988f63a47d028b160e9fe14a94ca94f994eb8ce28d">a17b4de793b95f7877066d2186f5861555e2d6b9cb5641947e36c8450a9062241bff23f016a5658fa4702bb8625e1a64927d2e249a90caaa62600a11f5dcd3f66c53fe7239ac25300620da5c82ec4d458706cb81b1903f8a8894fb74b7b49e178b1ed12b5113c92743dd83f16334b11a519cb4937b1f6ca060c3c1602c2e5ab00497eeb7b7d7a4a4a45ca9b9fdc711a262177b0d5ff4bf6e4c9c47d80447f23cd18eb13e8c28580fd1c2934f779e5086f01f803a4ba6bb4a6371d982998985660d5e9b2cf961c1e882ad1c8a8aa710dd432f2230184282005f3cf944af4755a25a3afa8390b4846e22e0c1344ab3b49b32905d7a0b7b3d57bc134676a5f95bb0dac112457d1ff1baa0748602ed6acea81a1644595c8dabb2237e7dfe4b74ac6ff80dfad29602cdb7e29dd4231532cd59a7a98f7f65299dcfe64d5994d79830a9a55e40f90473ea96085cf8352db10806f20c766362c05efdd8e74d8c881ea0ddc387a76ce4bef6288cd709e9616eac194dfbd36930bf49f966568e3747c080b7a1a7ac6c9f996a1e407272e137d22d669d9966d6a6fb0476d04bf59df903b3430fbde42913ce18dbb0f77e7b78192746b2f7c5481cddc741cc7bbef8a44c59c2b3deafb2f06fc0fb2ab69ac65be6f67946ead0c4bd7966629d441238e166742e33d9f6d73430a28fa1077777e863dd000ef7ec4d692930e9b562acaa53e9c738b55cf7258331f79e3f63c47c45147d7f8d0635cab43fa82bbe470eecaec98617b92281a05d93b92f489332383de12333f59eefbaa918bb6b38be2895ae3b7861bcd02398eb42cda366c7edb297284672cbf1cbfc2f60766010b21f17f7bd23ef57f225611ac5ea8d2dc7584f2aeb16f0a50e99daadcfaffdbc7b94544ae0c2267917cabfa0b25e3e059e79e8017126d985133428c9a3ca2808f29155cc987d25ee968d63f58e7c1a34db327fd0b61f6ef2194d97c3c9907a9c1f6d8d35819b4eea39a6908d2da7fd6968a8040a9441260e04c43c9dc6f1b9a3880d7607aece4a3d6e181aa5978796603c3d3bbdc8058e6bea6dd2ab6802395cdacd440fc527781853f21f72b171060b271fd81139d3af25926b4cf8b612ab34e5ce9cf85c92d5d87aad45282f1d038d80afc25c95f5ee3dddaec2ccaeeeecadf6c449d14152e3223d2723b3187e41e90d3c57c1975741a63b9f2e37ea1fa66f43eb5df7dc3afae2f630a6fca55a3d4d319078f74fdca366ee0a8cfc006d5de6ce7db111d2c071f32e290d523cd99ce434003b28fd8fc7118a64b255ae3a0235925e842d72ac7962dcbad744aee5a7a8a0c69e597d8af7189c92b354f19d2b11c2a9bc5f9f81c77545ec44b54b18efdce08f8ded84a6a1baa8f224803d0b32cda4f41b4a0d6cd053407266d47937baa6029abfa0777c14a582cca4f70946d1d78ffabefcf9f7481d5eea5eb81926aeb8defd70bc342e03f16bf75782063290a61febaad44f9bec65f070b75c8aaabc05514eb1d1dda550528acc2ee8d21b6264440dfb5585bf9764756324cc1c60722913de487fdc0654d35f1c893fa6bc41456053dca7fdb2c9b961ba8128009947320da3c0821481a4f1fba49bb5160c0b0797c0a4bc1b16848c67fa80843bd7f9e0aaa43e63e109cedcc3a8d27ea2765e51438ade4c286b9c1e77a2de8c55a130af196af8b2839b6f97dd08edfffc3ace18304b60f0935269390c7d5a574d2f12d5d9771c9f466f27dd51ea488fe37c34d6aa112843a7fb0029adca1704baf3e21979f858c33e3f0027cb10c9b0ab7cfeab84869b4ddc7964c7a87f95091e769a0cc8ec95cd6eadb56f6acd9e624cac4811fb82d586d459a41891b75b910ca8217bf71fc047bc5160cfaae7b472cdee7d3b74fa7d419fa45ec40a12ff8ff0a47f6b2992d4d425058c23cb58154b8c421719fef35d035e7c13adb0e3535025fd6482019d43e567b0e9585fba7b60ab9ee1ce5a59bfe7d4bab77e10f1afae9740fce16dba0a5a05ceb5cadc358721260d5f6aae39011b7a578f575e9b9e15b6862b7932b756aabb5713b6f7f92ee9d54e7cfc83cd012107ea6e823b983fd276bd1b75fd1d95ec9da057f56fc0827333649368ff709f0491e12b9cb3cf73d9c1e4efcf2a1a83975e7056774a686fd3e8b78120d5092712f7a09eed7d94b42931734618ad041b97fd57c2f87c3cf9b085ab0cf50920b30067ddf7d5b15d045bda3434611a0521d062da41315756094b800c12cb30aa8514f7568a759b8dba31ab691c016328b0f31bdbfa6019da0b0dce6e57842e8bdf4532e641306ee62659b40c437a6bc56ae8134ad7815a20d9a08805766b827210b4046af906cb1606fee5f5af499f85835cf11fd6f309132375a12f054e2a355deef4e4c14a9aab3cedece4a39a62770e8cee493d8b8fda7b73fb8f3391590a060d0d243ddd044ddefab9932958f07c1941859f1ff11d2eee0bdadfafd267f7f7e71ae92fd48ac5c9043a98653780b4a7509ee2902b3899df7fc06600787a367b7de6bbc07b74d2fb21a0ce15adae8158c800dec8c16eef115b8a751a47a741cf720f5f99541675861a5cec80064e4d7f80e6dfc0e64b6bd8b31104e19a35611030f75a910832460fbfd8e92b3a00401dde53f04a0d68e036e03391c613f71caaa686b5018bae56a3662b2424913483176f4f7b132fed435fc140d267b2c2a24844cf1b6e204fd66f58bf4704771bb5a8ba565e4b9f0e431c0bfd46e798437e1c9005a9a2023b8e14e189f3248cd885120dc2f7e54d8f1cb5e7238c6389966059f717071ac6f40c9d99941450472583c242dfb270d315f220e76744df9e78d8cc97249748dde500391cc59ead8a37bb048e4d69a54798d688a504c9d8cc4ae569691126880e0ca35390191ca509ade324f261fcc5f3d2abae39bfb0aed31aee7572bb3a9c94bc06f9a12cfb43c0f80265e3512c3c6eae3152e470bcf95d1569b1c67af9940a80d6f7f6c0f801e4820968ab7477ce0686f878cbd42a8bd612a4363321666a37b0b3be1e5cb89c273036e42ff9017a27ad865aa23455d990a9c04fe5c9dde60618b7148754ff57fb8e4c761a55d9af36a8423eb497b3b2a4459b7bf39cc43bfd461ab645a054bbce1ea8574e5c838c0398766637b115486e2dc87e49081751ba667e31ecd4b6656eb8b68befdf263ad0f539c2d98dcbc6a87540c8f789056f7b0050e5e4b77f70578e431feb5fce9d6ad8240b3396804460526db54c50f33d9dcd1dbc280d56164703c87b7965b915d3d6e4bd80a89ef23c2fc4f9ccb34bfdda2c1e2197036a59b5d0aec1f1817cf0c1751d7b81855ce4785c93b17fc39ae1b4a6dd84eec81946bb2c2c55136a64ef191b5bf8ce83dd8f79f48df6838640ca93ccd98eacb737c837e754ac167611d44d7329488486573fdc46cc7db215fa0e616a4b9bac76a020e929cd8a02bd4ae444feb38a85b427a5c5870c2aa0ef32f50f0c93b09018de6ad7bf7e28ddc70e87030dd3d52f505f67e70d6326913c932bd6d6992634c000c17a9fc3ef33321555f7674c636af090706370fbc97a92a9c87c15185bf20bc9a2be6adb50d4e705e7463cac947fef21856e4539cd52cb46a5f91d9b798cbc2758dd55d119e909f894f6f9661d65e8f5c077741b89075bbe409f42b4be1fcf5dfd9369bb291c03c6f6d4d282949b628e48a265dba3331ba79c4fc13647277ee40cc679478849507ce308aef7ed22855c6841436b38047ffc6d121cfc65e6aa5041f29f4b97fd6c43a891462cf28d3979b230d2b275ad43801575f27a3d30355dbc14a168d06c1a113e97da2b8c8d1e178963a0e3c2d4be95ce2dadab8526c84dfd250a14b957c612db88a6f5ea155cd97f00ae41aa2ccbe51b169263f3071e47870b92bba0944a81cbd4df6a047df6bea085f99665459bc110408cb27c4b65e5dbd8b349a01173ff1dcb23727149be25f5a71bc3a18fd6b3d073cf1ca8188155aedaf9cf93942db0586273363df220c1b50adc025244bfcadc2cb9b700c70bc06440ea6e74a58cdba1af305eae67a7d1b752d564cf8e48b0750bc6549baf9544aae4532c46394b85474d884be2278fea72970b5374c3783e297b37d65b2652e7d844675f962e58945cf385a9ba695ed72653251af60c4069ffc793b31a198474e51d7b1acf6b1ef762b8a3e1d851b5b820300a810ab1c668e54a6cc4698aa6dd51a14341dbeeb7c964901a0eaa71d3f3ae0d9bf95b35ba8c345729085dc321a1065a73a457892015f3f61e838ca068d6ce08ec264d0df5b551a1c4b19a8a2da3cd06d1b50a05402c1a008b66e709990c9ec13224a19d024faa5b9150cf5e9c0e15b6de76b2884a8ab22822336584bac8fbd37a4436b9ec328f892ae653febbc08f7099f976e1b2a7965b20068e41c4f60fb150473f5d2350f4f44b3af88ab755f8f28b4be29a3cd92c51838fec9459aea6e47d480247b144e87dc7bceb8cc009fe65653150dbabb49b2fdf1ae3e22ed164b87ca7422f0783a00680a609b168743896206d70600b7a60da66bf0ab9fdebe090fddd229663139005763f6d6e8e8bfdd6354203310d2e2ea3213b2075e5430ee65143557118e8b60f7335d793e998d6c6e6cdfb9e1a95c33fcd7751798eee3deda08efae582c0a0c8f87e59f3b47d85fc4835117a37f3731b36d846fa2abdd20bab0af39441a4729a4e445c267da65d63726b6ff527f9e64485256fc12b7d4a3e7b1f7cff29da98023cee82f8dbdf8dcc9f884fffb2b1427132fd95fdce3f53b178a9751595ce6297788f4a4a8aa7621b71dd79c2a01af38d395ca2cdf50404030987c404fe606103ae929cc59681d41f0e890081fa5318</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 请输入密码</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>项目经验</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MySQL面试题</title>
-    <url>/2022/10/28/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p>MySQL常见面试题、八股文</p>
-<h4 id="1-Mysql索引用的是什么算法"><a href="#1-Mysql索引用的是什么算法" class="headerlink" title="1. Mysql索引用的是什么算法"></a>1. Mysql索引用的是什么算法</h4><ul>
-<li>Mysql索引选用的是B+树，平衡二叉树的高度太高，查找可能需要较多的磁盘IO。B树索引占用内存较高(非叶子节点存储数据)</li>
-<li>B+树，主要是查询效率高，O(logN)，可以充分利用磁盘预读的特性，多叉树，深度小，叶子结点有序且存储数据</li>
-</ul>
-<h4 id="2-Mysql事务的基本要素"><a href="#2-Mysql事务的基本要素" class="headerlink" title="2. Mysql事务的基本要素"></a>2. Mysql事务的基本要素</h4><ul>
-<li>原子性：事务是一个原子操作单元，其对数据的修改，要么全都执行，要么全都不执行</li>
-<li>一致性：事务开始前和结束后，数据库的完整性约束没有被破坏</li>
-<li>隔离性：同一时间，只允许一个事务请求同一数据，不同的事务之间彼此没有任何干扰</li>
-<li>持久性：事务完成后，事务对数据库的所有更新将被保存到数据库，不能回滚</li>
-</ul>
-<h4 id="3-Mysql的存储引擎"><a href="#3-Mysql的存储引擎" class="headerlink" title="3. Mysql的存储引擎"></a>3. Mysql的存储引擎</h4><ul>
-<li>InnoDB存储引擎<ul>
-<li>InnoDB存储引擎支持事务，其设计目标主要面向在线事务处理（OLTP）的应用</li>
-<li>其特点是行锁设计，支持外键，并支持非锁定锁，即默认读取操作不会产生锁。从Mysql5.5.8版本开始，InnoDB存储引擎是默认的存储引擎</li>
-</ul>
-</li>
-<li>MyISAM存储引擎<ul>
-<li>MyISAM存储引擎不支持事务、表锁设计，支持全文索引，主要面向一些OLAP数据库应用</li>
-<li>InnoDB的数据文件本身就是主索引文件，而MyISAM的主索引和数据是分开的</li>
-</ul>
-</li>
-<li>NDB存储引擎<ul>
-<li>NDB存储引擎是一个集群存储引擎，其结构是share nothing的集群架构，能提供更高的可用性</li>
-<li>NDB的特点是数据全部放在内存中（从MySQL 5.1版本开始，可以将非索引数据放在磁盘上），因此主键查找的速度极快，并且通过添加NDB数据存储节点可以线性地提高数据库性能，是高可用、高性能的集群系统</li>
-<li>NDB存储引擎的连接操作是在MySQL数据库层完成的，而不是在存储引擎层完成的。这意味着，复杂的连接操作需要巨大的网络开销，因此查询速度很慢。如果解决了这个问题，NDB存储引擎的市场应该是非常巨大的</li>
-</ul>
-</li>
-<li>Memory存储引擎<ul>
-<li>Memory存储引擎（之前称HEAP存储引擎）将表中的数据存放在内存中，如果数据库重启或发生崩溃，表中的数据都将消失</li>
-<li>它非常适合用于存储临时数据的临时表，以及数据仓库中的纬度表。Memory存储引擎默认使用哈希索引，而不是我们熟悉的B+树索引</li>
-<li>虽然Memory存储引擎速度非常快，但在使用上还是有一定的限制。比如，只支持表锁，并发性能较差，并且不支持TEXT和BLOB列类型。最重要的是，存储变长字段时是按照定常字段的方式进行的，因此会浪费内存</li>
-</ul>
-</li>
-<li>Archive存储引擎<ul>
-<li>Archive存储引擎只支持INSERT和SELECT操作，从MySQL 5.1开始支持索引</li>
-<li>Archive存储引擎使用zlib算法将数据行（row）进行压缩后存储，压缩比一般可达1∶10。正如其名字所示，Archive存储引擎非常适合存储归档数据，如日志信息</li>
-<li>Archive存储引擎使用行锁来实现高并发的插入操作，但是其本身并不是事务安全的存储引擎，其设计目标主要是提供高速的插入和压缩功能</li>
-</ul>
-</li>
-<li>Maria存储引擎<ul>
-<li>Maria存储引擎是新开发的引擎，设计目标主要是用来取代原有的MyISAM存储引擎，从而成为MySQL的默认存储引擎。它可以看做是MyISAM的后续版本</li>
-<li>Maria存储引擎的特点是：支持缓存数据和索引文件，应用了行锁设计，提供了MVCC功能，支持事务和非事务安全的选项，以及更好的BLOB字符类型的处理性能</li>
-</ul>
-</li>
-</ul>
-<h4 id="4-Mysql事务隔离级别"><a href="#4-Mysql事务隔离级别" class="headerlink" title="4. Mysql事务隔离级别"></a>4. Mysql事务隔离级别</h4><p>Mysql有四种事务隔离级别，默认的是可重复读</p>
-<table>
-<thead>
-<tr>
-<th align="left">事务隔离级别</th>
-<th align="left">脏读</th>
-<th align="left">不可重复读</th>
-<th align="left">幻读</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">读未提交</td>
-<td align="left">是</td>
-<td align="left">是</td>
-<td align="left">是</td>
-</tr>
-<tr>
-<td align="left">读已提交</td>
-<td align="left">否</td>
-<td align="left">是</td>
-<td align="left">是</td>
-</tr>
-<tr>
-<td align="left">可重复读</td>
-<td align="left">否</td>
-<td align="left">否</td>
-<td align="left">是</td>
-</tr>
-<tr>
-<td align="left">串行</td>
-<td align="left">否</td>
-<td align="left">否</td>
-<td align="left">否</td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>读未提交(Read uncommitted)</p>
-<p>一个事务可以读取另一个未提交事务的数据，最低级别，任何情况都无法保证</p>
-<ul>
-<li>所有事务都可以看到其他未提交事务的执行结果</li>
-<li>本隔离级别很少用于实际应用，因为它的性能也不比其他级别好多少</li>
-<li>该级别引发的问题是——脏读(Dirty Read)：读取到了未提交的数据</li>
-</ul>
-</li>
-<li><p>读已提交(Read committed)</p>
-<p>一个事务要等另一个事务提交后才能读取数据，可避免脏读的发生</p>
-<ul>
-<li>这是大多数数据库系统的默认隔离级别（但不是MySQL默认的）</li>
-<li>它满足了隔离的简单定义：一个事务只能看见已经提交事务所做的改变</li>
-<li>这种隔离级别出现的问题是——不可重复读(Nonrepeatable Read)，不可重复读意味着我们在同一个事务中执行完全相同的select语句时可能看到不一样的结果</li>
-</ul>
-<p>导致这种情况的原因可能有：</p>
-<ul>
-<li>有一个交叉的事务有新的commit，导致了数据的改变</li>
-<li>一个数据库被多个实例操作时，同一事务的其他实例在该实例处理其间可能会有新的commit</li>
-</ul>
-</li>
-<li><p>可重复读(Repeatable read)</p>
-<p>就是在开始读取数据（事务开启）时，不再允许修改操作，可避免脏读、不可重复读的发生</p>
-<ul>
-<li>这是MySQL的默认事务隔离级别</li>
-<li>它确保同一事务的多个实例在并发读取数据时，会看到同样的数据行</li>
-<li>此级别可能出现的问题——幻读(Phantom Read)：当用户读取某一范围的数据行时，另一个事务又在该范围内插入了新行，当用户再读取该范围的数据行时，会发现有新的“幻影” 行</li>
-<li>InnoDB和Falcon存储引擎通过多版本并发控制(MVCC，Multiversion Concurrency Control)机制解决了该问题.InnoDB采用MVCC来支持高并发，实现了四个标准隔离级别。默认基本是可重复读，并且提供间隙锁（next-key locks）策略防止幻读出现</li>
-</ul>
-</li>
-<li><p>串行(Serializable)</p>
-<p>串行(Serializable)，是最高的事务隔离级别，在该级别下，事务串行化顺序执行，可以避免脏读、不可重复读与幻读。但是这种事务隔离级别效率低下，比较耗数据库性能，一般不使用。Mysql的默认隔离级别是Repeatable read</p>
-<ul>
-<li>这是最高的隔离级别</li>
-<li>它通过强制事务排序，使之不可能相互冲突，从而解决幻读问题。简言之，它是在每个读的数据行上加上共享锁</li>
-<li>在这个级别，可能导致大量的超时现象和锁竞争</li>
-</ul>
-</li>
-</ul>
-<h4 id="5-Mysql高可用方案有哪些"><a href="#5-Mysql高可用方案有哪些" class="headerlink" title="5. Mysql高可用方案有哪些"></a>5. Mysql高可用方案有哪些</h4><ul>
-<li>主从复制方案<ul>
-<li>这是MySQL自身提供的一种高可用解决方案，数据同步方法采用的是<code>MySQL replication</code>技术。<code>MySQL replication</code>就是从服务器到主服务器拉取二进制日志文件，然后再将日志文件解析成相应的SQL在从服务器上重新执行一遍主服务器的操作，通过这种方式保证数据的一致性</li>
-<li>为了达到更高的可用性，在实际的应用环境中，一般都是采用<code>MySQL replication</code>技术配合高可用集群软件<code>keepalived</code>来实现自动<code>failover</code>，这种方式可以实现95.000%的SLA</li>
-</ul>
-</li>
-<li>MMM&#x2F;MHA高可用方案<ul>
-<li>MMM提供了MySQL主主复制配置的监控、故障转移和管理的一套可伸缩的脚本套件。在MMM高可用方案中，典型的应用是双主多从架构，通过MySQL replication技术可以实现两个服务器互为主从，且在任何时候只有一个节点可以被写入，避免了多点写入的数据冲突</li>
-<li>同时，当可写的主节点故障时，MMM套件可以立刻监控到，然后将服务自动切换到另一个主节点，继续提供服务，从而实现MySQL的高可用</li>
-</ul>
-</li>
-<li>Heartbeat&#x2F;SAN高可用方案<ul>
-<li>在这个方案中，处理failover的方式是高可用集群软件Heartbeat，它监控和管理各个节点间连接的网络，并监控集群服务，当节点出现故障或者服务不可用时，自动在其他节点启动集群服务</li>
-<li>在数据共享方面，通过SAN（Storage Area Network）存储来共享数据，这种方案可以实现99.990%的SLA</li>
-</ul>
-</li>
-<li>Heartbeat&#x2F;DRBD高可用方案<ul>
-<li>这个方案处理failover的方式上依旧采用Heartbeat，不同的是，在数据共享方面，采用了基于块级别的数据同步软件DRBD来实现</li>
-<li>DRBD是一个用软件实现的、无共享的、服务器之间镜像块设备内容的存储复制解决方案。和SAN网络不同，它并不共享存储，而是通过服务器之间的网络复制数据</li>
-</ul>
-</li>
-<li>NDB CLUSTER高可用方案<ul>
-<li>国内用NDB集群的公司非常少，貌似有些银行有用。NDB集群不需要依赖第三方组件，全部都使用官方组件，能保证数据的一致性，某个数据节点挂掉，其他数据节点依然可以提供服务，管理节点需要做冗余以防挂掉</li>
-<li>缺点是：管理和配置都很复杂，而且某些SQL语句例如join语句需要避免</li>
-</ul>
-</li>
-</ul>
-<h4 id="6-Mysql中utf8和utf8mb4区别"><a href="#6-Mysql中utf8和utf8mb4区别" class="headerlink" title="6. Mysql中utf8和utf8mb4区别"></a>6. Mysql中utf8和utf8mb4区别</h4><ul>
-<li>MySQL在5.5.3之后增加了这个utf8mb4的编码，mb4就是most bytes 4的意思，专门用来兼容四字节的unicode。好在utf8mb4是utf8的超集，除了将编码改为utf8mb4外不需要做其他转换。当然，为了节省空间，一般情况下使用utf8也就可以了</li>
-<li>Mysql支持的utf8编码最大字符长度为3字节，如果遇到4字节的宽字符就会插入异常了。三个字节的UTF-8最大能编码的Unicode字符是0xffff，也就是Unicode中的基本多文种平面(BMP)。任何不在基本多文本平面的Unicode字符，都无法使用Mysql的utf8字符集存储</li>
-<li>包括 Emoji 表情(Emoji是一种特殊的Unicode编码，常见于ios和android手机上)，和很多不常用的汉字，以及任何新增的Unicode字符等等</li>
-<li>Mysql中保存4字节长度的UTF-8字符，需要使用utf8mb4字符集，但只有5.5.3版本以后的才支持(查看版本： select version();)。因此呢，为了获取更好的兼容性，应该总是使用utf8mb4而非utf8</li>
-<li>对于CHAR类型数据，utf8mb4会多消耗一些空间，根据Mysql官方建议，使用VARCHAR替代CHAR</li>
-</ul>
-<h4 id="7-Mysql中乐观锁和悲观锁区别"><a href="#7-Mysql中乐观锁和悲观锁区别" class="headerlink" title="7. Mysql中乐观锁和悲观锁区别"></a>7. Mysql中乐观锁和悲观锁区别</h4><ul>
-<li><p>悲观锁(Pessimistic Lock)</p>
-<ul>
-<li>悲观锁顾名思义，就是很悲观，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会block直到它拿到锁</li>
-<li>传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁</li>
-</ul>
-</li>
-<li><p>乐观锁(Optimistic Lock)</p>
-<ul>
-<li>乐观锁顾名思义，就是很乐观，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号等机制</li>
-<li>乐观锁适用于多读的应用类型，这样可以提高吞吐量，像数据库如果提供类似于<code>write_condition</code>机制的其实都是提供的乐观锁</li>
-<li>乐观锁的特点先进行业务操作，不到万不得已不去拿锁。即“乐观”的认为拿锁多半是会成功的，因此在进行完业务操作需要实际更新数据的最后一步再去拿一下锁就好</li>
-</ul>
-</li>
-<li><p>两种锁各有优缺点，不可认为一种好于另一种，像乐观锁适用于写比较少的情况下，即冲突真的很少发生的时候，这样可以省去了锁的开销，加大了系统的整个吞吐量。但如果经常产生冲突，上层应用会不断的进行retry，这样反倒是降低了性能，所以这种情况下用悲观锁就比较合适</p>
-</li>
-</ul>
-<h4 id="8-Mysql索引主要是哪些"><a href="#8-Mysql索引主要是哪些" class="headerlink" title="8. Mysql索引主要是哪些"></a>8. Mysql索引主要是哪些</h4><p>索引的目的在于提高查询效率</p>
-<ul>
-<li>UNIQUE(唯一索引)：不可以出现相同的值，可以有NULL值</li>
-<li>INDEX(普通索引)：允许出现相同的索引内容</li>
-<li>PROMARY KEY(主键索引)：不允许出现相同的值</li>
-<li>fulltext index(全文索引)：可以针对值中的某个单词，但效率确实不敢恭维</li>
-<li>组合索引：实质上是将多个字段建到一个索引里，列值的组合必须唯一</li>
-</ul>
-<hr>
-<h5 id="8-1-索引的缺点"><a href="#8-1-索引的缺点" class="headerlink" title="8.1 索引的缺点"></a>8.1 索引的缺点</h5><ul>
-<li>虽然索引大大提高了查询速度，同时却会降低更新表的速度，如对表进行INSERT，UPDATE和DELETE。因为更新表时，mysql不仅要保存数据，还要保存一下索引文件</li>
-<li>建立索引会占用磁盘空间的索引文件。一般情况这个问题不太严重，但如果你在要给大表上建了多种组合索引，索引文件会膨胀很宽， 索引只是提高效率的一个方式，如果mysql有大数据量的表，就要花时间研究建立最优的索引，或优化查询语句</li>
-</ul>
-<hr>
-<h5 id="8-2-索引使用技巧"><a href="#8-2-索引使用技巧" class="headerlink" title="8.2 索引使用技巧"></a>8.2 索引使用技巧</h5><ul>
-<li><strong>索引不会包含有NULL的列：</strong> 只要列中包含有NULL值，都将不会被包含在索引中，复合索引中只要有一列含有NULL值，那么这一列对于此符合索引就是无效的</li>
-<li><strong>使用短索引：</strong> 对串列进行索引，如果可以就应该指定一个前缀长度。例如，如果有一个char（255）的列，如果在前10个或20个字符内，多数值是唯一的，那么就不要对整个列进行索引。短索引不仅可以提高查询速度而且可以节省磁盘空间和I&#x2F;O操作</li>
-<li><strong>索引列排序：</strong>mysql查询只使用一个索引，因此如果where子句中已经使用了索引的话，那么order by中的列是不会使用索引的。因此数据库默认排序可以符合要求的情况下不要使用排序操作，尽量不要包含多个列的排序，如果需要最好给这些列建复合索引</li>
-<li><strong>like语句操作：</strong>一般情况下不鼓励使用like操作，如果非使用不可，注意正确的使用方式。<code>like ‘%aaa%’</code>不会使用索引，而<code>like ‘aaa%’</code>可以使用索引</li>
-<li>不要在列上进行运算</li>
-<li>不使用<code>NOT IN</code> 、<code>&lt;&gt;</code>、<code>！=</code>操作，但<code>&lt;</code>，<code>&lt;=</code>，<code>=</code>，<code>&gt;</code>，<code>&gt;=</code>，BETWEEN，IN是可以用到索引的</li>
-<li>索引要建立在经常进行select操作的字段上。这是因为，如果这些列很少用到，那么有无索引并不能明显改变查询速度。相反，由于增加了索引，反而降低了系统的维护速度和增大了空间需求</li>
-<li>索引要建立在值比较唯一的字段上。</li>
-<li>对于那些定义为text、image和bit数据类型的列不应该增加索引。因为这些列的数据量要么相当大，要么取值很少</li>
-<li>在where和join中出现的列需要建立索引。</li>
-<li>where的查询条件里有不等号(where column !&#x3D; …)，mysql将无法使用索引。</li>
-<li>如果where字句的查询条件里使用了函数(如：where DAY(column)&#x3D;…)，mysql将无法使用索引</li>
-<li>在join操作中(需要从多个数据表提取数据时)，mysql只有在主键和外键的数据类型相同时才能使用索引，否则及时建立了索引也不会使用</li>
-</ul>
-<hr>
-<h5 id="8-3-组合索引的作用"><a href="#8-3-组合索引的作用" class="headerlink" title="8.3 组合索引的作用"></a>8.3 组合索引的作用</h5><ul>
-<li>减少开销<ul>
-<li>建一个组合索引(col1，col2，col3)，实际相当于建了(col1)，(col1，col2)，(col1，col2，col3)三个索引。每多一个索引，都会增加写操作的开销和磁盘空间的开销。对于大量数据的表，使用组合索引会大大的减少开销</li>
-</ul>
-</li>
-<li>覆盖索引<ul>
-<li>通常指一个查询语句的执行只用从索引中就能够取得，不必从数据表中读取。也可以称之为实现了索引覆盖</li>
-<li>对组合索引(col1，col2，col3)，如果有如下的<code>sql: select col1，col2，col3 from test where col1=1 and col2=2</code></li>
-<li>那么MySQL可以直接通过遍历索引取得数据，而无需回表，这减少了很多的随机io操作。减少io操作，特别的随机io其实是dba主要的优化策略。所以，在真正的实际应用中，覆盖索引是主要的提升性能的优化手段之一</li>
-</ul>
-</li>
-<li>效率高<ul>
-<li>索引列越多，通过索引筛选出的数据越快</li>
-</ul>
-</li>
-</ul>
-<h4 id="9-Mysql联合索引最左匹配原则"><a href="#9-Mysql联合索引最左匹配原则" class="headerlink" title="9. Mysql联合索引最左匹配原则"></a>9. Mysql联合索引最左匹配原则</h4><ul>
-<li>在MySQL建立联合索引时会遵守最左前缀匹配原则，即最左优先<ul>
-<li>在检索数据时从联合索引的最左边开始匹配，Mysql会一直向右匹配直到遇到范围查询（<code>&gt;、&lt;、between、like</code>）就停止匹配了</li>
-<li>就比如 <code>a=3 and b=4 and c&gt;5 and d=6</code>如果建立(abcd)顺序的索引，d就用不到索引了，如果建立(abdc)的索引则都可以用到索引，其中abd的顺序可以任意调整，因为查询优化器会重新编排（即使是c&gt;5 and b&#x3D;4 and d&#x3D;6 and a&#x3D;3也会全部用到 abdc索引 ）</li>
-</ul>
-</li>
-<li><code>=</code>和<code>in</code>可以乱序，比如<code>a=1 and b=2 and c=3</code> 建立(abc)索引可以任意顺序，mysql查询优化器会优化顺序<ul>
-<li>这里需要注意下，比如abc索引 那么只要查询条件有a即可用到abc索引（如abc ab ac a），没有a就用不到</li>
-<li>最左前缀匹配成因：Mysql是创建复合索引的规则是根据索引最左边的字段进行排序，在第一个字段排序的基础上再进行第二个字段排序，类似于order by col1，col2… 所以第一个字段是绝对有序的 第二个字段就是无序的了，所以Mysql强调最左前缀匹配</li>
-</ul>
-</li>
-</ul>
-<h4 id="10-聚簇索引和非聚簇索引区别"><a href="#10-聚簇索引和非聚簇索引区别" class="headerlink" title="10. 聚簇索引和非聚簇索引区别"></a>10. 聚簇索引和非聚簇索引区别</h4><ul>
-<li>聚簇索引与非聚簇索引的区别是：叶子节点是否存放一整行记录</li>
-<li>InnoDB 主键使用的是聚簇索引，MyISAM 不管是主键索引，还是二级索引使用的都是非聚簇索引</li>
-<li>对于聚簇索引表来说（左图），表数据是和主键一起存储的，主键索引的叶结点存储行数据(包含了主键值)，二级索引的叶结点存储行的主键值。使用的是B+树作为索引的存储结构，非叶子节点都是索引关键字，但非叶子节点中的关键字中不存储对应记录的具体内容或内容地址。叶子节点上的数据是主键与具体记录(数据内容)</li>
-<li>对于非聚簇索引表来说（右图），表数据和索引是分成两部分存储的，主键索引和二级索引存储上没有任何区别。使用的是B+树作为索引的存储结构，所有的节点都是索引，叶子节点存储的是索引+索引对应的记录的数据</li>
-<li>因此，聚簇索引的叶子节点就是数据节点，而非聚簇索引的叶子节点仍然是索引节点，只不过有指向对应数据块的指针</li>
-</ul>
-<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7lczbhkshj318611ik0y.jpg" alt="image.png" style="zoom: 20%;" /></div>
-
-<h4 id="11-如何查询一个字段是否命中了索引"><a href="#11-如何查询一个字段是否命中了索引" class="headerlink" title="11. 如何查询一个字段是否命中了索引"></a>11. 如何查询一个字段是否命中了索引</h4><ul>
-<li>通过explain sql可看下SQL是否走了索引，很快对比出来 </li>
-<li>当一个sql中索引字段为int类型时，例如搜索条件<code>where num=&quot;111&quot;</code>与<code>where num=111</code>都可以使用该字段的索引。当一个中索引字段为varchar类型时，例如搜索条件<code>where num=&quot;111&quot;</code>可以使用索引，<code>where num=111</code>不可以使用索引</li>
-</ul>
-<h4 id="12-Mysql中查询数据什么情况下不会命中索引"><a href="#12-Mysql中查询数据什么情况下不会命中索引" class="headerlink" title="12. Mysql中查询数据什么情况下不会命中索引"></a>12. Mysql中查询数据什么情况下不会命中索引</h4><ul>
-<li>索引规范不合理，sql解析器不命中索引</li>
-<li>表中索引是以表中数据量字段最多的建立的索引，sql解析器不命中索引(实际就是索引没用，最后全局查找了)</li>
-<li>bool的字段做索引，sql选择器不命中索引</li>
-<li>模糊查询 %like</li>
-<li>索引列参与计算，使用了函数</li>
-<li>非最左前缀顺序</li>
-<li>where对null判断</li>
-<li>where不等于</li>
-<li>or操作有至少一个字段没有索引</li>
-<li>需要回表的查询结果集过大（超过配置的范围）</li>
-</ul>
-<h4 id="13-Mysql中的MVCC是什么"><a href="#13-Mysql中的MVCC是什么" class="headerlink" title="13. Mysql中的MVCC是什么"></a>13. Mysql中的MVCC是什么</h4><p>数据库并发控制——锁:Multiversion (version) concurrency control (MCC or MVCC) 多版本并发控制 ，它是数据库管理系统一种常见的并发控制</p>
-<p>并发控制常用的是锁，当线程要对一个共享资源进行操作的时候，加锁是一种非常简单粗暴的方法(事务开始时给 DQL 加读锁，给 DML 加写锁)，这种锁是一种 悲观 的实现方式，也就是说这会给其他事务造成堵塞，从而影响数据库性能</p>
-<p>其中在数据库中最常见的就是悲观锁和乐观锁：</p>
-<ul>
-<li>悲观锁：当一个线程需要对共享资源进行操作的时候，首先对共享资源进行加锁，当该线程持有该资源的锁的时候，其他线程对该资源进行操作的时候会被阻塞.</li>
-<li>乐观锁：当一个线程需要对一个共享资源进行操作的时候，不对它进行加锁，而是在操作完成之后进行判断。比如乐观锁会通过一个版本号控制，如果操作完成后通过版本号进行判断在该线程操作过程中是否有其他线程已经对该共享资源进行操作了，如果有则通知操作失败，如果没有则操作成功，当然除了版本号还有CAS，如果不了解的可以去学习一下，这里不做过多涉及</li>
-</ul>
-<p>MVCC的两种读形式：</p>
-<ul>
-<li>快照读：读取的只是当前事务的可见版本，不用加锁。而你只要记住 简单的 <code>select</code>操作就是快照读(select * from table where id &#x3D; xxx)</li>
-<li>当前读：读取的是当前版本，比如 特殊的读操作，更新&#x2F;插入&#x2F;删除操作</li>
-</ul>
-<p>MVCC的实现原理：</p>
-<p>MVCC 使用了“三个隐藏字段”来实现版本并发控制，MySQL在创建建表的时候 innoDB 创建的真正的三个隐藏列吧</p>
-<table>
-<thead>
-<tr>
-<th align="left">RowID</th>
-<th align="left">DB_TRX_ID</th>
-<th align="left">DB_ROLL_PTR</th>
-<th align="left">id</th>
-<th align="left">name</th>
-<th align="left">password</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">自动创建的id</td>
-<td align="left">事务id</td>
-<td align="left">回滚指针</td>
-<td align="left">id</td>
-<td align="left">name</td>
-<td align="left">password</td>
-</tr>
-</tbody></table>
-<ul>
-<li>RowID：隐藏的自增ID，当建表没有指定主键，InnoDB会使用该RowID创建一个聚簇索引</li>
-<li>DB_TRX_ID：最近修改（更新&#x2F;删除&#x2F;插入）该记录的事务ID</li>
-<li>DB_ROLL_PTR：回滚指针，指向这条记录的上一个版本</li>
-</ul>
-<p>其实还有一个删除的flag字段，用来判断该行记录是否已经被删除。而 MVCC 使用的是其中的 事务字段，回滚指针字段，是否删除字段</p>
-<h4 id="14-Mvcc和Redolog和Undolog以及Binlog有什么不同"><a href="#14-Mvcc和Redolog和Undolog以及Binlog有什么不同" class="headerlink" title="14. Mvcc和Redolog和Undolog以及Binlog有什么不同"></a>14. Mvcc和Redolog和Undolog以及Binlog有什么不同</h4><ul>
-<li>Mvcc<ul>
-<li>MVCC多版本并发控制是MySQL中基于乐观锁理论实现隔离级别的方式，用于读已提交和可重复读取隔离级别的实现</li>
-<li>在MySQL中，会在表中每一条数据后面添加两个字段，最近修改该行数据的事务ID，指向该行（undolog表中）回滚段的指针</li>
-<li>Read View判断行的可见性，创建一个新事务时，copy一份当前系统中的活跃事务列表。意思是，当前不应该被本事务看到的其他事务id列表</li>
-</ul>
-</li>
-<li>UndoLog<ul>
-<li>UndoLog也就是我们常说的回滚日志文件 主要用于事务中执行失败，进行回滚，以及MVCC中对于数据历史版本的查看</li>
-<li>由引擎层的InnoDB引擎实现，是逻辑日志，记录数据修改被修改前的值，比如”把id&#x3D;’B’ 修改为id &#x3D; ‘B2’ ，那么undo日志就会用来存放id &#x3D;’B’的记录”</li>
-<li>当一条数据需要更新前，会先把修改前的记录存储在undolog中，如果这个修改出现异常，则会使用undo日志来实现回滚操作，保证事务的一致性</li>
-<li>当事务提交之后，undo log并不能立马被删除，而是会被放到待清理链表中，待判断没有事物用到该版本的信息时才可以清理相应undolog。它保存了事务发生之前的数据的一个版本，用于回滚，同时可以提供多版本并发控制下的读（MVCC），也即非锁定读</li>
-</ul>
-</li>
-<li>Redolog<ul>
-<li>Redolog是重做日志文件是记录数据修改之后的值，用于持久化到磁盘中</li>
-<li>Redolog包括两部分：一：是内存中的日志缓冲(redo log buffer)，该部分日志是易失性的；二：是磁盘上的重做日志文件(redo log file)，该部分日志是持久的</li>
-<li>由引擎层的InnoDB引擎实现，是物理日志，记录的是物理数据页修改的信息，比如“某个数据页上内容发生了哪些改动”。当一条数据需要更新时，InnoDB会先将数据更新，然后记录redoLog 在内存中，然后找个时间将redoLog的操作执行到磁盘上的文件上</li>
-<li>不管是否提交成功我都记录，你要是回滚了，那我连回滚的修改也记录。它确保了事务的持久性</li>
-</ul>
-</li>
-<li>Binlog<ul>
-<li>Binlog由Mysql的Server层实现，是逻辑日志，记录的是sql语句的原始逻辑，比如”把id&#x3D;’B’ 修改为id &#x3D; ‘B2’</li>
-<li>Binlog会写入指定大小的物理文件中，是追加写入的，当前文件写满则会创建新的文件写入</li>
-<li>产生:事务提交的时候，一次性将事务中的sql语句，按照一定的格式记录到binlog中</li>
-<li>用于复制和恢复在主从复制中，从库利用主库上的binlog进行重播(执行日志中记录的修改逻辑)，实现主从同步。业务数据不一致或者错了，用binlog恢复</li>
-</ul>
-</li>
-</ul>
-<h4 id="15-Mysql读写分离以及主从同步"><a href="#15-Mysql读写分离以及主从同步" class="headerlink" title="15. Mysql读写分离以及主从同步"></a>15. Mysql读写分离以及主从同步</h4><ul>
-<li>原理：主库将变更写binlog日志，然后从库连接到主库后，从库有一个IO线程，将主库的binlog日志拷贝到自己本地，写入一个中继日志中，接着从库中有一个sql线程会从中继日志读取binlog，然后执行binlog日志中的内容，也就是在自己本地再执行一遍sql，这样就可以保证自己跟主库的数据一致</li>
-<li>问题：这里有很重要一点，就是从库同步主库数据的过程是串行化的，也就是说主库上并行操作，在从库上会串行化执行，由于从库从主库拷贝日志以及串行化执行sql特点，在高并发情况下，从库数据一定比主库慢一点，是有延时的，所以经常出现，刚写入主库的数据可能读不到了，要过几十毫秒，甚至几百毫秒才能读取到。还有一个问题，如果突然主库宕机了，然后恰巧数据还没有同步到从库，那么有些数据可能在从库上是没有的，有些数据可能就丢失了。所以mysql实际上有两个机制，一个是半同步复制，用来解决主库数据丢失问题，一个是并行复制，用来解决主从同步延时问题</li>
-<li>半同步复制：semi-sync复制，指的就是主库写入binlog日志后，就会将强制此时立即将数据同步到从库，从库将日志写入自己本地的relay log之后，接着会返回一个ack给主库，主库接收到至少一个从库ack之后才会认为写完成</li>
-<li>并发复制：指的是从库开启多个线程，并行读取relay log中不同库的日志，然后并行重放不同库的日志，这样库级别的并行。（将主库分库也可缓解延迟问题）</li>
-</ul>
-<h4 id="16-InnoDB的关键特性"><a href="#16-InnoDB的关键特性" class="headerlink" title="16. InnoDB的关键特性"></a>16. InnoDB的关键特性</h4><ul>
-<li>插入缓冲：对于非聚集索引的插入或更新操作，不是每一次直接插入到索引页中，而是先判断插入的非聚集索引页是否在缓冲池中，若在，则直接插入；若不在，则先放入到一个Insert Buffer对象中。然后再以一定的频率和情况进行Insert Buffer和辅助索引页子节点的merge（合并）操作，这时通常能将多个插入合并到一个操作中（因为在一个索引页中），这就大大提高了对于非聚集索引插入的性能</li>
-<li>两次写：两次写带给InnoDB存储引擎的是数据页的可靠性，有经验的DBA也许会想，如果发生写失效，可以通过重做日志进行恢复。这是一个办法。但是必须清楚地认识到，如果这个页本身已经发生了损坏（物理到page页的物理日志成功页内逻辑日志失败），再对其进行重做是没有意义的。这就是说，在应用（apply）重做日志前，用户需要一个页的副本，当写入失效发生时，先通过页的副本来还原该页，再进行重做。在对缓冲池的脏页进行刷新时，并不直接写磁盘，而是会通过memcpy函数将脏页先复制到内存中的doublewrite buffer，之后通过doublewrite buffer再分两次，每次1MB顺序地写入共享表空间的物理磁盘上，这就是doublewrite</li>
-<li>自适应哈希索引：InnoDB存储引擎会监控对表上各索引页的查询。如果观察到建立哈希索引可以带来速度提升，则建立哈希索引，称之为自适应哈希索引</li>
-<li>异步IO：为了提高磁盘操作性能，当前的数据库系统都采用异步IO（AIO）的方式来处理磁盘操作。AIO的另一个优势是可以进行IO Merge操作，也就是将多个IO合并为1个IO，这样可以提高IOPS的性能</li>
-<li>刷新邻接页：当刷新一个脏页时，InnoDB存储引擎会检测该页所在区（extent）的所有页，如果是脏页，那么一起进行刷新。这样做的好处显而易见，通过AIO可以将多个IO写入操作合并为一个IO操作，故该工作机制在传统机械磁盘下有着显著的优势</li>
-</ul>
-<h4 id="17-Mysql如何保证一致性和持久性"><a href="#17-Mysql如何保证一致性和持久性" class="headerlink" title="17. Mysql如何保证一致性和持久性"></a>17. Mysql如何保证一致性和持久性</h4><ul>
-<li>Mysql为了保证<code>ACID</code>中的一致性和持久性，使用了WAL(<code>Write-Ahead Logging</code>，先写日志再写磁盘)。<code>Redo log</code>就是一种WAL的应用</li>
-<li>当数据库忽然掉电，再重新启动时，Mysql可以通过<code>Redo log</code>还原数据。也就是说，每次事务提交时，不用同步刷新磁盘数据文件，只需要同步刷新<code>Redo log</code>就足够了</li>
-</ul>
-<h4 id="18-为什么选择B-树作为索引结构"><a href="#18-为什么选择B-树作为索引结构" class="headerlink" title="18. 为什么选择B+树作为索引结构"></a>18. 为什么选择B+树作为索引结构</h4><ul>
-<li>Hash索引：Hash索引底层是哈希表，哈希表是一种以key-value存储数据的结构，所以多个数据在存储关系上是完全没有任何顺序关系的，所以，对于区间查询是无法直接通过索引查询的，就需要全表扫描。所以，哈希索引只适用于等值查询的场景。而B+ 树是一种多路平衡查询树，所以他的节点是天然有序的（左子节点小于父节点、父节点小于右子节点），所以对于范围查询的时候不需要做全表扫描</li>
-<li>二叉查找树：解决了排序的基本问题，但是由于无法保证平衡，可能退化为链表</li>
-<li>平衡二叉树：通过旋转解决了平衡的问题，但是旋转操作效率太低</li>
-<li>红黑树：通过舍弃严格的平衡和引入红黑节点，解决了AVL旋转效率过低的问题，但是在磁盘等场景下，树仍然太高，IO次数太多</li>
-<li>B+树：在B树的基础上，将非叶节点改造为不存储数据纯索引节点，进一步降低了树的高度；此外将叶节点使用指针连接成链表，范围查询更加高效。此外，B+树，主要是查询效率高，O(logN)，可以充分利用磁盘预读的特性，多叉树，深度小，叶子结点有序且存储数据</li>
-</ul>
-<h4 id="19-InnoDB的行锁模式"><a href="#19-InnoDB的行锁模式" class="headerlink" title="19. InnoDB的行锁模式"></a>19. InnoDB的行锁模式</h4><ul>
-<li>共享锁(S)：用法lock in share mode，又称读锁，允许一个事务去读一行，阻止其他事务获得相同数据集的排他锁<ul>
-<li>若事务T对数据对象A加上S锁，则事务T可以读A但不能修改A，其他事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁。这保证了其他事务可以读A，但在T释放A上的S锁之前不能对A做任何修改</li>
-</ul>
-</li>
-<li>排他锁(X)：用法for update，又称写锁，允许获取排他锁的事务更新数据，阻止其他事务取得相同的数据集共享读锁和排他写锁<ul>
-<li>若事务T对数据对象A加上X锁，事务T可以读A也可以修改A，其他事务不能再对A加任何锁，直到T释放A上的锁。在没有索引的情况下，InnoDB只能使用表锁</li>
-</ul>
-</li>
-</ul>
-<h4 id="20-哈希-hash-比树-tree-更快，索引结构为什么要设计成树型"><a href="#20-哈希-hash-比树-tree-更快，索引结构为什么要设计成树型" class="headerlink" title="20. 哈希(hash)比树(tree)更快，索引结构为什么要设计成树型"></a>20. 哈希(hash)比树(tree)更快，索引结构为什么要设计成树型</h4><p>加速查找速度的数据结构，常见的有两类：</p>
-<ul>
-<li>哈希，例如HashMap，查询&#x2F;插入&#x2F;修改&#x2F;删除的平均时间复杂度都是O(1)</li>
-<li>树，例如平衡二叉搜索树，查询&#x2F;插入&#x2F;修改&#x2F;删除的平均时间复杂度都是O(lg(n))</li>
-</ul>
-<p>哈希只能满足等值查询，不满足范围和大小查询，其次哈希不可以排序。Mysql是用等值查询，用树的话，等值查询只需要顺序遍历即可。但是对于排序查询的sql需求：分组：<code>group by</code> ，排序：<code>order by</code> ，比较：<code>&lt;、&gt;</code>等，哈希型的索引，时间复杂度会退化为O(n)，而树型的“有序”特性，依然能够保持O(log(n)) 的高效率</p>
-<h4 id="21-为什么索引的key长度不能太长"><a href="#21-为什么索引的key长度不能太长" class="headerlink" title="21. 为什么索引的key长度不能太长"></a>21. 为什么索引的key长度不能太长</h4><p>key 太长会导致一个页当中能够存放的 key 的数目变少，间接导致索引树的页数目变多，索引层次增加，从而影响整体查询变更的效率</p>
-<h4 id="22-Mysql的数据如何恢复到任意时间点"><a href="#22-Mysql的数据如何恢复到任意时间点" class="headerlink" title="22. Mysql的数据如何恢复到任意时间点"></a>22. Mysql的数据如何恢复到任意时间点</h4><p>恢复到任意时间点以定时的做全量备份，以及备份增量的 binlog 日志为前提。恢复到任意时间点首先将全量备份恢复之后，再此基础上回放增加的 binlog 直至指定的时间点</p>
-<h4 id="23-Mysql为什么加了索引可以加快查询"><a href="#23-Mysql为什么加了索引可以加快查询" class="headerlink" title="23. Mysql为什么加了索引可以加快查询"></a>23. Mysql为什么加了索引可以加快查询</h4><p>在数据十分庞大的时候，索引可以大大加快查询的速度，这是因为使用索引后可以不用扫描全表来定位某行的数据，而是先通过索引表找到该行数据对应的物理地址然后访问相应的数据</p>
-<ul>
-<li>优势：可以快速检索，减少I&#x2F;O次数，加快检索速度；根据索引分组和排序，可以加快分组和排序</li>
-<li>劣势：索引本身也是表，因此会占用存储空间，一般来说，索引表占用的空间的数据表的1.5倍；索引表的维护和创建需要时间成本，这个成本随着数据量增大而增大；构建索引会降低数据表的修改操作（删除，添加，修改）的效率，因为在修改数据表的同时还需要修改索引表</li>
-</ul>
-<h4 id="24-Explain命令有什么用"><a href="#24-Explain命令有什么用" class="headerlink" title="24. Explain命令有什么用"></a>24. Explain命令有什么用</h4><p>在开发的过程中，我们有时会用<strong>慢查询</strong>去记录一些执行时间比较久的Sql语句，找出这些Sql语句并不意味着完事了，这个时候我们就需要用到explain这个命令来查看一个这些Sql语句的执行计划，查看该Sql语句有没有使用上了索引，有没有做全表扫描，这些都可以通过explain命令来查看</p>
-<p>expain出来的信息有10列，分别是<code>id、select_type、table、type、possible_keys、key、key_len、ref、rows、Extra</code></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">- <span class="built_in">id</span>：select选择标识符</span><br><span class="line">- select_type：表示查询的类型</span><br><span class="line">- table：输出结果集的表</span><br><span class="line">- partitions：匹配的分区</span><br><span class="line">- <span class="built_in">type</span>：表示表的连接类型</span><br><span class="line">- possible_keys：表示查询时，可能使用的索引</span><br><span class="line">- key：表示实际使用的索引</span><br><span class="line">- key_len：索引字段的长度</span><br><span class="line">- ref：列与索引的比较</span><br><span class="line">- rows：扫描出的行数(估算的行数)</span><br><span class="line">- filtered：按表条件过滤的行百分比</span><br><span class="line">- Extra：执行情况的描述和说明</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>id：select选择标识符</p>
-<p>id是Sql执行的顺序的标识，Sql从大到小的执行</p>
-<ul>
-<li>id相同时，执行顺序由上至下</li>
-<li>如果是子查询，id的序号会递增，id值越大优先级越高，越先被执行</li>
-<li>id如果相同，可以认为是一组，从上往下顺序执行；在所有组中，id值越大，优先级越高，越先执行</li>
-</ul>
-</li>
-<li><p>select_type：表示查询的类型</p>
-<p>查询中每个select子句的类型</p>
-<ul>
-<li>SIMPLE(简单SELECT，不使用UNION或子查询等)</li>
-<li>PRIMARY(查询中若包含任何复杂的子部分，最外层的select被标记为PRIMARY)</li>
-<li>UNION(UNION中的第二个或后面的SELECT语句)</li>
-<li>DEPENDENT UNION(UNION中的第二个或后面的SELECT语句，取决于外面的查询)</li>
-<li>UNION RESULT(UNION的结果)</li>
-<li>SUBQUERY(子查询中的第一个SELECT)</li>
-<li>DEPENDENT SUBQUERY(子查询中的第一个SELECT，取决于外面的查询)</li>
-<li>DERIVED(派生表的SELECT，FROM子句的子查询)</li>
-<li>UNCACHEABLE SUBQUERY(一个子查询的结果不能被缓存，必须重新评估外链接的第一行)</li>
-</ul>
-</li>
-<li><p>table：输出结果集的表</p>
-<ul>
-<li>table显示这一行的数据是关于哪张表的，有时不是真实的表名字，看到的是derivedx</li>
-</ul>
-</li>
-<li><p>partitions：匹配的分区</p>
-</li>
-<li><p>type：表示表的连接类型</p>
-<p>type表示Mysql在表中找到所需行的方式，又称“访问类型”。常用的类型有： ALL， index， range， ref， eq_ref， const， system， NULL（从左到右，性能从差到好）</p>
-<ul>
-<li>ALL：Full Table Scan， Mysql将遍历全表以找到匹配的行</li>
-<li>index：Full Index Scan，index与ALL区别为index类型只遍历索引树</li>
-<li>range：只检索给定范围的行，使用一个索引来选择行</li>
-<li>ref：表示上述表的连接匹配条件，即哪些列或常量被用于查找索引列上的值</li>
-<li>eq_ref：类似ref，区别就在使用的索引是唯一索引，对于每个索引键值，表中只有一条记录匹配，简单来说，就是多表连接中使用primary key或者 unique key作为关联条件</li>
-<li>const、system：当Mysql对查询某部分进行优化，并转换为一个常量时，使用这些类型访问。如将主键置于where列表中，Mysql就能将该查询转换为一个常量，system是const类型的特例，当查询的表只有一行的情况下，使用system</li>
-<li>NULL：Mysql在优化过程中分解语句，执行时甚至不用访问表或索引，例如从一个索引列里选取最小值可以通过单独索引查找完成</li>
-</ul>
-</li>
-<li><p>possible_keys：表示查询时，可能使用的索引</p>
-<ul>
-<li>possible_keys指出Mysql能使用哪个索引在表中找到记录，查询涉及到的字段上若存在索引，则该索引将被列出，但不一定被查询使用</li>
-<li>该列完全独立于<code>EXPLAIN</code>输出所示的表的次序。这意味着在<code>possible_keys</code>中的某些键实际上不能按生成的表次序使用</li>
-<li>如果该列是NULL，则没有相关的索引。在这种情况下，可以通过检查WHERE子句看是否它引用某些列或适合索引的列来提高你的查询性能。如果是这样，创造一个适当的索引并且再次用EXPLAIN检查查询</li>
-</ul>
-</li>
-<li><p>key：表示实际使用的索引</p>
-<ul>
-<li>key列显示MySql实际决定使用的键（索引）</li>
-<li>如果没有选择索引，键是NULL。要想强制Mysql使用或忽视<code>possible_keys</code>列中的索引，在查询中使用<code>FORCE INDEX、USE INDEX</code>或者<code>IGNORE INDEX</code></li>
-</ul>
-</li>
-<li><p>key_len：索引字段的长度</p>
-<ul>
-<li>key_len表示索引中使用的字节数，可通过该列计算查询中使用的索引的长度（key_len显示的值为索引字段的最大可能长度，并非实际使用长度，即key_len是根据表定义计算而得，不是通过表内检索出的）不损失精确性的情况下，长度越短越好</li>
-</ul>
-</li>
-<li><p>ref：列与索引的比较</p>
-<ul>
-<li>ref表示上述表的连接匹配条件，即哪些列或常量被用于查找索引列上的值</li>
-</ul>
-</li>
-<li><p>rows：扫描出的行数(估算的行数)</p>
-<ul>
-<li>rows表示Mysql根据表统计信息及索引选用情况，估算的找到所需的记录所需要读取的行数</li>
-</ul>
-</li>
-<li><p>filtered：按表条件过滤的行百分比</p>
-</li>
-<li><p>Extra：执行情况的描述和说明</p>
-<p>该列包含Mysql解决查询的详细信息，有以下几种情况：</p>
-<ul>
-<li>Using where：列数据是从仅仅使用了索引中的信息而没有读取实际的行动的表返回的，这发生在对表的全部的请求列都是同一个索引的部分的时候，表示mysql服务器将在存储引擎检索行后再进行过滤</li>
-<li>Using temporary：表示Mysql需要使用临时表来存储结果集，常见于排序和分组查询</li>
-<li>Using filesort：Mysql中无法利用索引完成的排序操作称为“文件排序”</li>
-<li>Using join buffer：改值强调了在获取连接条件时没有使用索引，并且需要连接缓冲区来存储中间结果。如果出现了这个值，那应该注意，根据查询的具体情况可能需要添加索引来改进能</li>
-<li>Impossible where：这个值强调了where语句会导致没有符合条件的行</li>
-<li>Select tables optimized away：这个值意味着仅通过使用索引，优化器可能仅从聚合函数结果中返回一行</li>
-</ul>
-</li>
-</ul>
-<h4 id="25-MySQL优化"><a href="#25-MySQL优化" class="headerlink" title="25. MySQL优化"></a>25. MySQL优化</h4><ul>
-<li>避免不走索引的场景</li>
-<li>select语句其他优化</li>
-<li>增删改DML语句优化</li>
-<li>查询条件优化</li>
-<li>建表优化</li>
-</ul>
-<h5 id="25-1-避免不走索引的场景"><a href="#25-1-避免不走索引的场景" class="headerlink" title="25.1 避免不走索引的场景"></a>25.1 避免不走索引的场景</h5><ol>
-<li>尽量避免在字段开头模糊查询，会导致数据库引擎放弃索引进行全表扫描</li>
-<li>尽量避免使用<code>in</code>和<code>not in </code>，会导致引擎走全表扫描</li>
-<li>尽量避免使用<code>or</code>，会导致数据库引擎放弃索引进行全表扫描</li>
-<li>尽量避免进行<code>null</code>值的判断，会导致数据库引擎放弃索引进行全表扫描</li>
-<li>尽量避免在<code>where</code>条件中等号的左侧进行表达式、函数操作，会导致数据库引擎放弃索引进行全表扫描</li>
-<li>当数据量大时，避免使用<code>where 1=1</code>的条件，通常为了方便拼装查询条件，我们会默认使用该条件，数据库引擎会放弃索引进行全表扫描</li>
-<li>条件查询不能用<code>&lt;&gt;</code>或者<code>!=</code></li>
-<li><code>where</code>条件仅包含复合索引非前置列</li>
-<li>隐式类型转换造成不使用索引</li>
-<li><code>order by</code>条件要与<code>where</code>中条件一致，否则<code>order by</code>不会利用索引进行排序</li>
-<li>正确使用<code>hint</code>优化语句</li>
-</ol>
-<h5 id="25-2-select语句其他优化"><a href="#25-2-select语句其他优化" class="headerlink" title="25.2 select语句其他优化"></a>25.2 select语句其他优化</h5><ol>
-<li>避免出现<code>select *</code></li>
-<li>避免出现不确定结果的函数</li>
-<li>多表关联查询时，小表在前，大表在后</li>
-<li>使用表的别名</li>
-<li>用<code>where</code>语句替换<code>HAVING</code>字句</li>
-<li>调整<code>where</code>字句中的连接顺序</li>
-</ol>
-<h5 id="25-3-增删改DML语句优化"><a href="#25-3-增删改DML语句优化" class="headerlink" title="25.3 增删改DML语句优化"></a>25.3 增删改DML语句优化</h5><ol>
-<li>大批量插入数据</li>
-<li>适当使用<code>commit</code></li>
-<li>避免重复查询更新的数据</li>
-<li>查询优先还是更新<code>(insert、update、delete)</code>优先</li>
-</ol>
-<h5 id="25-4-查询条件优化"><a href="#25-4-查询条件优化" class="headerlink" title="25.4 查询条件优化"></a>25.4 查询条件优化</h5><ol>
-<li>对于复杂的查询，可以使用中间临时表暂存数据</li>
-<li>优化<code>group by</code>语句</li>
-<li>优化<code>join</code>语句</li>
-<li>优化<code>union</code>语句</li>
-<li>拆分复杂<code>SQL</code>为多个小<code>SQL</code>，避免大事务</li>
-<li>使用<code>truncate</code>代替<code>delete</code></li>
-<li>使用合理的分页方式以提高分页效率</li>
-</ol>
-<h5 id="25-5-建表优化"><a href="#25-5-建表优化" class="headerlink" title="25.5 建表优化"></a>25.5 建表优化</h5><ol>
-<li>在表中建立索引，优先考虑<code>where、order by</code>使用到的字段</li>
-<li>尽量使用数字类型（性别：男：1，女：2），若只含数值信息的字段尽量不要设计为字符型，这会降低查询和连接的性能，并会增加存储的开销</li>
-<li>查询数据量大的表，会造成查询缓慢。主要的原因是扫描行数过多，这个时候可以通过程序，分段分页进行查询，循环遍历，将结果合并处理进行展示</li>
-<li>用<code>varchar/nvarchar</code>代替<code>char/nchar</code></li>
-</ol>
-<h4 id="26-SQL注入"><a href="#26-SQL注入" class="headerlink" title="26. SQL注入"></a>26. SQL注入</h4><p>Sql注入攻击是通过将恶意的Sql查询或添加语句插入到应用的输入参数中，再在后台Sql服务器上解析执行进行的攻击，它目前黑客对数据库进行攻击的最常用手段之一。</p>
-<p><strong>避免SQL注入：</strong></p>
-<ul>
-<li>参数校验，校验数据的类型，长度，特殊字符，数据库关键词等</li>
-<li>代码层面防止SQL注入攻击的最佳方案是SQL预编译，尽量不写SQL原生语句，使用ORM</li>
-<li>严格限制数据库权限</li>
-<li>避免直接响应一些SQL异常信息，SQL发生异常后，自定义异常进行响应</li>
-</ul>
-<h4 id="27-MySQL、MongoDB、Redis区别，适用场景"><a href="#27-MySQL、MongoDB、Redis区别，适用场景" class="headerlink" title="27. MySQL、MongoDB、Redis区别，适用场景"></a>27. MySQL、MongoDB、Redis区别，适用场景</h4><h5 id="27-1-MySQL"><a href="#27-1-MySQL" class="headerlink" title="27.1 MySQL"></a>27.1 MySQL</h5><ol>
-<li>高度事务性系统。例如银行或会计系统，传统的关系型数据库目前还是更适用于需要大量原子性复杂事务的应用程序</li>
-<li>传统的商业智能应用，针对特定问题的<code>BI</code>数据库会产生高度优化的查询方式，对于此类应用，数据仓库可能是更合适的选择</li>
-</ol>
-<h5 id="27-2-MongoDB"><a href="#27-2-MongoDB" class="headerlink" title="27.2 MongoDB"></a>27.2 MongoDB</h5><ol>
-<li>网站数据：适合实时的插入，更新与查询，并具备网站实时数据存储所需的复制及高度伸缩性</li>
-<li>缓存：由于性能很高，也适合作为信息基础设施的缓存层，在系统重启之后，搭建的持久化缓存可以避免下层的数据源过载</li>
-<li>大尺寸、低价值的数据也是<code>MongoDB</code>的最佳选择，使用传统的关系型数据库存储一些数据时可能会比较贵，在此之前很多程序员往往会选择传统的文件进行存储</li>
-<li>高伸缩的场景，非常适合由数十台或数百台服务器组成的数据库</li>
-<li>用于对象及<code>json</code>数据的存储，<code>MongoDB</code>的<code>bson</code>数据格式非常适合文档格式化的存储及查询</li>
-</ol>
-<h5 id="27-3-Redis"><a href="#27-3-Redis" class="headerlink" title="27.3 Redis"></a>27.3 Redis</h5><ol>
-<li>用来做缓存：<code>Redis</code>的所有数据是存放在内存中的</li>
-<li>可以在某些特定应用场景下替代传统数据库：比如社交类的应用</li>
-<li>在一些大型系统中，巧妙的实现一些特定的功能：<code>session</code>共享、购物车</li>
-<li><code>MongoDB</code>不支持<code>SQL</code>语句</li>
-</ol>
-<hr>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>八股文</tag>
-        <tag>MySQL</tag>
       </tags>
   </entry>
   <entry>

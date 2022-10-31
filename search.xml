@@ -1,6 +1,350 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Linux操作系统面试题</title>
+    <url>/2022/10/28/Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<p>Linux常见面试题整理</p>
+<hr>
+<p><strong>50个最常用的Unix&#x2F;Linux命令</strong></p>
+<h4 id="1-tar"><a href="#1-tar" class="headerlink" title="1. tar"></a>1. tar</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">tar cvf archive_name.tar <span class="built_in">dirname</span>/ 创建一个新的tar文件</span><br><span class="line">tar xvf archive_name.tar 解压tar文件</span><br><span class="line">tar tvf archive_name.tar 查看tar文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-grep"><a href="#2-grep" class="headerlink" title="2. grep"></a>2. grep</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">grep -i <span class="string">&quot;the&quot;</span> demo_file 在文件中查找字符串(不区分大小写)</span><br><span class="line">grep -A 3 -i <span class="string">&quot;example&quot;</span> demo_text 输出成功匹配的行，以及该行之后的三行</span><br><span class="line">grep -r <span class="string">&quot;ramesh&quot;</span> * 在一个文件夹中递归查询包含指定字符串的文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-find"><a href="#3-find" class="headerlink" title="3. find"></a>3. find</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">find -iname <span class="string">&quot;MyProgram.c&quot;</span> 查找指定文件名的文件(不区分大小写)</span><br><span class="line">find -iname <span class="string">&quot;MyProgram.c&quot;</span> -<span class="built_in">exec</span> <span class="built_in">md5sum</span> &#123;&#125; \; 对找到的文件执行某个命令</span><br><span class="line">find ~ -empty 查找home目录下的所有空文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-ssh"><a href="#4-ssh" class="headerlink" title="4. ssh"></a>4. ssh</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh -l jsmith remotehost.example.com 登录到远程主机</span><br><span class="line">ssh -v -l jsmith remotehost.example.com 调试ssh客户端</span><br><span class="line">ssh -V 显示ssh客户端版本</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-sed"><a href="#5-sed" class="headerlink" title="5. sed"></a>5. sed</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sed <span class="string">&#x27;s/.$//&#x27;</span> filename 当你将Dos系统中的文件复制到Unix/Linux后，这个文件每行都会以\r\n结尾，sed可以轻易将其转换为Unix格式的文件，使用\n结尾的文件</span><br><span class="line">sed -n <span class="string">&#x27;1!G; h; p&#x27;</span> filename 反转文件内容并输出</span><br><span class="line">sed <span class="string">&#x27;/./=&#x27;</span> thegeekstuff.txt | sed <span class="string">&#x27;N; s/\n/ /&#x27;</span> 为非空行添加行号</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-awk"><a href="#6-awk" class="headerlink" title="6. awk"></a>6. awk</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">awk <span class="string">&#x27;!($0 in array) &#123; array[$0]; print&#125;&#x27;</span> temp 删除重复行</span><br><span class="line">awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;$3=$4&#x27;</span> /etc/passwd 打印/etc/passwd中所有包含同样的uid和gid的行</span><br><span class="line">awk <span class="string">&#x27;&#123;print $2,$5;&#125;&#x27;</span> employee.txt 打印文件中的指定部分的字段</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-vim"><a href="#7-vim" class="headerlink" title="7. vim"></a>7. vim</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">vim +10 filename.txt 打开文件并跳到第10行</span><br><span class="line">vim +/search-term filename.txt 打开文件跳到第一个匹配的行</span><br><span class="line">vim -R /etc/passwd 以只读模式打开文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-diff"><a href="#8-diff" class="headerlink" title="8. diff"></a>8. diff</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">diff -w name_list.txt name_list_new.txt 比较的时候忽略空白符</span><br></pre></td></tr></table></figure>
+
+<h4 id="9-sort"><a href="#9-sort" class="headerlink" title="9. sort"></a>9. sort</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sort</span> names.txt 以升序对文件内容排序</span><br><span class="line"><span class="built_in">sort</span> -r names.txt 以降序对文件内容排序</span><br><span class="line"><span class="built_in">sort</span> -t: -k 3n /etc/passwd | more 以第三个字段对/etc/passwd的内容排序</span><br></pre></td></tr></table></figure>
+
+<h4 id="10-export"><a href="#10-export" class="headerlink" title="10. export"></a>10. export</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> | grep ORCALE 输出跟字符串oracle匹配的环境变量</span><br><span class="line"><span class="built_in">export</span> ORACLE_HOME=/u01/app/oracle/product/10.2.0 设置全局环境变量</span><br></pre></td></tr></table></figure>
+
+<h4 id="11-xargs"><a href="#11-xargs" class="headerlink" title="11. xargs"></a>11. xargs</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> *.jpg | xargs -n1 -i <span class="built_in">cp</span> &#123;&#125; /external-hard-drive/directory 将所有图片文件拷贝到外部驱动器</span><br><span class="line">find / -name *.jpg -<span class="built_in">type</span> f -<span class="built_in">print</span> | xargs tar -cvzf images.tar.gz 将系统中所有jpd文件压缩打包</span><br><span class="line"><span class="built_in">cat</span> url-list.txt | xargs wget –c 下载文件中列出的所有url对应的页面</span><br></pre></td></tr></table></figure>
+
+<h4 id="12-ls"><a href="#12-ls" class="headerlink" title="12. ls"></a>12. ls</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -lh 以易读的方式显示文件大小(显示为MB,GB...)</span><br><span class="line"><span class="built_in">ls</span> -ltr 以最后修改时间升序列出文件</span><br><span class="line"><span class="built_in">ls</span> -F 在文件名后面显示文件类型</span><br></pre></td></tr></table></figure>
+
+<h4 id="13-pwd"><a href="#13-pwd" class="headerlink" title="13. pwd"></a>13. pwd</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">输出当前工作目录</span><br></pre></td></tr></table></figure>
+
+<h4 id="14-cd"><a href="#14-cd" class="headerlink" title="14. cd"></a>14. cd</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> 可以在最近工作的两个目录间切换</span><br><span class="line"><span class="built_in">cd</span> ../ 跳到上级目录</span><br><span class="line"><span class="built_in">cd</span> /opt 不管现在到那直接跳到指定的opt文件夹中</span><br><span class="line"><span class="built_in">cd</span> ~ 切换当前用户的家目录。root用户的家目录就是root目录</span><br></pre></td></tr></table></figure>
+
+<h4 id="15-gzip"><a href="#15-gzip" class="headerlink" title="15. gzip"></a>15. gzip</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">gzip test.txt 创建一个*.gz的压缩文件</span><br><span class="line">gzip -d test.txt.gz 解压*.gz文件</span><br><span class="line">gzip -l *.gz 显示压缩的比率</span><br></pre></td></tr></table></figure>
+
+<h4 id="16-bzip2"><a href="#16-bzip2" class="headerlink" title="16. bzip2"></a>16. bzip2</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">bzip2 test.txt 创建*.bz2压缩文件</span><br><span class="line">bzip2 -d test.txt.bz2 解压*.bz2文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="17-uzip"><a href="#17-uzip" class="headerlink" title="17. uzip"></a>17. uzip</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">unzip test.zip 解压*.zip文件</span><br><span class="line">unzip -l jasper.zip 查看*.zip文件的内容</span><br></pre></td></tr></table></figure>
+
+<h4 id="18-shutdown"><a href="#18-shutdown" class="headerlink" title="18. shutdown"></a>18. shutdown</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">shutdown -h now 关闭系统并立即关机</span><br><span class="line">shutdown -h +10 10分钟后关机</span><br><span class="line">shutdown -r now 重启</span><br><span class="line">shutdown -Fr now 重启期间强制进行系统检查</span><br></pre></td></tr></table></figure>
+
+<h4 id="19-ftp"><a href="#19-ftp" class="headerlink" title="19. ftp"></a>19. ftp</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ftp IP/hostname ftp命令和sftp命令的用法基本相似连接ftp服务器并下载多个文件</span><br><span class="line">ftp&gt; mls *.html - 显示远程主机上文件列表</span><br></pre></td></tr></table></figure>
+
+<h4 id="20-crontab"><a href="#20-crontab" class="headerlink" title="20. crontab"></a>20. crontab</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">crontab -u john -l 查看某个用户的crontab入口</span><br><span class="line">*/10 * * * * /home/ramesh/check-disk-space 设置一个每十分钟执行一次的计划任务</span><br></pre></td></tr></table></figure>
+
+<h4 id="21-service"><a href="#21-service" class="headerlink" title="21. service"></a>21. service</h4><p>service命令用于运行System V init脚本，这些脚本一般位于&#x2F;etc&#x2F;init.d文件下，这个命令可以直接运行这个文件夹里面的脚本，而不用加上路径</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">service ssh status 查看服务状态</span><br><span class="line">service --status-all 查看所有服务状态</span><br><span class="line">service ssh restart 重启服务</span><br></pre></td></tr></table></figure>
+
+<h4 id="22-ps"><a href="#22-ps" class="headerlink" title="22. ps"></a>22. ps</h4><p>ps命令用于显示正在运行中的进程的信息，ps命令有很多选项，这里只列出了几个</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ps -ef | more 查看当前正在运行的所有进程</span><br><span class="line">ps -efH | more 以树状结构显示当前正在运行的进程，H选项表示显示进程的层次结构</span><br></pre></td></tr></table></figure>
+
+<h4 id="23-free"><a href="#23-free" class="headerlink" title="23. free"></a>23. free</h4><p>这个命令用于显示系统当前内存的使用情况，包括已用内存、可用内存和交换内存的情况</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">free 默认情况下free会以字节为单位输出内存的使用量</span><br><span class="line">free -g 如果你想以其他单位输出内存的使用量，需要加一个选项，-g为GB，-m为MB，-k为KB，-b为字节</span><br><span class="line">free -t 如果你想查看所有内存的汇总，请使用-t选项，使用这个选项会在输出中加一个汇总行</span><br></pre></td></tr></table></figure>
+
+<h4 id="24-top"><a href="#24-top" class="headerlink" title="24. top"></a>24. top</h4><p>top命令会显示当前系统中占用资源最多的一些进程（默认以CPU占用率排序）如果你想改变排序方式，可以在结果列表中点击O（大写字母O）会显示所有可用于排序的列，这个时候你就可以选择你想排序的列</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">top -u oracle 如果只想显示某个特定用户的进程，可以使用-u选项</span><br></pre></td></tr></table></figure>
+
+<h4 id="25-df"><a href="#25-df" class="headerlink" title="25. df"></a>25. df</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">df</span> -k 显示文件系统的磁盘使用情况，默认情况下<span class="built_in">df</span> -k 将以字节为单位输出磁盘的使用量</span><br><span class="line"><span class="built_in">df</span> -h 使用-h选项可以以更符合阅读习惯的方式显示磁盘使用量</span><br><span class="line"><span class="built_in">df</span> -T 使用-T选项显示文件系统类型</span><br></pre></td></tr></table></figure>
+
+<h4 id="26-kill"><a href="#26-kill" class="headerlink" title="26. kill"></a>26. kill</h4><p>kill用于终止一个进程。一般我们会先用<code>ps -ef</code>查找某个进程得到它的进程号，然后再使用<code>kill -9 进程号</code>终止该进程。你还可以使用killall、pkill、xkill来终止进程</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ps -ef | grep vim</span><br><span class="line">	ramesh    7243  7222  9 22:43 pts/2    00:00:00 vim</span><br><span class="line"><span class="built_in">kill</span> -9 7243</span><br></pre></td></tr></table></figure>
+
+<h4 id="27-rm"><a href="#27-rm" class="headerlink" title="27. rm"></a>27. rm</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> -i filename.txt 删除文件前先确认</span><br><span class="line"><span class="built_in">rm</span> -i file* 在文件名中使用shell的元字符会非常有用。删除文件前先打印文件名并进行确认</span><br><span class="line"><span class="built_in">rm</span> -r example 递归删除文件夹下所有文件，并删除该文件夹</span><br></pre></td></tr></table></figure>
+
+<h4 id="28-cp"><a href="#28-cp" class="headerlink" title="28. cp"></a>28. cp</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> -p file1 file2 拷贝文件1到文件2，并保持文件的权限、属主和时间戳</span><br><span class="line"><span class="built_in">cp</span> -i file1 file2 拷贝file1到file2，如果file2存在会提示是否覆盖</span><br></pre></td></tr></table></figure>
+
+<h4 id="29-mv"><a href="#29-mv" class="headerlink" title="29. mv"></a>29. mv</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">注意如果使用-f选项则不会进行提示</span><br><span class="line"><span class="built_in">mv</span> -i file1 file2 将文件名file1重命名为file2，如果file2存在则提示是否覆盖</span><br><span class="line"><span class="built_in">mv</span> -v file1 file2 -v会输出重命名的过程，当文件名中包含通配符时，这个选项会非常方便</span><br></pre></td></tr></table></figure>
+
+<h4 id="30-cat"><a href="#30-cat" class="headerlink" title="30. cat"></a>30. cat</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> file1 file2 你可以一次查看多个文件的内容，下面的命令会先打印file1的内容，然后打印file2的内容</span><br><span class="line"><span class="built_in">cat</span> -n /etc/logrotate.conf -n命令可以在每行的前面加上行号</span><br></pre></td></tr></table></figure>
+
+<h4 id="31-mount"><a href="#31-mount" class="headerlink" title="31. mount"></a>31. mount</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /u01</span><br><span class="line">mount /dev/sdb1 /u01 如果要挂载一个文件系统，需要先创建一个目录，然后将这个文件系统挂载到这个目录上</span><br><span class="line">/dev/sdb1 /u01 ext2 defaults 0 2 也可以把它添加到fstab中进行自动挂载，这样任何时候系统重启的时候，文件系统都会被加载</span><br></pre></td></tr></table></figure>
+
+<h4 id="32-chmod"><a href="#32-chmod" class="headerlink" title="32. chmod"></a>32. chmod</h4><p>chmod用于改变文件和目录的权限</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> ug+rwx file.txt 给指定文件的属主和属组所有权限(包括读、写、执行)</span><br><span class="line"><span class="built_in">chmod</span> g-rwx file.txt 删除指定文件的属组的所有权限</span><br><span class="line"><span class="built_in">chmod</span> -R ug+rwx file.txt 修改目录的权限，以及递归修改目录下面所有文件和子目录的权限</span><br></pre></td></tr></table></figure>
+
+<h4 id="33-chown"><a href="#33-chown" class="headerlink" title="33. chown"></a>33. chown</h4><p>chown用于改变文件属主和属组</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chown</span> oracle:dba dbora.sh 同时将某个文件的属主改为oracle，属组改为db</span><br><span class="line"><span class="built_in">chown</span> -R oracle:dba /home/oracle 使用-R选项对目录和目录下的文件进行递归修改</span><br></pre></td></tr></table></figure>
+
+<h4 id="34-passwd"><a href="#34-passwd" class="headerlink" title="34. passwd"></a>34. passwd</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">passwd passwd用于在命令行修改密码，使用这个命令会要求你先输入旧密码，然后输入新密码</span><br><span class="line">passwd USERNAME 超级用户可以用这个命令修改其他用户的密码，这个时候不需要输入用户的密码</span><br><span class="line">passwd -d USERNAME passwd还可以删除某个用户的密码，这个命令只有root用户才能操作，删除密码后，这个用户不需要输入密码就可以登录到系统</span><br></pre></td></tr></table></figure>
+
+<h4 id="35-mkdir"><a href="#35-mkdir" class="headerlink" title="35. mkdir"></a>35. mkdir</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/temp 在home目录下创建一个名为temp的目录</span><br><span class="line"><span class="built_in">mkdir</span> -p dir1/dir2/dir3/dir4/ 使用-p选项可以创建一个路径上所有不存在的目录</span><br></pre></td></tr></table></figure>
+
+<h4 id="36-ifconfig"><a href="#36-ifconfig" class="headerlink" title="36. ifconfig"></a>36. ifconfig</h4><p>ifconfig用于查看和配置Linux系统的网络接口</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ifconfig -a 查看所有网络接口及其状态</span><br><span class="line">ifconfig eth0 up 使用up命令启动某个接口</span><br><span class="line">ifconfig eth0 down 使用down命令停止某个接口</span><br></pre></td></tr></table></figure>
+
+<h4 id="37-uname"><a href="#37-uname" class="headerlink" title="37. uname"></a>37. uname</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">uname</span> -a <span class="built_in">uname</span>可以显示一些重要的系统信息，例如内核名称、主机名、内核版本号、处理器类型之类的信息</span><br></pre></td></tr></table></figure>
+
+<h4 id="38-whereis"><a href="#38-whereis" class="headerlink" title="38. whereis"></a>38. whereis</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">whereis <span class="built_in">ls</span> 当你不知道某个命令的位置时可以使用whereis命令，下面使用whereis查找<span class="built_in">ls</span>的位置</span><br><span class="line">whereis -u -B /tmp -f lsmk 当你想查找某个可执行程序的位置，但这个程序又不在whereis的默认目录下，你可以使用-B选项，并指定目录作为这个选项的参数。下面的命令在/tmp目录下查找lsmk命令</span><br></pre></td></tr></table></figure>
+
+<h4 id="39-whatis"><a href="#39-whatis" class="headerlink" title="39. whatis"></a>39. whatis</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">whatis <span class="built_in">ls</span> wathis显示某个命令的描述信息</span><br><span class="line">whatis ifconfig wathis显示某个命令的描述信息</span><br></pre></td></tr></table></figure>
+
+<h4 id="40-locate"><a href="#40-locate" class="headerlink" title="40. locate"></a>40. locate</h4><p>locate命名可以显示某个指定文件（或一组文件）的路径，它会使用由updatedb创建的数据库</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">locate crontab 命令会显示系统中所有包含crontab字符串的文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="41-man"><a href="#41-man" class="headerlink" title="41. man"></a>41. man</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">man crontab 显示某个命令的man页面</span><br><span class="line">man SECTION-NUMBER commandname 有些命令可能会有多个man页面，每个man页面对应一种命令类型</span><br></pre></td></tr></table></figure>
+
+<h4 id="42-tail"><a href="#42-tail" class="headerlink" title="42. tail"></a>42. tail</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">tail</span> filename.txt <span class="built_in">tail</span>命令默认显示文件最后的10行文本</span><br><span class="line"><span class="built_in">tail</span> -n N filename.txt 你可以使用-n选项指定要显示的行数</span><br><span class="line"><span class="built_in">tail</span> -f log-file 你也可以使用-f选项进行实时查看，这个命令执行后会等待，如果有新行添加到文件尾部，它会继续输出新的行，在查看日志时这个选项会非常有用。你可以通过CTRL-C终止命令的执行</span><br></pre></td></tr></table></figure>
+
+<h4 id="43-less"><a href="#43-less" class="headerlink" title="43. less"></a>43. less</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">less huge-log-file.log 这个命名可以在不加载整个文件的前提下显示文件内容，在查看大型日志文件的时候这个命令会非常有用</span><br></pre></td></tr></table></figure>
+
+<h4 id="44-su"><a href="#44-su" class="headerlink" title="44. su"></a>44. su</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">su - USERNAME su命令用于切换用户账号，超级用户使用这个命令可以切换到任何其他用户而不用输入密码</span><br><span class="line">su -s <span class="string">&#x27;SHELLNAME&#x27;</span> USERNAME 用指定用户登录，并且使用指定的shell程序，而不用默认的</span><br></pre></td></tr></table></figure>
+
+<h4 id="45-mysql"><a href="#45-mysql" class="headerlink" title="45. mysql"></a>45. mysql</h4><p>mysql可能是Linux上使用最广泛的数据库，即使你没有在你的服务器上安装mysql，你也可以使用mysql客户端连接到远程的mysql服务器</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mysql -u root -p -h 192.168.1.2 连接一个远程数据库，需要输入密码</span><br><span class="line">mysql -u root -p 连接本地数据库</span><br></pre></td></tr></table></figure>
+
+<p>你也可以在命令行中输入数据库密码，只需要在-p后面加上密码作为参数，可以直接写在p后面而不用加空格</p>
+<h4 id="46-yum"><a href="#46-yum" class="headerlink" title="46. yum"></a>46. yum</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum install httpd 使用yum安装apache</span><br><span class="line">yum update httpd 更新apache</span><br><span class="line">yum remove httpd 卸载/删除apache</span><br></pre></td></tr></table></figure>
+
+<h4 id="47-rpm"><a href="#47-rpm" class="headerlink" title="47. rpm"></a>47. rpm</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">rpm -ivh httpd-2.2.3-22.0.1.el5.i386.rpm 使用rpm安装apache</span><br><span class="line">rpm -uvh httpd-2.2.3-22.0.1.el5.i386.rpm 更新apache</span><br><span class="line">rpm -ev httpd 卸载/删除apache</span><br></pre></td></tr></table></figure>
+
+<h4 id="48-ping"><a href="#48-ping" class="headerlink" title="48. ping"></a>48. ping</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ping -c 5 gmail.com ping一个远程主机，只发5个数据包</span><br></pre></td></tr></table></figure>
+
+<h4 id="49-date"><a href="#49-date" class="headerlink" title="49. date"></a>49. date</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">date</span> -s <span class="string">&quot;01/31/2010 23:59:53&quot;</span> 设置系统日期</span><br><span class="line">---</span><br><span class="line">当你修改了系统时间，你需要同步硬件时间和系统时间</span><br><span class="line">hwclock –systohc</span><br><span class="line">hwclock --systohc –utc</span><br></pre></td></tr></table></figure>
+
+<h4 id="50-wget"><a href="#50-wget" class="headerlink" title="50. wget"></a>50. wget</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-3.2.1.tar.gz 使用wget从网上下载软件、音乐、视频</span><br><span class="line">wget -O taglist.zip http://www.vim.org/scripts/download_script.php?src_id=7701 下载文件并以指定的文件名保存文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="51-CPU100-怎么排查和处理"><a href="#51-CPU100-怎么排查和处理" class="headerlink" title="51. CPU100%怎么排查和处理"></a>51. CPU100%怎么排查和处理</h4><p>使用top命令定位进程，再用top命令定位线程，再打印线程堆栈查看运行情况</p>
+<ol>
+<li><code>top</code>命令显示进程运行列表，找到最耗<code>CPU</code>的进程<code>PID</code></li>
+<li>找到最耗<code>CPU</code>的线程，<code>top -Hp 进程PID号</code>，显示进程的线程运行列表，找到最耗<code>CPU</code>的线程<code>PID</code></li>
+<li>将线程<code>PID</code>转化为16进制，<code>printf &quot;%x\n&quot; 线程PID号</code>，因为在堆栈里，线程<code>ID</code>是用16进制表示的</li>
+<li>查看堆栈，找到线程在干嘛，<code>pstack/jstack/grep</code>，<code>jstack 进程PID | grep ‘线程PID的16进制数’ -C5 --color</code>打印进程堆栈，通过线程<code>ID</code>，过滤得到线程堆栈，根据线程<code>PID</code>的16进制数找到消耗<code>CPU</code>高的线程对应的线程的名称，以及看到了改线程正在执行代码的堆栈</li>
+</ol>
+<hr>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>八股文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于博客</title>
+    <url>/2022/10/27/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容">
+  <script id="hbeData" type="hbeData" data-hmacdigest="4fd5a5bd8707a0a1cd39307dad6cd98e03fded9ba27a54a5b61e9696d84ea268">a17b4de793b95f7877066d2186f5861555e2d6b9cb5641947e36c8450a9062244141303af7f6ac122ca280e580e95da40c8ee95d99d2439c2f200eaab162cbb1875108085071c26de1a7a2252b96fcbe0f08370a21f14470abd2a2d2b018211a390d4a79c82cf2a64ae884fb7caded6082fa0005ef84e7ea431151015e2060bda837f3b622c77b40ee17a251d882f100278d00b9963489c074d217f528b9e8e054d830314c2ebd97fa3c76a53976dbdc3aa54c7b15ce70a5882de8489603f7173418c015d0ef7e8aa5ae4a33046644b0e563b4499cb8d0d6173282b0a21575c27f9144f5086203cb49e7bd9f84fa510fa7ca67502f97fdebb306ef8a69773c81e40bf148ee8b9d8ad2d1bdf194c6075caa40305d045fbb2a1c2119103f08f156ceaebc719357118924dd869dcd27372f3549487bee4f166e5c77adcb1ac7794dbe0a673ebfa66aa2595818250b9851cbcad400d4687e30b48667a8013245d51dce6aae77d5905b91f53b574fc443b1684c92af0bac92b0aacfa2311b89865521de7bc0054eeb9670d5568a2e98652854cf0ed9fc027967d196f3a30f8b2b14066b2b52b741727573fadde89b47e0d9fa69fed76a226477fc8a2f55fb32f9e4a53348a2747f494b15c8d7565c27afbb068f7ce813b4e1ddedada52692a9c6d917f278d17b970668263eeaaefcc44df89bcde5edc1ad4988985ab067b75e6cd1d6f6083dd6b1ce8e775db02a7d9533537b178a63ec573a5043bc15bbd2fc963c4f3aa122ec4f0b3fc30cca5257817db4bd4ffccc7a43fd006bc392e64e161e7b59542881b1b7db7805b0003d89224d2ef64a29bbcbd982ea90041c78c6f87bee6da444542e072c9c6786ea8101f8bf295aee03c0d6033a3e19116bae338e4be2520f564c69e09cabcbd5249b3c4c50d66ab39b30dd90f909ea126d2b48f8245d175a365531c939ef6e9a42c17a33a69c8b52de48e4757f5f25a4fef9493350305d558c5c0c806c0698893aaa568476e50e6079fe997df4194d8fb35a21ea8958bff697c158b049a30bd3bcd0e162772f352d83b202daafb229c098c33cda25c04e715a81f80f6673a1a70c6f17a033b3ddcd772068cce43302f1602f71d2b7a5e121056818a837126e27c0990955f13ad5ed1fe26d0e0aee808c0717a47a38999c20411f7ce53f8b1bc86018e5b9287eeaa3caf58b4244ae291f351667c000a7830273ef3d8a17f8c1254d819d16bcb2a2d9683972c91763ebbda2a379442d0b07437cfe123ac3be67f7318fb7803470146435bd3d593263e5e37c32705f6ad8b8d0decb68839c28c9a838f97b8613f4c483eee116afbea3097e72e0077f5a4ed396ad4c4be49ee36f3726809e0efa9aa8a9e0e3181b1126675c191b7b9a7fcf1ff115b2e87efd6ec64274d47cbdbd09c899a776819132d9566fea583fa1897209395d8dfb78cf6cdc2819d6c0e75da888e88ad236667388f965855fd7fc36d1249a1a1d24eab917be709ea423f9491f59038c726eac3ffed3707f0d3bdb8c90e1951f96ef89d1abfd2d4679259ea0d69c9a1f152594c71981fcc4dece41fa6dbc07cd2a1a3a0949396cebc5a8a3f13d0033e3ed78f7473fa5c9d6d5802e15232fa8b6bdd1feee2a12f22c2449c68bb1e7d8052c8ae42bfcc1f65444565986cbc63a4381f9bb0b27d0f5387f2f04a80432645dcd2a57c171892bdd3ffce03a5852a2768dfd5d53ac1fa5e321da9dba979819096a00897281370689f9e75e450560f86f506e598fff748d42ec26aab61b453561f9facad5af053d0c77652e200b75d59620b32899f0977b4d7f947cf1fd9beb68e8280f53cbfcdf2ef9ab67cdbb3bba405d77af100b02287ea616c931799fd7eb8c65b4843c926b2651e5d68b33e0e8cde998c763b06347c459de9fc8b6d5b10460a3388c750b194669523e2e6628d25d736b401ce307f71cc25241f4c82561bc6fa56eb3924f23148fbf518a80344233e7f71a3fe7150d9566a5b2d78802878628dcbe3aae5d400d10be685cf3015c07fa9981fe3645873b7089878cf1743cb0f6eb1796b83b00fe30bb78a6d55e94b4d4f0a2ededbfc36e8de15a8c68506befc43dc69e9abaaa7cd55a6b0f6e6792c45997a7acc30f602b783f1c2d9e0a430ab0a3fe4708ccebd7296c44cfbbed6e7cdf13078753bfd0f6d1866bcb3909c3a07cbdb5faa777ce9e8229c9f734f9bd4b8345ac641766ecb4180dff676c9eb4ac91e0330e530705671b54027ce8d3d33fc6fc9a01753866b28e5bcb8d028adb423edbaf834b45079379af6dbf75c379ec6cbe97f5acab496506713300ee2fa1d677ec006f8460d04a3a797a316a88ba832955f99e291cda035b1663c676618e95cc59dcd3414befa5426a4c35a12f9f95d1bf2fb1b12fe350b0b1b3bc504578eb3ab16aaff15505b218ec2b0fbc933d9034bea8be11ca2ace22f04b861883fd863a5ec6c16ab8ff90a72fbc89fe91f9c2b84601a8dd28de98bfe0d12ebbfbb14b201090325fbfdd352e276c6fbbdc989d94ee96b47b57a5aeff3af3e8bf9f7a0cafd74b8a28cf11b86ae485563e16bc071035388116b04012ae9d36e259252145eaf552be23a474c5c6069c29b15df7194f40734f61e4f0f9e7da86c08944a68a2b6e7768e608d01145a35e4973f948119045948996df2410aa5c019c24fbb7c8615d0409ea313ebeb78d6ee8c9ea6fabd9c504713c21c54b21e773fee2c29468af30e00839978e769b07780286f5ba0b35971772053de944880873743e8073f3ca90778c45d558733835666daba6285c05162bbf1873a03e9a29994cc53678aca15cddcc1d2d8ca360828c2dc48f9a536ab4d309b01814f0a7627862f3b718b4b95fad03b8299e80e08b96e73105d9198cefc55bf0a26c8e13906b900bebc96b87960b5763d31f03f411ef027006cdae44aef11472578447a913034088d6d861c71de18fb99a9ce6932e0072cfd030bb49c34cb8286c90aed1408f146dbc39e78b0ffe602096c078d6c92ca59e264608df236ad9ee41f99c24f97b379a8d06636842e2d54008152997c8beb6cb86971dbd8b476596e0fec9229e959c1ad4a20259b1d1580e789a16c5b860e447a97f6c6daa850e83715e9236f6fa882a6adf7daee4e66d54b0ddf0966b181098e9998014905ba6b79e76f0c7cb3a6ffc3bf6640b20551704fe94216a732df2642e8d1fa25aebe51b04b3eb634a9e00f307e266f3cf9271e3faab8a828182a0e514f37888a805a4d3cc60c3ce428e9db37be132155b55740d4f93b7addd70d38ba8ac286921ab9ca32690350d35098782c618a7a6aef460e67652366c7b919d0a0aac2646daf741e55bfc9c650539dd6d755574cad07af9359895132f201d2eda1229b7540487750ba60e705158636e473b1a7ecb944b98587de86c6eebfc6a7e64291374129bcd142da570765bdb65cbc046c0a07cee6a59d7153a389ff2c27e0ce590808f50429d5877bcf24e2f1e2a72d63b464ad6bb91eac128ee19d1ed8bd6143604eae097c485dbeb04c56de34f94d28846fd5621c08a6609e7d408b1fd03e36defa8d59dc0cb9400a4a7e614d4aace51ebd7252c40a67ce237573a934fdeb1b9e0e127f5718fe4315a5026a455e2dacd45ae5e352aac9a03e56e8aba77b182194d330a5e68dda7b4202a9ccaf2864a34814a2cb060cfec55b655b899e7f66f11348acf51964d5603025054b1be35317c7de9a4941b5ed3fc3c3038be497bd3762134b9e892b01fe7791b0037cd8a6d15476c3b22aed3e7276c5ff1f8fdb1a7ae77715a81f0dd955e18fc54c6d1d28e4a6779546eb93449b288da309947a747dfed8c497520513b1bc7d271cbae4bf199355f37b5964535f0be92998aea448384e17cf990b8b339c8301edf9ac37219ebf580e1c60a7d2b7719d0856e8dc8c1e56141c0abd47916b1cf6a9f735b60278b3bd02567a54d01ccc1926134111fe7184a54d872ce230aca60f6625700d5bfc925d2d178b3251a1a5dfa97d824b585dbdfdd24303f1af300c79882c82ac677764761dbf2497fc2692ef13eabf8f75914376ae2d870c272f8d50828f1ad29d5f39d2d17a5f40b62d01cc10f9067e72fbf8a64abf11db7a154fcfdc2a246a074cf4fad6058df30d63893581dd4e643a4067a26cf9ad99dc00a2428d4fc1ea6269371358a98ac96075883b5afb47da32a16d1e710ca17171b9d9a672106c8ffd65a3d736314ef7f7565d9b5a5167b09b964647bb16d64acca1f5fb4e4d7c77d7231b2ffd44f49b26114450ff399482595e7e4944fcd2aa8b51db1817d1c85672ffdd06128a6cea9979d6f5d21e0c776773bf98664fe200a1385f15fc747a5109614c79d8e5ddaea38beeae3df3dc66a9609ca51b4b77421c29e270f13b470fb9064eb2c7337f8b8cadd7f8f46db0e885d8a6c2fdadb226ccbcc963d128198eea37b72c738b0617ec7b706bf2e1319ced1c4bed6b9f89d4f9f8fce6253b8c0718eefa341caf689c11a3b7e9e2468c390141a75123a22a9778686b5fb9153a16ae9aaebcf1efe2e65097a27e392be7c40eef4f89a21ef027a2b02848cceabd148899cc00feef565c7ca4763ccf8df0cc725e504442b7762b816a28abf87cc691b04aff02609c24a3096f6cda6f10934092d210c80253b7ab0aa094f07b2bde74027c08628d4be8c0d1d694f4281a80942a0513c4bf7d69a5710da1bff7162f55481ebc01412afb661d4f15e9b852485209297a86917ae77f93da5dfb61f3c28caf621d2bb6b774e504b25e1cca8bc4fba4779b37fd53beb9e32702f607a3da09f36e4627a85c705326704f75fde436e9e0027506bff83a24ba9b9435d9996a20bc04f57af90ce584828fedd43668ce9edf082e80c9c0a5304f197cc2dc850438269c0ba4f59fce714ff2ad759aa04e0d269af9349539dd6637523a7cd0346623af4f10b3c9eee6b52243ec6645277a27a0b9b530c24c3edc9ba1329e8ec7af7760c9194d276264915df27ad0e40e0b2d4ba0ece0c256cacbe276f3194e7baa25fd5c3b24488f71a4351a3cda0d12f137f22dcb53b0505b4dc2480242ca0153b5e1a681cfe8650460984367b1d6d57adefd262fe260091dd41a4aa954d33742a76ea453feaf354be02c6ef52cb72a5a8d95bf83c57ae34722a45a9058138303aa098b2ee8cca5739b3f79d9529b047f3606a52cc396a159181aea8d341d332aa993ef449926b0608c5356ce90a9867cbcc409ad57c13d97687377876c95a82720dd6bcc77804a65e45a11f5628b8299ca1f4ea9fafc7991e7be9b4d85c9772604e6dcbee78cc0fe3ef7b7ce5d65a4d616c548b6dcf260e2c45e90122cad56a82cb877214e943a45da00a6d6ce6ff7bc36b41075f493ccd5ddc1ed24e1b29fa197e502ee6c10a2adfbff8e87aa0368e6b4ffce4473e4b06c534a48e6005b862a7b1c4904cc354a15b81328e8784e0d88fea417f3bbae96950897714d1b18b566ad8969919082522a2154502441c3c8934903296d249e57bc2d0fe910b429072fbfd644037ccd8f20a462b4d78aafd35b00288279cd49012099279759ddde53c64f36348b03f3eb9ca3ffa5d57c069d20d9c02014b3a5e070672d4084f71494c0e4017aeb6c80fa9f1504e50e566994efd59468621d27a50159a5be9f8273c1af878f8b3d27316ff01c0916259138c84bf87db48d65922edb92f3e5ff3e796dad9ad7acc1a8553f88166817330681804213f94285cd1b9a4a19880ffc0f5409d8051e09b4c38d484256d15b410f4bd85f398c9e5ea6fa06fe6f7c442015b12af608c083a9389fcc978c3b0b72be782ea75e558f9492ca03f42645cf4c84c30fe9b3e0d31ea7c96065a733ae5e71fccb1b41c78799f0953b7a97694c577c41f99666ab1b13606c59df11835b8ab5d60206cc9a029bf5030e59b851893dd77a9f3bef6f26ee1a0686501dcf07985e61b13c359f74f87729376c1566f335c4a8860eeb77b86a9fc33ccf349bd63e1d2a50cb0e3674a9e51dab971d24c4ba0d01f93a121c3b03875a27d00bafa27bcc77eee7891924e9d0dabbc7b6948dc6d45cc37a0628a3d445bde5b07a8667abb8c4187a289326086f171ea977491e2b7b9119f37979e02bc6926f92f820662abf7bd04ee3fe815eecce462b2acd8f5eb4ccc1e5b793fa6499a2d55a614748af7ec575bccfc8054b2badb60dad287f6e32ba592887ca5e0b9ece58168aa5f2b77e334653610b5342b8dd94f06d3eeef00bd56f2f711de41e78ce734603eb0269b65a00c672bce48de2bfb5e83a0cac5300c47b5d544a2d62fcf328e0f40a4cb18bf4292e3623be68ac6bb2b581f05e2c65dae7ce2edb404e914412fadddc9476cb1b6b5c023177fe0e7248a4bcd8a222115517848f2d6fdfb81b3d20d925ff88a9799ae38c590aada4cfe5adaf3b8f45ce6c957c9bab1737868b147fa36403773dc4bb6f6f170380562d18533ec749f2f03faa0b8d924bd93bb44f5aea2c36c513d61413be17f86cb3021fcb23d97bc5d58932f4da260637cb39af923ded689b56b416ee9e26c96b119387795e0be305649a6269f69adbca4b68ce1eb71333f72f3bfcfa9ffdd2ab1cb518c915673aebca636de222320a9f5614b03f70ded338730fedcbed02e001fce23ad923a7a4f75fa2d77315ac28f367d7cfde727e093b718f705dce54a2182f78832fe9ef5d10fcb31b3a1c82287bdf4c2daa0309e9895ad84d3080868731988e86fddafc4f9a349c5f129e79fa33af93fa39c5133e204769041e176bdf9288ddd693565661cc6b7be831248b6896c603b4e194b8e660eb6bdb7c3d906f390984fabdd6f81e8d6e9a5ff50846c06fea899c54e83a4649f769f0651e8891ad4f1dac53bff77d82e5d475ec69ac300b1e05ac272c15da0dcd41ce58d875849be6b9a979ddffd828fcd7fb3e74ce3f2ce616fca13395c763c4ce01472f0696d1cfaff030451c29c04da6b619c012926cc60bb0e8a7984183f8a2a55e1ee754634de1c29917809ff8a3033d7af4bbc4e0a458e5d58ea6f2b7ba6f4abc9726729d17873dc265c20653e7b15b79eb011bf1b0611311b731a779328368426bc7fb81f067a370db788e75a6daffef469d8e5f9a5f4d26405b75b0c040fa79ef5bf098bd2157137b5b99f77b860f4a11603e8341efe2a8c8d7468408cf592a9256c6a443ca92195fa0f6df7c70cfaba30916e460849763ce3f4e384cfc88c36413144bf8770772fb334004290fa323b6ac11e74305f186d1dbe3b1fff8b84fe6368b74cd86cc128458b56730f2049b8ac0d3ebbd96f3dfc14edf2add9e8d37db12461bb916703b3ebfa709d8b0cf8b06fba97e906c2b109449f068e2207fac229b18b54ffbeef14d85776ffb6ceeb34394ef61a9941efe0161506f0c6b886d99b590e747316a8cc86e55f5504c18370d4997d06a369bf3a8b1285ae3b65bdb4f2c4038efd9483a536f2646479730cf5d1354af87b433a9aaafaf821b20fdca525f6a8080cfcf3046cd0bb0c7cd97b2f63df488489b4e6f20dfc454bc3c33efd1427fb13ffc6b267b8642a958b22797509250487d5bc9af3ded8cefbfb699e65c524bcff4b3f20877dc483b4fb38708a96ee8ff514b23ed9a125c6019c8a7f478b9700232de75127f8197d7510808d422fb1ff54d2b60402b45d50c7b9d0c298d768dfb0fa22b766896e33c6ded40d81c3294e0abf6ea504370acabf80d1c60e0e7715b2e75c9f9d70682dd65b10f4cbd99af36fd255a74f295ccbef3994f5223f34a6342a4acd2c882dc85885e86adf795fc48d6a1d97991eb078cc0e5e6b199f79269c141f906082a8bf33bf2aa23071fc955cde1d3dea8d3254dbb7595ec6483e3562d5c6ce7dd0fcd7d296b34e6838eecb760962ac701aa7523d2ff580801c728efd293cdf1ef59b18a86b141d1bbc1df64f9769708ea7cd29462a91dac8a82d9861fba6bc5eba08a0d13132cf9a8e2eef1c2cfae6aff5e9e7864cb40f8e8a6eb3d14509bd3351c24bed9a8bbd0128731b5fdd6eb46910919c5a33fd359233ea0aae5986a1ac602514e52afbe2804cf44fe02b1cbc2fa16910c7f92e97de3fd25ffc7a1f7b54b7a665b9d7697b868d25f67c41b54c383eb058faf3001286af328deec84df499058f0bb102c89db333e787b97efb4d580ebc0ae9ad7bd61668db7c4d64ef698830dadaabd2eff5a28ae57521ba5b67d21f13f8b6452ca5ca349a25fbf4794b31bb4735c3862605c783c90a6106697e04c7e720c9fb200d4f793b58e9f29f9654c37123dc617dd7888217d9d06252bd1bd5d2bb51341b63f276bd8f8f961916166cbd95c36e0f22a8335b1e2aa0cd8b01e6661abb341335da444c845f7f1b08a0f25784d8de5a6c040e4a555946c4630f3e48a73f99d0ba8cf1b89c68c5d75ec1de68a68b4fc7d16f6532c9a2730d136c5de5e05bf5678515709a92ec064dd24b9d09c8eb9fb92ae91651af967d757a0c197ec529a1a9fb4c2b7f59cdab7565bf1490235eb1544b9b57725075db54711678ccf8175229720ae451fbffa80cf3415a520d305ab5abe9002e6adb2b02c740dc2790fd63b0c58d78dd38550f76e783ea61d2623f23853e3341905b08ac9315adcd36e63ed988e1038e8f890ac479a60dc6711c6d3436bffb4098799aaa352093437d6c01c1d954b2338262a51ead3d59699d57622f1030f8a743ec181975fd555b06a9db300b2e75342f5de28f963779bffba61220516e2a408c0785ea4525f5db81c2f6838a05838a8686a82d6eef7ab9219b016df863ac38a83e7e6813ed1d82e5d2ebb98bf684666dd95a4812e7c2ecb6bdccf88ced478379fd05690d3566c0f49a7bc5255288ba01818f1278016807f0da8630a1a65ed948e0c9b2f03698c50681f66c59df879d579fce22f69e134cd83aaa32ece279b29db338eacc2479f08bb59b8fb1cb76dd3e7145ca4163c00452cfdd63117047f7f26544aee248e85261c67bc5e60ef56482f02dc39082f80de245ab7b6fb5af1002666e330e6330af51b5f9a66d5515db849f457414b7a46dfeb656b81f483b12eba2e661e32003b4c85b6c652b48a1a25db319fc47613dc70fbccbe046c3fb257ce3b797ef87723f833ac66d09130395e6319011a160b4a1d5ca181e757663aa406ec3d000dc7882b56804c22841ee166f391b90dcce1dd7e84dc1f9a81ea059285333139da28baf02d1edd7338473abc659df8b0eb94c55bb1bb3f35c48eb77f209db33caf0a7a4a4d1f2a77b16e1eba464712136d5de927e5e722a6b152b63ff116db3f8e223b191651fe89c3e8d16c90ddc1f16736867ab63f3041a70118b6dbae31d76acdd9593824612dc2d17f7cc47b765615ef94c7dcb9ce4518200c6db166ab4f47114d42a2e07016ed8f2ea113e241b3fc7229fa1367a1130b3cbca18a863daba67663fac30a3e77e03a20f453c357e88947dc7f7ed9888e23aa2e1c2d79a16de6d1a3d1fc838416925c26f5721da53c73e2a6ea061972799559fcb8d6f6ac297becf76da9447a2155eb4152f64245ec2ff77ffccaa12c64f1d35cc189b37412b6f69d128d4fea170549ba0a9efb05bb403144991c099cfe95776f8b97da8e46581f40791597e717423bf9a3ebc50079392762f9617efacfe7c4540dec20313f02692132d0e72f56ac0324b5cbfb982fd7acc9fa34556b5a351f8dbabd6f3eb4db4cb51fbe3a9a6ff6bc36e0d9049d0b67a5c7a1b5b80692617d3f38a981ed41db4ef6cfcb28c844cce61c0caf3214f7e37929ab7104ca4830984a879a3532b583e3e29d7921483d656cd7cb346d06657e61919e10b70230697f1b2cec444f901543ee766d912f39e725de506a5b1eb8bec4c6132fdb74b1554229c98b110489502f836e46d1db766e08c773162f92b3abb821220f3a056dceae32f0bf50727b0fd83aa315379ca6dcac30e0df93bfab49bdc1a70be126cf1301b49d5394dc65ae825f1e64738e15afb29c14a9563fe78c2b2024486188a298729d9a04a091d3a1810e36a90d84e36c21fde351c68549ee72ab413f009bc7a6ad699ea8bd641704d14d1e53d592a268dc09848c18e17fb0e190a2c1de5579ca182e42ef3f8cb5bbed17196fa699344aed7c7520dfec39db96182c558b6aebd771c1bced8ad493b25ba6dee9a46e97541144a0874085ca349792400375c1a4d3c0684e0a9f3aa9ca56dda8c005b89fd0da32689859928ddde493711700d7cfc2e27d1aa7d0aa7142d1800986fb59ae9e1c93b98100689a76f1055a00f4a8cdbb2df1d31f5ed08f6cd4f7a417d1bd3c2d5df39e59d0f6c765f6f5612e8c91e8fd20fb0d533e5309893ad792aaa7f3b1a0bb7c0429ba6fc3542e324aea8d565622c700795f717c8ae9bc308317b3c4660cf9338671b959c441a7220e1c5ec88aa056d74fefd626d7b507fa7204e95f0bd198bbcffadd8f6ace30b9c8764edc17f1578d439dc6546388106817b138de9aa5e70450f1cd36adca672eff94e8cc28227b8afea563d456f14ec3e6042a3ad8f0dcb0ed90cd51f4c6587e4919f444f03f73dfc51f64a52261fdb4e4751cb511d071663c2f884e6ccc350f60d2df0e5fadc28b44c9acdaf9d917d97f28b8b9e7f10d16aa4cd041694fe6c8a34090b5b26db4bef222ba8d541a5d09d32799a619dafd24834b345ce924cea15a2a4e064edcdf35f6fac6d5c749a6a99ad139f5577abe58652e9721c65163c700cb1efa24c820d33d9f23ff4b7196c5f3260b88f06604247868e71f9269d845072c4ecb8dcd1385b4abf90b36b97f8e7d99fbea4fbc415</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 请输入密码</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>关于博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Redis面试题</title>
+    <url>/2022/10/28/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<p>Redis面试常见问题汇总</p>
+<h4 id="1-Redis的数据结构及使用场景"><a href="#1-Redis的数据结构及使用场景" class="headerlink" title="1. Redis的数据结构及使用场景"></a>1. Redis的数据结构及使用场景</h4><ul>
+<li><p>String字符串</p>
+<p>字符串类型是 Redis 最基础的数据结构，首先键都是字符串类型，而且 其他几种数据结构都是在字符串类型基础上构建的，我们常使用的 set key value 命令就是字符串。常用在缓存、计数、共享Session、限速等</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>Hash哈希</p>
+<p>在Redis中，哈希类型是指键值本身又是一个键值对结构，哈希可以用来存放用户信息，比如实现购物车</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>List列表（双向链表）</p>
+<p>列表（list）类型是用来存储多个有序的字符串。可以做简单的消息队列的功能</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>Set集合</p>
+<p>集合（set）类型也是用来保存多个的字符串元素，但和列表类型不一 样的是，集合中不允许有重复元素，并且集合中的元素是无序的，不能通过索引下标获取元素。利用 Set 的交集、并集、差集等操作，可以计算共同喜好，全部的喜好，自己独有的喜好等功能</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>Sorted Set有序集合（跳表实现）</p>
+<p>Sorted Set 多了一个权重参数 Score，集合中的元素能够按 Score 进行排列。可以做排行榜应用，取 TOP N 操作</p>
+</li>
+</ul>
+<h4 id="2-Redis持久化的几种方式"><a href="#2-Redis持久化的几种方式" class="headerlink" title="2. Redis持久化的几种方式"></a>2. Redis持久化的几种方式</h4><p>Redis为了保证效率，数据缓存在了内存中，但是会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件中，以保证数据的持久化。Redis的持久化策略有两种：</p>
+<ul>
+<li><strong>RDB：</strong> 快照形式是直接把内存中的数据保存到一个dump的文件中，定时保存，保存策略<ul>
+<li>当Redis需要做持久化时，Redis会fork一个子进程，子进程将数据写到磁盘上一个临时RDB文件中。当子进程完成写临时文件后，将原来的RDB替换掉</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>AOF：</strong> 把所有的对Redis的服务器进行修改的命令都存到一个文件里，命令的集合<ul>
+<li>使用AOF做持久化，每一个写命令都通过write函数追加到<code>appendonly.aof</code>中</li>
+<li>aof的默认策略是每秒钟fsync一次，在这种配置下，就算发生故障停机，也最多丢失一秒钟的数据</li>
+<li>缺点是对于相同的数据集来说，AOF的文件体积通常要大于RDB文件的体积。根据所使用的fsync策略，AOF的速度可能会慢于RDB</li>
+</ul>
+</li>
+</ul>
+<p>Redis默认是快照RDB的持久化方式。对于主从同步来说，主从刚刚连接的时候，进行全量同步（RDB），全同步结束后，进行增量同步(AOF)</p>
+<h4 id="3-Redis的LRU具体实现"><a href="#3-Redis的LRU具体实现" class="headerlink" title="3. Redis的LRU具体实现"></a>3. Redis的LRU具体实现</h4><ul>
+<li>传统的LRU是使用栈的形式，每次都将最新使用的移入栈顶，但是用栈的形式会导致执行<code>select *</code>的时候大量非热点数据占领头部数据，所以需要改进</li>
+<li>Redis每次按key获取一个值的时候，都会更新value中的lru字段为当前秒级别的时间戳。Redis初始的实现算法很简单，随机从dict中取出五个key，淘汰一个lru字段值最小的</li>
+<li>在3.0的时候，又改进了一版算法，首先第一次随机选取的key都会放入一个pool中(pool的大小为16)，pool中的key是按lru大小顺序排列的</li>
+<li>接下来每次随机选取的keylru值必须小于pool中最小的lru才会继续放入，直到将pool放满。放满之后，每次如果有新的key需要放入，需要将pool中lru最大的一个key取出。淘汰的时候，直接从pool中选取一个lru最小的值然后将其淘汰</li>
+</ul>
+<h4 id="4-单线程的Redis为什么快"><a href="#4-单线程的Redis为什么快" class="headerlink" title="4. 单线程的Redis为什么快"></a>4. 单线程的Redis为什么快</h4><ul>
+<li>纯内存操作</li>
+<li>单线程操作，避免了频繁的上下文切换</li>
+<li>合理高效的数据结构</li>
+<li>采用了非阻塞I&#x2F;O多路复用机制</li>
+</ul>
+<h4 id="5-Redis的数据过期策略"><a href="#5-Redis的数据过期策略" class="headerlink" title="5. Redis的数据过期策略"></a>5. Redis的数据过期策略</h4><p>Redis 中数据过期策略采用<strong>定期删除</strong>和<strong>惰性删除</strong>策略：</p>
+<ul>
+<li>定期删除策略<ul>
+<li>Redis 启用一个定时器定时监视所有的 key，判断key是否过期，过期的话就删除</li>
+<li>这种策略可以保证过期的 key 最终都会被删除，但是也存在严重的缺点：每次都遍历内存中所有的数据，非常消耗 CPU资源，并且当 key 已过期，但是定时器还处于未唤起状态，这段时间内 key 仍然可以用</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>惰性删除策略<ul>
+<li>在获取 key 时，先判断 key 是否过期，如果过期则删除</li>
+<li>这种方式存在一个缺点：如果这个 key一直未被使用，那么它一直在内存中，其实它已经过期了，会浪费大量的空间</li>
+</ul>
+</li>
+</ul>
+<p>这两种策略天然的互补，结合起来之后，定时删除策略就发生了一些改变，不在是每次扫描全部的 key 了，而是随机抽取一部分 key 进行检查，这样就降低了对 CPU 资源的损耗，惰性删除策略互补了为检查到的key，基本上满足了所有要求</p>
+<p>但是有时候就是那么的巧，既没有被定时器抽取到，又没有被使用，这些数据又如何从内存中消失？这个时候就需要用到了，内存淘汰机制</p>
+<h5 id="5-1-内存淘汰机制"><a href="#5-1-内存淘汰机制" class="headerlink" title="5.1 内存淘汰机制"></a>5.1 内存淘汰机制</h5><ul>
+<li>当内存不足以容纳新写入数据时，新写入操作会报错。（Redis 默认策略）</li>
+<li>当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的 Key。（LRU推荐使用）</li>
+<li>当内存不足以容纳新写入数据时，在键空间中，随机移除某个 Key</li>
+<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，移除最近最少使用的 Key。这种情况一般是把 Redis 既当缓存，又做持久化存储的时候才用</li>
+<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，随机移除某个 Key</li>
+<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，有更早过期时间的 Key 优先移除</li>
+</ul>
+<h4 id="6-如何解决Redis缓存雪崩问题"><a href="#6-如何解决Redis缓存雪崩问题" class="headerlink" title="6. 如何解决Redis缓存雪崩问题"></a>6. 如何解决Redis缓存雪崩问题</h4><ul>
+<li>使用 Redis 高可用架构：使用 Redis 集群来保证 Redis 服务不会挂掉</li>
+<li>缓存时间不一致，给缓存的失效时间，加上一个随机值，避免集体失效</li>
+<li>限流降级策略：有一定的备案，比如个性推荐服务不可用了，换成热点数据推荐服务</li>
+</ul>
+<h4 id="7-如何解决Redis缓存穿透问题"><a href="#7-如何解决Redis缓存穿透问题" class="headerlink" title="7. 如何解决Redis缓存穿透问题"></a>7. 如何解决Redis缓存穿透问题</h4><ul>
+<li>在接口层做校验</li>
+<li>存null值（缓存击穿加锁）</li>
+<li>布隆过滤器拦截：将所有可能的查询key 先映射到布隆过滤器中，查询时先判断key是否存在布隆过滤器中，存在才继续向下执行，如果不存在，则直接返回<br>布隆过滤器将值进行多次哈希bit存储，布隆过滤器说某个元素在，可能会被误判。布隆过滤器说某个元素不在，那么一定不在</li>
+</ul>
+<h4 id="8-Redis并发竞争key如何解决"><a href="#8-Redis并发竞争key如何解决" class="headerlink" title="8. Redis并发竞争key如何解决"></a>8. Redis并发竞争key如何解决</h4><ul>
+<li>可以利用分布式锁和时间戳来解决</li>
+<li>利用消息队列解决</li>
+</ul>
+<h4 id="9-Redis的主从模式和哨兵模式和集群模式区别"><a href="#9-Redis的主从模式和哨兵模式和集群模式区别" class="headerlink" title="9. Redis的主从模式和哨兵模式和集群模式区别"></a>9. Redis的主从模式和哨兵模式和集群模式区别</h4><p>Redis集群方式共有三种：<strong>主从模式</strong>，<strong>哨兵模式</strong>，<strong>集群(cluster)模式</strong></p>
+<ul>
+<li><p>主从模式</p>
+<p>主从模式是三种集群方式里最简单的。它主要是基于Redis的主从复制特性架构的。通常我们会设置一个主节点，N个从节点;默认情况下，主节点负责处理使用者的IO操作，而从节点则会对主节点的数据进行备份，并且也会对外提供读操作的处理。主要的特点如下：</p>
+<ul>
+<li>主从模式下，当某一节点损坏时，因为其会将数据备份到其它Redis实例上，这样做在很大程度上可以恢复丢失的数据</li>
+<li>主从模式下，可以保证负载均衡.</li>
+<li>主从模式下，主节点和从节点是读写分离的。使用者不仅可以从主节点上读取数据，还可以很方便的从从节点上读取到数据，这在一定程度上缓解了主机的压力</li>
+</ul>
+<p>从节点也是能够支持写入数据的，只不过从从节点写入的数据不会同步到主节点以及其它的从节点下。从以上，我们不难看出Redis在主从模式下，必须保证主节点不会宕机——一旦主节点宕机，其它节点不会竞争称为主节点，此时，Redis将丧失写的能力。这点在生产环境中，是致命的</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>哨兵模式</p>
+<p>哨兵模式是基于主从模式做的一定变化，它能够为Redis提供了高可用性</p>
+<p>在实际生产中，服务器难免不会遇到一些突发状况：服务器宕机，停电，硬件损坏等。这些情况一旦发生，其后果往往是不可估量的</p>
+<p>而哨兵模式在一定程度上能够帮我们规避掉这些意外导致的灾难性后果。其实，哨兵模式的核心还是主从复制</p>
+<p>只不过相对于主从模式在主节点宕机导致不可写的情况下，多了一个竞选机制——从所有的从节点竞选出新的主节点。竞选机制的实现，是依赖于在系统中启动一个sentinel进程。sentinel特点：</p>
+<ul>
+<li>监控：它会监听主服务器和从服务器之间是否在正常工作</li>
+<li>通知：它能够通过API告诉系统管理员或者程序，集群中某个实例出了问题。</li>
+<li>故障转移：它在主节点出了问题的情况下，会在所有的从节点中竞选出一个节点，并将其作为新的主节点。</li>
+<li>提供主服务器地址：它还能够向使用者提供当前主节点的地址。这在故障转移后，使用者不用做任何修改就可以知道当前主节点地址</li>
+</ul>
+<p>sentinel，也可以集群，部署多个哨兵，sentinel可以通过发布与订阅来自动发现Redis集群上的其它sentinel。sentinel在发现其它sentinel进程后，会将其放入一个列表中，这个列表存储了所有已被发现的sentinel</p>
+<p>集群中的所有sentinel不会并发着去对同一个主节点进行故障转移。故障转移只会从第一个sentinel开始，当第一个故障转移失败后，才会尝试下一个</p>
+<p>当选择一个从节点作为新的主节点后，故障转移即成功了(而不会等到所有的从节点配置了新的主节点后)。这过程中，如果重启了旧的主节点，那么就会出现无主节点的情况，这种情况下，只能重启集群</p>
+<p>当竞选出新的主节点后，被选为新的主节点的从节点的配置信息会被sentinel改写为旧的主节点的配置信息。完成改写后，再将新主节点的配置广播给所有的从节点</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>集群模式</p>
+<p>Redis 集群是一个提供在多个Redis间节点间共享数据的程序集， 其中Redis集群分为主节点和从节点。主节点用于处理槽，而从节点用于复制某个主节点，并在被复制的主节点下线时，代替下线的主节点继续处理命令请求</p>
+<p>Redis集群并不支持处理多个keys的命令，因为这需要在不同的节点间移动数据，从而达不到像Redis那样的性能，在高负载的情况下可能会导致不可预料的错误</p>
+<p>Redis 集群通过分区来提供一定程度的可用性，在实际环境中当某个节点宕机或者不可达的情况下继续处理命令. Redis 集群的优势：自动分割数据到不同的节点上</p>
+<p>整个集群的部分节点失败或者不可达的情况下能够继续处理命令</p>
+<p>Redis集群的数据分片 Redis 集群没有使用一致性hash， 而是引入了哈希槽的概念</p>
+<p>Redis 集群有16384个哈希槽，每个key通过CRC16校验后对16384取模来决定放置哪个槽.集群的每个节点负责一部分hash槽</p>
+</li>
+</ul>
+<h4 id="10-Redis事物的了解CheckAndSet操作实现乐观锁"><a href="#10-Redis事物的了解CheckAndSet操作实现乐观锁" class="headerlink" title="10. Redis事物的了解CheckAndSet操作实现乐观锁"></a>10. Redis事物的了解CheckAndSet操作实现乐观锁</h4><p>和众多其它数据库一样，Redis作为NoSQL数据库也同样提供了事务机制。在Redis中，<code>MULTI</code>，<code>EXEC</code>，<code>DISCARD</code>，<code>WATCH</code>这四个命令是我们实现事务的基石。相信对有关系型数据库开发经验的开发者而言这一概念并不陌生，即便如此，我们还是会简要的列出 Redis中事务的实现特征 ：</p>
+<ul>
+<li>在事务中的所有命令都将会被串行化的顺序执行，事务执行期间，Redis不会再为其它客户端的请求提供任何服务，从而保证了事物中的所有命令被原子的执行</li>
+<li>和关系型数据库中的事务相比，在Redis事务中如果有某一条命令执行失败，其后的命令仍然会被继续执行</li>
+<li>我们可以通过MULTI命令开启一个事务，有关系型数据库开发经验的人可以将其理解为”BEGIN TRANSACTION”语句。在该语句之后执行的命令都将被视为事务之内的操作，最后我们可以通过执行<code>EXEC</code>，<code>DISCARD</code>命令来提交，回滚该事务内的所有操作。这两个Redis命令可被视为等同于关系型数据库中的COMMIT&#x2F;ROLLBACK语句</li>
+<li>在事务开启之前，如果客户端与服务器之间出现通讯故障并导致网络断开，其后所有待执行的语句都将不会被服务器执行。然而如果网络中断事件是发生在客户端执行EXEC命令之后，那么该事务中的所有命令都会被服务器执行</li>
+<li>当使用<code>Append-Only</code>模式时，Redis会通过调用系统函数write将该事务内的所有写操作在本次调用中全部写入磁盘。然而如果在写入的过程中出现系统崩溃，如电源故障导致的宕机，那么此时也许只有部分数据被写入到磁盘，而另外一部分数据却已经丢失。Redis服务器会在重新启动时执行一系列必要的一致性检测，一旦发现类似问题，就会立即退出并给出相应的错误提示。此时，我们就要充分利用Redis工具包中提供的<code>redis-check-aof</code>工具，该工具可以帮助我们定位到数据不一致的错误，并将已经写入的部分数据进行回滚。修复之后我们就可以再次重新启动Redis服务器了</li>
+</ul>
+<h4 id="11-Redis有序集合zset底层怎么实现的"><a href="#11-Redis有序集合zset底层怎么实现的" class="headerlink" title="11. Redis有序集合zset底层怎么实现的"></a>11. Redis有序集合zset底层怎么实现的</h4><ul>
+<li>跳表是一个随机化的数据结构，实质就是一种可以进行二分查找的有序链表</li>
+<li>跳表在原有的有序链表上面增加了多级索引，通过索引来实现快速查找</li>
+<li>跳表不仅能提高搜索性能，同时也可以提高插入和删除操作的性能</li>
+</ul>
+<hr>
+<ul>
+<li>跳表是可以实现二分查找的有序链表</li>
+<li>每个元素插入时随机生成它的level</li>
+<li>最低层包含所有的元素</li>
+<li>如果一个元素出现在level(x)，那么它肯定出现在x以下的level中</li>
+<li>每个索引节点包含两个指针，一个向下，一个向右</li>
+<li>跳表查询、插入、删除的时间复杂度为O(log n)，与平衡二叉树接近</li>
+</ul>
+<hr>
+<h5 id="11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN"><a href="#11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN" class="headerlink" title="11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))"></a>11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))</h5><p>首先，我们来分析下Redis的有序集合支持的操作：</p>
+<ul>
+<li>插入元素</li>
+<li>删除元素</li>
+<li>查找元素</li>
+<li>有序输出所有元素</li>
+<li>查找区间内所有元素</li>
+</ul>
+<p>其中，前4项红黑树都可以完成，且时间复杂度与跳表一致。但是，最后一项，红黑树的效率就没有跳表高了。在跳表中，要查找区间的元素，我们只要定位到两个区间端点在最低层级的位置，然后按顺序遍历元素就可以了，非常高效</p>
+<p>而红黑树只能定位到端点后，再从首位置开始每次都要查找后继节点，相对来说是比较耗时的。此外，跳表实现起来很容易且易读，红黑树实现起来相对困难，所以Redis选择使用跳表来实现有序集合</p>
+<h4 id="12-跳表的查询过程是怎么样的，查询和插入的时间复杂度"><a href="#12-跳表的查询过程是怎么样的，查询和插入的时间复杂度" class="headerlink" title="12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度"></a>12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度</h4><p>先从第一层查找，不满足就下沉到第二层找，因为每一层都是有序的，写入和插入的时间复杂度都是O(logN)</p>
+<hr>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>八股文</tag>
+        <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Golang面试题</title>
     <url>/2022/10/28/Golang%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
     <content><![CDATA[<p>Golang常见面试题分享，涵盖了常见的Golang面试八股文</p>
@@ -548,352 +892,8 @@
         <category>面试</category>
       </categories>
       <tags>
+        <tag>八股文</tag>
         <tag>Golang</tag>
-        <tag>八股文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux操作系统面试题</title>
-    <url>/2022/10/28/Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p>Linux常见面试题整理</p>
-<hr>
-<p><strong>50个最常用的Unix&#x2F;Linux命令</strong></p>
-<h4 id="1-tar"><a href="#1-tar" class="headerlink" title="1. tar"></a>1. tar</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">tar cvf archive_name.tar <span class="built_in">dirname</span>/ 创建一个新的tar文件</span><br><span class="line">tar xvf archive_name.tar 解压tar文件</span><br><span class="line">tar tvf archive_name.tar 查看tar文件</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-grep"><a href="#2-grep" class="headerlink" title="2. grep"></a>2. grep</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">grep -i <span class="string">&quot;the&quot;</span> demo_file 在文件中查找字符串(不区分大小写)</span><br><span class="line">grep -A 3 -i <span class="string">&quot;example&quot;</span> demo_text 输出成功匹配的行，以及该行之后的三行</span><br><span class="line">grep -r <span class="string">&quot;ramesh&quot;</span> * 在一个文件夹中递归查询包含指定字符串的文件</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-find"><a href="#3-find" class="headerlink" title="3. find"></a>3. find</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">find -iname <span class="string">&quot;MyProgram.c&quot;</span> 查找指定文件名的文件(不区分大小写)</span><br><span class="line">find -iname <span class="string">&quot;MyProgram.c&quot;</span> -<span class="built_in">exec</span> <span class="built_in">md5sum</span> &#123;&#125; \; 对找到的文件执行某个命令</span><br><span class="line">find ~ -empty 查找home目录下的所有空文件</span><br></pre></td></tr></table></figure>
-
-<h4 id="4-ssh"><a href="#4-ssh" class="headerlink" title="4. ssh"></a>4. ssh</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh -l jsmith remotehost.example.com 登录到远程主机</span><br><span class="line">ssh -v -l jsmith remotehost.example.com 调试ssh客户端</span><br><span class="line">ssh -V 显示ssh客户端版本</span><br></pre></td></tr></table></figure>
-
-<h4 id="5-sed"><a href="#5-sed" class="headerlink" title="5. sed"></a>5. sed</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sed <span class="string">&#x27;s/.$//&#x27;</span> filename 当你将Dos系统中的文件复制到Unix/Linux后，这个文件每行都会以\r\n结尾，sed可以轻易将其转换为Unix格式的文件，使用\n结尾的文件</span><br><span class="line">sed -n <span class="string">&#x27;1!G; h; p&#x27;</span> filename 反转文件内容并输出</span><br><span class="line">sed <span class="string">&#x27;/./=&#x27;</span> thegeekstuff.txt | sed <span class="string">&#x27;N; s/\n/ /&#x27;</span> 为非空行添加行号</span><br></pre></td></tr></table></figure>
-
-<h4 id="6-awk"><a href="#6-awk" class="headerlink" title="6. awk"></a>6. awk</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">awk <span class="string">&#x27;!($0 in array) &#123; array[$0]; print&#125;&#x27;</span> temp 删除重复行</span><br><span class="line">awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;$3=$4&#x27;</span> /etc/passwd 打印/etc/passwd中所有包含同样的uid和gid的行</span><br><span class="line">awk <span class="string">&#x27;&#123;print $2,$5;&#125;&#x27;</span> employee.txt 打印文件中的指定部分的字段</span><br></pre></td></tr></table></figure>
-
-<h4 id="7-vim"><a href="#7-vim" class="headerlink" title="7. vim"></a>7. vim</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">vim +10 filename.txt 打开文件并跳到第10行</span><br><span class="line">vim +/search-term filename.txt 打开文件跳到第一个匹配的行</span><br><span class="line">vim -R /etc/passwd 以只读模式打开文件</span><br></pre></td></tr></table></figure>
-
-<h4 id="8-diff"><a href="#8-diff" class="headerlink" title="8. diff"></a>8. diff</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">diff -w name_list.txt name_list_new.txt 比较的时候忽略空白符</span><br></pre></td></tr></table></figure>
-
-<h4 id="9-sort"><a href="#9-sort" class="headerlink" title="9. sort"></a>9. sort</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sort</span> names.txt 以升序对文件内容排序</span><br><span class="line"><span class="built_in">sort</span> -r names.txt 以降序对文件内容排序</span><br><span class="line"><span class="built_in">sort</span> -t: -k 3n /etc/passwd | more 以第三个字段对/etc/passwd的内容排序</span><br></pre></td></tr></table></figure>
-
-<h4 id="10-export"><a href="#10-export" class="headerlink" title="10. export"></a>10. export</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> | grep ORCALE 输出跟字符串oracle匹配的环境变量</span><br><span class="line"><span class="built_in">export</span> ORACLE_HOME=/u01/app/oracle/product/10.2.0 设置全局环境变量</span><br></pre></td></tr></table></figure>
-
-<h4 id="11-xargs"><a href="#11-xargs" class="headerlink" title="11. xargs"></a>11. xargs</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> *.jpg | xargs -n1 -i <span class="built_in">cp</span> &#123;&#125; /external-hard-drive/directory 将所有图片文件拷贝到外部驱动器</span><br><span class="line">find / -name *.jpg -<span class="built_in">type</span> f -<span class="built_in">print</span> | xargs tar -cvzf images.tar.gz 将系统中所有jpd文件压缩打包</span><br><span class="line"><span class="built_in">cat</span> url-list.txt | xargs wget –c 下载文件中列出的所有url对应的页面</span><br></pre></td></tr></table></figure>
-
-<h4 id="12-ls"><a href="#12-ls" class="headerlink" title="12. ls"></a>12. ls</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -lh 以易读的方式显示文件大小(显示为MB,GB...)</span><br><span class="line"><span class="built_in">ls</span> -ltr 以最后修改时间升序列出文件</span><br><span class="line"><span class="built_in">ls</span> -F 在文件名后面显示文件类型</span><br></pre></td></tr></table></figure>
-
-<h4 id="13-pwd"><a href="#13-pwd" class="headerlink" title="13. pwd"></a>13. pwd</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">输出当前工作目录</span><br></pre></td></tr></table></figure>
-
-<h4 id="14-cd"><a href="#14-cd" class="headerlink" title="14. cd"></a>14. cd</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> 可以在最近工作的两个目录间切换</span><br><span class="line"><span class="built_in">cd</span> ../ 跳到上级目录</span><br><span class="line"><span class="built_in">cd</span> /opt 不管现在到那直接跳到指定的opt文件夹中</span><br><span class="line"><span class="built_in">cd</span> ~ 切换当前用户的家目录。root用户的家目录就是root目录</span><br></pre></td></tr></table></figure>
-
-<h4 id="15-gzip"><a href="#15-gzip" class="headerlink" title="15. gzip"></a>15. gzip</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">gzip test.txt 创建一个*.gz的压缩文件</span><br><span class="line">gzip -d test.txt.gz 解压*.gz文件</span><br><span class="line">gzip -l *.gz 显示压缩的比率</span><br></pre></td></tr></table></figure>
-
-<h4 id="16-bzip2"><a href="#16-bzip2" class="headerlink" title="16. bzip2"></a>16. bzip2</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">bzip2 test.txt 创建*.bz2压缩文件</span><br><span class="line">bzip2 -d test.txt.bz2 解压*.bz2文件</span><br></pre></td></tr></table></figure>
-
-<h4 id="17-uzip"><a href="#17-uzip" class="headerlink" title="17. uzip"></a>17. uzip</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">unzip test.zip 解压*.zip文件</span><br><span class="line">unzip -l jasper.zip 查看*.zip文件的内容</span><br></pre></td></tr></table></figure>
-
-<h4 id="18-shutdown"><a href="#18-shutdown" class="headerlink" title="18. shutdown"></a>18. shutdown</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">shutdown -h now 关闭系统并立即关机</span><br><span class="line">shutdown -h +10 10分钟后关机</span><br><span class="line">shutdown -r now 重启</span><br><span class="line">shutdown -Fr now 重启期间强制进行系统检查</span><br></pre></td></tr></table></figure>
-
-<h4 id="19-ftp"><a href="#19-ftp" class="headerlink" title="19. ftp"></a>19. ftp</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ftp IP/hostname ftp命令和sftp命令的用法基本相似连接ftp服务器并下载多个文件</span><br><span class="line">ftp&gt; mls *.html - 显示远程主机上文件列表</span><br></pre></td></tr></table></figure>
-
-<h4 id="20-crontab"><a href="#20-crontab" class="headerlink" title="20. crontab"></a>20. crontab</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">crontab -u john -l 查看某个用户的crontab入口</span><br><span class="line">*/10 * * * * /home/ramesh/check-disk-space 设置一个每十分钟执行一次的计划任务</span><br></pre></td></tr></table></figure>
-
-<h4 id="21-service"><a href="#21-service" class="headerlink" title="21. service"></a>21. service</h4><p>service命令用于运行System V init脚本，这些脚本一般位于&#x2F;etc&#x2F;init.d文件下，这个命令可以直接运行这个文件夹里面的脚本，而不用加上路径</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">service ssh status 查看服务状态</span><br><span class="line">service --status-all 查看所有服务状态</span><br><span class="line">service ssh restart 重启服务</span><br></pre></td></tr></table></figure>
-
-<h4 id="22-ps"><a href="#22-ps" class="headerlink" title="22. ps"></a>22. ps</h4><p>ps命令用于显示正在运行中的进程的信息，ps命令有很多选项，这里只列出了几个</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ps -ef | more 查看当前正在运行的所有进程</span><br><span class="line">ps -efH | more 以树状结构显示当前正在运行的进程，H选项表示显示进程的层次结构</span><br></pre></td></tr></table></figure>
-
-<h4 id="23-free"><a href="#23-free" class="headerlink" title="23. free"></a>23. free</h4><p>这个命令用于显示系统当前内存的使用情况，包括已用内存、可用内存和交换内存的情况</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">free 默认情况下free会以字节为单位输出内存的使用量</span><br><span class="line">free -g 如果你想以其他单位输出内存的使用量，需要加一个选项，-g为GB，-m为MB，-k为KB，-b为字节</span><br><span class="line">free -t 如果你想查看所有内存的汇总，请使用-t选项，使用这个选项会在输出中加一个汇总行</span><br></pre></td></tr></table></figure>
-
-<h4 id="24-top"><a href="#24-top" class="headerlink" title="24. top"></a>24. top</h4><p>top命令会显示当前系统中占用资源最多的一些进程（默认以CPU占用率排序）如果你想改变排序方式，可以在结果列表中点击O（大写字母O）会显示所有可用于排序的列，这个时候你就可以选择你想排序的列</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">top -u oracle 如果只想显示某个特定用户的进程，可以使用-u选项</span><br></pre></td></tr></table></figure>
-
-<h4 id="25-df"><a href="#25-df" class="headerlink" title="25. df"></a>25. df</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">df</span> -k 显示文件系统的磁盘使用情况，默认情况下<span class="built_in">df</span> -k 将以字节为单位输出磁盘的使用量</span><br><span class="line"><span class="built_in">df</span> -h 使用-h选项可以以更符合阅读习惯的方式显示磁盘使用量</span><br><span class="line"><span class="built_in">df</span> -T 使用-T选项显示文件系统类型</span><br></pre></td></tr></table></figure>
-
-<h4 id="26-kill"><a href="#26-kill" class="headerlink" title="26. kill"></a>26. kill</h4><p>kill用于终止一个进程。一般我们会先用<code>ps -ef</code>查找某个进程得到它的进程号，然后再使用<code>kill -9 进程号</code>终止该进程。你还可以使用killall、pkill、xkill来终止进程</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ps -ef | grep vim</span><br><span class="line">	ramesh    7243  7222  9 22:43 pts/2    00:00:00 vim</span><br><span class="line"><span class="built_in">kill</span> -9 7243</span><br></pre></td></tr></table></figure>
-
-<h4 id="27-rm"><a href="#27-rm" class="headerlink" title="27. rm"></a>27. rm</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> -i filename.txt 删除文件前先确认</span><br><span class="line"><span class="built_in">rm</span> -i file* 在文件名中使用shell的元字符会非常有用。删除文件前先打印文件名并进行确认</span><br><span class="line"><span class="built_in">rm</span> -r example 递归删除文件夹下所有文件，并删除该文件夹</span><br></pre></td></tr></table></figure>
-
-<h4 id="28-cp"><a href="#28-cp" class="headerlink" title="28. cp"></a>28. cp</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> -p file1 file2 拷贝文件1到文件2，并保持文件的权限、属主和时间戳</span><br><span class="line"><span class="built_in">cp</span> -i file1 file2 拷贝file1到file2，如果file2存在会提示是否覆盖</span><br></pre></td></tr></table></figure>
-
-<h4 id="29-mv"><a href="#29-mv" class="headerlink" title="29. mv"></a>29. mv</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">注意如果使用-f选项则不会进行提示</span><br><span class="line"><span class="built_in">mv</span> -i file1 file2 将文件名file1重命名为file2，如果file2存在则提示是否覆盖</span><br><span class="line"><span class="built_in">mv</span> -v file1 file2 -v会输出重命名的过程，当文件名中包含通配符时，这个选项会非常方便</span><br></pre></td></tr></table></figure>
-
-<h4 id="30-cat"><a href="#30-cat" class="headerlink" title="30. cat"></a>30. cat</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> file1 file2 你可以一次查看多个文件的内容，下面的命令会先打印file1的内容，然后打印file2的内容</span><br><span class="line"><span class="built_in">cat</span> -n /etc/logrotate.conf -n命令可以在每行的前面加上行号</span><br></pre></td></tr></table></figure>
-
-<h4 id="31-mount"><a href="#31-mount" class="headerlink" title="31. mount"></a>31. mount</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /u01</span><br><span class="line">mount /dev/sdb1 /u01 如果要挂载一个文件系统，需要先创建一个目录，然后将这个文件系统挂载到这个目录上</span><br><span class="line">/dev/sdb1 /u01 ext2 defaults 0 2 也可以把它添加到fstab中进行自动挂载，这样任何时候系统重启的时候，文件系统都会被加载</span><br></pre></td></tr></table></figure>
-
-<h4 id="32-chmod"><a href="#32-chmod" class="headerlink" title="32. chmod"></a>32. chmod</h4><p>chmod用于改变文件和目录的权限</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> ug+rwx file.txt 给指定文件的属主和属组所有权限(包括读、写、执行)</span><br><span class="line"><span class="built_in">chmod</span> g-rwx file.txt 删除指定文件的属组的所有权限</span><br><span class="line"><span class="built_in">chmod</span> -R ug+rwx file.txt 修改目录的权限，以及递归修改目录下面所有文件和子目录的权限</span><br></pre></td></tr></table></figure>
-
-<h4 id="33-chown"><a href="#33-chown" class="headerlink" title="33. chown"></a>33. chown</h4><p>chown用于改变文件属主和属组</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chown</span> oracle:dba dbora.sh 同时将某个文件的属主改为oracle，属组改为db</span><br><span class="line"><span class="built_in">chown</span> -R oracle:dba /home/oracle 使用-R选项对目录和目录下的文件进行递归修改</span><br></pre></td></tr></table></figure>
-
-<h4 id="34-passwd"><a href="#34-passwd" class="headerlink" title="34. passwd"></a>34. passwd</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">passwd passwd用于在命令行修改密码，使用这个命令会要求你先输入旧密码，然后输入新密码</span><br><span class="line">passwd USERNAME 超级用户可以用这个命令修改其他用户的密码，这个时候不需要输入用户的密码</span><br><span class="line">passwd -d USERNAME passwd还可以删除某个用户的密码，这个命令只有root用户才能操作，删除密码后，这个用户不需要输入密码就可以登录到系统</span><br></pre></td></tr></table></figure>
-
-<h4 id="35-mkdir"><a href="#35-mkdir" class="headerlink" title="35. mkdir"></a>35. mkdir</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/temp 在home目录下创建一个名为temp的目录</span><br><span class="line"><span class="built_in">mkdir</span> -p dir1/dir2/dir3/dir4/ 使用-p选项可以创建一个路径上所有不存在的目录</span><br></pre></td></tr></table></figure>
-
-<h4 id="36-ifconfig"><a href="#36-ifconfig" class="headerlink" title="36. ifconfig"></a>36. ifconfig</h4><p>ifconfig用于查看和配置Linux系统的网络接口</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ifconfig -a 查看所有网络接口及其状态</span><br><span class="line">ifconfig eth0 up 使用up命令启动某个接口</span><br><span class="line">ifconfig eth0 down 使用down命令停止某个接口</span><br></pre></td></tr></table></figure>
-
-<h4 id="37-uname"><a href="#37-uname" class="headerlink" title="37. uname"></a>37. uname</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">uname</span> -a <span class="built_in">uname</span>可以显示一些重要的系统信息，例如内核名称、主机名、内核版本号、处理器类型之类的信息</span><br></pre></td></tr></table></figure>
-
-<h4 id="38-whereis"><a href="#38-whereis" class="headerlink" title="38. whereis"></a>38. whereis</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">whereis <span class="built_in">ls</span> 当你不知道某个命令的位置时可以使用whereis命令，下面使用whereis查找<span class="built_in">ls</span>的位置</span><br><span class="line">whereis -u -B /tmp -f lsmk 当你想查找某个可执行程序的位置，但这个程序又不在whereis的默认目录下，你可以使用-B选项，并指定目录作为这个选项的参数。下面的命令在/tmp目录下查找lsmk命令</span><br></pre></td></tr></table></figure>
-
-<h4 id="39-whatis"><a href="#39-whatis" class="headerlink" title="39. whatis"></a>39. whatis</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">whatis <span class="built_in">ls</span> wathis显示某个命令的描述信息</span><br><span class="line">whatis ifconfig wathis显示某个命令的描述信息</span><br></pre></td></tr></table></figure>
-
-<h4 id="40-locate"><a href="#40-locate" class="headerlink" title="40. locate"></a>40. locate</h4><p>locate命名可以显示某个指定文件（或一组文件）的路径，它会使用由updatedb创建的数据库</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">locate crontab 命令会显示系统中所有包含crontab字符串的文件</span><br></pre></td></tr></table></figure>
-
-<h4 id="41-man"><a href="#41-man" class="headerlink" title="41. man"></a>41. man</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">man crontab 显示某个命令的man页面</span><br><span class="line">man SECTION-NUMBER commandname 有些命令可能会有多个man页面，每个man页面对应一种命令类型</span><br></pre></td></tr></table></figure>
-
-<h4 id="42-tail"><a href="#42-tail" class="headerlink" title="42. tail"></a>42. tail</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">tail</span> filename.txt <span class="built_in">tail</span>命令默认显示文件最后的10行文本</span><br><span class="line"><span class="built_in">tail</span> -n N filename.txt 你可以使用-n选项指定要显示的行数</span><br><span class="line"><span class="built_in">tail</span> -f log-file 你也可以使用-f选项进行实时查看，这个命令执行后会等待，如果有新行添加到文件尾部，它会继续输出新的行，在查看日志时这个选项会非常有用。你可以通过CTRL-C终止命令的执行</span><br></pre></td></tr></table></figure>
-
-<h4 id="43-less"><a href="#43-less" class="headerlink" title="43. less"></a>43. less</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">less huge-log-file.log 这个命名可以在不加载整个文件的前提下显示文件内容，在查看大型日志文件的时候这个命令会非常有用</span><br></pre></td></tr></table></figure>
-
-<h4 id="44-su"><a href="#44-su" class="headerlink" title="44. su"></a>44. su</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">su - USERNAME su命令用于切换用户账号，超级用户使用这个命令可以切换到任何其他用户而不用输入密码</span><br><span class="line">su -s <span class="string">&#x27;SHELLNAME&#x27;</span> USERNAME 用指定用户登录，并且使用指定的shell程序，而不用默认的</span><br></pre></td></tr></table></figure>
-
-<h4 id="45-mysql"><a href="#45-mysql" class="headerlink" title="45. mysql"></a>45. mysql</h4><p>mysql可能是Linux上使用最广泛的数据库，即使你没有在你的服务器上安装mysql，你也可以使用mysql客户端连接到远程的mysql服务器</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mysql -u root -p -h 192.168.1.2 连接一个远程数据库，需要输入密码</span><br><span class="line">mysql -u root -p 连接本地数据库</span><br></pre></td></tr></table></figure>
-
-<p>你也可以在命令行中输入数据库密码，只需要在-p后面加上密码作为参数，可以直接写在p后面而不用加空格</p>
-<h4 id="46-yum"><a href="#46-yum" class="headerlink" title="46. yum"></a>46. yum</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum install httpd 使用yum安装apache</span><br><span class="line">yum update httpd 更新apache</span><br><span class="line">yum remove httpd 卸载/删除apache</span><br></pre></td></tr></table></figure>
-
-<h4 id="47-rpm"><a href="#47-rpm" class="headerlink" title="47. rpm"></a>47. rpm</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">rpm -ivh httpd-2.2.3-22.0.1.el5.i386.rpm 使用rpm安装apache</span><br><span class="line">rpm -uvh httpd-2.2.3-22.0.1.el5.i386.rpm 更新apache</span><br><span class="line">rpm -ev httpd 卸载/删除apache</span><br></pre></td></tr></table></figure>
-
-<h4 id="48-ping"><a href="#48-ping" class="headerlink" title="48. ping"></a>48. ping</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ping -c 5 gmail.com ping一个远程主机，只发5个数据包</span><br></pre></td></tr></table></figure>
-
-<h4 id="49-date"><a href="#49-date" class="headerlink" title="49. date"></a>49. date</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">date</span> -s <span class="string">&quot;01/31/2010 23:59:53&quot;</span> 设置系统日期</span><br><span class="line">---</span><br><span class="line">当你修改了系统时间，你需要同步硬件时间和系统时间</span><br><span class="line">hwclock –systohc</span><br><span class="line">hwclock --systohc –utc</span><br></pre></td></tr></table></figure>
-
-<h4 id="50-wget"><a href="#50-wget" class="headerlink" title="50. wget"></a>50. wget</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-3.2.1.tar.gz 使用wget从网上下载软件、音乐、视频</span><br><span class="line">wget -O taglist.zip http://www.vim.org/scripts/download_script.php?src_id=7701 下载文件并以指定的文件名保存文件</span><br></pre></td></tr></table></figure>
-
-<h4 id="51-CPU100-怎么排查和处理"><a href="#51-CPU100-怎么排查和处理" class="headerlink" title="51. CPU100%怎么排查和处理"></a>51. CPU100%怎么排查和处理</h4><p>使用top命令定位进程，再用top命令定位线程，再打印线程堆栈查看运行情况</p>
-<ol>
-<li><code>top</code>命令显示进程运行列表，找到最耗<code>CPU</code>的进程<code>PID</code></li>
-<li>找到最耗<code>CPU</code>的线程，<code>top -Hp 进程PID号</code>，显示进程的线程运行列表，找到最耗<code>CPU</code>的线程<code>PID</code></li>
-<li>将线程<code>PID</code>转化为16进制，<code>printf &quot;%x\n&quot; 线程PID号</code>，因为在堆栈里，线程<code>ID</code>是用16进制表示的</li>
-<li>查看堆栈，找到线程在干嘛，<code>pstack/jstack/grep</code>，<code>jstack 进程PID | grep ‘线程PID的16进制数’ -C5 --color</code>打印进程堆栈，通过线程<code>ID</code>，过滤得到线程堆栈，根据线程<code>PID</code>的16进制数找到消耗<code>CPU</code>高的线程对应的线程的名称，以及看到了改线程正在执行代码的堆栈</li>
-</ol>
-<hr>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>八股文</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Redis面试题</title>
-    <url>/2022/10/28/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p>Redis面试常见问题汇总</p>
-<h4 id="1-Redis的数据结构及使用场景"><a href="#1-Redis的数据结构及使用场景" class="headerlink" title="1. Redis的数据结构及使用场景"></a>1. Redis的数据结构及使用场景</h4><ul>
-<li><p>String字符串</p>
-<p>字符串类型是 Redis 最基础的数据结构，首先键都是字符串类型，而且 其他几种数据结构都是在字符串类型基础上构建的，我们常使用的 set key value 命令就是字符串。常用在缓存、计数、共享Session、限速等</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>Hash哈希</p>
-<p>在Redis中，哈希类型是指键值本身又是一个键值对结构，哈希可以用来存放用户信息，比如实现购物车</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>List列表（双向链表）</p>
-<p>列表（list）类型是用来存储多个有序的字符串。可以做简单的消息队列的功能</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>Set集合</p>
-<p>集合（set）类型也是用来保存多个的字符串元素，但和列表类型不一 样的是，集合中不允许有重复元素，并且集合中的元素是无序的，不能通过索引下标获取元素。利用 Set 的交集、并集、差集等操作，可以计算共同喜好，全部的喜好，自己独有的喜好等功能</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>Sorted Set有序集合（跳表实现）</p>
-<p>Sorted Set 多了一个权重参数 Score，集合中的元素能够按 Score 进行排列。可以做排行榜应用，取 TOP N 操作</p>
-</li>
-</ul>
-<h4 id="2-Redis持久化的几种方式"><a href="#2-Redis持久化的几种方式" class="headerlink" title="2. Redis持久化的几种方式"></a>2. Redis持久化的几种方式</h4><p>Redis为了保证效率，数据缓存在了内存中，但是会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件中，以保证数据的持久化。Redis的持久化策略有两种：</p>
-<ul>
-<li><strong>RDB：</strong> 快照形式是直接把内存中的数据保存到一个dump的文件中，定时保存，保存策略<ul>
-<li>当Redis需要做持久化时，Redis会fork一个子进程，子进程将数据写到磁盘上一个临时RDB文件中。当子进程完成写临时文件后，将原来的RDB替换掉</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><strong>AOF：</strong> 把所有的对Redis的服务器进行修改的命令都存到一个文件里，命令的集合<ul>
-<li>使用AOF做持久化，每一个写命令都通过write函数追加到<code>appendonly.aof</code>中</li>
-<li>aof的默认策略是每秒钟fsync一次，在这种配置下，就算发生故障停机，也最多丢失一秒钟的数据</li>
-<li>缺点是对于相同的数据集来说，AOF的文件体积通常要大于RDB文件的体积。根据所使用的fsync策略，AOF的速度可能会慢于RDB</li>
-</ul>
-</li>
-</ul>
-<p>Redis默认是快照RDB的持久化方式。对于主从同步来说，主从刚刚连接的时候，进行全量同步（RDB），全同步结束后，进行增量同步(AOF)</p>
-<h4 id="3-Redis的LRU具体实现"><a href="#3-Redis的LRU具体实现" class="headerlink" title="3. Redis的LRU具体实现"></a>3. Redis的LRU具体实现</h4><ul>
-<li>传统的LRU是使用栈的形式，每次都将最新使用的移入栈顶，但是用栈的形式会导致执行<code>select *</code>的时候大量非热点数据占领头部数据，所以需要改进</li>
-<li>Redis每次按key获取一个值的时候，都会更新value中的lru字段为当前秒级别的时间戳。Redis初始的实现算法很简单，随机从dict中取出五个key，淘汰一个lru字段值最小的</li>
-<li>在3.0的时候，又改进了一版算法，首先第一次随机选取的key都会放入一个pool中(pool的大小为16)，pool中的key是按lru大小顺序排列的</li>
-<li>接下来每次随机选取的keylru值必须小于pool中最小的lru才会继续放入，直到将pool放满。放满之后，每次如果有新的key需要放入，需要将pool中lru最大的一个key取出。淘汰的时候，直接从pool中选取一个lru最小的值然后将其淘汰</li>
-</ul>
-<h4 id="4-单线程的Redis为什么快"><a href="#4-单线程的Redis为什么快" class="headerlink" title="4. 单线程的Redis为什么快"></a>4. 单线程的Redis为什么快</h4><ul>
-<li>纯内存操作</li>
-<li>单线程操作，避免了频繁的上下文切换</li>
-<li>合理高效的数据结构</li>
-<li>采用了非阻塞I&#x2F;O多路复用机制</li>
-</ul>
-<h4 id="5-Redis的数据过期策略"><a href="#5-Redis的数据过期策略" class="headerlink" title="5. Redis的数据过期策略"></a>5. Redis的数据过期策略</h4><p>Redis 中数据过期策略采用<strong>定期删除</strong>和<strong>惰性删除</strong>策略：</p>
-<ul>
-<li>定期删除策略<ul>
-<li>Redis 启用一个定时器定时监视所有的 key，判断key是否过期，过期的话就删除</li>
-<li>这种策略可以保证过期的 key 最终都会被删除，但是也存在严重的缺点：每次都遍历内存中所有的数据，非常消耗 CPU资源，并且当 key 已过期，但是定时器还处于未唤起状态，这段时间内 key 仍然可以用</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li>惰性删除策略<ul>
-<li>在获取 key 时，先判断 key 是否过期，如果过期则删除</li>
-<li>这种方式存在一个缺点：如果这个 key一直未被使用，那么它一直在内存中，其实它已经过期了，会浪费大量的空间</li>
-</ul>
-</li>
-</ul>
-<p>这两种策略天然的互补，结合起来之后，定时删除策略就发生了一些改变，不在是每次扫描全部的 key 了，而是随机抽取一部分 key 进行检查，这样就降低了对 CPU 资源的损耗，惰性删除策略互补了为检查到的key，基本上满足了所有要求</p>
-<p>但是有时候就是那么的巧，既没有被定时器抽取到，又没有被使用，这些数据又如何从内存中消失？这个时候就需要用到了，内存淘汰机制</p>
-<h5 id="5-1-内存淘汰机制"><a href="#5-1-内存淘汰机制" class="headerlink" title="5.1 内存淘汰机制"></a>5.1 内存淘汰机制</h5><ul>
-<li>当内存不足以容纳新写入数据时，新写入操作会报错。（Redis 默认策略）</li>
-<li>当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的 Key。（LRU推荐使用）</li>
-<li>当内存不足以容纳新写入数据时，在键空间中，随机移除某个 Key</li>
-<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，移除最近最少使用的 Key。这种情况一般是把 Redis 既当缓存，又做持久化存储的时候才用</li>
-<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，随机移除某个 Key</li>
-<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，有更早过期时间的 Key 优先移除</li>
-</ul>
-<h4 id="6-如何解决Redis缓存雪崩问题"><a href="#6-如何解决Redis缓存雪崩问题" class="headerlink" title="6. 如何解决Redis缓存雪崩问题"></a>6. 如何解决Redis缓存雪崩问题</h4><ul>
-<li>使用 Redis 高可用架构：使用 Redis 集群来保证 Redis 服务不会挂掉</li>
-<li>缓存时间不一致，给缓存的失效时间，加上一个随机值，避免集体失效</li>
-<li>限流降级策略：有一定的备案，比如个性推荐服务不可用了，换成热点数据推荐服务</li>
-</ul>
-<h4 id="7-如何解决Redis缓存穿透问题"><a href="#7-如何解决Redis缓存穿透问题" class="headerlink" title="7. 如何解决Redis缓存穿透问题"></a>7. 如何解决Redis缓存穿透问题</h4><ul>
-<li>在接口层做校验</li>
-<li>存null值（缓存击穿加锁）</li>
-<li>布隆过滤器拦截：将所有可能的查询key 先映射到布隆过滤器中，查询时先判断key是否存在布隆过滤器中，存在才继续向下执行，如果不存在，则直接返回<br>布隆过滤器将值进行多次哈希bit存储，布隆过滤器说某个元素在，可能会被误判。布隆过滤器说某个元素不在，那么一定不在</li>
-</ul>
-<h4 id="8-Redis并发竞争key如何解决"><a href="#8-Redis并发竞争key如何解决" class="headerlink" title="8. Redis并发竞争key如何解决"></a>8. Redis并发竞争key如何解决</h4><ul>
-<li>可以利用分布式锁和时间戳来解决</li>
-<li>利用消息队列解决</li>
-</ul>
-<h4 id="9-Redis的主从模式和哨兵模式和集群模式区别"><a href="#9-Redis的主从模式和哨兵模式和集群模式区别" class="headerlink" title="9. Redis的主从模式和哨兵模式和集群模式区别"></a>9. Redis的主从模式和哨兵模式和集群模式区别</h4><p>Redis集群方式共有三种：<strong>主从模式</strong>，<strong>哨兵模式</strong>，<strong>集群(cluster)模式</strong></p>
-<ul>
-<li><p>主从模式</p>
-<p>主从模式是三种集群方式里最简单的。它主要是基于Redis的主从复制特性架构的。通常我们会设置一个主节点，N个从节点;默认情况下，主节点负责处理使用者的IO操作，而从节点则会对主节点的数据进行备份，并且也会对外提供读操作的处理。主要的特点如下：</p>
-<ul>
-<li>主从模式下，当某一节点损坏时，因为其会将数据备份到其它Redis实例上，这样做在很大程度上可以恢复丢失的数据</li>
-<li>主从模式下，可以保证负载均衡.</li>
-<li>主从模式下，主节点和从节点是读写分离的。使用者不仅可以从主节点上读取数据，还可以很方便的从从节点上读取到数据，这在一定程度上缓解了主机的压力</li>
-</ul>
-<p>从节点也是能够支持写入数据的，只不过从从节点写入的数据不会同步到主节点以及其它的从节点下。从以上，我们不难看出Redis在主从模式下，必须保证主节点不会宕机——一旦主节点宕机，其它节点不会竞争称为主节点，此时，Redis将丧失写的能力。这点在生产环境中，是致命的</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>哨兵模式</p>
-<p>哨兵模式是基于主从模式做的一定变化，它能够为Redis提供了高可用性</p>
-<p>在实际生产中，服务器难免不会遇到一些突发状况：服务器宕机，停电，硬件损坏等。这些情况一旦发生，其后果往往是不可估量的</p>
-<p>而哨兵模式在一定程度上能够帮我们规避掉这些意外导致的灾难性后果。其实，哨兵模式的核心还是主从复制</p>
-<p>只不过相对于主从模式在主节点宕机导致不可写的情况下，多了一个竞选机制——从所有的从节点竞选出新的主节点。竞选机制的实现，是依赖于在系统中启动一个sentinel进程。sentinel特点：</p>
-<ul>
-<li>监控：它会监听主服务器和从服务器之间是否在正常工作</li>
-<li>通知：它能够通过API告诉系统管理员或者程序，集群中某个实例出了问题。</li>
-<li>故障转移：它在主节点出了问题的情况下，会在所有的从节点中竞选出一个节点，并将其作为新的主节点。</li>
-<li>提供主服务器地址：它还能够向使用者提供当前主节点的地址。这在故障转移后，使用者不用做任何修改就可以知道当前主节点地址</li>
-</ul>
-<p>sentinel，也可以集群，部署多个哨兵，sentinel可以通过发布与订阅来自动发现Redis集群上的其它sentinel。sentinel在发现其它sentinel进程后，会将其放入一个列表中，这个列表存储了所有已被发现的sentinel</p>
-<p>集群中的所有sentinel不会并发着去对同一个主节点进行故障转移。故障转移只会从第一个sentinel开始，当第一个故障转移失败后，才会尝试下一个</p>
-<p>当选择一个从节点作为新的主节点后，故障转移即成功了(而不会等到所有的从节点配置了新的主节点后)。这过程中，如果重启了旧的主节点，那么就会出现无主节点的情况，这种情况下，只能重启集群</p>
-<p>当竞选出新的主节点后，被选为新的主节点的从节点的配置信息会被sentinel改写为旧的主节点的配置信息。完成改写后，再将新主节点的配置广播给所有的从节点</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>集群模式</p>
-<p>Redis 集群是一个提供在多个Redis间节点间共享数据的程序集， 其中Redis集群分为主节点和从节点。主节点用于处理槽，而从节点用于复制某个主节点，并在被复制的主节点下线时，代替下线的主节点继续处理命令请求</p>
-<p>Redis集群并不支持处理多个keys的命令，因为这需要在不同的节点间移动数据，从而达不到像Redis那样的性能，在高负载的情况下可能会导致不可预料的错误</p>
-<p>Redis 集群通过分区来提供一定程度的可用性，在实际环境中当某个节点宕机或者不可达的情况下继续处理命令. Redis 集群的优势：自动分割数据到不同的节点上</p>
-<p>整个集群的部分节点失败或者不可达的情况下能够继续处理命令</p>
-<p>Redis集群的数据分片 Redis 集群没有使用一致性hash， 而是引入了哈希槽的概念</p>
-<p>Redis 集群有16384个哈希槽，每个key通过CRC16校验后对16384取模来决定放置哪个槽.集群的每个节点负责一部分hash槽</p>
-</li>
-</ul>
-<h4 id="10-Redis事物的了解CheckAndSet操作实现乐观锁"><a href="#10-Redis事物的了解CheckAndSet操作实现乐观锁" class="headerlink" title="10. Redis事物的了解CheckAndSet操作实现乐观锁"></a>10. Redis事物的了解CheckAndSet操作实现乐观锁</h4><p>和众多其它数据库一样，Redis作为NoSQL数据库也同样提供了事务机制。在Redis中，<code>MULTI</code>，<code>EXEC</code>，<code>DISCARD</code>，<code>WATCH</code>这四个命令是我们实现事务的基石。相信对有关系型数据库开发经验的开发者而言这一概念并不陌生，即便如此，我们还是会简要的列出 Redis中事务的实现特征 ：</p>
-<ul>
-<li>在事务中的所有命令都将会被串行化的顺序执行，事务执行期间，Redis不会再为其它客户端的请求提供任何服务，从而保证了事物中的所有命令被原子的执行</li>
-<li>和关系型数据库中的事务相比，在Redis事务中如果有某一条命令执行失败，其后的命令仍然会被继续执行</li>
-<li>我们可以通过MULTI命令开启一个事务，有关系型数据库开发经验的人可以将其理解为”BEGIN TRANSACTION”语句。在该语句之后执行的命令都将被视为事务之内的操作，最后我们可以通过执行<code>EXEC</code>，<code>DISCARD</code>命令来提交，回滚该事务内的所有操作。这两个Redis命令可被视为等同于关系型数据库中的COMMIT&#x2F;ROLLBACK语句</li>
-<li>在事务开启之前，如果客户端与服务器之间出现通讯故障并导致网络断开，其后所有待执行的语句都将不会被服务器执行。然而如果网络中断事件是发生在客户端执行EXEC命令之后，那么该事务中的所有命令都会被服务器执行</li>
-<li>当使用<code>Append-Only</code>模式时，Redis会通过调用系统函数write将该事务内的所有写操作在本次调用中全部写入磁盘。然而如果在写入的过程中出现系统崩溃，如电源故障导致的宕机，那么此时也许只有部分数据被写入到磁盘，而另外一部分数据却已经丢失。Redis服务器会在重新启动时执行一系列必要的一致性检测，一旦发现类似问题，就会立即退出并给出相应的错误提示。此时，我们就要充分利用Redis工具包中提供的<code>redis-check-aof</code>工具，该工具可以帮助我们定位到数据不一致的错误，并将已经写入的部分数据进行回滚。修复之后我们就可以再次重新启动Redis服务器了</li>
-</ul>
-<h4 id="11-Redis有序集合zset底层怎么实现的"><a href="#11-Redis有序集合zset底层怎么实现的" class="headerlink" title="11. Redis有序集合zset底层怎么实现的"></a>11. Redis有序集合zset底层怎么实现的</h4><ul>
-<li>跳表是一个随机化的数据结构，实质就是一种可以进行二分查找的有序链表</li>
-<li>跳表在原有的有序链表上面增加了多级索引，通过索引来实现快速查找</li>
-<li>跳表不仅能提高搜索性能，同时也可以提高插入和删除操作的性能</li>
-</ul>
-<hr>
-<ul>
-<li>跳表是可以实现二分查找的有序链表</li>
-<li>每个元素插入时随机生成它的level</li>
-<li>最低层包含所有的元素</li>
-<li>如果一个元素出现在level(x)，那么它肯定出现在x以下的level中</li>
-<li>每个索引节点包含两个指针，一个向下，一个向右</li>
-<li>跳表查询、插入、删除的时间复杂度为O(log n)，与平衡二叉树接近</li>
-</ul>
-<hr>
-<h5 id="11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN"><a href="#11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN" class="headerlink" title="11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))"></a>11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))</h5><p>首先，我们来分析下Redis的有序集合支持的操作：</p>
-<ul>
-<li>插入元素</li>
-<li>删除元素</li>
-<li>查找元素</li>
-<li>有序输出所有元素</li>
-<li>查找区间内所有元素</li>
-</ul>
-<p>其中，前4项红黑树都可以完成，且时间复杂度与跳表一致。但是，最后一项，红黑树的效率就没有跳表高了。在跳表中，要查找区间的元素，我们只要定位到两个区间端点在最低层级的位置，然后按顺序遍历元素就可以了，非常高效</p>
-<p>而红黑树只能定位到端点后，再从首位置开始每次都要查找后继节点，相对来说是比较耗时的。此外，跳表实现起来很容易且易读，红黑树实现起来相对困难，所以Redis选择使用跳表来实现有序集合</p>
-<h4 id="12-跳表的查询过程是怎么样的，查询和插入的时间复杂度"><a href="#12-跳表的查询过程是怎么样的，查询和插入的时间复杂度" class="headerlink" title="12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度"></a>12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度</h4><p>先从第一层查找，不满足就下沉到第二层找，因为每一层都是有序的，写入和插入的时间复杂度都是O(logN)</p>
-<hr>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>八股文</tag>
-        <tag>Redis</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于博客</title>
-    <url>/2022/10/27/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容">
-  <script id="hbeData" type="hbeData" data-hmacdigest="4fd5a5bd8707a0a1cd39307dad6cd98e03fded9ba27a54a5b61e9696d84ea268">a17b4de793b95f7877066d2186f5861555e2d6b9cb5641947e36c8450a9062244141303af7f6ac122ca280e580e95da40c8ee95d99d2439c2f200eaab162cbb1875108085071c26de1a7a2252b96fcbe0f08370a21f14470abd2a2d2b018211a390d4a79c82cf2a64ae884fb7caded6082fa0005ef84e7ea431151015e2060bda837f3b622c77b40ee17a251d882f100278d00b9963489c074d217f528b9e8e054d830314c2ebd97fa3c76a53976dbdc3aa54c7b15ce70a5882de8489603f7173418c015d0ef7e8aa5ae4a33046644b0e563b4499cb8d0d6173282b0a21575c27f9144f5086203cb49e7bd9f84fa510fa7ca67502f97fdebb306ef8a69773c81e40bf148ee8b9d8ad2d1bdf194c6075caa40305d045fbb2a1c2119103f08f156ceaebc719357118924dd869dcd27372f3549487bee4f166e5c77adcb1ac7794dbe0a673ebfa66aa2595818250b9851cbcad400d4687e30b48667a8013245d51dce6aae77d5905b91f53b574fc443b1684c92af0bac92b0aacfa2311b89865521de7bc0054eeb9670d5568a2e98652854cf0ed9fc027967d196f3a30f8b2b14066b2b52b741727573fadde89b47e0d9fa69fed76a226477fc8a2f55fb32f9e4a53348a2747f494b15c8d7565c27afbb068f7ce813b4e1ddedada52692a9c6d917f278d17b970668263eeaaefcc44df89bcde5edc1ad4988985ab067b75e6cd1d6f6083dd6b1ce8e775db02a7d9533537b178a63ec573a5043bc15bbd2fc963c4f3aa122ec4f0b3fc30cca5257817db4bd4ffccc7a43fd006bc392e64e161e7b59542881b1b7db7805b0003d89224d2ef64a29bbcbd982ea90041c78c6f87bee6da444542e072c9c6786ea8101f8bf295aee03c0d6033a3e19116bae338e4be2520f564c69e09cabcbd5249b3c4c50d66ab39b30dd90f909ea126d2b48f8245d175a365531c939ef6e9a42c17a33a69c8b52de48e4757f5f25a4fef9493350305d558c5c0c806c0698893aaa568476e50e6079fe997df4194d8fb35a21ea8958bff697c158b049a30bd3bcd0e162772f352d83b202daafb229c098c33cda25c04e715a81f80f6673a1a70c6f17a033b3ddcd772068cce43302f1602f71d2b7a5e121056818a837126e27c0990955f13ad5ed1fe26d0e0aee808c0717a47a38999c20411f7ce53f8b1bc86018e5b9287eeaa3caf58b4244ae291f351667c000a7830273ef3d8a17f8c1254d819d16bcb2a2d9683972c91763ebbda2a379442d0b07437cfe123ac3be67f7318fb7803470146435bd3d593263e5e37c32705f6ad8b8d0decb68839c28c9a838f97b8613f4c483eee116afbea3097e72e0077f5a4ed396ad4c4be49ee36f3726809e0efa9aa8a9e0e3181b1126675c191b7b9a7fcf1ff115b2e87efd6ec64274d47cbdbd09c899a776819132d9566fea583fa1897209395d8dfb78cf6cdc2819d6c0e75da888e88ad236667388f965855fd7fc36d1249a1a1d24eab917be709ea423f9491f59038c726eac3ffed3707f0d3bdb8c90e1951f96ef89d1abfd2d4679259ea0d69c9a1f152594c71981fcc4dece41fa6dbc07cd2a1a3a0949396cebc5a8a3f13d0033e3ed78f7473fa5c9d6d5802e15232fa8b6bdd1feee2a12f22c2449c68bb1e7d8052c8ae42bfcc1f65444565986cbc63a4381f9bb0b27d0f5387f2f04a80432645dcd2a57c171892bdd3ffce03a5852a2768dfd5d53ac1fa5e321da9dba979819096a00897281370689f9e75e450560f86f506e598fff748d42ec26aab61b453561f9facad5af053d0c77652e200b75d59620b32899f0977b4d7f947cf1fd9beb68e8280f53cbfcdf2ef9ab67cdbb3bba405d77af100b02287ea616c931799fd7eb8c65b4843c926b2651e5d68b33e0e8cde998c763b06347c459de9fc8b6d5b10460a3388c750b194669523e2e6628d25d736b401ce307f71cc25241f4c82561bc6fa56eb3924f23148fbf518a80344233e7f71a3fe7150d9566a5b2d78802878628dcbe3aae5d400d10be685cf3015c07fa9981fe3645873b7089878cf1743cb0f6eb1796b83b00fe30bb78a6d55e94b4d4f0a2ededbfc36e8de15a8c68506befc43dc69e9abaaa7cd55a6b0f6e6792c45997a7acc30f602b783f1c2d9e0a430ab0a3fe4708ccebd7296c44cfbbed6e7cdf13078753bfd0f6d1866bcb3909c3a07cbdb5faa777ce9e8229c9f734f9bd4b8345ac641766ecb4180dff676c9eb4ac91e0330e530705671b54027ce8d3d33fc6fc9a01753866b28e5bcb8d028adb423edbaf834b45079379af6dbf75c379ec6cbe97f5acab496506713300ee2fa1d677ec006f8460d04a3a797a316a88ba832955f99e291cda035b1663c676618e95cc59dcd3414befa5426a4c35a12f9f95d1bf2fb1b12fe350b0b1b3bc504578eb3ab16aaff15505b218ec2b0fbc933d9034bea8be11ca2ace22f04b861883fd863a5ec6c16ab8ff90a72fbc89fe91f9c2b84601a8dd28de98bfe0d12ebbfbb14b201090325fbfdd352e276c6fbbdc989d94ee96b47b57a5aeff3af3e8bf9f7a0cafd74b8a28cf11b86ae485563e16bc071035388116b04012ae9d36e259252145eaf552be23a474c5c6069c29b15df7194f40734f61e4f0f9e7da86c08944a68a2b6e7768e608d01145a35e4973f948119045948996df2410aa5c019c24fbb7c8615d0409ea313ebeb78d6ee8c9ea6fabd9c504713c21c54b21e773fee2c29468af30e00839978e769b07780286f5ba0b35971772053de944880873743e8073f3ca90778c45d558733835666daba6285c05162bbf1873a03e9a29994cc53678aca15cddcc1d2d8ca360828c2dc48f9a536ab4d309b01814f0a7627862f3b718b4b95fad03b8299e80e08b96e73105d9198cefc55bf0a26c8e13906b900bebc96b87960b5763d31f03f411ef027006cdae44aef11472578447a913034088d6d861c71de18fb99a9ce6932e0072cfd030bb49c34cb8286c90aed1408f146dbc39e78b0ffe602096c078d6c92ca59e264608df236ad9ee41f99c24f97b379a8d06636842e2d54008152997c8beb6cb86971dbd8b476596e0fec9229e959c1ad4a20259b1d1580e789a16c5b860e447a97f6c6daa850e83715e9236f6fa882a6adf7daee4e66d54b0ddf0966b181098e9998014905ba6b79e76f0c7cb3a6ffc3bf6640b20551704fe94216a732df2642e8d1fa25aebe51b04b3eb634a9e00f307e266f3cf9271e3faab8a828182a0e514f37888a805a4d3cc60c3ce428e9db37be132155b55740d4f93b7addd70d38ba8ac286921ab9ca32690350d35098782c618a7a6aef460e67652366c7b919d0a0aac2646daf741e55bfc9c650539dd6d755574cad07af9359895132f201d2eda1229b7540487750ba60e705158636e473b1a7ecb944b98587de86c6eebfc6a7e64291374129bcd142da570765bdb65cbc046c0a07cee6a59d7153a389ff2c27e0ce590808f50429d5877bcf24e2f1e2a72d63b464ad6bb91eac128ee19d1ed8bd6143604eae097c485dbeb04c56de34f94d28846fd5621c08a6609e7d408b1fd03e36defa8d59dc0cb9400a4a7e614d4aace51ebd7252c40a67ce237573a934fdeb1b9e0e127f5718fe4315a5026a455e2dacd45ae5e352aac9a03e56e8aba77b182194d330a5e68dda7b4202a9ccaf2864a34814a2cb060cfec55b655b899e7f66f11348acf51964d5603025054b1be35317c7de9a4941b5ed3fc3c3038be497bd3762134b9e892b01fe7791b0037cd8a6d15476c3b22aed3e7276c5ff1f8fdb1a7ae77715a81f0dd955e18fc54c6d1d28e4a6779546eb93449b288da309947a747dfed8c497520513b1bc7d271cbae4bf199355f37b5964535f0be92998aea448384e17cf990b8b339c8301edf9ac37219ebf580e1c60a7d2b7719d0856e8dc8c1e56141c0abd47916b1cf6a9f735b60278b3bd02567a54d01ccc1926134111fe7184a54d872ce230aca60f6625700d5bfc925d2d178b3251a1a5dfa97d824b585dbdfdd24303f1af300c79882c82ac677764761dbf2497fc2692ef13eabf8f75914376ae2d870c272f8d50828f1ad29d5f39d2d17a5f40b62d01cc10f9067e72fbf8a64abf11db7a154fcfdc2a246a074cf4fad6058df30d63893581dd4e643a4067a26cf9ad99dc00a2428d4fc1ea6269371358a98ac96075883b5afb47da32a16d1e710ca17171b9d9a672106c8ffd65a3d736314ef7f7565d9b5a5167b09b964647bb16d64acca1f5fb4e4d7c77d7231b2ffd44f49b26114450ff399482595e7e4944fcd2aa8b51db1817d1c85672ffdd06128a6cea9979d6f5d21e0c776773bf98664fe200a1385f15fc747a5109614c79d8e5ddaea38beeae3df3dc66a9609ca51b4b77421c29e270f13b470fb9064eb2c7337f8b8cadd7f8f46db0e885d8a6c2fdadb226ccbcc963d128198eea37b72c738b0617ec7b706bf2e1319ced1c4bed6b9f89d4f9f8fce6253b8c0718eefa341caf689c11a3b7e9e2468c390141a75123a22a9778686b5fb9153a16ae9aaebcf1efe2e65097a27e392be7c40eef4f89a21ef027a2b02848cceabd148899cc00feef565c7ca4763ccf8df0cc725e504442b7762b816a28abf87cc691b04aff02609c24a3096f6cda6f10934092d210c80253b7ab0aa094f07b2bde74027c08628d4be8c0d1d694f4281a80942a0513c4bf7d69a5710da1bff7162f55481ebc01412afb661d4f15e9b852485209297a86917ae77f93da5dfb61f3c28caf621d2bb6b774e504b25e1cca8bc4fba4779b37fd53beb9e32702f607a3da09f36e4627a85c705326704f75fde436e9e0027506bff83a24ba9b9435d9996a20bc04f57af90ce584828fedd43668ce9edf082e80c9c0a5304f197cc2dc850438269c0ba4f59fce714ff2ad759aa04e0d269af9349539dd6637523a7cd0346623af4f10b3c9eee6b52243ec6645277a27a0b9b530c24c3edc9ba1329e8ec7af7760c9194d276264915df27ad0e40e0b2d4ba0ece0c256cacbe276f3194e7baa25fd5c3b24488f71a4351a3cda0d12f137f22dcb53b0505b4dc2480242ca0153b5e1a681cfe8650460984367b1d6d57adefd262fe260091dd41a4aa954d33742a76ea453feaf354be02c6ef52cb72a5a8d95bf83c57ae34722a45a9058138303aa098b2ee8cca5739b3f79d9529b047f3606a52cc396a159181aea8d341d332aa993ef449926b0608c5356ce90a9867cbcc409ad57c13d97687377876c95a82720dd6bcc77804a65e45a11f5628b8299ca1f4ea9fafc7991e7be9b4d85c9772604e6dcbee78cc0fe3ef7b7ce5d65a4d616c548b6dcf260e2c45e90122cad56a82cb877214e943a45da00a6d6ce6ff7bc36b41075f493ccd5ddc1ed24e1b29fa197e502ee6c10a2adfbff8e87aa0368e6b4ffce4473e4b06c534a48e6005b862a7b1c4904cc354a15b81328e8784e0d88fea417f3bbae96950897714d1b18b566ad8969919082522a2154502441c3c8934903296d249e57bc2d0fe910b429072fbfd644037ccd8f20a462b4d78aafd35b00288279cd49012099279759ddde53c64f36348b03f3eb9ca3ffa5d57c069d20d9c02014b3a5e070672d4084f71494c0e4017aeb6c80fa9f1504e50e566994efd59468621d27a50159a5be9f8273c1af878f8b3d27316ff01c0916259138c84bf87db48d65922edb92f3e5ff3e796dad9ad7acc1a8553f88166817330681804213f94285cd1b9a4a19880ffc0f5409d8051e09b4c38d484256d15b410f4bd85f398c9e5ea6fa06fe6f7c442015b12af608c083a9389fcc978c3b0b72be782ea75e558f9492ca03f42645cf4c84c30fe9b3e0d31ea7c96065a733ae5e71fccb1b41c78799f0953b7a97694c577c41f99666ab1b13606c59df11835b8ab5d60206cc9a029bf5030e59b851893dd77a9f3bef6f26ee1a0686501dcf07985e61b13c359f74f87729376c1566f335c4a8860eeb77b86a9fc33ccf349bd63e1d2a50cb0e3674a9e51dab971d24c4ba0d01f93a121c3b03875a27d00bafa27bcc77eee7891924e9d0dabbc7b6948dc6d45cc37a0628a3d445bde5b07a8667abb8c4187a289326086f171ea977491e2b7b9119f37979e02bc6926f92f820662abf7bd04ee3fe815eecce462b2acd8f5eb4ccc1e5b793fa6499a2d55a614748af7ec575bccfc8054b2badb60dad287f6e32ba592887ca5e0b9ece58168aa5f2b77e334653610b5342b8dd94f06d3eeef00bd56f2f711de41e78ce734603eb0269b65a00c672bce48de2bfb5e83a0cac5300c47b5d544a2d62fcf328e0f40a4cb18bf4292e3623be68ac6bb2b581f05e2c65dae7ce2edb404e914412fadddc9476cb1b6b5c023177fe0e7248a4bcd8a222115517848f2d6fdfb81b3d20d925ff88a9799ae38c590aada4cfe5adaf3b8f45ce6c957c9bab1737868b147fa36403773dc4bb6f6f170380562d18533ec749f2f03faa0b8d924bd93bb44f5aea2c36c513d61413be17f86cb3021fcb23d97bc5d58932f4da260637cb39af923ded689b56b416ee9e26c96b119387795e0be305649a6269f69adbca4b68ce1eb71333f72f3bfcfa9ffdd2ab1cb518c915673aebca636de222320a9f5614b03f70ded338730fedcbed02e001fce23ad923a7a4f75fa2d77315ac28f367d7cfde727e093b718f705dce54a2182f78832fe9ef5d10fcb31b3a1c82287bdf4c2daa0309e9895ad84d3080868731988e86fddafc4f9a349c5f129e79fa33af93fa39c5133e204769041e176bdf9288ddd693565661cc6b7be831248b6896c603b4e194b8e660eb6bdb7c3d906f390984fabdd6f81e8d6e9a5ff50846c06fea899c54e83a4649f769f0651e8891ad4f1dac53bff77d82e5d475ec69ac300b1e05ac272c15da0dcd41ce58d875849be6b9a979ddffd828fcd7fb3e74ce3f2ce616fca13395c763c4ce01472f0696d1cfaff030451c29c04da6b619c012926cc60bb0e8a7984183f8a2a55e1ee754634de1c29917809ff8a3033d7af4bbc4e0a458e5d58ea6f2b7ba6f4abc9726729d17873dc265c20653e7b15b79eb011bf1b0611311b731a779328368426bc7fb81f067a370db788e75a6daffef469d8e5f9a5f4d26405b75b0c040fa79ef5bf098bd2157137b5b99f77b860f4a11603e8341efe2a8c8d7468408cf592a9256c6a443ca92195fa0f6df7c70cfaba30916e460849763ce3f4e384cfc88c36413144bf8770772fb334004290fa323b6ac11e74305f186d1dbe3b1fff8b84fe6368b74cd86cc128458b56730f2049b8ac0d3ebbd96f3dfc14edf2add9e8d37db12461bb916703b3ebfa709d8b0cf8b06fba97e906c2b109449f068e2207fac229b18b54ffbeef14d85776ffb6ceeb34394ef61a9941efe0161506f0c6b886d99b590e747316a8cc86e55f5504c18370d4997d06a369bf3a8b1285ae3b65bdb4f2c4038efd9483a536f2646479730cf5d1354af87b433a9aaafaf821b20fdca525f6a8080cfcf3046cd0bb0c7cd97b2f63df488489b4e6f20dfc454bc3c33efd1427fb13ffc6b267b8642a958b22797509250487d5bc9af3ded8cefbfb699e65c524bcff4b3f20877dc483b4fb38708a96ee8ff514b23ed9a125c6019c8a7f478b9700232de75127f8197d7510808d422fb1ff54d2b60402b45d50c7b9d0c298d768dfb0fa22b766896e33c6ded40d81c3294e0abf6ea504370acabf80d1c60e0e7715b2e75c9f9d70682dd65b10f4cbd99af36fd255a74f295ccbef3994f5223f34a6342a4acd2c882dc85885e86adf795fc48d6a1d97991eb078cc0e5e6b199f79269c141f906082a8bf33bf2aa23071fc955cde1d3dea8d3254dbb7595ec6483e3562d5c6ce7dd0fcd7d296b34e6838eecb760962ac701aa7523d2ff580801c728efd293cdf1ef59b18a86b141d1bbc1df64f9769708ea7cd29462a91dac8a82d9861fba6bc5eba08a0d13132cf9a8e2eef1c2cfae6aff5e9e7864cb40f8e8a6eb3d14509bd3351c24bed9a8bbd0128731b5fdd6eb46910919c5a33fd359233ea0aae5986a1ac602514e52afbe2804cf44fe02b1cbc2fa16910c7f92e97de3fd25ffc7a1f7b54b7a665b9d7697b868d25f67c41b54c383eb058faf3001286af328deec84df499058f0bb102c89db333e787b97efb4d580ebc0ae9ad7bd61668db7c4d64ef698830dadaabd2eff5a28ae57521ba5b67d21f13f8b6452ca5ca349a25fbf4794b31bb4735c3862605c783c90a6106697e04c7e720c9fb200d4f793b58e9f29f9654c37123dc617dd7888217d9d06252bd1bd5d2bb51341b63f276bd8f8f961916166cbd95c36e0f22a8335b1e2aa0cd8b01e6661abb341335da444c845f7f1b08a0f25784d8de5a6c040e4a555946c4630f3e48a73f99d0ba8cf1b89c68c5d75ec1de68a68b4fc7d16f6532c9a2730d136c5de5e05bf5678515709a92ec064dd24b9d09c8eb9fb92ae91651af967d757a0c197ec529a1a9fb4c2b7f59cdab7565bf1490235eb1544b9b57725075db54711678ccf8175229720ae451fbffa80cf3415a520d305ab5abe9002e6adb2b02c740dc2790fd63b0c58d78dd38550f76e783ea61d2623f23853e3341905b08ac9315adcd36e63ed988e1038e8f890ac479a60dc6711c6d3436bffb4098799aaa352093437d6c01c1d954b2338262a51ead3d59699d57622f1030f8a743ec181975fd555b06a9db300b2e75342f5de28f963779bffba61220516e2a408c0785ea4525f5db81c2f6838a05838a8686a82d6eef7ab9219b016df863ac38a83e7e6813ed1d82e5d2ebb98bf684666dd95a4812e7c2ecb6bdccf88ced478379fd05690d3566c0f49a7bc5255288ba01818f1278016807f0da8630a1a65ed948e0c9b2f03698c50681f66c59df879d579fce22f69e134cd83aaa32ece279b29db338eacc2479f08bb59b8fb1cb76dd3e7145ca4163c00452cfdd63117047f7f26544aee248e85261c67bc5e60ef56482f02dc39082f80de245ab7b6fb5af1002666e330e6330af51b5f9a66d5515db849f457414b7a46dfeb656b81f483b12eba2e661e32003b4c85b6c652b48a1a25db319fc47613dc70fbccbe046c3fb257ce3b797ef87723f833ac66d09130395e6319011a160b4a1d5ca181e757663aa406ec3d000dc7882b56804c22841ee166f391b90dcce1dd7e84dc1f9a81ea059285333139da28baf02d1edd7338473abc659df8b0eb94c55bb1bb3f35c48eb77f209db33caf0a7a4a4d1f2a77b16e1eba464712136d5de927e5e722a6b152b63ff116db3f8e223b191651fe89c3e8d16c90ddc1f16736867ab63f3041a70118b6dbae31d76acdd9593824612dc2d17f7cc47b765615ef94c7dcb9ce4518200c6db166ab4f47114d42a2e07016ed8f2ea113e241b3fc7229fa1367a1130b3cbca18a863daba67663fac30a3e77e03a20f453c357e88947dc7f7ed9888e23aa2e1c2d79a16de6d1a3d1fc838416925c26f5721da53c73e2a6ea061972799559fcb8d6f6ac297becf76da9447a2155eb4152f64245ec2ff77ffccaa12c64f1d35cc189b37412b6f69d128d4fea170549ba0a9efb05bb403144991c099cfe95776f8b97da8e46581f40791597e717423bf9a3ebc50079392762f9617efacfe7c4540dec20313f02692132d0e72f56ac0324b5cbfb982fd7acc9fa34556b5a351f8dbabd6f3eb4db4cb51fbe3a9a6ff6bc36e0d9049d0b67a5c7a1b5b80692617d3f38a981ed41db4ef6cfcb28c844cce61c0caf3214f7e37929ab7104ca4830984a879a3532b583e3e29d7921483d656cd7cb346d06657e61919e10b70230697f1b2cec444f901543ee766d912f39e725de506a5b1eb8bec4c6132fdb74b1554229c98b110489502f836e46d1db766e08c773162f92b3abb821220f3a056dceae32f0bf50727b0fd83aa315379ca6dcac30e0df93bfab49bdc1a70be126cf1301b49d5394dc65ae825f1e64738e15afb29c14a9563fe78c2b2024486188a298729d9a04a091d3a1810e36a90d84e36c21fde351c68549ee72ab413f009bc7a6ad699ea8bd641704d14d1e53d592a268dc09848c18e17fb0e190a2c1de5579ca182e42ef3f8cb5bbed17196fa699344aed7c7520dfec39db96182c558b6aebd771c1bced8ad493b25ba6dee9a46e97541144a0874085ca349792400375c1a4d3c0684e0a9f3aa9ca56dda8c005b89fd0da32689859928ddde493711700d7cfc2e27d1aa7d0aa7142d1800986fb59ae9e1c93b98100689a76f1055a00f4a8cdbb2df1d31f5ed08f6cd4f7a417d1bd3c2d5df39e59d0f6c765f6f5612e8c91e8fd20fb0d533e5309893ad792aaa7f3b1a0bb7c0429ba6fc3542e324aea8d565622c700795f717c8ae9bc308317b3c4660cf9338671b959c441a7220e1c5ec88aa056d74fefd626d7b507fa7204e95f0bd198bbcffadd8f6ace30b9c8764edc17f1578d439dc6546388106817b138de9aa5e70450f1cd36adca672eff94e8cc28227b8afea563d456f14ec3e6042a3ad8f0dcb0ed90cd51f4c6587e4919f444f03f73dfc51f64a52261fdb4e4751cb511d071663c2f884e6ccc350f60d2df0e5fadc28b44c9acdaf9d917d97f28b8b9e7f10d16aa4cd041694fe6c8a34090b5b26db4bef222ba8d541a5d09d32799a619dafd24834b345ce924cea15a2a4e064edcdf35f6fac6d5c749a6a99ad139f5577abe58652e9721c65163c700cb1efa24c820d33d9f23ff4b7196c5f3260b88f06604247868e71f9269d845072c4ecb8dcd1385b4abf90b36b97f8e7d99fbea4fbc415</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 请输入密码</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-      <tags>
-        <tag>关于博客</tag>
       </tags>
   </entry>
   <entry>
@@ -1440,6 +1440,608 @@
       <tags>
         <tag>八股文</tag>
         <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>项目经验面试题</title>
+    <url>/2022/10/28/%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容">
+  <script id="hbeData" type="hbeData" data-hmacdigest="89f675e3c9ee01fca90366988f63a47d028b160e9fe14a94ca94f994eb8ce28d">a17b4de793b95f7877066d2186f5861555e2d6b9cb5641947e36c8450a9062241bff23f016a5658fa4702bb8625e1a64927d2e249a90caaa62600a11f5dcd3f66c53fe7239ac25300620da5c82ec4d458706cb81b1903f8a8894fb74b7b49e178b1ed12b5113c92743dd83f16334b11a519cb4937b1f6ca060c3c1602c2e5ab00497eeb7b7d7a4a4a45ca9b9fdc711a262177b0d5ff4bf6e4c9c47d80447f23cd18eb13e8c28580fd1c2934f779e5086f01f803a4ba6bb4a6371d982998985660d5e9b2cf961c1e882ad1c8a8aa710dd432f2230184282005f3cf944af4755a25a3afa8390b4846e22e0c1344ab3b49b32905d7a0b7b3d57bc134676a5f95bb0dac112457d1ff1baa0748602ed6acea81a1644595c8dabb2237e7dfe4b74ac6ff80dfad29602cdb7e29dd4231532cd59a7a98f7f65299dcfe64d5994d79830a9a55e40f90473ea96085cf8352db10806f20c766362c05efdd8e74d8c881ea0ddc387a76ce4bef6288cd709e9616eac194dfbd36930bf49f966568e3747c080b7a1a7ac6c9f996a1e407272e137d22d669d9966d6a6fb0476d04bf59df903b3430fbde42913ce18dbb0f77e7b78192746b2f7c5481cddc741cc7bbef8a44c59c2b3deafb2f06fc0fb2ab69ac65be6f67946ead0c4bd7966629d441238e166742e33d9f6d73430a28fa1077777e863dd000ef7ec4d692930e9b562acaa53e9c738b55cf7258331f79e3f63c47c45147d7f8d0635cab43fa82bbe470eecaec98617b92281a05d93b92f489332383de12333f59eefbaa918bb6b38be2895ae3b7861bcd02398eb42cda366c7edb297284672cbf1cbfc2f60766010b21f17f7bd23ef57f225611ac5ea8d2dc7584f2aeb16f0a50e99daadcfaffdbc7b94544ae0c2267917cabfa0b25e3e059e79e8017126d985133428c9a3ca2808f29155cc987d25ee968d63f58e7c1a34db327fd0b61f6ef2194d97c3c9907a9c1f6d8d35819b4eea39a6908d2da7fd6968a8040a9441260e04c43c9dc6f1b9a3880d7607aece4a3d6e181aa5978796603c3d3bbdc8058e6bea6dd2ab6802395cdacd440fc527781853f21f72b171060b271fd81139d3af25926b4cf8b612ab34e5ce9cf85c92d5d87aad45282f1d038d80afc25c95f5ee3dddaec2ccaeeeecadf6c449d14152e3223d2723b3187e41e90d3c57c1975741a63b9f2e37ea1fa66f43eb5df7dc3afae2f630a6fca55a3d4d319078f74fdca366ee0a8cfc006d5de6ce7db111d2c071f32e290d523cd99ce434003b28fd8fc7118a64b255ae3a0235925e842d72ac7962dcbad744aee5a7a8a0c69e597d8af7189c92b354f19d2b11c2a9bc5f9f81c77545ec44b54b18efdce08f8ded84a6a1baa8f224803d0b32cda4f41b4a0d6cd053407266d47937baa6029abfa0777c14a582cca4f70946d1d78ffabefcf9f7481d5eea5eb81926aeb8defd70bc342e03f16bf75782063290a61febaad44f9bec65f070b75c8aaabc05514eb1d1dda550528acc2ee8d21b6264440dfb5585bf9764756324cc1c60722913de487fdc0654d35f1c893fa6bc41456053dca7fdb2c9b961ba8128009947320da3c0821481a4f1fba49bb5160c0b0797c0a4bc1b16848c67fa80843bd7f9e0aaa43e63e109cedcc3a8d27ea2765e51438ade4c286b9c1e77a2de8c55a130af196af8b2839b6f97dd08edfffc3ace18304b60f0935269390c7d5a574d2f12d5d9771c9f466f27dd51ea488fe37c34d6aa112843a7fb0029adca1704baf3e21979f858c33e3f0027cb10c9b0ab7cfeab84869b4ddc7964c7a87f95091e769a0cc8ec95cd6eadb56f6acd9e624cac4811fb82d586d459a41891b75b910ca8217bf71fc047bc5160cfaae7b472cdee7d3b74fa7d419fa45ec40a12ff8ff0a47f6b2992d4d425058c23cb58154b8c421719fef35d035e7c13adb0e3535025fd6482019d43e567b0e9585fba7b60ab9ee1ce5a59bfe7d4bab77e10f1afae9740fce16dba0a5a05ceb5cadc358721260d5f6aae39011b7a578f575e9b9e15b6862b7932b756aabb5713b6f7f92ee9d54e7cfc83cd012107ea6e823b983fd276bd1b75fd1d95ec9da057f56fc0827333649368ff709f0491e12b9cb3cf73d9c1e4efcf2a1a83975e7056774a686fd3e8b78120d5092712f7a09eed7d94b42931734618ad041b97fd57c2f87c3cf9b085ab0cf50920b30067ddf7d5b15d045bda3434611a0521d062da41315756094b800c12cb30aa8514f7568a759b8dba31ab691c016328b0f31bdbfa6019da0b0dce6e57842e8bdf4532e641306ee62659b40c437a6bc56ae8134ad7815a20d9a08805766b827210b4046af906cb1606fee5f5af499f85835cf11fd6f309132375a12f054e2a355deef4e4c14a9aab3cedece4a39a62770e8cee493d8b8fda7b73fb8f3391590a060d0d243ddd044ddefab9932958f07c1941859f1ff11d2eee0bdadfafd267f7f7e71ae92fd48ac5c9043a98653780b4a7509ee2902b3899df7fc06600787a367b7de6bbc07b74d2fb21a0ce15adae8158c800dec8c16eef115b8a751a47a741cf720f5f99541675861a5cec80064e4d7f80e6dfc0e64b6bd8b31104e19a35611030f75a910832460fbfd8e92b3a00401dde53f04a0d68e036e03391c613f71caaa686b5018bae56a3662b2424913483176f4f7b132fed435fc140d267b2c2a24844cf1b6e204fd66f58bf4704771bb5a8ba565e4b9f0e431c0bfd46e798437e1c9005a9a2023b8e14e189f3248cd885120dc2f7e54d8f1cb5e7238c6389966059f717071ac6f40c9d99941450472583c242dfb270d315f220e76744df9e78d8cc97249748dde500391cc59ead8a37bb048e4d69a54798d688a504c9d8cc4ae569691126880e0ca35390191ca509ade324f261fcc5f3d2abae39bfb0aed31aee7572bb3a9c94bc06f9a12cfb43c0f80265e3512c3c6eae3152e470bcf95d1569b1c67af9940a80d6f7f6c0f801e4820968ab7477ce0686f878cbd42a8bd612a4363321666a37b0b3be1e5cb89c273036e42ff9017a27ad865aa23455d990a9c04fe5c9dde60618b7148754ff57fb8e4c761a55d9af36a8423eb497b3b2a4459b7bf39cc43bfd461ab645a054bbce1ea8574e5c838c0398766637b115486e2dc87e49081751ba667e31ecd4b6656eb8b68befdf263ad0f539c2d98dcbc6a87540c8f789056f7b0050e5e4b77f70578e431feb5fce9d6ad8240b3396804460526db54c50f33d9dcd1dbc280d56164703c87b7965b915d3d6e4bd80a89ef23c2fc4f9ccb34bfdda2c1e2197036a59b5d0aec1f1817cf0c1751d7b81855ce4785c93b17fc39ae1b4a6dd84eec81946bb2c2c55136a64ef191b5bf8ce83dd8f79f48df6838640ca93ccd98eacb737c837e754ac167611d44d7329488486573fdc46cc7db215fa0e616a4b9bac76a020e929cd8a02bd4ae444feb38a85b427a5c5870c2aa0ef32f50f0c93b09018de6ad7bf7e28ddc70e87030dd3d52f505f67e70d6326913c932bd6d6992634c000c17a9fc3ef33321555f7674c636af090706370fbc97a92a9c87c15185bf20bc9a2be6adb50d4e705e7463cac947fef21856e4539cd52cb46a5f91d9b798cbc2758dd55d119e909f894f6f9661d65e8f5c077741b89075bbe409f42b4be1fcf5dfd9369bb291c03c6f6d4d282949b628e48a265dba3331ba79c4fc13647277ee40cc679478849507ce308aef7ed22855c6841436b38047ffc6d121cfc65e6aa5041f29f4b97fd6c43a891462cf28d3979b230d2b275ad43801575f27a3d30355dbc14a168d06c1a113e97da2b8c8d1e178963a0e3c2d4be95ce2dadab8526c84dfd250a14b957c612db88a6f5ea155cd97f00ae41aa2ccbe51b169263f3071e47870b92bba0944a81cbd4df6a047df6bea085f99665459bc110408cb27c4b65e5dbd8b349a01173ff1dcb23727149be25f5a71bc3a18fd6b3d073cf1ca8188155aedaf9cf93942db0586273363df220c1b50adc025244bfcadc2cb9b700c70bc06440ea6e74a58cdba1af305eae67a7d1b752d564cf8e48b0750bc6549baf9544aae4532c46394b85474d884be2278fea72970b5374c3783e297b37d65b2652e7d844675f962e58945cf385a9ba695ed72653251af60c4069ffc793b31a198474e51d7b1acf6b1ef762b8a3e1d851b5b820300a810ab1c668e54a6cc4698aa6dd51a14341dbeeb7c964901a0eaa71d3f3ae0d9bf95b35ba8c345729085dc321a1065a73a457892015f3f61e838ca068d6ce08ec264d0df5b551a1c4b19a8a2da3cd06d1b50a05402c1a008b66e709990c9ec13224a19d024faa5b9150cf5e9c0e15b6de76b2884a8ab22822336584bac8fbd37a4436b9ec328f892ae653febbc08f7099f976e1b2a7965b20068e41c4f60fb150473f5d2350f4f44b3af88ab755f8f28b4be29a3cd92c51838fec9459aea6e47d480247b144e87dc7bceb8cc009fe65653150dbabb49b2fdf1ae3e22ed164b87ca7422f0783a00680a609b168743896206d70600b7a60da66bf0ab9fdebe090fddd229663139005763f6d6e8e8bfdd6354203310d2e2ea3213b2075e5430ee65143557118e8b60f7335d793e998d6c6e6cdfb9e1a95c33fcd7751798eee3deda08efae582c0a0c8f87e59f3b47d85fc4835117a37f3731b36d846fa2abdd20bab0af39441a4729a4e445c267da65d63726b6ff527f9e64485256fc12b7d4a3e7b1f7cff29da98023cee82f8dbdf8dcc9f884fffb2b1427132fd95fdce3f53b178a9751595ce6297788f4a4a8aa7621b71dd79c2a01af38d395ca2cdf50404030987c404fe606103ae929cc59681d41f0e890081fa5318</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 请输入密码</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>项目经验</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机网络面试题</title>
+    <url>/2022/10/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<p>计算机网络常见面试题</p>
+<h4 id="1-OSI七层模型，TCP-x2F-IP四层模型，五层协议"><a href="#1-OSI七层模型，TCP-x2F-IP四层模型，五层协议" class="headerlink" title="1. OSI七层模型，TCP&#x2F;IP四层模型，五层协议"></a>1. OSI七层模型，TCP&#x2F;IP四层模型，五层协议</h4><div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7m5w06lbkj313n0iawpi.jpg" alt="69.jpg" style="zoom:55%;" /></div>
+
+<h5 id="1-1-OSI七层模型"><a href="#1-1-OSI七层模型" class="headerlink" title="1.1 OSI七层模型"></a>1.1 OSI七层模型</h5><div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7m5mu30e3j30v41834qp.jpg" alt="1.jpeg" style="zoom:80%;" /></div>
+
+<h5 id="1-2-TCP-x2F-IP四层模型"><a href="#1-2-TCP-x2F-IP四层模型" class="headerlink" title="1.2 TCP&#x2F;IP四层模型"></a>1.2 TCP&#x2F;IP四层模型</h5><ul>
+<li>它只有四层，相当于五层协议中<strong>数据链路层和物理层合并为网络接口层</strong></li>
+<li>现在的 TCP&#x2F;IP 体系结构不严格遵循 OSI 分层概念，应用层可能会直接使用 IP 层或者网络接口层</li>
+<li>TCP&#x2F;IP 协议族是一种沙漏形状，中间小两边大，IP 协议在其中占用举足轻重的地位</li>
+</ul>
+<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7m62vqibaj324q0v8amp.jpg" alt="image.png" style="zoom:20%;" /></div>
+
+<h5 id="1-3-五层协议"><a href="#1-3-五层协议" class="headerlink" title="1.3 五层协议"></a>1.3 五层协议</h5><ul>
+<li><strong>应用层：</strong> 提供用户接口，特指能够发起网络流量的程序，比如客户端程序：QQ，MSN，浏览器等；服务器程序：web服务器，邮件服务器，流媒体服务器等等。数据单位为报文</li>
+<li><strong>传输层：</strong> 提供的是进程间的通用数据传输服务。由于应用层协议很多，定义通用的运输层协议就可以支持不断增多的应用层协议</li>
+<li><strong>网络层：</strong> 为主机间提供数据传输服务，而运输层协议是为主机中的进程提供服务。网络层把运输层传递下来的报文段或者用户数据报封装成分组</li>
+<li><strong>数据链路层：</strong> 不同的网络类型，发送数据的机制不同，数据链路层就是将数据包封装成能够在不同的网络传输的帧。能够进行差错检验，但不纠错，监测处错误丢掉该帧</li>
+<li><strong>物理层：</strong> 物理层解决如何在连接各种计算机的传输媒体上传输数据比特流，而不是指具体的传输媒体。物理层的主要任务描述为：确定与传输媒体的接口的一些特性</li>
+</ul>
+<h4 id="2-TCP和UDP有什么区别"><a href="#2-TCP和UDP有什么区别" class="headerlink" title="2. TCP和UDP有什么区别"></a>2. TCP和UDP有什么区别</h4><ul>
+<li>TCP面向连接（如打电话要先拨号建立连接）；UDP是无连接的，即发送数据之前不需要建立连接</li>
+<li>TCP提供可靠的服务。也就是说，通过TCP连接传送的数据，无差错，不丢失，不重复，且按序到达;UDP尽最大努力交付，即不保证可靠交付.</li>
+<li>TCP面向字节流，实际上是TCP把数据看成一连串无结构的字节流；UDP是面向报文的</li>
+<li>每一条TCP连接只能是点到点的；UDP支持一对一，一对多，多对一和多对多的交互通信</li>
+<li>TCP首部开销20字节；UDP的首部开销小，只有8个字节</li>
+<li>TCP的逻辑通信信道是全双工的可靠信道，UDP则是不可靠信道</li>
+</ul>
+<p>TCP使用场景：</p>
+<ul>
+<li>相对于 UDP，TCP 实现了数据传输过程中的各种控制，可以进行丢包时的重发控制，还可以对次序乱掉的分包进行顺序控制。在对可靠性要求较高的情况下，可以使用 TCP，即不考虑 UDP 的时候，都可以选择 TCP</li>
+</ul>
+<hr>
+<p>UDP使用场景：</p>
+<ul>
+<li>包总量较小的通信（DNS、SNMP）</li>
+<li>视频、音频等多媒体通信（即时通信）</li>
+<li>广播通信</li>
+</ul>
+<h4 id="3-TCP中三次握手和四次挥手"><a href="#3-TCP中三次握手和四次挥手" class="headerlink" title="3. TCP中三次握手和四次挥手"></a>3. TCP中三次握手和四次挥手</h4><h5 id="3-1-三次握手"><a href="#3-1-三次握手" class="headerlink" title="3.1 三次握手"></a>3.1 三次握手</h5><div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7m6hb6w0oj318a0o6qau.jpg" alt="75.jpg" style="zoom:30%;" /></div>
+
+<p>假设 A 为客户端，B 为服务器端：</p>
+<ul>
+<li>首先 B 处于 LISTEN（监听）状态，等待客户的连接请求</li>
+<li>A 向 B 发送连接请求报文段，<code>SYN=1</code>，<code>ACK=0</code>，选择一个初始的序号 <code>seq = x</code></li>
+<li>B 收到连接请求报文段，如果同意建立连接，则向 A 发送连接确认报文段，<code>SYN=1</code>，<code>ACK=1</code>，确认号为 <code>x+1</code>，同时也选择一个初始的序号 <code>seq = y</code></li>
+<li>A 收到 B 的连接确认报文段后，还要向 B 发出确认，确认号为 <code>ack = y+1</code>，序号为 <code>seq = x+1</code></li>
+<li>A 的 TCP 通知上层应用进程，连接已经建立。</li>
+<li>B 收到 A 的确认后，连接建立。</li>
+<li>B 的 TCP 收到主机 A 的确认后，也通知其上层应用进程：TCP 连接已经建立</li>
+</ul>
+<p><strong>为什么TCP连接需要三次握手，两次不可以吗?</strong></p>
+<ul>
+<li>TCP是一个双向通信协议，通信双方都有能力发送信息，并接收响应。如果只是两次握手， 至多只有连接发起方的起始序列号能被确认， 另一方选择的序列号则得不到确认</li>
+<li>为了防止已失效的连接请求报文段突然又传送到了服务端，占用服务器资源<ul>
+<li>现假定出现一种异常情况，即A发出的第一个连接请求报文段并没有丢失，而是在某些网络节点长时间滞留了，以致延误到连接释放以后的某个时间才到B。本来这是一个已失效的报文段。但是B收到此失效的连接请求报文段后，就误认为是A有发出一次新的连接请求。于是就向A发出确认报文段，同意建立连接。假定不采用三次握手，那么只要B发出确认，新的连接就建立了</li>
+<li>由于现在A并没有发出建立连接的请求，因此不会理睬B的确认，也不会向B发送数据。但B却以为新的运输连接已经建立了，并一直等待A发来数据。B的许多资源就这样白白浪费了</li>
+<li>采用三次握手的办法可以防止上述现象的发生。例如在刚才的情况下，A不会向B的确认发出确认。B由于收不到确认，就知道A并没有要求建立连接</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-2-四次挥手"><a href="#3-2-四次挥手" class="headerlink" title="3.2 四次挥手"></a>3.2 四次挥手</h5><div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7m6m8l61xj31hc0u0h05.jpg" alt="76.jpg" style="zoom:30%;" /></div>
+
+<p>数据传输结束后，通信的双方都可释放连接。现在 A 的应用进程先向其 TCP 发出连接释放报文段，并停止再发送数据，主动关闭 TCP连接</p>
+<ul>
+<li>A 把连接释放报文段首部的 <code>FIN = 1</code>，其序号 <code>seq = u</code>，等待 B 的确认。</li>
+<li>B 发出确认，确认号 <code>ack = u+1</code>，而这个报文段自己的序号 <code>seq = v</code>。（TCP 服务器进程通知高层应用进程）</li>
+<li>从 A 到 B 这个方向的连接就释放了，TCP 连接处于半关闭状态。A 不能向 B 发送数据；B 若发送数据，A 仍要接收</li>
+<li>当 B 不再需要连接时，发送连接释放请求报文段，FIN&#x3D;1。</li>
+<li>A 收到后发出确认，进入<code>TIME-WAIT</code>状态，等待 <code>2 MSL（2*2 = 4 mins）</code>时间后释放连接。</li>
+<li>B 收到 A 的确认后释放连接</li>
+</ul>
+<p><strong>为什么需要四次挥手</strong></p>
+<ul>
+<li>客户端发送了 FIN 连接释放报文之后，服务器收到了这个报文，就进入了 <code>CLOSE-WAIT</code>状态</li>
+<li>这个状态是为了让服务器端发送还未传送完毕的数据，传送完毕之后，服务器会发送 FIN 连接释放报文</li>
+</ul>
+<h4 id="4-常见的HTTP状态码有哪些"><a href="#4-常见的HTTP状态码有哪些" class="headerlink" title="4. 常见的HTTP状态码有哪些"></a>4. 常见的HTTP状态码有哪些</h4><table>
+<thead>
+<tr>
+<th align="left">状态码</th>
+<th align="left">类别</th>
+<th align="left">原因短语</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1XX</td>
+<td align="left">Informational（信息性状态码）</td>
+<td align="left">接收的请求正在处理</td>
+</tr>
+<tr>
+<td align="left">2XX</td>
+<td align="left">Success（成功状态码）</td>
+<td align="left">请求正常处理完毕</td>
+</tr>
+<tr>
+<td align="left">3XX</td>
+<td align="left">Redirection（重定向状态码）</td>
+<td align="left">需要进行附加操作以完成请求</td>
+</tr>
+<tr>
+<td align="left">4XX</td>
+<td align="left">Client Error（客户端错误状态码）</td>
+<td align="left">服务器无法处理请求</td>
+</tr>
+<tr>
+<td align="left">5XX</td>
+<td align="left">Server Error（服务器错误状态码）</td>
+<td align="left">服务器处理请求出错</td>
+</tr>
+</tbody></table>
+<ul>
+<li>1XX：<ul>
+<li><strong>100 Continue</strong> ：表明到目前为止都很正常，客户端可以继续发送请求或者忽略这个响应</li>
+</ul>
+</li>
+<li>2XX：<ul>
+<li><strong>200 OK</strong></li>
+<li><strong>204 No Content</strong> ：请求已经成功处理，但是返回的响应报文不包含实体的主体部分。一般在只需要从客户端往服务器发送信息，而不需要返回数据时使用</li>
+<li><strong>206 Partial Content</strong> ：表示客户端进行了范围请求。响应报文包含由 Content-Range 指定范围的实体内容</li>
+</ul>
+</li>
+<li>3XX：<ul>
+<li><strong>301 Moved Permanently</strong> ：永久性重定向</li>
+<li><strong>302 Found</strong> ：临时性重定向</li>
+<li>注：虽然 HTTP 协议规定 301、302 状态下重定向时不允许把 POST 方法改成 GET 方法，但是大多数浏览器都会在 301、302 和 303 状态下的重定向把 POST 方法改成 GET 方法</li>
+<li><strong>303 See Other</strong> ：和 302 有着相同的功能，但是 303 明确要求客户端应该采用 GET 方法获取资源</li>
+<li><strong>304 Not Modified</strong> ：如果请求报文首部包含一些条件，例如：If-Match，If-Modified-Since，If-None-Match，If-Range，If-Unmodified-Since，如果不满足条件，则服务器会返回 304 状态码</li>
+<li><strong>307 Temporary Redirect</strong> ：临时重定向，与 302 的含义类似，但是 307 要求浏览器不会把重定向请求的 POST 方法改成 GET 方法</li>
+</ul>
+</li>
+<li>4XX：<ul>
+<li><strong>400 Bad Request</strong> ：请求报文中存在语法错误</li>
+<li><strong>401 Unauthorized</strong> ：该状态码表示发送的请求需要有认证信息（BASIC 认证、DIGEST 认证）。如果之前已进行过一次请求，则表示用户认证失败</li>
+<li><strong>403 Forbidden</strong> ：请求被拒绝，服务器端没有必要给出拒绝的详细理由</li>
+<li><strong>404 Not Found</strong></li>
+</ul>
+</li>
+<li>5XX：<ul>
+<li><strong>500 Internal Server Error</strong> ：服务器正在执行请求时发生错误</li>
+<li><strong>502 Bad Gateway</strong> : 是用来表示代理或网关在处理请求时发生了错误，并不一定是原始服务器出现了问题</li>
+<li><strong>503 Service Unavailable</strong> ：服务器暂时处于超负载或正在进行停机维护，现在无法处理请求</li>
+<li><strong>504 Gateway Timeout</strong>：作为网关或者代理工作的服务器尝试执行请求时，未能及时从上游服务器（URI标识出的服务器，例如HTTP、FTP、LDAP）或者辅助服务器（例如DNS）收到响应</li>
+</ul>
+</li>
+</ul>
+<p><strong>注意：某些代理服务器在DNS查询超时时会返回400或者500错误</strong></p>
+<h4 id="5-HTTPS和HTTP有什么区别"><a href="#5-HTTPS和HTTP有什么区别" class="headerlink" title="5. HTTPS和HTTP有什么区别"></a>5. HTTPS和HTTP有什么区别</h4><p>http协议和https协议的区别：<strong>传输信息安全性不同</strong>、<strong>连接方式不同</strong>、<strong>端口不同</strong>、<strong>证书专申请方式不同</strong></p>
+<ul>
+<li>传输信息安全性不同<ul>
+<li>http协议：是超文本传输协议，信息是明文传输。如果攻击者截取了Web浏览器和网站服务器之间的传输报文，就可以直接读懂其中的信息</li>
+<li>https协议：是具有安全性的SSL&#x2F;TLS加密传输协议，为浏览器和服务器之间的通信加密，确保数据传输的安全性</li>
+</ul>
+</li>
+<li>连接方式不同<ul>
+<li>http协议：http的连接很简单，是无状态的，客户端和服务器端都无法验证对方的身份</li>
+<li>https协议：是由SSL&#x2F;TLS＋HTTP协议构建的可进行加密传输、身份认证的网络协议。客户端可以验证服务器端的身份，如果配置了客户端验证，服务器方也可以验证客户端的身份</li>
+</ul>
+</li>
+<li>端口不同<ul>
+<li>http协议：使用的端口是80</li>
+<li>https协议：使用的端口是443</li>
+</ul>
+</li>
+<li>证书申请方式不同<ul>
+<li>http协议：无需申请证书</li>
+<li>https协议：需要到ca申请证书，一般免费证书很少，需要交费</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-HTTP-x2F-HTPS安全性"><a href="#6-HTTP-x2F-HTPS安全性" class="headerlink" title="6. HTTP&#x2F;HTPS安全性"></a>6. HTTP&#x2F;HTPS安全性</h4><h5 id="6-1-HTTP的安全性问题"><a href="#6-1-HTTP的安全性问题" class="headerlink" title="6.1 HTTP的安全性问题"></a>6.1 HTTP的安全性问题</h5><ul>
+<li>使用明文进行通信，内容可能会被窃听</li>
+<li>不验证通信方的身份，通信方的身份有可能遭遇伪装</li>
+<li>无法证明报文的完整性，报文有可能遭篡改</li>
+</ul>
+<hr>
+<p>HTTPs（Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲HTTPs是HTTP的安全版。HTTPs 并不是新协议，而是让 HTTP 先和 SSL（Secure Sockets Layer）通信，再由 SSL 和 TCP 通信。也就是说 HTTPs 使用了隧道进行通信。通过使用 SSL，HTTPs 具有了加密（防窃听）、认证（防伪装）和完整性保护（防篡改）</p>
+<h5 id="6-2-对称密钥加密"><a href="#6-2-对称密钥加密" class="headerlink" title="6.2 对称密钥加密"></a>6.2 对称密钥加密</h5><p>对称密钥加密（Symmetric-Key Encryption），加密和解密使用同一密钥</p>
+<ul>
+<li>优点：运算速度快；</li>
+<li>缺点：无法安全地将密钥传输给通信方</li>
+</ul>
+<h5 id="6-3-非对称密钥加密"><a href="#6-3-非对称密钥加密" class="headerlink" title="6.3 非对称密钥加密"></a>6.3 非对称密钥加密</h5><p>非对称密钥加密，又称公开密钥加密（Public-Key Encryption），加密和解密使用不同的密钥。公开密钥所有人都可以获得，通信发送方获得接收方的公开密钥之后，就可以使用公开密钥进行加密，接收方收到通信内容后使用私有密钥解密</p>
+<p>非对称密钥除了用来加密，还可以用来进行签名。因为私有密钥无法被其他人获取，因此通信发送方使用其私有密钥进行签名，通信接收方使用发送方的公开密钥对签名进行解密，就能判断这个签名是否正确</p>
+<ul>
+<li>优点：可以更安全地将公开密钥传输给通信发送方</li>
+<li>缺点：运算速度慢</li>
+</ul>
+<h5 id="6-4-HTTPs-采用的加密方式"><a href="#6-4-HTTPs-采用的加密方式" class="headerlink" title="6.4 HTTPs 采用的加密方式"></a>6.4 HTTPs 采用的加密方式</h5><p>HTTPs 采用混合的加密机制，使用非对称密钥加密用于传输对称密钥来保证安全性，之后使用对称密钥加密进行通信来保证效率</p>
+<h4 id="7-SSL-x2F-TLS协议的握手过程"><a href="#7-SSL-x2F-TLS协议的握手过程" class="headerlink" title="7. SSL&#x2F;TLS协议的握手过程"></a>7. SSL&#x2F;TLS协议的握手过程</h4><p>我们知道，HTTP 协议都是明文传输内容，在早期只展示静态内容时没有问题。伴随着互联网的快速发展，人们对于网络传输安全性的要求也越来越高，HTTPS 协议因此出现。如上图所示，在 HTTPS 加密中真正起作用的其实是 SSL&#x2F;TLS 协议。SSL&#x2F;TLS 协议作用在 HTTP 协议之下，对于上层应用来说，原来的发送接收数据流程不变，这就很好地兼容了老的 HTTP 协议，这也是软件开发中分层实现的体现</p>
+<h5 id="7-1-SSL-Secure-Socket-Layer，安全套接字层"><a href="#7-1-SSL-Secure-Socket-Layer，安全套接字层" class="headerlink" title="7.1 SSL (Secure Socket Layer，安全套接字层)"></a>7.1 SSL (Secure Socket Layer，安全套接字层)</h5><p>SSL为Netscape所研发，用以保障在Internet上数据传输之安全，利用数据加密(Encryption)技术，可确保数据在网络上之传输过程中不会被截取，当前为3.0版本</p>
+<p>SSL协议可分为两层： SSL记录协议（SSL Record Protocol）：它建立在可靠的传输协议（如TCP）之上，为高层协议提供数据封装、压缩、加密等基本功能的支持。 SSL握手协议（SSL Handshake Protocol）：它建立在SSL记录协议之上，用于在实际的数据传输开始前，通讯双方进行身份认证、协商加密算法、交换加密密钥等</p>
+<h5 id="7-2-TLS-Transport-Layer-Security，传输层安全协议"><a href="#7-2-TLS-Transport-Layer-Security，传输层安全协议" class="headerlink" title="7.2 TLS (Transport Layer Security，传输层安全协议)"></a>7.2 TLS (Transport Layer Security，传输层安全协议)</h5><p>用于两个应用程序之间提供保密性和数据完整性</p>
+<p>TLS 1.0是IETF（Internet Engineering Task Force，Internet工程任务组）制定的一种新的协议，它建立在SSL 3.0协议规范之上，是SSL 3.0的后续版本，可以理解为SSL 3.1，它是写入了 RFC 的。该协议由两层组成： TLS 记录协议（TLS Record）和 TLS 握手协议（TLS Handshake）。较低的层为 TLS 记录协议，位于某个可靠的传输协议（例如 TCP）上面</p>
+<h5 id="7-3-握手过程"><a href="#7-3-握手过程" class="headerlink" title="7.3 握手过程"></a>7.3 握手过程</h5><ul>
+<li><p><strong>1-client hello：</strong> 握手第一步是客户端向服务端发送 Client Hello 消息，这个消息里包含了一个客户端生成的随机数 <strong>Random1</strong>、客户端支持的<strong>加密套件</strong>（Support Ciphers）和 SSL Version 等信息</p>
+</li>
+<li><p><strong>2-server hello：</strong> 第二步是服务端向客户端发送 Server Hello 消息，这个消息会从 Client Hello 传过来的 Support Ciphers 里确定一份加密套件，这个套件决定了后续加密和生成摘要时具体使用哪些算法，另外还会生成一份随机数 <strong>Random2</strong>。注意，至此客户端和服务端都拥有了两个随机数（Random1+ Random2），这两个随机数会在后续生成对称秘钥时用到</p>
+</li>
+<li><p><strong>3-server certificate：</strong> 这一步是服务端将自己的证书下发给客户端，让客户端验证自己的身份，客户端验证通过后取出证书中的公钥</p>
+</li>
+<li><p><strong>4-Server Hello Done：</strong> Server Hello Done 通知客户端 Server Hello 过程结束</p>
+</li>
+<li><p><strong>5-Client Key Exchange：</strong> 上面客户端根据服务器传来的公钥生成了 <strong>PreMaster Key</strong>，Client Key Exchange 就是将这个 key 传给服务端，服务端再用自己的私钥解出这个 <strong>PreMaster Key</strong> 得到客户端生成的 <strong>Random3</strong>。至此，客户端和服务端都拥有 <strong>Random1</strong> + <strong>Random2</strong> + <strong>Random3</strong>，两边再根据同样的算法就可以生成一份秘钥，握手结束后的应用层数据都是使用这个秘钥进行对称加密。为什么要使用三个随机数呢？这是因为 SSL&#x2F;TLS 握手过程的数据都是明文传输的，并且多个随机数种子来生成秘钥不容易被暴力破解出来</p>
+</li>
+<li><p><strong>6-Change Cipher Spec(Client)：</strong> 这一步是客户端通知服务端后面再发送的消息都会使用前面协商出来的秘钥加密了，是一条事件消息</p>
+</li>
+<li><p><strong>7-Finished(Client)：</strong> 客户端发送Finished报文。该报文包含连接至今全部报文的整理校验值。这次握手协议是否能成功，要以服务器是否能够正确解密该报文作为判定标准</p>
+</li>
+<li><p><strong>8-Change Cipher Spec(Server)：</strong> 服务器同样发送Change Cipher Spec报文给客户端</p>
+</li>
+<li><p><strong>9-Finished(Server)：</strong> 服务器同样发送Finished报文给客户端</p>
+</li>
+<li><p><strong>10-11Application Data：</strong> 到这里，双方已安全地协商出了同一份秘钥，所有的应用层数据都会用这个秘钥加密后再通过 TCP 进行可靠传输</p>
+</li>
+<li><p><strong>12-Alert：warning, close notify：</strong> 最后由客户端断开连接。断开连接时，发送close_notify报文。上图做了一些省略，在这步之后再发送一种叫做MAC（Message Authentication Code）的报文摘要。MAC能够查知报文是否遭到篡改，从而保护报文的完整性</p>
+</li>
+</ul>
+<h4 id="8-Get和Post区别"><a href="#8-Get和Post区别" class="headerlink" title="8. Get和Post区别"></a>8. Get和Post区别</h4><ul>
+<li><p>一般约束为：GET是从服务器上获取数据，POST是向服务器传送数据</p>
+</li>
+<li><p>Get是不安全的，因为在传输过程，数据被放在请求的URL中；Post的所有操作对用户来说都是不可见的</p>
+</li>
+<li><p>Get传送的数据量较小，这主要是因为受URL长度限制；Post传送的数据量较大，一般被默认为不受限制</p>
+</li>
+<li><p>Get限制Form表单的数据集的值必须为ASCII字符；而Post支持整个ISO10646字符集</p>
+</li>
+<li><p>Get执行效率却比Post方法好。Get是form提交的默认方法</p>
+</li>
+<li><p>GET产生一个TCP数据包；POST产生两个TCP数据包（非必然，客户端可灵活决定）</p>
+</li>
+</ul>
+<h4 id="9-从输入网址到获得页面的网络请求过程"><a href="#9-从输入网址到获得页面的网络请求过程" class="headerlink" title="9. 从输入网址到获得页面的网络请求过程"></a>9. 从输入网址到获得页面的网络请求过程</h4><ol>
+<li>输入地址</li>
+<li>浏览器查找域名的 IP 地址</li>
+<li>浏览器向 web 服务器发送一个 HTTP 请求</li>
+<li>服务器的永久重定向响应</li>
+<li>服务器处理请求</li>
+<li>服务器返回一个 HTTP 响应</li>
+<li>浏览器显示 HTML</li>
+<li>浏览器发送请求获取嵌入在 HTML 中的资源（如图片、音频、视频、CSS、JS等等）</li>
+</ol>
+<p><strong>详细解读：</strong> <a href="https://zhuanlan.zhihu.com/p/133906695">点击跳转至网页</a></p>
+<h4 id="10-TCP报头格式和UDP报头格式"><a href="#10-TCP报头格式和UDP报头格式" class="headerlink" title="10. TCP报头格式和UDP报头格式"></a>10. TCP报头格式和UDP报头格式</h4><p>网络层只把分组发送到目的主机，但是真正通信的并不是主机而是主机中的进程。运输层提供了进程间的逻辑通信，运输层向高层用户屏蔽了下面网络层的核心细节，使应用程序看起来像是在两个运输层实体之间有一条端到端的逻辑通信信道</p>
+<ul>
+<li><p>TCP和UDP的特点</p>
+<ul>
+<li><strong>传输控制协议 TCP</strong>（Transmission Control Protocol）是面向连接的，提供可靠交付，有流量控制，拥塞控制，提供全双工通信，面向字节流（把应用层传下来的报文看成字节流，把字节流组织成大小不等的数据块），每一条 TCP 连接只能是点对点的（一对一）</li>
+<li><strong>用户数据报协议 UDP</strong>（User Datagram Protocol）是无连接的，尽最大可能交付，没有拥塞控制，面向报文（对于应用程序传下来的报文不合并也不拆分，只是添加 UDP 首部），支持一对一、一对多、多对一和多对多的交互通信。例如：视频传输、实时通信</li>
+</ul>
+</li>
+<li><p>TCP首部格式</p>
+<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7m8ophl1uj317p0r3n7l.jpg" alt="74.jpg" style="zoom:30%;" /></div>
+
+<ul>
+<li><strong>序号 seq</strong> ：用于对字节流进行编号，例如序号为 301，表示第一个字节的编号为 301，如果携带的数据长度为 100 字节，那么下一个报文段的序号应为 401。[301,400]为序号301的数据长度，下一个则为401。</li>
+<li><strong>确认号 ack</strong> ：期望收到的下一个报文段的序号。例如 B 正确收到 A 发送来的一个报文段，序号为 501，携带的数据长度为 200 字节，因此 B 期望下一个报文段的序号为 701，B 发送给 A 的确认报文段中确认号就为 701。</li>
+<li><strong>数据偏移</strong> ：指的是数据部分距离报文段起始处的偏移量，实际上指的是首部的长度</li>
+<li><strong>确认 ACK</strong> ：当 ACK&#x3D;1 时确认号字段有效，否则无效。TCP 规定，在连接建立后所有传送的报文段都必须把 ACK 置 1</li>
+<li><strong>同步 SYN</strong> ：在连接建立时用来同步序号。当 SYN&#x3D;1，ACK&#x3D;0 时表示这是一个连接请求报文段。若对方同意建立连接，则响应报文中 SYN&#x3D;1，ACK&#x3D;1。</li>
+<li><strong>终止 FIN</strong> ：用来释放一个连接，当 FIN&#x3D;1 时，表示此报文段的发送方的数据已发送完毕，并要求释放连接。</li>
+<li><strong>窗口</strong> ：窗口值作为接收方让发送方设置其发送窗口的依据。之所以要有这个限制，是因为接收方的数据缓存空间是有限的</li>
+</ul>
+</li>
+<li><p>UDP首部格式</p>
+<p>首部字段只有 8 个字节，包括源端口、目的端口、长度、检验和。12 字节的伪首部是为了计算检验和临时添加的</p>
+<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7m8rstr7dj31580k211a.jpg" alt="73.jpg" style="zoom:33%;" /></div></li>
+</ul>
+<h4 id="11-TCP连接中如果断电怎么办"><a href="#11-TCP连接中如果断电怎么办" class="headerlink" title="11. TCP连接中如果断电怎么办"></a>11. TCP连接中如果断电怎么办</h4><p>都已经断电了，还能怎么办，等电来</p>
+<h4 id="12-TCP滑动窗口"><a href="#12-TCP滑动窗口" class="headerlink" title="12. TCP滑动窗口"></a>12. TCP滑动窗口</h4><div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7mctzf6qaj31hm0setua.jpg" alt="78.jpg" style="zoom:30%;" /></div>
+
+<p>窗口是缓存的一部分，用来暂时存放字节流。发送方和接收方各有一个窗口，<strong>接收方通过 TCP 报文段中的窗口字段告诉发送方自己的窗口大小，发送方根据这个值和其它信息设置自己的窗口大小</strong></p>
+<p>发送窗口内的字节都允许被发送，接收窗口内的字节都允许被接收。如果发送窗口左部的字节已经发送并且收到了确认，那么就将发送窗口向右滑动一定距离，直到左部第一个字节不是已发送并且已确认的状态；接收窗口的滑动类似，接收窗口左部字节已经发送确认并交付主机，就向右滑动接收窗口</p>
+<p>接收窗口只会对窗口内最后一个按序到达的字节进行确认，例如接收窗口已经收到的字节为 {31, 34, 35}，其中 {31} 按序到达，而 {32, 33} 就不是，因此只对字节 31 进行确认。发送方得到一个字节的确认之后，就知道这个字节之前的所有字节都已经被接收</p>
+<h4 id="13-TCP流量控制"><a href="#13-TCP流量控制" class="headerlink" title="13. TCP流量控制"></a>13. TCP流量控制</h4><ul>
+<li>流量控制是为了控制发送方发送速率，保证接收方来得及接收</li>
+<li>接收方发送的确认报文中的窗口字段可以用来控制发送方窗口大小，从而影响发送方的发送速率。将窗口字段设置为 0，则发送方不能发送数据</li>
+</ul>
+<h4 id="14-TCP拥塞处理（Congestion-Handling）"><a href="#14-TCP拥塞处理（Congestion-Handling）" class="headerlink" title="14. TCP拥塞处理（Congestion Handling）"></a>14. TCP拥塞处理（Congestion Handling）</h4><p><strong>拥塞控制的一般原理：</strong></p>
+<ul>
+<li>在某段时间，若对网络中某资源的需求超过了该资源所能提供的可用部分，网络的性能就要变坏——产生拥塞(congestion)。</li>
+<li>出现资源拥塞的条件：对资源需求的总和 &gt; 可用资源</li>
+<li>若网络中有许多资源同时产生拥塞，网络的性能就要明显变坏，整个网络的吞吐量将随输入负荷的增大而下降</li>
+</ul>
+<p>如果网络出现拥塞，分组将会丢失，此时发送方会继续重传，从而导致网络拥塞程度更高。因此当出现拥塞时，应当控制发送方的速率。这一点和流量控制很像，但是出发点不同。流量控制是为了让接收方能来得及接收，而拥塞控制是为了降低整个网络的拥塞程度</p>
+<p>TCP 主要通过四种算法来进行拥塞控制：<strong>慢开始</strong>、<strong>拥塞避免</strong>、<strong>快重传</strong>、<strong>快恢复</strong></p>
+<h4 id="15-TCP的LISTEN状态是什么"><a href="#15-TCP的LISTEN状态是什么" class="headerlink" title="15. TCP的LISTEN状态是什么"></a>15. TCP的LISTEN状态是什么</h4><p>TCP的LISTEN是服务器处于监听状态：</p>
+<ul>
+<li><strong>CLOSED：</strong> 初始状态</li>
+<li><strong>LISTEN：</strong> 服务器处于监听状态</li>
+<li><strong>TIME_WAIT：</strong> 客户端收到服务端的FIN包，并立即发出ACK包做最后的确认，在此之后的2MSL时间称为TIME_WAIT状态</li>
+</ul>
+<h4 id="16-Tcp中的拆包和粘包是怎么回事"><a href="#16-Tcp中的拆包和粘包是怎么回事" class="headerlink" title="16. Tcp中的拆包和粘包是怎么回事"></a>16. Tcp中的拆包和粘包是怎么回事</h4><ul>
+<li><strong>拆包：</strong> 在socket通讯过程中，如果通讯的一端一次性连续发送多条数据包，tcp协议会将多个数据包打包成一个tcp报文发送出去，这就是所谓的粘包</li>
+<li><strong>粘包：</strong> 而如果通讯的一端发送的数据包超过一次tcp报文所能传输的最大值时，就会将一个数据包拆成多个最大tcp长度的tcp报文分开传输，这就叫做拆包</li>
+</ul>
+<h4 id="17-HTTP的请求和响应报文"><a href="#17-HTTP的请求和响应报文" class="headerlink" title="17. HTTP的请求和响应报文"></a>17. HTTP的请求和响应报文</h4><ul>
+<li><p>请求报文</p>
+<ul>
+<li>请求行：由三部分组成（请求方法、请求URL-不包括域名、HTTP版本协议）</li>
+<li>请求头：由关键字-值对组成，每行一对</li>
+<li>空行：通知服务器以下不再有请求头</li>
+<li>请求体</li>
+</ul>
+<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7m91nfjb1j30i8065djn.jpg" alt="84.jpg" style="zoom:80%;" /></div>
+</li>
+<li><p>响应报文</p>
+<ul>
+<li>响应行：由三部分组成：服务器HTTP协议版本，响应状态码，状态码的文本描述</li>
+<li>响应头：由关键字-值对组成，每行一对</li>
+<li>空行：通知服务器以下不再有响应头</li>
+<li>响应体</li>
+</ul>
+<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7m93g347vj30jk07faec.jpg" alt="96.jpg" style="zoom:80%;" /></div></li>
+</ul>
+<h4 id="18-HTTP方法"><a href="#18-HTTP方法" class="headerlink" title="18. HTTP方法"></a>18. HTTP方法</h4><ul>
+<li>GET：获取资源<ul>
+<li>当前网络请求中，绝大部分使用的是GET方法</li>
+</ul>
+</li>
+<li>HEAD：获取报文首部<ul>
+<li>和GET方法一样，但是不返回报文实体主体部分</li>
+<li>主要用于确认 URL 的有效性以及资源更新的日期时间等</li>
+</ul>
+</li>
+<li>POST：传输实体主体<ul>
+<li>POST 主要用来传输数据，而 GET 主要用来获取资源</li>
+</ul>
+</li>
+<li>PUT：上传文件<ul>
+<li>由于自身不带验证机制，任何人都可以上传文件，因此存在安全性问题，一般不使用该方法</li>
+</ul>
+</li>
+<li>PATCH：对资源进行部分修改<ul>
+<li>PUT 也可以用于修改资源，但是只能完全替代原始资源，PATCH 允许部分修改</li>
+</ul>
+</li>
+<li>DELETE：删除文件<ul>
+<li>与 PUT 功能相反，并且同样不带验证机制</li>
+</ul>
+</li>
+<li>OPTIONS：查询支持的方法<ul>
+<li>查询指定的 URL 能够支持的方法</li>
+<li>会返回 Allow：GET，POST，HEAD，OPTIONS 这样的内容</li>
+</ul>
+</li>
+<li>CONNECT：要求在与代理服务器通信时建立隧道<ul>
+<li>使用 SSL（Secure Sockets Layer，安全套接层）和 TLS（Transport Layer Security，传输层安全）协议把通信内容加密后经网络隧道传输</li>
+</ul>
+</li>
+<li>TRACE：追踪路径<ul>
+<li>服务器会将通信路径返回给客户端</li>
+<li>发送请求时，在 Max-Forwards 首部字段中填入数值，每经过一个服务器就会减 1，当数值为 0 时就停止传输</li>
+<li>通常不会使用 TRACE，并且它容易受到 XST 攻击（Cross-Site Tracing，跨站追踪）</li>
+</ul>
+</li>
+</ul>
+<h4 id="19-如何理解HTTP协议是无状态的"><a href="#19-如何理解HTTP协议是无状态的" class="headerlink" title="19. 如何理解HTTP协议是无状态的"></a>19. 如何理解HTTP协议是无状态的</h4><ul>
+<li>HTTP协议是无状态的（stateless），指的是协议对于事务处理没有记忆能力，服务器不知道客户端是什么状态。也就是说，打开一个服务器上的网页和上一次打开这个服务器上的网页之间没有任何联系</li>
+<li>HTTP是一个无状态的面向连接的协议，无状态不代表HTTP不能保持TCP连接，更不能代表HTTP使用的是UDP协议（无连接）</li>
+<li>缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快</li>
+</ul>
+<h4 id="20-HTTP2-0特性"><a href="#20-HTTP2-0特性" class="headerlink" title="20. HTTP2.0特性"></a>20. HTTP2.0特性</h4><p>HTTP&#x2F;2的通过支持请求与响应的多路复用来减少延迟，通过压缩HTTP首部字段将协议开销降至最低，同时增加对请求优先级和服务器端推送的支持</p>
+<h4 id="21-什么是短连接和长连接"><a href="#21-什么是短连接和长连接" class="headerlink" title="21. 什么是短连接和长连接"></a>21. 什么是短连接和长连接</h4><p>在HTTP&#x2F;1.0中默认使用短连接。也就是说，客户端和服务器每进行一次HTTP操作，就建立一次连接，任务结束就中断连接。当客户端浏览器访问的某个HTML或其他类型的Web页中包含有其他的Web资源（如JavaScript文件、图像文件、CSS文件等），每遇到这样一个Web资源，浏览器就会重新建立一个HTTP会话</p>
+<p>而从HTTP&#x2F;1.1起，默认使用长连接，用以保持连接特性。使用长连接的HTTP协议，会在响应头加入这行代码：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Connection:keep-alive</span><br></pre></td></tr></table></figure>
+
+<p>在使用长连接的情况下，当一个网页打开完成后，客户端和服务器之间用于传输HTTP数据的TCP连接不会关闭，客户端再次访问这个服务器时，会继续使用这一条已经建立的连接。Keep-Alive不会永久保持连接，它有一个保持时间，可以在不同的服务器软件（如Apache）中设定这个时间。实现长连接需要客户端和服务端都支持长连接</p>
+<p>HTTP协议的长连接和短连接，实质上是TCP协议的长连接和短连接</p>
+<h4 id="22-Client如何实现长连接"><a href="#22-Client如何实现长连接" class="headerlink" title="22. Client如何实现长连接"></a>22. Client如何实现长连接</h4><p>使用TCP协议的<strong>KeepAlive</strong>机制与<strong>HeartBeat</strong>心跳包</p>
+<ul>
+<li><code>HeartBeat</code>心跳包</li>
+<li>TCP协议的<code>KeepAlive</code>机制</li>
+</ul>
+<h4 id="23-Quic有什么优点相比Http2"><a href="#23-Quic有什么优点相比Http2" class="headerlink" title="23. Quic有什么优点相比Http2"></a>23. Quic有什么优点相比Http2</h4><ul>
+<li><strong>HTTP1：</strong> 有连接无法复用、队头阻塞、协议开销大和安全因素等多个缺陷</li>
+<li><strong>HTTP2：</strong> 通过多路复用、二进制流、Header 压缩等等技术，极大地提高了性能，但是还是存在着问题的</li>
+<li><strong>Quic：</strong> 基于 UDP 实现，是 HTTP3 中的底层支撑协议，该协议基于 UDP，又取了 TCP 中的精华，实现了即快又可靠的协议.quic中加密认证的报文(TCP 协议头部没有经过任何加密和认证，所以在传输过程中很容易被中间网络设备篡改，注入和窃听。比如修改序列号、滑动窗口。这些行为有可能是出于性能优化，也有可能是主动攻击)。这样只要对 QUIC 报文任何修改，接收端都能够及时发现，有效地降低了安全风险</li>
+</ul>
+<p>此外quic还有向前纠错的能力，QUIC 协议有一个非常独特的特性，称为向前纠错 (Forward Error Correction，FEC)，每个数据包除了它本身的内容之外，还包括了部分其他数据包的数据，因此少量的丢包可以通过其他包的冗余数据直接组装而无需重传。向前纠错牺牲了每个数据包可以发送数据的上限，但是减少了因为丢包导致的数据重传，因为数据重传将会消耗更多的时间(包括确认数据包丢失、请求重传、等待新数据包等步骤的时间消耗)</p>
+<h4 id="24-Grpc的优缺点"><a href="#24-Grpc的优缺点" class="headerlink" title="24. Grpc的优缺点"></a>24. Grpc的优缺点</h4><p>gRPC是Google公司基于Protobuf开发的跨语言的开源RPC框架。gRPC基于HTTP&#x2F;2协议设计，可以基于一个HTTP&#x2F;2链接提供多个服务，对于移动设备更加友好</p>
+<p>最底层为TCP或Unix Socket协议，在此之上是HTTP&#x2F;2协议的实现，然后在HTTP&#x2F;2协议之上又构建了针对Go语言的gRPC核心库。应用程序通过gRPC插件生产的Stub代码和gRPC核心库通信，也可以直接和gRPC核心库通信</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>protobuf二进制消息，性能好&#x2F;效率高（空间和时间效率都很不错）</li>
+<li>proto文件生成目标代码，简单易用</li>
+<li>序列化反序列化直接对应程序中的数据类，不需要解析后在进行映射(XML,JSON都是这种方式)</li>
+<li>支持向前兼容（新加字段采用默认值）和向后兼容（忽略新加字段），简化升级</li>
+<li>支持多种语言（可以把proto文件看做IDL文件）</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>GRPC尚未提供连接池，需要自行实现</li>
+<li>尚未提供“服务发现”、“负载均衡”机制</li>
+<li>因为基于HTTP2，绝大部多数<code>HTTP Server、Nginx</code>都尚不支持，即Nginx不能将GRPC请求作为HTTP请求来负载均衡，而是作为普通的TCP请求（nginx1.9版本已支持）</li>
+<li>Protobuf二进制可读性差（貌似提供了Text_Fromat功能）默认不具备动态特性（可以通过动态定义生成消息类型或者动态编译支持）</li>
+</ul>
+<h4 id="25-Http1和Http2和Grpc之间的区别是什么"><a href="#25-Http1和Http2和Grpc之间的区别是什么" class="headerlink" title="25. Http1和Http2和Grpc之间的区别是什么"></a>25. Http1和Http2和Grpc之间的区别是什么</h4><p>在互联网流量传输只使用了几个网络协议。使用 <code>IPv4</code> 进行路由，使用 <code>TCP</code> 进行连接层面的流量控制，使用 <code>SSL/TLS</code> 协议实现传输安全，使用 <code>DNS</code> 进行域名解析，使用 <code>HTTP</code> 进行应用数据的传输</p>
+<p><strong>HTTP2和HTTP1相比的新特性包括：</strong></p>
+<ul>
+<li><p>新的二进制格式（Binary Format）</p>
+<ul>
+<li>HTTP1.x的解析是基于文本。基于文本协议的格式解析存在天然缺陷，文本的表现形式有多样性，要做到健壮性考虑的场景必然很多，二进制则不同，只认0和1的组合。基于这种考虑HTTP2.0的协议解析决定采用二进制格式，实现方便且健壮</li>
+</ul>
+</li>
+<li><p>多路复用（MultiPlexing）</p>
+<ul>
+<li>连接共享，即每一个request都是是用作连接共享机制的。一个request对应一个id，这样一个连接上可以有多个request，每个连接的request可以随机的混杂在一起，接收方可以根据request的 id将request再归属到各自不同的服务端请求里面</li>
+</ul>
+</li>
+<li><p>Header压缩</p>
+<p>Header压缩，如上文中所言，对前面提到过HTTP1.x的header带有大量信息，而且每次都要重复发送，HTTP2.0使用encoder来减少需要传输的header大小，通讯双方各自cache一份header fields表，既避免了重复header的传输，又减小了需要传输的大小</p>
+</li>
+<li><p>服务端推送（server push）</p>
+<ul>
+<li>服务端推送（server push），同SPDY一样，HTTP2.0也具有server push功能</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>Grpc的设计目标是在任何环境下运行，支持可插拔的负载均衡，跟踪，运行状况检查和身份验证。它不仅支持数据中心内部和跨数据中心的服务调用，它也适用于分布式计算的最后一公里，将设备，移动应用程序和浏览器连接到后端服务，同时，它也是高性能的，而 HTTP2 恰好支持这些</p>
+<p><strong>Grpc是基于http2的</strong></p>
+<ul>
+<li>HTTP2天然的通用性满足各种设备，场景</li>
+<li>HTTP2的性能相对来说也是很好的，除非你需要极致的性能</li>
+<li>HTTP2的安全性非常好，天然支持 SSL</li>
+<li>HTTP2的鉴权也非常成熟</li>
+<li>Grpc基于 HTTP2 多语言实现也更容易</li>
+</ul>
+<h4 id="26-数字签名、数字证书、SSL、https是什么关系"><a href="#26-数字签名、数字证书、SSL、https是什么关系" class="headerlink" title="26. 数字签名、数字证书、SSL、https是什么关系"></a>26. 数字签名、数字证书、SSL、https是什么关系</h4><p>HTTPS 是建立在密码学基础之上的一种安全通信协议，严格来说是基于 HTTP 协议和 SSL&#x2F;TLS 的组合</p>
+<h4 id="27-Cookie"><a href="#27-Cookie" class="headerlink" title="27. Cookie"></a>27. Cookie</h4><p>HTTP协议是无状态的，主要是为了让HTTP协议尽可能简单，使得它能够处理大量事务。HTTP&#x2F;1.1引入Cookie来保存状态信息</p>
+<p>Cookie 是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。它用于告知服务端两个请求是否来自同一浏览器，并保持用户的登录状态</p>
+<ul>
+<li><p>用途</p>
+<ul>
+<li>会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）</li>
+<li>个性化设置（如用户自定义设置、主题等）</li>
+<li>浏览器行为跟踪（如跟踪分析用户行为等）</li>
+</ul>
+</li>
+<li><p>创建过程</p>
+<ul>
+<li>服务器发送的响应报文包含Set-Cookie 首部字段，客户端得到响应报文后把 Cookie 内容保存到浏览器中</li>
+<li>客户端之后对同一个服务器发送请求时，会从浏览器中读出 Cookie 信息通过 Cookie 请求首部字段发送给服务器</li>
+</ul>
+</li>
+<li><p>分类</p>
+<ul>
+<li>会话期 Cookie：浏览器关闭之后它会被自动删除，也就是说它仅在会话期内有效</li>
+<li>持久性 Cookie：指定一个特定的过期时间（Expires）或有效期（max-age）之后就成为了持久性的 Cookie</li>
+</ul>
+</li>
+<li><p>JavaScript 获取 Cookie</p>
+<ul>
+<li>通过 <code>Document.cookie</code> 属性可创建新的 Cookie，也可通过该属性访问非 HttpOnly 标记的 Cookie</li>
+</ul>
+</li>
+<li><p>Secure 和 HttpOnly</p>
+<ul>
+<li>标记为 Secure 的 Cookie 只应通过被 HTTPS 协议加密过的请求发送给服务端。但即便设置了 Secure 标记，敏感信息也不应该通过 Cookie 传输，因为 Cookie 有其固有的不安全性，Secure 标记也无法提供确实的安全保障</li>
+<li>标记为 HttpOnly 的 Cookie 不能被 JavaScript 脚本调用。因为跨域脚本 (XSS) 攻击常常使用 JavaScript 的 <code>Document.cookie</code>API 窃取用户的 Cookie 信息，因此使用 HttpOnly 标记可以在一定程度上避免 XSS 攻击</li>
+</ul>
+</li>
+<li><p>作用域</p>
+<ul>
+<li>Domain 标识指定了哪些主机可以接受 Cookie。如果不指定，默认为当前文档的主机（不包含子域名）。如果指定了 Domain，则一般包含子域名。例如，如果设置 Domain&#x3D;mozilla.org，则 Cookie 也包含在子域名中（如 developer.mozilla.org）</li>
+<li>Path 标识指定了主机下的哪些路径可以接受 Cookie（该 URL 路径必须存在于请求 URL 中）。以字符 %x2F (“&#x2F;“) 作为路径分隔符，子路径也会被匹配</li>
+</ul>
+</li>
+</ul>
+<h4 id="28-Session"><a href="#28-Session" class="headerlink" title="28. Session"></a>28. Session</h4><p>除了可以将用户信息通过 Cookie 存储在用户浏览器中，也可以利用 Session 存储在服务器端，存储在服务器端的信息更加安全</p>
+<p>Session 可以存储在服务器上的文件、数据库或者内存中，现在最常见的是将 Session 存储在内存型数据库中，比如 Redis</p>
+<p>使用 Session 维护用户登录的过程如下：</p>
+<ul>
+<li>用户进行登录时，用户提交包含用户名和密码的表单，放入 HTTP 请求报文中；</li>
+<li>服务器验证该用户名和密码</li>
+<li>如果正确则把用户信息存储到 Redis 中，它在 Redis 中的 ID 称为 Session ID</li>
+<li>服务器返回的响应报文的 Set-Cookie 首部字段包含了这个 Session ID，客户端收到响应报文之后将该 Cookie 值存入浏览器中</li>
+<li>客户端之后对同一个服务器进行请求时会包含该 Cookie 值，服务器收到之后提取出 Session ID，从 Redis 中取出用户信息，继续之后的业务操作</li>
+</ul>
+<p>应该注意 Session ID 的安全性问题，不能让它被恶意攻击者轻易获取，那么就不能产生一个容易被猜到的 Session ID 值。此外，还需要经常重新生成 Session ID。在对安全性要求极高的场景下，例如转账等操作，除了使用 Session 管理用户状态之外，还需要对用户进行重新验证，比如重新输入密码，或者使用短信验证码等方式</p>
+<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7mdikcs2aj31d80jr11b.jpg" alt="86.jpg" style="zoom:100%;" /></div>
+
+<h4 id="29-Cookie与Session异同"><a href="#29-Cookie与Session异同" class="headerlink" title="29. Cookie与Session异同"></a>29. Cookie与Session异同</h4><p>Cookie 和 Session 都为了用来保存状态信息，都是保存客户端状态的机制，它们都是为了解决HTTP无状态的问题而所做的努力</p>
+<ul>
+<li>作用范围不同：Cookie 保存在客户端(浏览器)，Session 保存在服务器端</li>
+<li>存取方式的不同：Cookie只能保存 ASCII，Session可以存任意数据类型，比如UserId等</li>
+<li>有效期不同：Cookie可设置为长时间保持，比如默认登录功能功能，Session一般有效时间较短，客户端关闭或者Session超时都会失效</li>
+<li>隐私策略不同：Cookie存储在客户端，信息容易被窃取;Session存储在服务端，相对安全一些</li>
+<li>存储大小不同： 单个Cookie 保存的数据不能超过 4K，Session可存储数据远高于Cookie</li>
+</ul>
+<h4 id="30-浏览器禁用Cookie"><a href="#30-浏览器禁用Cookie" class="headerlink" title="30. 浏览器禁用Cookie"></a>30. 浏览器禁用Cookie</h4><p>此时无法使用 Cookie 来保存用户信息，只能使用 Session。除此之外，不能再将 Session ID 存放到 Cookie 中，而是使用 URL 重写技术，将 Session ID 作为 URL 的参数进行传递</p>
+<h4 id="31-Cookie与Session选择"><a href="#31-Cookie与Session选择" class="headerlink" title="31. Cookie与Session选择"></a>31. Cookie与Session选择</h4><ul>
+<li>Cookie 只能存储 ASCII 码字符串，而 Session 则可以存取任何类型的数据，因此在考虑数据复杂性时首选 Session</li>
+<li>Cookie 存储在浏览器中，容易被恶意查看。如果非要将一些隐私数据存在 Cookie 中，可以将 Cookie 值进行加密，然后在服务器进行解密</li>
+<li>对于大型网站，如果用户所有的信息都存储在 Session 中，那么开销是非常大的，因此不建议将所有的用户信息都存储到 Session 中</li>
+</ul>
+<h4 id="32-Unicode和ASCII以及Utf8的区别"><a href="#32-Unicode和ASCII以及Utf8的区别" class="headerlink" title="32. Unicode和ASCII以及Utf8的区别"></a>32. Unicode和ASCII以及Utf8的区别</h4><ul>
+<li>Unicode 是字符集，它只规定了符号的二进制代码，却没有规定这个二进制代码应该如何存储</li>
+<li>ASCII 码一共规定了128个字符的编码，比如空格SPACE是32（二进制00100000），大写的字母A是65（二进制01000001）</li>
+<li>UTF-8 是编码规则</li>
+</ul>
+<h4 id="33-TFO的原理是什么"><a href="#33-TFO的原理是什么" class="headerlink" title="33. TFO的原理是什么"></a>33. TFO的原理是什么</h4><p>TCP快速打开（TCP Fast Open，TFO）是对TCP的一种简化握手手续的拓展，用于提高两端点间连接的打开速度</p>
+<p>简而言之，就是在TCP的三次握手过程中传输实际有用的数据。这个扩展最初在Linux系统实现，Linux服务器，Linux系统上的Chrome浏览器，或运行在Linux上的其他支持的软件</p>
+<p>它通过握手开始时的SYN包中的TFO cookie来验证一个之前连接过的客户端。如果验证成功，它可以在三次握手最终的ACK包收到之前就开始发送数据，这样便跳过了一个绕路的行为，更在传输开始时就降低了延迟</p>
+<p>这个加密的Cookie被存储在客户端，在一开始的连接时被设定好。然后每当客户端连接时，这个Cookie被重复返回</p>
+<p>请求Tcp Fast Open Cookie：</p>
+<ul>
+<li>客户端发送SYN数据包，该数据包包含Fast Open选项，且该选项的Cookie为空，这表明客户端请求Fast Open Cookie</li>
+<li>支持TCP Fast Open的服务器生成Cookie，并将其置于SYN-ACK数据包中的Fast Open选项以发回客户端</li>
+<li>客户端收到SYN-ACK后，缓存Fast Open选项中的Cookie</li>
+</ul>
+<h4 id="34-TIME-WAIT的作用"><a href="#34-TIME-WAIT的作用" class="headerlink" title="34. TIME_WAIT的作用"></a>34. TIME_WAIT的作用</h4><p>主动关闭的Socket端会进入TIME_WAIT状态，并且持续2MSL时间长度，MSL就是maximum segment lifetime(最大分节生命期），这是一个IP数据包能在互联网上生存的最长时间，超过这个时间将在网络中消失。MSL在RFC 1122上建议是2分钟，而源自berkeley的TCP实现传统上使用30秒，因而，TIME_WAIT状态一般维持在1-4分钟</p>
+<ul>
+<li>可靠地实现TCP全双工连接的终止</li>
+<li>允许老的重复分节在网络中消逝</li>
+</ul>
+<h4 id="35-网络的性能指标有哪些"><a href="#35-网络的性能指标有哪些" class="headerlink" title="35. 网络的性能指标有哪些"></a>35. 网络的性能指标有哪些</h4><p>通常是以4个指标来衡量网络的性能，分别是带宽、延时、吞吐率、PPS（Packet Per Second），它们表示的意义如下：</p>
+<ul>
+<li>带宽：表示链路的最大传输速率，单位是 <code>b/s</code> （比特 &#x2F; 秒），带宽越大，其传输能力就越强</li>
+<li>延时：表示请求数据包发送后，收到对端响应，所需要的时间延迟。不同的场景有着不同的含义，比如可以表示建立 <code>TCP</code> 连接所需的时间延迟，或一个数据包往返所需的时间延迟</li>
+<li>吞吐率：表示单位时间内成功传输的数据量，单位是 <code>b/s</code>（比特 &#x2F; 秒）或者 <code>B/s</code>（字节 &#x2F; 秒），吞吐受带宽限制，带宽越大，吞吐率的上限才可能越高</li>
+<li>PPS：全称是 <code>Packet Per Second</code>（包 &#x2F; 秒），表示以网络包为单位的传输速率，一般用来评估系统对于网络的转发能</li>
+</ul>
+<p>除了以上这四种基本的指标，还有一些其他常用的性能指标，比如：</p>
+<ul>
+<li>网络的可用性：表示网络能否正常通信</li>
+<li>并发连接数：表示 TCP 连接数量</li>
+<li>丢包率：表示所丢失数据包数量占所发送数据组的比率</li>
+<li>重传率：表示重传网络包的比例</li>
+</ul>
+<h4 id="36-如何区分流量控制和拥塞控制"><a href="#36-如何区分流量控制和拥塞控制" class="headerlink" title="36. 如何区分流量控制和拥塞控制"></a>36. 如何区分流量控制和拥塞控制</h4><ul>
+<li>拥塞控制所要做的都有一个前提，就是网络能够承受现有的网络负荷</li>
+<li>拥塞控制是一个全局性的过程，涉及到所有的主机、所有的路由器，以及与降低网络传输性能有关的所有因素</li>
+<li>流量控制往往指在给定的发送端和接收端之间的点对点通信量的控制</li>
+<li>流量控制所要做的就是抑制发送端发送数据的速率，以便使接收端来得及接收</li>
+<li>流量控制属于通信双方协商；拥塞控制涉及通信链路全局</li>
+<li>流量控制需要通信双方各维护一个发送窗、一个接收窗，对任意一方，接收窗大小由自身决定，发送窗大小由接收方响应的TCP报文段中窗口值确定；拥塞控制的拥塞窗口大小变化由试探性发送一定数据量数据探查网络状况后而自适应调整</li>
+<li>实际最终发送窗口 &#x3D; min{流控发送窗口，拥塞窗口}</li>
+</ul>
+<h4 id="37-解释RTO，RTT和超时重传"><a href="#37-解释RTO，RTT和超时重传" class="headerlink" title="37. 解释RTO，RTT和超时重传"></a>37. 解释RTO，RTT和超时重传</h4><ul>
+<li><strong>超时重传</strong>：发送端发送报文后若长时间未收到确认的报文则需要重发该报文。可能有以下几种情况：<ul>
+<li>发送的数据没能到达接收端，所以对方没有响应。</li>
+<li>接收端接收到数据，但是ACK报文在返回过程中丢失</li>
+<li>接收端拒绝或丢弃数据</li>
+</ul>
+</li>
+<li><strong>RTO</strong>：从上一次发送数据，因为长期没有收到ACK响应，到下一次重发之间的时间。就是重传间隔<ul>
+<li>通常每次重传RTO是前一次重传间隔的两倍，计量单位通常是RTT。例：1RTT，2RTT，4RTT，8RTT……</li>
+<li>重传次数到达上限之后停止重传</li>
+</ul>
+</li>
+<li><strong>RTT</strong>：数据从发送到接收到对方响应之间的时间间隔，即数据报在网络中一个往返用时。大小不稳定</li>
+</ul>
+<h4 id="38-停止等待和超时重传"><a href="#38-停止等待和超时重传" class="headerlink" title="38. 停止等待和超时重传"></a>38. 停止等待和超时重传</h4><ul>
+<li>停止等待：通常我们说如果A和B双方建立好tcp连接后就可以相互发送数据了，A为发送方，B为接收方。因为这里讨论可靠传输原理，所以把传输的数据单元称为分组。“停止等待”就是每发送完一个分组就停止发送，等待对方确认后再发送下一个分组。停止等待协议考虑了数据在网络中传输出现的几种情况来提供有效措施保障数据的可靠传输，下面我们就一一来介绍这几种情况</li>
+<li>超时重传：原理是在发送某一个数据以后就开启一个计时器，在一定时间内如果没有得到发送的数据报的ACK报文，那么就重新发送数据，直到发送成功为止。影响超时重传机制协议效率的一个关键参数是重传超时时间（RTO，Retransmission TimeOut）</li>
+</ul>
+<h4 id="39-交换机和路由器的区别"><a href="#39-交换机和路由器的区别" class="headerlink" title="39. 交换机和路由器的区别"></a>39. 交换机和路由器的区别</h4><ul>
+<li>交换机是一根网线上网，但是大家上网是分别拨号，各自使用自己的宽带，大家上网没有影响。而路由器比交换机多了一个虚拟拨号功能，通过同一台路由器上网的电脑是共用一个宽带账号，大家上网要相互影响</li>
+<li>交换机工作在中继层，交换机根据MAC地址寻址。路由器工作在网络层，根据IP地址寻址，路由器可以处理TCP&#x2F;IP协议，而交换机不可以</li>
+<li>交换机可以使连接它的多台电脑组成局域网，如果还有代理服务器的话还可以实现同时上网功能而且局域网所有电脑是共享它的带宽速率的，但是交换机没有路由器的自动识别数据包发送和到达地址的功能。路由器可以自动识别数据包发送和到达的地址，路由器相当于马路上的警察，负责交通疏导和指路的</li>
+<li>举几个例子,路由器是小邮局，就一个地址(IP)，负责一个地方的收发(个人电脑，某个服务器，所以你家上网要这个东西)，交换机是省里的大邮政中心，负责由一个地址给各个小地方的联系。简单的说路由器专管入网，交换机只管配送，路由路由就是给你找路让你上网的，交换机只负责开门，交换机上面要没有路由你是上不了网的</li>
+<li>路由器提供了防火墙的服务。路由器仅仅转发特定地址的数据包，不传送不支持路由协议的数据包传送和未知目标网络数据包的传送，从而可以防止广播风暴</li>
+</ul>
+<h4 id="40-子网掩码的作用"><a href="#40-子网掩码的作用" class="headerlink" title="40. 子网掩码的作用"></a>40. 子网掩码的作用</h4><p>内网中192.168.1.199的前三组是网络号，后一组是主机号，子网掩码就是255.255.255.0</p>
+<p><strong>首先要说明的是</strong>：不是某个IP的网络号和主机号决定子网掩码是什么，而是子网掩码决定了某个IP地址的网络号与主机号是什么，IP地址是要搭配子网掩码使用的。例如上面的子网掩码决定了192.168.1.199的前三段192.168.1是网络号，最后一段199是主机号</p>
+<p>我们再来理解子网掩码的作用，先举个例子，市面上的两个厂家都生产电子秤，每个厂家都坚称他们的秤最准，那你是怎么知道他们的秤到底准不准？很简单，你去找一个 1KG 的国际千克原器，各放到他们的秤上测量，如果秤的测量值是1KG，那这把秤就是准的，<strong>子网掩码的作用</strong>就相当于这个大家公认的国际千克原器，是我们测量两个IP是否属于同一个网段的一个工具（应该说是让你知道某个IP地址的网络号与主机号分别是什么） </p>
+<hr>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>八股文</tag>
+        <tag>计算机网络</tag>
       </tags>
   </entry>
   <entry>
@@ -2579,608 +3181,6 @@
       <tags>
         <tag>八股文</tag>
         <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>项目经验面试题</title>
-    <url>/2022/10/28/%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容">
-  <script id="hbeData" type="hbeData" data-hmacdigest="89f675e3c9ee01fca90366988f63a47d028b160e9fe14a94ca94f994eb8ce28d">a17b4de793b95f7877066d2186f5861555e2d6b9cb5641947e36c8450a9062241bff23f016a5658fa4702bb8625e1a64927d2e249a90caaa62600a11f5dcd3f66c53fe7239ac25300620da5c82ec4d458706cb81b1903f8a8894fb74b7b49e178b1ed12b5113c92743dd83f16334b11a519cb4937b1f6ca060c3c1602c2e5ab00497eeb7b7d7a4a4a45ca9b9fdc711a262177b0d5ff4bf6e4c9c47d80447f23cd18eb13e8c28580fd1c2934f779e5086f01f803a4ba6bb4a6371d982998985660d5e9b2cf961c1e882ad1c8a8aa710dd432f2230184282005f3cf944af4755a25a3afa8390b4846e22e0c1344ab3b49b32905d7a0b7b3d57bc134676a5f95bb0dac112457d1ff1baa0748602ed6acea81a1644595c8dabb2237e7dfe4b74ac6ff80dfad29602cdb7e29dd4231532cd59a7a98f7f65299dcfe64d5994d79830a9a55e40f90473ea96085cf8352db10806f20c766362c05efdd8e74d8c881ea0ddc387a76ce4bef6288cd709e9616eac194dfbd36930bf49f966568e3747c080b7a1a7ac6c9f996a1e407272e137d22d669d9966d6a6fb0476d04bf59df903b3430fbde42913ce18dbb0f77e7b78192746b2f7c5481cddc741cc7bbef8a44c59c2b3deafb2f06fc0fb2ab69ac65be6f67946ead0c4bd7966629d441238e166742e33d9f6d73430a28fa1077777e863dd000ef7ec4d692930e9b562acaa53e9c738b55cf7258331f79e3f63c47c45147d7f8d0635cab43fa82bbe470eecaec98617b92281a05d93b92f489332383de12333f59eefbaa918bb6b38be2895ae3b7861bcd02398eb42cda366c7edb297284672cbf1cbfc2f60766010b21f17f7bd23ef57f225611ac5ea8d2dc7584f2aeb16f0a50e99daadcfaffdbc7b94544ae0c2267917cabfa0b25e3e059e79e8017126d985133428c9a3ca2808f29155cc987d25ee968d63f58e7c1a34db327fd0b61f6ef2194d97c3c9907a9c1f6d8d35819b4eea39a6908d2da7fd6968a8040a9441260e04c43c9dc6f1b9a3880d7607aece4a3d6e181aa5978796603c3d3bbdc8058e6bea6dd2ab6802395cdacd440fc527781853f21f72b171060b271fd81139d3af25926b4cf8b612ab34e5ce9cf85c92d5d87aad45282f1d038d80afc25c95f5ee3dddaec2ccaeeeecadf6c449d14152e3223d2723b3187e41e90d3c57c1975741a63b9f2e37ea1fa66f43eb5df7dc3afae2f630a6fca55a3d4d319078f74fdca366ee0a8cfc006d5de6ce7db111d2c071f32e290d523cd99ce434003b28fd8fc7118a64b255ae3a0235925e842d72ac7962dcbad744aee5a7a8a0c69e597d8af7189c92b354f19d2b11c2a9bc5f9f81c77545ec44b54b18efdce08f8ded84a6a1baa8f224803d0b32cda4f41b4a0d6cd053407266d47937baa6029abfa0777c14a582cca4f70946d1d78ffabefcf9f7481d5eea5eb81926aeb8defd70bc342e03f16bf75782063290a61febaad44f9bec65f070b75c8aaabc05514eb1d1dda550528acc2ee8d21b6264440dfb5585bf9764756324cc1c60722913de487fdc0654d35f1c893fa6bc41456053dca7fdb2c9b961ba8128009947320da3c0821481a4f1fba49bb5160c0b0797c0a4bc1b16848c67fa80843bd7f9e0aaa43e63e109cedcc3a8d27ea2765e51438ade4c286b9c1e77a2de8c55a130af196af8b2839b6f97dd08edfffc3ace18304b60f0935269390c7d5a574d2f12d5d9771c9f466f27dd51ea488fe37c34d6aa112843a7fb0029adca1704baf3e21979f858c33e3f0027cb10c9b0ab7cfeab84869b4ddc7964c7a87f95091e769a0cc8ec95cd6eadb56f6acd9e624cac4811fb82d586d459a41891b75b910ca8217bf71fc047bc5160cfaae7b472cdee7d3b74fa7d419fa45ec40a12ff8ff0a47f6b2992d4d425058c23cb58154b8c421719fef35d035e7c13adb0e3535025fd6482019d43e567b0e9585fba7b60ab9ee1ce5a59bfe7d4bab77e10f1afae9740fce16dba0a5a05ceb5cadc358721260d5f6aae39011b7a578f575e9b9e15b6862b7932b756aabb5713b6f7f92ee9d54e7cfc83cd012107ea6e823b983fd276bd1b75fd1d95ec9da057f56fc0827333649368ff709f0491e12b9cb3cf73d9c1e4efcf2a1a83975e7056774a686fd3e8b78120d5092712f7a09eed7d94b42931734618ad041b97fd57c2f87c3cf9b085ab0cf50920b30067ddf7d5b15d045bda3434611a0521d062da41315756094b800c12cb30aa8514f7568a759b8dba31ab691c016328b0f31bdbfa6019da0b0dce6e57842e8bdf4532e641306ee62659b40c437a6bc56ae8134ad7815a20d9a08805766b827210b4046af906cb1606fee5f5af499f85835cf11fd6f309132375a12f054e2a355deef4e4c14a9aab3cedece4a39a62770e8cee493d8b8fda7b73fb8f3391590a060d0d243ddd044ddefab9932958f07c1941859f1ff11d2eee0bdadfafd267f7f7e71ae92fd48ac5c9043a98653780b4a7509ee2902b3899df7fc06600787a367b7de6bbc07b74d2fb21a0ce15adae8158c800dec8c16eef115b8a751a47a741cf720f5f99541675861a5cec80064e4d7f80e6dfc0e64b6bd8b31104e19a35611030f75a910832460fbfd8e92b3a00401dde53f04a0d68e036e03391c613f71caaa686b5018bae56a3662b2424913483176f4f7b132fed435fc140d267b2c2a24844cf1b6e204fd66f58bf4704771bb5a8ba565e4b9f0e431c0bfd46e798437e1c9005a9a2023b8e14e189f3248cd885120dc2f7e54d8f1cb5e7238c6389966059f717071ac6f40c9d99941450472583c242dfb270d315f220e76744df9e78d8cc97249748dde500391cc59ead8a37bb048e4d69a54798d688a504c9d8cc4ae569691126880e0ca35390191ca509ade324f261fcc5f3d2abae39bfb0aed31aee7572bb3a9c94bc06f9a12cfb43c0f80265e3512c3c6eae3152e470bcf95d1569b1c67af9940a80d6f7f6c0f801e4820968ab7477ce0686f878cbd42a8bd612a4363321666a37b0b3be1e5cb89c273036e42ff9017a27ad865aa23455d990a9c04fe5c9dde60618b7148754ff57fb8e4c761a55d9af36a8423eb497b3b2a4459b7bf39cc43bfd461ab645a054bbce1ea8574e5c838c0398766637b115486e2dc87e49081751ba667e31ecd4b6656eb8b68befdf263ad0f539c2d98dcbc6a87540c8f789056f7b0050e5e4b77f70578e431feb5fce9d6ad8240b3396804460526db54c50f33d9dcd1dbc280d56164703c87b7965b915d3d6e4bd80a89ef23c2fc4f9ccb34bfdda2c1e2197036a59b5d0aec1f1817cf0c1751d7b81855ce4785c93b17fc39ae1b4a6dd84eec81946bb2c2c55136a64ef191b5bf8ce83dd8f79f48df6838640ca93ccd98eacb737c837e754ac167611d44d7329488486573fdc46cc7db215fa0e616a4b9bac76a020e929cd8a02bd4ae444feb38a85b427a5c5870c2aa0ef32f50f0c93b09018de6ad7bf7e28ddc70e87030dd3d52f505f67e70d6326913c932bd6d6992634c000c17a9fc3ef33321555f7674c636af090706370fbc97a92a9c87c15185bf20bc9a2be6adb50d4e705e7463cac947fef21856e4539cd52cb46a5f91d9b798cbc2758dd55d119e909f894f6f9661d65e8f5c077741b89075bbe409f42b4be1fcf5dfd9369bb291c03c6f6d4d282949b628e48a265dba3331ba79c4fc13647277ee40cc679478849507ce308aef7ed22855c6841436b38047ffc6d121cfc65e6aa5041f29f4b97fd6c43a891462cf28d3979b230d2b275ad43801575f27a3d30355dbc14a168d06c1a113e97da2b8c8d1e178963a0e3c2d4be95ce2dadab8526c84dfd250a14b957c612db88a6f5ea155cd97f00ae41aa2ccbe51b169263f3071e47870b92bba0944a81cbd4df6a047df6bea085f99665459bc110408cb27c4b65e5dbd8b349a01173ff1dcb23727149be25f5a71bc3a18fd6b3d073cf1ca8188155aedaf9cf93942db0586273363df220c1b50adc025244bfcadc2cb9b700c70bc06440ea6e74a58cdba1af305eae67a7d1b752d564cf8e48b0750bc6549baf9544aae4532c46394b85474d884be2278fea72970b5374c3783e297b37d65b2652e7d844675f962e58945cf385a9ba695ed72653251af60c4069ffc793b31a198474e51d7b1acf6b1ef762b8a3e1d851b5b820300a810ab1c668e54a6cc4698aa6dd51a14341dbeeb7c964901a0eaa71d3f3ae0d9bf95b35ba8c345729085dc321a1065a73a457892015f3f61e838ca068d6ce08ec264d0df5b551a1c4b19a8a2da3cd06d1b50a05402c1a008b66e709990c9ec13224a19d024faa5b9150cf5e9c0e15b6de76b2884a8ab22822336584bac8fbd37a4436b9ec328f892ae653febbc08f7099f976e1b2a7965b20068e41c4f60fb150473f5d2350f4f44b3af88ab755f8f28b4be29a3cd92c51838fec9459aea6e47d480247b144e87dc7bceb8cc009fe65653150dbabb49b2fdf1ae3e22ed164b87ca7422f0783a00680a609b168743896206d70600b7a60da66bf0ab9fdebe090fddd229663139005763f6d6e8e8bfdd6354203310d2e2ea3213b2075e5430ee65143557118e8b60f7335d793e998d6c6e6cdfb9e1a95c33fcd7751798eee3deda08efae582c0a0c8f87e59f3b47d85fc4835117a37f3731b36d846fa2abdd20bab0af39441a4729a4e445c267da65d63726b6ff527f9e64485256fc12b7d4a3e7b1f7cff29da98023cee82f8dbdf8dcc9f884fffb2b1427132fd95fdce3f53b178a9751595ce6297788f4a4a8aa7621b71dd79c2a01af38d395ca2cdf50404030987c404fe606103ae929cc59681d41f0e890081fa5318</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 请输入密码</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>项目经验</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机网络面试题</title>
-    <url>/2022/10/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p>计算机网络常见面试题</p>
-<h4 id="1-OSI七层模型，TCP-x2F-IP四层模型，五层协议"><a href="#1-OSI七层模型，TCP-x2F-IP四层模型，五层协议" class="headerlink" title="1. OSI七层模型，TCP&#x2F;IP四层模型，五层协议"></a>1. OSI七层模型，TCP&#x2F;IP四层模型，五层协议</h4><div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7m5w06lbkj313n0iawpi.jpg" alt="69.jpg" style="zoom:55%;" /></div>
-
-<h5 id="1-1-OSI七层模型"><a href="#1-1-OSI七层模型" class="headerlink" title="1.1 OSI七层模型"></a>1.1 OSI七层模型</h5><div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7m5mu30e3j30v41834qp.jpg" alt="1.jpeg" style="zoom:80%;" /></div>
-
-<h5 id="1-2-TCP-x2F-IP四层模型"><a href="#1-2-TCP-x2F-IP四层模型" class="headerlink" title="1.2 TCP&#x2F;IP四层模型"></a>1.2 TCP&#x2F;IP四层模型</h5><ul>
-<li>它只有四层，相当于五层协议中<strong>数据链路层和物理层合并为网络接口层</strong></li>
-<li>现在的 TCP&#x2F;IP 体系结构不严格遵循 OSI 分层概念，应用层可能会直接使用 IP 层或者网络接口层</li>
-<li>TCP&#x2F;IP 协议族是一种沙漏形状，中间小两边大，IP 协议在其中占用举足轻重的地位</li>
-</ul>
-<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7m62vqibaj324q0v8amp.jpg" alt="image.png" style="zoom:20%;" /></div>
-
-<h5 id="1-3-五层协议"><a href="#1-3-五层协议" class="headerlink" title="1.3 五层协议"></a>1.3 五层协议</h5><ul>
-<li><strong>应用层：</strong> 提供用户接口，特指能够发起网络流量的程序，比如客户端程序：QQ，MSN，浏览器等；服务器程序：web服务器，邮件服务器，流媒体服务器等等。数据单位为报文</li>
-<li><strong>传输层：</strong> 提供的是进程间的通用数据传输服务。由于应用层协议很多，定义通用的运输层协议就可以支持不断增多的应用层协议</li>
-<li><strong>网络层：</strong> 为主机间提供数据传输服务，而运输层协议是为主机中的进程提供服务。网络层把运输层传递下来的报文段或者用户数据报封装成分组</li>
-<li><strong>数据链路层：</strong> 不同的网络类型，发送数据的机制不同，数据链路层就是将数据包封装成能够在不同的网络传输的帧。能够进行差错检验，但不纠错，监测处错误丢掉该帧</li>
-<li><strong>物理层：</strong> 物理层解决如何在连接各种计算机的传输媒体上传输数据比特流，而不是指具体的传输媒体。物理层的主要任务描述为：确定与传输媒体的接口的一些特性</li>
-</ul>
-<h4 id="2-TCP和UDP有什么区别"><a href="#2-TCP和UDP有什么区别" class="headerlink" title="2. TCP和UDP有什么区别"></a>2. TCP和UDP有什么区别</h4><ul>
-<li>TCP面向连接（如打电话要先拨号建立连接）；UDP是无连接的，即发送数据之前不需要建立连接</li>
-<li>TCP提供可靠的服务。也就是说，通过TCP连接传送的数据，无差错，不丢失，不重复，且按序到达;UDP尽最大努力交付，即不保证可靠交付.</li>
-<li>TCP面向字节流，实际上是TCP把数据看成一连串无结构的字节流；UDP是面向报文的</li>
-<li>每一条TCP连接只能是点到点的；UDP支持一对一，一对多，多对一和多对多的交互通信</li>
-<li>TCP首部开销20字节；UDP的首部开销小，只有8个字节</li>
-<li>TCP的逻辑通信信道是全双工的可靠信道，UDP则是不可靠信道</li>
-</ul>
-<p>TCP使用场景：</p>
-<ul>
-<li>相对于 UDP，TCP 实现了数据传输过程中的各种控制，可以进行丢包时的重发控制，还可以对次序乱掉的分包进行顺序控制。在对可靠性要求较高的情况下，可以使用 TCP，即不考虑 UDP 的时候，都可以选择 TCP</li>
-</ul>
-<hr>
-<p>UDP使用场景：</p>
-<ul>
-<li>包总量较小的通信（DNS、SNMP）</li>
-<li>视频、音频等多媒体通信（即时通信）</li>
-<li>广播通信</li>
-</ul>
-<h4 id="3-TCP中三次握手和四次挥手"><a href="#3-TCP中三次握手和四次挥手" class="headerlink" title="3. TCP中三次握手和四次挥手"></a>3. TCP中三次握手和四次挥手</h4><h5 id="3-1-三次握手"><a href="#3-1-三次握手" class="headerlink" title="3.1 三次握手"></a>3.1 三次握手</h5><div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7m6hb6w0oj318a0o6qau.jpg" alt="75.jpg" style="zoom:30%;" /></div>
-
-<p>假设 A 为客户端，B 为服务器端：</p>
-<ul>
-<li>首先 B 处于 LISTEN（监听）状态，等待客户的连接请求</li>
-<li>A 向 B 发送连接请求报文段，<code>SYN=1</code>，<code>ACK=0</code>，选择一个初始的序号 <code>seq = x</code></li>
-<li>B 收到连接请求报文段，如果同意建立连接，则向 A 发送连接确认报文段，<code>SYN=1</code>，<code>ACK=1</code>，确认号为 <code>x+1</code>，同时也选择一个初始的序号 <code>seq = y</code></li>
-<li>A 收到 B 的连接确认报文段后，还要向 B 发出确认，确认号为 <code>ack = y+1</code>，序号为 <code>seq = x+1</code></li>
-<li>A 的 TCP 通知上层应用进程，连接已经建立。</li>
-<li>B 收到 A 的确认后，连接建立。</li>
-<li>B 的 TCP 收到主机 A 的确认后，也通知其上层应用进程：TCP 连接已经建立</li>
-</ul>
-<p><strong>为什么TCP连接需要三次握手，两次不可以吗?</strong></p>
-<ul>
-<li>TCP是一个双向通信协议，通信双方都有能力发送信息，并接收响应。如果只是两次握手， 至多只有连接发起方的起始序列号能被确认， 另一方选择的序列号则得不到确认</li>
-<li>为了防止已失效的连接请求报文段突然又传送到了服务端，占用服务器资源<ul>
-<li>现假定出现一种异常情况，即A发出的第一个连接请求报文段并没有丢失，而是在某些网络节点长时间滞留了，以致延误到连接释放以后的某个时间才到B。本来这是一个已失效的报文段。但是B收到此失效的连接请求报文段后，就误认为是A有发出一次新的连接请求。于是就向A发出确认报文段，同意建立连接。假定不采用三次握手，那么只要B发出确认，新的连接就建立了</li>
-<li>由于现在A并没有发出建立连接的请求，因此不会理睬B的确认，也不会向B发送数据。但B却以为新的运输连接已经建立了，并一直等待A发来数据。B的许多资源就这样白白浪费了</li>
-<li>采用三次握手的办法可以防止上述现象的发生。例如在刚才的情况下，A不会向B的确认发出确认。B由于收不到确认，就知道A并没有要求建立连接</li>
-</ul>
-</li>
-</ul>
-<h5 id="3-2-四次挥手"><a href="#3-2-四次挥手" class="headerlink" title="3.2 四次挥手"></a>3.2 四次挥手</h5><div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7m6m8l61xj31hc0u0h05.jpg" alt="76.jpg" style="zoom:30%;" /></div>
-
-<p>数据传输结束后，通信的双方都可释放连接。现在 A 的应用进程先向其 TCP 发出连接释放报文段，并停止再发送数据，主动关闭 TCP连接</p>
-<ul>
-<li>A 把连接释放报文段首部的 <code>FIN = 1</code>，其序号 <code>seq = u</code>，等待 B 的确认。</li>
-<li>B 发出确认，确认号 <code>ack = u+1</code>，而这个报文段自己的序号 <code>seq = v</code>。（TCP 服务器进程通知高层应用进程）</li>
-<li>从 A 到 B 这个方向的连接就释放了，TCP 连接处于半关闭状态。A 不能向 B 发送数据；B 若发送数据，A 仍要接收</li>
-<li>当 B 不再需要连接时，发送连接释放请求报文段，FIN&#x3D;1。</li>
-<li>A 收到后发出确认，进入<code>TIME-WAIT</code>状态，等待 <code>2 MSL（2*2 = 4 mins）</code>时间后释放连接。</li>
-<li>B 收到 A 的确认后释放连接</li>
-</ul>
-<p><strong>为什么需要四次挥手</strong></p>
-<ul>
-<li>客户端发送了 FIN 连接释放报文之后，服务器收到了这个报文，就进入了 <code>CLOSE-WAIT</code>状态</li>
-<li>这个状态是为了让服务器端发送还未传送完毕的数据，传送完毕之后，服务器会发送 FIN 连接释放报文</li>
-</ul>
-<h4 id="4-常见的HTTP状态码有哪些"><a href="#4-常见的HTTP状态码有哪些" class="headerlink" title="4. 常见的HTTP状态码有哪些"></a>4. 常见的HTTP状态码有哪些</h4><table>
-<thead>
-<tr>
-<th align="left">状态码</th>
-<th align="left">类别</th>
-<th align="left">原因短语</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1XX</td>
-<td align="left">Informational（信息性状态码）</td>
-<td align="left">接收的请求正在处理</td>
-</tr>
-<tr>
-<td align="left">2XX</td>
-<td align="left">Success（成功状态码）</td>
-<td align="left">请求正常处理完毕</td>
-</tr>
-<tr>
-<td align="left">3XX</td>
-<td align="left">Redirection（重定向状态码）</td>
-<td align="left">需要进行附加操作以完成请求</td>
-</tr>
-<tr>
-<td align="left">4XX</td>
-<td align="left">Client Error（客户端错误状态码）</td>
-<td align="left">服务器无法处理请求</td>
-</tr>
-<tr>
-<td align="left">5XX</td>
-<td align="left">Server Error（服务器错误状态码）</td>
-<td align="left">服务器处理请求出错</td>
-</tr>
-</tbody></table>
-<ul>
-<li>1XX：<ul>
-<li><strong>100 Continue</strong> ：表明到目前为止都很正常，客户端可以继续发送请求或者忽略这个响应</li>
-</ul>
-</li>
-<li>2XX：<ul>
-<li><strong>200 OK</strong></li>
-<li><strong>204 No Content</strong> ：请求已经成功处理，但是返回的响应报文不包含实体的主体部分。一般在只需要从客户端往服务器发送信息，而不需要返回数据时使用</li>
-<li><strong>206 Partial Content</strong> ：表示客户端进行了范围请求。响应报文包含由 Content-Range 指定范围的实体内容</li>
-</ul>
-</li>
-<li>3XX：<ul>
-<li><strong>301 Moved Permanently</strong> ：永久性重定向</li>
-<li><strong>302 Found</strong> ：临时性重定向</li>
-<li>注：虽然 HTTP 协议规定 301、302 状态下重定向时不允许把 POST 方法改成 GET 方法，但是大多数浏览器都会在 301、302 和 303 状态下的重定向把 POST 方法改成 GET 方法</li>
-<li><strong>303 See Other</strong> ：和 302 有着相同的功能，但是 303 明确要求客户端应该采用 GET 方法获取资源</li>
-<li><strong>304 Not Modified</strong> ：如果请求报文首部包含一些条件，例如：If-Match，If-Modified-Since，If-None-Match，If-Range，If-Unmodified-Since，如果不满足条件，则服务器会返回 304 状态码</li>
-<li><strong>307 Temporary Redirect</strong> ：临时重定向，与 302 的含义类似，但是 307 要求浏览器不会把重定向请求的 POST 方法改成 GET 方法</li>
-</ul>
-</li>
-<li>4XX：<ul>
-<li><strong>400 Bad Request</strong> ：请求报文中存在语法错误</li>
-<li><strong>401 Unauthorized</strong> ：该状态码表示发送的请求需要有认证信息（BASIC 认证、DIGEST 认证）。如果之前已进行过一次请求，则表示用户认证失败</li>
-<li><strong>403 Forbidden</strong> ：请求被拒绝，服务器端没有必要给出拒绝的详细理由</li>
-<li><strong>404 Not Found</strong></li>
-</ul>
-</li>
-<li>5XX：<ul>
-<li><strong>500 Internal Server Error</strong> ：服务器正在执行请求时发生错误</li>
-<li><strong>502 Bad Gateway</strong> : 是用来表示代理或网关在处理请求时发生了错误，并不一定是原始服务器出现了问题</li>
-<li><strong>503 Service Unavailable</strong> ：服务器暂时处于超负载或正在进行停机维护，现在无法处理请求</li>
-<li><strong>504 Gateway Timeout</strong>：作为网关或者代理工作的服务器尝试执行请求时，未能及时从上游服务器（URI标识出的服务器，例如HTTP、FTP、LDAP）或者辅助服务器（例如DNS）收到响应</li>
-</ul>
-</li>
-</ul>
-<p><strong>注意：某些代理服务器在DNS查询超时时会返回400或者500错误</strong></p>
-<h4 id="5-HTTPS和HTTP有什么区别"><a href="#5-HTTPS和HTTP有什么区别" class="headerlink" title="5. HTTPS和HTTP有什么区别"></a>5. HTTPS和HTTP有什么区别</h4><p>http协议和https协议的区别：<strong>传输信息安全性不同</strong>、<strong>连接方式不同</strong>、<strong>端口不同</strong>、<strong>证书专申请方式不同</strong></p>
-<ul>
-<li>传输信息安全性不同<ul>
-<li>http协议：是超文本传输协议，信息是明文传输。如果攻击者截取了Web浏览器和网站服务器之间的传输报文，就可以直接读懂其中的信息</li>
-<li>https协议：是具有安全性的SSL&#x2F;TLS加密传输协议，为浏览器和服务器之间的通信加密，确保数据传输的安全性</li>
-</ul>
-</li>
-<li>连接方式不同<ul>
-<li>http协议：http的连接很简单，是无状态的，客户端和服务器端都无法验证对方的身份</li>
-<li>https协议：是由SSL&#x2F;TLS＋HTTP协议构建的可进行加密传输、身份认证的网络协议。客户端可以验证服务器端的身份，如果配置了客户端验证，服务器方也可以验证客户端的身份</li>
-</ul>
-</li>
-<li>端口不同<ul>
-<li>http协议：使用的端口是80</li>
-<li>https协议：使用的端口是443</li>
-</ul>
-</li>
-<li>证书申请方式不同<ul>
-<li>http协议：无需申请证书</li>
-<li>https协议：需要到ca申请证书，一般免费证书很少，需要交费</li>
-</ul>
-</li>
-</ul>
-<h4 id="6-HTTP-x2F-HTPS安全性"><a href="#6-HTTP-x2F-HTPS安全性" class="headerlink" title="6. HTTP&#x2F;HTPS安全性"></a>6. HTTP&#x2F;HTPS安全性</h4><h5 id="6-1-HTTP的安全性问题"><a href="#6-1-HTTP的安全性问题" class="headerlink" title="6.1 HTTP的安全性问题"></a>6.1 HTTP的安全性问题</h5><ul>
-<li>使用明文进行通信，内容可能会被窃听</li>
-<li>不验证通信方的身份，通信方的身份有可能遭遇伪装</li>
-<li>无法证明报文的完整性，报文有可能遭篡改</li>
-</ul>
-<hr>
-<p>HTTPs（Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲HTTPs是HTTP的安全版。HTTPs 并不是新协议，而是让 HTTP 先和 SSL（Secure Sockets Layer）通信，再由 SSL 和 TCP 通信。也就是说 HTTPs 使用了隧道进行通信。通过使用 SSL，HTTPs 具有了加密（防窃听）、认证（防伪装）和完整性保护（防篡改）</p>
-<h5 id="6-2-对称密钥加密"><a href="#6-2-对称密钥加密" class="headerlink" title="6.2 对称密钥加密"></a>6.2 对称密钥加密</h5><p>对称密钥加密（Symmetric-Key Encryption），加密和解密使用同一密钥</p>
-<ul>
-<li>优点：运算速度快；</li>
-<li>缺点：无法安全地将密钥传输给通信方</li>
-</ul>
-<h5 id="6-3-非对称密钥加密"><a href="#6-3-非对称密钥加密" class="headerlink" title="6.3 非对称密钥加密"></a>6.3 非对称密钥加密</h5><p>非对称密钥加密，又称公开密钥加密（Public-Key Encryption），加密和解密使用不同的密钥。公开密钥所有人都可以获得，通信发送方获得接收方的公开密钥之后，就可以使用公开密钥进行加密，接收方收到通信内容后使用私有密钥解密</p>
-<p>非对称密钥除了用来加密，还可以用来进行签名。因为私有密钥无法被其他人获取，因此通信发送方使用其私有密钥进行签名，通信接收方使用发送方的公开密钥对签名进行解密，就能判断这个签名是否正确</p>
-<ul>
-<li>优点：可以更安全地将公开密钥传输给通信发送方</li>
-<li>缺点：运算速度慢</li>
-</ul>
-<h5 id="6-4-HTTPs-采用的加密方式"><a href="#6-4-HTTPs-采用的加密方式" class="headerlink" title="6.4 HTTPs 采用的加密方式"></a>6.4 HTTPs 采用的加密方式</h5><p>HTTPs 采用混合的加密机制，使用非对称密钥加密用于传输对称密钥来保证安全性，之后使用对称密钥加密进行通信来保证效率</p>
-<h4 id="7-SSL-x2F-TLS协议的握手过程"><a href="#7-SSL-x2F-TLS协议的握手过程" class="headerlink" title="7. SSL&#x2F;TLS协议的握手过程"></a>7. SSL&#x2F;TLS协议的握手过程</h4><p>我们知道，HTTP 协议都是明文传输内容，在早期只展示静态内容时没有问题。伴随着互联网的快速发展，人们对于网络传输安全性的要求也越来越高，HTTPS 协议因此出现。如上图所示，在 HTTPS 加密中真正起作用的其实是 SSL&#x2F;TLS 协议。SSL&#x2F;TLS 协议作用在 HTTP 协议之下，对于上层应用来说，原来的发送接收数据流程不变，这就很好地兼容了老的 HTTP 协议，这也是软件开发中分层实现的体现</p>
-<h5 id="7-1-SSL-Secure-Socket-Layer，安全套接字层"><a href="#7-1-SSL-Secure-Socket-Layer，安全套接字层" class="headerlink" title="7.1 SSL (Secure Socket Layer，安全套接字层)"></a>7.1 SSL (Secure Socket Layer，安全套接字层)</h5><p>SSL为Netscape所研发，用以保障在Internet上数据传输之安全，利用数据加密(Encryption)技术，可确保数据在网络上之传输过程中不会被截取，当前为3.0版本</p>
-<p>SSL协议可分为两层： SSL记录协议（SSL Record Protocol）：它建立在可靠的传输协议（如TCP）之上，为高层协议提供数据封装、压缩、加密等基本功能的支持。 SSL握手协议（SSL Handshake Protocol）：它建立在SSL记录协议之上，用于在实际的数据传输开始前，通讯双方进行身份认证、协商加密算法、交换加密密钥等</p>
-<h5 id="7-2-TLS-Transport-Layer-Security，传输层安全协议"><a href="#7-2-TLS-Transport-Layer-Security，传输层安全协议" class="headerlink" title="7.2 TLS (Transport Layer Security，传输层安全协议)"></a>7.2 TLS (Transport Layer Security，传输层安全协议)</h5><p>用于两个应用程序之间提供保密性和数据完整性</p>
-<p>TLS 1.0是IETF（Internet Engineering Task Force，Internet工程任务组）制定的一种新的协议，它建立在SSL 3.0协议规范之上，是SSL 3.0的后续版本，可以理解为SSL 3.1，它是写入了 RFC 的。该协议由两层组成： TLS 记录协议（TLS Record）和 TLS 握手协议（TLS Handshake）。较低的层为 TLS 记录协议，位于某个可靠的传输协议（例如 TCP）上面</p>
-<h5 id="7-3-握手过程"><a href="#7-3-握手过程" class="headerlink" title="7.3 握手过程"></a>7.3 握手过程</h5><ul>
-<li><p><strong>1-client hello：</strong> 握手第一步是客户端向服务端发送 Client Hello 消息，这个消息里包含了一个客户端生成的随机数 <strong>Random1</strong>、客户端支持的<strong>加密套件</strong>（Support Ciphers）和 SSL Version 等信息</p>
-</li>
-<li><p><strong>2-server hello：</strong> 第二步是服务端向客户端发送 Server Hello 消息，这个消息会从 Client Hello 传过来的 Support Ciphers 里确定一份加密套件，这个套件决定了后续加密和生成摘要时具体使用哪些算法，另外还会生成一份随机数 <strong>Random2</strong>。注意，至此客户端和服务端都拥有了两个随机数（Random1+ Random2），这两个随机数会在后续生成对称秘钥时用到</p>
-</li>
-<li><p><strong>3-server certificate：</strong> 这一步是服务端将自己的证书下发给客户端，让客户端验证自己的身份，客户端验证通过后取出证书中的公钥</p>
-</li>
-<li><p><strong>4-Server Hello Done：</strong> Server Hello Done 通知客户端 Server Hello 过程结束</p>
-</li>
-<li><p><strong>5-Client Key Exchange：</strong> 上面客户端根据服务器传来的公钥生成了 <strong>PreMaster Key</strong>，Client Key Exchange 就是将这个 key 传给服务端，服务端再用自己的私钥解出这个 <strong>PreMaster Key</strong> 得到客户端生成的 <strong>Random3</strong>。至此，客户端和服务端都拥有 <strong>Random1</strong> + <strong>Random2</strong> + <strong>Random3</strong>，两边再根据同样的算法就可以生成一份秘钥，握手结束后的应用层数据都是使用这个秘钥进行对称加密。为什么要使用三个随机数呢？这是因为 SSL&#x2F;TLS 握手过程的数据都是明文传输的，并且多个随机数种子来生成秘钥不容易被暴力破解出来</p>
-</li>
-<li><p><strong>6-Change Cipher Spec(Client)：</strong> 这一步是客户端通知服务端后面再发送的消息都会使用前面协商出来的秘钥加密了，是一条事件消息</p>
-</li>
-<li><p><strong>7-Finished(Client)：</strong> 客户端发送Finished报文。该报文包含连接至今全部报文的整理校验值。这次握手协议是否能成功，要以服务器是否能够正确解密该报文作为判定标准</p>
-</li>
-<li><p><strong>8-Change Cipher Spec(Server)：</strong> 服务器同样发送Change Cipher Spec报文给客户端</p>
-</li>
-<li><p><strong>9-Finished(Server)：</strong> 服务器同样发送Finished报文给客户端</p>
-</li>
-<li><p><strong>10-11Application Data：</strong> 到这里，双方已安全地协商出了同一份秘钥，所有的应用层数据都会用这个秘钥加密后再通过 TCP 进行可靠传输</p>
-</li>
-<li><p><strong>12-Alert：warning, close notify：</strong> 最后由客户端断开连接。断开连接时，发送close_notify报文。上图做了一些省略，在这步之后再发送一种叫做MAC（Message Authentication Code）的报文摘要。MAC能够查知报文是否遭到篡改，从而保护报文的完整性</p>
-</li>
-</ul>
-<h4 id="8-Get和Post区别"><a href="#8-Get和Post区别" class="headerlink" title="8. Get和Post区别"></a>8. Get和Post区别</h4><ul>
-<li><p>一般约束为：GET是从服务器上获取数据，POST是向服务器传送数据</p>
-</li>
-<li><p>Get是不安全的，因为在传输过程，数据被放在请求的URL中；Post的所有操作对用户来说都是不可见的</p>
-</li>
-<li><p>Get传送的数据量较小，这主要是因为受URL长度限制；Post传送的数据量较大，一般被默认为不受限制</p>
-</li>
-<li><p>Get限制Form表单的数据集的值必须为ASCII字符；而Post支持整个ISO10646字符集</p>
-</li>
-<li><p>Get执行效率却比Post方法好。Get是form提交的默认方法</p>
-</li>
-<li><p>GET产生一个TCP数据包；POST产生两个TCP数据包（非必然，客户端可灵活决定）</p>
-</li>
-</ul>
-<h4 id="9-从输入网址到获得页面的网络请求过程"><a href="#9-从输入网址到获得页面的网络请求过程" class="headerlink" title="9. 从输入网址到获得页面的网络请求过程"></a>9. 从输入网址到获得页面的网络请求过程</h4><ol>
-<li>输入地址</li>
-<li>浏览器查找域名的 IP 地址</li>
-<li>浏览器向 web 服务器发送一个 HTTP 请求</li>
-<li>服务器的永久重定向响应</li>
-<li>服务器处理请求</li>
-<li>服务器返回一个 HTTP 响应</li>
-<li>浏览器显示 HTML</li>
-<li>浏览器发送请求获取嵌入在 HTML 中的资源（如图片、音频、视频、CSS、JS等等）</li>
-</ol>
-<p><strong>详细解读：</strong> <a href="https://zhuanlan.zhihu.com/p/133906695">点击跳转至网页</a></p>
-<h4 id="10-TCP报头格式和UDP报头格式"><a href="#10-TCP报头格式和UDP报头格式" class="headerlink" title="10. TCP报头格式和UDP报头格式"></a>10. TCP报头格式和UDP报头格式</h4><p>网络层只把分组发送到目的主机，但是真正通信的并不是主机而是主机中的进程。运输层提供了进程间的逻辑通信，运输层向高层用户屏蔽了下面网络层的核心细节，使应用程序看起来像是在两个运输层实体之间有一条端到端的逻辑通信信道</p>
-<ul>
-<li><p>TCP和UDP的特点</p>
-<ul>
-<li><strong>传输控制协议 TCP</strong>（Transmission Control Protocol）是面向连接的，提供可靠交付，有流量控制，拥塞控制，提供全双工通信，面向字节流（把应用层传下来的报文看成字节流，把字节流组织成大小不等的数据块），每一条 TCP 连接只能是点对点的（一对一）</li>
-<li><strong>用户数据报协议 UDP</strong>（User Datagram Protocol）是无连接的，尽最大可能交付，没有拥塞控制，面向报文（对于应用程序传下来的报文不合并也不拆分，只是添加 UDP 首部），支持一对一、一对多、多对一和多对多的交互通信。例如：视频传输、实时通信</li>
-</ul>
-</li>
-<li><p>TCP首部格式</p>
-<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7m8ophl1uj317p0r3n7l.jpg" alt="74.jpg" style="zoom:30%;" /></div>
-
-<ul>
-<li><strong>序号 seq</strong> ：用于对字节流进行编号，例如序号为 301，表示第一个字节的编号为 301，如果携带的数据长度为 100 字节，那么下一个报文段的序号应为 401。[301,400]为序号301的数据长度，下一个则为401。</li>
-<li><strong>确认号 ack</strong> ：期望收到的下一个报文段的序号。例如 B 正确收到 A 发送来的一个报文段，序号为 501，携带的数据长度为 200 字节，因此 B 期望下一个报文段的序号为 701，B 发送给 A 的确认报文段中确认号就为 701。</li>
-<li><strong>数据偏移</strong> ：指的是数据部分距离报文段起始处的偏移量，实际上指的是首部的长度</li>
-<li><strong>确认 ACK</strong> ：当 ACK&#x3D;1 时确认号字段有效，否则无效。TCP 规定，在连接建立后所有传送的报文段都必须把 ACK 置 1</li>
-<li><strong>同步 SYN</strong> ：在连接建立时用来同步序号。当 SYN&#x3D;1，ACK&#x3D;0 时表示这是一个连接请求报文段。若对方同意建立连接，则响应报文中 SYN&#x3D;1，ACK&#x3D;1。</li>
-<li><strong>终止 FIN</strong> ：用来释放一个连接，当 FIN&#x3D;1 时，表示此报文段的发送方的数据已发送完毕，并要求释放连接。</li>
-<li><strong>窗口</strong> ：窗口值作为接收方让发送方设置其发送窗口的依据。之所以要有这个限制，是因为接收方的数据缓存空间是有限的</li>
-</ul>
-</li>
-<li><p>UDP首部格式</p>
-<p>首部字段只有 8 个字节，包括源端口、目的端口、长度、检验和。12 字节的伪首部是为了计算检验和临时添加的</p>
-<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7m8rstr7dj31580k211a.jpg" alt="73.jpg" style="zoom:33%;" /></div></li>
-</ul>
-<h4 id="11-TCP连接中如果断电怎么办"><a href="#11-TCP连接中如果断电怎么办" class="headerlink" title="11. TCP连接中如果断电怎么办"></a>11. TCP连接中如果断电怎么办</h4><p>都已经断电了，还能怎么办，等电来</p>
-<h4 id="12-TCP滑动窗口"><a href="#12-TCP滑动窗口" class="headerlink" title="12. TCP滑动窗口"></a>12. TCP滑动窗口</h4><div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7mctzf6qaj31hm0setua.jpg" alt="78.jpg" style="zoom:30%;" /></div>
-
-<p>窗口是缓存的一部分，用来暂时存放字节流。发送方和接收方各有一个窗口，<strong>接收方通过 TCP 报文段中的窗口字段告诉发送方自己的窗口大小，发送方根据这个值和其它信息设置自己的窗口大小</strong></p>
-<p>发送窗口内的字节都允许被发送，接收窗口内的字节都允许被接收。如果发送窗口左部的字节已经发送并且收到了确认，那么就将发送窗口向右滑动一定距离，直到左部第一个字节不是已发送并且已确认的状态；接收窗口的滑动类似，接收窗口左部字节已经发送确认并交付主机，就向右滑动接收窗口</p>
-<p>接收窗口只会对窗口内最后一个按序到达的字节进行确认，例如接收窗口已经收到的字节为 {31, 34, 35}，其中 {31} 按序到达，而 {32, 33} 就不是，因此只对字节 31 进行确认。发送方得到一个字节的确认之后，就知道这个字节之前的所有字节都已经被接收</p>
-<h4 id="13-TCP流量控制"><a href="#13-TCP流量控制" class="headerlink" title="13. TCP流量控制"></a>13. TCP流量控制</h4><ul>
-<li>流量控制是为了控制发送方发送速率，保证接收方来得及接收</li>
-<li>接收方发送的确认报文中的窗口字段可以用来控制发送方窗口大小，从而影响发送方的发送速率。将窗口字段设置为 0，则发送方不能发送数据</li>
-</ul>
-<h4 id="14-TCP拥塞处理（Congestion-Handling）"><a href="#14-TCP拥塞处理（Congestion-Handling）" class="headerlink" title="14. TCP拥塞处理（Congestion Handling）"></a>14. TCP拥塞处理（Congestion Handling）</h4><p><strong>拥塞控制的一般原理：</strong></p>
-<ul>
-<li>在某段时间，若对网络中某资源的需求超过了该资源所能提供的可用部分，网络的性能就要变坏——产生拥塞(congestion)。</li>
-<li>出现资源拥塞的条件：对资源需求的总和 &gt; 可用资源</li>
-<li>若网络中有许多资源同时产生拥塞，网络的性能就要明显变坏，整个网络的吞吐量将随输入负荷的增大而下降</li>
-</ul>
-<p>如果网络出现拥塞，分组将会丢失，此时发送方会继续重传，从而导致网络拥塞程度更高。因此当出现拥塞时，应当控制发送方的速率。这一点和流量控制很像，但是出发点不同。流量控制是为了让接收方能来得及接收，而拥塞控制是为了降低整个网络的拥塞程度</p>
-<p>TCP 主要通过四种算法来进行拥塞控制：<strong>慢开始</strong>、<strong>拥塞避免</strong>、<strong>快重传</strong>、<strong>快恢复</strong></p>
-<h4 id="15-TCP的LISTEN状态是什么"><a href="#15-TCP的LISTEN状态是什么" class="headerlink" title="15. TCP的LISTEN状态是什么"></a>15. TCP的LISTEN状态是什么</h4><p>TCP的LISTEN是服务器处于监听状态：</p>
-<ul>
-<li><strong>CLOSED：</strong> 初始状态</li>
-<li><strong>LISTEN：</strong> 服务器处于监听状态</li>
-<li><strong>TIME_WAIT：</strong> 客户端收到服务端的FIN包，并立即发出ACK包做最后的确认，在此之后的2MSL时间称为TIME_WAIT状态</li>
-</ul>
-<h4 id="16-Tcp中的拆包和粘包是怎么回事"><a href="#16-Tcp中的拆包和粘包是怎么回事" class="headerlink" title="16. Tcp中的拆包和粘包是怎么回事"></a>16. Tcp中的拆包和粘包是怎么回事</h4><ul>
-<li><strong>拆包：</strong> 在socket通讯过程中，如果通讯的一端一次性连续发送多条数据包，tcp协议会将多个数据包打包成一个tcp报文发送出去，这就是所谓的粘包</li>
-<li><strong>粘包：</strong> 而如果通讯的一端发送的数据包超过一次tcp报文所能传输的最大值时，就会将一个数据包拆成多个最大tcp长度的tcp报文分开传输，这就叫做拆包</li>
-</ul>
-<h4 id="17-HTTP的请求和响应报文"><a href="#17-HTTP的请求和响应报文" class="headerlink" title="17. HTTP的请求和响应报文"></a>17. HTTP的请求和响应报文</h4><ul>
-<li><p>请求报文</p>
-<ul>
-<li>请求行：由三部分组成（请求方法、请求URL-不包括域名、HTTP版本协议）</li>
-<li>请求头：由关键字-值对组成，每行一对</li>
-<li>空行：通知服务器以下不再有请求头</li>
-<li>请求体</li>
-</ul>
-<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7m91nfjb1j30i8065djn.jpg" alt="84.jpg" style="zoom:80%;" /></div>
-</li>
-<li><p>响应报文</p>
-<ul>
-<li>响应行：由三部分组成：服务器HTTP协议版本，响应状态码，状态码的文本描述</li>
-<li>响应头：由关键字-值对组成，每行一对</li>
-<li>空行：通知服务器以下不再有响应头</li>
-<li>响应体</li>
-</ul>
-<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7m93g347vj30jk07faec.jpg" alt="96.jpg" style="zoom:80%;" /></div></li>
-</ul>
-<h4 id="18-HTTP方法"><a href="#18-HTTP方法" class="headerlink" title="18. HTTP方法"></a>18. HTTP方法</h4><ul>
-<li>GET：获取资源<ul>
-<li>当前网络请求中，绝大部分使用的是GET方法</li>
-</ul>
-</li>
-<li>HEAD：获取报文首部<ul>
-<li>和GET方法一样，但是不返回报文实体主体部分</li>
-<li>主要用于确认 URL 的有效性以及资源更新的日期时间等</li>
-</ul>
-</li>
-<li>POST：传输实体主体<ul>
-<li>POST 主要用来传输数据，而 GET 主要用来获取资源</li>
-</ul>
-</li>
-<li>PUT：上传文件<ul>
-<li>由于自身不带验证机制，任何人都可以上传文件，因此存在安全性问题，一般不使用该方法</li>
-</ul>
-</li>
-<li>PATCH：对资源进行部分修改<ul>
-<li>PUT 也可以用于修改资源，但是只能完全替代原始资源，PATCH 允许部分修改</li>
-</ul>
-</li>
-<li>DELETE：删除文件<ul>
-<li>与 PUT 功能相反，并且同样不带验证机制</li>
-</ul>
-</li>
-<li>OPTIONS：查询支持的方法<ul>
-<li>查询指定的 URL 能够支持的方法</li>
-<li>会返回 Allow：GET，POST，HEAD，OPTIONS 这样的内容</li>
-</ul>
-</li>
-<li>CONNECT：要求在与代理服务器通信时建立隧道<ul>
-<li>使用 SSL（Secure Sockets Layer，安全套接层）和 TLS（Transport Layer Security，传输层安全）协议把通信内容加密后经网络隧道传输</li>
-</ul>
-</li>
-<li>TRACE：追踪路径<ul>
-<li>服务器会将通信路径返回给客户端</li>
-<li>发送请求时，在 Max-Forwards 首部字段中填入数值，每经过一个服务器就会减 1，当数值为 0 时就停止传输</li>
-<li>通常不会使用 TRACE，并且它容易受到 XST 攻击（Cross-Site Tracing，跨站追踪）</li>
-</ul>
-</li>
-</ul>
-<h4 id="19-如何理解HTTP协议是无状态的"><a href="#19-如何理解HTTP协议是无状态的" class="headerlink" title="19. 如何理解HTTP协议是无状态的"></a>19. 如何理解HTTP协议是无状态的</h4><ul>
-<li>HTTP协议是无状态的（stateless），指的是协议对于事务处理没有记忆能力，服务器不知道客户端是什么状态。也就是说，打开一个服务器上的网页和上一次打开这个服务器上的网页之间没有任何联系</li>
-<li>HTTP是一个无状态的面向连接的协议，无状态不代表HTTP不能保持TCP连接，更不能代表HTTP使用的是UDP协议（无连接）</li>
-<li>缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快</li>
-</ul>
-<h4 id="20-HTTP2-0特性"><a href="#20-HTTP2-0特性" class="headerlink" title="20. HTTP2.0特性"></a>20. HTTP2.0特性</h4><p>HTTP&#x2F;2的通过支持请求与响应的多路复用来减少延迟，通过压缩HTTP首部字段将协议开销降至最低，同时增加对请求优先级和服务器端推送的支持</p>
-<h4 id="21-什么是短连接和长连接"><a href="#21-什么是短连接和长连接" class="headerlink" title="21. 什么是短连接和长连接"></a>21. 什么是短连接和长连接</h4><p>在HTTP&#x2F;1.0中默认使用短连接。也就是说，客户端和服务器每进行一次HTTP操作，就建立一次连接，任务结束就中断连接。当客户端浏览器访问的某个HTML或其他类型的Web页中包含有其他的Web资源（如JavaScript文件、图像文件、CSS文件等），每遇到这样一个Web资源，浏览器就会重新建立一个HTTP会话</p>
-<p>而从HTTP&#x2F;1.1起，默认使用长连接，用以保持连接特性。使用长连接的HTTP协议，会在响应头加入这行代码：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Connection:keep-alive</span><br></pre></td></tr></table></figure>
-
-<p>在使用长连接的情况下，当一个网页打开完成后，客户端和服务器之间用于传输HTTP数据的TCP连接不会关闭，客户端再次访问这个服务器时，会继续使用这一条已经建立的连接。Keep-Alive不会永久保持连接，它有一个保持时间，可以在不同的服务器软件（如Apache）中设定这个时间。实现长连接需要客户端和服务端都支持长连接</p>
-<p>HTTP协议的长连接和短连接，实质上是TCP协议的长连接和短连接</p>
-<h4 id="22-Client如何实现长连接"><a href="#22-Client如何实现长连接" class="headerlink" title="22. Client如何实现长连接"></a>22. Client如何实现长连接</h4><p>使用TCP协议的<strong>KeepAlive</strong>机制与<strong>HeartBeat</strong>心跳包</p>
-<ul>
-<li><code>HeartBeat</code>心跳包</li>
-<li>TCP协议的<code>KeepAlive</code>机制</li>
-</ul>
-<h4 id="23-Quic有什么优点相比Http2"><a href="#23-Quic有什么优点相比Http2" class="headerlink" title="23. Quic有什么优点相比Http2"></a>23. Quic有什么优点相比Http2</h4><ul>
-<li><strong>HTTP1：</strong> 有连接无法复用、队头阻塞、协议开销大和安全因素等多个缺陷</li>
-<li><strong>HTTP2：</strong> 通过多路复用、二进制流、Header 压缩等等技术，极大地提高了性能，但是还是存在着问题的</li>
-<li><strong>Quic：</strong> 基于 UDP 实现，是 HTTP3 中的底层支撑协议，该协议基于 UDP，又取了 TCP 中的精华，实现了即快又可靠的协议.quic中加密认证的报文(TCP 协议头部没有经过任何加密和认证，所以在传输过程中很容易被中间网络设备篡改，注入和窃听。比如修改序列号、滑动窗口。这些行为有可能是出于性能优化，也有可能是主动攻击)。这样只要对 QUIC 报文任何修改，接收端都能够及时发现，有效地降低了安全风险</li>
-</ul>
-<p>此外quic还有向前纠错的能力，QUIC 协议有一个非常独特的特性，称为向前纠错 (Forward Error Correction，FEC)，每个数据包除了它本身的内容之外，还包括了部分其他数据包的数据，因此少量的丢包可以通过其他包的冗余数据直接组装而无需重传。向前纠错牺牲了每个数据包可以发送数据的上限，但是减少了因为丢包导致的数据重传，因为数据重传将会消耗更多的时间(包括确认数据包丢失、请求重传、等待新数据包等步骤的时间消耗)</p>
-<h4 id="24-Grpc的优缺点"><a href="#24-Grpc的优缺点" class="headerlink" title="24. Grpc的优缺点"></a>24. Grpc的优缺点</h4><p>gRPC是Google公司基于Protobuf开发的跨语言的开源RPC框架。gRPC基于HTTP&#x2F;2协议设计，可以基于一个HTTP&#x2F;2链接提供多个服务，对于移动设备更加友好</p>
-<p>最底层为TCP或Unix Socket协议，在此之上是HTTP&#x2F;2协议的实现，然后在HTTP&#x2F;2协议之上又构建了针对Go语言的gRPC核心库。应用程序通过gRPC插件生产的Stub代码和gRPC核心库通信，也可以直接和gRPC核心库通信</p>
-<p><strong>优点：</strong></p>
-<ul>
-<li>protobuf二进制消息，性能好&#x2F;效率高（空间和时间效率都很不错）</li>
-<li>proto文件生成目标代码，简单易用</li>
-<li>序列化反序列化直接对应程序中的数据类，不需要解析后在进行映射(XML,JSON都是这种方式)</li>
-<li>支持向前兼容（新加字段采用默认值）和向后兼容（忽略新加字段），简化升级</li>
-<li>支持多种语言（可以把proto文件看做IDL文件）</li>
-</ul>
-<p><strong>缺点：</strong></p>
-<ul>
-<li>GRPC尚未提供连接池，需要自行实现</li>
-<li>尚未提供“服务发现”、“负载均衡”机制</li>
-<li>因为基于HTTP2，绝大部多数<code>HTTP Server、Nginx</code>都尚不支持，即Nginx不能将GRPC请求作为HTTP请求来负载均衡，而是作为普通的TCP请求（nginx1.9版本已支持）</li>
-<li>Protobuf二进制可读性差（貌似提供了Text_Fromat功能）默认不具备动态特性（可以通过动态定义生成消息类型或者动态编译支持）</li>
-</ul>
-<h4 id="25-Http1和Http2和Grpc之间的区别是什么"><a href="#25-Http1和Http2和Grpc之间的区别是什么" class="headerlink" title="25. Http1和Http2和Grpc之间的区别是什么"></a>25. Http1和Http2和Grpc之间的区别是什么</h4><p>在互联网流量传输只使用了几个网络协议。使用 <code>IPv4</code> 进行路由，使用 <code>TCP</code> 进行连接层面的流量控制，使用 <code>SSL/TLS</code> 协议实现传输安全，使用 <code>DNS</code> 进行域名解析，使用 <code>HTTP</code> 进行应用数据的传输</p>
-<p><strong>HTTP2和HTTP1相比的新特性包括：</strong></p>
-<ul>
-<li><p>新的二进制格式（Binary Format）</p>
-<ul>
-<li>HTTP1.x的解析是基于文本。基于文本协议的格式解析存在天然缺陷，文本的表现形式有多样性，要做到健壮性考虑的场景必然很多，二进制则不同，只认0和1的组合。基于这种考虑HTTP2.0的协议解析决定采用二进制格式，实现方便且健壮</li>
-</ul>
-</li>
-<li><p>多路复用（MultiPlexing）</p>
-<ul>
-<li>连接共享，即每一个request都是是用作连接共享机制的。一个request对应一个id，这样一个连接上可以有多个request，每个连接的request可以随机的混杂在一起，接收方可以根据request的 id将request再归属到各自不同的服务端请求里面</li>
-</ul>
-</li>
-<li><p>Header压缩</p>
-<p>Header压缩，如上文中所言，对前面提到过HTTP1.x的header带有大量信息，而且每次都要重复发送，HTTP2.0使用encoder来减少需要传输的header大小，通讯双方各自cache一份header fields表，既避免了重复header的传输，又减小了需要传输的大小</p>
-</li>
-<li><p>服务端推送（server push）</p>
-<ul>
-<li>服务端推送（server push），同SPDY一样，HTTP2.0也具有server push功能</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p>Grpc的设计目标是在任何环境下运行，支持可插拔的负载均衡，跟踪，运行状况检查和身份验证。它不仅支持数据中心内部和跨数据中心的服务调用，它也适用于分布式计算的最后一公里，将设备，移动应用程序和浏览器连接到后端服务，同时，它也是高性能的，而 HTTP2 恰好支持这些</p>
-<p><strong>Grpc是基于http2的</strong></p>
-<ul>
-<li>HTTP2天然的通用性满足各种设备，场景</li>
-<li>HTTP2的性能相对来说也是很好的，除非你需要极致的性能</li>
-<li>HTTP2的安全性非常好，天然支持 SSL</li>
-<li>HTTP2的鉴权也非常成熟</li>
-<li>Grpc基于 HTTP2 多语言实现也更容易</li>
-</ul>
-<h4 id="26-数字签名、数字证书、SSL、https是什么关系"><a href="#26-数字签名、数字证书、SSL、https是什么关系" class="headerlink" title="26. 数字签名、数字证书、SSL、https是什么关系"></a>26. 数字签名、数字证书、SSL、https是什么关系</h4><p>HTTPS 是建立在密码学基础之上的一种安全通信协议，严格来说是基于 HTTP 协议和 SSL&#x2F;TLS 的组合</p>
-<h4 id="27-Cookie"><a href="#27-Cookie" class="headerlink" title="27. Cookie"></a>27. Cookie</h4><p>HTTP协议是无状态的，主要是为了让HTTP协议尽可能简单，使得它能够处理大量事务。HTTP&#x2F;1.1引入Cookie来保存状态信息</p>
-<p>Cookie 是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。它用于告知服务端两个请求是否来自同一浏览器，并保持用户的登录状态</p>
-<ul>
-<li><p>用途</p>
-<ul>
-<li>会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）</li>
-<li>个性化设置（如用户自定义设置、主题等）</li>
-<li>浏览器行为跟踪（如跟踪分析用户行为等）</li>
-</ul>
-</li>
-<li><p>创建过程</p>
-<ul>
-<li>服务器发送的响应报文包含Set-Cookie 首部字段，客户端得到响应报文后把 Cookie 内容保存到浏览器中</li>
-<li>客户端之后对同一个服务器发送请求时，会从浏览器中读出 Cookie 信息通过 Cookie 请求首部字段发送给服务器</li>
-</ul>
-</li>
-<li><p>分类</p>
-<ul>
-<li>会话期 Cookie：浏览器关闭之后它会被自动删除，也就是说它仅在会话期内有效</li>
-<li>持久性 Cookie：指定一个特定的过期时间（Expires）或有效期（max-age）之后就成为了持久性的 Cookie</li>
-</ul>
-</li>
-<li><p>JavaScript 获取 Cookie</p>
-<ul>
-<li>通过 <code>Document.cookie</code> 属性可创建新的 Cookie，也可通过该属性访问非 HttpOnly 标记的 Cookie</li>
-</ul>
-</li>
-<li><p>Secure 和 HttpOnly</p>
-<ul>
-<li>标记为 Secure 的 Cookie 只应通过被 HTTPS 协议加密过的请求发送给服务端。但即便设置了 Secure 标记，敏感信息也不应该通过 Cookie 传输，因为 Cookie 有其固有的不安全性，Secure 标记也无法提供确实的安全保障</li>
-<li>标记为 HttpOnly 的 Cookie 不能被 JavaScript 脚本调用。因为跨域脚本 (XSS) 攻击常常使用 JavaScript 的 <code>Document.cookie</code>API 窃取用户的 Cookie 信息，因此使用 HttpOnly 标记可以在一定程度上避免 XSS 攻击</li>
-</ul>
-</li>
-<li><p>作用域</p>
-<ul>
-<li>Domain 标识指定了哪些主机可以接受 Cookie。如果不指定，默认为当前文档的主机（不包含子域名）。如果指定了 Domain，则一般包含子域名。例如，如果设置 Domain&#x3D;mozilla.org，则 Cookie 也包含在子域名中（如 developer.mozilla.org）</li>
-<li>Path 标识指定了主机下的哪些路径可以接受 Cookie（该 URL 路径必须存在于请求 URL 中）。以字符 %x2F (“&#x2F;“) 作为路径分隔符，子路径也会被匹配</li>
-</ul>
-</li>
-</ul>
-<h4 id="28-Session"><a href="#28-Session" class="headerlink" title="28. Session"></a>28. Session</h4><p>除了可以将用户信息通过 Cookie 存储在用户浏览器中，也可以利用 Session 存储在服务器端，存储在服务器端的信息更加安全</p>
-<p>Session 可以存储在服务器上的文件、数据库或者内存中，现在最常见的是将 Session 存储在内存型数据库中，比如 Redis</p>
-<p>使用 Session 维护用户登录的过程如下：</p>
-<ul>
-<li>用户进行登录时，用户提交包含用户名和密码的表单，放入 HTTP 请求报文中；</li>
-<li>服务器验证该用户名和密码</li>
-<li>如果正确则把用户信息存储到 Redis 中，它在 Redis 中的 ID 称为 Session ID</li>
-<li>服务器返回的响应报文的 Set-Cookie 首部字段包含了这个 Session ID，客户端收到响应报文之后将该 Cookie 值存入浏览器中</li>
-<li>客户端之后对同一个服务器进行请求时会包含该 Cookie 值，服务器收到之后提取出 Session ID，从 Redis 中取出用户信息，继续之后的业务操作</li>
-</ul>
-<p>应该注意 Session ID 的安全性问题，不能让它被恶意攻击者轻易获取，那么就不能产生一个容易被猜到的 Session ID 值。此外，还需要经常重新生成 Session ID。在对安全性要求极高的场景下，例如转账等操作，除了使用 Session 管理用户状态之外，还需要对用户进行重新验证，比如重新输入密码，或者使用短信验证码等方式</p>
-<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7mdikcs2aj31d80jr11b.jpg" alt="86.jpg" style="zoom:100%;" /></div>
-
-<h4 id="29-Cookie与Session异同"><a href="#29-Cookie与Session异同" class="headerlink" title="29. Cookie与Session异同"></a>29. Cookie与Session异同</h4><p>Cookie 和 Session 都为了用来保存状态信息，都是保存客户端状态的机制，它们都是为了解决HTTP无状态的问题而所做的努力</p>
-<ul>
-<li>作用范围不同：Cookie 保存在客户端(浏览器)，Session 保存在服务器端</li>
-<li>存取方式的不同：Cookie只能保存 ASCII，Session可以存任意数据类型，比如UserId等</li>
-<li>有效期不同：Cookie可设置为长时间保持，比如默认登录功能功能，Session一般有效时间较短，客户端关闭或者Session超时都会失效</li>
-<li>隐私策略不同：Cookie存储在客户端，信息容易被窃取;Session存储在服务端，相对安全一些</li>
-<li>存储大小不同： 单个Cookie 保存的数据不能超过 4K，Session可存储数据远高于Cookie</li>
-</ul>
-<h4 id="30-浏览器禁用Cookie"><a href="#30-浏览器禁用Cookie" class="headerlink" title="30. 浏览器禁用Cookie"></a>30. 浏览器禁用Cookie</h4><p>此时无法使用 Cookie 来保存用户信息，只能使用 Session。除此之外，不能再将 Session ID 存放到 Cookie 中，而是使用 URL 重写技术，将 Session ID 作为 URL 的参数进行传递</p>
-<h4 id="31-Cookie与Session选择"><a href="#31-Cookie与Session选择" class="headerlink" title="31. Cookie与Session选择"></a>31. Cookie与Session选择</h4><ul>
-<li>Cookie 只能存储 ASCII 码字符串，而 Session 则可以存取任何类型的数据，因此在考虑数据复杂性时首选 Session</li>
-<li>Cookie 存储在浏览器中，容易被恶意查看。如果非要将一些隐私数据存在 Cookie 中，可以将 Cookie 值进行加密，然后在服务器进行解密</li>
-<li>对于大型网站，如果用户所有的信息都存储在 Session 中，那么开销是非常大的，因此不建议将所有的用户信息都存储到 Session 中</li>
-</ul>
-<h4 id="32-Unicode和ASCII以及Utf8的区别"><a href="#32-Unicode和ASCII以及Utf8的区别" class="headerlink" title="32. Unicode和ASCII以及Utf8的区别"></a>32. Unicode和ASCII以及Utf8的区别</h4><ul>
-<li>Unicode 是字符集，它只规定了符号的二进制代码，却没有规定这个二进制代码应该如何存储</li>
-<li>ASCII 码一共规定了128个字符的编码，比如空格SPACE是32（二进制00100000），大写的字母A是65（二进制01000001）</li>
-<li>UTF-8 是编码规则</li>
-</ul>
-<h4 id="33-TFO的原理是什么"><a href="#33-TFO的原理是什么" class="headerlink" title="33. TFO的原理是什么"></a>33. TFO的原理是什么</h4><p>TCP快速打开（TCP Fast Open，TFO）是对TCP的一种简化握手手续的拓展，用于提高两端点间连接的打开速度</p>
-<p>简而言之，就是在TCP的三次握手过程中传输实际有用的数据。这个扩展最初在Linux系统实现，Linux服务器，Linux系统上的Chrome浏览器，或运行在Linux上的其他支持的软件</p>
-<p>它通过握手开始时的SYN包中的TFO cookie来验证一个之前连接过的客户端。如果验证成功，它可以在三次握手最终的ACK包收到之前就开始发送数据，这样便跳过了一个绕路的行为，更在传输开始时就降低了延迟</p>
-<p>这个加密的Cookie被存储在客户端，在一开始的连接时被设定好。然后每当客户端连接时，这个Cookie被重复返回</p>
-<p>请求Tcp Fast Open Cookie：</p>
-<ul>
-<li>客户端发送SYN数据包，该数据包包含Fast Open选项，且该选项的Cookie为空，这表明客户端请求Fast Open Cookie</li>
-<li>支持TCP Fast Open的服务器生成Cookie，并将其置于SYN-ACK数据包中的Fast Open选项以发回客户端</li>
-<li>客户端收到SYN-ACK后，缓存Fast Open选项中的Cookie</li>
-</ul>
-<h4 id="34-TIME-WAIT的作用"><a href="#34-TIME-WAIT的作用" class="headerlink" title="34. TIME_WAIT的作用"></a>34. TIME_WAIT的作用</h4><p>主动关闭的Socket端会进入TIME_WAIT状态，并且持续2MSL时间长度，MSL就是maximum segment lifetime(最大分节生命期），这是一个IP数据包能在互联网上生存的最长时间，超过这个时间将在网络中消失。MSL在RFC 1122上建议是2分钟，而源自berkeley的TCP实现传统上使用30秒，因而，TIME_WAIT状态一般维持在1-4分钟</p>
-<ul>
-<li>可靠地实现TCP全双工连接的终止</li>
-<li>允许老的重复分节在网络中消逝</li>
-</ul>
-<h4 id="35-网络的性能指标有哪些"><a href="#35-网络的性能指标有哪些" class="headerlink" title="35. 网络的性能指标有哪些"></a>35. 网络的性能指标有哪些</h4><p>通常是以4个指标来衡量网络的性能，分别是带宽、延时、吞吐率、PPS（Packet Per Second），它们表示的意义如下：</p>
-<ul>
-<li>带宽：表示链路的最大传输速率，单位是 <code>b/s</code> （比特 &#x2F; 秒），带宽越大，其传输能力就越强</li>
-<li>延时：表示请求数据包发送后，收到对端响应，所需要的时间延迟。不同的场景有着不同的含义，比如可以表示建立 <code>TCP</code> 连接所需的时间延迟，或一个数据包往返所需的时间延迟</li>
-<li>吞吐率：表示单位时间内成功传输的数据量，单位是 <code>b/s</code>（比特 &#x2F; 秒）或者 <code>B/s</code>（字节 &#x2F; 秒），吞吐受带宽限制，带宽越大，吞吐率的上限才可能越高</li>
-<li>PPS：全称是 <code>Packet Per Second</code>（包 &#x2F; 秒），表示以网络包为单位的传输速率，一般用来评估系统对于网络的转发能</li>
-</ul>
-<p>除了以上这四种基本的指标，还有一些其他常用的性能指标，比如：</p>
-<ul>
-<li>网络的可用性：表示网络能否正常通信</li>
-<li>并发连接数：表示 TCP 连接数量</li>
-<li>丢包率：表示所丢失数据包数量占所发送数据组的比率</li>
-<li>重传率：表示重传网络包的比例</li>
-</ul>
-<h4 id="36-如何区分流量控制和拥塞控制"><a href="#36-如何区分流量控制和拥塞控制" class="headerlink" title="36. 如何区分流量控制和拥塞控制"></a>36. 如何区分流量控制和拥塞控制</h4><ul>
-<li>拥塞控制所要做的都有一个前提，就是网络能够承受现有的网络负荷</li>
-<li>拥塞控制是一个全局性的过程，涉及到所有的主机、所有的路由器，以及与降低网络传输性能有关的所有因素</li>
-<li>流量控制往往指在给定的发送端和接收端之间的点对点通信量的控制</li>
-<li>流量控制所要做的就是抑制发送端发送数据的速率，以便使接收端来得及接收</li>
-<li>流量控制属于通信双方协商；拥塞控制涉及通信链路全局</li>
-<li>流量控制需要通信双方各维护一个发送窗、一个接收窗，对任意一方，接收窗大小由自身决定，发送窗大小由接收方响应的TCP报文段中窗口值确定；拥塞控制的拥塞窗口大小变化由试探性发送一定数据量数据探查网络状况后而自适应调整</li>
-<li>实际最终发送窗口 &#x3D; min{流控发送窗口，拥塞窗口}</li>
-</ul>
-<h4 id="37-解释RTO，RTT和超时重传"><a href="#37-解释RTO，RTT和超时重传" class="headerlink" title="37. 解释RTO，RTT和超时重传"></a>37. 解释RTO，RTT和超时重传</h4><ul>
-<li><strong>超时重传</strong>：发送端发送报文后若长时间未收到确认的报文则需要重发该报文。可能有以下几种情况：<ul>
-<li>发送的数据没能到达接收端，所以对方没有响应。</li>
-<li>接收端接收到数据，但是ACK报文在返回过程中丢失</li>
-<li>接收端拒绝或丢弃数据</li>
-</ul>
-</li>
-<li><strong>RTO</strong>：从上一次发送数据，因为长期没有收到ACK响应，到下一次重发之间的时间。就是重传间隔<ul>
-<li>通常每次重传RTO是前一次重传间隔的两倍，计量单位通常是RTT。例：1RTT，2RTT，4RTT，8RTT……</li>
-<li>重传次数到达上限之后停止重传</li>
-</ul>
-</li>
-<li><strong>RTT</strong>：数据从发送到接收到对方响应之间的时间间隔，即数据报在网络中一个往返用时。大小不稳定</li>
-</ul>
-<h4 id="38-停止等待和超时重传"><a href="#38-停止等待和超时重传" class="headerlink" title="38. 停止等待和超时重传"></a>38. 停止等待和超时重传</h4><ul>
-<li>停止等待：通常我们说如果A和B双方建立好tcp连接后就可以相互发送数据了，A为发送方，B为接收方。因为这里讨论可靠传输原理，所以把传输的数据单元称为分组。“停止等待”就是每发送完一个分组就停止发送，等待对方确认后再发送下一个分组。停止等待协议考虑了数据在网络中传输出现的几种情况来提供有效措施保障数据的可靠传输，下面我们就一一来介绍这几种情况</li>
-<li>超时重传：原理是在发送某一个数据以后就开启一个计时器，在一定时间内如果没有得到发送的数据报的ACK报文，那么就重新发送数据，直到发送成功为止。影响超时重传机制协议效率的一个关键参数是重传超时时间（RTO，Retransmission TimeOut）</li>
-</ul>
-<h4 id="39-交换机和路由器的区别"><a href="#39-交换机和路由器的区别" class="headerlink" title="39. 交换机和路由器的区别"></a>39. 交换机和路由器的区别</h4><ul>
-<li>交换机是一根网线上网，但是大家上网是分别拨号，各自使用自己的宽带，大家上网没有影响。而路由器比交换机多了一个虚拟拨号功能，通过同一台路由器上网的电脑是共用一个宽带账号，大家上网要相互影响</li>
-<li>交换机工作在中继层，交换机根据MAC地址寻址。路由器工作在网络层，根据IP地址寻址，路由器可以处理TCP&#x2F;IP协议，而交换机不可以</li>
-<li>交换机可以使连接它的多台电脑组成局域网，如果还有代理服务器的话还可以实现同时上网功能而且局域网所有电脑是共享它的带宽速率的，但是交换机没有路由器的自动识别数据包发送和到达地址的功能。路由器可以自动识别数据包发送和到达的地址，路由器相当于马路上的警察，负责交通疏导和指路的</li>
-<li>举几个例子,路由器是小邮局，就一个地址(IP)，负责一个地方的收发(个人电脑，某个服务器，所以你家上网要这个东西)，交换机是省里的大邮政中心，负责由一个地址给各个小地方的联系。简单的说路由器专管入网，交换机只管配送，路由路由就是给你找路让你上网的，交换机只负责开门，交换机上面要没有路由你是上不了网的</li>
-<li>路由器提供了防火墙的服务。路由器仅仅转发特定地址的数据包，不传送不支持路由协议的数据包传送和未知目标网络数据包的传送，从而可以防止广播风暴</li>
-</ul>
-<h4 id="40-子网掩码的作用"><a href="#40-子网掩码的作用" class="headerlink" title="40. 子网掩码的作用"></a>40. 子网掩码的作用</h4><p>内网中192.168.1.199的前三组是网络号，后一组是主机号，子网掩码就是255.255.255.0</p>
-<p><strong>首先要说明的是</strong>：不是某个IP的网络号和主机号决定子网掩码是什么，而是子网掩码决定了某个IP地址的网络号与主机号是什么，IP地址是要搭配子网掩码使用的。例如上面的子网掩码决定了192.168.1.199的前三段192.168.1是网络号，最后一段199是主机号</p>
-<p>我们再来理解子网掩码的作用，先举个例子，市面上的两个厂家都生产电子秤，每个厂家都坚称他们的秤最准，那你是怎么知道他们的秤到底准不准？很简单，你去找一个 1KG 的国际千克原器，各放到他们的秤上测量，如果秤的测量值是1KG，那这把秤就是准的，<strong>子网掩码的作用</strong>就相当于这个大家公认的国际千克原器，是我们测量两个IP是否属于同一个网段的一个工具（应该说是让你知道某个IP地址的网络号与主机号分别是什么） </p>
-<hr>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>八股文</tag>
-        <tag>计算机网络</tag>
       </tags>
   </entry>
 </search>

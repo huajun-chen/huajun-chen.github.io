@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h7no7xmdcgj313c0b0jtt.jpg">
 <meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h7nojprq3uj30ns0kgdi9.jpg">
 <meta property="article:published_time" content="2022-10-28T00:24:34.000Z">
-<meta property="article:modified_time" content="2022-10-31T05:12:18.592Z">
+<meta property="article:modified_time" content="2022-11-02T00:59:17.100Z">
 <meta property="article:author" content="可可西里">
 <meta property="article:tag" content="八股文">
 <meta property="article:tag" content="Golang">
@@ -190,7 +190,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-5.png" style="max-height: 240px;">
+      <img src="/images/random/material-3.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">Golang面试题</div>
@@ -672,7 +672,7 @@
 <p>当map的key和value都不是指针，并且 size都小于128字节的情况下，会把bmap标记为不含指针，这样可以避免gc时扫描整个hmap</p>
 <p>bmap其实有一个overflow的字段，是指针类型的，破坏了 bmap 不含指针的设想，这时会把overflow移动到 hmap的extra 字段来</p>
 <p>这样随着哈希表存储的数据逐渐增多，我们会扩容哈希表或者使用额外的桶存储溢出的数据，不会让单个桶中的数据超过 8 个，不过溢出桶只是临时的解决方案，创建过多的溢出桶最终也会导致哈希的扩容</p>
-<h4 id="36-Go中的map如何实现顺序读取"><a href="#36-Go中的map如何实现顺序读取" class="headerlink" title="36. Go中的map如何实现顺序读取"></a>36. Go中的map如何实现顺序读取</h4><p>Go中map如果要实现顺序读取的话，先把map中的key添加到数组（array）或切片（slice）中，然后通过sort包对数组或切片进行排序，最后在遍历数组或切片的时候将map中key所对应的value取出来</p>
+<h4 id="36-Go中的map如何实现顺序读取"><a href="#36-Go中的map如何实现顺序读取" class="headerlink" title="36. Go中的map如何实现顺序读取"></a>36. Go中的map如何实现顺序读取</h4><p>Go中map如果要实现顺序读取的话，先把map中的key添加到数组（array）或切片（slice）中，然后通过sort包对数组或切片进行排序，最后在遍历数组或切片的时候将map中key以及对应的value取出来</p>
 <h4 id="37-Go中new和make的区别"><a href="#37-Go中new和make的区别" class="headerlink" title="37. Go中new和make的区别"></a>37. Go中new和make的区别</h4><ul>
 <li>值类型：int，float，bool，string，struct和array。变量直接存储值，分配栈区的内存空间，这些变量所占据的空间在函数被调用完后会自动释放</li>
 <li>引用类型：slice，map，chan和值类型对应的指针。变量存储的是一个地址（或者理解为指针），指针指向内存中真正存储数据的首地址。内存通常在堆上分配，通过GC回收</li>

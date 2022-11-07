@@ -1,103 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Kafka面试题</title>
-    <url>/2022/10/30/Kafka%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p>Kafka面试题</p>
-<h4 id="1-Kafka都有哪些特点"><a href="#1-Kafka都有哪些特点" class="headerlink" title="1. Kafka都有哪些特点"></a>1. Kafka都有哪些特点</h4><ul>
-<li>高吞吐量、低延迟：kafka每秒可以处理几十万条消息，它的延迟最低只有几毫秒，每个topic可以分多个partition, consumer group 对partition进行consume操作</li>
-<li>可扩展性：kafka集群支持热扩展</li>
-<li>持久性、可靠性：消息被持久化到本地磁盘，并且支持数据备份防止数据丢失</li>
-<li>容错性：允许集群中节点失败（若副本数量为n,则允许n-1个节点失败）</li>
-<li>高并发：支持数千个客户端同时读写</li>
-</ul>
-<h4 id="2-请简述下你在哪些场景下会选择Kafka"><a href="#2-请简述下你在哪些场景下会选择Kafka" class="headerlink" title="2. 请简述下你在哪些场景下会选择Kafka"></a>2. 请简述下你在哪些场景下会选择Kafka</h4><ul>
-<li>日志收集：一个公司可以用Kafka可以收集各种服务的log，通过kafka以统一接口服务的方式开放给各种consumer，例如hadoop、HBase、Solr等</li>
-<li>消息系统：解耦和生产者和消费者、缓存消息等</li>
-<li>用户活动跟踪：Kafka经常被用来记录web用户或者app用户的各种活动，如浏览网页、搜索、点击等活动，这些活动信息被各个服务器发布到kafka的topic中，然后订阅者通过订阅这些topic来做实时的监控分析，或者装载到hadoop、数据仓库中做离线分析和挖掘</li>
-<li>运营指标：Kafka也经常用来记录运营监控数据。包括收集各种分布式应用的数据，生产各种操作的集中反馈，比如报警和报告</li>
-<li>流式处理：比如spark streaming和 Flink</li>
-</ul>
-<h4 id="3-Kafka的设计架构你知道吗"><a href="#3-Kafka的设计架构你知道吗" class="headerlink" title="3. Kafka的设计架构你知道吗"></a>3. Kafka的设计架构你知道吗</h4><p>Kafka架构分为以下几个部分：</p>
-<ul>
-<li>Producer ：消息生产者，就是向 kafka broker 发消息的客户端</li>
-<li>Consumer ：消息消费者，向 kafka broker 取消息的客户端</li>
-<li>Topic ：可以理解为一个队列，一个 Topic 又分为一个或多个分区</li>
-<li>Consumer Group：这是 kafka 用来实现一个 topic 消息的广播（发给所有的 consumer）和单播（发给任意一个 consumer）的手段。一个 topic 可以有多个 Consumer Group</li>
-<li>Broker ：一台 kafka 服务器就是一个 broker。一个集群由多个 broker 组成。一个 broker 可以容纳多个 topic</li>
-<li>Partition：为了实现扩展性，一个非常大的 topic 可以分布到多个 broker上，每个 partition 是一个有序的队列。partition 中的每条消息都会被分配一个有序的id（offset）。将消息发给 consumer，kafka 只保证按一个 partition 中的消息的顺序，不保证一个 topic 的整体（多个 partition 间）的顺序</li>
-<li>Offset：kafka 的存储文件都是按照 offset.kafka 来命名，用 offset 做名字的好处是方便查找。例如你想找位于 2049 的位置，只要找到 2048.kafka 的文件即可。当然 the first offset 就是 00000000000.kafka</li>
-</ul>
-<h4 id="4-Kafka分区的目的"><a href="#4-Kafka分区的目的" class="headerlink" title="4. Kafka分区的目的"></a>4. Kafka分区的目的</h4><p>分区对于 Kafka 集群的好处是：实现负载均衡。分区对于消费者来说，可以提高并发度，提高效率</p>
-<h4 id="5-你知道Kafka是如何做到消息的有序性"><a href="#5-你知道Kafka是如何做到消息的有序性" class="headerlink" title="5. 你知道Kafka是如何做到消息的有序性"></a>5. 你知道Kafka是如何做到消息的有序性</h4><p>kafka 中的每个 partition 中的消息在写入时都是有序的，而且单独一个 partition 只能由一个消费者去消费，可以在里面保证消息的顺序性。但是分区之间的消息是不保证有序的</p>
-<h4 id="6-Kafka的高可靠性是怎么实现的"><a href="#6-Kafka的高可靠性是怎么实现的" class="headerlink" title="6. Kafka的高可靠性是怎么实现的"></a>6. Kafka的高可靠性是怎么实现的</h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
-<h4 id="7-请谈一谈Kafka数据一致性原理"><a href="#7-请谈一谈Kafka数据一致性原理" class="headerlink" title="7. 请谈一谈Kafka数据一致性原理"></a>7. 请谈一谈Kafka数据一致性原理</h4><h4 id="8-ISR、OSR、AR-是什么"><a href="#8-ISR、OSR、AR-是什么" class="headerlink" title="8. ISR、OSR、AR 是什么"></a>8. ISR、OSR、AR 是什么</h4><ul>
-<li>SR：In-Sync Replicas 副本同步队列</li>
-<li>OSR：Out-of-Sync Replicas</li>
-<li>AR：Assigned Replicas 所有副本</li>
-</ul>
-<p>ISR是由leader维护，follower从leader同步数据有一些延迟，超过相应的阈值会把 follower 剔除出 ISR, 存入OSR（Out-of-Sync Replicas ）列表，新加入的follower也会先存放在OSR中。AR&#x3D;ISR+OSR</p>
-<h4 id="9-LEO、HW、LSO、LW等分别代表什么"><a href="#9-LEO、HW、LSO、LW等分别代表什么" class="headerlink" title="9. LEO、HW、LSO、LW等分别代表什么"></a>9. LEO、HW、LSO、LW等分别代表什么</h4><ul>
-<li>LEO：是 LogEndOffset 的简称，代表当前日志文件中下一条</li>
-<li>HW：水位或水印（watermark）一词，也可称为高水位(high watermark)，通常被用在流式处理领域（比如Apache Flink、Apache Spark等），以表征元素或事件在基于时间层面上的进度。在Kafka中，水位的概念反而与时间无关，而是与位置信息相关。严格来说，它表示的就是位置信息，即位移（offset）。取 partition 对应的 ISR中 最小的 LEO 作为 HW，consumer 最多只能消费到 HW 所在的位置上一条信息</li>
-<li>LSO：是 LastStableOffset 的简称，对未完成的事务而言，LSO 的值等于事务中第一条消息的位置(firstUnstableOffset)，对已完成的事务而言，它的值同 HW 相同</li>
-<li>LW：Low Watermark 低水位, 代表 AR 集合中最小的 logStartOffset 值</li>
-</ul>
-<h4 id="10-Kafka在什么情况下会出现消息丢失"><a href="#10-Kafka在什么情况下会出现消息丢失" class="headerlink" title="10. Kafka在什么情况下会出现消息丢失"></a>10. Kafka在什么情况下会出现消息丢失</h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
-<h4 id="11-怎么尽可能保证Kafka的可靠性"><a href="#11-怎么尽可能保证Kafka的可靠性" class="headerlink" title="11. 怎么尽可能保证Kafka的可靠性"></a>11. 怎么尽可能保证Kafka的可靠性</h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
-<h4 id="12-消费者和消费者组有什么关系"><a href="#12-消费者和消费者组有什么关系" class="headerlink" title="12. 消费者和消费者组有什么关系"></a>12. 消费者和消费者组有什么关系</h4><h4 id="13-Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区"><a href="#13-Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区" class="headerlink" title="13. Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区"></a>13. Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区</h4><h4 id="14-数据传输的事务有几种"><a href="#14-数据传输的事务有几种" class="headerlink" title="14. 数据传输的事务有几种"></a>14. 数据传输的事务有几种</h4><p>数据传输的事务定义通常有以下三种级别：</p>
-<ul>
-<li>最多一次：消息不会被重复发送，最多被传输一次，但也有可能一次不传输</li>
-<li>最少一次：消息不会被漏发送，最少被传输一次，但也有可能被重复传输</li>
-<li>精确的一次（Exactly once）：不会漏传输也不会重复传输，每个消息都传输被</li>
-</ul>
-<h4 id="15-Kafka消费者是否可以消费指定分区消息"><a href="#15-Kafka消费者是否可以消费指定分区消息" class="headerlink" title="15. Kafka消费者是否可以消费指定分区消息"></a>15. Kafka消费者是否可以消费指定分区消息</h4><p>Kafa consumer消费消息时，向broker发出fetch请求去消费特定分区的消息，consumer指定消息在日志中的偏移量（offset），就可以消费从这个位置开始的消息，customer拥有了offset的控制权，可以向后回滚去重新消费之前的消息，这是很有意义的</p>
-<h4 id="16-Kafka消息是采用Pull模式，还是Push模式"><a href="#16-Kafka消息是采用Pull模式，还是Push模式" class="headerlink" title="16. Kafka消息是采用Pull模式，还是Push模式"></a>16. Kafka消息是采用Pull模式，还是Push模式</h4><p>Kafka最初考虑的问题是，customer应该从brokes拉取消息还是brokers将消息推送到consumer，也就是pull还push。在这方面，Kafka遵循了一种大部分消息系统共同的传统的设计：producer将消息推送到broker，consumer从broker拉取消息</p>
-<p>一些消息系统比如Scribe和Apache Flume采用了push模式，将消息推送到下游的consumer。这样做有好处也有坏处：由broker决定消息推送的速率，对于不同消费速率的consumer就不太好处理了。消息系统都致力于让consumer以最大的速率最快速的消费消息，但不幸的是，push模式下，当broker推送的速率远大于consumer消费的速率时，consumer恐怕就要崩溃了。最终Kafka还是选取了传统的pull模式</p>
-<p>Pull模式的另外一个好处是consumer可以自主决定是否批量的从broker拉取数据。Push模式必须在不知道下游consumer消费能力和消费策略的情况下决定是立即推送每条消息还是缓存之后批量推送。如果为了避免consumer崩溃而采用较低的推送速率，将可能导致一次只推送较少的消息而造成浪费。Pull模式下，consumer就可以根据自己的消费能力去决定这些策略</p>
-<p>Pull有个缺点是，如果broker没有可供消费的消息，将导致consumer不断在循环中轮询，直到新消息到t达。为了避免这点，Kafka有个参数可以让consumer阻塞知道新消息到达(当然也可以阻塞知道消息的数量达到某个特定的量这样就可以批量发</p>
-<h4 id="17-Kafka-消息格式的演变清楚吗"><a href="#17-Kafka-消息格式的演变清楚吗" class="headerlink" title="17. Kafka 消息格式的演变清楚吗"></a>17. Kafka 消息格式的演变清楚吗</h4><h4 id="18-Kafka-偏移量的演变清楚吗"><a href="#18-Kafka-偏移量的演变清楚吗" class="headerlink" title="18. Kafka 偏移量的演变清楚吗"></a>18. Kafka 偏移量的演变清楚吗</h4><h4 id="19-Kafka高效文件存储设计特点"><a href="#19-Kafka高效文件存储设计特点" class="headerlink" title="19. Kafka高效文件存储设计特点"></a>19. Kafka高效文件存储设计特点</h4><ul>
-<li>Kafka把topic中一个parition大文件分成多个小文件段，通过多个小文件段，就容易定期清除或删除已经消费完文件，减少磁盘占用</li>
-<li>通过索引信息可以快速定位message和确定response的最大大小</li>
-<li>通过index元数据全部映射到memory，可以避免segment file的IO磁盘操作</li>
-<li>通过索引文件稀疏存储，可以大幅降低index文件元数据占用空间大小</li>
-</ul>
-<h4 id="20-Kafka创建Topic时如何将分区放置到不同的Broker中"><a href="#20-Kafka创建Topic时如何将分区放置到不同的Broker中" class="headerlink" title="20. Kafka创建Topic时如何将分区放置到不同的Broker中"></a>20. Kafka创建Topic时如何将分区放置到不同的Broker中</h4><h4 id="21-Kafka新建的分区会在哪个目录下创建"><a href="#21-Kafka新建的分区会在哪个目录下创建" class="headerlink" title="21. Kafka新建的分区会在哪个目录下创建"></a>21. Kafka新建的分区会在哪个目录下创建</h4><h4 id="22-谈一谈Kafka的再均衡"><a href="#22-谈一谈Kafka的再均衡" class="headerlink" title="22. 谈一谈Kafka的再均衡"></a>22. 谈一谈Kafka的再均衡</h4><p>在Kafka中，当有新消费者加入或者订阅的topic数发生变化时，会触发Rebalance(再均衡：在同一个消费者组当中，分区的所有权从一个消费者转移到另外一个消费者)机制，Rebalance顾名思义就是重新均衡消费者消费。Rebalance的过程如下：</p>
-<ul>
-<li>第一步：所有成员都向coordinator发送请求，请求入组。一旦所有成员都发送了请求，coordinator会从中选择一个consumer担任leader的角色，并把组成员信息以及订阅信息发给leader</li>
-<li>第二步：leader开始分配消费方案，指明具体哪个consumer负责消费哪些topic的哪些partition。一旦完成分配，leader会将这个方案发给coordinator。coordinator接收到分配方案之后会把方案发给各个consumer，这样组内的所有成员就都知道自己应该消费哪些分区了</li>
-</ul>
-<p>所以对于Rebalance来说，Coordinator起着至关重要的作用</p>
-<h4 id="23-谈谈Kafka分区分配策略"><a href="#23-谈谈Kafka分区分配策略" class="headerlink" title="23. 谈谈Kafka分区分配策略"></a>23. 谈谈Kafka分区分配策略</h4><h4 id="24-Kafka-Producer是如何动态感知主题分区数变化的"><a href="#24-Kafka-Producer是如何动态感知主题分区数变化的" class="headerlink" title="24. Kafka Producer是如何动态感知主题分区数变化的"></a>24. Kafka Producer是如何动态感知主题分区数变化的</h4><h4 id="25-Kafka是如何实现高吞吐率的"><a href="#25-Kafka是如何实现高吞吐率的" class="headerlink" title="25. Kafka是如何实现高吞吐率的"></a>25. Kafka是如何实现高吞吐率的</h4><p>Kafka是分布式消息系统，需要处理海量的消息，Kafka的设计是把所有的消息都写入速度低容量大的硬盘，以此来换取更强的存储能力，但实际上，使用硬盘并没有带来过多的性能损失。kafka主要使用了以下几个方式实现了超高的吞吐率：</p>
-<ul>
-<li>顺序读写</li>
-<li>零拷贝</li>
-<li>文件分段</li>
-<li>批量发送</li>
-<li>数据压缩</li>
-</ul>
-<h4 id="26-Kafka监控都有哪些"><a href="#26-Kafka监控都有哪些" class="headerlink" title="26. Kafka监控都有哪些"></a>26. Kafka监控都有哪些</h4><h4 id="27-如何为Kafka集群选择合适的Topics-x2F-Partitions数量"><a href="#27-如何为Kafka集群选择合适的Topics-x2F-Partitions数量" class="headerlink" title="27. 如何为Kafka集群选择合适的Topics&#x2F;Partitions数量"></a>27. 如何为Kafka集群选择合适的Topics&#x2F;Partitions数量</h4><h4 id="28-谈谈你对Kafka事务的了解"><a href="#28-谈谈你对Kafka事务的了解" class="headerlink" title="28. 谈谈你对Kafka事务的了解"></a>28. 谈谈你对Kafka事务的了解</h4><h4 id="29-谈谈你对Kafka幂等的了解"><a href="#29-谈谈你对Kafka幂等的了解" class="headerlink" title="29. 谈谈你对Kafka幂等的了解"></a>29. 谈谈你对Kafka幂等的了解</h4><h4 id="30-Kafka缺点"><a href="#30-Kafka缺点" class="headerlink" title="30. Kafka缺点"></a>30. Kafka缺点</h4><ul>
-<li>由于是批量发送，数据并非真正的实时</li>
-<li>对于mqtt协议不支持</li>
-<li>不支持物联网传感数据直接接入</li>
-<li>仅支持统一分区内消息有序，无法实现全局消息有序</li>
-<li>监控不完善，需要安装插件</li>
-<li>依赖zookeeper进行元数据管理</li>
-</ul>
-<h4 id="31-Kafka新旧消费者的区别"><a href="#31-Kafka新旧消费者的区别" class="headerlink" title="31. Kafka新旧消费者的区别"></a>31. Kafka新旧消费者的区别</h4><p>旧的 Kafka 消费者 API 主要包括：SimpleConsumer（简单消费者） 和 ZookeeperConsumerConnectir（高级消费者）。SimpleConsumer 名字看起来是简单消费者，但是其实用起来很不简单，可以使用它从特定的分区和偏移量开始读取消息。高级消费者和现在新的消费者有点像，有消费者群组，有分区再均衡，不过它使用 ZK 来管理消费者群组，并不具备偏移量和再均衡的可操控性</p>
-<h4 id="32-Kafka分区数可以增加或减少吗？为什么"><a href="#32-Kafka分区数可以增加或减少吗？为什么" class="headerlink" title="32. Kafka分区数可以增加或减少吗？为什么"></a>32. Kafka分区数可以增加或减少吗？为什么</h4><p>我们可以使用 bin&#x2F;kafka-topics.sh 命令对 Kafka 增加 Kafka 的分区数据，但是 Kafka 不支持减少分区数</p>
-<p>Kafka 分区数据不支持减少是由很多原因的，比如减少的分区其数据放到哪里去？是删除，还是保留？删除的话，那么这些没消费的消息不就丢了。如果保留这些消息如何放到其他分区里面？追加到其他分区后面的话那么就破坏了 Kafka 单个分区的有序性。如果要保证删除分区数据插入到其他分区保证有序性，那么实现起来逻辑就会非常复杂</p>
-<hr>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>Kafka</tag>
-        <tag>八股文</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Elasticsearch面试题</title>
     <url>/2022/10/30/Elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
     <content><![CDATA[<p>ES常见面试题</p>
@@ -231,8 +134,8 @@
         <category>面试</category>
       </categories>
       <tags>
-        <tag>八股文</tag>
         <tag>ES</tag>
+        <tag>八股文</tag>
       </tags>
   </entry>
   <entry>
@@ -788,6 +691,103 @@
       </tags>
   </entry>
   <entry>
+    <title>Kafka面试题</title>
+    <url>/2022/10/30/Kafka%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<p>Kafka面试题</p>
+<h4 id="1-Kafka都有哪些特点"><a href="#1-Kafka都有哪些特点" class="headerlink" title="1. Kafka都有哪些特点"></a>1. Kafka都有哪些特点</h4><ul>
+<li>高吞吐量、低延迟：kafka每秒可以处理几十万条消息，它的延迟最低只有几毫秒，每个topic可以分多个partition, consumer group 对partition进行consume操作</li>
+<li>可扩展性：kafka集群支持热扩展</li>
+<li>持久性、可靠性：消息被持久化到本地磁盘，并且支持数据备份防止数据丢失</li>
+<li>容错性：允许集群中节点失败（若副本数量为n,则允许n-1个节点失败）</li>
+<li>高并发：支持数千个客户端同时读写</li>
+</ul>
+<h4 id="2-请简述下你在哪些场景下会选择Kafka"><a href="#2-请简述下你在哪些场景下会选择Kafka" class="headerlink" title="2. 请简述下你在哪些场景下会选择Kafka"></a>2. 请简述下你在哪些场景下会选择Kafka</h4><ul>
+<li>日志收集：一个公司可以用Kafka可以收集各种服务的log，通过kafka以统一接口服务的方式开放给各种consumer，例如hadoop、HBase、Solr等</li>
+<li>消息系统：解耦和生产者和消费者、缓存消息等</li>
+<li>用户活动跟踪：Kafka经常被用来记录web用户或者app用户的各种活动，如浏览网页、搜索、点击等活动，这些活动信息被各个服务器发布到kafka的topic中，然后订阅者通过订阅这些topic来做实时的监控分析，或者装载到hadoop、数据仓库中做离线分析和挖掘</li>
+<li>运营指标：Kafka也经常用来记录运营监控数据。包括收集各种分布式应用的数据，生产各种操作的集中反馈，比如报警和报告</li>
+<li>流式处理：比如spark streaming和 Flink</li>
+</ul>
+<h4 id="3-Kafka的设计架构你知道吗"><a href="#3-Kafka的设计架构你知道吗" class="headerlink" title="3. Kafka的设计架构你知道吗"></a>3. Kafka的设计架构你知道吗</h4><p>Kafka架构分为以下几个部分：</p>
+<ul>
+<li>Producer ：消息生产者，就是向 kafka broker 发消息的客户端</li>
+<li>Consumer ：消息消费者，向 kafka broker 取消息的客户端</li>
+<li>Topic ：可以理解为一个队列，一个 Topic 又分为一个或多个分区</li>
+<li>Consumer Group：这是 kafka 用来实现一个 topic 消息的广播（发给所有的 consumer）和单播（发给任意一个 consumer）的手段。一个 topic 可以有多个 Consumer Group</li>
+<li>Broker ：一台 kafka 服务器就是一个 broker。一个集群由多个 broker 组成。一个 broker 可以容纳多个 topic</li>
+<li>Partition：为了实现扩展性，一个非常大的 topic 可以分布到多个 broker上，每个 partition 是一个有序的队列。partition 中的每条消息都会被分配一个有序的id（offset）。将消息发给 consumer，kafka 只保证按一个 partition 中的消息的顺序，不保证一个 topic 的整体（多个 partition 间）的顺序</li>
+<li>Offset：kafka 的存储文件都是按照 offset.kafka 来命名，用 offset 做名字的好处是方便查找。例如你想找位于 2049 的位置，只要找到 2048.kafka 的文件即可。当然 the first offset 就是 00000000000.kafka</li>
+</ul>
+<h4 id="4-Kafka分区的目的"><a href="#4-Kafka分区的目的" class="headerlink" title="4. Kafka分区的目的"></a>4. Kafka分区的目的</h4><p>分区对于 Kafka 集群的好处是：实现负载均衡。分区对于消费者来说，可以提高并发度，提高效率</p>
+<h4 id="5-你知道Kafka是如何做到消息的有序性"><a href="#5-你知道Kafka是如何做到消息的有序性" class="headerlink" title="5. 你知道Kafka是如何做到消息的有序性"></a>5. 你知道Kafka是如何做到消息的有序性</h4><p>kafka 中的每个 partition 中的消息在写入时都是有序的，而且单独一个 partition 只能由一个消费者去消费，可以在里面保证消息的顺序性。但是分区之间的消息是不保证有序的</p>
+<h4 id="6-Kafka的高可靠性是怎么实现的"><a href="#6-Kafka的高可靠性是怎么实现的" class="headerlink" title="6. Kafka的高可靠性是怎么实现的"></a>6. Kafka的高可靠性是怎么实现的</h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
+<h4 id="7-请谈一谈Kafka数据一致性原理"><a href="#7-请谈一谈Kafka数据一致性原理" class="headerlink" title="7. 请谈一谈Kafka数据一致性原理"></a>7. 请谈一谈Kafka数据一致性原理</h4><h4 id="8-ISR、OSR、AR-是什么"><a href="#8-ISR、OSR、AR-是什么" class="headerlink" title="8. ISR、OSR、AR 是什么"></a>8. ISR、OSR、AR 是什么</h4><ul>
+<li>SR：In-Sync Replicas 副本同步队列</li>
+<li>OSR：Out-of-Sync Replicas</li>
+<li>AR：Assigned Replicas 所有副本</li>
+</ul>
+<p>ISR是由leader维护，follower从leader同步数据有一些延迟，超过相应的阈值会把 follower 剔除出 ISR, 存入OSR（Out-of-Sync Replicas ）列表，新加入的follower也会先存放在OSR中。AR&#x3D;ISR+OSR</p>
+<h4 id="9-LEO、HW、LSO、LW等分别代表什么"><a href="#9-LEO、HW、LSO、LW等分别代表什么" class="headerlink" title="9. LEO、HW、LSO、LW等分别代表什么"></a>9. LEO、HW、LSO、LW等分别代表什么</h4><ul>
+<li>LEO：是 LogEndOffset 的简称，代表当前日志文件中下一条</li>
+<li>HW：水位或水印（watermark）一词，也可称为高水位(high watermark)，通常被用在流式处理领域（比如Apache Flink、Apache Spark等），以表征元素或事件在基于时间层面上的进度。在Kafka中，水位的概念反而与时间无关，而是与位置信息相关。严格来说，它表示的就是位置信息，即位移（offset）。取 partition 对应的 ISR中 最小的 LEO 作为 HW，consumer 最多只能消费到 HW 所在的位置上一条信息</li>
+<li>LSO：是 LastStableOffset 的简称，对未完成的事务而言，LSO 的值等于事务中第一条消息的位置(firstUnstableOffset)，对已完成的事务而言，它的值同 HW 相同</li>
+<li>LW：Low Watermark 低水位, 代表 AR 集合中最小的 logStartOffset 值</li>
+</ul>
+<h4 id="10-Kafka在什么情况下会出现消息丢失"><a href="#10-Kafka在什么情况下会出现消息丢失" class="headerlink" title="10. Kafka在什么情况下会出现消息丢失"></a>10. Kafka在什么情况下会出现消息丢失</h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
+<h4 id="11-怎么尽可能保证Kafka的可靠性"><a href="#11-怎么尽可能保证Kafka的可靠性" class="headerlink" title="11. 怎么尽可能保证Kafka的可靠性"></a>11. 怎么尽可能保证Kafka的可靠性</h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
+<h4 id="12-消费者和消费者组有什么关系"><a href="#12-消费者和消费者组有什么关系" class="headerlink" title="12. 消费者和消费者组有什么关系"></a>12. 消费者和消费者组有什么关系</h4><h4 id="13-Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区"><a href="#13-Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区" class="headerlink" title="13. Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区"></a>13. Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区</h4><h4 id="14-数据传输的事务有几种"><a href="#14-数据传输的事务有几种" class="headerlink" title="14. 数据传输的事务有几种"></a>14. 数据传输的事务有几种</h4><p>数据传输的事务定义通常有以下三种级别：</p>
+<ul>
+<li>最多一次：消息不会被重复发送，最多被传输一次，但也有可能一次不传输</li>
+<li>最少一次：消息不会被漏发送，最少被传输一次，但也有可能被重复传输</li>
+<li>精确的一次（Exactly once）：不会漏传输也不会重复传输，每个消息都传输被</li>
+</ul>
+<h4 id="15-Kafka消费者是否可以消费指定分区消息"><a href="#15-Kafka消费者是否可以消费指定分区消息" class="headerlink" title="15. Kafka消费者是否可以消费指定分区消息"></a>15. Kafka消费者是否可以消费指定分区消息</h4><p>Kafa consumer消费消息时，向broker发出fetch请求去消费特定分区的消息，consumer指定消息在日志中的偏移量（offset），就可以消费从这个位置开始的消息，customer拥有了offset的控制权，可以向后回滚去重新消费之前的消息，这是很有意义的</p>
+<h4 id="16-Kafka消息是采用Pull模式，还是Push模式"><a href="#16-Kafka消息是采用Pull模式，还是Push模式" class="headerlink" title="16. Kafka消息是采用Pull模式，还是Push模式"></a>16. Kafka消息是采用Pull模式，还是Push模式</h4><p>Kafka最初考虑的问题是，customer应该从brokes拉取消息还是brokers将消息推送到consumer，也就是pull还push。在这方面，Kafka遵循了一种大部分消息系统共同的传统的设计：producer将消息推送到broker，consumer从broker拉取消息</p>
+<p>一些消息系统比如Scribe和Apache Flume采用了push模式，将消息推送到下游的consumer。这样做有好处也有坏处：由broker决定消息推送的速率，对于不同消费速率的consumer就不太好处理了。消息系统都致力于让consumer以最大的速率最快速的消费消息，但不幸的是，push模式下，当broker推送的速率远大于consumer消费的速率时，consumer恐怕就要崩溃了。最终Kafka还是选取了传统的pull模式</p>
+<p>Pull模式的另外一个好处是consumer可以自主决定是否批量的从broker拉取数据。Push模式必须在不知道下游consumer消费能力和消费策略的情况下决定是立即推送每条消息还是缓存之后批量推送。如果为了避免consumer崩溃而采用较低的推送速率，将可能导致一次只推送较少的消息而造成浪费。Pull模式下，consumer就可以根据自己的消费能力去决定这些策略</p>
+<p>Pull有个缺点是，如果broker没有可供消费的消息，将导致consumer不断在循环中轮询，直到新消息到t达。为了避免这点，Kafka有个参数可以让consumer阻塞知道新消息到达(当然也可以阻塞知道消息的数量达到某个特定的量这样就可以批量发</p>
+<h4 id="17-Kafka-消息格式的演变清楚吗"><a href="#17-Kafka-消息格式的演变清楚吗" class="headerlink" title="17. Kafka 消息格式的演变清楚吗"></a>17. Kafka 消息格式的演变清楚吗</h4><h4 id="18-Kafka-偏移量的演变清楚吗"><a href="#18-Kafka-偏移量的演变清楚吗" class="headerlink" title="18. Kafka 偏移量的演变清楚吗"></a>18. Kafka 偏移量的演变清楚吗</h4><h4 id="19-Kafka高效文件存储设计特点"><a href="#19-Kafka高效文件存储设计特点" class="headerlink" title="19. Kafka高效文件存储设计特点"></a>19. Kafka高效文件存储设计特点</h4><ul>
+<li>Kafka把topic中一个parition大文件分成多个小文件段，通过多个小文件段，就容易定期清除或删除已经消费完文件，减少磁盘占用</li>
+<li>通过索引信息可以快速定位message和确定response的最大大小</li>
+<li>通过index元数据全部映射到memory，可以避免segment file的IO磁盘操作</li>
+<li>通过索引文件稀疏存储，可以大幅降低index文件元数据占用空间大小</li>
+</ul>
+<h4 id="20-Kafka创建Topic时如何将分区放置到不同的Broker中"><a href="#20-Kafka创建Topic时如何将分区放置到不同的Broker中" class="headerlink" title="20. Kafka创建Topic时如何将分区放置到不同的Broker中"></a>20. Kafka创建Topic时如何将分区放置到不同的Broker中</h4><h4 id="21-Kafka新建的分区会在哪个目录下创建"><a href="#21-Kafka新建的分区会在哪个目录下创建" class="headerlink" title="21. Kafka新建的分区会在哪个目录下创建"></a>21. Kafka新建的分区会在哪个目录下创建</h4><h4 id="22-谈一谈Kafka的再均衡"><a href="#22-谈一谈Kafka的再均衡" class="headerlink" title="22. 谈一谈Kafka的再均衡"></a>22. 谈一谈Kafka的再均衡</h4><p>在Kafka中，当有新消费者加入或者订阅的topic数发生变化时，会触发Rebalance(再均衡：在同一个消费者组当中，分区的所有权从一个消费者转移到另外一个消费者)机制，Rebalance顾名思义就是重新均衡消费者消费。Rebalance的过程如下：</p>
+<ul>
+<li>第一步：所有成员都向coordinator发送请求，请求入组。一旦所有成员都发送了请求，coordinator会从中选择一个consumer担任leader的角色，并把组成员信息以及订阅信息发给leader</li>
+<li>第二步：leader开始分配消费方案，指明具体哪个consumer负责消费哪些topic的哪些partition。一旦完成分配，leader会将这个方案发给coordinator。coordinator接收到分配方案之后会把方案发给各个consumer，这样组内的所有成员就都知道自己应该消费哪些分区了</li>
+</ul>
+<p>所以对于Rebalance来说，Coordinator起着至关重要的作用</p>
+<h4 id="23-谈谈Kafka分区分配策略"><a href="#23-谈谈Kafka分区分配策略" class="headerlink" title="23. 谈谈Kafka分区分配策略"></a>23. 谈谈Kafka分区分配策略</h4><h4 id="24-Kafka-Producer是如何动态感知主题分区数变化的"><a href="#24-Kafka-Producer是如何动态感知主题分区数变化的" class="headerlink" title="24. Kafka Producer是如何动态感知主题分区数变化的"></a>24. Kafka Producer是如何动态感知主题分区数变化的</h4><h4 id="25-Kafka是如何实现高吞吐率的"><a href="#25-Kafka是如何实现高吞吐率的" class="headerlink" title="25. Kafka是如何实现高吞吐率的"></a>25. Kafka是如何实现高吞吐率的</h4><p>Kafka是分布式消息系统，需要处理海量的消息，Kafka的设计是把所有的消息都写入速度低容量大的硬盘，以此来换取更强的存储能力，但实际上，使用硬盘并没有带来过多的性能损失。kafka主要使用了以下几个方式实现了超高的吞吐率：</p>
+<ul>
+<li>顺序读写</li>
+<li>零拷贝</li>
+<li>文件分段</li>
+<li>批量发送</li>
+<li>数据压缩</li>
+</ul>
+<h4 id="26-Kafka监控都有哪些"><a href="#26-Kafka监控都有哪些" class="headerlink" title="26. Kafka监控都有哪些"></a>26. Kafka监控都有哪些</h4><h4 id="27-如何为Kafka集群选择合适的Topics-x2F-Partitions数量"><a href="#27-如何为Kafka集群选择合适的Topics-x2F-Partitions数量" class="headerlink" title="27. 如何为Kafka集群选择合适的Topics&#x2F;Partitions数量"></a>27. 如何为Kafka集群选择合适的Topics&#x2F;Partitions数量</h4><h4 id="28-谈谈你对Kafka事务的了解"><a href="#28-谈谈你对Kafka事务的了解" class="headerlink" title="28. 谈谈你对Kafka事务的了解"></a>28. 谈谈你对Kafka事务的了解</h4><h4 id="29-谈谈你对Kafka幂等的了解"><a href="#29-谈谈你对Kafka幂等的了解" class="headerlink" title="29. 谈谈你对Kafka幂等的了解"></a>29. 谈谈你对Kafka幂等的了解</h4><h4 id="30-Kafka缺点"><a href="#30-Kafka缺点" class="headerlink" title="30. Kafka缺点"></a>30. Kafka缺点</h4><ul>
+<li>由于是批量发送，数据并非真正的实时</li>
+<li>对于mqtt协议不支持</li>
+<li>不支持物联网传感数据直接接入</li>
+<li>仅支持统一分区内消息有序，无法实现全局消息有序</li>
+<li>监控不完善，需要安装插件</li>
+<li>依赖zookeeper进行元数据管理</li>
+</ul>
+<h4 id="31-Kafka新旧消费者的区别"><a href="#31-Kafka新旧消费者的区别" class="headerlink" title="31. Kafka新旧消费者的区别"></a>31. Kafka新旧消费者的区别</h4><p>旧的 Kafka 消费者 API 主要包括：SimpleConsumer（简单消费者） 和 ZookeeperConsumerConnectir（高级消费者）。SimpleConsumer 名字看起来是简单消费者，但是其实用起来很不简单，可以使用它从特定的分区和偏移量开始读取消息。高级消费者和现在新的消费者有点像，有消费者群组，有分区再均衡，不过它使用 ZK 来管理消费者群组，并不具备偏移量和再均衡的可操控性</p>
+<h4 id="32-Kafka分区数可以增加或减少吗？为什么"><a href="#32-Kafka分区数可以增加或减少吗？为什么" class="headerlink" title="32. Kafka分区数可以增加或减少吗？为什么"></a>32. Kafka分区数可以增加或减少吗？为什么</h4><p>我们可以使用 bin&#x2F;kafka-topics.sh 命令对 Kafka 增加 Kafka 的分区数据，但是 Kafka 不支持减少分区数</p>
+<p>Kafka 分区数据不支持减少是由很多原因的，比如减少的分区其数据放到哪里去？是删除，还是保留？删除的话，那么这些没消费的消息不就丢了。如果保留这些消息如何放到其他分区里面？追加到其他分区后面的话那么就破坏了 Kafka 单个分区的有序性。如果要保证删除分区数据插入到其他分区保证有序性，那么实现起来逻辑就会非常复杂</p>
+<hr>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>八股文</tag>
+        <tag>Kafka</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux操作系统面试题</title>
     <url>/2022/10/28/Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
     <content><![CDATA[<p>Linux常见面试题整理</p>
@@ -941,6 +941,381 @@
       </categories>
       <tags>
         <tag>关于博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Redis面试题</title>
+    <url>/2022/10/28/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<p>Redis面试常见问题汇总</p>
+<h4 id="1-Redis的数据结构及使用场景"><a href="#1-Redis的数据结构及使用场景" class="headerlink" title="1. Redis的数据结构及使用场景"></a>1. Redis的数据结构及使用场景</h4><ul>
+<li><p>String字符串</p>
+<p>字符串类型是 Redis 最基础的数据结构，首先键都是字符串类型，而且 其他几种数据结构都是在字符串类型基础上构建的，我们常使用的 set key value 命令就是字符串。常用在缓存、计数、共享Session、限速等</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>Hash哈希</p>
+<p>在Redis中，哈希类型是指键值本身又是一个键值对结构，哈希可以用来存放用户信息，比如实现购物车</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>List列表（双向链表）</p>
+<p>列表（list）类型是用来存储多个有序的字符串。可以做简单的消息队列的功能</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>Set集合</p>
+<p>集合（set）类型也是用来保存多个的字符串元素，但和列表类型不一 样的是，集合中不允许有重复元素，并且集合中的元素是无序的，不能通过索引下标获取元素。利用 Set 的交集、并集、差集等操作，可以计算共同喜好，全部的喜好，自己独有的喜好等功能</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>Sorted Set有序集合（跳表实现）</p>
+<p>Sorted Set 多了一个权重参数 Score，集合中的元素能够按 Score 进行排列。可以做排行榜应用，取 TOP N 操作</p>
+</li>
+</ul>
+<h4 id="2-Redis持久化的几种方式"><a href="#2-Redis持久化的几种方式" class="headerlink" title="2. Redis持久化的几种方式"></a>2. Redis持久化的几种方式</h4><p>Redis为了保证效率，数据缓存在了内存中，但是会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件中，以保证数据的持久化。Redis的持久化策略有两种：</p>
+<ul>
+<li><strong>RDB：</strong> 快照形式是直接把内存中的数据保存到一个dump的文件中，定时保存，保存策略<ul>
+<li>当Redis需要做持久化时，Redis会fork一个子进程，子进程将数据写到磁盘上一个临时RDB文件中。当子进程完成写临时文件后，将原来的RDB替换掉</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>AOF：</strong> 把所有的对Redis的服务器进行修改的命令都存到一个文件里，命令的集合<ul>
+<li>使用AOF做持久化，每一个写命令都通过write函数追加到<code>appendonly.aof</code>中</li>
+<li>aof的默认策略是每秒钟fsync一次，在这种配置下，就算发生故障停机，也最多丢失一秒钟的数据</li>
+<li>缺点是对于相同的数据集来说，AOF的文件体积通常要大于RDB文件的体积。根据所使用的fsync策略，AOF的速度可能会慢于RDB</li>
+</ul>
+</li>
+</ul>
+<p>Redis默认是快照RDB的持久化方式。对于主从同步来说，主从刚刚连接的时候，进行全量同步（RDB），全同步结束后，进行增量同步(AOF)</p>
+<h4 id="3-Redis的LRU具体实现"><a href="#3-Redis的LRU具体实现" class="headerlink" title="3. Redis的LRU具体实现"></a>3. Redis的LRU具体实现</h4><ul>
+<li>传统的LRU是使用栈的形式，每次都将最新使用的移入栈顶，但是用栈的形式会导致执行<code>select *</code>的时候大量非热点数据占领头部数据，所以需要改进</li>
+<li>Redis每次按key获取一个值的时候，都会更新value中的lru字段为当前秒级别的时间戳。Redis初始的实现算法很简单，随机从dict中取出五个key，淘汰一个lru字段值最小的</li>
+<li>在3.0的时候，又改进了一版算法，首先第一次随机选取的key都会放入一个pool中(pool的大小为16)，pool中的key是按lru大小顺序排列的</li>
+<li>接下来每次随机选取的keylru值必须小于pool中最小的lru才会继续放入，直到将pool放满。放满之后，每次如果有新的key需要放入，需要将pool中lru最大的一个key取出。淘汰的时候，直接从pool中选取一个lru最小的值然后将其淘汰</li>
+</ul>
+<h4 id="4-单线程的Redis为什么快"><a href="#4-单线程的Redis为什么快" class="headerlink" title="4. 单线程的Redis为什么快"></a>4. 单线程的Redis为什么快</h4><ul>
+<li>纯内存操作</li>
+<li>单线程操作，避免了频繁的上下文切换</li>
+<li>合理高效的数据结构</li>
+<li>采用了非阻塞I&#x2F;O多路复用机制</li>
+</ul>
+<h4 id="5-Redis的数据过期策略"><a href="#5-Redis的数据过期策略" class="headerlink" title="5. Redis的数据过期策略"></a>5. Redis的数据过期策略</h4><p>Redis 中数据过期策略采用<strong>定期删除</strong>和<strong>惰性删除</strong>策略：</p>
+<ul>
+<li>定期删除策略<ul>
+<li>Redis 启用一个定时器定时监视所有的 key，判断key是否过期，过期的话就删除</li>
+<li>这种策略可以保证过期的 key 最终都会被删除，但是也存在严重的缺点：每次都遍历内存中所有的数据，非常消耗 CPU资源，并且当 key 已过期，但是定时器还处于未唤起状态，这段时间内 key 仍然可以用</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>惰性删除策略<ul>
+<li>在获取 key 时，先判断 key 是否过期，如果过期则删除</li>
+<li>这种方式存在一个缺点：如果这个 key一直未被使用，那么它一直在内存中，其实它已经过期了，会浪费大量的空间</li>
+</ul>
+</li>
+</ul>
+<p>这两种策略天然的互补，结合起来之后，定时删除策略就发生了一些改变，不在是每次扫描全部的 key 了，而是随机抽取一部分 key 进行检查，这样就降低了对 CPU 资源的损耗，惰性删除策略互补了为检查到的key，基本上满足了所有要求</p>
+<p>但是有时候就是那么的巧，既没有被定时器抽取到，又没有被使用，这些数据又如何从内存中消失？这个时候就需要用到了，内存淘汰机制</p>
+<h5 id="5-1-内存淘汰机制"><a href="#5-1-内存淘汰机制" class="headerlink" title="5.1 内存淘汰机制"></a>5.1 内存淘汰机制</h5><ul>
+<li>当内存不足以容纳新写入数据时，新写入操作会报错。（Redis 默认策略）</li>
+<li>当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的 Key。（LRU推荐使用）</li>
+<li>当内存不足以容纳新写入数据时，在键空间中，随机移除某个 Key</li>
+<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，移除最近最少使用的 Key。这种情况一般是把 Redis 既当缓存，又做持久化存储的时候才用</li>
+<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，随机移除某个 Key</li>
+<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，有更早过期时间的 Key 优先移除</li>
+</ul>
+<h4 id="6-如何解决Redis缓存雪崩问题"><a href="#6-如何解决Redis缓存雪崩问题" class="headerlink" title="6. 如何解决Redis缓存雪崩问题"></a>6. 如何解决Redis缓存雪崩问题</h4><ul>
+<li>使用 Redis 高可用架构：使用 Redis 集群来保证 Redis 服务不会挂掉</li>
+<li>缓存时间不一致，给缓存的失效时间，加上一个随机值，避免集体失效</li>
+<li>限流降级策略：有一定的备案，比如个性推荐服务不可用了，换成热点数据推荐服务</li>
+</ul>
+<h4 id="7-如何解决Redis缓存穿透问题"><a href="#7-如何解决Redis缓存穿透问题" class="headerlink" title="7. 如何解决Redis缓存穿透问题"></a>7. 如何解决Redis缓存穿透问题</h4><ul>
+<li>在接口层做校验</li>
+<li>存null值（缓存击穿加锁）</li>
+<li>布隆过滤器拦截：将所有可能的查询key 先映射到布隆过滤器中，查询时先判断key是否存在布隆过滤器中，存在才继续向下执行，如果不存在，则直接返回<br>布隆过滤器将值进行多次哈希bit存储，布隆过滤器说某个元素在，可能会被误判。布隆过滤器说某个元素不在，那么一定不在</li>
+</ul>
+<h4 id="8-Redis并发竞争key如何解决"><a href="#8-Redis并发竞争key如何解决" class="headerlink" title="8. Redis并发竞争key如何解决"></a>8. Redis并发竞争key如何解决</h4><ul>
+<li>可以利用分布式锁和时间戳来解决</li>
+<li>利用消息队列解决</li>
+</ul>
+<h4 id="9-Redis的主从模式和哨兵模式和集群模式区别"><a href="#9-Redis的主从模式和哨兵模式和集群模式区别" class="headerlink" title="9. Redis的主从模式和哨兵模式和集群模式区别"></a>9. Redis的主从模式和哨兵模式和集群模式区别</h4><p>Redis集群方式共有三种：<strong>主从模式</strong>，<strong>哨兵模式</strong>，<strong>集群(cluster)模式</strong></p>
+<ul>
+<li><p>主从模式</p>
+<p>主从模式是三种集群方式里最简单的。它主要是基于Redis的主从复制特性架构的。通常我们会设置一个主节点，N个从节点;默认情况下，主节点负责处理使用者的IO操作，而从节点则会对主节点的数据进行备份，并且也会对外提供读操作的处理。主要的特点如下：</p>
+<ul>
+<li>主从模式下，当某一节点损坏时，因为其会将数据备份到其它Redis实例上，这样做在很大程度上可以恢复丢失的数据</li>
+<li>主从模式下，可以保证负载均衡.</li>
+<li>主从模式下，主节点和从节点是读写分离的。使用者不仅可以从主节点上读取数据，还可以很方便的从从节点上读取到数据，这在一定程度上缓解了主机的压力</li>
+</ul>
+<p>从节点也是能够支持写入数据的，只不过从从节点写入的数据不会同步到主节点以及其它的从节点下。从以上，我们不难看出Redis在主从模式下，必须保证主节点不会宕机——一旦主节点宕机，其它节点不会竞争称为主节点，此时，Redis将丧失写的能力。这点在生产环境中，是致命的</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>哨兵模式</p>
+<p>哨兵模式是基于主从模式做的一定变化，它能够为Redis提供了高可用性</p>
+<p>在实际生产中，服务器难免不会遇到一些突发状况：服务器宕机，停电，硬件损坏等。这些情况一旦发生，其后果往往是不可估量的</p>
+<p>而哨兵模式在一定程度上能够帮我们规避掉这些意外导致的灾难性后果。其实，哨兵模式的核心还是主从复制</p>
+<p>只不过相对于主从模式在主节点宕机导致不可写的情况下，多了一个竞选机制——从所有的从节点竞选出新的主节点。竞选机制的实现，是依赖于在系统中启动一个sentinel进程。sentinel特点：</p>
+<ul>
+<li>监控：它会监听主服务器和从服务器之间是否在正常工作</li>
+<li>通知：它能够通过API告诉系统管理员或者程序，集群中某个实例出了问题。</li>
+<li>故障转移：它在主节点出了问题的情况下，会在所有的从节点中竞选出一个节点，并将其作为新的主节点。</li>
+<li>提供主服务器地址：它还能够向使用者提供当前主节点的地址。这在故障转移后，使用者不用做任何修改就可以知道当前主节点地址</li>
+</ul>
+<p>sentinel，也可以集群，部署多个哨兵，sentinel可以通过发布与订阅来自动发现Redis集群上的其它sentinel。sentinel在发现其它sentinel进程后，会将其放入一个列表中，这个列表存储了所有已被发现的sentinel</p>
+<p>集群中的所有sentinel不会并发着去对同一个主节点进行故障转移。故障转移只会从第一个sentinel开始，当第一个故障转移失败后，才会尝试下一个</p>
+<p>当选择一个从节点作为新的主节点后，故障转移即成功了(而不会等到所有的从节点配置了新的主节点后)。这过程中，如果重启了旧的主节点，那么就会出现无主节点的情况，这种情况下，只能重启集群</p>
+<p>当竞选出新的主节点后，被选为新的主节点的从节点的配置信息会被sentinel改写为旧的主节点的配置信息。完成改写后，再将新主节点的配置广播给所有的从节点</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>集群模式</p>
+<p>Redis 集群是一个提供在多个Redis间节点间共享数据的程序集， 其中Redis集群分为主节点和从节点。主节点用于处理槽，而从节点用于复制某个主节点，并在被复制的主节点下线时，代替下线的主节点继续处理命令请求</p>
+<p>Redis集群并不支持处理多个keys的命令，因为这需要在不同的节点间移动数据，从而达不到像Redis那样的性能，在高负载的情况下可能会导致不可预料的错误</p>
+<p>Redis 集群通过分区来提供一定程度的可用性，在实际环境中当某个节点宕机或者不可达的情况下继续处理命令. Redis 集群的优势：自动分割数据到不同的节点上</p>
+<p>整个集群的部分节点失败或者不可达的情况下能够继续处理命令</p>
+<p>Redis集群的数据分片 Redis 集群没有使用一致性hash， 而是引入了哈希槽的概念</p>
+<p>Redis 集群有16384个哈希槽，每个key通过CRC16校验后对16384取模来决定放置哪个槽.集群的每个节点负责一部分hash槽</p>
+</li>
+</ul>
+<h4 id="10-Redis事物的了解CheckAndSet操作实现乐观锁"><a href="#10-Redis事物的了解CheckAndSet操作实现乐观锁" class="headerlink" title="10. Redis事物的了解CheckAndSet操作实现乐观锁"></a>10. Redis事物的了解CheckAndSet操作实现乐观锁</h4><p>和众多其它数据库一样，Redis作为NoSQL数据库也同样提供了事务机制。在Redis中，<code>MULTI</code>，<code>EXEC</code>，<code>DISCARD</code>，<code>WATCH</code>这四个命令是我们实现事务的基石。相信对有关系型数据库开发经验的开发者而言这一概念并不陌生，即便如此，我们还是会简要的列出 Redis中事务的实现特征 ：</p>
+<ul>
+<li>在事务中的所有命令都将会被串行化的顺序执行，事务执行期间，Redis不会再为其它客户端的请求提供任何服务，从而保证了事物中的所有命令被原子的执行</li>
+<li>和关系型数据库中的事务相比，在Redis事务中如果有某一条命令执行失败，其后的命令仍然会被继续执行</li>
+<li>我们可以通过MULTI命令开启一个事务，有关系型数据库开发经验的人可以将其理解为”BEGIN TRANSACTION”语句。在该语句之后执行的命令都将被视为事务之内的操作，最后我们可以通过执行<code>EXEC</code>，<code>DISCARD</code>命令来提交，回滚该事务内的所有操作。这两个Redis命令可被视为等同于关系型数据库中的COMMIT&#x2F;ROLLBACK语句</li>
+<li>在事务开启之前，如果客户端与服务器之间出现通讯故障并导致网络断开，其后所有待执行的语句都将不会被服务器执行。然而如果网络中断事件是发生在客户端执行EXEC命令之后，那么该事务中的所有命令都会被服务器执行</li>
+<li>当使用<code>Append-Only</code>模式时，Redis会通过调用系统函数write将该事务内的所有写操作在本次调用中全部写入磁盘。然而如果在写入的过程中出现系统崩溃，如电源故障导致的宕机，那么此时也许只有部分数据被写入到磁盘，而另外一部分数据却已经丢失。Redis服务器会在重新启动时执行一系列必要的一致性检测，一旦发现类似问题，就会立即退出并给出相应的错误提示。此时，我们就要充分利用Redis工具包中提供的<code>redis-check-aof</code>工具，该工具可以帮助我们定位到数据不一致的错误，并将已经写入的部分数据进行回滚。修复之后我们就可以再次重新启动Redis服务器了</li>
+</ul>
+<h4 id="11-Redis有序集合zset底层怎么实现的"><a href="#11-Redis有序集合zset底层怎么实现的" class="headerlink" title="11. Redis有序集合zset底层怎么实现的"></a>11. Redis有序集合zset底层怎么实现的</h4><ul>
+<li>跳表是一个随机化的数据结构，实质就是一种可以进行二分查找的有序链表</li>
+<li>跳表在原有的有序链表上面增加了多级索引，通过索引来实现快速查找</li>
+<li>跳表不仅能提高搜索性能，同时也可以提高插入和删除操作的性能</li>
+</ul>
+<hr>
+<ul>
+<li>跳表是可以实现二分查找的有序链表</li>
+<li>每个元素插入时随机生成它的level</li>
+<li>最低层包含所有的元素</li>
+<li>如果一个元素出现在level(x)，那么它肯定出现在x以下的level中</li>
+<li>每个索引节点包含两个指针，一个向下，一个向右</li>
+<li>跳表查询、插入、删除的时间复杂度为O(log n)，与平衡二叉树接近</li>
+</ul>
+<hr>
+<h5 id="11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN"><a href="#11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN" class="headerlink" title="11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))"></a>11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))</h5><p>首先，我们来分析下Redis的有序集合支持的操作：</p>
+<ul>
+<li>插入元素</li>
+<li>删除元素</li>
+<li>查找元素</li>
+<li>有序输出所有元素</li>
+<li>查找区间内所有元素</li>
+</ul>
+<p>其中，前4项红黑树都可以完成，且时间复杂度与跳表一致。但是，最后一项，红黑树的效率就没有跳表高了。在跳表中，要查找区间的元素，我们只要定位到两个区间端点在最低层级的位置，然后按顺序遍历元素就可以了，非常高效</p>
+<p>而红黑树只能定位到端点后，再从首位置开始每次都要查找后继节点，相对来说是比较耗时的。此外，跳表实现起来很容易且易读，红黑树实现起来相对困难，所以Redis选择使用跳表来实现有序集合</p>
+<h4 id="12-跳表的查询过程是怎么样的，查询和插入的时间复杂度"><a href="#12-跳表的查询过程是怎么样的，查询和插入的时间复杂度" class="headerlink" title="12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度"></a>12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度</h4><p>先从第一层查找，不满足就下沉到第二层找，因为每一层都是有序的，写入和插入的时间复杂度都是O(logN)</p>
+<hr>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>八股文</tag>
+        <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>系统设计与架构</title>
+    <url>/2022/11/01/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%B6%E6%9E%84/</url>
+    <content><![CDATA[<p>系统设计与架构常见题整理</p>
+<h4 id="1-如何设计一个短链服务"><a href="#1-如何设计一个短链服务" class="headerlink" title="1. 如何设计一个短链服务"></a>1. 如何设计一个短链服务</h4><p>参考链接：<a href="https://mp.weixin.qq.com/s/33lcKX3bLUAC-Mj0VlXa6A">点击跳转</a></p>
+<h5 id="1-1-短链的价值"><a href="#1-1-短链的价值" class="headerlink" title="1.1 短链的价值"></a>1.1 短链的价值</h5><ul>
+<li><strong>更加简洁：</strong>比起一长串无意义的问题，只有差不多 10 个字符的字符串显然更加简洁</li>
+<li><strong>便于使用：</strong>第一，有些平台对内容长度有限制（微博只能发 140 个字），此时短网址就可以输入更多内容。第二，我们将链接转为二维码时，短链接生成的二维码更容易识别。第三，有些平台无法识别特殊的长链参数，转为短链就没这个问题</li>
+<li><strong>节省成本：</strong>当我们需要发短信的时候，短信是按照长度计费的，短网址可以节省成本</li>
+</ul>
+<h5 id="1-2-短链的原理"><a href="#1-2-短链的原理" class="headerlink" title="1.2 短链的原理"></a>1.2 短链的原理</h5><p>当我们输入短链时，其实访问的是短链服务器的地址。短链服务器获取到对应的长链地址之后，返回一个 302 的 HTTP 响应，在响应中包含了长链接地址。浏览器收到响应后，转而去请求长链接地址。 访问短链的整个流程如下图所示：</p>
+<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7qyiustgcj30e307zq3t.jpg" alt="image.png" style="zoom:90%;" /></div>
+
+<p>从上面的流程中可以知道，短链涉及到的技术原理主要有两点，分别是：HTTP 重定向和短链服务的设计</p>
+<p>对于 HTTP 重定向来说，301 和 302 都是重定向：</p>
+<ul>
+<li>301 代表永久重定向。它表示第一次拿到长链接之后，下次浏览器如果再去请求短链的话，不会再向短链服务器请求了，而是直接从浏览器的缓存中获取。</li>
+<li>302 代表临时重定向。它表示每次请求短链都会去请求短链服务器，不会从浏览器缓存中获取</li>
+</ul>
+<p>如果我们希望统计短链接的点击次数信息，从而来分析活动的效果的话。那么我们就需要使用 302 重定向码，这样才能获取到每次的请求数据。 一般情况下，我们都是需要获取到请求的数据的，因此对于短链服务都是用 302 临时重定向</p>
+<h5 id="1-3-实现思路"><a href="#1-3-实现思路" class="headerlink" title="1.3 实现思路"></a>1.3 实现思路</h5><p>系统的处理流程：</p>
+<ol>
+<li>用户访问短链生成页面，输入长链字符串，短链服务返回生成的短链</li>
+<li>用户访问短链，短链服务返回 302 响应，用户浏览器跳转到长链地址</li>
+</ol>
+<p>如果我们要实现上面的系统流程，我们大致的处理思路是：</p>
+<ol>
+<li><strong>生成短链。</strong> 生成短链时，短链服务获取到长链，随后生成一个短链，并把短链与长链的映射关系保存下来，最后将短链返回给用户</li>
+<li><strong>找到长链。</strong> 访问短链时，短链服务获取到短链，根据短链去获取到长链，返回返回 302 响应</li>
+</ol>
+<p>根据上面的分析，我们可以知道短链系统设计主要得解决如下两个问题：</p>
+<ol>
+<li>如何根据长链生成唯一短链？</li>
+<li>如何保存短链与长链的映射关系</li>
+</ol>
+<p>对于第 1 点，我们有 2 个思路生成一个唯一短链，分别是：</p>
+<ol>
+<li>使用哈希算法生成唯一值</li>
+<li>使用分布式唯一 ID 生成作为锻炼 ID</li>
+</ol>
+<p>对于第 2 点，保存短链与长链的映射关系，考虑到持久性的问题，我们肯定需要落库，所以使用 MySQL 表保存即可。如果有需要的话，可以在 MySQL 前做一层缓存。因此第 2 点相对来说比较简单</p>
+<hr>
+<h6 id="1-3-1-哈希算法生成短链"><a href="#1-3-1-哈希算法生成短链" class="headerlink" title="1.3.1 哈希算法生成短链"></a>1.3.1 哈希算法生成短链</h6><p>要生成一个短链，我们可以将原有的长链做一次哈希，然后就可以得到一个哈希值，计算哈希值会遇到如下2个问题：</p>
+<p><strong>使用什么哈希算法</strong></p>
+<p>我们都知道哈希算法是一种摘要算法，它的作用是：对任意一组输入数据进行计算，得到一个固定长度的输出摘要。我们常见的哈希算法有：MD5、SHA-1、SHA-256、SHA-512 算法等。但我们最好还是使用另一种叫做 MurmurHash 的哈希算法。为什么呢</p>
+<p>因为 MD5 和 SHA 哈希算法，它们都是加密的哈希算法，也就是说我们无法从哈希值反向推导出原文，从而保证了原文的保密性</p>
+<p>但对于我们这个场景而言，我们并不关心安全性，我们关注的是运算速度以及哈希冲突。而 MurmurHash 算法是一个非加密哈希算法，所以它的速度回更快</p>
+<p><strong>哈希冲突</strong></p>
+<p>学过 HashMap 的同学都知道，哈希冲突是哈希算法不可避免的问题。而解决哈希冲突的方式有两种，分别是：链表法和重哈希法。HashMap 使用了链表法，但我们这里使用的是重哈希法</p>
+<p>所谓的重哈希法，指的是当发生哈希冲突的时候，我们在原有长链后面加上固定的特殊字符，后续拿出长链时再将其去掉，如下所示</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">原有长链：https://mp.weixin.qq.com/s1caec8eb1b81d6ee5dd7b</span><br><span class="line">              ↓↓  </span><br><span class="line">           发生哈希冲突</span><br><span class="line">              ↓↓  </span><br><span class="line">补上特殊字符：https://mp.weixin.qq.com/s1caec8eb1b81d6ee5dd7b[SPECIAL-CHARACTER]</span><br><span class="line">              ↓↓  </span><br><span class="line">           再次进行哈希</span><br></pre></td></tr></table></figure>
+
+<p>通过这种办法，我们就可以解决哈希冲突的问题了。如果再次发生，那么就再进行哈希，一直到不冲突位置。一般来说，哈希冲突的可能性微乎其微</p>
+<p>好了，现在我们通过哈希算法得到了一个哈希值：<code>29541341303115543223957290326355</code>，变成了这样：<code>http://dwz.com/29541341303115543223957290326355</code></p>
+<p>有没有办法让网址变得再短一点呢</p>
+<p>我们知道在网址 URL 中，常用的合法字符有 0～9、a～z、A～Z 这样 62 个字符。如果我们用哈希值与 62 取余，那么余数肯定是在 0-61 之间</p>
+<p>这 62 个数字刚好与 62 个合法网址字符一一对应。接着，我们再用除 62 得到的值，再次与 62 取余，一直到位 0 为止。通过这样的处理，我们就可以得到一个字符为 62 个字符、长度很短的字符串了</p>
+<p>上面讲有点晦涩难懂，我们来举个例子。假设我们得到的哈希值为 181338494，那么上面的处理流程为：</p>
+<ol>
+<li>将 181338494 除以 62，得到结果为 2924814，余数为 26，此时余数 26 对应字符为 q。</li>
+<li>将 2924814 除以 62，得到结果为 47174，余数为 26，此时余数 26 对应字符为 q。</li>
+<li>将 47174 除以 62，得到结果为 760，余数为 54，此时余数 54 对应字符为 S。</li>
+<li>省略剩余步骤</li>
+</ol>
+<p>整个处理流程如下图所示：</p>
+<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7qyyjct7rj30ia0bk405.jpg" alt="image.png" style="zoom:90%;" /></div>
+
+<p>可以看到，我们把 181338494 这个十进制数，转成了由合法网址字符组成的「62 进制数」—— <code>cgSqq</code></p>
+<p>到这里，我们不仅生成了短链，还将短链的长度极大地缩短了</p>
+<p>这就是使用哈希算法生成唯一锻炼的全部内容了，我们总结一下：<strong>首先，使用 MurmurHash 生成哈希值，并且用重哈希法解决哈希冲突的问题。接着，将 10 进制的哈希值转成 62 进制的合法网址字符，从而缩短网址长度</strong></p>
+<h6 id="1-3-2-分布式-ID-生成短链"><a href="#1-3-2-分布式-ID-生成短链" class="headerlink" title="1.3.2 分布式 ID 生成短链"></a>1.3.2 分布式 ID 生成短链</h6><p>上面使用哈希算法生成唯一短链的方式，相对来说是比较形象的。但其实我们也可以用分布式 ID 的方式，来完成唯一短链的生成</p>
+<p>例如第一次请求的长链，我们为其生成一个唯一 ID，将其长链与唯一 ID 对应起来。第二次请求，我们再为其生成一个唯一 ID，再次将长链与唯一 ID 对应起来，如下所示。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">第一次请求：https://mp.weixin.qq.com/s1caec8eb1b81d6ee5dd7b</span><br><span class="line">              ↓↓  </span><br><span class="line">生成短链：https://dwz.com/1021000001</span><br><span class="line"></span><br><span class="line">第一次请求：https://mp.weixin.qq.com/s1caec8eb1b81d6ee5ff7b</span><br><span class="line">              ↓↓  </span><br><span class="line">生成短链：https://dwz.com/1021000002</span><br></pre></td></tr></table></figure>
+
+<p>因为生成的唯一 ID 也可能非常长，因此我们可以采用上面同样的方式，将 10 进制的唯一 ID 转成 62 进制的合法网址字符，从而缩短字符长度</p>
+<p>那么接下来的问题就变成了：如何设计一个全局唯一 ID 发号器了</p>
+<p>对于如何设计一个全局唯一的 ID 发号器，就属于另外一个话题，我们这里就不深入探讨了</p>
+<h5 id="1-4-性能优化"><a href="#1-4-性能优化" class="headerlink" title="1.4 性能优化"></a>1.4 性能优化</h5><p>看到这里，我们基本上有了一个完整的思路：拿到长链地址后，可以用哈希算法或唯一 ID 分号器获取唯一字符串，从而建立长链与短链的映射关系。为了缩短短链长度，我们还可以将其用 62 进制数表示，整个短链生成过程如下图所示</p>
+<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7qz2vgn49j30f10d3gn7.jpg" alt="image.png" style="zoom:80%;" /></div>
+
+<p>短链生成完，并且已经存到了数据库中，接下里该使用了。通常的做法是会根据请求的短链字符串，从数据库中找到数据，然后返回 HTTP 重定向原始地址。而在不断使用过程中，还有一些可能发现的优化点，这里简单讲讲</p>
+<ul>
+<li><p>索引优化</p>
+<ul>
+<li>如果使用关系型数据库的话，对于短链字段需要创建唯一索引，从而加快查询速度</li>
+</ul>
+</li>
+<li><p>增加缓存</p>
+<ul>
+<li>并发量小的时候，我们都是直接访问数据库。但当并发量再次升高时，需要加上缓存抗住热点数据的访问</li>
+</ul>
+</li>
+<li><p>读写分离</p>
+<ul>
+<li>短链服务肯定是读远大于写的，因此对于短链服务，可以做好读写分离</li>
+</ul>
+</li>
+<li><p>分库分表</p>
+<ul>
+<li>如果是商用的短链服务，那么数据量上亿是很正常的，更不用说常年累月积累下的量了。这时候可以一开始就做好分库分表操作，避免后期再大动干戈</li>
+<li>对于分库分表来说，最关键的便是根据哪个字段去作为分库分表的依据了。对于短链服务来说，当然是用转化后的 62 进制数字做分表依据了，因为它是唯一的嘛</li>
+</ul>
+</li>
+<li><p>防止恶意攻击</p>
+<ul>
+<li><p>开放到公网的服务，什么事情都可能发生，其中一个可能的点就是被恶意攻击，不断循环调用</p>
+</li>
+<li><p>一开始我们可以做一下简单地限流操作，例如：</p>
+<ol>
+<li>没有授权的用户，根据 IP 进行判断，1 分钟最多只能请求 10 次</li>
+<li>没有授权的用户，所有用户 1 分钟最多只能请求 4000 次，防止更换 IP 进行攻击</li>
+</ol>
+</li>
+<li><p>简单地说，就是要不断提高攻击的成本，使得最坏情况下系统依然可以正常提供服务</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="1-5-总结"><a href="#1-5-总结" class="headerlink" title="1.5 总结"></a>1.5 总结</h5><p>在短链服务的设计思路上，最重要是解决两个问题：根据长链生成短链、根据短链找到长链。在根据长链生成短链的思路上，有两种实现思路，分别是：哈希算法生成短链、分布式全局 ID 生成短链，其中哈希算法涉及到哈希算法的选择，以及哈希冲突的处理</p>
+<p>最后还列举了一些短链服务后续可能的优化点，包括：如何让网址变得更短、索引优化、增加热点数据、读写分离、分库分表、防止恶意攻击等等</p>
+<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7qz95bl1zj30u00l77d9.jpg" alt="image.png" style="zoom:100%;" /></div>
+
+<h4 id="2-如何设计一个秒杀系统"><a href="#2-如何设计一个秒杀系统" class="headerlink" title="2. 如何设计一个秒杀系统"></a>2. 如何设计一个秒杀系统</h4><p>参考链接：<a href="https://mp.weixin.qq.com/s/kWqgzMw4qKek7QUfkDSwNg">点击跳转</a></p>
+<p>秒杀系统的设计是高级职位面试中非常高频的一道题目，它可以较好地考察候选人的知识体系情况。对于我们来说，学习秒杀系统的设计，能够让我们学以致用，设计系统的时候考虑得更加全面</p>
+<p>活动一般出现在电商的促销活动中，一般是指定了很少数量的商品，以极低的价格，让大量的用户参与，从而造成大量用户在极短的时间内参与活动，进而造成系统在极短的时间内有极高的流量。系统设计的目的是使系统能够稳定地支撑活动的进行，因此其稳定性、高可用是我们考虑的第一位</p>
+<p>要知道如何进行秒杀系统的优化，那我们需要先对请求的整个流程有个全局的认识。<strong>一般来说，秒杀活动请求以公网为划分点，可以分为：前端部分、后端部分。</strong> 前端部分指的是从用户端到进入后端服务前的部分，包括了移动端的处理、DNS 解析、公网的数据传递等</p>
+<p>后端部分指的是经公网进入了后端的服务器网络里，包括了前置的负载均衡（Nginx 等）、应用服务器、数据库层等。秒杀活动的整个流程可以用下图来表示</p>
+<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7qzrdanrnj30r90bpn04.jpg" alt="image.png" style="zoom:80%;" /></div>
+
+<p>我们要去设计一个秒杀系统，那自然也是从这两大部分来进行优化。整体思路是尽量将流量挡在前面，让尽量少的流量留到后端部分。因为越往后端，我们的处理逻辑就越重，其处理能力也越弱</p>
+<h5 id="2-1-前端优化"><a href="#2-1-前端优化" class="headerlink" title="2.1 前端优化"></a>2.1 前端优化</h5><p>对于前端部分来说，常见的优化手段有：页面静态化 + CDN、请求频率限制</p>
+<h6 id="2-1-1-页面静态化-CDN"><a href="#2-1-1-页面静态化-CDN" class="headerlink" title="2.1.1 页面静态化 + CDN"></a>2.1.1 页面静态化 + CDN</h6><p>一般来说，活动页面是流量最大的地方。活动页面上绝大部分内容都是固定的，比如：商品描述、图片等。这时候没有必要每次都去请求服务端，而是将这些静态的内容放到 CDN 上</p>
+<p>每次打开页面的时候，直接去请求 CDN 服务器，能极大地减少后端的请求流量。加入了 CDN 之后，其请求过程如下：</p>
+<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7qzu0en0vj30k105ldh2.jpg" alt="image.png" style="zoom:100%;" /></div>
+
+<p>所谓的 CDN 就是内容分发网络，它由非常多台分布在世界各地的缓存服务器组成。每次用户请求特定域名的时候，会转发到对应 CDN 的 DNS 解析服务器，随后会返回一台离用户地理位置最近的一台 CDN 服务器</p>
+<p>随后，用户直接请求这台 CDN 服务器获取数据，从而极大地减少了长途网络传输的时间，并且也减少了后端服务器的压力</p>
+<p><strong>因此，对于秒杀活动设计来说，我们可以将所有可以静态化的内容全部静态化，然后将其配置在 CDN 服务器上。这样既提高了用户打开页面的时间，又减少了后端服务器的压力</strong></p>
+<h6 id="2-1-2-请求频率限制"><a href="#2-1-2-请求频率限制" class="headerlink" title="2.1.2 请求频率限制"></a>2.1.2 请求频率限制</h6><p>请求频率限制，指的是根据业务的特点，在前端做一些流量拦截，减少后端服务器的压力。常见的拦截方式有：</p>
+<ol>
+<li>设定一个请求概率，只允许 30% 的概率向后端发送接口请求。</li>
+<li>设定一个请求频率，例如 10 秒钟只能请求 1 次，随后按钮置灰</li>
+</ol>
+<p>通过这种方式，我们可以减少很大一部分流量。但在具体实现的时候，可能需要考虑安全问题，预防某些用户直接调用后台接口，绕过前端的频率检查</p>
+<p>常见的方法是在频率检查时生成一个参数，随后请求后端服务时携带上该参数。没有该参数的请求，都视为非法请求，直接拒绝该请求</p>
+<h5 id="2-2-后端优化"><a href="#2-2-后端优化" class="headerlink" title="2.2 后端优化"></a>2.2 后端优化</h5><p>无论我们做多大的努力，始终还是会有不少流量会来到后端服务器这里。一般来说，后端的优化有如下几种方式：</p>
+<ol>
+<li>增加缓存层 + 预热数据</li>
+<li>MQ 异步处理</li>
+<li>限流、熔断、兜底</li>
+<li>业务侧优化</li>
+</ol>
+<h6 id="2-2-1-增加缓存层-预热数据"><a href="#2-2-1-增加缓存层-预热数据" class="headerlink" title="2.2.1 增加缓存层 + 预热数据"></a>2.2.1 增加缓存层 + 预热数据</h6><p>如果我们所有数据都去读取数据库，数据库可能无法承受较大的流量，此时一个常见的优化就是增加缓存层</p>
+<p>当我们需要查询数据库之前，我们先去查询缓存，这样可以减少绝大部分的数据库请求，减轻数据库压力。如果在缓存中找不到数据，我们再去请求数据库，随后再将数据缓存到缓存中</p>
+<p>在引入缓存层的时候，我们需要考虑缓存击穿、缓存穿透的可能性，在写相关代码的时候就要做好这些优化。另外，我们在秒杀活动开始之前，可以手动将热点数据加载到缓存中，从而避免秒杀时去请求数据库</p>
+<h6 id="2-2-2-MQ-异步处理"><a href="#2-2-2-MQ-异步处理" class="headerlink" title="2.2.2 MQ 异步处理"></a>2.2.2 MQ 异步处理</h6><p>我们知道秒杀活动一般涉及抢购、下单、支付、发货等阶段，而抢购与后续的几个阶段是可以异步执行的。为了避免对下单、支付、发货等阶段产生影响，我们可以将抢购阶段与后续阶段用 MQ 进行解耦处理。当用户抢购成功后，往消息队列中丢入一台消息，随后再由订单系统消费进行下单处理</p>
+<p>通过各系统之间的解耦处理，我们可以将原本同步的处理方式变为异步处理，从而大大的减少了请求的处理时间，提高了系统的并发处理能力。其次，也能避免系统之间相互影响，提高了整体系统的稳定性</p>
+<h6 id="2-2-3-限流、熔断、兜底"><a href="#2-2-3-限流、熔断、兜底" class="headerlink" title="2.2.3 限流、熔断、兜底"></a>2.2.3 限流、熔断、兜底</h6><p>我们可以在每个业务系统做限流操作，从而避免因为请求太多，导致整个系统都无法工作。当并发请求在正常范围内时，我们正常处理请求。当超过设置的限流阈值时，我们则直接拒绝该请求，提示用户抢购失败</p>
+<p>如果没有限流操作，那么系统直接崩溃了，一个请求都处理不了。而通过限流这种方式，系统至少还可以保持正常工作，而不至于一个请求都处理不了。而超量的需求，本来就处理不了，因此提示失败也是情理之中</p>
+<p>除了限流之外，不同的系统还可以采用熔断、降级的服务治理措施</p>
+<p>熔断指的是请求的错误次数超过阈值时，不再到用后端服务，直接返回失败。同时每隔一定时间放几个请求去重试后端服务，看看是否正常。如果正常则关闭熔断状态，如果失败则继续快速失败。<strong>熔断的目的是避免因下游短暂的异常，导致上游不断重试，最终造成下游有太多请求，最终压垮下游系统</strong></p>
+<p>降级指的是当服务失败或异常后，返回指定的默认信息。<strong>降级的目的是保证有基本的信息，当下游异常时，与其返回空信息，不如返回一个有业务含义的默认信息，可以提高用户体验</strong></p>
+<h6 id="2-2-4-业务侧优化"><a href="#2-2-4-业务侧优化" class="headerlink" title="2.2.4 业务侧优化"></a>2.2.4 业务侧优化</h6><p>一般来说，经过上述的整体优化之后，系统已经能够比较稳当地应对秒杀活动了。如果此时还是流量比较大，那么或许应该从业务侧去进行优化了</p>
+<p>例如 12306 刚开始的时候，购买时间都在同一时刻，这导致同一时刻并发量太大，系统经常支撑不住。后来 12306 将购票周期放长，可以提前 20 天购买火车票。通过业务侧的优化，我们将本来在 1 个小时的抢购分摊到了 20 天，服务器压力一下子降低了 480 倍</p>
+<p><strong>因此从业务侧进行优化，是一个四两拨千斤的办法，可以极大地降低技术侧实现的难度</strong></p>
+<h5 id="2-3-总结"><a href="#2-3-总结" class="headerlink" title="2.3 总结"></a>2.3 总结</h5><p>设计一个秒杀系统，整体而言可以从前端与后端进行优化。</p>
+<p><strong>对于前端优化而言，可以从「页面静态化 + CDN」、请求频率限制进行优化</strong></p>
+<p>其中「页面静态化 + CDN」指的是将不变的静态数据固定下来，然后放入 CDN 服务器，从而降低用户请求的响应速度，降低服务器的并发压力。请求频率限制，则是通过抢购概率与抢购频率限制，降低后端服务器的服务压力。</p>
+<p><strong>对于后端优化而言，一般有「增加缓存层 + 预热数据」、「MQ 异步处理」、「限流、熔断、降级」、业务侧优化这 4 种优化方式</strong></p>
+<p>其中「增加缓存层 + 预热数据」指的是将热点数据存入缓存，并在活动开始前提前加载到缓存中，降低数据库层的读取压力。「MQ 异步处理」指的是对于非必要的业务逻辑，通过 MQ 进行异步处理，降低请求处理延时，同时提高业务系统整体稳定性</p>
+<p>「限流、熔断、降级」是对于整体微服务的保护，其中限流指的是对请求进行限制，当超过限流阈值时，直接拒绝请求，保护系统本身；熔断指的是保护下游系统，当请求下游系统连续错误超过阈值时，自动不去请求下游系统，避免因重试流量过大击垮下游系统。</p>
+<p>降级指的是当请求失败时，自动返回默认数据，提高用户体验。业务侧优化，则是指从业务层面去进行逻辑优化，从而降低技术复杂度，使得业务与技术复杂度达到一个平衡的状态，有利于更好地实现秒杀系统的高可用与高并发。</p>
+<p>上面说到的 6 个优化思路，是设计秒杀系统常见的优化思路。<strong>但在实际业务场景中，除了要保障正常的功能设计之外，还还考虑防刷、安全、黑产等问题</strong>，此时可能需要多考虑一些其他优化，例如：黄牛利用抢购工具抢购，导致正常用户无法抢到商品等</p>
+<p>这时候可能需要考虑增加验证码，用 App 设备指纹等风控措施。<strong>此外，对于秒杀系统而言，做好业务指标和系统指标的埋点监控也是非常重要的</strong></p>
+<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7r06ob49vj30u00e145t.jpg" alt="image.png" style="zoom:100%;" /></div>
+
+
+
+<hr>
+]]></content>
+      <categories>
+        <category>后端</category>
+      </categories>
+      <tags>
+        <tag>系统设计与架构</tag>
       </tags>
   </entry>
   <entry>
@@ -1490,381 +1865,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Redis面试题</title>
-    <url>/2022/10/28/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p>Redis面试常见问题汇总</p>
-<h4 id="1-Redis的数据结构及使用场景"><a href="#1-Redis的数据结构及使用场景" class="headerlink" title="1. Redis的数据结构及使用场景"></a>1. Redis的数据结构及使用场景</h4><ul>
-<li><p>String字符串</p>
-<p>字符串类型是 Redis 最基础的数据结构，首先键都是字符串类型，而且 其他几种数据结构都是在字符串类型基础上构建的，我们常使用的 set key value 命令就是字符串。常用在缓存、计数、共享Session、限速等</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>Hash哈希</p>
-<p>在Redis中，哈希类型是指键值本身又是一个键值对结构，哈希可以用来存放用户信息，比如实现购物车</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>List列表（双向链表）</p>
-<p>列表（list）类型是用来存储多个有序的字符串。可以做简单的消息队列的功能</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>Set集合</p>
-<p>集合（set）类型也是用来保存多个的字符串元素，但和列表类型不一 样的是，集合中不允许有重复元素，并且集合中的元素是无序的，不能通过索引下标获取元素。利用 Set 的交集、并集、差集等操作，可以计算共同喜好，全部的喜好，自己独有的喜好等功能</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>Sorted Set有序集合（跳表实现）</p>
-<p>Sorted Set 多了一个权重参数 Score，集合中的元素能够按 Score 进行排列。可以做排行榜应用，取 TOP N 操作</p>
-</li>
-</ul>
-<h4 id="2-Redis持久化的几种方式"><a href="#2-Redis持久化的几种方式" class="headerlink" title="2. Redis持久化的几种方式"></a>2. Redis持久化的几种方式</h4><p>Redis为了保证效率，数据缓存在了内存中，但是会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件中，以保证数据的持久化。Redis的持久化策略有两种：</p>
-<ul>
-<li><strong>RDB：</strong> 快照形式是直接把内存中的数据保存到一个dump的文件中，定时保存，保存策略<ul>
-<li>当Redis需要做持久化时，Redis会fork一个子进程，子进程将数据写到磁盘上一个临时RDB文件中。当子进程完成写临时文件后，将原来的RDB替换掉</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><strong>AOF：</strong> 把所有的对Redis的服务器进行修改的命令都存到一个文件里，命令的集合<ul>
-<li>使用AOF做持久化，每一个写命令都通过write函数追加到<code>appendonly.aof</code>中</li>
-<li>aof的默认策略是每秒钟fsync一次，在这种配置下，就算发生故障停机，也最多丢失一秒钟的数据</li>
-<li>缺点是对于相同的数据集来说，AOF的文件体积通常要大于RDB文件的体积。根据所使用的fsync策略，AOF的速度可能会慢于RDB</li>
-</ul>
-</li>
-</ul>
-<p>Redis默认是快照RDB的持久化方式。对于主从同步来说，主从刚刚连接的时候，进行全量同步（RDB），全同步结束后，进行增量同步(AOF)</p>
-<h4 id="3-Redis的LRU具体实现"><a href="#3-Redis的LRU具体实现" class="headerlink" title="3. Redis的LRU具体实现"></a>3. Redis的LRU具体实现</h4><ul>
-<li>传统的LRU是使用栈的形式，每次都将最新使用的移入栈顶，但是用栈的形式会导致执行<code>select *</code>的时候大量非热点数据占领头部数据，所以需要改进</li>
-<li>Redis每次按key获取一个值的时候，都会更新value中的lru字段为当前秒级别的时间戳。Redis初始的实现算法很简单，随机从dict中取出五个key，淘汰一个lru字段值最小的</li>
-<li>在3.0的时候，又改进了一版算法，首先第一次随机选取的key都会放入一个pool中(pool的大小为16)，pool中的key是按lru大小顺序排列的</li>
-<li>接下来每次随机选取的keylru值必须小于pool中最小的lru才会继续放入，直到将pool放满。放满之后，每次如果有新的key需要放入，需要将pool中lru最大的一个key取出。淘汰的时候，直接从pool中选取一个lru最小的值然后将其淘汰</li>
-</ul>
-<h4 id="4-单线程的Redis为什么快"><a href="#4-单线程的Redis为什么快" class="headerlink" title="4. 单线程的Redis为什么快"></a>4. 单线程的Redis为什么快</h4><ul>
-<li>纯内存操作</li>
-<li>单线程操作，避免了频繁的上下文切换</li>
-<li>合理高效的数据结构</li>
-<li>采用了非阻塞I&#x2F;O多路复用机制</li>
-</ul>
-<h4 id="5-Redis的数据过期策略"><a href="#5-Redis的数据过期策略" class="headerlink" title="5. Redis的数据过期策略"></a>5. Redis的数据过期策略</h4><p>Redis 中数据过期策略采用<strong>定期删除</strong>和<strong>惰性删除</strong>策略：</p>
-<ul>
-<li>定期删除策略<ul>
-<li>Redis 启用一个定时器定时监视所有的 key，判断key是否过期，过期的话就删除</li>
-<li>这种策略可以保证过期的 key 最终都会被删除，但是也存在严重的缺点：每次都遍历内存中所有的数据，非常消耗 CPU资源，并且当 key 已过期，但是定时器还处于未唤起状态，这段时间内 key 仍然可以用</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li>惰性删除策略<ul>
-<li>在获取 key 时，先判断 key 是否过期，如果过期则删除</li>
-<li>这种方式存在一个缺点：如果这个 key一直未被使用，那么它一直在内存中，其实它已经过期了，会浪费大量的空间</li>
-</ul>
-</li>
-</ul>
-<p>这两种策略天然的互补，结合起来之后，定时删除策略就发生了一些改变，不在是每次扫描全部的 key 了，而是随机抽取一部分 key 进行检查，这样就降低了对 CPU 资源的损耗，惰性删除策略互补了为检查到的key，基本上满足了所有要求</p>
-<p>但是有时候就是那么的巧，既没有被定时器抽取到，又没有被使用，这些数据又如何从内存中消失？这个时候就需要用到了，内存淘汰机制</p>
-<h5 id="5-1-内存淘汰机制"><a href="#5-1-内存淘汰机制" class="headerlink" title="5.1 内存淘汰机制"></a>5.1 内存淘汰机制</h5><ul>
-<li>当内存不足以容纳新写入数据时，新写入操作会报错。（Redis 默认策略）</li>
-<li>当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的 Key。（LRU推荐使用）</li>
-<li>当内存不足以容纳新写入数据时，在键空间中，随机移除某个 Key</li>
-<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，移除最近最少使用的 Key。这种情况一般是把 Redis 既当缓存，又做持久化存储的时候才用</li>
-<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，随机移除某个 Key</li>
-<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，有更早过期时间的 Key 优先移除</li>
-</ul>
-<h4 id="6-如何解决Redis缓存雪崩问题"><a href="#6-如何解决Redis缓存雪崩问题" class="headerlink" title="6. 如何解决Redis缓存雪崩问题"></a>6. 如何解决Redis缓存雪崩问题</h4><ul>
-<li>使用 Redis 高可用架构：使用 Redis 集群来保证 Redis 服务不会挂掉</li>
-<li>缓存时间不一致，给缓存的失效时间，加上一个随机值，避免集体失效</li>
-<li>限流降级策略：有一定的备案，比如个性推荐服务不可用了，换成热点数据推荐服务</li>
-</ul>
-<h4 id="7-如何解决Redis缓存穿透问题"><a href="#7-如何解决Redis缓存穿透问题" class="headerlink" title="7. 如何解决Redis缓存穿透问题"></a>7. 如何解决Redis缓存穿透问题</h4><ul>
-<li>在接口层做校验</li>
-<li>存null值（缓存击穿加锁）</li>
-<li>布隆过滤器拦截：将所有可能的查询key 先映射到布隆过滤器中，查询时先判断key是否存在布隆过滤器中，存在才继续向下执行，如果不存在，则直接返回<br>布隆过滤器将值进行多次哈希bit存储，布隆过滤器说某个元素在，可能会被误判。布隆过滤器说某个元素不在，那么一定不在</li>
-</ul>
-<h4 id="8-Redis并发竞争key如何解决"><a href="#8-Redis并发竞争key如何解决" class="headerlink" title="8. Redis并发竞争key如何解决"></a>8. Redis并发竞争key如何解决</h4><ul>
-<li>可以利用分布式锁和时间戳来解决</li>
-<li>利用消息队列解决</li>
-</ul>
-<h4 id="9-Redis的主从模式和哨兵模式和集群模式区别"><a href="#9-Redis的主从模式和哨兵模式和集群模式区别" class="headerlink" title="9. Redis的主从模式和哨兵模式和集群模式区别"></a>9. Redis的主从模式和哨兵模式和集群模式区别</h4><p>Redis集群方式共有三种：<strong>主从模式</strong>，<strong>哨兵模式</strong>，<strong>集群(cluster)模式</strong></p>
-<ul>
-<li><p>主从模式</p>
-<p>主从模式是三种集群方式里最简单的。它主要是基于Redis的主从复制特性架构的。通常我们会设置一个主节点，N个从节点;默认情况下，主节点负责处理使用者的IO操作，而从节点则会对主节点的数据进行备份，并且也会对外提供读操作的处理。主要的特点如下：</p>
-<ul>
-<li>主从模式下，当某一节点损坏时，因为其会将数据备份到其它Redis实例上，这样做在很大程度上可以恢复丢失的数据</li>
-<li>主从模式下，可以保证负载均衡.</li>
-<li>主从模式下，主节点和从节点是读写分离的。使用者不仅可以从主节点上读取数据，还可以很方便的从从节点上读取到数据，这在一定程度上缓解了主机的压力</li>
-</ul>
-<p>从节点也是能够支持写入数据的，只不过从从节点写入的数据不会同步到主节点以及其它的从节点下。从以上，我们不难看出Redis在主从模式下，必须保证主节点不会宕机——一旦主节点宕机，其它节点不会竞争称为主节点，此时，Redis将丧失写的能力。这点在生产环境中，是致命的</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>哨兵模式</p>
-<p>哨兵模式是基于主从模式做的一定变化，它能够为Redis提供了高可用性</p>
-<p>在实际生产中，服务器难免不会遇到一些突发状况：服务器宕机，停电，硬件损坏等。这些情况一旦发生，其后果往往是不可估量的</p>
-<p>而哨兵模式在一定程度上能够帮我们规避掉这些意外导致的灾难性后果。其实，哨兵模式的核心还是主从复制</p>
-<p>只不过相对于主从模式在主节点宕机导致不可写的情况下，多了一个竞选机制——从所有的从节点竞选出新的主节点。竞选机制的实现，是依赖于在系统中启动一个sentinel进程。sentinel特点：</p>
-<ul>
-<li>监控：它会监听主服务器和从服务器之间是否在正常工作</li>
-<li>通知：它能够通过API告诉系统管理员或者程序，集群中某个实例出了问题。</li>
-<li>故障转移：它在主节点出了问题的情况下，会在所有的从节点中竞选出一个节点，并将其作为新的主节点。</li>
-<li>提供主服务器地址：它还能够向使用者提供当前主节点的地址。这在故障转移后，使用者不用做任何修改就可以知道当前主节点地址</li>
-</ul>
-<p>sentinel，也可以集群，部署多个哨兵，sentinel可以通过发布与订阅来自动发现Redis集群上的其它sentinel。sentinel在发现其它sentinel进程后，会将其放入一个列表中，这个列表存储了所有已被发现的sentinel</p>
-<p>集群中的所有sentinel不会并发着去对同一个主节点进行故障转移。故障转移只会从第一个sentinel开始，当第一个故障转移失败后，才会尝试下一个</p>
-<p>当选择一个从节点作为新的主节点后，故障转移即成功了(而不会等到所有的从节点配置了新的主节点后)。这过程中，如果重启了旧的主节点，那么就会出现无主节点的情况，这种情况下，只能重启集群</p>
-<p>当竞选出新的主节点后，被选为新的主节点的从节点的配置信息会被sentinel改写为旧的主节点的配置信息。完成改写后，再将新主节点的配置广播给所有的从节点</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>集群模式</p>
-<p>Redis 集群是一个提供在多个Redis间节点间共享数据的程序集， 其中Redis集群分为主节点和从节点。主节点用于处理槽，而从节点用于复制某个主节点，并在被复制的主节点下线时，代替下线的主节点继续处理命令请求</p>
-<p>Redis集群并不支持处理多个keys的命令，因为这需要在不同的节点间移动数据，从而达不到像Redis那样的性能，在高负载的情况下可能会导致不可预料的错误</p>
-<p>Redis 集群通过分区来提供一定程度的可用性，在实际环境中当某个节点宕机或者不可达的情况下继续处理命令. Redis 集群的优势：自动分割数据到不同的节点上</p>
-<p>整个集群的部分节点失败或者不可达的情况下能够继续处理命令</p>
-<p>Redis集群的数据分片 Redis 集群没有使用一致性hash， 而是引入了哈希槽的概念</p>
-<p>Redis 集群有16384个哈希槽，每个key通过CRC16校验后对16384取模来决定放置哪个槽.集群的每个节点负责一部分hash槽</p>
-</li>
-</ul>
-<h4 id="10-Redis事物的了解CheckAndSet操作实现乐观锁"><a href="#10-Redis事物的了解CheckAndSet操作实现乐观锁" class="headerlink" title="10. Redis事物的了解CheckAndSet操作实现乐观锁"></a>10. Redis事物的了解CheckAndSet操作实现乐观锁</h4><p>和众多其它数据库一样，Redis作为NoSQL数据库也同样提供了事务机制。在Redis中，<code>MULTI</code>，<code>EXEC</code>，<code>DISCARD</code>，<code>WATCH</code>这四个命令是我们实现事务的基石。相信对有关系型数据库开发经验的开发者而言这一概念并不陌生，即便如此，我们还是会简要的列出 Redis中事务的实现特征 ：</p>
-<ul>
-<li>在事务中的所有命令都将会被串行化的顺序执行，事务执行期间，Redis不会再为其它客户端的请求提供任何服务，从而保证了事物中的所有命令被原子的执行</li>
-<li>和关系型数据库中的事务相比，在Redis事务中如果有某一条命令执行失败，其后的命令仍然会被继续执行</li>
-<li>我们可以通过MULTI命令开启一个事务，有关系型数据库开发经验的人可以将其理解为”BEGIN TRANSACTION”语句。在该语句之后执行的命令都将被视为事务之内的操作，最后我们可以通过执行<code>EXEC</code>，<code>DISCARD</code>命令来提交，回滚该事务内的所有操作。这两个Redis命令可被视为等同于关系型数据库中的COMMIT&#x2F;ROLLBACK语句</li>
-<li>在事务开启之前，如果客户端与服务器之间出现通讯故障并导致网络断开，其后所有待执行的语句都将不会被服务器执行。然而如果网络中断事件是发生在客户端执行EXEC命令之后，那么该事务中的所有命令都会被服务器执行</li>
-<li>当使用<code>Append-Only</code>模式时，Redis会通过调用系统函数write将该事务内的所有写操作在本次调用中全部写入磁盘。然而如果在写入的过程中出现系统崩溃，如电源故障导致的宕机，那么此时也许只有部分数据被写入到磁盘，而另外一部分数据却已经丢失。Redis服务器会在重新启动时执行一系列必要的一致性检测，一旦发现类似问题，就会立即退出并给出相应的错误提示。此时，我们就要充分利用Redis工具包中提供的<code>redis-check-aof</code>工具，该工具可以帮助我们定位到数据不一致的错误，并将已经写入的部分数据进行回滚。修复之后我们就可以再次重新启动Redis服务器了</li>
-</ul>
-<h4 id="11-Redis有序集合zset底层怎么实现的"><a href="#11-Redis有序集合zset底层怎么实现的" class="headerlink" title="11. Redis有序集合zset底层怎么实现的"></a>11. Redis有序集合zset底层怎么实现的</h4><ul>
-<li>跳表是一个随机化的数据结构，实质就是一种可以进行二分查找的有序链表</li>
-<li>跳表在原有的有序链表上面增加了多级索引，通过索引来实现快速查找</li>
-<li>跳表不仅能提高搜索性能，同时也可以提高插入和删除操作的性能</li>
-</ul>
-<hr>
-<ul>
-<li>跳表是可以实现二分查找的有序链表</li>
-<li>每个元素插入时随机生成它的level</li>
-<li>最低层包含所有的元素</li>
-<li>如果一个元素出现在level(x)，那么它肯定出现在x以下的level中</li>
-<li>每个索引节点包含两个指针，一个向下，一个向右</li>
-<li>跳表查询、插入、删除的时间复杂度为O(log n)，与平衡二叉树接近</li>
-</ul>
-<hr>
-<h5 id="11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN"><a href="#11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN" class="headerlink" title="11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))"></a>11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))</h5><p>首先，我们来分析下Redis的有序集合支持的操作：</p>
-<ul>
-<li>插入元素</li>
-<li>删除元素</li>
-<li>查找元素</li>
-<li>有序输出所有元素</li>
-<li>查找区间内所有元素</li>
-</ul>
-<p>其中，前4项红黑树都可以完成，且时间复杂度与跳表一致。但是，最后一项，红黑树的效率就没有跳表高了。在跳表中，要查找区间的元素，我们只要定位到两个区间端点在最低层级的位置，然后按顺序遍历元素就可以了，非常高效</p>
-<p>而红黑树只能定位到端点后，再从首位置开始每次都要查找后继节点，相对来说是比较耗时的。此外，跳表实现起来很容易且易读，红黑树实现起来相对困难，所以Redis选择使用跳表来实现有序集合</p>
-<h4 id="12-跳表的查询过程是怎么样的，查询和插入的时间复杂度"><a href="#12-跳表的查询过程是怎么样的，查询和插入的时间复杂度" class="headerlink" title="12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度"></a>12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度</h4><p>先从第一层查找，不满足就下沉到第二层找，因为每一层都是有序的，写入和插入的时间复杂度都是O(logN)</p>
-<hr>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>八股文</tag>
-        <tag>Redis</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>系统设计与架构</title>
-    <url>/2022/11/01/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%B6%E6%9E%84/</url>
-    <content><![CDATA[<p>系统设计与架构常见题整理</p>
-<h4 id="1-如何设计一个短链服务"><a href="#1-如何设计一个短链服务" class="headerlink" title="1. 如何设计一个短链服务"></a>1. 如何设计一个短链服务</h4><p>参考链接：<a href="https://mp.weixin.qq.com/s/33lcKX3bLUAC-Mj0VlXa6A">点击跳转</a></p>
-<h5 id="1-1-短链的价值"><a href="#1-1-短链的价值" class="headerlink" title="1.1 短链的价值"></a>1.1 短链的价值</h5><ul>
-<li><strong>更加简洁：</strong>比起一长串无意义的问题，只有差不多 10 个字符的字符串显然更加简洁</li>
-<li><strong>便于使用：</strong>第一，有些平台对内容长度有限制（微博只能发 140 个字），此时短网址就可以输入更多内容。第二，我们将链接转为二维码时，短链接生成的二维码更容易识别。第三，有些平台无法识别特殊的长链参数，转为短链就没这个问题</li>
-<li><strong>节省成本：</strong>当我们需要发短信的时候，短信是按照长度计费的，短网址可以节省成本</li>
-</ul>
-<h5 id="1-2-短链的原理"><a href="#1-2-短链的原理" class="headerlink" title="1.2 短链的原理"></a>1.2 短链的原理</h5><p>当我们输入短链时，其实访问的是短链服务器的地址。短链服务器获取到对应的长链地址之后，返回一个 302 的 HTTP 响应，在响应中包含了长链接地址。浏览器收到响应后，转而去请求长链接地址。 访问短链的整个流程如下图所示：</p>
-<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7qyiustgcj30e307zq3t.jpg" alt="image.png" style="zoom:90%;" /></div>
-
-<p>从上面的流程中可以知道，短链涉及到的技术原理主要有两点，分别是：HTTP 重定向和短链服务的设计</p>
-<p>对于 HTTP 重定向来说，301 和 302 都是重定向：</p>
-<ul>
-<li>301 代表永久重定向。它表示第一次拿到长链接之后，下次浏览器如果再去请求短链的话，不会再向短链服务器请求了，而是直接从浏览器的缓存中获取。</li>
-<li>302 代表临时重定向。它表示每次请求短链都会去请求短链服务器，不会从浏览器缓存中获取</li>
-</ul>
-<p>如果我们希望统计短链接的点击次数信息，从而来分析活动的效果的话。那么我们就需要使用 302 重定向码，这样才能获取到每次的请求数据。 一般情况下，我们都是需要获取到请求的数据的，因此对于短链服务都是用 302 临时重定向</p>
-<h5 id="1-3-实现思路"><a href="#1-3-实现思路" class="headerlink" title="1.3 实现思路"></a>1.3 实现思路</h5><p>系统的处理流程：</p>
-<ol>
-<li>用户访问短链生成页面，输入长链字符串，短链服务返回生成的短链</li>
-<li>用户访问短链，短链服务返回 302 响应，用户浏览器跳转到长链地址</li>
-</ol>
-<p>如果我们要实现上面的系统流程，我们大致的处理思路是：</p>
-<ol>
-<li><strong>生成短链。</strong> 生成短链时，短链服务获取到长链，随后生成一个短链，并把短链与长链的映射关系保存下来，最后将短链返回给用户</li>
-<li><strong>找到长链。</strong> 访问短链时，短链服务获取到短链，根据短链去获取到长链，返回返回 302 响应</li>
-</ol>
-<p>根据上面的分析，我们可以知道短链系统设计主要得解决如下两个问题：</p>
-<ol>
-<li>如何根据长链生成唯一短链？</li>
-<li>如何保存短链与长链的映射关系</li>
-</ol>
-<p>对于第 1 点，我们有 2 个思路生成一个唯一短链，分别是：</p>
-<ol>
-<li>使用哈希算法生成唯一值</li>
-<li>使用分布式唯一 ID 生成作为锻炼 ID</li>
-</ol>
-<p>对于第 2 点，保存短链与长链的映射关系，考虑到持久性的问题，我们肯定需要落库，所以使用 MySQL 表保存即可。如果有需要的话，可以在 MySQL 前做一层缓存。因此第 2 点相对来说比较简单</p>
-<hr>
-<h6 id="1-3-1-哈希算法生成短链"><a href="#1-3-1-哈希算法生成短链" class="headerlink" title="1.3.1 哈希算法生成短链"></a>1.3.1 哈希算法生成短链</h6><p>要生成一个短链，我们可以将原有的长链做一次哈希，然后就可以得到一个哈希值，计算哈希值会遇到如下2个问题：</p>
-<p><strong>使用什么哈希算法</strong></p>
-<p>我们都知道哈希算法是一种摘要算法，它的作用是：对任意一组输入数据进行计算，得到一个固定长度的输出摘要。我们常见的哈希算法有：MD5、SHA-1、SHA-256、SHA-512 算法等。但我们最好还是使用另一种叫做 MurmurHash 的哈希算法。为什么呢</p>
-<p>因为 MD5 和 SHA 哈希算法，它们都是加密的哈希算法，也就是说我们无法从哈希值反向推导出原文，从而保证了原文的保密性</p>
-<p>但对于我们这个场景而言，我们并不关心安全性，我们关注的是运算速度以及哈希冲突。而 MurmurHash 算法是一个非加密哈希算法，所以它的速度回更快</p>
-<p><strong>哈希冲突</strong></p>
-<p>学过 HashMap 的同学都知道，哈希冲突是哈希算法不可避免的问题。而解决哈希冲突的方式有两种，分别是：链表法和重哈希法。HashMap 使用了链表法，但我们这里使用的是重哈希法</p>
-<p>所谓的重哈希法，指的是当发生哈希冲突的时候，我们在原有长链后面加上固定的特殊字符，后续拿出长链时再将其去掉，如下所示</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">原有长链：https://mp.weixin.qq.com/s1caec8eb1b81d6ee5dd7b</span><br><span class="line">              ↓↓  </span><br><span class="line">           发生哈希冲突</span><br><span class="line">              ↓↓  </span><br><span class="line">补上特殊字符：https://mp.weixin.qq.com/s1caec8eb1b81d6ee5dd7b[SPECIAL-CHARACTER]</span><br><span class="line">              ↓↓  </span><br><span class="line">           再次进行哈希</span><br></pre></td></tr></table></figure>
-
-<p>通过这种办法，我们就可以解决哈希冲突的问题了。如果再次发生，那么就再进行哈希，一直到不冲突位置。一般来说，哈希冲突的可能性微乎其微</p>
-<p>好了，现在我们通过哈希算法得到了一个哈希值：<code>29541341303115543223957290326355</code>，变成了这样：<code>http://dwz.com/29541341303115543223957290326355</code></p>
-<p>有没有办法让网址变得再短一点呢</p>
-<p>我们知道在网址 URL 中，常用的合法字符有 0～9、a～z、A～Z 这样 62 个字符。如果我们用哈希值与 62 取余，那么余数肯定是在 0-61 之间</p>
-<p>这 62 个数字刚好与 62 个合法网址字符一一对应。接着，我们再用除 62 得到的值，再次与 62 取余，一直到位 0 为止。通过这样的处理，我们就可以得到一个字符为 62 个字符、长度很短的字符串了</p>
-<p>上面讲有点晦涩难懂，我们来举个例子。假设我们得到的哈希值为 181338494，那么上面的处理流程为：</p>
-<ol>
-<li>将 181338494 除以 62，得到结果为 2924814，余数为 26，此时余数 26 对应字符为 q。</li>
-<li>将 2924814 除以 62，得到结果为 47174，余数为 26，此时余数 26 对应字符为 q。</li>
-<li>将 47174 除以 62，得到结果为 760，余数为 54，此时余数 54 对应字符为 S。</li>
-<li>省略剩余步骤</li>
-</ol>
-<p>整个处理流程如下图所示：</p>
-<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7qyyjct7rj30ia0bk405.jpg" alt="image.png" style="zoom:90%;" /></div>
-
-<p>可以看到，我们把 181338494 这个十进制数，转成了由合法网址字符组成的「62 进制数」—— <code>cgSqq</code></p>
-<p>到这里，我们不仅生成了短链，还将短链的长度极大地缩短了</p>
-<p>这就是使用哈希算法生成唯一锻炼的全部内容了，我们总结一下：<strong>首先，使用 MurmurHash 生成哈希值，并且用重哈希法解决哈希冲突的问题。接着，将 10 进制的哈希值转成 62 进制的合法网址字符，从而缩短网址长度</strong></p>
-<h6 id="1-3-2-分布式-ID-生成短链"><a href="#1-3-2-分布式-ID-生成短链" class="headerlink" title="1.3.2 分布式 ID 生成短链"></a>1.3.2 分布式 ID 生成短链</h6><p>上面使用哈希算法生成唯一短链的方式，相对来说是比较形象的。但其实我们也可以用分布式 ID 的方式，来完成唯一短链的生成</p>
-<p>例如第一次请求的长链，我们为其生成一个唯一 ID，将其长链与唯一 ID 对应起来。第二次请求，我们再为其生成一个唯一 ID，再次将长链与唯一 ID 对应起来，如下所示。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">第一次请求：https://mp.weixin.qq.com/s1caec8eb1b81d6ee5dd7b</span><br><span class="line">              ↓↓  </span><br><span class="line">生成短链：https://dwz.com/1021000001</span><br><span class="line"></span><br><span class="line">第一次请求：https://mp.weixin.qq.com/s1caec8eb1b81d6ee5ff7b</span><br><span class="line">              ↓↓  </span><br><span class="line">生成短链：https://dwz.com/1021000002</span><br></pre></td></tr></table></figure>
-
-<p>因为生成的唯一 ID 也可能非常长，因此我们可以采用上面同样的方式，将 10 进制的唯一 ID 转成 62 进制的合法网址字符，从而缩短字符长度</p>
-<p>那么接下来的问题就变成了：如何设计一个全局唯一 ID 发号器了</p>
-<p>对于如何设计一个全局唯一的 ID 发号器，就属于另外一个话题，我们这里就不深入探讨了</p>
-<h5 id="1-4-性能优化"><a href="#1-4-性能优化" class="headerlink" title="1.4 性能优化"></a>1.4 性能优化</h5><p>看到这里，我们基本上有了一个完整的思路：拿到长链地址后，可以用哈希算法或唯一 ID 分号器获取唯一字符串，从而建立长链与短链的映射关系。为了缩短短链长度，我们还可以将其用 62 进制数表示，整个短链生成过程如下图所示</p>
-<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7qz2vgn49j30f10d3gn7.jpg" alt="image.png" style="zoom:80%;" /></div>
-
-<p>短链生成完，并且已经存到了数据库中，接下里该使用了。通常的做法是会根据请求的短链字符串，从数据库中找到数据，然后返回 HTTP 重定向原始地址。而在不断使用过程中，还有一些可能发现的优化点，这里简单讲讲</p>
-<ul>
-<li><p>索引优化</p>
-<ul>
-<li>如果使用关系型数据库的话，对于短链字段需要创建唯一索引，从而加快查询速度</li>
-</ul>
-</li>
-<li><p>增加缓存</p>
-<ul>
-<li>并发量小的时候，我们都是直接访问数据库。但当并发量再次升高时，需要加上缓存抗住热点数据的访问</li>
-</ul>
-</li>
-<li><p>读写分离</p>
-<ul>
-<li>短链服务肯定是读远大于写的，因此对于短链服务，可以做好读写分离</li>
-</ul>
-</li>
-<li><p>分库分表</p>
-<ul>
-<li>如果是商用的短链服务，那么数据量上亿是很正常的，更不用说常年累月积累下的量了。这时候可以一开始就做好分库分表操作，避免后期再大动干戈</li>
-<li>对于分库分表来说，最关键的便是根据哪个字段去作为分库分表的依据了。对于短链服务来说，当然是用转化后的 62 进制数字做分表依据了，因为它是唯一的嘛</li>
-</ul>
-</li>
-<li><p>防止恶意攻击</p>
-<ul>
-<li><p>开放到公网的服务，什么事情都可能发生，其中一个可能的点就是被恶意攻击，不断循环调用</p>
-</li>
-<li><p>一开始我们可以做一下简单地限流操作，例如：</p>
-<ol>
-<li>没有授权的用户，根据 IP 进行判断，1 分钟最多只能请求 10 次</li>
-<li>没有授权的用户，所有用户 1 分钟最多只能请求 4000 次，防止更换 IP 进行攻击</li>
-</ol>
-</li>
-<li><p>简单地说，就是要不断提高攻击的成本，使得最坏情况下系统依然可以正常提供服务</p>
-</li>
-</ul>
-</li>
-</ul>
-<h5 id="1-5-总结"><a href="#1-5-总结" class="headerlink" title="1.5 总结"></a>1.5 总结</h5><p>在短链服务的设计思路上，最重要是解决两个问题：根据长链生成短链、根据短链找到长链。在根据长链生成短链的思路上，有两种实现思路，分别是：哈希算法生成短链、分布式全局 ID 生成短链，其中哈希算法涉及到哈希算法的选择，以及哈希冲突的处理</p>
-<p>最后还列举了一些短链服务后续可能的优化点，包括：如何让网址变得更短、索引优化、增加热点数据、读写分离、分库分表、防止恶意攻击等等</p>
-<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7qz95bl1zj30u00l77d9.jpg" alt="image.png" style="zoom:100%;" /></div>
-
-<h4 id="2-如何设计一个秒杀系统"><a href="#2-如何设计一个秒杀系统" class="headerlink" title="2. 如何设计一个秒杀系统"></a>2. 如何设计一个秒杀系统</h4><p>参考链接：<a href="https://mp.weixin.qq.com/s/kWqgzMw4qKek7QUfkDSwNg">点击跳转</a></p>
-<p>秒杀系统的设计是高级职位面试中非常高频的一道题目，它可以较好地考察候选人的知识体系情况。对于我们来说，学习秒杀系统的设计，能够让我们学以致用，设计系统的时候考虑得更加全面</p>
-<p>活动一般出现在电商的促销活动中，一般是指定了很少数量的商品，以极低的价格，让大量的用户参与，从而造成大量用户在极短的时间内参与活动，进而造成系统在极短的时间内有极高的流量。系统设计的目的是使系统能够稳定地支撑活动的进行，因此其稳定性、高可用是我们考虑的第一位</p>
-<p>要知道如何进行秒杀系统的优化，那我们需要先对请求的整个流程有个全局的认识。<strong>一般来说，秒杀活动请求以公网为划分点，可以分为：前端部分、后端部分。</strong> 前端部分指的是从用户端到进入后端服务前的部分，包括了移动端的处理、DNS 解析、公网的数据传递等</p>
-<p>后端部分指的是经公网进入了后端的服务器网络里，包括了前置的负载均衡（Nginx 等）、应用服务器、数据库层等。秒杀活动的整个流程可以用下图来表示</p>
-<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7qzrdanrnj30r90bpn04.jpg" alt="image.png" style="zoom:80%;" /></div>
-
-<p>我们要去设计一个秒杀系统，那自然也是从这两大部分来进行优化。整体思路是尽量将流量挡在前面，让尽量少的流量留到后端部分。因为越往后端，我们的处理逻辑就越重，其处理能力也越弱</p>
-<h5 id="2-1-前端优化"><a href="#2-1-前端优化" class="headerlink" title="2.1 前端优化"></a>2.1 前端优化</h5><p>对于前端部分来说，常见的优化手段有：页面静态化 + CDN、请求频率限制</p>
-<h6 id="2-1-1-页面静态化-CDN"><a href="#2-1-1-页面静态化-CDN" class="headerlink" title="2.1.1 页面静态化 + CDN"></a>2.1.1 页面静态化 + CDN</h6><p>一般来说，活动页面是流量最大的地方。活动页面上绝大部分内容都是固定的，比如：商品描述、图片等。这时候没有必要每次都去请求服务端，而是将这些静态的内容放到 CDN 上</p>
-<p>每次打开页面的时候，直接去请求 CDN 服务器，能极大地减少后端的请求流量。加入了 CDN 之后，其请求过程如下：</p>
-<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7qzu0en0vj30k105ldh2.jpg" alt="image.png" style="zoom:100%;" /></div>
-
-<p>所谓的 CDN 就是内容分发网络，它由非常多台分布在世界各地的缓存服务器组成。每次用户请求特定域名的时候，会转发到对应 CDN 的 DNS 解析服务器，随后会返回一台离用户地理位置最近的一台 CDN 服务器</p>
-<p>随后，用户直接请求这台 CDN 服务器获取数据，从而极大地减少了长途网络传输的时间，并且也减少了后端服务器的压力</p>
-<p><strong>因此，对于秒杀活动设计来说，我们可以将所有可以静态化的内容全部静态化，然后将其配置在 CDN 服务器上。这样既提高了用户打开页面的时间，又减少了后端服务器的压力</strong></p>
-<h6 id="2-1-2-请求频率限制"><a href="#2-1-2-请求频率限制" class="headerlink" title="2.1.2 请求频率限制"></a>2.1.2 请求频率限制</h6><p>请求频率限制，指的是根据业务的特点，在前端做一些流量拦截，减少后端服务器的压力。常见的拦截方式有：</p>
-<ol>
-<li>设定一个请求概率，只允许 30% 的概率向后端发送接口请求。</li>
-<li>设定一个请求频率，例如 10 秒钟只能请求 1 次，随后按钮置灰</li>
-</ol>
-<p>通过这种方式，我们可以减少很大一部分流量。但在具体实现的时候，可能需要考虑安全问题，预防某些用户直接调用后台接口，绕过前端的频率检查</p>
-<p>常见的方法是在频率检查时生成一个参数，随后请求后端服务时携带上该参数。没有该参数的请求，都视为非法请求，直接拒绝该请求</p>
-<h5 id="2-2-后端优化"><a href="#2-2-后端优化" class="headerlink" title="2.2 后端优化"></a>2.2 后端优化</h5><p>无论我们做多大的努力，始终还是会有不少流量会来到后端服务器这里。一般来说，后端的优化有如下几种方式：</p>
-<ol>
-<li>增加缓存层 + 预热数据</li>
-<li>MQ 异步处理</li>
-<li>限流、熔断、兜底</li>
-<li>业务侧优化</li>
-</ol>
-<h6 id="2-2-1-增加缓存层-预热数据"><a href="#2-2-1-增加缓存层-预热数据" class="headerlink" title="2.2.1 增加缓存层 + 预热数据"></a>2.2.1 增加缓存层 + 预热数据</h6><p>如果我们所有数据都去读取数据库，数据库可能无法承受较大的流量，此时一个常见的优化就是增加缓存层</p>
-<p>当我们需要查询数据库之前，我们先去查询缓存，这样可以减少绝大部分的数据库请求，减轻数据库压力。如果在缓存中找不到数据，我们再去请求数据库，随后再将数据缓存到缓存中</p>
-<p>在引入缓存层的时候，我们需要考虑缓存击穿、缓存穿透的可能性，在写相关代码的时候就要做好这些优化。另外，我们在秒杀活动开始之前，可以手动将热点数据加载到缓存中，从而避免秒杀时去请求数据库</p>
-<h6 id="2-2-2-MQ-异步处理"><a href="#2-2-2-MQ-异步处理" class="headerlink" title="2.2.2 MQ 异步处理"></a>2.2.2 MQ 异步处理</h6><p>我们知道秒杀活动一般涉及抢购、下单、支付、发货等阶段，而抢购与后续的几个阶段是可以异步执行的。为了避免对下单、支付、发货等阶段产生影响，我们可以将抢购阶段与后续阶段用 MQ 进行解耦处理。当用户抢购成功后，往消息队列中丢入一台消息，随后再由订单系统消费进行下单处理</p>
-<p>通过各系统之间的解耦处理，我们可以将原本同步的处理方式变为异步处理，从而大大的减少了请求的处理时间，提高了系统的并发处理能力。其次，也能避免系统之间相互影响，提高了整体系统的稳定性</p>
-<h6 id="2-2-3-限流、熔断、兜底"><a href="#2-2-3-限流、熔断、兜底" class="headerlink" title="2.2.3 限流、熔断、兜底"></a>2.2.3 限流、熔断、兜底</h6><p>我们可以在每个业务系统做限流操作，从而避免因为请求太多，导致整个系统都无法工作。当并发请求在正常范围内时，我们正常处理请求。当超过设置的限流阈值时，我们则直接拒绝该请求，提示用户抢购失败</p>
-<p>如果没有限流操作，那么系统直接崩溃了，一个请求都处理不了。而通过限流这种方式，系统至少还可以保持正常工作，而不至于一个请求都处理不了。而超量的需求，本来就处理不了，因此提示失败也是情理之中</p>
-<p>除了限流之外，不同的系统还可以采用熔断、降级的服务治理措施</p>
-<p>熔断指的是请求的错误次数超过阈值时，不再到用后端服务，直接返回失败。同时每隔一定时间放几个请求去重试后端服务，看看是否正常。如果正常则关闭熔断状态，如果失败则继续快速失败。<strong>熔断的目的是避免因下游短暂的异常，导致上游不断重试，最终造成下游有太多请求，最终压垮下游系统</strong></p>
-<p>降级指的是当服务失败或异常后，返回指定的默认信息。<strong>降级的目的是保证有基本的信息，当下游异常时，与其返回空信息，不如返回一个有业务含义的默认信息，可以提高用户体验</strong></p>
-<h6 id="2-2-4-业务侧优化"><a href="#2-2-4-业务侧优化" class="headerlink" title="2.2.4 业务侧优化"></a>2.2.4 业务侧优化</h6><p>一般来说，经过上述的整体优化之后，系统已经能够比较稳当地应对秒杀活动了。如果此时还是流量比较大，那么或许应该从业务侧去进行优化了</p>
-<p>例如 12306 刚开始的时候，购买时间都在同一时刻，这导致同一时刻并发量太大，系统经常支撑不住。后来 12306 将购票周期放长，可以提前 20 天购买火车票。通过业务侧的优化，我们将本来在 1 个小时的抢购分摊到了 20 天，服务器压力一下子降低了 480 倍</p>
-<p><strong>因此从业务侧进行优化，是一个四两拨千斤的办法，可以极大地降低技术侧实现的难度</strong></p>
-<h5 id="2-3-总结"><a href="#2-3-总结" class="headerlink" title="2.3 总结"></a>2.3 总结</h5><p>设计一个秒杀系统，整体而言可以从前端与后端进行优化。</p>
-<p><strong>对于前端优化而言，可以从「页面静态化 + CDN」、请求频率限制进行优化</strong></p>
-<p>其中「页面静态化 + CDN」指的是将不变的静态数据固定下来，然后放入 CDN 服务器，从而降低用户请求的响应速度，降低服务器的并发压力。请求频率限制，则是通过抢购概率与抢购频率限制，降低后端服务器的服务压力。</p>
-<p><strong>对于后端优化而言，一般有「增加缓存层 + 预热数据」、「MQ 异步处理」、「限流、熔断、降级」、业务侧优化这 4 种优化方式</strong></p>
-<p>其中「增加缓存层 + 预热数据」指的是将热点数据存入缓存，并在活动开始前提前加载到缓存中，降低数据库层的读取压力。「MQ 异步处理」指的是对于非必要的业务逻辑，通过 MQ 进行异步处理，降低请求处理延时，同时提高业务系统整体稳定性</p>
-<p>「限流、熔断、降级」是对于整体微服务的保护，其中限流指的是对请求进行限制，当超过限流阈值时，直接拒绝请求，保护系统本身；熔断指的是保护下游系统，当请求下游系统连续错误超过阈值时，自动不去请求下游系统，避免因重试流量过大击垮下游系统。</p>
-<p>降级指的是当请求失败时，自动返回默认数据，提高用户体验。业务侧优化，则是指从业务层面去进行逻辑优化，从而降低技术复杂度，使得业务与技术复杂度达到一个平衡的状态，有利于更好地实现秒杀系统的高可用与高并发。</p>
-<p>上面说到的 6 个优化思路，是设计秒杀系统常见的优化思路。<strong>但在实际业务场景中，除了要保障正常的功能设计之外，还还考虑防刷、安全、黑产等问题</strong>，此时可能需要多考虑一些其他优化，例如：黄牛利用抢购工具抢购，导致正常用户无法抢到商品等</p>
-<p>这时候可能需要考虑增加验证码，用 App 设备指纹等风控措施。<strong>此外，对于秒杀系统而言，做好业务指标和系统指标的埋点监控也是非常重要的</strong></p>
-<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7r06ob49vj30u00e145t.jpg" alt="image.png" style="zoom:100%;" /></div>
-
-
-
-<hr>
-]]></content>
-      <categories>
-        <category>后端</category>
-      </categories>
-      <tags>
-        <tag>系统设计与架构</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据结构与算法面试题</title>
     <url>/2022/10/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
     <content><![CDATA[<p>常见高频面试数据结构与算法题</p>
@@ -1942,7 +1942,10 @@
 <p><strong>代码：</strong></p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> LRUCache <span class="keyword">struct</span> &#123;</span><br><span class="line">    size <span class="type">int</span></span><br><span class="line">    capacity <span class="type">int</span></span><br><span class="line">    cache <span class="keyword">map</span>[<span class="type">int</span>]*DLinkedNode</span><br><span class="line">    head, tail *DLinkedNode</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> DLinkedNode <span class="keyword">struct</span> &#123;</span><br><span class="line">    key, value <span class="type">int</span></span><br><span class="line">    prev, next *DLinkedNode</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">initDLinkedNode</span><span class="params">(key, value <span class="type">int</span>)</span></span> *DLinkedNode &#123;</span><br><span class="line">    <span class="keyword">return</span> &amp;DLinkedNode&#123;</span><br><span class="line">        key: key,</span><br><span class="line">        value: value,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(capacity <span class="type">int</span>)</span></span> LRUCache &#123;</span><br><span class="line">    lruCache := LRUCache&#123;</span><br><span class="line">        cache: <span class="keyword">map</span>[<span class="type">int</span>]*DLinkedNode&#123;&#125;,</span><br><span class="line">        head: initDLinkedNode(<span class="number">0</span>, <span class="number">0</span>),</span><br><span class="line">        tail: initDLinkedNode(<span class="number">0</span>, <span class="number">0</span>),</span><br><span class="line">        capacity: capacity,</span><br><span class="line">    &#125;</span><br><span class="line">    lruCache.head.next = lruCache.tail</span><br><span class="line">    lruCache.tail.prev = lruCache.head</span><br><span class="line">    <span class="keyword">return</span> lruCache</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span></span> Get(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">    _, ok := this.cache[key]</span><br><span class="line">    <span class="keyword">if</span> !ok &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">    &#125;</span><br><span class="line">    node := this.cache[key]</span><br><span class="line">    this.moveToHead(node)</span><br><span class="line">    <span class="keyword">return</span> node.value</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span></span> Put(key <span class="type">int</span>, value <span class="type">int</span>)  &#123;</span><br><span class="line">    _, ok := this.cache[key]</span><br><span class="line">    <span class="keyword">if</span> !ok &#123;</span><br><span class="line">        node := initDLinkedNode(key, value)</span><br><span class="line">        this.cache[key] = node</span><br><span class="line">        this.addToHead(node)</span><br><span class="line">        this.size++</span><br><span class="line">        <span class="keyword">if</span> this.size &gt; this.capacity &#123;</span><br><span class="line">            removeed :=this.removeTail()</span><br><span class="line">            <span class="built_in">delete</span>(this.cache, removeed.key)</span><br><span class="line">            this.size--</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        node := this.cache[key]</span><br><span class="line">        node.value = value</span><br><span class="line">        this.moveToHead(node)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span></span> addToHead(node *DLinkedNode) &#123;</span><br><span class="line">    node.prev = this.head</span><br><span class="line">    node.next = this.head.next</span><br><span class="line">    this.head.next.prev = node</span><br><span class="line">    this.head.next = node</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span></span> removeNode(node *DLinkedNode) &#123;</span><br><span class="line">    node.prev.next = node.next</span><br><span class="line">    node.next.prev = node.prev</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span></span> moveToHead(node *DLinkedNode) &#123;</span><br><span class="line">    this.removeNode(node)</span><br><span class="line">    this.addToHead(node)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span></span> removeTail() *DLinkedNode &#123;</span><br><span class="line">    node := this.tail.prev</span><br><span class="line">    this.removeNode(node)</span><br><span class="line">    <span class="keyword">return</span> node</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="3-CodeTop补充题：手撕快速排序（Go）-排序数组-912-中等"><a href="#3-CodeTop补充题：手撕快速排序（Go）-排序数组-912-中等" class="headerlink" title="3. CodeTop补充题：手撕快速排序（Go） | 排序数组 912-中等"></a>3. CodeTop补充题：手撕快速排序（Go） | 排序数组 912-中等</h4><p><strong>题目：</strong></p>
+<h4 id="3-CodeTop补充题：手撕快速排序（Go）-排序数组-912-中等"><a href="#3-CodeTop补充题：手撕快速排序（Go）-排序数组-912-中等" class="headerlink" title="3. CodeTop补充题：手撕快速排序（Go） | 排序数组 912-中等"></a>3. CodeTop补充题：手撕快速排序（Go） | 排序数组 912-中等</h4><blockquote>
+<p><font color=red><strong>10大排序算法： 1. 冒泡排序，2. 选择排序，3. 插入排序，4. 归并排序，5. 快速排序，6. 堆排序，8. 计数排序，9. 桶排序，10. 基数排序</strong></font></p>
+</blockquote>
+<p><strong>题目：</strong></p>
 <p>给你一个整数数组 <code>nums</code>，请你将该数组升序排列</p>
 <p><strong>示例：</strong></p>
 <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">输入：nums = <span class="punctuation">[</span><span class="number">5</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="number">3</span><span class="punctuation">,</span><span class="number">1</span><span class="punctuation">]</span></span><br><span class="line">输出：<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="number">3</span><span class="punctuation">,</span><span class="number">5</span><span class="punctuation">]</span></span><br><span class="line">输入：nums = <span class="punctuation">[</span><span class="number">5</span><span class="punctuation">,</span><span class="number">1</span><span class="punctuation">,</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="number">0</span><span class="punctuation">,</span><span class="number">0</span><span class="punctuation">]</span></span><br><span class="line">输出：<span class="punctuation">[</span><span class="number">0</span><span class="punctuation">,</span><span class="number">0</span><span class="punctuation">,</span><span class="number">1</span><span class="punctuation">,</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="number">5</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
@@ -2608,7 +2611,7 @@
 <p><strong>代码：</strong></p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// TreeNode 定义二叉树</span></span><br><span class="line"><span class="keyword">type</span> TreeNode <span class="keyword">struct</span> &#123;</span><br><span class="line">	Val   <span class="type">int</span></span><br><span class="line">	Left  *TreeNode</span><br><span class="line">	Right *TreeNode</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// CreateNode 创建二叉树</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CreateNode</span><span class="params">(i <span class="type">int</span>, nums []<span class="type">int</span>)</span></span> *TreeNode &#123;</span><br><span class="line">	tree := &amp;TreeNode&#123;nums[i], <span class="literal">nil</span>, <span class="literal">nil</span>&#125;</span><br><span class="line">	<span class="comment">// 左节点的数组下标为1，,3，,5...2*i+1</span></span><br><span class="line">	<span class="keyword">if</span> i &lt; <span class="built_in">len</span>(nums) &amp;&amp; <span class="number">2</span>*i+<span class="number">1</span> &lt; <span class="built_in">len</span>(nums) &#123;</span><br><span class="line">		tree.Left = CreateNode(<span class="number">2</span>*i+<span class="number">1</span>, nums)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 右节点的数组下标为2,4,6...2*i+2</span></span><br><span class="line">	<span class="keyword">if</span> i &lt; <span class="built_in">len</span>(nums) &amp;&amp; <span class="number">2</span>*i+<span class="number">2</span> &lt; <span class="built_in">len</span>(nums) &#123;</span><br><span class="line">		tree.Right = CreateNode(<span class="number">2</span>*i+<span class="number">2</span>, nums)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> tree</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// LevelOrder 二叉树层序遍历（广度优先搜索）-中等</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">LevelOrder</span><span class="params">(root *TreeNode)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">var</span> ret [][]<span class="type">int</span></span><br><span class="line">	<span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> ret</span><br><span class="line">	&#125;</span><br><span class="line">	q := []*TreeNode&#123;root&#125;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; <span class="built_in">len</span>(q) &gt; <span class="number">0</span>; i++ &#123;</span><br><span class="line">		ret = <span class="built_in">append</span>(ret, []<span class="type">int</span>&#123;&#125;)</span><br><span class="line">		<span class="keyword">var</span> p []*TreeNode</span><br><span class="line">		<span class="keyword">for</span> j := <span class="number">0</span>; j &lt; <span class="built_in">len</span>(q); j++ &#123;</span><br><span class="line">			node := q[j]</span><br><span class="line">			ret[i] = <span class="built_in">append</span>(ret[i], node.Val)</span><br><span class="line">			<span class="keyword">if</span> node.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">				p = <span class="built_in">append</span>(p, node.Left)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> node.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">				p = <span class="built_in">append</span>(p, node.Right)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		q = p</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// PreorderTraversal 二叉树前序遍历（递归）-简单-根节点——左子树——右子树</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">PreorderTraversal</span><span class="params">(root *TreeNode)</span></span> (vals []<span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> preorder <span class="function"><span class="keyword">func</span><span class="params">(*TreeNode)</span></span></span><br><span class="line">	preorder = <span class="function"><span class="keyword">func</span><span class="params">(node *TreeNode)</span></span> &#123;</span><br><span class="line">		<span class="keyword">if</span> node == <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		vals = <span class="built_in">append</span>(vals, node.Val)</span><br><span class="line">		preorder(node.Left)</span><br><span class="line">		preorder(node.Right)</span><br><span class="line">	&#125;</span><br><span class="line">	preorder(root)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// InorderTraversal 二叉树中序遍历（递归）-简单-左子树——根节点——右子树</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">InorderTraversal</span><span class="params">(root *TreeNode)</span></span> (res []<span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> inorder <span class="function"><span class="keyword">func</span><span class="params">(node *TreeNode)</span></span></span><br><span class="line">	inorder = <span class="function"><span class="keyword">func</span><span class="params">(node *TreeNode)</span></span> &#123;</span><br><span class="line">		<span class="keyword">if</span> node == <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		inorder(node.Left)</span><br><span class="line">		res = <span class="built_in">append</span>(res, node.Val)</span><br><span class="line">		inorder(node.Right)</span><br><span class="line">	&#125;</span><br><span class="line">	inorder(root)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// PostorderTraversal 二叉树后续遍历（递归）-简单-左子树——右子树——根节点</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">PostorderTraversal</span><span class="params">(root *TreeNode)</span></span> (res []<span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> postorder <span class="function"><span class="keyword">func</span><span class="params">(*TreeNode)</span></span></span><br><span class="line">	postorder = <span class="function"><span class="keyword">func</span><span class="params">(node *TreeNode)</span></span> &#123;</span><br><span class="line">		<span class="keyword">if</span> node == <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		postorder(node.Left)</span><br><span class="line">		postorder(node.Right)</span><br><span class="line">		res = <span class="built_in">append</span>(res, node.Val)</span><br><span class="line">	&#125;</span><br><span class="line">	postorder(root)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 0代表节点为空</span></span><br><span class="line">	nums := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>&#125;</span><br><span class="line">	<span class="comment">// 将数组切片转化为二叉树结构体</span></span><br><span class="line">	tree := CreateNode(<span class="number">0</span>, nums)</span><br><span class="line">	levelOrder := LevelOrder(tree)</span><br><span class="line">	fmt.Println(<span class="string">&quot;二叉树层序遍历：&quot;</span>, levelOrder)</span><br><span class="line">	preorderTraversal := PreorderTraversal(tree)</span><br><span class="line">	fmt.Println(<span class="string">&quot;二叉树前序遍历：&quot;</span>, preorderTraversal)</span><br><span class="line">	inorderTraversal := InorderTraversal(tree)</span><br><span class="line">	fmt.Println(<span class="string">&quot;二叉树中序遍历：&quot;</span>, inorderTraversal)</span><br><span class="line">	postorderTraversal := PostorderTraversal(tree)</span><br><span class="line">	fmt.Println(<span class="string">&quot;二叉树后序遍历：&quot;</span>, postorderTraversal)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="24-补充题6：手撕堆排序-912-中等"><a href="#24-补充题6：手撕堆排序-912-中等" class="headerlink" title="24. 补充题6：手撕堆排序 912-中等"></a>24. 补充题6：手撕堆排序 912-中等</h4><p><strong>题目：</strong></p>
+<h4 id="24-补充题6：手撕堆排序（Go）-912-中等"><a href="#24-补充题6：手撕堆排序（Go）-912-中等" class="headerlink" title="24. 补充题6：手撕堆排序（Go） 912-中等"></a>24. 补充题6：手撕堆排序（Go） 912-中等</h4><p><strong>题目：</strong></p>
 <p>给你一个整数数组 <code>nums</code>，请你将该数组升序排列</p>
 <p><strong>示例：</strong></p>
 <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">输入：nums = <span class="punctuation">[</span><span class="number">5</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="number">3</span><span class="punctuation">,</span><span class="number">1</span><span class="punctuation">]</span></span><br><span class="line">输出：<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="number">3</span><span class="punctuation">,</span><span class="number">5</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
@@ -2662,13 +2665,20 @@
 <p><strong>代码：</strong></p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getIntersectionNode</span><span class="params">(headA, headB *ListNode)</span></span> *ListNode &#123;</span><br><span class="line">    vis := <span class="keyword">map</span>[*ListNode]<span class="type">bool</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> tmp := headA; tmp != <span class="literal">nil</span>; tmp = tmp.Next &#123;</span><br><span class="line">        vis[tmp] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> tmp := headB; tmp != <span class="literal">nil</span>; tmp = tmp.Next &#123;</span><br><span class="line">        <span class="keyword">if</span> vis[tmp] &#123;</span><br><span class="line">            <span class="keyword">return</span> tmp</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="26-二叉搜索树的第K大节点-剑指offer54-简单"><a href="#26-二叉搜索树的第K大节点-剑指offer54-简单" class="headerlink" title="26. 二叉搜索树的第K大节点 剑指offer54-简单"></a>26. 二叉搜索树的第K大节点 剑指offer54-简单</h4><p><strong>题目：</strong></p>
+<h4 id="26-二叉搜索树的第K大节点（Go）-剑指offer54-简单"><a href="#26-二叉搜索树的第K大节点（Go）-剑指offer54-简单" class="headerlink" title="26. 二叉搜索树的第K大节点（Go） 剑指offer54-简单"></a>26. 二叉搜索树的第K大节点（Go） 剑指offer54-简单</h4><p><strong>题目：</strong></p>
+<p>给定一棵二叉搜索树，请找出其中第 <code>k</code> 大的节点的值</p>
 <p><strong>示例：</strong></p>
 <p><strong>提示：</strong></p>
 <p><strong>思路：</strong></p>
+<ol>
+<li>通过二叉树的中序遍历便是一个从小到大的排序</li>
+<li>设置一个count，每遍历一个数据便自增1，当count&#x3D;k时，就找到了正确答案</li>
+</ol>
 <p><strong>复杂度分析：</strong></p>
 <p><strong>代码：</strong></p>
-<h4 id="27-LFU缓存-460-困难"><a href="#27-LFU缓存-460-困难" class="headerlink" title="27. LFU缓存 460-困难"></a>27. LFU缓存 460-困难</h4><p><strong>题目：</strong></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 思路：返回中序遍历生成的序列中的第k个节点</span></span><br><span class="line"><span class="comment">// 此题最好只实现：InorderTraverse和KthLargest</span></span><br><span class="line"><span class="comment">// 在Goland IDE里实现全部貌似结果不正确</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> TreeNode <span class="keyword">struct</span> &#123;</span><br><span class="line">	Val   <span class="type">int</span></span><br><span class="line">	Left  *TreeNode</span><br><span class="line">	Right *TreeNode</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// CreateNode 创建二叉树</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CreateNode</span><span class="params">(i <span class="type">int</span>, nums []<span class="type">int</span>)</span></span> *TreeNode &#123;</span><br><span class="line">	tree := &amp;TreeNode&#123;nums[i], <span class="literal">nil</span>, <span class="literal">nil</span>&#125;</span><br><span class="line">	<span class="comment">// 左节点的数组下标为1,3,5...2*i+1</span></span><br><span class="line">	<span class="keyword">if</span> i &lt; <span class="built_in">len</span>(nums) &amp;&amp; <span class="number">2</span>*i+<span class="number">1</span> &lt; <span class="built_in">len</span>(nums) &#123;</span><br><span class="line">		tree.Left = CreateNode(<span class="number">2</span>*i+<span class="number">1</span>, nums)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 右节点的数组下标为2,4,6...2*i+2</span></span><br><span class="line">	<span class="keyword">if</span> i &lt; <span class="built_in">len</span>(nums) &amp;&amp; <span class="number">2</span>*i+<span class="number">2</span> &lt; <span class="built_in">len</span>(nums) &#123;</span><br><span class="line">		tree.Right = CreateNode(<span class="number">2</span>*i+<span class="number">2</span>, nums)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> tree</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">InorderTraverse</span><span class="params">(root *TreeNode, ret *[]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	InorderTraverse(root.Left, ret)</span><br><span class="line">	*ret = <span class="built_in">append</span>(*ret, root.Val)</span><br><span class="line">	InorderTraverse(root.Right, ret)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">KthLargest</span><span class="params">(root *TreeNode, k <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	ret := &amp;[]<span class="type">int</span>&#123;&#125;</span><br><span class="line">	InorderTraverse(root, ret)</span><br><span class="line">	<span class="comment">// 说明没找到第k大节点</span></span><br><span class="line">	<span class="keyword">if</span> k &lt; <span class="number">1</span> &amp;&amp; k &gt; <span class="built_in">len</span>(*ret) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> (*ret)[<span class="built_in">len</span>(*ret)-k]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	nums := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">	<span class="comment">// 0代表节点为空</span></span><br><span class="line">	treeNode := CreateNode(<span class="number">0</span>, nums)</span><br><span class="line">	fmt.Println(<span class="string">&quot;结果为：&quot;</span>, KthLargest(treeNode, <span class="number">1</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="27-LFU缓存（Go）-460-困难"><a href="#27-LFU缓存（Go）-460-困难" class="headerlink" title="27. LFU缓存（Go） 460-困难"></a>27. LFU缓存（Go） 460-困难</h4><p><strong>题目：</strong></p>
 <p>请你为 最不经常使用（LFU）缓存算法设计并实现数据结构</p>
 <p><strong>示例：</strong></p>
 <p><strong>提示：</strong></p>
@@ -2679,12 +2689,15 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Node <span class="keyword">struct</span> &#123;</span><br><span class="line">	Key   <span class="type">int</span></span><br><span class="line">	Value <span class="type">int</span></span><br><span class="line">	freq  <span class="type">int</span></span><br><span class="line">	pre   *Node</span><br><span class="line">	next  *Node</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> LFUCache <span class="keyword">struct</span> &#123;</span><br><span class="line">	limit   <span class="type">int</span></span><br><span class="line">	HashMap <span class="keyword">map</span>[<span class="type">int</span>]*Node</span><br><span class="line">	head    *Node</span><br><span class="line">	end     *Node</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">LFUConstructor</span><span class="params">(capacity <span class="type">int</span>)</span></span> LFUCache &#123;</span><br><span class="line">	lfuCache := LFUCache&#123;&#125;</span><br><span class="line">	lfuCache.limit = capacity</span><br><span class="line">	lfuCache.HashMap = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*Node, capacity)</span><br><span class="line">	<span class="keyword">return</span> lfuCache</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(lfuCache *LFUCache)</span></span> Get(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> value, ok := lfuCache.HashMap[key]; ok &#123;</span><br><span class="line">		value.freq++</span><br><span class="line">		lfuCache.refreshNode(value)</span><br><span class="line">		<span class="keyword">return</span> value.Value</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(lfuCache *LFUCache)</span></span> Put(key, value <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> v, ok := lfuCache.HashMap[key]; !ok &#123;</span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(lfuCache.HashMap) &gt;= lfuCache.limit &#123;</span><br><span class="line">			oldKey := lfuCache.removeNode(lfuCache.head)</span><br><span class="line">			<span class="built_in">delete</span>(lfuCache.HashMap, oldKey)</span><br><span class="line">		&#125;</span><br><span class="line">		node := Node&#123;Key: key, Value: value, freq: <span class="number">1</span>&#125;</span><br><span class="line">		lfuCache.addNode(&amp;node)</span><br><span class="line">		lfuCache.HashMap[key] = &amp;node</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		v.Value = value</span><br><span class="line">		v.freq++</span><br><span class="line">		lfuCache.refreshNode(v)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(lfuCache *LFUCache)</span></span> refreshNode(node *Node) &#123;</span><br><span class="line">	<span class="keyword">if</span> node == lfuCache.end &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	lfuCache.removeNode(node)</span><br><span class="line">	lfuCache.addNode(node)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(lfuCache *LFUCache)</span></span> removeNode(node *Node) <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> node == lfuCache.end &#123;</span><br><span class="line">		lfuCache.end = lfuCache.end.pre</span><br><span class="line">		lfuCache.end.next = <span class="literal">nil</span></span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> node == lfuCache.head &#123;</span><br><span class="line">		lfuCache.head = lfuCache.head.next</span><br><span class="line">		lfuCache.head.pre = <span class="literal">nil</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		node.pre.next = node.next</span><br><span class="line">		node.next.pre = node.pre</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> node.Key</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(lfuCache *LFUCache)</span></span> addNode(node *Node) &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> lfuCache.head == <span class="literal">nil</span> &amp;&amp; lfuCache.end == <span class="literal">nil</span> &#123;</span><br><span class="line">		lfuCache.head = node</span><br><span class="line">		lfuCache.end = node</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	head := lfuCache.head</span><br><span class="line">	<span class="keyword">for</span> head != <span class="literal">nil</span> &amp;&amp; node.freq &gt;= head.freq &#123;</span><br><span class="line">		head = head.next</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> head == <span class="literal">nil</span> &#123;</span><br><span class="line">		lfuCache.end.next = node</span><br><span class="line">		node.pre = lfuCache.end</span><br><span class="line">		lfuCache.end = node</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> head != <span class="literal">nil</span> &#123;</span><br><span class="line">		head.pre.next = node</span><br><span class="line">		node.pre = head.pre</span><br><span class="line">		head.pre = node</span><br><span class="line">		node.next = head</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	lfuCache.head.pre = <span class="literal">nil</span></span><br><span class="line">	lfuCache.end.next = <span class="literal">nil</span></span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	lfuCache := LFUConstructor(<span class="number">3</span>)</span><br><span class="line">	lfuCache.Put(<span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line">	lfuCache.Put(<span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line">	lfuCache.Put(<span class="number">3</span>, <span class="number">5</span>)</span><br><span class="line">	fmt.Println(lfuCache) <span class="comment">// 此时的链表顺序应该是 1 : 3   2 : 4   3 : 5   lfuCache.head 为1 : 3   lfuCache.end 为3 : 5</span></span><br><span class="line">	lfuCache.Get(<span class="number">1</span>)</span><br><span class="line">	fmt.Println(lfuCache) <span class="comment">// 此时的链表顺序应该是  2 : 4   3 : 5  1 : 3   lfuCache.head 为2 : 4    lfuCache.end 为1 : 3</span></span><br><span class="line">	lfuCache.Put(<span class="number">4</span>, <span class="number">6</span>)</span><br><span class="line">	fmt.Println(lfuCache) <span class="comment">// 此时的链表顺序应该是  3 : 5  4 : 6   1 : 3    lfuCache.head 为3 : 5   lfuCache.end 为1 : 3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="28-K个一组翻转链表（Go）25-困难"><a href="#28-K个一组翻转链表（Go）25-困难" class="headerlink" title="28. K个一组翻转链表（Go）25-困难"></a>28. K个一组翻转链表（Go）25-困难</h4><p><strong>题目：</strong></p>
+<p>给你链表的头节点 <code>head</code> ，每 <code>k</code> 个节点一组进行翻转，请你返回修改后的链表。<code>k</code> 是一个正整数，它的值小于或等于链表的长度。如果节点总数不是 <code>k</code> 的整数倍，那么请将最后剩余的节点保持原有顺序。你不能只是单纯的改变节点内部的值，而是需要实际进行节点交换</p>
 <p><strong>示例：</strong></p>
 <p><strong>提示：</strong></p>
 <p><strong>思路：</strong></p>
 <p><strong>复杂度分析：</strong></p>
 <p><strong>代码：</strong></p>
-<h4 id="29-买卖股票的最佳时机121-简单"><a href="#29-买卖股票的最佳时机121-简单" class="headerlink" title="29. 买卖股票的最佳时机121-简单"></a>29. 买卖股票的最佳时机121-简单</h4><p><strong>题目：</strong></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ListNode <span class="keyword">struct</span> &#123;</span><br><span class="line">	Value <span class="type">int</span></span><br><span class="line">	Next  *ListNode</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reverseKGroup</span><span class="params">(head *ListNode, k <span class="type">int</span>)</span></span> *ListNode &#123;</span><br><span class="line">	dummyNode := &amp;ListNode&#123;Next: head&#125;</span><br><span class="line">	pre := dummyNode</span><br><span class="line">	<span class="keyword">for</span> head != <span class="literal">nil</span> &#123;</span><br><span class="line">		tail := pre</span><br><span class="line">		<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; k; i++ &#123;</span><br><span class="line">			tail = tail.Next</span><br><span class="line">			<span class="keyword">if</span> tail == <span class="literal">nil</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> dummyNode.Next</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//记录tail后一个节点，以及pre后一个节点</span></span><br><span class="line">		nextGroupHead := tail.Next</span><br><span class="line">		head = pre.Next</span><br><span class="line">		<span class="comment">//反转</span></span><br><span class="line">		ReverseList(head, tail)</span><br><span class="line">		<span class="comment">//拼接</span></span><br><span class="line">		pre.Next = tail</span><br><span class="line">		head.Next = nextGroupHead</span><br><span class="line">		<span class="comment">//更新pre和head</span></span><br><span class="line">		pre = head</span><br><span class="line">		head = nextGroupHead</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dummyNode.Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ReverseList 翻转链表</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ReverseList</span><span class="params">(head *ListNode, tail *ListNode)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> pre *ListNode</span><br><span class="line">	cur := head</span><br><span class="line">	<span class="keyword">for</span> pre != tail &#123;</span><br><span class="line">		next := cur.Next</span><br><span class="line">		cur.Next = pre</span><br><span class="line">		pre = cur</span><br><span class="line">		cur = next</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="29-买卖股票的最佳时机（Go）121-简单"><a href="#29-买卖股票的最佳时机（Go）121-简单" class="headerlink" title="29. 买卖股票的最佳时机（Go）121-简单"></a>29. 买卖股票的最佳时机（Go）121-简单</h4><p><strong>题目：</strong></p>
 <p>给定一个数组 <code>prices</code> ，它的第 <code>i</code> 个元素 <code>prices[i]</code> 表示一支给定股票第 <code>i</code> 天的价格</p>
 <p>你只能选择 某一天 买入这只股票，并选择在 未来的某一个不同的日子 卖出该股票。设计一个算法来计算你所能获取的最大利润</p>
 <p>返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0 </p>
@@ -2697,7 +2710,7 @@
 <li><code>0 &lt;= prices[i] &lt;= 10的4次方</code></li>
 </ul>
 <p><strong>思路：</strong></p>
-<p>方法二：一次遍历</p>
+<p>方法二：一次遍历（贪心算法）</p>
 <p>算法</p>
 <p>假设给定的数组为：<code>[7, 1, 5, 3, 6, 4]</code></p>
 <p>如果我们在图表上绘制给定数组中的数字，我们将会得到：</p>
@@ -2710,7 +2723,7 @@
 <li>空间复杂度：O(1)，只使用了常数个变量</li>
 </ul>
 <p><strong>代码：</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxProfit</span>(<span class="params">self, prices: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        inf = <span class="built_in">int</span>(<span class="number">1e9</span>)</span><br><span class="line">        minprice = inf</span><br><span class="line">        maxprofit = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> price <span class="keyword">in</span> prices:</span><br><span class="line">            maxprofit = <span class="built_in">max</span>(price - minprice, maxprofit)</span><br><span class="line">            minprice = <span class="built_in">min</span>(price, minprice)</span><br><span class="line">        <span class="keyword">return</span> maxprofit</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">MaxProfit</span><span class="params">(prices []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="comment">// 贪心</span></span><br><span class="line">	res := <span class="number">0</span></span><br><span class="line">	m := prices[<span class="number">0</span>]</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(prices); i++ &#123;</span><br><span class="line">		<span class="keyword">if</span> prices[i] &gt; m &#123;</span><br><span class="line">			<span class="keyword">if</span> (prices[i] - m) &gt; res &#123;</span><br><span class="line">				res = prices[i] - m</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			m = prices[i]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	nums := []<span class="type">int</span>&#123;<span class="number">7</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">4</span>&#125;</span><br><span class="line">	fmt.Println(<span class="string">&quot;结果为：&quot;</span>, MaxProfit(nums))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="30-基本计算器2（Go）227-中等"><a href="#30-基本计算器2（Go）227-中等" class="headerlink" title="30. 基本计算器2（Go）227-中等"></a>30. 基本计算器2（Go）227-中等</h4><p><strong>题目：</strong></p>
 <p>给你一个字符串表达式 <code>s</code> ，请你实现一个基本计算器来计算并返回它的值</p>
@@ -2779,12 +2792,16 @@
 <p><strong>代码：</strong></p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findDuplicates</span><span class="params">(nums []<span class="type">int</span>)</span></span> (ans []<span class="type">int</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        <span class="keyword">for</span> nums[i] != nums[nums[i] - <span class="number">1</span>] &#123;</span><br><span class="line">            nums[i], nums[nums[i] - <span class="number">1</span>] = nums[nums[i] - <span class="number">1</span>], nums[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        <span class="keyword">if</span> num - <span class="number">1</span> != i &#123;</span><br><span class="line">            ans = <span class="built_in">append</span>(ans, num)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="32-零钱兑换-332-中等"><a href="#32-零钱兑换-332-中等" class="headerlink" title="32. 零钱兑换 332-中等"></a>32. 零钱兑换 332-中等</h4><p><strong>题目：</strong></p>
+<h4 id="32-零钱兑换（Go）-332-中等"><a href="#32-零钱兑换（Go）-332-中等" class="headerlink" title="32. 零钱兑换（Go） 332-中等"></a>32. 零钱兑换（Go） 332-中等</h4><p><strong>题目：</strong></p>
+<p>给你一个整数数组 <code>coins</code> ，表示不同面额的硬币；以及一个整数 <code>amount</code> ，表示总金额。计算并返回可以凑成总金额所需的 <strong>最少的硬币个数</strong> 。如果没有任何一种硬币组合能组成总金额，返回 <code>-1</code> 。你可以认为每种硬币的数量是无限的</p>
 <p><strong>示例：</strong></p>
 <p><strong>提示：</strong></p>
 <p><strong>思路：</strong></p>
+<p>动态规划</p>
 <p><strong>复杂度分析：</strong></p>
 <p><strong>代码：</strong></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CoinChange</span><span class="params">(coins []<span class="type">int</span>, amount <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	dp := <span class="built_in">make</span>([]<span class="type">int</span>, amount+<span class="number">1</span>)</span><br><span class="line">	<span class="comment">// 初始化线性备忘录</span></span><br><span class="line">	<span class="keyword">for</span> k := <span class="keyword">range</span> dp &#123;</span><br><span class="line">		<span class="comment">// 相当于无限大，方便比较</span></span><br><span class="line">		dp[k] = amount + <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 这个就是占位的</span></span><br><span class="line">	dp[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(dp); i++ &#123;</span><br><span class="line">		<span class="keyword">for</span> _, coin := <span class="keyword">range</span> coins &#123;</span><br><span class="line">			<span class="comment">// 至少包含 1 枚某种硬币</span></span><br><span class="line">			<span class="keyword">if</span> i-coin &lt; <span class="number">0</span> &#123;</span><br><span class="line">				<span class="keyword">continue</span> <span class="comment">// 这种情况别闹</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// 选择一个较小的</span></span><br><span class="line">			dp[i] = min(dp[i], <span class="number">1</span>+dp[i-coin])</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> dp[amount] == amount+<span class="number">1</span> &#123;</span><br><span class="line">		<span class="comment">// 没有合适的</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dp[amount]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> a &lt; b &#123;</span><br><span class="line">		<span class="keyword">return</span> a</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> b</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	nums := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>&#125;</span><br><span class="line">	fmt.Println(<span class="string">&quot;结果为：&quot;</span>, CoinChange(nums, <span class="number">11</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h4 id="33-两数相加（Go）2-中等"><a href="#33-两数相加（Go）2-中等" class="headerlink" title="33. 两数相加（Go）2-中等"></a>33. 两数相加（Go）2-中等</h4><p><strong>题目：</strong></p>
 <p>给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字</p>
 <p>请你将两个数相加，并以相同形式返回一个表示和的链表</p>
@@ -2918,13 +2935,22 @@
 <p><strong>代码：</strong></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">type</span> MyQueue struct &#123;</span><br><span class="line">    stack []<span class="built_in">int</span></span><br><span class="line">    back []<span class="built_in">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func Constructor() MyQueue &#123;</span><br><span class="line">    <span class="keyword">return</span> MyQueue&#123;</span><br><span class="line">        stack: make([]<span class="built_in">int</span>, <span class="number">0</span>),</span><br><span class="line">        back: make([]<span class="built_in">int</span>, <span class="number">0</span>),</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (this *MyQueue) Push(x <span class="built_in">int</span>)  &#123;</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(this.back) != <span class="number">0</span> &#123;</span><br><span class="line">        val := this.back[<span class="built_in">len</span>(this.back) - <span class="number">1</span>]</span><br><span class="line">        this.back = this.back[:<span class="built_in">len</span>(this.back) - <span class="number">1</span>]</span><br><span class="line">        this.stack = append(this.stack, val)</span><br><span class="line">    &#125;</span><br><span class="line">    this.stack = append(this.stack, x)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (this *MyQueue) Pop() <span class="built_in">int</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(this.stack) != <span class="number">0</span> &#123;</span><br><span class="line">        val := this.stack[<span class="built_in">len</span>(this.stack) - <span class="number">1</span>]</span><br><span class="line">        this.stack = this.stack[:<span class="built_in">len</span>(this.stack) - <span class="number">1</span>]</span><br><span class="line">        this.back = append(this.back, val)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(this.back) == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    val := this.back[<span class="built_in">len</span>(this.back) - <span class="number">1</span>]</span><br><span class="line">    this.back = this.back[:<span class="built_in">len</span>(this.back) - <span class="number">1</span>]</span><br><span class="line">    <span class="keyword">return</span> val</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (this *MyQueue) Peek() <span class="built_in">int</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(this.stack) != <span class="number">0</span> &#123;</span><br><span class="line">        val := this.stack[<span class="built_in">len</span>(this.stack) - <span class="number">1</span>]</span><br><span class="line">        this.stack = this.stack[:<span class="built_in">len</span>(this.stack) - <span class="number">1</span>]</span><br><span class="line">        this.back = append(this.back, val)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(this.back) == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    val := this.back[<span class="built_in">len</span>(this.back) - <span class="number">1</span>]</span><br><span class="line">    <span class="keyword">return</span> val</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (this *MyQueue) Empty() <span class="built_in">bool</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(this.stack) == <span class="number">0</span> &amp;&amp; <span class="built_in">len</span>(this.back) == <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="38-翻转字符串里的单词-151-中等"><a href="#38-翻转字符串里的单词-151-中等" class="headerlink" title="38. 翻转字符串里的单词 151-中等"></a>38. 翻转字符串里的单词 151-中等</h4><p><strong>题目：</strong></p>
+<h4 id="38-用队列实现栈（Go）225-简单"><a href="#38-用队列实现栈（Go）225-简单" class="headerlink" title="38. 用队列实现栈（Go）225-简单"></a>38. 用队列实现栈（Go）225-简单</h4><p><strong>题目：</strong></p>
+<p>请你仅使用两个队列实现一个后入先出（LIFO）的栈，并支持普通栈的全部四种操作（<code>push</code>、<code>top</code>、<code>pop</code> 和 <code>empty</code>）</p>
 <p><strong>示例：</strong></p>
 <p><strong>提示：</strong></p>
 <p><strong>思路：</strong></p>
 <p><strong>复杂度分析：</strong></p>
 <p><strong>代码：</strong></p>
-<h4 id="39-平衡二叉树（Go）110-简单"><a href="#39-平衡二叉树（Go）110-简单" class="headerlink" title="39. 平衡二叉树（Go）110-简单"></a>39. 平衡二叉树（Go）110-简单</h4><p><strong>题目：</strong></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> MyStack <span class="keyword">struct</span> &#123;</span><br><span class="line">	queue1, queue2 []<span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Constructor 在这里初始化你的数据结构</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> (s MyStack) &#123;</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *MyStack)</span></span> Push(x <span class="type">int</span>) &#123;</span><br><span class="line">	s.queue2 = <span class="built_in">append</span>(s.queue2, x)</span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">len</span>(s.queue1) &gt; <span class="number">0</span> &#123;</span><br><span class="line">		s.queue2 = <span class="built_in">append</span>(s.queue2, s.queue1[<span class="number">0</span>])</span><br><span class="line">		s.queue1 = s.queue1[<span class="number">1</span>:]</span><br><span class="line">	&#125;</span><br><span class="line">	s.queue1, s.queue2 = s.queue2, s.queue1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *MyStack)</span></span> Pop() <span class="type">int</span> &#123;</span><br><span class="line">	v := s.queue1[<span class="number">0</span>]</span><br><span class="line">	s.queue1 = s.queue1[<span class="number">1</span>:]</span><br><span class="line">	<span class="keyword">return</span> v</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *MyStack)</span></span> Top() <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> s.queue1[<span class="number">0</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *MyStack)</span></span> Empty() <span class="type">bool</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">len</span>(s.queue1) == <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="39-翻转字符串里的单词-151-中等"><a href="#39-翻转字符串里的单词-151-中等" class="headerlink" title="39. 翻转字符串里的单词 151-中等"></a>39. 翻转字符串里的单词 151-中等</h4><p><strong>题目：</strong></p>
+<p><strong>示例：</strong></p>
+<p><strong>提示：</strong></p>
+<p><strong>思路：</strong></p>
+<p><strong>复杂度分析：</strong></p>
+<p><strong>代码：</strong></p>
+<h4 id="40-平衡二叉树（Go）110-简单"><a href="#40-平衡二叉树（Go）110-简单" class="headerlink" title="40. 平衡二叉树（Go）110-简单"></a>40. 平衡二叉树（Go）110-简单</h4><p><strong>题目：</strong></p>
 <p>给定一个二叉树，判断它是否是高度平衡的二叉树</p>
 <p>本题中，一棵高度平衡二叉树定义为：一个二叉树<em>每个节点</em> 的左右两个子树的高度差的绝对值不超过 1 </p>
 <p><strong>示例：</strong></p>
@@ -2951,7 +2977,7 @@
 <p><strong>代码：</strong></p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isBalanced</span><span class="params">(root *TreeNode)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> abs(height(root.Left) - height(root.Right)) &lt;= <span class="number">1</span> &amp;&amp;</span><br><span class="line">    isBalanced(root.Left) &amp;&amp; isBalanced(root.Right)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">height</span><span class="params">(root * TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max(height(root.Left), height(root.Right)) + <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(x, y <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> x &gt; y &#123;</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> y</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">abs</span><span class="params">(x <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> x &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span> * x</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="40-螺旋矩阵（Go）54-中等"><a href="#40-螺旋矩阵（Go）54-中等" class="headerlink" title="40. 螺旋矩阵（Go）54-中等"></a>40. 螺旋矩阵（Go）54-中等</h4><p><strong>题目：</strong></p>
+<h4 id="41-螺旋矩阵（Go）54-中等"><a href="#41-螺旋矩阵（Go）54-中等" class="headerlink" title="41. 螺旋矩阵（Go）54-中等"></a>41. 螺旋矩阵（Go）54-中等</h4><p><strong>题目：</strong></p>
 <p>给你一个 <code>m</code> 行 <code>n</code> 列的矩阵 <code>matrix</code> ，请按照 <strong>顺时针螺旋顺序</strong> ，返回矩阵中的所有元素</p>
 <p><strong>示例：</strong></p>
 <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">输入：matrix = <span class="punctuation">[</span><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="number">3</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="punctuation">[</span><span class="number">4</span><span class="punctuation">,</span><span class="number">5</span><span class="punctuation">,</span><span class="number">6</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="punctuation">[</span><span class="number">7</span><span class="punctuation">,</span><span class="number">8</span><span class="punctuation">,</span><span class="number">9</span><span class="punctuation">]</span><span class="punctuation">]</span></span><br><span class="line">输出：<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="number">3</span><span class="punctuation">,</span><span class="number">6</span><span class="punctuation">,</span><span class="number">9</span><span class="punctuation">,</span><span class="number">8</span><span class="punctuation">,</span><span class="number">7</span><span class="punctuation">,</span><span class="number">4</span><span class="punctuation">,</span><span class="number">5</span><span class="punctuation">]</span></span><br><span class="line">输入：matrix = <span class="punctuation">[</span><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="number">3</span><span class="punctuation">,</span><span class="number">4</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="punctuation">[</span><span class="number">5</span><span class="punctuation">,</span><span class="number">6</span><span class="punctuation">,</span><span class="number">7</span><span class="punctuation">,</span><span class="number">8</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="punctuation">[</span><span class="number">9</span><span class="punctuation">,</span><span class="number">10</span><span class="punctuation">,</span><span class="number">11</span><span class="punctuation">,</span><span class="number">12</span><span class="punctuation">]</span><span class="punctuation">]</span></span><br><span class="line">输出：<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="number">3</span><span class="punctuation">,</span><span class="number">4</span><span class="punctuation">,</span><span class="number">8</span><span class="punctuation">,</span><span class="number">12</span><span class="punctuation">,</span><span class="number">11</span><span class="punctuation">,</span><span class="number">10</span><span class="punctuation">,</span><span class="number">9</span><span class="punctuation">,</span><span class="number">5</span><span class="punctuation">,</span><span class="number">6</span><span class="punctuation">,</span><span class="number">7</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
@@ -2977,21 +3003,21 @@
 
 <hr>
 <p><strong>下面的题为面试经历过的题目</strong></p>
-<h4 id="41-Golang合并2个切片并去重排序"><a href="#41-Golang合并2个切片并去重排序" class="headerlink" title="41. Golang合并2个切片并去重排序"></a>41. Golang合并2个切片并去重排序</h4><p><strong>代码：</strong></p>
+<h4 id="1-Golang合并2个切片并去重排序"><a href="#1-Golang合并2个切片并去重排序" class="headerlink" title="1. Golang合并2个切片并去重排序"></a>1. Golang合并2个切片并去重排序</h4><p><strong>代码：</strong></p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;sort&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Solution</span><span class="params">(nums1, nums2 []<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">	nums1 = <span class="built_in">append</span>(nums1, nums2...)</span><br><span class="line">	hashMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="keyword">struct</span>&#123;&#125;)</span><br><span class="line">	<span class="keyword">var</span> result []<span class="type">int</span></span><br><span class="line">	<span class="keyword">for</span> _, num := <span class="keyword">range</span> nums1 &#123;</span><br><span class="line">		<span class="comment">// 先计算Map长度，然后再往Map里添加数据</span></span><br><span class="line">		hashMapLen := <span class="built_in">len</span>(hashMap)</span><br><span class="line">		hashMap[num] = <span class="keyword">struct</span>&#123;&#125;&#123;&#125;</span><br><span class="line">		<span class="comment">// 如何Map的长度有变化，说明num没有重复，可以将其添加到切片里</span></span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(hashMap) != hashMapLen &#123;</span><br><span class="line">			result = <span class="built_in">append</span>(result, num)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 内置方法排序</span></span><br><span class="line">	sort.Ints(result)</span><br><span class="line">	<span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	nums1 := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">2</span>&#125;</span><br><span class="line">	nums2 := []<span class="type">int</span>&#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">10</span>, <span class="number">1</span>&#125;</span><br><span class="line">	fmt.Println(<span class="string">&quot;结果为：&quot;</span>, Solution(nums1, nums2))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="42-约瑟夫环问题"><a href="#42-约瑟夫环问题" class="headerlink" title="42. 约瑟夫环问题"></a>42. 约瑟夫环问题</h4><p><strong>题目：</strong>有n个人围成一圈，顺序排号。从第1个人开始报数（从1到3报数），凡报到3的人退出圈子，循环报数，问最后剩下的人是开始围圈时的第几号</p>
+<h4 id="2-约瑟夫环问题"><a href="#2-约瑟夫环问题" class="headerlink" title="2. 约瑟夫环问题"></a>2. 约瑟夫环问题</h4><p><strong>题目：</strong>有n个人围成一圈，顺序排号。从第1个人开始报数（从1到3报数），凡报到3的人退出圈子，循环报数，问最后剩下的人是开始围圈时的第几号</p>
 <p><strong>思路：</strong></p>
 <p><strong>代码：</strong></p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">JosephRing</span><span class="params">(nums [13]<span class="type">int</span>, n, m <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> front, rear, round = <span class="number">0</span>, n, <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="comment">// 队不为空</span></span><br><span class="line">		<span class="keyword">if</span> rear-front == <span class="number">0</span> &#123;</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; m<span class="number">-1</span>; i++ &#123;</span><br><span class="line">			front = (front + <span class="number">1</span>) % n</span><br><span class="line">			rear = (rear + <span class="number">1</span>) % n</span><br><span class="line">			nums[rear] = nums[front]</span><br><span class="line">		&#125;</span><br><span class="line">		front = (front + <span class="number">1</span>) % n</span><br><span class="line">		round++</span><br><span class="line">		fmt.Printf(<span class="string">&quot;第%d轮：%d\n&quot;</span>, round, nums[front])</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> nums [<span class="number">13</span>]<span class="type">int</span></span><br><span class="line">	<span class="keyword">var</span> n, m = <span class="number">12</span>, <span class="number">3</span></span><br><span class="line">	nums[<span class="number">0</span>] = n</span><br><span class="line">	<span class="comment">// 初始化队列，入队</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">1</span>; i &lt; n+<span class="number">1</span>; i++ &#123;</span><br><span class="line">		nums[i] = i</span><br><span class="line">	&#125;</span><br><span class="line">	JosephRing(nums, n, m)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="43-一个单链表，如何求倒数第n-1个节点的值"><a href="#43-一个单链表，如何求倒数第n-1个节点的值" class="headerlink" title="43. 一个单链表，如何求倒数第n-1个节点的值"></a>43. 一个单链表，如何求倒数第n-1个节点的值</h4><p><strong>代码：</strong></p>
+<h4 id="3-一个单链表，如何求倒数第n-1个节点的值"><a href="#3-一个单链表，如何求倒数第n-1个节点的值" class="headerlink" title="3. 一个单链表，如何求倒数第n-1个节点的值"></a>3. 一个单链表，如何求倒数第n-1个节点的值</h4><p><strong>代码：</strong></p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ListNode <span class="keyword">struct</span> &#123;</span><br><span class="line">	Value <span class="type">int</span></span><br><span class="line">	Next  *ListNode</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ListNodeLen 求单链表长度</span></span><br><span class="line"><span class="comment">// 参数：</span></span><br><span class="line"><span class="comment">// 	head：单链表</span></span><br><span class="line"><span class="comment">// 返回值：</span></span><br><span class="line"><span class="comment">// 	lenght：单链表长度</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ListNodeLen</span><span class="params">(head *ListNode)</span></span> (lenght <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">for</span> ; head != <span class="literal">nil</span>; head = head.Next &#123;</span><br><span class="line">		lenght++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> lenght</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ToSlice 将链表转化切片，然后直接下标取值</span></span><br><span class="line"><span class="comment">// 参数：</span></span><br><span class="line"><span class="comment">// 	head：单链表；n：第n个元素</span></span><br><span class="line"><span class="comment">// 返回值：</span></span><br><span class="line"><span class="comment">// 	result：单链表第倒数n-1个元素的值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ToSlice</span><span class="params">(head *ListNode, n <span class="type">int</span>)</span></span> (result <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> values []<span class="type">int</span></span><br><span class="line">	<span class="keyword">for</span> ; head != <span class="literal">nil</span>; head = head.Next &#123;</span><br><span class="line">		values = <span class="built_in">append</span>(values, head.Value)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 切片长度=链表长度</span></span><br><span class="line">	valuesLen := <span class="built_in">len</span>(values)</span><br><span class="line">	<span class="comment">// 判断是否会越界，左右都需要判断</span></span><br><span class="line">	<span class="keyword">if</span> n<span class="number">-1</span> &gt;= <span class="number">1</span> &amp;&amp; n &lt;= valuesLen+<span class="number">1</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> values[valuesLen-n+<span class="number">1</span>]</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// FastSlow 快慢指针</span></span><br><span class="line"><span class="comment">// 参数：</span></span><br><span class="line"><span class="comment">// 	head：单链表；n：第n个元素</span></span><br><span class="line"><span class="comment">// 返回值：</span></span><br><span class="line"><span class="comment">// 	result：单链表第倒数n-1个元素的值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">FastSlow</span><span class="params">(head *ListNode, n <span class="type">int</span>)</span></span> (result <span class="type">int</span>) &#123;</span><br><span class="line">	dummy := &amp;ListNode&#123;<span class="number">0</span>, head&#125;</span><br><span class="line">	first, second := head, dummy</span><br><span class="line">	<span class="comment">// 需要判断是否会越界</span></span><br><span class="line">	listNodeLen := ListNodeLen(head)</span><br><span class="line">	<span class="keyword">if</span> n<span class="number">-1</span> &gt;= <span class="number">1</span> &amp;&amp; n &lt;= listNodeLen+<span class="number">1</span> &#123;</span><br><span class="line">		<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n<span class="number">-1</span>; i++ &#123;</span><br><span class="line">			first = first.Next</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> ; first != <span class="literal">nil</span>; first = first.Next &#123;</span><br><span class="line">			second = second.Next</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> second.Next.Value</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// DoublePointer 双指针，优化后，不需要判断临界值</span></span><br><span class="line"><span class="comment">// 参数：</span></span><br><span class="line"><span class="comment">// 	head：单链表；n：第n个元素</span></span><br><span class="line"><span class="comment">// 返回值：</span></span><br><span class="line"><span class="comment">// 	result：单链表第倒数n-1个元素的值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">DoublePointer</span><span class="params">(head *ListNode, n <span class="type">int</span>)</span></span> (result <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> second, first *ListNode</span><br><span class="line">	first = head</span><br><span class="line">	second = head</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">1</span>; first.Next != <span class="literal">nil</span>; i++ &#123;</span><br><span class="line">		<span class="comment">//间隔n-1才赋值</span></span><br><span class="line">		<span class="keyword">if</span> i &gt;= n<span class="number">-1</span> &#123;</span><br><span class="line">			second = second.Next</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//头部往后移动</span></span><br><span class="line">		first = first.Next</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> second.Value</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ReverseList 反转链表，链表反转后，未反转的链表的倒数第n-1个节点的值就是反转后链表的第n-1个的值</span></span><br><span class="line"><span class="comment">// 参数：</span></span><br><span class="line"><span class="comment">// 	head：单链表；n：第n个元素</span></span><br><span class="line"><span class="comment">// 返回值：</span></span><br><span class="line"><span class="comment">// 	result：单链表第倒数n-1个元素的值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ReverseList</span><span class="params">(head *ListNode, n <span class="type">int</span>)</span></span> (result <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> prev *ListNode</span><br><span class="line">	curr := head</span><br><span class="line">	<span class="keyword">for</span> curr != <span class="literal">nil</span> &#123;</span><br><span class="line">		next := curr.Next</span><br><span class="line">		curr.Next = prev</span><br><span class="line">		prev = curr</span><br><span class="line">		curr = next</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 遍历反转后的链表，然后取出第n-1个的值</span></span><br><span class="line">	i := <span class="number">1</span></span><br><span class="line">	<span class="keyword">for</span> prev != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> i == n<span class="number">-1</span> &#123;</span><br><span class="line">			result = prev.Value</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">		i++</span><br><span class="line">		prev = prev.Next</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// CreateListNode 使用slice生成单链表</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CreateListNode</span><span class="params">(nums []<span class="type">int</span>)</span></span> *ListNode &#123;</span><br><span class="line">	<span class="keyword">var</span> head ListNode</span><br><span class="line">	<span class="keyword">var</span> pre ListNode</span><br><span class="line">	<span class="keyword">for</span> _, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">		node := ListNode&#123;Value: num, Next: <span class="literal">nil</span>&#125;</span><br><span class="line">		<span class="keyword">if</span> head.Next == <span class="literal">nil</span> &#123;</span><br><span class="line">			head.Next = &amp;node</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> pre.Next == <span class="literal">nil</span> &#123;</span><br><span class="line">			pre.Next = &amp;node</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			pre.Next.Next = &amp;node</span><br><span class="line">			pre = *pre.Next</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> head.Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	nums := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">8</span>&#125;</span><br><span class="line">	n := <span class="number">5</span></span><br><span class="line">	head := CreateListNode(nums)</span><br><span class="line">	<span class="comment">// n值如果不在临界值内，返回0</span></span><br><span class="line">	toSlice := ToSlice(head, n)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;链表转切片，链表倒数第%d-1个：%d\n&quot;</span>, n, toSlice)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// n值如果不在临界值内，返回0</span></span><br><span class="line">	fastSlow := FastSlow(head, n)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;快慢指针，链表倒数第%d-1个：%d\n&quot;</span>, n, fastSlow)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// n值如果小于临界值指向链表最后一个元素，大于临界值指向链表第一个元素（倒数第n-1个元素）</span></span><br><span class="line">	doublePointer := DoublePointer(head, n)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;双指针优化后，链表倒数第%d-1个：%d\n&quot;</span>, n, doublePointer)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// n值如果不在临界值内，返回0</span></span><br><span class="line">	reverseList := ReverseList(head, n)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;反转链表，链表倒数第%d-1个：%d\n&quot;</span>, n, reverseList)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// ToDo</span></span><br><span class="line">	<span class="comment">// 将单链表转为双链表，只需要找到第n个节点，然后取出双链表的第n个节点的上一个节点的值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="44-多协程统计10000内的素数"><a href="#44-多协程统计10000内的素数" class="headerlink" title="44. 多协程统计10000内的素数"></a>44. 多协程统计10000内的素数</h4><p><strong>代码：</strong></p>
+<h4 id="4-多协程统计10000内的素数"><a href="#4-多协程统计10000内的素数" class="headerlink" title="4. 多协程统计10000内的素数"></a>4. 多协程统计10000内的素数</h4><p><strong>代码：</strong></p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// JoinChannel 协程负责将所有需要计算的数字放入intChan通道。注意：全部放入后将intChan通道关闭，这样消费者通过for-range遍历时才不会死循环</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">JoinChannel</span><span class="params">(intChan <span class="keyword">chan</span> <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">1</span>; i &lt;= <span class="number">10000</span>; i++ &#123;</span><br><span class="line">		intChan &lt;- i</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">close</span>(intChan)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// CloseChannel 判断工作协程是否全部结束，如果结束则关闭resultChan，以此来通知主线程</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CloseChannel</span><span class="params">(resultChan, exitChan <span class="keyword">chan</span> <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> j := <span class="number">0</span>; j &lt; <span class="number">10</span>; j++ &#123;</span><br><span class="line">		&lt;-exitChan</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">close</span>(resultChan)</span><br><span class="line">	<span class="built_in">close</span>(exitChan)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Calculate for-range循环遍历intChan，并计算是否是素数。</span></span><br><span class="line"><span class="comment">// for-range会遍历到该通道被关闭未知，当range循环结束后向exitChan中放入一个标识。表明当前协程已经结束</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Calculate</span><span class="params">(intChan <span class="keyword">chan</span> <span class="type">int</span>, resultChan <span class="keyword">chan</span> <span class="type">int</span>, exitChan <span class="keyword">chan</span> <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> v := <span class="keyword">range</span> intChan &#123;</span><br><span class="line">		flag := <span class="literal">true</span></span><br><span class="line">		<span class="keyword">for</span> i := <span class="number">2</span>; i &lt; v; i++ &#123;</span><br><span class="line">			<span class="keyword">if</span> v%i == <span class="number">0</span> &#123;</span><br><span class="line">				flag = <span class="literal">false</span></span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> flag &#123;</span><br><span class="line">			resultChan &lt;- v</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	exitChan &lt;- <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 任务队列通道</span></span><br><span class="line">	intChan := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>, <span class="number">1000</span>)</span><br><span class="line">	<span class="comment">// 结果通道，所有计算的结果全部放在这里</span></span><br><span class="line">	resultChan := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>, <span class="number">2000</span>)</span><br><span class="line">	<span class="comment">// 标识退出的管道</span></span><br><span class="line">	exitChan := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>, <span class="number">10</span>)</span><br><span class="line">	<span class="comment">// 分发任务</span></span><br><span class="line">	<span class="keyword">go</span> JoinChannel(intChan)</span><br><span class="line">	<span class="comment">// 开启10个协程来计算素数，并放入结果通道中</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">go</span> Calculate(intChan, resultChan, exitChan)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 开启协程，不断从exitChan中获取结束标志，当获取数量达到10个时</span></span><br><span class="line">	<span class="keyword">go</span> CloseChannel(resultChan, exitChan)</span><br><span class="line">	<span class="comment">// 主线程range遍历结果集</span></span><br><span class="line">	<span class="keyword">for</span> result := <span class="keyword">range</span> resultChan &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;素数：&quot;</span>, result)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="45-abc组成的字符串删除"><a href="#45-abc组成的字符串删除" class="headerlink" title="45. abc组成的字符串删除"></a>45. abc组成的字符串删除</h4><p><strong>题目：</strong> 一个字符串，只有abc三个字符组成，现在需要删除字符串，删除规则为：每次只能删除2个字符，删除a和b或者删除a和c，字符串能否被全部删除，如果能，需要多少次</p>
+<h4 id="5-abc组成的字符串删除"><a href="#5-abc组成的字符串删除" class="headerlink" title="5. abc组成的字符串删除"></a>5. abc组成的字符串删除</h4><p><strong>题目：</strong> 一个字符串，只有abc三个字符组成，现在需要删除字符串，删除规则为：每次只能删除2个字符，删除a和b或者删除a和c，字符串能否被全部删除，如果能，需要多少次</p>
 <p><strong>代码：</strong></p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Solution</span><span class="params">(str <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="comment">// 判断字符串长度是否为奇数，奇数则无法完全删除</span></span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(str) == <span class="number">0</span> || <span class="built_in">len</span>(str)%<span class="number">2</span> != <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">	&#125;</span><br><span class="line">	a, b, c := <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> _, s := <span class="keyword">range</span> str &#123;</span><br><span class="line">		<span class="keyword">switch</span> <span class="type">string</span>(s) &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">&quot;a&quot;</span>:</span><br><span class="line">			a += <span class="number">1</span></span><br><span class="line">		<span class="keyword">case</span> <span class="string">&quot;b&quot;</span>:</span><br><span class="line">			b += <span class="number">1</span></span><br><span class="line">		<span class="keyword">case</span> <span class="string">&quot;c&quot;</span>:</span><br><span class="line">			c += <span class="number">1</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// a的数量等于b+c的数量</span></span><br><span class="line">	<span class="keyword">if</span> a == b+c &#123;</span><br><span class="line">		<span class="keyword">return</span> a</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	str := <span class="string">&quot;aabbccaaaaabbcbb&quot;</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;结果为：&quot;</span>, Solution(str))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 

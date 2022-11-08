@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h7no7xmdcgj313c0b0jtt.jpg">
 <meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h7nojprq3uj30ns0kgdi9.jpg">
 <meta property="article:published_time" content="2022-10-28T00:24:34.000Z">
-<meta property="article:modified_time" content="2022-11-08T01:07:59.602Z">
+<meta property="article:modified_time" content="2022-11-08T02:36:46.496Z">
 <meta property="article:author" content="可可西里">
 <meta property="article:tag" content="八股文">
 <meta property="article:tag" content="Golang">
@@ -190,7 +190,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-18.png" style="max-height: 240px;">
+      <img src="/images/random/material-13.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">Golang面试题</div>
@@ -331,7 +331,7 @@
 <h4 id="7-Go的GPM如何调度"><a href="#7-Go的GPM如何调度" class="headerlink" title="7. Go的GPM如何调度"></a>7. Go的GPM如何调度</h4><p>协程拥有自己的寄存器上下文和栈。协程调度切换时，将寄存器上下文和栈保存到其他地方，在切回来的时候，恢复先前保存的寄存器上下文和栈。因此，协程能保留上一次调用时的状态（即所有局部状态的一个特定组合），每次过程重入时，就相当于进入上一次调用的状态，换种说法：进入上一次离开时所处逻辑流的位置</p>
 <p>线程和进程的操作是由程序触发系统接口，最后的执行者是系统；协程的操作执行者则是用户自身程序，goroutine也是协程</p>
 <p>groutine能拥有强大的并发实现是通过GPM调度模型实现</p>
-<p>Go的调度器内部有四个重要的结构：M，P，S，Sched：</p>
+<p>Go的调度器内部有四个重要的结构：M，G，P，Sched：</p>
 <ul>
 <li>M：M代表内核级线程，一个M就是一个线程，goroutine就是跑在M之上的；M是一个很大的结构，里面维护小对象内存cache（mcache）、当前执行的goroutine、随机数发生器等等非常多的信息</li>
 <li>G：代表一个goroutine，它有自己的栈，instruction pointer和其他信息（正在等待的channel等等），用于调度</li>

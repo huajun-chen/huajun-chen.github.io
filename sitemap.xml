@@ -194,7 +194,7 @@
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/tags/Linux/</loc>
+    <loc>https://huajun-chen.github.io/tags/Golang/</loc>
     <lastmod>2022-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -208,7 +208,7 @@
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/tags/Golang/</loc>
+    <loc>https://huajun-chen.github.io/tags/Linux/</loc>
     <lastmod>2022-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -216,13 +216,6 @@
   
   <url>
     <loc>https://huajun-chen.github.io/tags/MySQL/</loc>
-    <lastmod>2022-11-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://huajun-chen.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/</loc>
     <lastmod>2022-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -237,6 +230,13 @@
   
   <url>
     <loc>https://huajun-chen.github.io/tags/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2022-11-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://huajun-chen.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/</loc>
     <lastmod>2022-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -273,14 +273,14 @@
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/categories/%E5%90%8E%E7%AB%AF/</loc>
+    <loc>https://huajun-chen.github.io/categories/%E5%85%B6%E4%BB%96/</loc>
     <lastmod>2022-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/categories/%E5%85%B6%E4%BB%96/</loc>
+    <loc>https://huajun-chen.github.io/categories/%E5%90%8E%E7%AB%AF/</loc>
     <lastmod>2022-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

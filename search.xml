@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CodeTop算法题</title>
+    <url>/2022/11/14/CodeTop%E7%AE%97%E6%B3%95%E9%A2%98/</url>
+    <content><![CDATA[<p>面试LeetCode算法题整理，按照出现的频率依次递减排序，题目类型包含：简单、中等、困难</p>
+<p>CodeTop地址：<a href="https://codetop.cc/home">点击跳转</a></p>
+<p><strong>备注：</strong>出现的频率会随时间变化而变化，具体以CodeTop出现频率为准</p>
+<h4 id="1-无重复字符的最长子串-中等"><a href="#1-无重复字符的最长子串-中等" class="headerlink" title="1. 无重复字符的最长子串-中等"></a>1. 无重复字符的最长子串-中等</h4><h4 id="2-反转链表-容易"><a href="#2-反转链表-容易" class="headerlink" title="2. 反转链表-容易"></a>2. 反转链表-容易</h4><h4 id="3-LRU缓存-中等"><a href="#3-LRU缓存-中等" class="headerlink" title="3. LRU缓存-中等"></a>3. LRU缓存-中等</h4><h4 id="4-数组中的第K个最大元素-中等"><a href="#4-数组中的第K个最大元素-中等" class="headerlink" title="4. 数组中的第K个最大元素-中等"></a>4. 数组中的第K个最大元素-中等</h4><h4 id="5-K个一组翻转链表-困难"><a href="#5-K个一组翻转链表-困难" class="headerlink" title="5. K个一组翻转链表-困难"></a>5. K个一组翻转链表-困难</h4><h4 id="6-三数之和-中等"><a href="#6-三数之和-中等" class="headerlink" title="6. 三数之和-中等"></a>6. 三数之和-中等</h4><h4 id="7-最大子数组和-中等"><a href="#7-最大子数组和-中等" class="headerlink" title="7. 最大子数组和-中等"></a>7. 最大子数组和-中等</h4><h4 id="8-排序数组-快排-中等"><a href="#8-排序数组-快排-中等" class="headerlink" title="8. 排序数组-快排-中等"></a>8. 排序数组-快排-中等</h4><h4 id="9-合并两个有序链表-简单"><a href="#9-合并两个有序链表-简单" class="headerlink" title="9. 合并两个有序链表-简单"></a>9. 合并两个有序链表-简单</h4><h4 id="10-两数之和-简单"><a href="#10-两数之和-简单" class="headerlink" title="10. 两数之和-简单"></a>10. 两数之和-简单</h4><h4 id="11-二叉树的层序遍历-中等"><a href="#11-二叉树的层序遍历-中等" class="headerlink" title="11. 二叉树的层序遍历-中等"></a>11. 二叉树的层序遍历-中等</h4><h4 id="12-搜索旋转排序数组-中等"><a href="#12-搜索旋转排序数组-中等" class="headerlink" title="12. 搜索旋转排序数组-中等"></a>12. 搜索旋转排序数组-中等</h4><h4 id="13-买卖股票的最佳时机-简单"><a href="#13-买卖股票的最佳时机-简单" class="headerlink" title="13. 买卖股票的最佳时机-简单"></a>13. 买卖股票的最佳时机-简单</h4><h4 id="14-有效的括号-简单"><a href="#14-有效的括号-简单" class="headerlink" title="14. 有效的括号-简单"></a>14. 有效的括号-简单</h4><h4 id="15-岛屿数量-中等"><a href="#15-岛屿数量-中等" class="headerlink" title="15. 岛屿数量-中等"></a>15. 岛屿数量-中等</h4><h4 id="16-环形链表-简单"><a href="#16-环形链表-简单" class="headerlink" title="16. 环形链表-简单"></a>16. 环形链表-简单</h4><h4 id="17-最长回文子串-中等"><a href="#17-最长回文子串-中等" class="headerlink" title="17. 最长回文子串-中等"></a>17. 最长回文子串-中等</h4><h4 id="18-叉树的锯齿形层序遍历-中等"><a href="#18-叉树的锯齿形层序遍历-中等" class="headerlink" title="18. 叉树的锯齿形层序遍历-中等"></a>18. 叉树的锯齿形层序遍历-中等</h4><h4 id="19-合并两个有序数组-简单"><a href="#19-合并两个有序数组-简单" class="headerlink" title="19. 合并两个有序数组-简单"></a>19. 合并两个有序数组-简单</h4><h4 id="20-二叉树的最近公共祖先-中等"><a href="#20-二叉树的最近公共祖先-中等" class="headerlink" title="20. 二叉树的最近公共祖先-中等"></a>20. 二叉树的最近公共祖先-中等</h4><h4 id="21-全排列-中等"><a href="#21-全排列-中等" class="headerlink" title="21. 全排列-中等"></a>21. 全排列-中等</h4><h4 id="22-相交链表-简单"><a href="#22-相交链表-简单" class="headerlink" title="22. 相交链表-简单"></a>22. 相交链表-简单</h4><h4 id="23-螺旋矩阵-中等"><a href="#23-螺旋矩阵-中等" class="headerlink" title="23. 螺旋矩阵-中等"></a>23. 螺旋矩阵-中等</h4><h4 id="24-合并K个升序链表-困难"><a href="#24-合并K个升序链表-困难" class="headerlink" title="24. 合并K个升序链表-困难"></a>24. 合并K个升序链表-困难</h4><h4 id="25-反转链表-II-中等"><a href="#25-反转链表-II-中等" class="headerlink" title="25. 反转链表 II-中等"></a>25. 反转链表 II-中等</h4><h4 id="26-字符串相加-简单"><a href="#26-字符串相加-简单" class="headerlink" title="26. 字符串相加-简单"></a>26. 字符串相加-简单</h4><h4 id="27-环形链表-II-中等"><a href="#27-环形链表-II-中等" class="headerlink" title="27. 环形链表 II-中等"></a>27. 环形链表 II-中等</h4><h4 id="28-长递增子序列-中等"><a href="#28-长递增子序列-中等" class="headerlink" title="28. 长递增子序列-中等"></a>28. 长递增子序列-中等</h4><h4 id="29-接雨水-困难"><a href="#29-接雨水-困难" class="headerlink" title="29. 接雨水-困难"></a>29. 接雨水-困难</h4><h4 id="30-二叉树中的最大路径和-困难"><a href="#30-二叉树中的最大路径和-困难" class="headerlink" title="30. 二叉树中的最大路径和-困难"></a>30. 二叉树中的最大路径和-困难</h4><h4 id="31-重排链表-中等"><a href="#31-重排链表-中等" class="headerlink" title="31. 重排链表-中等"></a>31. 重排链表-中等</h4><h4 id="32-二叉树的中序遍历-简单"><a href="#32-二叉树的中序遍历-简单" class="headerlink" title="32. 二叉树的中序遍历-简单"></a>32. 二叉树的中序遍历-简单</h4><h4 id="33-二分查找-简单"><a href="#33-二分查找-简单" class="headerlink" title="33. 二分查找-简单"></a>33. 二分查找-简单</h4><h4 id="34-编辑距离-困难"><a href="#34-编辑距离-困难" class="headerlink" title="34. 编辑距离-困难"></a>34. 编辑距离-困难</h4><h4 id="35-用栈实现队列-简单"><a href="#35-用栈实现队列-简单" class="headerlink" title="35. 用栈实现队列-简单"></a>35. 用栈实现队列-简单</h4><h4 id="36-寻找两个正序数组的中位数-困难"><a href="#36-寻找两个正序数组的中位数-困难" class="headerlink" title="36. 寻找两个正序数组的中位数-困难"></a>36. 寻找两个正序数组的中位数-困难</h4><h4 id="37-二叉树的右视图-中等"><a href="#37-二叉树的右视图-中等" class="headerlink" title="37. 二叉树的右视图-中等"></a>37. 二叉树的右视图-中等</h4><h4 id="38-除链表的倒数第N个结点-中等"><a href="#38-除链表的倒数第N个结点-中等" class="headerlink" title="38. 除链表的倒数第N个结点-中等"></a>38. 除链表的倒数第N个结点-中等</h4><h4 id="39-爬楼梯-简单"><a href="#39-爬楼梯-简单" class="headerlink" title="39. 爬楼梯-简单"></a>39. 爬楼梯-简单</h4><h4 id="40-合并区间-中等"><a href="#40-合并区间-中等" class="headerlink" title="40. 合并区间-中等"></a>40. 合并区间-中等</h4><hr>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Elasticsearch面试题</title>
     <url>/2022/10/30/Elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
     <content><![CDATA[<p>ES常见面试题</p>
@@ -136,6 +151,237 @@
       <tags>
         <tag>ES</tag>
         <tag>八股文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux操作系统面试题</title>
+    <url>/2022/10/28/Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<p>Linux常见面试题整理</p>
+<hr>
+<p><strong>50个最常用的Unix&#x2F;Linux命令</strong></p>
+<h4 id="1-tar"><a href="#1-tar" class="headerlink" title="1. tar"></a>1. tar</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">tar cvf archive_name.tar <span class="built_in">dirname</span>/ 创建一个新的tar文件</span><br><span class="line">tar xvf archive_name.tar 解压tar文件</span><br><span class="line">tar tvf archive_name.tar 查看tar文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-grep"><a href="#2-grep" class="headerlink" title="2. grep"></a>2. grep</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">grep -i <span class="string">&quot;the&quot;</span> demo_file 在文件中查找字符串(不区分大小写)</span><br><span class="line">grep -A 3 -i <span class="string">&quot;example&quot;</span> demo_text 输出成功匹配的行，以及该行之后的三行</span><br><span class="line">grep -r <span class="string">&quot;ramesh&quot;</span> * 在一个文件夹中递归查询包含指定字符串的文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-find"><a href="#3-find" class="headerlink" title="3. find"></a>3. find</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">find -iname <span class="string">&quot;MyProgram.c&quot;</span> 查找指定文件名的文件(不区分大小写)</span><br><span class="line">find -iname <span class="string">&quot;MyProgram.c&quot;</span> -<span class="built_in">exec</span> <span class="built_in">md5sum</span> &#123;&#125; \; 对找到的文件执行某个命令</span><br><span class="line">find ~ -empty 查找home目录下的所有空文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-ssh"><a href="#4-ssh" class="headerlink" title="4. ssh"></a>4. ssh</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh -l jsmith remotehost.example.com 登录到远程主机</span><br><span class="line">ssh -v -l jsmith remotehost.example.com 调试ssh客户端</span><br><span class="line">ssh -V 显示ssh客户端版本</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-sed"><a href="#5-sed" class="headerlink" title="5. sed"></a>5. sed</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sed <span class="string">&#x27;s/.$//&#x27;</span> filename 当你将Dos系统中的文件复制到Unix/Linux后，这个文件每行都会以\r\n结尾，sed可以轻易将其转换为Unix格式的文件，使用\n结尾的文件</span><br><span class="line">sed -n <span class="string">&#x27;1!G; h; p&#x27;</span> filename 反转文件内容并输出</span><br><span class="line">sed <span class="string">&#x27;/./=&#x27;</span> thegeekstuff.txt | sed <span class="string">&#x27;N; s/\n/ /&#x27;</span> 为非空行添加行号</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-awk"><a href="#6-awk" class="headerlink" title="6. awk"></a>6. awk</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">awk <span class="string">&#x27;!($0 in array) &#123; array[$0]; print&#125;&#x27;</span> temp 删除重复行</span><br><span class="line">awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;$3=$4&#x27;</span> /etc/passwd 打印/etc/passwd中所有包含同样的uid和gid的行</span><br><span class="line">awk <span class="string">&#x27;&#123;print $2,$5;&#125;&#x27;</span> employee.txt 打印文件中的指定部分的字段</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-vim"><a href="#7-vim" class="headerlink" title="7. vim"></a>7. vim</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">vim +10 filename.txt 打开文件并跳到第10行</span><br><span class="line">vim +/search-term filename.txt 打开文件跳到第一个匹配的行</span><br><span class="line">vim -R /etc/passwd 以只读模式打开文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-diff"><a href="#8-diff" class="headerlink" title="8. diff"></a>8. diff</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">diff -w name_list.txt name_list_new.txt 比较的时候忽略空白符</span><br></pre></td></tr></table></figure>
+
+<h4 id="9-sort"><a href="#9-sort" class="headerlink" title="9. sort"></a>9. sort</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sort</span> names.txt 以升序对文件内容排序</span><br><span class="line"><span class="built_in">sort</span> -r names.txt 以降序对文件内容排序</span><br><span class="line"><span class="built_in">sort</span> -t: -k 3n /etc/passwd | more 以第三个字段对/etc/passwd的内容排序</span><br></pre></td></tr></table></figure>
+
+<h4 id="10-export"><a href="#10-export" class="headerlink" title="10. export"></a>10. export</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> | grep ORCALE 输出跟字符串oracle匹配的环境变量</span><br><span class="line"><span class="built_in">export</span> ORACLE_HOME=/u01/app/oracle/product/10.2.0 设置全局环境变量</span><br></pre></td></tr></table></figure>
+
+<h4 id="11-xargs"><a href="#11-xargs" class="headerlink" title="11. xargs"></a>11. xargs</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> *.jpg | xargs -n1 -i <span class="built_in">cp</span> &#123;&#125; /external-hard-drive/directory 将所有图片文件拷贝到外部驱动器</span><br><span class="line">find / -name *.jpg -<span class="built_in">type</span> f -<span class="built_in">print</span> | xargs tar -cvzf images.tar.gz 将系统中所有jpd文件压缩打包</span><br><span class="line"><span class="built_in">cat</span> url-list.txt | xargs wget –c 下载文件中列出的所有url对应的页面</span><br></pre></td></tr></table></figure>
+
+<h4 id="12-ls"><a href="#12-ls" class="headerlink" title="12. ls"></a>12. ls</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -lh 以易读的方式显示文件大小(显示为MB,GB...)</span><br><span class="line"><span class="built_in">ls</span> -ltr 以最后修改时间升序列出文件</span><br><span class="line"><span class="built_in">ls</span> -F 在文件名后面显示文件类型</span><br></pre></td></tr></table></figure>
+
+<h4 id="13-pwd"><a href="#13-pwd" class="headerlink" title="13. pwd"></a>13. pwd</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">输出当前工作目录</span><br></pre></td></tr></table></figure>
+
+<h4 id="14-cd"><a href="#14-cd" class="headerlink" title="14. cd"></a>14. cd</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> 可以在最近工作的两个目录间切换</span><br><span class="line"><span class="built_in">cd</span> ../ 跳到上级目录</span><br><span class="line"><span class="built_in">cd</span> /opt 不管现在到那直接跳到指定的opt文件夹中</span><br><span class="line"><span class="built_in">cd</span> ~ 切换当前用户的家目录。root用户的家目录就是root目录</span><br></pre></td></tr></table></figure>
+
+<h4 id="15-gzip"><a href="#15-gzip" class="headerlink" title="15. gzip"></a>15. gzip</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">gzip test.txt 创建一个*.gz的压缩文件</span><br><span class="line">gzip -d test.txt.gz 解压*.gz文件</span><br><span class="line">gzip -l *.gz 显示压缩的比率</span><br></pre></td></tr></table></figure>
+
+<h4 id="16-bzip2"><a href="#16-bzip2" class="headerlink" title="16. bzip2"></a>16. bzip2</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">bzip2 test.txt 创建*.bz2压缩文件</span><br><span class="line">bzip2 -d test.txt.bz2 解压*.bz2文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="17-uzip"><a href="#17-uzip" class="headerlink" title="17. uzip"></a>17. uzip</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">unzip test.zip 解压*.zip文件</span><br><span class="line">unzip -l jasper.zip 查看*.zip文件的内容</span><br></pre></td></tr></table></figure>
+
+<h4 id="18-shutdown"><a href="#18-shutdown" class="headerlink" title="18. shutdown"></a>18. shutdown</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">shutdown -h now 关闭系统并立即关机</span><br><span class="line">shutdown -h +10 10分钟后关机</span><br><span class="line">shutdown -r now 重启</span><br><span class="line">shutdown -Fr now 重启期间强制进行系统检查</span><br></pre></td></tr></table></figure>
+
+<h4 id="19-ftp"><a href="#19-ftp" class="headerlink" title="19. ftp"></a>19. ftp</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ftp IP/hostname ftp命令和sftp命令的用法基本相似连接ftp服务器并下载多个文件</span><br><span class="line">ftp&gt; mls *.html - 显示远程主机上文件列表</span><br></pre></td></tr></table></figure>
+
+<h4 id="20-crontab"><a href="#20-crontab" class="headerlink" title="20. crontab"></a>20. crontab</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">crontab -u john -l 查看某个用户的crontab入口</span><br><span class="line">*/10 * * * * /home/ramesh/check-disk-space 设置一个每十分钟执行一次的计划任务</span><br></pre></td></tr></table></figure>
+
+<h4 id="21-service"><a href="#21-service" class="headerlink" title="21. service"></a>21. service</h4><p>service命令用于运行System V init脚本，这些脚本一般位于&#x2F;etc&#x2F;init.d文件下，这个命令可以直接运行这个文件夹里面的脚本，而不用加上路径</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">service ssh status 查看服务状态</span><br><span class="line">service --status-all 查看所有服务状态</span><br><span class="line">service ssh restart 重启服务</span><br></pre></td></tr></table></figure>
+
+<h4 id="22-ps"><a href="#22-ps" class="headerlink" title="22. ps"></a>22. ps</h4><p>ps命令用于显示正在运行中的进程的信息，ps命令有很多选项，这里只列出了几个</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ps -ef | more 查看当前正在运行的所有进程</span><br><span class="line">ps -efH | more 以树状结构显示当前正在运行的进程，H选项表示显示进程的层次结构</span><br></pre></td></tr></table></figure>
+
+<h4 id="23-free"><a href="#23-free" class="headerlink" title="23. free"></a>23. free</h4><p>这个命令用于显示系统当前内存的使用情况，包括已用内存、可用内存和交换内存的情况</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">free 默认情况下free会以字节为单位输出内存的使用量</span><br><span class="line">free -g 如果你想以其他单位输出内存的使用量，需要加一个选项，-g为GB，-m为MB，-k为KB，-b为字节</span><br><span class="line">free -t 如果你想查看所有内存的汇总，请使用-t选项，使用这个选项会在输出中加一个汇总行</span><br></pre></td></tr></table></figure>
+
+<h4 id="24-top"><a href="#24-top" class="headerlink" title="24. top"></a>24. top</h4><p>top命令会显示当前系统中占用资源最多的一些进程（默认以CPU占用率排序）如果你想改变排序方式，可以在结果列表中点击O（大写字母O）会显示所有可用于排序的列，这个时候你就可以选择你想排序的列</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">top -u oracle 如果只想显示某个特定用户的进程，可以使用-u选项</span><br></pre></td></tr></table></figure>
+
+<h4 id="25-df"><a href="#25-df" class="headerlink" title="25. df"></a>25. df</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">df</span> -k 显示文件系统的磁盘使用情况，默认情况下<span class="built_in">df</span> -k 将以字节为单位输出磁盘的使用量</span><br><span class="line"><span class="built_in">df</span> -h 使用-h选项可以以更符合阅读习惯的方式显示磁盘使用量</span><br><span class="line"><span class="built_in">df</span> -T 使用-T选项显示文件系统类型</span><br></pre></td></tr></table></figure>
+
+<h4 id="26-kill"><a href="#26-kill" class="headerlink" title="26. kill"></a>26. kill</h4><p>kill用于终止一个进程。一般我们会先用<code>ps -ef</code>查找某个进程得到它的进程号，然后再使用<code>kill -9 进程号</code>终止该进程。你还可以使用killall、pkill、xkill来终止进程</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ps -ef | grep vim</span><br><span class="line">	ramesh    7243  7222  9 22:43 pts/2    00:00:00 vim</span><br><span class="line"><span class="built_in">kill</span> -9 7243</span><br></pre></td></tr></table></figure>
+
+<h4 id="27-rm"><a href="#27-rm" class="headerlink" title="27. rm"></a>27. rm</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> -i filename.txt 删除文件前先确认</span><br><span class="line"><span class="built_in">rm</span> -i file* 在文件名中使用shell的元字符会非常有用。删除文件前先打印文件名并进行确认</span><br><span class="line"><span class="built_in">rm</span> -r example 递归删除文件夹下所有文件，并删除该文件夹</span><br></pre></td></tr></table></figure>
+
+<h4 id="28-cp"><a href="#28-cp" class="headerlink" title="28. cp"></a>28. cp</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> -p file1 file2 拷贝文件1到文件2，并保持文件的权限、属主和时间戳</span><br><span class="line"><span class="built_in">cp</span> -i file1 file2 拷贝file1到file2，如果file2存在会提示是否覆盖</span><br></pre></td></tr></table></figure>
+
+<h4 id="29-mv"><a href="#29-mv" class="headerlink" title="29. mv"></a>29. mv</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">注意如果使用-f选项则不会进行提示</span><br><span class="line"><span class="built_in">mv</span> -i file1 file2 将文件名file1重命名为file2，如果file2存在则提示是否覆盖</span><br><span class="line"><span class="built_in">mv</span> -v file1 file2 -v会输出重命名的过程，当文件名中包含通配符时，这个选项会非常方便</span><br></pre></td></tr></table></figure>
+
+<h4 id="30-cat"><a href="#30-cat" class="headerlink" title="30. cat"></a>30. cat</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> file1 file2 你可以一次查看多个文件的内容，下面的命令会先打印file1的内容，然后打印file2的内容</span><br><span class="line"><span class="built_in">cat</span> -n /etc/logrotate.conf -n命令可以在每行的前面加上行号</span><br></pre></td></tr></table></figure>
+
+<h4 id="31-mount"><a href="#31-mount" class="headerlink" title="31. mount"></a>31. mount</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /u01</span><br><span class="line">mount /dev/sdb1 /u01 如果要挂载一个文件系统，需要先创建一个目录，然后将这个文件系统挂载到这个目录上</span><br><span class="line">/dev/sdb1 /u01 ext2 defaults 0 2 也可以把它添加到fstab中进行自动挂载，这样任何时候系统重启的时候，文件系统都会被加载</span><br></pre></td></tr></table></figure>
+
+<h4 id="32-chmod"><a href="#32-chmod" class="headerlink" title="32. chmod"></a>32. chmod</h4><p>chmod用于改变文件和目录的权限</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> ug+rwx file.txt 给指定文件的属主和属组所有权限(包括读、写、执行)</span><br><span class="line"><span class="built_in">chmod</span> g-rwx file.txt 删除指定文件的属组的所有权限</span><br><span class="line"><span class="built_in">chmod</span> -R ug+rwx file.txt 修改目录的权限，以及递归修改目录下面所有文件和子目录的权限</span><br></pre></td></tr></table></figure>
+
+<h4 id="33-chown"><a href="#33-chown" class="headerlink" title="33. chown"></a>33. chown</h4><p>chown用于改变文件属主和属组</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chown</span> oracle:dba dbora.sh 同时将某个文件的属主改为oracle，属组改为db</span><br><span class="line"><span class="built_in">chown</span> -R oracle:dba /home/oracle 使用-R选项对目录和目录下的文件进行递归修改</span><br></pre></td></tr></table></figure>
+
+<h4 id="34-passwd"><a href="#34-passwd" class="headerlink" title="34. passwd"></a>34. passwd</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">passwd passwd用于在命令行修改密码，使用这个命令会要求你先输入旧密码，然后输入新密码</span><br><span class="line">passwd USERNAME 超级用户可以用这个命令修改其他用户的密码，这个时候不需要输入用户的密码</span><br><span class="line">passwd -d USERNAME passwd还可以删除某个用户的密码，这个命令只有root用户才能操作，删除密码后，这个用户不需要输入密码就可以登录到系统</span><br></pre></td></tr></table></figure>
+
+<h4 id="35-mkdir"><a href="#35-mkdir" class="headerlink" title="35. mkdir"></a>35. mkdir</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/temp 在home目录下创建一个名为temp的目录</span><br><span class="line"><span class="built_in">mkdir</span> -p dir1/dir2/dir3/dir4/ 使用-p选项可以创建一个路径上所有不存在的目录</span><br></pre></td></tr></table></figure>
+
+<h4 id="36-ifconfig"><a href="#36-ifconfig" class="headerlink" title="36. ifconfig"></a>36. ifconfig</h4><p>ifconfig用于查看和配置Linux系统的网络接口</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ifconfig -a 查看所有网络接口及其状态</span><br><span class="line">ifconfig eth0 up 使用up命令启动某个接口</span><br><span class="line">ifconfig eth0 down 使用down命令停止某个接口</span><br></pre></td></tr></table></figure>
+
+<h4 id="37-uname"><a href="#37-uname" class="headerlink" title="37. uname"></a>37. uname</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">uname</span> -a <span class="built_in">uname</span>可以显示一些重要的系统信息，例如内核名称、主机名、内核版本号、处理器类型之类的信息</span><br></pre></td></tr></table></figure>
+
+<h4 id="38-whereis"><a href="#38-whereis" class="headerlink" title="38. whereis"></a>38. whereis</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">whereis <span class="built_in">ls</span> 当你不知道某个命令的位置时可以使用whereis命令，下面使用whereis查找<span class="built_in">ls</span>的位置</span><br><span class="line">whereis -u -B /tmp -f lsmk 当你想查找某个可执行程序的位置，但这个程序又不在whereis的默认目录下，你可以使用-B选项，并指定目录作为这个选项的参数。下面的命令在/tmp目录下查找lsmk命令</span><br></pre></td></tr></table></figure>
+
+<h4 id="39-whatis"><a href="#39-whatis" class="headerlink" title="39. whatis"></a>39. whatis</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">whatis <span class="built_in">ls</span> wathis显示某个命令的描述信息</span><br><span class="line">whatis ifconfig wathis显示某个命令的描述信息</span><br></pre></td></tr></table></figure>
+
+<h4 id="40-locate"><a href="#40-locate" class="headerlink" title="40. locate"></a>40. locate</h4><p>locate命名可以显示某个指定文件（或一组文件）的路径，它会使用由updatedb创建的数据库</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">locate crontab 命令会显示系统中所有包含crontab字符串的文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="41-man"><a href="#41-man" class="headerlink" title="41. man"></a>41. man</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">man crontab 显示某个命令的man页面</span><br><span class="line">man SECTION-NUMBER commandname 有些命令可能会有多个man页面，每个man页面对应一种命令类型</span><br></pre></td></tr></table></figure>
+
+<h4 id="42-tail"><a href="#42-tail" class="headerlink" title="42. tail"></a>42. tail</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">tail</span> filename.txt <span class="built_in">tail</span>命令默认显示文件最后的10行文本</span><br><span class="line"><span class="built_in">tail</span> -n N filename.txt 你可以使用-n选项指定要显示的行数</span><br><span class="line"><span class="built_in">tail</span> -f log-file 你也可以使用-f选项进行实时查看，这个命令执行后会等待，如果有新行添加到文件尾部，它会继续输出新的行，在查看日志时这个选项会非常有用。你可以通过CTRL-C终止命令的执行</span><br></pre></td></tr></table></figure>
+
+<h4 id="43-less"><a href="#43-less" class="headerlink" title="43. less"></a>43. less</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">less huge-log-file.log 这个命名可以在不加载整个文件的前提下显示文件内容，在查看大型日志文件的时候这个命令会非常有用</span><br></pre></td></tr></table></figure>
+
+<h4 id="44-su"><a href="#44-su" class="headerlink" title="44. su"></a>44. su</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">su - USERNAME su命令用于切换用户账号，超级用户使用这个命令可以切换到任何其他用户而不用输入密码</span><br><span class="line">su -s <span class="string">&#x27;SHELLNAME&#x27;</span> USERNAME 用指定用户登录，并且使用指定的shell程序，而不用默认的</span><br></pre></td></tr></table></figure>
+
+<h4 id="45-mysql"><a href="#45-mysql" class="headerlink" title="45. mysql"></a>45. mysql</h4><p>mysql可能是Linux上使用最广泛的数据库，即使你没有在你的服务器上安装mysql，你也可以使用mysql客户端连接到远程的mysql服务器</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mysql -u root -p -h 192.168.1.2 连接一个远程数据库，需要输入密码</span><br><span class="line">mysql -u root -p 连接本地数据库</span><br></pre></td></tr></table></figure>
+
+<p>你也可以在命令行中输入数据库密码，只需要在-p后面加上密码作为参数，可以直接写在p后面而不用加空格</p>
+<h4 id="46-yum"><a href="#46-yum" class="headerlink" title="46. yum"></a>46. yum</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum install httpd 使用yum安装apache</span><br><span class="line">yum update httpd 更新apache</span><br><span class="line">yum remove httpd 卸载/删除apache</span><br></pre></td></tr></table></figure>
+
+<h4 id="47-rpm"><a href="#47-rpm" class="headerlink" title="47. rpm"></a>47. rpm</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">rpm -ivh httpd-2.2.3-22.0.1.el5.i386.rpm 使用rpm安装apache</span><br><span class="line">rpm -uvh httpd-2.2.3-22.0.1.el5.i386.rpm 更新apache</span><br><span class="line">rpm -ev httpd 卸载/删除apache</span><br></pre></td></tr></table></figure>
+
+<h4 id="48-ping"><a href="#48-ping" class="headerlink" title="48. ping"></a>48. ping</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ping -c 5 gmail.com ping一个远程主机，只发5个数据包</span><br></pre></td></tr></table></figure>
+
+<h4 id="49-date"><a href="#49-date" class="headerlink" title="49. date"></a>49. date</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">date</span> -s <span class="string">&quot;01/31/2010 23:59:53&quot;</span> 设置系统日期</span><br><span class="line">---</span><br><span class="line">当你修改了系统时间，你需要同步硬件时间和系统时间</span><br><span class="line">hwclock –systohc</span><br><span class="line">hwclock --systohc –utc</span><br></pre></td></tr></table></figure>
+
+<h4 id="50-wget"><a href="#50-wget" class="headerlink" title="50. wget"></a>50. wget</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-3.2.1.tar.gz 使用wget从网上下载软件、音乐、视频</span><br><span class="line">wget -O taglist.zip http://www.vim.org/scripts/download_script.php?src_id=7701 下载文件并以指定的文件名保存文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="51-CPU100-怎么排查和处理"><a href="#51-CPU100-怎么排查和处理" class="headerlink" title="51. CPU100%怎么排查和处理"></a>51. CPU100%怎么排查和处理</h4><p>使用top命令定位进程，再用top命令定位线程，再打印线程堆栈查看运行情况</p>
+<ol>
+<li><code>top</code>命令显示进程运行列表，找到最耗<code>CPU</code>的进程<code>PID</code></li>
+<li>找到最耗<code>CPU</code>的线程，<code>top -Hp 进程PID号</code>，显示进程的线程运行列表，找到最耗<code>CPU</code>的线程<code>PID</code></li>
+<li>将线程<code>PID</code>转化为16进制，<code>printf &quot;%x\n&quot; 线程PID号</code>，因为在堆栈里，线程<code>ID</code>是用16进制表示的</li>
+<li>查看堆栈，找到线程在干嘛，<code>pstack/jstack/grep</code>，<code>jstack 进程PID | grep ‘线程PID的16进制数’ -C5 --color</code>打印进程堆栈，通过线程<code>ID</code>，过滤得到线程堆栈，根据线程<code>PID</code>的16进制数找到消耗<code>CPU</code>高的线程对应的线程的名称，以及看到了改线程正在执行代码的堆栈</li>
+</ol>
+<h4 id="52"><a href="#52" class="headerlink" title="52."></a>52.</h4><h4 id="53"><a href="#53" class="headerlink" title="53."></a>53.</h4><h4 id="54"><a href="#54" class="headerlink" title="54."></a>54.</h4><h4 id="55"><a href="#55" class="headerlink" title="55."></a>55.</h4><h4 id="56"><a href="#56" class="headerlink" title="56."></a>56.</h4><h4 id="57"><a href="#57" class="headerlink" title="57."></a>57.</h4><hr>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>八股文</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kafka面试题</title>
+    <url>/2022/10/30/Kafka%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<p>Kafka面试题</p>
+<h4 id="1-Kafka都有哪些特点"><a href="#1-Kafka都有哪些特点" class="headerlink" title="1. Kafka都有哪些特点"></a>1. Kafka都有哪些特点</h4><ul>
+<li>高吞吐量、低延迟：kafka每秒可以处理几十万条消息，它的延迟最低只有几毫秒，每个topic可以分多个partition, consumer group 对partition进行consume操作</li>
+<li>可扩展性：kafka集群支持热扩展</li>
+<li>持久性、可靠性：消息被持久化到本地磁盘，并且支持数据备份防止数据丢失</li>
+<li>容错性：允许集群中节点失败（若副本数量为n,则允许n-1个节点失败）</li>
+<li>高并发：支持数千个客户端同时读写</li>
+</ul>
+<h4 id="2-请简述下你在哪些场景下会选择Kafka"><a href="#2-请简述下你在哪些场景下会选择Kafka" class="headerlink" title="2. 请简述下你在哪些场景下会选择Kafka"></a>2. 请简述下你在哪些场景下会选择Kafka</h4><ul>
+<li>日志收集：一个公司可以用Kafka可以收集各种服务的log，通过kafka以统一接口服务的方式开放给各种consumer，例如hadoop、HBase、Solr等</li>
+<li>消息系统：解耦和生产者和消费者、缓存消息等</li>
+<li>用户活动跟踪：Kafka经常被用来记录web用户或者app用户的各种活动，如浏览网页、搜索、点击等活动，这些活动信息被各个服务器发布到kafka的topic中，然后订阅者通过订阅这些topic来做实时的监控分析，或者装载到hadoop、数据仓库中做离线分析和挖掘</li>
+<li>运营指标：Kafka也经常用来记录运营监控数据。包括收集各种分布式应用的数据，生产各种操作的集中反馈，比如报警和报告</li>
+<li>流式处理：比如spark streaming和 Flink</li>
+</ul>
+<h4 id="3-Kafka的设计架构你知道吗"><a href="#3-Kafka的设计架构你知道吗" class="headerlink" title="3. Kafka的设计架构你知道吗"></a>3. Kafka的设计架构你知道吗</h4><p>Kafka架构分为以下几个部分：</p>
+<ul>
+<li>Producer ：消息生产者，就是向 kafka broker 发消息的客户端</li>
+<li>Consumer ：消息消费者，向 kafka broker 取消息的客户端</li>
+<li>Topic ：可以理解为一个队列，一个 Topic 又分为一个或多个分区</li>
+<li>Consumer Group：这是 kafka 用来实现一个 topic 消息的广播（发给所有的 consumer）和单播（发给任意一个 consumer）的手段。一个 topic 可以有多个 Consumer Group</li>
+<li>Broker ：一台 kafka 服务器就是一个 broker。一个集群由多个 broker 组成。一个 broker 可以容纳多个 topic</li>
+<li>Partition：为了实现扩展性，一个非常大的 topic 可以分布到多个 broker上，每个 partition 是一个有序的队列。partition 中的每条消息都会被分配一个有序的id（offset）。将消息发给 consumer，kafka 只保证按一个 partition 中的消息的顺序，不保证一个 topic 的整体（多个 partition 间）的顺序</li>
+<li>Offset：kafka 的存储文件都是按照 offset.kafka 来命名，用 offset 做名字的好处是方便查找。例如你想找位于 2049 的位置，只要找到 2048.kafka 的文件即可。当然 the first offset 就是 00000000000.kafka</li>
+</ul>
+<h4 id="4-Kafka分区的目的"><a href="#4-Kafka分区的目的" class="headerlink" title="4. Kafka分区的目的"></a>4. Kafka分区的目的</h4><p>分区对于 Kafka 集群的好处是：实现负载均衡。分区对于消费者来说，可以提高并发度，提高效率</p>
+<h4 id="5-你知道Kafka是如何做到消息的有序性"><a href="#5-你知道Kafka是如何做到消息的有序性" class="headerlink" title="5. 你知道Kafka是如何做到消息的有序性"></a>5. 你知道Kafka是如何做到消息的有序性</h4><p>kafka 中的每个 partition 中的消息在写入时都是有序的，而且单独一个 partition 只能由一个消费者去消费，可以在里面保证消息的顺序性。但是分区之间的消息是不保证有序的</p>
+<h4 id="6-Kafka的高可靠性是怎么实现的"><a href="#6-Kafka的高可靠性是怎么实现的" class="headerlink" title="6. Kafka的高可靠性是怎么实现的"></a>6. Kafka的高可靠性是怎么实现的</h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
+<h4 id="7-请谈一谈Kafka数据一致性原理"><a href="#7-请谈一谈Kafka数据一致性原理" class="headerlink" title="7. 请谈一谈Kafka数据一致性原理"></a>7. 请谈一谈Kafka数据一致性原理</h4><h4 id="8-ISR、OSR、AR-是什么"><a href="#8-ISR、OSR、AR-是什么" class="headerlink" title="8. ISR、OSR、AR 是什么"></a>8. ISR、OSR、AR 是什么</h4><ul>
+<li>SR：In-Sync Replicas 副本同步队列</li>
+<li>OSR：Out-of-Sync Replicas</li>
+<li>AR：Assigned Replicas 所有副本</li>
+</ul>
+<p>ISR是由leader维护，follower从leader同步数据有一些延迟，超过相应的阈值会把 follower 剔除出 ISR, 存入OSR（Out-of-Sync Replicas ）列表，新加入的follower也会先存放在OSR中。AR&#x3D;ISR+OSR</p>
+<h4 id="9-LEO、HW、LSO、LW等分别代表什么"><a href="#9-LEO、HW、LSO、LW等分别代表什么" class="headerlink" title="9. LEO、HW、LSO、LW等分别代表什么"></a>9. LEO、HW、LSO、LW等分别代表什么</h4><ul>
+<li>LEO：是 LogEndOffset 的简称，代表当前日志文件中下一条</li>
+<li>HW：水位或水印（watermark）一词，也可称为高水位(high watermark)，通常被用在流式处理领域（比如Apache Flink、Apache Spark等），以表征元素或事件在基于时间层面上的进度。在Kafka中，水位的概念反而与时间无关，而是与位置信息相关。严格来说，它表示的就是位置信息，即位移（offset）。取 partition 对应的 ISR中 最小的 LEO 作为 HW，consumer 最多只能消费到 HW 所在的位置上一条信息</li>
+<li>LSO：是 LastStableOffset 的简称，对未完成的事务而言，LSO 的值等于事务中第一条消息的位置(firstUnstableOffset)，对已完成的事务而言，它的值同 HW 相同</li>
+<li>LW：Low Watermark 低水位, 代表 AR 集合中最小的 logStartOffset 值</li>
+</ul>
+<h4 id="10-Kafka在什么情况下会出现消息丢失"><a href="#10-Kafka在什么情况下会出现消息丢失" class="headerlink" title="10. Kafka在什么情况下会出现消息丢失"></a>10. Kafka在什么情况下会出现消息丢失</h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
+<h4 id="11-怎么尽可能保证Kafka的可靠性"><a href="#11-怎么尽可能保证Kafka的可靠性" class="headerlink" title="11. 怎么尽可能保证Kafka的可靠性"></a>11. 怎么尽可能保证Kafka的可靠性</h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
+<h4 id="12-消费者和消费者组有什么关系"><a href="#12-消费者和消费者组有什么关系" class="headerlink" title="12. 消费者和消费者组有什么关系"></a>12. 消费者和消费者组有什么关系</h4><h4 id="13-Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区"><a href="#13-Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区" class="headerlink" title="13. Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区"></a>13. Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区</h4><h4 id="14-数据传输的事务有几种"><a href="#14-数据传输的事务有几种" class="headerlink" title="14. 数据传输的事务有几种"></a>14. 数据传输的事务有几种</h4><p>数据传输的事务定义通常有以下三种级别：</p>
+<ul>
+<li>最多一次：消息不会被重复发送，最多被传输一次，但也有可能一次不传输</li>
+<li>最少一次：消息不会被漏发送，最少被传输一次，但也有可能被重复传输</li>
+<li>精确的一次（Exactly once）：不会漏传输也不会重复传输，每个消息都传输被</li>
+</ul>
+<h4 id="15-Kafka消费者是否可以消费指定分区消息"><a href="#15-Kafka消费者是否可以消费指定分区消息" class="headerlink" title="15. Kafka消费者是否可以消费指定分区消息"></a>15. Kafka消费者是否可以消费指定分区消息</h4><p>Kafa consumer消费消息时，向broker发出fetch请求去消费特定分区的消息，consumer指定消息在日志中的偏移量（offset），就可以消费从这个位置开始的消息，customer拥有了offset的控制权，可以向后回滚去重新消费之前的消息，这是很有意义的</p>
+<h4 id="16-Kafka消息是采用Pull模式，还是Push模式"><a href="#16-Kafka消息是采用Pull模式，还是Push模式" class="headerlink" title="16. Kafka消息是采用Pull模式，还是Push模式"></a>16. Kafka消息是采用Pull模式，还是Push模式</h4><p>Kafka最初考虑的问题是，customer应该从brokes拉取消息还是brokers将消息推送到consumer，也就是pull还push。在这方面，Kafka遵循了一种大部分消息系统共同的传统的设计：producer将消息推送到broker，consumer从broker拉取消息</p>
+<p>一些消息系统比如Scribe和Apache Flume采用了push模式，将消息推送到下游的consumer。这样做有好处也有坏处：由broker决定消息推送的速率，对于不同消费速率的consumer就不太好处理了。消息系统都致力于让consumer以最大的速率最快速的消费消息，但不幸的是，push模式下，当broker推送的速率远大于consumer消费的速率时，consumer恐怕就要崩溃了。最终Kafka还是选取了传统的pull模式</p>
+<p>Pull模式的另外一个好处是consumer可以自主决定是否批量的从broker拉取数据。Push模式必须在不知道下游consumer消费能力和消费策略的情况下决定是立即推送每条消息还是缓存之后批量推送。如果为了避免consumer崩溃而采用较低的推送速率，将可能导致一次只推送较少的消息而造成浪费。Pull模式下，consumer就可以根据自己的消费能力去决定这些策略</p>
+<p>Pull有个缺点是，如果broker没有可供消费的消息，将导致consumer不断在循环中轮询，直到新消息到t达。为了避免这点，Kafka有个参数可以让consumer阻塞知道新消息到达(当然也可以阻塞知道消息的数量达到某个特定的量这样就可以批量发</p>
+<h4 id="17-Kafka-消息格式的演变清楚吗"><a href="#17-Kafka-消息格式的演变清楚吗" class="headerlink" title="17. Kafka 消息格式的演变清楚吗"></a>17. Kafka 消息格式的演变清楚吗</h4><h4 id="18-Kafka-偏移量的演变清楚吗"><a href="#18-Kafka-偏移量的演变清楚吗" class="headerlink" title="18. Kafka 偏移量的演变清楚吗"></a>18. Kafka 偏移量的演变清楚吗</h4><h4 id="19-Kafka高效文件存储设计特点"><a href="#19-Kafka高效文件存储设计特点" class="headerlink" title="19. Kafka高效文件存储设计特点"></a>19. Kafka高效文件存储设计特点</h4><ul>
+<li>Kafka把topic中一个parition大文件分成多个小文件段，通过多个小文件段，就容易定期清除或删除已经消费完文件，减少磁盘占用</li>
+<li>通过索引信息可以快速定位message和确定response的最大大小</li>
+<li>通过index元数据全部映射到memory，可以避免segment file的IO磁盘操作</li>
+<li>通过索引文件稀疏存储，可以大幅降低index文件元数据占用空间大小</li>
+</ul>
+<h4 id="20-Kafka创建Topic时如何将分区放置到不同的Broker中"><a href="#20-Kafka创建Topic时如何将分区放置到不同的Broker中" class="headerlink" title="20. Kafka创建Topic时如何将分区放置到不同的Broker中"></a>20. Kafka创建Topic时如何将分区放置到不同的Broker中</h4><h4 id="21-Kafka新建的分区会在哪个目录下创建"><a href="#21-Kafka新建的分区会在哪个目录下创建" class="headerlink" title="21. Kafka新建的分区会在哪个目录下创建"></a>21. Kafka新建的分区会在哪个目录下创建</h4><h4 id="22-谈一谈Kafka的再均衡"><a href="#22-谈一谈Kafka的再均衡" class="headerlink" title="22. 谈一谈Kafka的再均衡"></a>22. 谈一谈Kafka的再均衡</h4><p>在Kafka中，当有新消费者加入或者订阅的topic数发生变化时，会触发Rebalance(再均衡：在同一个消费者组当中，分区的所有权从一个消费者转移到另外一个消费者)机制，Rebalance顾名思义就是重新均衡消费者消费。Rebalance的过程如下：</p>
+<ul>
+<li>第一步：所有成员都向coordinator发送请求，请求入组。一旦所有成员都发送了请求，coordinator会从中选择一个consumer担任leader的角色，并把组成员信息以及订阅信息发给leader</li>
+<li>第二步：leader开始分配消费方案，指明具体哪个consumer负责消费哪些topic的哪些partition。一旦完成分配，leader会将这个方案发给coordinator。coordinator接收到分配方案之后会把方案发给各个consumer，这样组内的所有成员就都知道自己应该消费哪些分区了</li>
+</ul>
+<p>所以对于Rebalance来说，Coordinator起着至关重要的作用</p>
+<h4 id="23-谈谈Kafka分区分配策略"><a href="#23-谈谈Kafka分区分配策略" class="headerlink" title="23. 谈谈Kafka分区分配策略"></a>23. 谈谈Kafka分区分配策略</h4><h4 id="24-Kafka-Producer是如何动态感知主题分区数变化的"><a href="#24-Kafka-Producer是如何动态感知主题分区数变化的" class="headerlink" title="24. Kafka Producer是如何动态感知主题分区数变化的"></a>24. Kafka Producer是如何动态感知主题分区数变化的</h4><h4 id="25-Kafka是如何实现高吞吐率的"><a href="#25-Kafka是如何实现高吞吐率的" class="headerlink" title="25. Kafka是如何实现高吞吐率的"></a>25. Kafka是如何实现高吞吐率的</h4><p>Kafka是分布式消息系统，需要处理海量的消息，Kafka的设计是把所有的消息都写入速度低容量大的硬盘，以此来换取更强的存储能力，但实际上，使用硬盘并没有带来过多的性能损失。kafka主要使用了以下几个方式实现了超高的吞吐率：</p>
+<ul>
+<li>顺序读写</li>
+<li>零拷贝</li>
+<li>文件分段</li>
+<li>批量发送</li>
+<li>数据压缩</li>
+</ul>
+<h4 id="26-Kafka监控都有哪些"><a href="#26-Kafka监控都有哪些" class="headerlink" title="26. Kafka监控都有哪些"></a>26. Kafka监控都有哪些</h4><h4 id="27-如何为Kafka集群选择合适的Topics-x2F-Partitions数量"><a href="#27-如何为Kafka集群选择合适的Topics-x2F-Partitions数量" class="headerlink" title="27. 如何为Kafka集群选择合适的Topics&#x2F;Partitions数量"></a>27. 如何为Kafka集群选择合适的Topics&#x2F;Partitions数量</h4><h4 id="28-谈谈你对Kafka事务的了解"><a href="#28-谈谈你对Kafka事务的了解" class="headerlink" title="28. 谈谈你对Kafka事务的了解"></a>28. 谈谈你对Kafka事务的了解</h4><h4 id="29-谈谈你对Kafka幂等的了解"><a href="#29-谈谈你对Kafka幂等的了解" class="headerlink" title="29. 谈谈你对Kafka幂等的了解"></a>29. 谈谈你对Kafka幂等的了解</h4><h4 id="30-Kafka缺点"><a href="#30-Kafka缺点" class="headerlink" title="30. Kafka缺点"></a>30. Kafka缺点</h4><ul>
+<li>由于是批量发送，数据并非真正的实时</li>
+<li>对于mqtt协议不支持</li>
+<li>不支持物联网传感数据直接接入</li>
+<li>仅支持统一分区内消息有序，无法实现全局消息有序</li>
+<li>监控不完善，需要安装插件</li>
+<li>依赖zookeeper进行元数据管理</li>
+</ul>
+<h4 id="31-Kafka新旧消费者的区别"><a href="#31-Kafka新旧消费者的区别" class="headerlink" title="31. Kafka新旧消费者的区别"></a>31. Kafka新旧消费者的区别</h4><p>旧的 Kafka 消费者 API 主要包括：SimpleConsumer（简单消费者） 和 ZookeeperConsumerConnectir（高级消费者）。SimpleConsumer 名字看起来是简单消费者，但是其实用起来很不简单，可以使用它从特定的分区和偏移量开始读取消息。高级消费者和现在新的消费者有点像，有消费者群组，有分区再均衡，不过它使用 ZK 来管理消费者群组，并不具备偏移量和再均衡的可操控性</p>
+<h4 id="32-Kafka分区数可以增加或减少吗？为什么"><a href="#32-Kafka分区数可以增加或减少吗？为什么" class="headerlink" title="32. Kafka分区数可以增加或减少吗？为什么"></a>32. Kafka分区数可以增加或减少吗？为什么</h4><p>我们可以使用 bin&#x2F;kafka-topics.sh 命令对 Kafka 增加 Kafka 的分区数据，但是 Kafka 不支持减少分区数</p>
+<p>Kafka 分区数据不支持减少是由很多原因的，比如减少的分区其数据放到哪里去？是删除，还是保留？删除的话，那么这些没消费的消息不就丢了。如果保留这些消息如何放到其他分区里面？追加到其他分区后面的话那么就破坏了 Kafka 单个分区的有序性。如果要保证删除分区数据插入到其他分区保证有序性，那么实现起来逻辑就会非常复杂</p>
+<hr>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>八股文</tag>
+        <tag>Kafka</tag>
       </tags>
   </entry>
   <entry>
@@ -705,414 +951,541 @@
       </tags>
   </entry>
   <entry>
-    <title>Kafka面试题</title>
-    <url>/2022/10/30/Kafka%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p>Kafka面试题</p>
-<h4 id="1-Kafka都有哪些特点"><a href="#1-Kafka都有哪些特点" class="headerlink" title="1. Kafka都有哪些特点"></a>1. Kafka都有哪些特点</h4><ul>
-<li>高吞吐量、低延迟：kafka每秒可以处理几十万条消息，它的延迟最低只有几毫秒，每个topic可以分多个partition, consumer group 对partition进行consume操作</li>
-<li>可扩展性：kafka集群支持热扩展</li>
-<li>持久性、可靠性：消息被持久化到本地磁盘，并且支持数据备份防止数据丢失</li>
-<li>容错性：允许集群中节点失败（若副本数量为n,则允许n-1个节点失败）</li>
-<li>高并发：支持数千个客户端同时读写</li>
+    <title>MySQL面试题</title>
+    <url>/2022/10/28/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<p>MySQL常见面试题、八股文</p>
+<h4 id="1-Mysql索引用的是什么算法"><a href="#1-Mysql索引用的是什么算法" class="headerlink" title="1. Mysql索引用的是什么算法"></a>1. Mysql索引用的是什么算法</h4><ul>
+<li>Mysql索引选用的是B+树，平衡二叉树的高度太高，查找可能需要较多的磁盘IO。B树索引占用内存较高(非叶子节点存储数据)</li>
+<li>B+树，主要是查询效率高，O(logN)，可以充分利用磁盘预读的特性，多叉树，深度小，叶子结点有序且存储数据</li>
 </ul>
-<h4 id="2-请简述下你在哪些场景下会选择Kafka"><a href="#2-请简述下你在哪些场景下会选择Kafka" class="headerlink" title="2. 请简述下你在哪些场景下会选择Kafka"></a>2. 请简述下你在哪些场景下会选择Kafka</h4><ul>
-<li>日志收集：一个公司可以用Kafka可以收集各种服务的log，通过kafka以统一接口服务的方式开放给各种consumer，例如hadoop、HBase、Solr等</li>
-<li>消息系统：解耦和生产者和消费者、缓存消息等</li>
-<li>用户活动跟踪：Kafka经常被用来记录web用户或者app用户的各种活动，如浏览网页、搜索、点击等活动，这些活动信息被各个服务器发布到kafka的topic中，然后订阅者通过订阅这些topic来做实时的监控分析，或者装载到hadoop、数据仓库中做离线分析和挖掘</li>
-<li>运营指标：Kafka也经常用来记录运营监控数据。包括收集各种分布式应用的数据，生产各种操作的集中反馈，比如报警和报告</li>
-<li>流式处理：比如spark streaming和 Flink</li>
+<h4 id="2-Mysql事务的基本要素"><a href="#2-Mysql事务的基本要素" class="headerlink" title="2. Mysql事务的基本要素"></a>2. Mysql事务的基本要素</h4><ul>
+<li>原子性：事务是一个原子操作单元，其对数据的修改，要么全都执行，要么全都不执行</li>
+<li>一致性：事务开始前和结束后，数据库的完整性约束没有被破坏</li>
+<li>隔离性：同一时间，只允许一个事务请求同一数据，不同的事务之间彼此没有任何干扰</li>
+<li>持久性：事务完成后，事务对数据库的所有更新将被保存到数据库，不能回滚</li>
 </ul>
-<h4 id="3-Kafka的设计架构你知道吗"><a href="#3-Kafka的设计架构你知道吗" class="headerlink" title="3. Kafka的设计架构你知道吗"></a>3. Kafka的设计架构你知道吗</h4><p>Kafka架构分为以下几个部分：</p>
+<h4 id="3-Mysql的存储引擎"><a href="#3-Mysql的存储引擎" class="headerlink" title="3. Mysql的存储引擎"></a>3. Mysql的存储引擎</h4><ul>
+<li>InnoDB存储引擎<ul>
+<li>InnoDB存储引擎支持事务，其设计目标主要面向在线事务处理（OLTP）的应用</li>
+<li>其特点是行锁设计，支持外键，并支持非锁定锁，即默认读取操作不会产生锁。从Mysql5.5.8版本开始，InnoDB存储引擎是默认的存储引擎</li>
+</ul>
+</li>
+<li>MyISAM存储引擎<ul>
+<li>MyISAM存储引擎不支持事务、表锁设计，支持全文索引，主要面向一些OLAP数据库应用</li>
+<li>InnoDB的数据文件本身就是主索引文件，而MyISAM的主索引和数据是分开的</li>
+</ul>
+</li>
+<li>NDB存储引擎<ul>
+<li>NDB存储引擎是一个集群存储引擎，其结构是share nothing的集群架构，能提供更高的可用性</li>
+<li>NDB的特点是数据全部放在内存中（从MySQL 5.1版本开始，可以将非索引数据放在磁盘上），因此主键查找的速度极快，并且通过添加NDB数据存储节点可以线性地提高数据库性能，是高可用、高性能的集群系统</li>
+<li>NDB存储引擎的连接操作是在MySQL数据库层完成的，而不是在存储引擎层完成的。这意味着，复杂的连接操作需要巨大的网络开销，因此查询速度很慢。如果解决了这个问题，NDB存储引擎的市场应该是非常巨大的</li>
+</ul>
+</li>
+<li>Memory存储引擎<ul>
+<li>Memory存储引擎（之前称HEAP存储引擎）将表中的数据存放在内存中，如果数据库重启或发生崩溃，表中的数据都将消失</li>
+<li>它非常适合用于存储临时数据的临时表，以及数据仓库中的纬度表。Memory存储引擎默认使用哈希索引，而不是我们熟悉的B+树索引</li>
+<li>虽然Memory存储引擎速度非常快，但在使用上还是有一定的限制。比如，只支持表锁，并发性能较差，并且不支持TEXT和BLOB列类型。最重要的是，存储变长字段时是按照定常字段的方式进行的，因此会浪费内存</li>
+</ul>
+</li>
+<li>Archive存储引擎<ul>
+<li>Archive存储引擎只支持INSERT和SELECT操作，从MySQL 5.1开始支持索引</li>
+<li>Archive存储引擎使用zlib算法将数据行（row）进行压缩后存储，压缩比一般可达1∶10。正如其名字所示，Archive存储引擎非常适合存储归档数据，如日志信息</li>
+<li>Archive存储引擎使用行锁来实现高并发的插入操作，但是其本身并不是事务安全的存储引擎，其设计目标主要是提供高速的插入和压缩功能</li>
+</ul>
+</li>
+<li>Maria存储引擎<ul>
+<li>Maria存储引擎是新开发的引擎，设计目标主要是用来取代原有的MyISAM存储引擎，从而成为MySQL的默认存储引擎。它可以看做是MyISAM的后续版本</li>
+<li>Maria存储引擎的特点是：支持缓存数据和索引文件，应用了行锁设计，提供了MVCC功能，支持事务和非事务安全的选项，以及更好的BLOB字符类型的处理性能</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-Mysql事务隔离级别"><a href="#4-Mysql事务隔离级别" class="headerlink" title="4. Mysql事务隔离级别"></a>4. Mysql事务隔离级别</h4><p>Mysql有四种事务隔离级别，默认的是可重复读</p>
+<table>
+<thead>
+<tr>
+<th align="left">事务隔离级别</th>
+<th align="left">脏读</th>
+<th align="left">不可重复读</th>
+<th align="left">幻读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">读未提交</td>
+<td align="left">是</td>
+<td align="left">是</td>
+<td align="left">是</td>
+</tr>
+<tr>
+<td align="left">读已提交</td>
+<td align="left">否</td>
+<td align="left">是</td>
+<td align="left">是</td>
+</tr>
+<tr>
+<td align="left">可重复读</td>
+<td align="left">否</td>
+<td align="left">否</td>
+<td align="left">是</td>
+</tr>
+<tr>
+<td align="left">串行</td>
+<td align="left">否</td>
+<td align="left">否</td>
+<td align="left">否</td>
+</tr>
+</tbody></table>
 <ul>
-<li>Producer ：消息生产者，就是向 kafka broker 发消息的客户端</li>
-<li>Consumer ：消息消费者，向 kafka broker 取消息的客户端</li>
-<li>Topic ：可以理解为一个队列，一个 Topic 又分为一个或多个分区</li>
-<li>Consumer Group：这是 kafka 用来实现一个 topic 消息的广播（发给所有的 consumer）和单播（发给任意一个 consumer）的手段。一个 topic 可以有多个 Consumer Group</li>
-<li>Broker ：一台 kafka 服务器就是一个 broker。一个集群由多个 broker 组成。一个 broker 可以容纳多个 topic</li>
-<li>Partition：为了实现扩展性，一个非常大的 topic 可以分布到多个 broker上，每个 partition 是一个有序的队列。partition 中的每条消息都会被分配一个有序的id（offset）。将消息发给 consumer，kafka 只保证按一个 partition 中的消息的顺序，不保证一个 topic 的整体（多个 partition 间）的顺序</li>
-<li>Offset：kafka 的存储文件都是按照 offset.kafka 来命名，用 offset 做名字的好处是方便查找。例如你想找位于 2049 的位置，只要找到 2048.kafka 的文件即可。当然 the first offset 就是 00000000000.kafka</li>
-</ul>
-<h4 id="4-Kafka分区的目的"><a href="#4-Kafka分区的目的" class="headerlink" title="4. Kafka分区的目的"></a>4. Kafka分区的目的</h4><p>分区对于 Kafka 集群的好处是：实现负载均衡。分区对于消费者来说，可以提高并发度，提高效率</p>
-<h4 id="5-你知道Kafka是如何做到消息的有序性"><a href="#5-你知道Kafka是如何做到消息的有序性" class="headerlink" title="5. 你知道Kafka是如何做到消息的有序性"></a>5. 你知道Kafka是如何做到消息的有序性</h4><p>kafka 中的每个 partition 中的消息在写入时都是有序的，而且单独一个 partition 只能由一个消费者去消费，可以在里面保证消息的顺序性。但是分区之间的消息是不保证有序的</p>
-<h4 id="6-Kafka的高可靠性是怎么实现的"><a href="#6-Kafka的高可靠性是怎么实现的" class="headerlink" title="6. Kafka的高可靠性是怎么实现的"></a>6. Kafka的高可靠性是怎么实现的</h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
-<h4 id="7-请谈一谈Kafka数据一致性原理"><a href="#7-请谈一谈Kafka数据一致性原理" class="headerlink" title="7. 请谈一谈Kafka数据一致性原理"></a>7. 请谈一谈Kafka数据一致性原理</h4><h4 id="8-ISR、OSR、AR-是什么"><a href="#8-ISR、OSR、AR-是什么" class="headerlink" title="8. ISR、OSR、AR 是什么"></a>8. ISR、OSR、AR 是什么</h4><ul>
-<li>SR：In-Sync Replicas 副本同步队列</li>
-<li>OSR：Out-of-Sync Replicas</li>
-<li>AR：Assigned Replicas 所有副本</li>
-</ul>
-<p>ISR是由leader维护，follower从leader同步数据有一些延迟，超过相应的阈值会把 follower 剔除出 ISR, 存入OSR（Out-of-Sync Replicas ）列表，新加入的follower也会先存放在OSR中。AR&#x3D;ISR+OSR</p>
-<h4 id="9-LEO、HW、LSO、LW等分别代表什么"><a href="#9-LEO、HW、LSO、LW等分别代表什么" class="headerlink" title="9. LEO、HW、LSO、LW等分别代表什么"></a>9. LEO、HW、LSO、LW等分别代表什么</h4><ul>
-<li>LEO：是 LogEndOffset 的简称，代表当前日志文件中下一条</li>
-<li>HW：水位或水印（watermark）一词，也可称为高水位(high watermark)，通常被用在流式处理领域（比如Apache Flink、Apache Spark等），以表征元素或事件在基于时间层面上的进度。在Kafka中，水位的概念反而与时间无关，而是与位置信息相关。严格来说，它表示的就是位置信息，即位移（offset）。取 partition 对应的 ISR中 最小的 LEO 作为 HW，consumer 最多只能消费到 HW 所在的位置上一条信息</li>
-<li>LSO：是 LastStableOffset 的简称，对未完成的事务而言，LSO 的值等于事务中第一条消息的位置(firstUnstableOffset)，对已完成的事务而言，它的值同 HW 相同</li>
-<li>LW：Low Watermark 低水位, 代表 AR 集合中最小的 logStartOffset 值</li>
-</ul>
-<h4 id="10-Kafka在什么情况下会出现消息丢失"><a href="#10-Kafka在什么情况下会出现消息丢失" class="headerlink" title="10. Kafka在什么情况下会出现消息丢失"></a>10. Kafka在什么情况下会出现消息丢失</h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
-<h4 id="11-怎么尽可能保证Kafka的可靠性"><a href="#11-怎么尽可能保证Kafka的可靠性" class="headerlink" title="11. 怎么尽可能保证Kafka的可靠性"></a>11. 怎么尽可能保证Kafka的可靠性</h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
-<h4 id="12-消费者和消费者组有什么关系"><a href="#12-消费者和消费者组有什么关系" class="headerlink" title="12. 消费者和消费者组有什么关系"></a>12. 消费者和消费者组有什么关系</h4><h4 id="13-Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区"><a href="#13-Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区" class="headerlink" title="13. Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区"></a>13. Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区</h4><h4 id="14-数据传输的事务有几种"><a href="#14-数据传输的事务有几种" class="headerlink" title="14. 数据传输的事务有几种"></a>14. 数据传输的事务有几种</h4><p>数据传输的事务定义通常有以下三种级别：</p>
+<li><p>读未提交(Read uncommitted)</p>
+<p>一个事务可以读取另一个未提交事务的数据，最低级别，任何情况都无法保证</p>
 <ul>
-<li>最多一次：消息不会被重复发送，最多被传输一次，但也有可能一次不传输</li>
-<li>最少一次：消息不会被漏发送，最少被传输一次，但也有可能被重复传输</li>
-<li>精确的一次（Exactly once）：不会漏传输也不会重复传输，每个消息都传输被</li>
+<li>所有事务都可以看到其他未提交事务的执行结果</li>
+<li>本隔离级别很少用于实际应用，因为它的性能也不比其他级别好多少</li>
+<li>该级别引发的问题是——脏读(Dirty Read)：读取到了未提交的数据</li>
 </ul>
-<h4 id="15-Kafka消费者是否可以消费指定分区消息"><a href="#15-Kafka消费者是否可以消费指定分区消息" class="headerlink" title="15. Kafka消费者是否可以消费指定分区消息"></a>15. Kafka消费者是否可以消费指定分区消息</h4><p>Kafa consumer消费消息时，向broker发出fetch请求去消费特定分区的消息，consumer指定消息在日志中的偏移量（offset），就可以消费从这个位置开始的消息，customer拥有了offset的控制权，可以向后回滚去重新消费之前的消息，这是很有意义的</p>
-<h4 id="16-Kafka消息是采用Pull模式，还是Push模式"><a href="#16-Kafka消息是采用Pull模式，还是Push模式" class="headerlink" title="16. Kafka消息是采用Pull模式，还是Push模式"></a>16. Kafka消息是采用Pull模式，还是Push模式</h4><p>Kafka最初考虑的问题是，customer应该从brokes拉取消息还是brokers将消息推送到consumer，也就是pull还push。在这方面，Kafka遵循了一种大部分消息系统共同的传统的设计：producer将消息推送到broker，consumer从broker拉取消息</p>
-<p>一些消息系统比如Scribe和Apache Flume采用了push模式，将消息推送到下游的consumer。这样做有好处也有坏处：由broker决定消息推送的速率，对于不同消费速率的consumer就不太好处理了。消息系统都致力于让consumer以最大的速率最快速的消费消息，但不幸的是，push模式下，当broker推送的速率远大于consumer消费的速率时，consumer恐怕就要崩溃了。最终Kafka还是选取了传统的pull模式</p>
-<p>Pull模式的另外一个好处是consumer可以自主决定是否批量的从broker拉取数据。Push模式必须在不知道下游consumer消费能力和消费策略的情况下决定是立即推送每条消息还是缓存之后批量推送。如果为了避免consumer崩溃而采用较低的推送速率，将可能导致一次只推送较少的消息而造成浪费。Pull模式下，consumer就可以根据自己的消费能力去决定这些策略</p>
-<p>Pull有个缺点是，如果broker没有可供消费的消息，将导致consumer不断在循环中轮询，直到新消息到t达。为了避免这点，Kafka有个参数可以让consumer阻塞知道新消息到达(当然也可以阻塞知道消息的数量达到某个特定的量这样就可以批量发</p>
-<h4 id="17-Kafka-消息格式的演变清楚吗"><a href="#17-Kafka-消息格式的演变清楚吗" class="headerlink" title="17. Kafka 消息格式的演变清楚吗"></a>17. Kafka 消息格式的演变清楚吗</h4><h4 id="18-Kafka-偏移量的演变清楚吗"><a href="#18-Kafka-偏移量的演变清楚吗" class="headerlink" title="18. Kafka 偏移量的演变清楚吗"></a>18. Kafka 偏移量的演变清楚吗</h4><h4 id="19-Kafka高效文件存储设计特点"><a href="#19-Kafka高效文件存储设计特点" class="headerlink" title="19. Kafka高效文件存储设计特点"></a>19. Kafka高效文件存储设计特点</h4><ul>
-<li>Kafka把topic中一个parition大文件分成多个小文件段，通过多个小文件段，就容易定期清除或删除已经消费完文件，减少磁盘占用</li>
-<li>通过索引信息可以快速定位message和确定response的最大大小</li>
-<li>通过index元数据全部映射到memory，可以避免segment file的IO磁盘操作</li>
-<li>通过索引文件稀疏存储，可以大幅降低index文件元数据占用空间大小</li>
-</ul>
-<h4 id="20-Kafka创建Topic时如何将分区放置到不同的Broker中"><a href="#20-Kafka创建Topic时如何将分区放置到不同的Broker中" class="headerlink" title="20. Kafka创建Topic时如何将分区放置到不同的Broker中"></a>20. Kafka创建Topic时如何将分区放置到不同的Broker中</h4><h4 id="21-Kafka新建的分区会在哪个目录下创建"><a href="#21-Kafka新建的分区会在哪个目录下创建" class="headerlink" title="21. Kafka新建的分区会在哪个目录下创建"></a>21. Kafka新建的分区会在哪个目录下创建</h4><h4 id="22-谈一谈Kafka的再均衡"><a href="#22-谈一谈Kafka的再均衡" class="headerlink" title="22. 谈一谈Kafka的再均衡"></a>22. 谈一谈Kafka的再均衡</h4><p>在Kafka中，当有新消费者加入或者订阅的topic数发生变化时，会触发Rebalance(再均衡：在同一个消费者组当中，分区的所有权从一个消费者转移到另外一个消费者)机制，Rebalance顾名思义就是重新均衡消费者消费。Rebalance的过程如下：</p>
+</li>
+<li><p>读已提交(Read committed)</p>
+<p>一个事务要等另一个事务提交后才能读取数据，可避免脏读的发生</p>
 <ul>
-<li>第一步：所有成员都向coordinator发送请求，请求入组。一旦所有成员都发送了请求，coordinator会从中选择一个consumer担任leader的角色，并把组成员信息以及订阅信息发给leader</li>
-<li>第二步：leader开始分配消费方案，指明具体哪个consumer负责消费哪些topic的哪些partition。一旦完成分配，leader会将这个方案发给coordinator。coordinator接收到分配方案之后会把方案发给各个consumer，这样组内的所有成员就都知道自己应该消费哪些分区了</li>
+<li>这是大多数数据库系统的默认隔离级别（但不是MySQL默认的）</li>
+<li>它满足了隔离的简单定义：一个事务只能看见已经提交事务所做的改变</li>
+<li>这种隔离级别出现的问题是——不可重复读(Nonrepeatable Read)，不可重复读意味着我们在同一个事务中执行完全相同的select语句时可能看到不一样的结果</li>
 </ul>
-<p>所以对于Rebalance来说，Coordinator起着至关重要的作用</p>
-<h4 id="23-谈谈Kafka分区分配策略"><a href="#23-谈谈Kafka分区分配策略" class="headerlink" title="23. 谈谈Kafka分区分配策略"></a>23. 谈谈Kafka分区分配策略</h4><h4 id="24-Kafka-Producer是如何动态感知主题分区数变化的"><a href="#24-Kafka-Producer是如何动态感知主题分区数变化的" class="headerlink" title="24. Kafka Producer是如何动态感知主题分区数变化的"></a>24. Kafka Producer是如何动态感知主题分区数变化的</h4><h4 id="25-Kafka是如何实现高吞吐率的"><a href="#25-Kafka是如何实现高吞吐率的" class="headerlink" title="25. Kafka是如何实现高吞吐率的"></a>25. Kafka是如何实现高吞吐率的</h4><p>Kafka是分布式消息系统，需要处理海量的消息，Kafka的设计是把所有的消息都写入速度低容量大的硬盘，以此来换取更强的存储能力，但实际上，使用硬盘并没有带来过多的性能损失。kafka主要使用了以下几个方式实现了超高的吞吐率：</p>
+<p>导致这种情况的原因可能有：</p>
 <ul>
-<li>顺序读写</li>
-<li>零拷贝</li>
-<li>文件分段</li>
-<li>批量发送</li>
-<li>数据压缩</li>
+<li>有一个交叉的事务有新的commit，导致了数据的改变</li>
+<li>一个数据库被多个实例操作时，同一事务的其他实例在该实例处理其间可能会有新的commit</li>
 </ul>
-<h4 id="26-Kafka监控都有哪些"><a href="#26-Kafka监控都有哪些" class="headerlink" title="26. Kafka监控都有哪些"></a>26. Kafka监控都有哪些</h4><h4 id="27-如何为Kafka集群选择合适的Topics-x2F-Partitions数量"><a href="#27-如何为Kafka集群选择合适的Topics-x2F-Partitions数量" class="headerlink" title="27. 如何为Kafka集群选择合适的Topics&#x2F;Partitions数量"></a>27. 如何为Kafka集群选择合适的Topics&#x2F;Partitions数量</h4><h4 id="28-谈谈你对Kafka事务的了解"><a href="#28-谈谈你对Kafka事务的了解" class="headerlink" title="28. 谈谈你对Kafka事务的了解"></a>28. 谈谈你对Kafka事务的了解</h4><h4 id="29-谈谈你对Kafka幂等的了解"><a href="#29-谈谈你对Kafka幂等的了解" class="headerlink" title="29. 谈谈你对Kafka幂等的了解"></a>29. 谈谈你对Kafka幂等的了解</h4><h4 id="30-Kafka缺点"><a href="#30-Kafka缺点" class="headerlink" title="30. Kafka缺点"></a>30. Kafka缺点</h4><ul>
-<li>由于是批量发送，数据并非真正的实时</li>
-<li>对于mqtt协议不支持</li>
-<li>不支持物联网传感数据直接接入</li>
-<li>仅支持统一分区内消息有序，无法实现全局消息有序</li>
-<li>监控不完善，需要安装插件</li>
-<li>依赖zookeeper进行元数据管理</li>
+</li>
+<li><p>可重复读(Repeatable read)</p>
+<p>就是在开始读取数据（事务开启）时，不再允许修改操作，可避免脏读、不可重复读的发生</p>
+<ul>
+<li>这是MySQL的默认事务隔离级别</li>
+<li>它确保同一事务的多个实例在并发读取数据时，会看到同样的数据行</li>
+<li>此级别可能出现的问题——幻读(Phantom Read)：当用户读取某一范围的数据行时，另一个事务又在该范围内插入了新行，当用户再读取该范围的数据行时，会发现有新的“幻影” 行</li>
+<li>InnoDB和Falcon存储引擎通过多版本并发控制(MVCC，Multiversion Concurrency Control)机制解决了该问题.InnoDB采用MVCC来支持高并发，实现了四个标准隔离级别。默认基本是可重复读，并且提供间隙锁（next-key locks）策略防止幻读出现</li>
 </ul>
-<h4 id="31-Kafka新旧消费者的区别"><a href="#31-Kafka新旧消费者的区别" class="headerlink" title="31. Kafka新旧消费者的区别"></a>31. Kafka新旧消费者的区别</h4><p>旧的 Kafka 消费者 API 主要包括：SimpleConsumer（简单消费者） 和 ZookeeperConsumerConnectir（高级消费者）。SimpleConsumer 名字看起来是简单消费者，但是其实用起来很不简单，可以使用它从特定的分区和偏移量开始读取消息。高级消费者和现在新的消费者有点像，有消费者群组，有分区再均衡，不过它使用 ZK 来管理消费者群组，并不具备偏移量和再均衡的可操控性</p>
-<h4 id="32-Kafka分区数可以增加或减少吗？为什么"><a href="#32-Kafka分区数可以增加或减少吗？为什么" class="headerlink" title="32. Kafka分区数可以增加或减少吗？为什么"></a>32. Kafka分区数可以增加或减少吗？为什么</h4><p>我们可以使用 bin&#x2F;kafka-topics.sh 命令对 Kafka 增加 Kafka 的分区数据，但是 Kafka 不支持减少分区数</p>
-<p>Kafka 分区数据不支持减少是由很多原因的，比如减少的分区其数据放到哪里去？是删除，还是保留？删除的话，那么这些没消费的消息不就丢了。如果保留这些消息如何放到其他分区里面？追加到其他分区后面的话那么就破坏了 Kafka 单个分区的有序性。如果要保证删除分区数据插入到其他分区保证有序性，那么实现起来逻辑就会非常复杂</p>
+</li>
+<li><p>串行(Serializable)</p>
+<p>串行(Serializable)，是最高的事务隔离级别，在该级别下，事务串行化顺序执行，可以避免脏读、不可重复读与幻读。但是这种事务隔离级别效率低下，比较耗数据库性能，一般不使用。Mysql的默认隔离级别是Repeatable read</p>
+<ul>
+<li>这是最高的隔离级别</li>
+<li>它通过强制事务排序，使之不可能相互冲突，从而解决幻读问题。简言之，它是在每个读的数据行上加上共享锁</li>
+<li>在这个级别，可能导致大量的超时现象和锁竞争</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-Mysql高可用方案有哪些"><a href="#5-Mysql高可用方案有哪些" class="headerlink" title="5. Mysql高可用方案有哪些"></a>5. Mysql高可用方案有哪些</h4><ul>
+<li>主从复制方案<ul>
+<li>这是MySQL自身提供的一种高可用解决方案，数据同步方法采用的是<code>MySQL replication</code>技术。<code>MySQL replication</code>就是从服务器到主服务器拉取二进制日志文件，然后再将日志文件解析成相应的SQL在从服务器上重新执行一遍主服务器的操作，通过这种方式保证数据的一致性</li>
+<li>为了达到更高的可用性，在实际的应用环境中，一般都是采用<code>MySQL replication</code>技术配合高可用集群软件<code>keepalived</code>来实现自动<code>failover</code>，这种方式可以实现95.000%的SLA</li>
+</ul>
+</li>
+<li>MMM&#x2F;MHA高可用方案<ul>
+<li>MMM提供了MySQL主主复制配置的监控、故障转移和管理的一套可伸缩的脚本套件。在MMM高可用方案中，典型的应用是双主多从架构，通过MySQL replication技术可以实现两个服务器互为主从，且在任何时候只有一个节点可以被写入，避免了多点写入的数据冲突</li>
+<li>同时，当可写的主节点故障时，MMM套件可以立刻监控到，然后将服务自动切换到另一个主节点，继续提供服务，从而实现MySQL的高可用</li>
+</ul>
+</li>
+<li>Heartbeat&#x2F;SAN高可用方案<ul>
+<li>在这个方案中，处理failover的方式是高可用集群软件Heartbeat，它监控和管理各个节点间连接的网络，并监控集群服务，当节点出现故障或者服务不可用时，自动在其他节点启动集群服务</li>
+<li>在数据共享方面，通过SAN（Storage Area Network）存储来共享数据，这种方案可以实现99.990%的SLA</li>
+</ul>
+</li>
+<li>Heartbeat&#x2F;DRBD高可用方案<ul>
+<li>这个方案处理failover的方式上依旧采用Heartbeat，不同的是，在数据共享方面，采用了基于块级别的数据同步软件DRBD来实现</li>
+<li>DRBD是一个用软件实现的、无共享的、服务器之间镜像块设备内容的存储复制解决方案。和SAN网络不同，它并不共享存储，而是通过服务器之间的网络复制数据</li>
+</ul>
+</li>
+<li>NDB CLUSTER高可用方案<ul>
+<li>国内用NDB集群的公司非常少，貌似有些银行有用。NDB集群不需要依赖第三方组件，全部都使用官方组件，能保证数据的一致性，某个数据节点挂掉，其他数据节点依然可以提供服务，管理节点需要做冗余以防挂掉</li>
+<li>缺点是：管理和配置都很复杂，而且某些SQL语句例如join语句需要避免</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-Mysql中utf8和utf8mb4区别"><a href="#6-Mysql中utf8和utf8mb4区别" class="headerlink" title="6. Mysql中utf8和utf8mb4区别"></a>6. Mysql中utf8和utf8mb4区别</h4><ul>
+<li>MySQL在5.5.3之后增加了这个utf8mb4的编码，mb4就是most bytes 4的意思，专门用来兼容四字节的unicode。好在utf8mb4是utf8的超集，除了将编码改为utf8mb4外不需要做其他转换。当然，为了节省空间，一般情况下使用utf8也就可以了</li>
+<li>Mysql支持的utf8编码最大字符长度为3字节，如果遇到4字节的宽字符就会插入异常了。三个字节的UTF-8最大能编码的Unicode字符是0xffff，也就是Unicode中的基本多文种平面(BMP)。任何不在基本多文本平面的Unicode字符，都无法使用Mysql的utf8字符集存储</li>
+<li>包括 Emoji 表情(Emoji是一种特殊的Unicode编码，常见于ios和android手机上)，和很多不常用的汉字，以及任何新增的Unicode字符等等</li>
+<li>Mysql中保存4字节长度的UTF-8字符，需要使用utf8mb4字符集，但只有5.5.3版本以后的才支持(查看版本： select version();)。因此呢，为了获取更好的兼容性，应该总是使用utf8mb4而非utf8</li>
+<li>对于CHAR类型数据，utf8mb4会多消耗一些空间，根据Mysql官方建议，使用VARCHAR替代CHAR</li>
+</ul>
+<h4 id="7-Mysql中乐观锁和悲观锁区别"><a href="#7-Mysql中乐观锁和悲观锁区别" class="headerlink" title="7. Mysql中乐观锁和悲观锁区别"></a>7. Mysql中乐观锁和悲观锁区别</h4><ul>
+<li><p>悲观锁(Pessimistic Lock)</p>
+<ul>
+<li>悲观锁顾名思义，就是很悲观，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会block直到它拿到锁</li>
+<li>传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁</li>
+</ul>
+</li>
+<li><p>乐观锁(Optimistic Lock)</p>
+<ul>
+<li>乐观锁顾名思义，就是很乐观，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号等机制</li>
+<li>乐观锁适用于多读的应用类型，这样可以提高吞吐量，像数据库如果提供类似于<code>write_condition</code>机制的其实都是提供的乐观锁</li>
+<li>乐观锁的特点先进行业务操作，不到万不得已不去拿锁。即“乐观”的认为拿锁多半是会成功的，因此在进行完业务操作需要实际更新数据的最后一步再去拿一下锁就好</li>
+</ul>
+</li>
+<li><p>两种锁各有优缺点，不可认为一种好于另一种，像乐观锁适用于写比较少的情况下，即冲突真的很少发生的时候，这样可以省去了锁的开销，加大了系统的整个吞吐量。但如果经常产生冲突，上层应用会不断的进行retry，这样反倒是降低了性能，所以这种情况下用悲观锁就比较合适</p>
+</li>
+</ul>
+<h4 id="8-Mysql索引主要是哪些"><a href="#8-Mysql索引主要是哪些" class="headerlink" title="8. Mysql索引主要是哪些"></a>8. Mysql索引主要是哪些</h4><p>索引的目的在于提高查询效率</p>
+<ul>
+<li>UNIQUE(唯一索引)：不可以出现相同的值，可以有NULL值</li>
+<li>INDEX(普通索引)：允许出现相同的索引内容</li>
+<li>PROMARY KEY(主键索引)：不允许出现相同的值</li>
+<li>fulltext index(全文索引)：可以针对值中的某个单词，但效率确实不敢恭维</li>
+<li>组合索引：实质上是将多个字段建到一个索引里，列值的组合必须唯一</li>
+</ul>
 <hr>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>八股文</tag>
-        <tag>Kafka</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux操作系统面试题</title>
-    <url>/2022/10/28/Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p>Linux常见面试题整理</p>
+<h5 id="8-1-索引的缺点"><a href="#8-1-索引的缺点" class="headerlink" title="8.1 索引的缺点"></a>8.1 索引的缺点</h5><ul>
+<li>虽然索引大大提高了查询速度，同时却会降低更新表的速度，如对表进行INSERT，UPDATE和DELETE。因为更新表时，mysql不仅要保存数据，还要保存一下索引文件</li>
+<li>建立索引会占用磁盘空间的索引文件。一般情况这个问题不太严重，但如果你在要给大表上建了多种组合索引，索引文件会膨胀很宽， 索引只是提高效率的一个方式，如果mysql有大数据量的表，就要花时间研究建立最优的索引，或优化查询语句</li>
+</ul>
 <hr>
-<p><strong>50个最常用的Unix&#x2F;Linux命令</strong></p>
-<h4 id="1-tar"><a href="#1-tar" class="headerlink" title="1. tar"></a>1. tar</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">tar cvf archive_name.tar <span class="built_in">dirname</span>/ 创建一个新的tar文件</span><br><span class="line">tar xvf archive_name.tar 解压tar文件</span><br><span class="line">tar tvf archive_name.tar 查看tar文件</span><br></pre></td></tr></table></figure>
+<h5 id="8-2-索引使用技巧"><a href="#8-2-索引使用技巧" class="headerlink" title="8.2 索引使用技巧"></a>8.2 索引使用技巧</h5><ul>
+<li><strong>索引不会包含有NULL的列：</strong> 只要列中包含有NULL值，都将不会被包含在索引中，复合索引中只要有一列含有NULL值，那么这一列对于此符合索引就是无效的</li>
+<li><strong>使用短索引：</strong> 对串列进行索引，如果可以就应该指定一个前缀长度。例如，如果有一个char（255）的列，如果在前10个或20个字符内，多数值是唯一的，那么就不要对整个列进行索引。短索引不仅可以提高查询速度而且可以节省磁盘空间和I&#x2F;O操作</li>
+<li><strong>索引列排序：</strong>mysql查询只使用一个索引，因此如果where子句中已经使用了索引的话，那么order by中的列是不会使用索引的。因此数据库默认排序可以符合要求的情况下不要使用排序操作，尽量不要包含多个列的排序，如果需要最好给这些列建复合索引</li>
+<li><strong>like语句操作：</strong>一般情况下不鼓励使用like操作，如果非使用不可，注意正确的使用方式。<code>like ‘%aaa%’</code>不会使用索引，而<code>like ‘aaa%’</code>可以使用索引</li>
+<li>不要在列上进行运算</li>
+<li>不使用<code>NOT IN</code> 、<code>&lt;&gt;</code>、<code>！=</code>操作，但<code>&lt;</code>，<code>&lt;=</code>，<code>=</code>，<code>&gt;</code>，<code>&gt;=</code>，BETWEEN，IN是可以用到索引的</li>
+<li>索引要建立在经常进行select操作的字段上。这是因为，如果这些列很少用到，那么有无索引并不能明显改变查询速度。相反，由于增加了索引，反而降低了系统的维护速度和增大了空间需求</li>
+<li>索引要建立在值比较唯一的字段上。</li>
+<li>对于那些定义为text、image和bit数据类型的列不应该增加索引。因为这些列的数据量要么相当大，要么取值很少</li>
+<li>在where和join中出现的列需要建立索引。</li>
+<li>where的查询条件里有不等号(where column !&#x3D; …)，mysql将无法使用索引。</li>
+<li>如果where字句的查询条件里使用了函数(如：where DAY(column)&#x3D;…)，mysql将无法使用索引</li>
+<li>在join操作中(需要从多个数据表提取数据时)，mysql只有在主键和外键的数据类型相同时才能使用索引，否则及时建立了索引也不会使用</li>
+</ul>
+<hr>
+<h5 id="8-3-组合索引的作用"><a href="#8-3-组合索引的作用" class="headerlink" title="8.3 组合索引的作用"></a>8.3 组合索引的作用</h5><ul>
+<li>减少开销<ul>
+<li>建一个组合索引(col1，col2，col3)，实际相当于建了(col1)，(col1，col2)，(col1，col2，col3)三个索引。每多一个索引，都会增加写操作的开销和磁盘空间的开销。对于大量数据的表，使用组合索引会大大的减少开销</li>
+</ul>
+</li>
+<li>覆盖索引<ul>
+<li>通常指一个查询语句的执行只用从索引中就能够取得，不必从数据表中读取。也可以称之为实现了索引覆盖</li>
+<li>对组合索引(col1，col2，col3)，如果有如下的<code>sql: select col1，col2，col3 from test where col1=1 and col2=2</code></li>
+<li>那么MySQL可以直接通过遍历索引取得数据，而无需回表，这减少了很多的随机io操作。减少io操作，特别的随机io其实是dba主要的优化策略。所以，在真正的实际应用中，覆盖索引是主要的提升性能的优化手段之一</li>
+</ul>
+</li>
+<li>效率高<ul>
+<li>索引列越多，通过索引筛选出的数据越快</li>
+</ul>
+</li>
+</ul>
+<h4 id="9-Mysql联合索引最左匹配原则"><a href="#9-Mysql联合索引最左匹配原则" class="headerlink" title="9. Mysql联合索引最左匹配原则"></a>9. Mysql联合索引最左匹配原则</h4><ul>
+<li>在MySQL建立联合索引时会遵守最左前缀匹配原则，即最左优先<ul>
+<li>在检索数据时从联合索引的最左边开始匹配，Mysql会一直向右匹配直到遇到范围查询（<code>&gt;、&lt;、between、like</code>）就停止匹配了</li>
+<li>就比如 <code>a=3 and b=4 and c&gt;5 and d=6</code>如果建立(abcd)顺序的索引，d就用不到索引了，如果建立(abdc)的索引则都可以用到索引，其中abd的顺序可以任意调整，因为查询优化器会重新编排（即使是c&gt;5 and b&#x3D;4 and d&#x3D;6 and a&#x3D;3也会全部用到 abdc索引 ）</li>
+</ul>
+</li>
+<li><code>=</code>和<code>in</code>可以乱序，比如<code>a=1 and b=2 and c=3</code> 建立(abc)索引可以任意顺序，mysql查询优化器会优化顺序<ul>
+<li>这里需要注意下，比如abc索引 那么只要查询条件有a即可用到abc索引（如abc ab ac a），没有a就用不到</li>
+<li>最左前缀匹配成因：Mysql是创建复合索引的规则是根据索引最左边的字段进行排序，在第一个字段排序的基础上再进行第二个字段排序，类似于order by col1，col2… 所以第一个字段是绝对有序的 第二个字段就是无序的了，所以Mysql强调最左前缀匹配</li>
+</ul>
+</li>
+</ul>
+<h4 id="10-聚簇索引和非聚簇索引区别"><a href="#10-聚簇索引和非聚簇索引区别" class="headerlink" title="10. 聚簇索引和非聚簇索引区别"></a>10. 聚簇索引和非聚簇索引区别</h4><ul>
+<li>聚簇索引与非聚簇索引的区别是：叶子节点是否存放一整行记录</li>
+<li>InnoDB 主键使用的是聚簇索引，MyISAM 不管是主键索引，还是二级索引使用的都是非聚簇索引</li>
+<li>对于聚簇索引表来说（左图），表数据是和主键一起存储的，主键索引的叶结点存储行数据(包含了主键值)，二级索引的叶结点存储行的主键值。使用的是B+树作为索引的存储结构，非叶子节点都是索引关键字，但非叶子节点中的关键字中不存储对应记录的具体内容或内容地址。叶子节点上的数据是主键与具体记录(数据内容)</li>
+<li>对于非聚簇索引表来说（右图），表数据和索引是分成两部分存储的，主键索引和二级索引存储上没有任何区别。使用的是B+树作为索引的存储结构，所有的节点都是索引，叶子节点存储的是索引+索引对应的记录的数据</li>
+<li>因此，聚簇索引的叶子节点就是数据节点，而非聚簇索引的叶子节点仍然是索引节点，只不过有指向对应数据块的指针</li>
+</ul>
+<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7lczbhkshj318611ik0y.jpg" alt="image.png" style="zoom: 20%;" /></div>
 
-<h4 id="2-grep"><a href="#2-grep" class="headerlink" title="2. grep"></a>2. grep</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">grep -i <span class="string">&quot;the&quot;</span> demo_file 在文件中查找字符串(不区分大小写)</span><br><span class="line">grep -A 3 -i <span class="string">&quot;example&quot;</span> demo_text 输出成功匹配的行，以及该行之后的三行</span><br><span class="line">grep -r <span class="string">&quot;ramesh&quot;</span> * 在一个文件夹中递归查询包含指定字符串的文件</span><br></pre></td></tr></table></figure>
+<h4 id="11-如何查询一个字段是否命中了索引"><a href="#11-如何查询一个字段是否命中了索引" class="headerlink" title="11. 如何查询一个字段是否命中了索引"></a>11. 如何查询一个字段是否命中了索引</h4><ul>
+<li>通过explain sql可看下SQL是否走了索引，很快对比出来 </li>
+<li>当一个sql中索引字段为int类型时，例如搜索条件<code>where num=&quot;111&quot;</code>与<code>where num=111</code>都可以使用该字段的索引。当一个中索引字段为varchar类型时，例如搜索条件<code>where num=&quot;111&quot;</code>可以使用索引，<code>where num=111</code>不可以使用索引</li>
+</ul>
+<h4 id="12-Mysql中查询数据什么情况下不会命中索引"><a href="#12-Mysql中查询数据什么情况下不会命中索引" class="headerlink" title="12. Mysql中查询数据什么情况下不会命中索引"></a>12. Mysql中查询数据什么情况下不会命中索引</h4><ul>
+<li>索引规范不合理，sql解析器不命中索引</li>
+<li>表中索引是以表中数据量字段最多的建立的索引，sql解析器不命中索引(实际就是索引没用，最后全局查找了)</li>
+<li>bool的字段做索引，sql选择器不命中索引</li>
+<li>模糊查询 %like</li>
+<li>索引列参与计算，使用了函数</li>
+<li>非最左前缀顺序</li>
+<li>where对null判断</li>
+<li>where不等于</li>
+<li>or操作有至少一个字段没有索引</li>
+<li>需要回表的查询结果集过大（超过配置的范围）</li>
+</ul>
+<h4 id="13-Mysql中的MVCC是什么"><a href="#13-Mysql中的MVCC是什么" class="headerlink" title="13. Mysql中的MVCC是什么"></a>13. Mysql中的MVCC是什么</h4><p>数据库并发控制——锁:Multiversion (version) concurrency control (MCC or MVCC) 多版本并发控制 ，它是数据库管理系统一种常见的并发控制</p>
+<p>并发控制常用的是锁，当线程要对一个共享资源进行操作的时候，加锁是一种非常简单粗暴的方法(事务开始时给 DQL 加读锁，给 DML 加写锁)，这种锁是一种 悲观 的实现方式，也就是说这会给其他事务造成堵塞，从而影响数据库性能</p>
+<p>其中在数据库中最常见的就是悲观锁和乐观锁：</p>
+<ul>
+<li>悲观锁：当一个线程需要对共享资源进行操作的时候，首先对共享资源进行加锁，当该线程持有该资源的锁的时候，其他线程对该资源进行操作的时候会被阻塞.</li>
+<li>乐观锁：当一个线程需要对一个共享资源进行操作的时候，不对它进行加锁，而是在操作完成之后进行判断。比如乐观锁会通过一个版本号控制，如果操作完成后通过版本号进行判断在该线程操作过程中是否有其他线程已经对该共享资源进行操作了，如果有则通知操作失败，如果没有则操作成功，当然除了版本号还有CAS，如果不了解的可以去学习一下，这里不做过多涉及</li>
+</ul>
+<p>MVCC的两种读形式：</p>
+<ul>
+<li>快照读：读取的只是当前事务的可见版本，不用加锁。而你只要记住 简单的 <code>select</code>操作就是快照读(select * from table where id &#x3D; xxx)</li>
+<li>当前读：读取的是当前版本，比如 特殊的读操作，更新&#x2F;插入&#x2F;删除操作</li>
+</ul>
+<p>MVCC的实现原理：</p>
+<p>MVCC 使用了“三个隐藏字段”来实现版本并发控制，MySQL在创建建表的时候 innoDB 创建的真正的三个隐藏列吧</p>
+<table>
+<thead>
+<tr>
+<th align="left">RowID</th>
+<th align="left">DB_TRX_ID</th>
+<th align="left">DB_ROLL_PTR</th>
+<th align="left">id</th>
+<th align="left">name</th>
+<th align="left">password</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">自动创建的id</td>
+<td align="left">事务id</td>
+<td align="left">回滚指针</td>
+<td align="left">id</td>
+<td align="left">name</td>
+<td align="left">password</td>
+</tr>
+</tbody></table>
+<ul>
+<li>RowID：隐藏的自增ID，当建表没有指定主键，InnoDB会使用该RowID创建一个聚簇索引</li>
+<li>DB_TRX_ID：最近修改（更新&#x2F;删除&#x2F;插入）该记录的事务ID</li>
+<li>DB_ROLL_PTR：回滚指针，指向这条记录的上一个版本</li>
+</ul>
+<p>其实还有一个删除的flag字段，用来判断该行记录是否已经被删除。而 MVCC 使用的是其中的 事务字段，回滚指针字段，是否删除字段</p>
+<h4 id="14-Mvcc和Redolog和Undolog以及Binlog有什么不同"><a href="#14-Mvcc和Redolog和Undolog以及Binlog有什么不同" class="headerlink" title="14. Mvcc和Redolog和Undolog以及Binlog有什么不同"></a>14. Mvcc和Redolog和Undolog以及Binlog有什么不同</h4><ul>
+<li>Mvcc<ul>
+<li>MVCC多版本并发控制是MySQL中基于乐观锁理论实现隔离级别的方式，用于读已提交和可重复读取隔离级别的实现</li>
+<li>在MySQL中，会在表中每一条数据后面添加两个字段，最近修改该行数据的事务ID，指向该行（undolog表中）回滚段的指针</li>
+<li>Read View判断行的可见性，创建一个新事务时，copy一份当前系统中的活跃事务列表。意思是，当前不应该被本事务看到的其他事务id列表</li>
+</ul>
+</li>
+<li>UndoLog<ul>
+<li>UndoLog也就是我们常说的回滚日志文件 主要用于事务中执行失败，进行回滚，以及MVCC中对于数据历史版本的查看</li>
+<li>由引擎层的InnoDB引擎实现，是逻辑日志，记录数据修改被修改前的值，比如”把id&#x3D;’B’ 修改为id &#x3D; ‘B2’ ，那么undo日志就会用来存放id &#x3D;’B’的记录”</li>
+<li>当一条数据需要更新前，会先把修改前的记录存储在undolog中，如果这个修改出现异常，则会使用undo日志来实现回滚操作，保证事务的一致性</li>
+<li>当事务提交之后，undo log并不能立马被删除，而是会被放到待清理链表中，待判断没有事物用到该版本的信息时才可以清理相应undolog。它保存了事务发生之前的数据的一个版本，用于回滚，同时可以提供多版本并发控制下的读（MVCC），也即非锁定读</li>
+</ul>
+</li>
+<li>Redolog<ul>
+<li>Redolog是重做日志文件是记录数据修改之后的值，用于持久化到磁盘中</li>
+<li>Redolog包括两部分：一：是内存中的日志缓冲(redo log buffer)，该部分日志是易失性的；二：是磁盘上的重做日志文件(redo log file)，该部分日志是持久的</li>
+<li>由引擎层的InnoDB引擎实现，是物理日志，记录的是物理数据页修改的信息，比如“某个数据页上内容发生了哪些改动”。当一条数据需要更新时，InnoDB会先将数据更新，然后记录redoLog 在内存中，然后找个时间将redoLog的操作执行到磁盘上的文件上</li>
+<li>不管是否提交成功我都记录，你要是回滚了，那我连回滚的修改也记录。它确保了事务的持久性</li>
+</ul>
+</li>
+<li>Binlog<ul>
+<li>Binlog由Mysql的Server层实现，是逻辑日志，记录的是sql语句的原始逻辑，比如”把id&#x3D;’B’ 修改为id &#x3D; ‘B2’</li>
+<li>Binlog会写入指定大小的物理文件中，是追加写入的，当前文件写满则会创建新的文件写入</li>
+<li>产生:事务提交的时候，一次性将事务中的sql语句，按照一定的格式记录到binlog中</li>
+<li>用于复制和恢复在主从复制中，从库利用主库上的binlog进行重播(执行日志中记录的修改逻辑)，实现主从同步。业务数据不一致或者错了，用binlog恢复</li>
+</ul>
+</li>
+</ul>
+<h4 id="15-Mysql读写分离以及主从同步"><a href="#15-Mysql读写分离以及主从同步" class="headerlink" title="15. Mysql读写分离以及主从同步"></a>15. Mysql读写分离以及主从同步</h4><ul>
+<li>原理：主库将变更写binlog日志，然后从库连接到主库后，从库有一个IO线程，将主库的binlog日志拷贝到自己本地，写入一个中继日志中，接着从库中有一个sql线程会从中继日志读取binlog，然后执行binlog日志中的内容，也就是在自己本地再执行一遍sql，这样就可以保证自己跟主库的数据一致</li>
+<li>问题：这里有很重要一点，就是从库同步主库数据的过程是串行化的，也就是说主库上并行操作，在从库上会串行化执行，由于从库从主库拷贝日志以及串行化执行sql特点，在高并发情况下，从库数据一定比主库慢一点，是有延时的，所以经常出现，刚写入主库的数据可能读不到了，要过几十毫秒，甚至几百毫秒才能读取到。还有一个问题，如果突然主库宕机了，然后恰巧数据还没有同步到从库，那么有些数据可能在从库上是没有的，有些数据可能就丢失了。所以mysql实际上有两个机制，一个是半同步复制，用来解决主库数据丢失问题，一个是并行复制，用来解决主从同步延时问题</li>
+<li>半同步复制：semi-sync复制，指的就是主库写入binlog日志后，就会将强制此时立即将数据同步到从库，从库将日志写入自己本地的relay log之后，接着会返回一个ack给主库，主库接收到至少一个从库ack之后才会认为写完成</li>
+<li>并发复制：指的是从库开启多个线程，并行读取relay log中不同库的日志，然后并行重放不同库的日志，这样库级别的并行。（将主库分库也可缓解延迟问题）</li>
+</ul>
+<h4 id="16-InnoDB的关键特性"><a href="#16-InnoDB的关键特性" class="headerlink" title="16. InnoDB的关键特性"></a>16. InnoDB的关键特性</h4><ul>
+<li>插入缓冲：对于非聚集索引的插入或更新操作，不是每一次直接插入到索引页中，而是先判断插入的非聚集索引页是否在缓冲池中，若在，则直接插入；若不在，则先放入到一个Insert Buffer对象中。然后再以一定的频率和情况进行Insert Buffer和辅助索引页子节点的merge（合并）操作，这时通常能将多个插入合并到一个操作中（因为在一个索引页中），这就大大提高了对于非聚集索引插入的性能</li>
+<li>两次写：两次写带给InnoDB存储引擎的是数据页的可靠性，有经验的DBA也许会想，如果发生写失效，可以通过重做日志进行恢复。这是一个办法。但是必须清楚地认识到，如果这个页本身已经发生了损坏（物理到page页的物理日志成功页内逻辑日志失败），再对其进行重做是没有意义的。这就是说，在应用（apply）重做日志前，用户需要一个页的副本，当写入失效发生时，先通过页的副本来还原该页，再进行重做。在对缓冲池的脏页进行刷新时，并不直接写磁盘，而是会通过memcpy函数将脏页先复制到内存中的doublewrite buffer，之后通过doublewrite buffer再分两次，每次1MB顺序地写入共享表空间的物理磁盘上，这就是doublewrite</li>
+<li>自适应哈希索引：InnoDB存储引擎会监控对表上各索引页的查询。如果观察到建立哈希索引可以带来速度提升，则建立哈希索引，称之为自适应哈希索引</li>
+<li>异步IO：为了提高磁盘操作性能，当前的数据库系统都采用异步IO（AIO）的方式来处理磁盘操作。AIO的另一个优势是可以进行IO Merge操作，也就是将多个IO合并为1个IO，这样可以提高IOPS的性能</li>
+<li>刷新邻接页：当刷新一个脏页时，InnoDB存储引擎会检测该页所在区（extent）的所有页，如果是脏页，那么一起进行刷新。这样做的好处显而易见，通过AIO可以将多个IO写入操作合并为一个IO操作，故该工作机制在传统机械磁盘下有着显著的优势</li>
+</ul>
+<h4 id="17-Mysql如何保证一致性和持久性"><a href="#17-Mysql如何保证一致性和持久性" class="headerlink" title="17. Mysql如何保证一致性和持久性"></a>17. Mysql如何保证一致性和持久性</h4><ul>
+<li>Mysql为了保证<code>ACID</code>中的一致性和持久性，使用了WAL(<code>Write-Ahead Logging</code>，先写日志再写磁盘)。<code>Redo log</code>就是一种WAL的应用</li>
+<li>当数据库忽然掉电，再重新启动时，Mysql可以通过<code>Redo log</code>还原数据。也就是说，每次事务提交时，不用同步刷新磁盘数据文件，只需要同步刷新<code>Redo log</code>就足够了</li>
+</ul>
+<h4 id="18-为什么选择B-树作为索引结构"><a href="#18-为什么选择B-树作为索引结构" class="headerlink" title="18. 为什么选择B+树作为索引结构"></a>18. 为什么选择B+树作为索引结构</h4><ul>
+<li>Hash索引：Hash索引底层是哈希表，哈希表是一种以key-value存储数据的结构，所以多个数据在存储关系上是完全没有任何顺序关系的，所以，对于区间查询是无法直接通过索引查询的，就需要全表扫描。所以，哈希索引只适用于等值查询的场景。而B+ 树是一种多路平衡查询树，所以他的节点是天然有序的（左子节点小于父节点、父节点小于右子节点），所以对于范围查询的时候不需要做全表扫描</li>
+<li>二叉查找树：解决了排序的基本问题，但是由于无法保证平衡，可能退化为链表</li>
+<li>平衡二叉树：通过旋转解决了平衡的问题，但是旋转操作效率太低</li>
+<li>红黑树：通过舍弃严格的平衡和引入红黑节点，解决了AVL旋转效率过低的问题，但是在磁盘等场景下，树仍然太高，IO次数太多</li>
+<li>B+树：在B树的基础上，将非叶节点改造为不存储数据纯索引节点，进一步降低了树的高度；此外将叶节点使用指针连接成链表，范围查询更加高效。此外，B+树，主要是查询效率高，O(logN)，可以充分利用磁盘预读的特性，多叉树，深度小，叶子结点有序且存储数据</li>
+</ul>
+<h4 id="19-InnoDB的行锁模式"><a href="#19-InnoDB的行锁模式" class="headerlink" title="19. InnoDB的行锁模式"></a>19. InnoDB的行锁模式</h4><ul>
+<li>共享锁(S)：用法lock in share mode，又称读锁，允许一个事务去读一行，阻止其他事务获得相同数据集的排他锁<ul>
+<li>若事务T对数据对象A加上S锁，则事务T可以读A但不能修改A，其他事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁。这保证了其他事务可以读A，但在T释放A上的S锁之前不能对A做任何修改</li>
+</ul>
+</li>
+<li>排他锁(X)：用法for update，又称写锁，允许获取排他锁的事务更新数据，阻止其他事务取得相同的数据集共享读锁和排他写锁<ul>
+<li>若事务T对数据对象A加上X锁，事务T可以读A也可以修改A，其他事务不能再对A加任何锁，直到T释放A上的锁。在没有索引的情况下，InnoDB只能使用表锁</li>
+</ul>
+</li>
+</ul>
+<h4 id="20-哈希-hash-比树-tree-更快，索引结构为什么要设计成树型"><a href="#20-哈希-hash-比树-tree-更快，索引结构为什么要设计成树型" class="headerlink" title="20. 哈希(hash)比树(tree)更快，索引结构为什么要设计成树型"></a>20. 哈希(hash)比树(tree)更快，索引结构为什么要设计成树型</h4><p>加速查找速度的数据结构，常见的有两类：</p>
+<ul>
+<li>哈希，例如HashMap，查询&#x2F;插入&#x2F;修改&#x2F;删除的平均时间复杂度都是O(1)</li>
+<li>树，例如平衡二叉搜索树，查询&#x2F;插入&#x2F;修改&#x2F;删除的平均时间复杂度都是O(lg(n))</li>
+</ul>
+<p>哈希只能满足等值查询，不满足范围和大小查询，其次哈希不可以排序。Mysql是用等值查询，用树的话，等值查询只需要顺序遍历即可。但是对于排序查询的sql需求：分组：<code>group by</code> ，排序：<code>order by</code> ，比较：<code>&lt;、&gt;</code>等，哈希型的索引，时间复杂度会退化为O(n)，而树型的“有序”特性，依然能够保持O(log(n)) 的高效率</p>
+<h4 id="21-为什么索引的key长度不能太长"><a href="#21-为什么索引的key长度不能太长" class="headerlink" title="21. 为什么索引的key长度不能太长"></a>21. 为什么索引的key长度不能太长</h4><p>key 太长会导致一个页当中能够存放的 key 的数目变少，间接导致索引树的页数目变多，索引层次增加，从而影响整体查询变更的效率</p>
+<h4 id="22-Mysql的数据如何恢复到任意时间点"><a href="#22-Mysql的数据如何恢复到任意时间点" class="headerlink" title="22. Mysql的数据如何恢复到任意时间点"></a>22. Mysql的数据如何恢复到任意时间点</h4><p>恢复到任意时间点以定时的做全量备份，以及备份增量的 binlog 日志为前提。恢复到任意时间点首先将全量备份恢复之后，再此基础上回放增加的 binlog 直至指定的时间点</p>
+<h4 id="23-Mysql为什么加了索引可以加快查询"><a href="#23-Mysql为什么加了索引可以加快查询" class="headerlink" title="23. Mysql为什么加了索引可以加快查询"></a>23. Mysql为什么加了索引可以加快查询</h4><p>在数据十分庞大的时候，索引可以大大加快查询的速度，这是因为使用索引后可以不用扫描全表来定位某行的数据，而是先通过索引表找到该行数据对应的物理地址然后访问相应的数据</p>
+<ul>
+<li>优势：可以快速检索，减少I&#x2F;O次数，加快检索速度；根据索引分组和排序，可以加快分组和排序</li>
+<li>劣势：索引本身也是表，因此会占用存储空间，一般来说，索引表占用的空间的数据表的1.5倍；索引表的维护和创建需要时间成本，这个成本随着数据量增大而增大；构建索引会降低数据表的修改操作（删除，添加，修改）的效率，因为在修改数据表的同时还需要修改索引表</li>
+</ul>
+<h4 id="24-Explain命令有什么用"><a href="#24-Explain命令有什么用" class="headerlink" title="24. Explain命令有什么用"></a>24. Explain命令有什么用</h4><p>在开发的过程中，我们有时会用<strong>慢查询</strong>去记录一些执行时间比较久的Sql语句，找出这些Sql语句并不意味着完事了，这个时候我们就需要用到explain这个命令来查看一个这些Sql语句的执行计划，查看该Sql语句有没有使用上了索引，有没有做全表扫描，这些都可以通过explain命令来查看</p>
+<p>expain出来的信息有10列，分别是<code>id、select_type、table、type、possible_keys、key、key_len、ref、rows、Extra</code></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">- <span class="built_in">id</span>：select选择标识符</span><br><span class="line">- select_type：表示查询的类型</span><br><span class="line">- table：输出结果集的表</span><br><span class="line">- partitions：匹配的分区</span><br><span class="line">- <span class="built_in">type</span>：表示表的连接类型</span><br><span class="line">- possible_keys：表示查询时，可能使用的索引</span><br><span class="line">- key：表示实际使用的索引</span><br><span class="line">- key_len：索引字段的长度</span><br><span class="line">- ref：列与索引的比较</span><br><span class="line">- rows：扫描出的行数(估算的行数)</span><br><span class="line">- filtered：按表条件过滤的行百分比</span><br><span class="line">- Extra：执行情况的描述和说明</span><br></pre></td></tr></table></figure>
 
-<h4 id="3-find"><a href="#3-find" class="headerlink" title="3. find"></a>3. find</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">find -iname <span class="string">&quot;MyProgram.c&quot;</span> 查找指定文件名的文件(不区分大小写)</span><br><span class="line">find -iname <span class="string">&quot;MyProgram.c&quot;</span> -<span class="built_in">exec</span> <span class="built_in">md5sum</span> &#123;&#125; \; 对找到的文件执行某个命令</span><br><span class="line">find ~ -empty 查找home目录下的所有空文件</span><br></pre></td></tr></table></figure>
-
-<h4 id="4-ssh"><a href="#4-ssh" class="headerlink" title="4. ssh"></a>4. ssh</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh -l jsmith remotehost.example.com 登录到远程主机</span><br><span class="line">ssh -v -l jsmith remotehost.example.com 调试ssh客户端</span><br><span class="line">ssh -V 显示ssh客户端版本</span><br></pre></td></tr></table></figure>
-
-<h4 id="5-sed"><a href="#5-sed" class="headerlink" title="5. sed"></a>5. sed</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sed <span class="string">&#x27;s/.$//&#x27;</span> filename 当你将Dos系统中的文件复制到Unix/Linux后，这个文件每行都会以\r\n结尾，sed可以轻易将其转换为Unix格式的文件，使用\n结尾的文件</span><br><span class="line">sed -n <span class="string">&#x27;1!G; h; p&#x27;</span> filename 反转文件内容并输出</span><br><span class="line">sed <span class="string">&#x27;/./=&#x27;</span> thegeekstuff.txt | sed <span class="string">&#x27;N; s/\n/ /&#x27;</span> 为非空行添加行号</span><br></pre></td></tr></table></figure>
-
-<h4 id="6-awk"><a href="#6-awk" class="headerlink" title="6. awk"></a>6. awk</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">awk <span class="string">&#x27;!($0 in array) &#123; array[$0]; print&#125;&#x27;</span> temp 删除重复行</span><br><span class="line">awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;$3=$4&#x27;</span> /etc/passwd 打印/etc/passwd中所有包含同样的uid和gid的行</span><br><span class="line">awk <span class="string">&#x27;&#123;print $2,$5;&#125;&#x27;</span> employee.txt 打印文件中的指定部分的字段</span><br></pre></td></tr></table></figure>
-
-<h4 id="7-vim"><a href="#7-vim" class="headerlink" title="7. vim"></a>7. vim</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">vim +10 filename.txt 打开文件并跳到第10行</span><br><span class="line">vim +/search-term filename.txt 打开文件跳到第一个匹配的行</span><br><span class="line">vim -R /etc/passwd 以只读模式打开文件</span><br></pre></td></tr></table></figure>
-
-<h4 id="8-diff"><a href="#8-diff" class="headerlink" title="8. diff"></a>8. diff</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">diff -w name_list.txt name_list_new.txt 比较的时候忽略空白符</span><br></pre></td></tr></table></figure>
-
-<h4 id="9-sort"><a href="#9-sort" class="headerlink" title="9. sort"></a>9. sort</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sort</span> names.txt 以升序对文件内容排序</span><br><span class="line"><span class="built_in">sort</span> -r names.txt 以降序对文件内容排序</span><br><span class="line"><span class="built_in">sort</span> -t: -k 3n /etc/passwd | more 以第三个字段对/etc/passwd的内容排序</span><br></pre></td></tr></table></figure>
-
-<h4 id="10-export"><a href="#10-export" class="headerlink" title="10. export"></a>10. export</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> | grep ORCALE 输出跟字符串oracle匹配的环境变量</span><br><span class="line"><span class="built_in">export</span> ORACLE_HOME=/u01/app/oracle/product/10.2.0 设置全局环境变量</span><br></pre></td></tr></table></figure>
-
-<h4 id="11-xargs"><a href="#11-xargs" class="headerlink" title="11. xargs"></a>11. xargs</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> *.jpg | xargs -n1 -i <span class="built_in">cp</span> &#123;&#125; /external-hard-drive/directory 将所有图片文件拷贝到外部驱动器</span><br><span class="line">find / -name *.jpg -<span class="built_in">type</span> f -<span class="built_in">print</span> | xargs tar -cvzf images.tar.gz 将系统中所有jpd文件压缩打包</span><br><span class="line"><span class="built_in">cat</span> url-list.txt | xargs wget –c 下载文件中列出的所有url对应的页面</span><br></pre></td></tr></table></figure>
-
-<h4 id="12-ls"><a href="#12-ls" class="headerlink" title="12. ls"></a>12. ls</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -lh 以易读的方式显示文件大小(显示为MB,GB...)</span><br><span class="line"><span class="built_in">ls</span> -ltr 以最后修改时间升序列出文件</span><br><span class="line"><span class="built_in">ls</span> -F 在文件名后面显示文件类型</span><br></pre></td></tr></table></figure>
-
-<h4 id="13-pwd"><a href="#13-pwd" class="headerlink" title="13. pwd"></a>13. pwd</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">输出当前工作目录</span><br></pre></td></tr></table></figure>
-
-<h4 id="14-cd"><a href="#14-cd" class="headerlink" title="14. cd"></a>14. cd</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> 可以在最近工作的两个目录间切换</span><br><span class="line"><span class="built_in">cd</span> ../ 跳到上级目录</span><br><span class="line"><span class="built_in">cd</span> /opt 不管现在到那直接跳到指定的opt文件夹中</span><br><span class="line"><span class="built_in">cd</span> ~ 切换当前用户的家目录。root用户的家目录就是root目录</span><br></pre></td></tr></table></figure>
-
-<h4 id="15-gzip"><a href="#15-gzip" class="headerlink" title="15. gzip"></a>15. gzip</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">gzip test.txt 创建一个*.gz的压缩文件</span><br><span class="line">gzip -d test.txt.gz 解压*.gz文件</span><br><span class="line">gzip -l *.gz 显示压缩的比率</span><br></pre></td></tr></table></figure>
-
-<h4 id="16-bzip2"><a href="#16-bzip2" class="headerlink" title="16. bzip2"></a>16. bzip2</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">bzip2 test.txt 创建*.bz2压缩文件</span><br><span class="line">bzip2 -d test.txt.bz2 解压*.bz2文件</span><br></pre></td></tr></table></figure>
-
-<h4 id="17-uzip"><a href="#17-uzip" class="headerlink" title="17. uzip"></a>17. uzip</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">unzip test.zip 解压*.zip文件</span><br><span class="line">unzip -l jasper.zip 查看*.zip文件的内容</span><br></pre></td></tr></table></figure>
-
-<h4 id="18-shutdown"><a href="#18-shutdown" class="headerlink" title="18. shutdown"></a>18. shutdown</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">shutdown -h now 关闭系统并立即关机</span><br><span class="line">shutdown -h +10 10分钟后关机</span><br><span class="line">shutdown -r now 重启</span><br><span class="line">shutdown -Fr now 重启期间强制进行系统检查</span><br></pre></td></tr></table></figure>
-
-<h4 id="19-ftp"><a href="#19-ftp" class="headerlink" title="19. ftp"></a>19. ftp</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ftp IP/hostname ftp命令和sftp命令的用法基本相似连接ftp服务器并下载多个文件</span><br><span class="line">ftp&gt; mls *.html - 显示远程主机上文件列表</span><br></pre></td></tr></table></figure>
-
-<h4 id="20-crontab"><a href="#20-crontab" class="headerlink" title="20. crontab"></a>20. crontab</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">crontab -u john -l 查看某个用户的crontab入口</span><br><span class="line">*/10 * * * * /home/ramesh/check-disk-space 设置一个每十分钟执行一次的计划任务</span><br></pre></td></tr></table></figure>
-
-<h4 id="21-service"><a href="#21-service" class="headerlink" title="21. service"></a>21. service</h4><p>service命令用于运行System V init脚本，这些脚本一般位于&#x2F;etc&#x2F;init.d文件下，这个命令可以直接运行这个文件夹里面的脚本，而不用加上路径</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">service ssh status 查看服务状态</span><br><span class="line">service --status-all 查看所有服务状态</span><br><span class="line">service ssh restart 重启服务</span><br></pre></td></tr></table></figure>
-
-<h4 id="22-ps"><a href="#22-ps" class="headerlink" title="22. ps"></a>22. ps</h4><p>ps命令用于显示正在运行中的进程的信息，ps命令有很多选项，这里只列出了几个</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ps -ef | more 查看当前正在运行的所有进程</span><br><span class="line">ps -efH | more 以树状结构显示当前正在运行的进程，H选项表示显示进程的层次结构</span><br></pre></td></tr></table></figure>
-
-<h4 id="23-free"><a href="#23-free" class="headerlink" title="23. free"></a>23. free</h4><p>这个命令用于显示系统当前内存的使用情况，包括已用内存、可用内存和交换内存的情况</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">free 默认情况下free会以字节为单位输出内存的使用量</span><br><span class="line">free -g 如果你想以其他单位输出内存的使用量，需要加一个选项，-g为GB，-m为MB，-k为KB，-b为字节</span><br><span class="line">free -t 如果你想查看所有内存的汇总，请使用-t选项，使用这个选项会在输出中加一个汇总行</span><br></pre></td></tr></table></figure>
-
-<h4 id="24-top"><a href="#24-top" class="headerlink" title="24. top"></a>24. top</h4><p>top命令会显示当前系统中占用资源最多的一些进程（默认以CPU占用率排序）如果你想改变排序方式，可以在结果列表中点击O（大写字母O）会显示所有可用于排序的列，这个时候你就可以选择你想排序的列</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">top -u oracle 如果只想显示某个特定用户的进程，可以使用-u选项</span><br></pre></td></tr></table></figure>
-
-<h4 id="25-df"><a href="#25-df" class="headerlink" title="25. df"></a>25. df</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">df</span> -k 显示文件系统的磁盘使用情况，默认情况下<span class="built_in">df</span> -k 将以字节为单位输出磁盘的使用量</span><br><span class="line"><span class="built_in">df</span> -h 使用-h选项可以以更符合阅读习惯的方式显示磁盘使用量</span><br><span class="line"><span class="built_in">df</span> -T 使用-T选项显示文件系统类型</span><br></pre></td></tr></table></figure>
-
-<h4 id="26-kill"><a href="#26-kill" class="headerlink" title="26. kill"></a>26. kill</h4><p>kill用于终止一个进程。一般我们会先用<code>ps -ef</code>查找某个进程得到它的进程号，然后再使用<code>kill -9 进程号</code>终止该进程。你还可以使用killall、pkill、xkill来终止进程</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ps -ef | grep vim</span><br><span class="line">	ramesh    7243  7222  9 22:43 pts/2    00:00:00 vim</span><br><span class="line"><span class="built_in">kill</span> -9 7243</span><br></pre></td></tr></table></figure>
-
-<h4 id="27-rm"><a href="#27-rm" class="headerlink" title="27. rm"></a>27. rm</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> -i filename.txt 删除文件前先确认</span><br><span class="line"><span class="built_in">rm</span> -i file* 在文件名中使用shell的元字符会非常有用。删除文件前先打印文件名并进行确认</span><br><span class="line"><span class="built_in">rm</span> -r example 递归删除文件夹下所有文件，并删除该文件夹</span><br></pre></td></tr></table></figure>
-
-<h4 id="28-cp"><a href="#28-cp" class="headerlink" title="28. cp"></a>28. cp</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> -p file1 file2 拷贝文件1到文件2，并保持文件的权限、属主和时间戳</span><br><span class="line"><span class="built_in">cp</span> -i file1 file2 拷贝file1到file2，如果file2存在会提示是否覆盖</span><br></pre></td></tr></table></figure>
-
-<h4 id="29-mv"><a href="#29-mv" class="headerlink" title="29. mv"></a>29. mv</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">注意如果使用-f选项则不会进行提示</span><br><span class="line"><span class="built_in">mv</span> -i file1 file2 将文件名file1重命名为file2，如果file2存在则提示是否覆盖</span><br><span class="line"><span class="built_in">mv</span> -v file1 file2 -v会输出重命名的过程，当文件名中包含通配符时，这个选项会非常方便</span><br></pre></td></tr></table></figure>
-
-<h4 id="30-cat"><a href="#30-cat" class="headerlink" title="30. cat"></a>30. cat</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> file1 file2 你可以一次查看多个文件的内容，下面的命令会先打印file1的内容，然后打印file2的内容</span><br><span class="line"><span class="built_in">cat</span> -n /etc/logrotate.conf -n命令可以在每行的前面加上行号</span><br></pre></td></tr></table></figure>
-
-<h4 id="31-mount"><a href="#31-mount" class="headerlink" title="31. mount"></a>31. mount</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /u01</span><br><span class="line">mount /dev/sdb1 /u01 如果要挂载一个文件系统，需要先创建一个目录，然后将这个文件系统挂载到这个目录上</span><br><span class="line">/dev/sdb1 /u01 ext2 defaults 0 2 也可以把它添加到fstab中进行自动挂载，这样任何时候系统重启的时候，文件系统都会被加载</span><br></pre></td></tr></table></figure>
-
-<h4 id="32-chmod"><a href="#32-chmod" class="headerlink" title="32. chmod"></a>32. chmod</h4><p>chmod用于改变文件和目录的权限</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> ug+rwx file.txt 给指定文件的属主和属组所有权限(包括读、写、执行)</span><br><span class="line"><span class="built_in">chmod</span> g-rwx file.txt 删除指定文件的属组的所有权限</span><br><span class="line"><span class="built_in">chmod</span> -R ug+rwx file.txt 修改目录的权限，以及递归修改目录下面所有文件和子目录的权限</span><br></pre></td></tr></table></figure>
-
-<h4 id="33-chown"><a href="#33-chown" class="headerlink" title="33. chown"></a>33. chown</h4><p>chown用于改变文件属主和属组</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chown</span> oracle:dba dbora.sh 同时将某个文件的属主改为oracle，属组改为db</span><br><span class="line"><span class="built_in">chown</span> -R oracle:dba /home/oracle 使用-R选项对目录和目录下的文件进行递归修改</span><br></pre></td></tr></table></figure>
-
-<h4 id="34-passwd"><a href="#34-passwd" class="headerlink" title="34. passwd"></a>34. passwd</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">passwd passwd用于在命令行修改密码，使用这个命令会要求你先输入旧密码，然后输入新密码</span><br><span class="line">passwd USERNAME 超级用户可以用这个命令修改其他用户的密码，这个时候不需要输入用户的密码</span><br><span class="line">passwd -d USERNAME passwd还可以删除某个用户的密码，这个命令只有root用户才能操作，删除密码后，这个用户不需要输入密码就可以登录到系统</span><br></pre></td></tr></table></figure>
-
-<h4 id="35-mkdir"><a href="#35-mkdir" class="headerlink" title="35. mkdir"></a>35. mkdir</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/temp 在home目录下创建一个名为temp的目录</span><br><span class="line"><span class="built_in">mkdir</span> -p dir1/dir2/dir3/dir4/ 使用-p选项可以创建一个路径上所有不存在的目录</span><br></pre></td></tr></table></figure>
-
-<h4 id="36-ifconfig"><a href="#36-ifconfig" class="headerlink" title="36. ifconfig"></a>36. ifconfig</h4><p>ifconfig用于查看和配置Linux系统的网络接口</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ifconfig -a 查看所有网络接口及其状态</span><br><span class="line">ifconfig eth0 up 使用up命令启动某个接口</span><br><span class="line">ifconfig eth0 down 使用down命令停止某个接口</span><br></pre></td></tr></table></figure>
-
-<h4 id="37-uname"><a href="#37-uname" class="headerlink" title="37. uname"></a>37. uname</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">uname</span> -a <span class="built_in">uname</span>可以显示一些重要的系统信息，例如内核名称、主机名、内核版本号、处理器类型之类的信息</span><br></pre></td></tr></table></figure>
-
-<h4 id="38-whereis"><a href="#38-whereis" class="headerlink" title="38. whereis"></a>38. whereis</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">whereis <span class="built_in">ls</span> 当你不知道某个命令的位置时可以使用whereis命令，下面使用whereis查找<span class="built_in">ls</span>的位置</span><br><span class="line">whereis -u -B /tmp -f lsmk 当你想查找某个可执行程序的位置，但这个程序又不在whereis的默认目录下，你可以使用-B选项，并指定目录作为这个选项的参数。下面的命令在/tmp目录下查找lsmk命令</span><br></pre></td></tr></table></figure>
-
-<h4 id="39-whatis"><a href="#39-whatis" class="headerlink" title="39. whatis"></a>39. whatis</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">whatis <span class="built_in">ls</span> wathis显示某个命令的描述信息</span><br><span class="line">whatis ifconfig wathis显示某个命令的描述信息</span><br></pre></td></tr></table></figure>
-
-<h4 id="40-locate"><a href="#40-locate" class="headerlink" title="40. locate"></a>40. locate</h4><p>locate命名可以显示某个指定文件（或一组文件）的路径，它会使用由updatedb创建的数据库</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">locate crontab 命令会显示系统中所有包含crontab字符串的文件</span><br></pre></td></tr></table></figure>
-
-<h4 id="41-man"><a href="#41-man" class="headerlink" title="41. man"></a>41. man</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">man crontab 显示某个命令的man页面</span><br><span class="line">man SECTION-NUMBER commandname 有些命令可能会有多个man页面，每个man页面对应一种命令类型</span><br></pre></td></tr></table></figure>
-
-<h4 id="42-tail"><a href="#42-tail" class="headerlink" title="42. tail"></a>42. tail</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">tail</span> filename.txt <span class="built_in">tail</span>命令默认显示文件最后的10行文本</span><br><span class="line"><span class="built_in">tail</span> -n N filename.txt 你可以使用-n选项指定要显示的行数</span><br><span class="line"><span class="built_in">tail</span> -f log-file 你也可以使用-f选项进行实时查看，这个命令执行后会等待，如果有新行添加到文件尾部，它会继续输出新的行，在查看日志时这个选项会非常有用。你可以通过CTRL-C终止命令的执行</span><br></pre></td></tr></table></figure>
-
-<h4 id="43-less"><a href="#43-less" class="headerlink" title="43. less"></a>43. less</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">less huge-log-file.log 这个命名可以在不加载整个文件的前提下显示文件内容，在查看大型日志文件的时候这个命令会非常有用</span><br></pre></td></tr></table></figure>
-
-<h4 id="44-su"><a href="#44-su" class="headerlink" title="44. su"></a>44. su</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">su - USERNAME su命令用于切换用户账号，超级用户使用这个命令可以切换到任何其他用户而不用输入密码</span><br><span class="line">su -s <span class="string">&#x27;SHELLNAME&#x27;</span> USERNAME 用指定用户登录，并且使用指定的shell程序，而不用默认的</span><br></pre></td></tr></table></figure>
-
-<h4 id="45-mysql"><a href="#45-mysql" class="headerlink" title="45. mysql"></a>45. mysql</h4><p>mysql可能是Linux上使用最广泛的数据库，即使你没有在你的服务器上安装mysql，你也可以使用mysql客户端连接到远程的mysql服务器</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mysql -u root -p -h 192.168.1.2 连接一个远程数据库，需要输入密码</span><br><span class="line">mysql -u root -p 连接本地数据库</span><br></pre></td></tr></table></figure>
-
-<p>你也可以在命令行中输入数据库密码，只需要在-p后面加上密码作为参数，可以直接写在p后面而不用加空格</p>
-<h4 id="46-yum"><a href="#46-yum" class="headerlink" title="46. yum"></a>46. yum</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum install httpd 使用yum安装apache</span><br><span class="line">yum update httpd 更新apache</span><br><span class="line">yum remove httpd 卸载/删除apache</span><br></pre></td></tr></table></figure>
-
-<h4 id="47-rpm"><a href="#47-rpm" class="headerlink" title="47. rpm"></a>47. rpm</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">rpm -ivh httpd-2.2.3-22.0.1.el5.i386.rpm 使用rpm安装apache</span><br><span class="line">rpm -uvh httpd-2.2.3-22.0.1.el5.i386.rpm 更新apache</span><br><span class="line">rpm -ev httpd 卸载/删除apache</span><br></pre></td></tr></table></figure>
-
-<h4 id="48-ping"><a href="#48-ping" class="headerlink" title="48. ping"></a>48. ping</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ping -c 5 gmail.com ping一个远程主机，只发5个数据包</span><br></pre></td></tr></table></figure>
-
-<h4 id="49-date"><a href="#49-date" class="headerlink" title="49. date"></a>49. date</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">date</span> -s <span class="string">&quot;01/31/2010 23:59:53&quot;</span> 设置系统日期</span><br><span class="line">---</span><br><span class="line">当你修改了系统时间，你需要同步硬件时间和系统时间</span><br><span class="line">hwclock –systohc</span><br><span class="line">hwclock --systohc –utc</span><br></pre></td></tr></table></figure>
-
-<h4 id="50-wget"><a href="#50-wget" class="headerlink" title="50. wget"></a>50. wget</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-3.2.1.tar.gz 使用wget从网上下载软件、音乐、视频</span><br><span class="line">wget -O taglist.zip http://www.vim.org/scripts/download_script.php?src_id=7701 下载文件并以指定的文件名保存文件</span><br></pre></td></tr></table></figure>
-
-<h4 id="51-CPU100-怎么排查和处理"><a href="#51-CPU100-怎么排查和处理" class="headerlink" title="51. CPU100%怎么排查和处理"></a>51. CPU100%怎么排查和处理</h4><p>使用top命令定位进程，再用top命令定位线程，再打印线程堆栈查看运行情况</p>
-<ol>
-<li><code>top</code>命令显示进程运行列表，找到最耗<code>CPU</code>的进程<code>PID</code></li>
-<li>找到最耗<code>CPU</code>的线程，<code>top -Hp 进程PID号</code>，显示进程的线程运行列表，找到最耗<code>CPU</code>的线程<code>PID</code></li>
-<li>将线程<code>PID</code>转化为16进制，<code>printf &quot;%x\n&quot; 线程PID号</code>，因为在堆栈里，线程<code>ID</code>是用16进制表示的</li>
-<li>查看堆栈，找到线程在干嘛，<code>pstack/jstack/grep</code>，<code>jstack 进程PID | grep ‘线程PID的16进制数’ -C5 --color</code>打印进程堆栈，通过线程<code>ID</code>，过滤得到线程堆栈，根据线程<code>PID</code>的16进制数找到消耗<code>CPU</code>高的线程对应的线程的名称，以及看到了改线程正在执行代码的堆栈</li>
+<ul>
+<li><p>id：select选择标识符</p>
+<p>id是Sql执行的顺序的标识，Sql从大到小的执行</p>
+<ul>
+<li>id相同时，执行顺序由上至下</li>
+<li>如果是子查询，id的序号会递增，id值越大优先级越高，越先被执行</li>
+<li>id如果相同，可以认为是一组，从上往下顺序执行；在所有组中，id值越大，优先级越高，越先执行</li>
+</ul>
+</li>
+<li><p>select_type：表示查询的类型</p>
+<p>查询中每个select子句的类型</p>
+<ul>
+<li>SIMPLE(简单SELECT，不使用UNION或子查询等)</li>
+<li>PRIMARY(查询中若包含任何复杂的子部分，最外层的select被标记为PRIMARY)</li>
+<li>UNION(UNION中的第二个或后面的SELECT语句)</li>
+<li>DEPENDENT UNION(UNION中的第二个或后面的SELECT语句，取决于外面的查询)</li>
+<li>UNION RESULT(UNION的结果)</li>
+<li>SUBQUERY(子查询中的第一个SELECT)</li>
+<li>DEPENDENT SUBQUERY(子查询中的第一个SELECT，取决于外面的查询)</li>
+<li>DERIVED(派生表的SELECT，FROM子句的子查询)</li>
+<li>UNCACHEABLE SUBQUERY(一个子查询的结果不能被缓存，必须重新评估外链接的第一行)</li>
+</ul>
+</li>
+<li><p>table：输出结果集的表</p>
+<ul>
+<li>table显示这一行的数据是关于哪张表的，有时不是真实的表名字，看到的是derivedx</li>
+</ul>
+</li>
+<li><p>partitions：匹配的分区</p>
+</li>
+<li><p>type：表示表的连接类型</p>
+<p>type表示Mysql在表中找到所需行的方式，又称“访问类型”。常用的类型有： ALL， index， range， ref， eq_ref， const， system， NULL（从左到右，性能从差到好）</p>
+<ul>
+<li>ALL：Full Table Scan， Mysql将遍历全表以找到匹配的行</li>
+<li>index：Full Index Scan，index与ALL区别为index类型只遍历索引树</li>
+<li>range：只检索给定范围的行，使用一个索引来选择行</li>
+<li>ref：表示上述表的连接匹配条件，即哪些列或常量被用于查找索引列上的值</li>
+<li>eq_ref：类似ref，区别就在使用的索引是唯一索引，对于每个索引键值，表中只有一条记录匹配，简单来说，就是多表连接中使用primary key或者 unique key作为关联条件</li>
+<li>const、system：当Mysql对查询某部分进行优化，并转换为一个常量时，使用这些类型访问。如将主键置于where列表中，Mysql就能将该查询转换为一个常量，system是const类型的特例，当查询的表只有一行的情况下，使用system</li>
+<li>NULL：Mysql在优化过程中分解语句，执行时甚至不用访问表或索引，例如从一个索引列里选取最小值可以通过单独索引查找完成</li>
+</ul>
+</li>
+<li><p>possible_keys：表示查询时，可能使用的索引</p>
+<ul>
+<li>possible_keys指出Mysql能使用哪个索引在表中找到记录，查询涉及到的字段上若存在索引，则该索引将被列出，但不一定被查询使用</li>
+<li>该列完全独立于<code>EXPLAIN</code>输出所示的表的次序。这意味着在<code>possible_keys</code>中的某些键实际上不能按生成的表次序使用</li>
+<li>如果该列是NULL，则没有相关的索引。在这种情况下，可以通过检查WHERE子句看是否它引用某些列或适合索引的列来提高你的查询性能。如果是这样，创造一个适当的索引并且再次用EXPLAIN检查查询</li>
+</ul>
+</li>
+<li><p>key：表示实际使用的索引</p>
+<ul>
+<li>key列显示MySql实际决定使用的键（索引）</li>
+<li>如果没有选择索引，键是NULL。要想强制Mysql使用或忽视<code>possible_keys</code>列中的索引，在查询中使用<code>FORCE INDEX、USE INDEX</code>或者<code>IGNORE INDEX</code></li>
+</ul>
+</li>
+<li><p>key_len：索引字段的长度</p>
+<ul>
+<li>key_len表示索引中使用的字节数，可通过该列计算查询中使用的索引的长度（key_len显示的值为索引字段的最大可能长度，并非实际使用长度，即key_len是根据表定义计算而得，不是通过表内检索出的）不损失精确性的情况下，长度越短越好</li>
+</ul>
+</li>
+<li><p>ref：列与索引的比较</p>
+<ul>
+<li>ref表示上述表的连接匹配条件，即哪些列或常量被用于查找索引列上的值</li>
+</ul>
+</li>
+<li><p>rows：扫描出的行数(估算的行数)</p>
+<ul>
+<li>rows表示Mysql根据表统计信息及索引选用情况，估算的找到所需的记录所需要读取的行数</li>
+</ul>
+</li>
+<li><p>filtered：按表条件过滤的行百分比</p>
+</li>
+<li><p>Extra：执行情况的描述和说明</p>
+<p>该列包含Mysql解决查询的详细信息，有以下几种情况：</p>
+<ul>
+<li>Using where：列数据是从仅仅使用了索引中的信息而没有读取实际的行动的表返回的，这发生在对表的全部的请求列都是同一个索引的部分的时候，表示mysql服务器将在存储引擎检索行后再进行过滤</li>
+<li>Using temporary：表示Mysql需要使用临时表来存储结果集，常见于排序和分组查询</li>
+<li>Using filesort：Mysql中无法利用索引完成的排序操作称为“文件排序”</li>
+<li>Using join buffer：改值强调了在获取连接条件时没有使用索引，并且需要连接缓冲区来存储中间结果。如果出现了这个值，那应该注意，根据查询的具体情况可能需要添加索引来改进能</li>
+<li>Impossible where：这个值强调了where语句会导致没有符合条件的行</li>
+<li>Select tables optimized away：这个值意味着仅通过使用索引，优化器可能仅从聚合函数结果中返回一行</li>
+</ul>
+</li>
+</ul>
+<h4 id="25-MySQL优化"><a href="#25-MySQL优化" class="headerlink" title="25. MySQL优化"></a>25. MySQL优化</h4><ul>
+<li>避免不走索引的场景</li>
+<li>select语句其他优化</li>
+<li>增删改DML语句优化</li>
+<li>查询条件优化</li>
+<li>建表优化</li>
+</ul>
+<h5 id="25-1-避免不走索引的场景"><a href="#25-1-避免不走索引的场景" class="headerlink" title="25.1 避免不走索引的场景"></a>25.1 避免不走索引的场景</h5><ol>
+<li>尽量避免在字段开头模糊查询，会导致数据库引擎放弃索引进行全表扫描</li>
+<li>尽量避免使用<code>in</code>和<code>not in </code>，会导致引擎走全表扫描</li>
+<li>尽量避免使用<code>or</code>，会导致数据库引擎放弃索引进行全表扫描</li>
+<li>尽量避免进行<code>null</code>值的判断，会导致数据库引擎放弃索引进行全表扫描</li>
+<li>尽量避免在<code>where</code>条件中等号的左侧进行表达式、函数操作，会导致数据库引擎放弃索引进行全表扫描</li>
+<li>当数据量大时，避免使用<code>where 1=1</code>的条件，通常为了方便拼装查询条件，我们会默认使用该条件，数据库引擎会放弃索引进行全表扫描</li>
+<li>条件查询不能用<code>&lt;&gt;</code>或者<code>!=</code></li>
+<li><code>where</code>条件仅包含复合索引非前置列</li>
+<li>隐式类型转换造成不使用索引</li>
+<li><code>order by</code>条件要与<code>where</code>中条件一致，否则<code>order by</code>不会利用索引进行排序</li>
+<li>正确使用<code>hint</code>优化语句</li>
 </ol>
-<h4 id="52"><a href="#52" class="headerlink" title="52."></a>52.</h4><h4 id="53"><a href="#53" class="headerlink" title="53."></a>53.</h4><h4 id="54"><a href="#54" class="headerlink" title="54."></a>54.</h4><h4 id="55"><a href="#55" class="headerlink" title="55."></a>55.</h4><h4 id="56"><a href="#56" class="headerlink" title="56."></a>56.</h4><h4 id="57"><a href="#57" class="headerlink" title="57."></a>57.</h4><hr>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>八股文</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Redis面试题</title>
-    <url>/2022/10/28/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p>Redis面试常见问题汇总</p>
-<h4 id="1-Redis的数据结构及使用场景"><a href="#1-Redis的数据结构及使用场景" class="headerlink" title="1. Redis的数据结构及使用场景"></a>1. Redis的数据结构及使用场景</h4><ul>
-<li><p>String字符串</p>
-<p>字符串类型是 Redis 最基础的数据结构，首先键都是字符串类型，而且 其他几种数据结构都是在字符串类型基础上构建的，我们常使用的 set key value 命令就是字符串。常用在缓存、计数、共享Session、限速等</p>
-</li>
-</ul>
-<hr>
+<h5 id="25-2-select语句其他优化"><a href="#25-2-select语句其他优化" class="headerlink" title="25.2 select语句其他优化"></a>25.2 select语句其他优化</h5><ol>
+<li>避免出现<code>select *</code></li>
+<li>避免出现不确定结果的函数</li>
+<li>多表关联查询时，小表在前，大表在后</li>
+<li>使用表的别名</li>
+<li>用<code>where</code>语句替换<code>HAVING</code>字句</li>
+<li>调整<code>where</code>字句中的连接顺序</li>
+</ol>
+<h5 id="25-3-增删改DML语句优化"><a href="#25-3-增删改DML语句优化" class="headerlink" title="25.3 增删改DML语句优化"></a>25.3 增删改DML语句优化</h5><ol>
+<li>大批量插入数据</li>
+<li>适当使用<code>commit</code></li>
+<li>避免重复查询更新的数据</li>
+<li>查询优先还是更新<code>(insert、update、delete)</code>优先</li>
+</ol>
+<h5 id="25-4-查询条件优化"><a href="#25-4-查询条件优化" class="headerlink" title="25.4 查询条件优化"></a>25.4 查询条件优化</h5><ol>
+<li>对于复杂的查询，可以使用中间临时表暂存数据</li>
+<li>优化<code>group by</code>语句</li>
+<li>优化<code>join</code>语句</li>
+<li>优化<code>union</code>语句</li>
+<li>拆分复杂<code>SQL</code>为多个小<code>SQL</code>，避免大事务</li>
+<li>使用<code>truncate</code>代替<code>delete</code></li>
+<li>使用合理的分页方式以提高分页效率</li>
+</ol>
+<h5 id="25-5-建表优化"><a href="#25-5-建表优化" class="headerlink" title="25.5 建表优化"></a>25.5 建表优化</h5><ol>
+<li>在表中建立索引，优先考虑<code>where、order by</code>使用到的字段</li>
+<li>尽量使用数字类型（性别：男：1，女：2），若只含数值信息的字段尽量不要设计为字符型，这会降低查询和连接的性能，并会增加存储的开销</li>
+<li>查询数据量大的表，会造成查询缓慢。主要的原因是扫描行数过多，这个时候可以通过程序，分段分页进行查询，循环遍历，将结果合并处理进行展示</li>
+<li>用<code>varchar/nvarchar</code>代替<code>char/nchar</code></li>
+</ol>
+<h4 id="26-SQL注入"><a href="#26-SQL注入" class="headerlink" title="26. SQL注入"></a>26. SQL注入</h4><p>Sql注入攻击是通过将恶意的Sql查询或添加语句插入到应用的输入参数中，再在后台Sql服务器上解析执行进行的攻击，它目前黑客对数据库进行攻击的最常用手段之一。</p>
+<p><strong>避免SQL注入：</strong></p>
 <ul>
-<li><p>Hash哈希</p>
-<p>在Redis中，哈希类型是指键值本身又是一个键值对结构，哈希可以用来存放用户信息，比如实现购物车</p>
-</li>
+<li>参数校验，校验数据的类型，长度，特殊字符，数据库关键词等</li>
+<li>代码层面防止SQL注入攻击的最佳方案是SQL预编译，尽量不写SQL原生语句，使用ORM</li>
+<li>严格限制数据库权限</li>
+<li>避免直接响应一些SQL异常信息，SQL发生异常后，自定义异常进行响应</li>
 </ul>
-<hr>
-<ul>
-<li><p>List列表（双向链表）</p>
-<p>列表（list）类型是用来存储多个有序的字符串。可以做简单的消息队列的功能</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>Set集合</p>
-<p>集合（set）类型也是用来保存多个的字符串元素，但和列表类型不一 样的是，集合中不允许有重复元素，并且集合中的元素是无序的，不能通过索引下标获取元素。利用 Set 的交集、并集、差集等操作，可以计算共同喜好，全部的喜好，自己独有的喜好等功能</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>Sorted Set有序集合（跳表实现）</p>
-<p>Sorted Set 多了一个权重参数 Score，集合中的元素能够按 Score 进行排列。可以做排行榜应用，取 TOP N 操作</p>
-</li>
-</ul>
-<h4 id="2-Redis持久化的几种方式"><a href="#2-Redis持久化的几种方式" class="headerlink" title="2. Redis持久化的几种方式"></a>2. Redis持久化的几种方式</h4><p>Redis为了保证效率，数据缓存在了内存中，但是会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件中，以保证数据的持久化。Redis的持久化策略有两种：</p>
-<ul>
-<li><strong>RDB：</strong> 快照形式是直接把内存中的数据保存到一个dump的文件中，定时保存，保存策略<ul>
-<li>当Redis需要做持久化时，Redis会fork一个子进程，子进程将数据写到磁盘上一个临时RDB文件中。当子进程完成写临时文件后，将原来的RDB替换掉</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><strong>AOF：</strong> 把所有的对Redis的服务器进行修改的命令都存到一个文件里，命令的集合<ul>
-<li>使用AOF做持久化，每一个写命令都通过write函数追加到<code>appendonly.aof</code>中</li>
-<li>aof的默认策略是每秒钟fsync一次，在这种配置下，就算发生故障停机，也最多丢失一秒钟的数据</li>
-<li>缺点是对于相同的数据集来说，AOF的文件体积通常要大于RDB文件的体积。根据所使用的fsync策略，AOF的速度可能会慢于RDB</li>
-</ul>
-</li>
-</ul>
-<p>Redis默认是快照RDB的持久化方式。对于主从同步来说，主从刚刚连接的时候，进行全量同步（RDB），全同步结束后，进行增量同步(AOF)</p>
-<h4 id="3-Redis的LRU具体实现"><a href="#3-Redis的LRU具体实现" class="headerlink" title="3. Redis的LRU具体实现"></a>3. Redis的LRU具体实现</h4><ul>
-<li>传统的LRU是使用栈的形式，每次都将最新使用的移入栈顶，但是用栈的形式会导致执行<code>select *</code>的时候大量非热点数据占领头部数据，所以需要改进</li>
-<li>Redis每次按key获取一个值的时候，都会更新value中的lru字段为当前秒级别的时间戳。Redis初始的实现算法很简单，随机从dict中取出五个key，淘汰一个lru字段值最小的</li>
-<li>在3.0的时候，又改进了一版算法，首先第一次随机选取的key都会放入一个pool中(pool的大小为16)，pool中的key是按lru大小顺序排列的</li>
-<li>接下来每次随机选取的keylru值必须小于pool中最小的lru才会继续放入，直到将pool放满。放满之后，每次如果有新的key需要放入，需要将pool中lru最大的一个key取出。淘汰的时候，直接从pool中选取一个lru最小的值然后将其淘汰</li>
-</ul>
-<h4 id="4-单线程的Redis为什么快"><a href="#4-单线程的Redis为什么快" class="headerlink" title="4. 单线程的Redis为什么快"></a>4. 单线程的Redis为什么快</h4><ul>
-<li>纯内存操作</li>
-<li>单线程操作，避免了频繁的上下文切换</li>
-<li>合理高效的数据结构</li>
-<li>采用了非阻塞I&#x2F;O多路复用机制</li>
-</ul>
-<h4 id="5-Redis的数据过期策略"><a href="#5-Redis的数据过期策略" class="headerlink" title="5. Redis的数据过期策略"></a>5. Redis的数据过期策略</h4><p>Redis 中数据过期策略采用<strong>定期删除</strong>和<strong>惰性删除</strong>策略：</p>
-<ul>
-<li>定期删除策略<ul>
-<li>Redis 启用一个定时器定时监视所有的 key，判断key是否过期，过期的话就删除</li>
-<li>这种策略可以保证过期的 key 最终都会被删除，但是也存在严重的缺点：每次都遍历内存中所有的数据，非常消耗 CPU资源，并且当 key 已过期，但是定时器还处于未唤起状态，这段时间内 key 仍然可以用</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li>惰性删除策略<ul>
-<li>在获取 key 时，先判断 key 是否过期，如果过期则删除</li>
-<li>这种方式存在一个缺点：如果这个 key一直未被使用，那么它一直在内存中，其实它已经过期了，会浪费大量的空间</li>
-</ul>
-</li>
-</ul>
-<p>这两种策略天然的互补，结合起来之后，定时删除策略就发生了一些改变，不在是每次扫描全部的 key 了，而是随机抽取一部分 key 进行检查，这样就降低了对 CPU 资源的损耗，惰性删除策略互补了为检查到的key，基本上满足了所有要求</p>
-<p>但是有时候就是那么的巧，既没有被定时器抽取到，又没有被使用，这些数据又如何从内存中消失？这个时候就需要用到了，内存淘汰机制</p>
-<h5 id="5-1-内存淘汰机制"><a href="#5-1-内存淘汰机制" class="headerlink" title="5.1 内存淘汰机制"></a>5.1 内存淘汰机制</h5><ul>
-<li>当内存不足以容纳新写入数据时，新写入操作会报错。（Redis 默认策略）</li>
-<li>当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的 Key。（LRU推荐使用）</li>
-<li>当内存不足以容纳新写入数据时，在键空间中，随机移除某个 Key</li>
-<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，移除最近最少使用的 Key。这种情况一般是把 Redis 既当缓存，又做持久化存储的时候才用</li>
-<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，随机移除某个 Key</li>
-<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，有更早过期时间的 Key 优先移除</li>
-</ul>
-<h4 id="6-如何解决Redis缓存雪崩问题"><a href="#6-如何解决Redis缓存雪崩问题" class="headerlink" title="6. 如何解决Redis缓存雪崩问题"></a>6. 如何解决Redis缓存雪崩问题</h4><ul>
-<li>使用 Redis 高可用架构：使用 Redis 集群来保证 Redis 服务不会挂掉</li>
-<li>缓存时间不一致，给缓存的失效时间，加上一个随机值，避免集体失效</li>
-<li>限流降级策略：有一定的备案，比如个性推荐服务不可用了，换成热点数据推荐服务</li>
-</ul>
-<h4 id="7-如何解决Redis缓存穿透问题"><a href="#7-如何解决Redis缓存穿透问题" class="headerlink" title="7. 如何解决Redis缓存穿透问题"></a>7. 如何解决Redis缓存穿透问题</h4><ul>
-<li>在接口层做校验</li>
-<li>存null值（缓存击穿加锁）</li>
-<li>布隆过滤器拦截：将所有可能的查询key 先映射到布隆过滤器中，查询时先判断key是否存在布隆过滤器中，存在才继续向下执行，如果不存在，则直接返回<br>布隆过滤器将值进行多次哈希bit存储，布隆过滤器说某个元素在，可能会被误判。布隆过滤器说某个元素不在，那么一定不在</li>
-</ul>
-<h4 id="8-Redis并发竞争key如何解决"><a href="#8-Redis并发竞争key如何解决" class="headerlink" title="8. Redis并发竞争key如何解决"></a>8. Redis并发竞争key如何解决</h4><ul>
-<li>可以利用分布式锁和时间戳来解决</li>
-<li>利用消息队列解决</li>
-</ul>
-<h4 id="9-Redis的主从模式和哨兵模式和集群模式区别"><a href="#9-Redis的主从模式和哨兵模式和集群模式区别" class="headerlink" title="9. Redis的主从模式和哨兵模式和集群模式区别"></a>9. Redis的主从模式和哨兵模式和集群模式区别</h4><p>Redis集群方式共有三种：<strong>主从模式</strong>，<strong>哨兵模式</strong>，<strong>集群(cluster)模式</strong></p>
-<ul>
-<li><p>主从模式</p>
-<p>主从模式是三种集群方式里最简单的。它主要是基于Redis的主从复制特性架构的。通常我们会设置一个主节点，N个从节点;默认情况下，主节点负责处理使用者的IO操作，而从节点则会对主节点的数据进行备份，并且也会对外提供读操作的处理。主要的特点如下：</p>
-<ul>
-<li>主从模式下，当某一节点损坏时，因为其会将数据备份到其它Redis实例上，这样做在很大程度上可以恢复丢失的数据</li>
-<li>主从模式下，可以保证负载均衡.</li>
-<li>主从模式下，主节点和从节点是读写分离的。使用者不仅可以从主节点上读取数据，还可以很方便的从从节点上读取到数据，这在一定程度上缓解了主机的压力</li>
-</ul>
-<p>从节点也是能够支持写入数据的，只不过从从节点写入的数据不会同步到主节点以及其它的从节点下。从以上，我们不难看出Redis在主从模式下，必须保证主节点不会宕机——一旦主节点宕机，其它节点不会竞争称为主节点，此时，Redis将丧失写的能力。这点在生产环境中，是致命的</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>哨兵模式</p>
-<p>哨兵模式是基于主从模式做的一定变化，它能够为Redis提供了高可用性</p>
-<p>在实际生产中，服务器难免不会遇到一些突发状况：服务器宕机，停电，硬件损坏等。这些情况一旦发生，其后果往往是不可估量的</p>
-<p>而哨兵模式在一定程度上能够帮我们规避掉这些意外导致的灾难性后果。其实，哨兵模式的核心还是主从复制</p>
-<p>只不过相对于主从模式在主节点宕机导致不可写的情况下，多了一个竞选机制——从所有的从节点竞选出新的主节点。竞选机制的实现，是依赖于在系统中启动一个sentinel进程。sentinel特点：</p>
-<ul>
-<li>监控：它会监听主服务器和从服务器之间是否在正常工作</li>
-<li>通知：它能够通过API告诉系统管理员或者程序，集群中某个实例出了问题。</li>
-<li>故障转移：它在主节点出了问题的情况下，会在所有的从节点中竞选出一个节点，并将其作为新的主节点。</li>
-<li>提供主服务器地址：它还能够向使用者提供当前主节点的地址。这在故障转移后，使用者不用做任何修改就可以知道当前主节点地址</li>
-</ul>
-<p>sentinel，也可以集群，部署多个哨兵，sentinel可以通过发布与订阅来自动发现Redis集群上的其它sentinel。sentinel在发现其它sentinel进程后，会将其放入一个列表中，这个列表存储了所有已被发现的sentinel</p>
-<p>集群中的所有sentinel不会并发着去对同一个主节点进行故障转移。故障转移只会从第一个sentinel开始，当第一个故障转移失败后，才会尝试下一个</p>
-<p>当选择一个从节点作为新的主节点后，故障转移即成功了(而不会等到所有的从节点配置了新的主节点后)。这过程中，如果重启了旧的主节点，那么就会出现无主节点的情况，这种情况下，只能重启集群</p>
-<p>当竞选出新的主节点后，被选为新的主节点的从节点的配置信息会被sentinel改写为旧的主节点的配置信息。完成改写后，再将新主节点的配置广播给所有的从节点</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>集群模式</p>
-<p>Redis 集群是一个提供在多个Redis间节点间共享数据的程序集， 其中Redis集群分为主节点和从节点。主节点用于处理槽，而从节点用于复制某个主节点，并在被复制的主节点下线时，代替下线的主节点继续处理命令请求</p>
-<p>Redis集群并不支持处理多个keys的命令，因为这需要在不同的节点间移动数据，从而达不到像Redis那样的性能，在高负载的情况下可能会导致不可预料的错误</p>
-<p>Redis 集群通过分区来提供一定程度的可用性，在实际环境中当某个节点宕机或者不可达的情况下继续处理命令. Redis 集群的优势：自动分割数据到不同的节点上</p>
-<p>整个集群的部分节点失败或者不可达的情况下能够继续处理命令</p>
-<p>Redis集群的数据分片 Redis 集群没有使用一致性hash， 而是引入了哈希槽的概念</p>
-<p>Redis 集群有16384个哈希槽，每个key通过CRC16校验后对16384取模来决定放置哪个槽.集群的每个节点负责一部分hash槽</p>
-</li>
-</ul>
-<h4 id="10-Redis事物的了解CheckAndSet操作实现乐观锁"><a href="#10-Redis事物的了解CheckAndSet操作实现乐观锁" class="headerlink" title="10. Redis事物的了解CheckAndSet操作实现乐观锁"></a>10. Redis事物的了解CheckAndSet操作实现乐观锁</h4><p>和众多其它数据库一样，Redis作为NoSQL数据库也同样提供了事务机制。在Redis中，<code>MULTI</code>，<code>EXEC</code>，<code>DISCARD</code>，<code>WATCH</code>这四个命令是我们实现事务的基石。相信对有关系型数据库开发经验的开发者而言这一概念并不陌生，即便如此，我们还是会简要的列出 Redis中事务的实现特征 ：</p>
-<ul>
-<li>在事务中的所有命令都将会被串行化的顺序执行，事务执行期间，Redis不会再为其它客户端的请求提供任何服务，从而保证了事物中的所有命令被原子的执行</li>
-<li>和关系型数据库中的事务相比，在Redis事务中如果有某一条命令执行失败，其后的命令仍然会被继续执行</li>
-<li>我们可以通过MULTI命令开启一个事务，有关系型数据库开发经验的人可以将其理解为”BEGIN TRANSACTION”语句。在该语句之后执行的命令都将被视为事务之内的操作，最后我们可以通过执行<code>EXEC</code>，<code>DISCARD</code>命令来提交，回滚该事务内的所有操作。这两个Redis命令可被视为等同于关系型数据库中的COMMIT&#x2F;ROLLBACK语句</li>
-<li>在事务开启之前，如果客户端与服务器之间出现通讯故障并导致网络断开，其后所有待执行的语句都将不会被服务器执行。然而如果网络中断事件是发生在客户端执行EXEC命令之后，那么该事务中的所有命令都会被服务器执行</li>
-<li>当使用<code>Append-Only</code>模式时，Redis会通过调用系统函数write将该事务内的所有写操作在本次调用中全部写入磁盘。然而如果在写入的过程中出现系统崩溃，如电源故障导致的宕机，那么此时也许只有部分数据被写入到磁盘，而另外一部分数据却已经丢失。Redis服务器会在重新启动时执行一系列必要的一致性检测，一旦发现类似问题，就会立即退出并给出相应的错误提示。此时，我们就要充分利用Redis工具包中提供的<code>redis-check-aof</code>工具，该工具可以帮助我们定位到数据不一致的错误，并将已经写入的部分数据进行回滚。修复之后我们就可以再次重新启动Redis服务器了</li>
-</ul>
-<h4 id="11-Redis有序集合zset底层怎么实现的"><a href="#11-Redis有序集合zset底层怎么实现的" class="headerlink" title="11. Redis有序集合zset底层怎么实现的"></a>11. Redis有序集合zset底层怎么实现的</h4><ul>
-<li>跳表是一个随机化的数据结构，实质就是一种可以进行二分查找的有序链表</li>
-<li>跳表在原有的有序链表上面增加了多级索引，通过索引来实现快速查找</li>
-<li>跳表不仅能提高搜索性能，同时也可以提高插入和删除操作的性能</li>
-</ul>
-<hr>
-<ul>
-<li>跳表是可以实现二分查找的有序链表</li>
-<li>每个元素插入时随机生成它的level</li>
-<li>最低层包含所有的元素</li>
-<li>如果一个元素出现在level(x)，那么它肯定出现在x以下的level中</li>
-<li>每个索引节点包含两个指针，一个向下，一个向右</li>
-<li>跳表查询、插入、删除的时间复杂度为O(log n)，与平衡二叉树接近</li>
-</ul>
-<hr>
-<h5 id="11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN"><a href="#11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN" class="headerlink" title="11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))"></a>11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))</h5><p>首先，我们来分析下Redis的有序集合支持的操作：</p>
-<ul>
-<li>插入元素</li>
-<li>删除元素</li>
-<li>查找元素</li>
-<li>有序输出所有元素</li>
-<li>查找区间内所有元素</li>
-</ul>
-<p>其中，前4项红黑树都可以完成，且时间复杂度与跳表一致。但是，最后一项，红黑树的效率就没有跳表高了。在跳表中，要查找区间的元素，我们只要定位到两个区间端点在最低层级的位置，然后按顺序遍历元素就可以了，非常高效</p>
-<p>而红黑树只能定位到端点后，再从首位置开始每次都要查找后继节点，相对来说是比较耗时的。此外，跳表实现起来很容易且易读，红黑树实现起来相对困难，所以Redis选择使用跳表来实现有序集合</p>
-<h4 id="12-跳表的查询过程是怎么样的，查询和插入的时间复杂度"><a href="#12-跳表的查询过程是怎么样的，查询和插入的时间复杂度" class="headerlink" title="12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度"></a>12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度</h4><p>先从第一层查找，不满足就下沉到第二层找，因为每一层都是有序的，写入和插入的时间复杂度都是O(logN)</p>
+<h4 id="27-MySQL、MongoDB、Redis区别，适用场景"><a href="#27-MySQL、MongoDB、Redis区别，适用场景" class="headerlink" title="27. MySQL、MongoDB、Redis区别，适用场景"></a>27. MySQL、MongoDB、Redis区别，适用场景</h4><h5 id="27-1-MySQL"><a href="#27-1-MySQL" class="headerlink" title="27.1 MySQL"></a>27.1 MySQL</h5><ol>
+<li>高度事务性系统。例如银行或会计系统，传统的关系型数据库目前还是更适用于需要大量原子性复杂事务的应用程序</li>
+<li>传统的商业智能应用，针对特定问题的<code>BI</code>数据库会产生高度优化的查询方式，对于此类应用，数据仓库可能是更合适的选择</li>
+</ol>
+<h5 id="27-2-MongoDB"><a href="#27-2-MongoDB" class="headerlink" title="27.2 MongoDB"></a>27.2 MongoDB</h5><ol>
+<li>网站数据：适合实时的插入，更新与查询，并具备网站实时数据存储所需的复制及高度伸缩性</li>
+<li>缓存：由于性能很高，也适合作为信息基础设施的缓存层，在系统重启之后，搭建的持久化缓存可以避免下层的数据源过载</li>
+<li>大尺寸、低价值的数据也是<code>MongoDB</code>的最佳选择，使用传统的关系型数据库存储一些数据时可能会比较贵，在此之前很多程序员往往会选择传统的文件进行存储</li>
+<li>高伸缩的场景，非常适合由数十台或数百台服务器组成的数据库</li>
+<li>用于对象及<code>json</code>数据的存储，<code>MongoDB</code>的<code>bson</code>数据格式非常适合文档格式化的存储及查询</li>
+</ol>
+<h5 id="27-3-Redis"><a href="#27-3-Redis" class="headerlink" title="27.3 Redis"></a>27.3 Redis</h5><ol>
+<li>用来做缓存：<code>Redis</code>的所有数据是存放在内存中的</li>
+<li>可以在某些特定应用场景下替代传统数据库：比如社交类的应用</li>
+<li>在一些大型系统中，巧妙的实现一些特定的功能：<code>session</code>共享、购物车</li>
+<li><code>MongoDB</code>不支持<code>SQL</code>语句</li>
+</ol>
 <hr>
 ]]></content>
       <categories>
@@ -1120,7 +1493,7 @@
       </categories>
       <tags>
         <tag>八股文</tag>
-        <tag>Redis</tag>
+        <tag>MySQL</tag>
       </tags>
   </entry>
   <entry>
@@ -1739,541 +2112,183 @@
       </tags>
   </entry>
   <entry>
-    <title>MySQL面试题</title>
-    <url>/2022/10/28/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p>MySQL常见面试题、八股文</p>
-<h4 id="1-Mysql索引用的是什么算法"><a href="#1-Mysql索引用的是什么算法" class="headerlink" title="1. Mysql索引用的是什么算法"></a>1. Mysql索引用的是什么算法</h4><ul>
-<li>Mysql索引选用的是B+树，平衡二叉树的高度太高，查找可能需要较多的磁盘IO。B树索引占用内存较高(非叶子节点存储数据)</li>
-<li>B+树，主要是查询效率高，O(logN)，可以充分利用磁盘预读的特性，多叉树，深度小，叶子结点有序且存储数据</li>
-</ul>
-<h4 id="2-Mysql事务的基本要素"><a href="#2-Mysql事务的基本要素" class="headerlink" title="2. Mysql事务的基本要素"></a>2. Mysql事务的基本要素</h4><ul>
-<li>原子性：事务是一个原子操作单元，其对数据的修改，要么全都执行，要么全都不执行</li>
-<li>一致性：事务开始前和结束后，数据库的完整性约束没有被破坏</li>
-<li>隔离性：同一时间，只允许一个事务请求同一数据，不同的事务之间彼此没有任何干扰</li>
-<li>持久性：事务完成后，事务对数据库的所有更新将被保存到数据库，不能回滚</li>
-</ul>
-<h4 id="3-Mysql的存储引擎"><a href="#3-Mysql的存储引擎" class="headerlink" title="3. Mysql的存储引擎"></a>3. Mysql的存储引擎</h4><ul>
-<li>InnoDB存储引擎<ul>
-<li>InnoDB存储引擎支持事务，其设计目标主要面向在线事务处理（OLTP）的应用</li>
-<li>其特点是行锁设计，支持外键，并支持非锁定锁，即默认读取操作不会产生锁。从Mysql5.5.8版本开始，InnoDB存储引擎是默认的存储引擎</li>
-</ul>
+    <title>Redis面试题</title>
+    <url>/2022/10/28/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<p>Redis面试常见问题汇总</p>
+<h4 id="1-Redis的数据结构及使用场景"><a href="#1-Redis的数据结构及使用场景" class="headerlink" title="1. Redis的数据结构及使用场景"></a>1. Redis的数据结构及使用场景</h4><ul>
+<li><p>String字符串</p>
+<p>字符串类型是 Redis 最基础的数据结构，首先键都是字符串类型，而且 其他几种数据结构都是在字符串类型基础上构建的，我们常使用的 set key value 命令就是字符串。常用在缓存、计数、共享Session、限速等</p>
 </li>
-<li>MyISAM存储引擎<ul>
-<li>MyISAM存储引擎不支持事务、表锁设计，支持全文索引，主要面向一些OLAP数据库应用</li>
-<li>InnoDB的数据文件本身就是主索引文件，而MyISAM的主索引和数据是分开的</li>
-</ul>
-</li>
-<li>NDB存储引擎<ul>
-<li>NDB存储引擎是一个集群存储引擎，其结构是share nothing的集群架构，能提供更高的可用性</li>
-<li>NDB的特点是数据全部放在内存中（从MySQL 5.1版本开始，可以将非索引数据放在磁盘上），因此主键查找的速度极快，并且通过添加NDB数据存储节点可以线性地提高数据库性能，是高可用、高性能的集群系统</li>
-<li>NDB存储引擎的连接操作是在MySQL数据库层完成的，而不是在存储引擎层完成的。这意味着，复杂的连接操作需要巨大的网络开销，因此查询速度很慢。如果解决了这个问题，NDB存储引擎的市场应该是非常巨大的</li>
-</ul>
-</li>
-<li>Memory存储引擎<ul>
-<li>Memory存储引擎（之前称HEAP存储引擎）将表中的数据存放在内存中，如果数据库重启或发生崩溃，表中的数据都将消失</li>
-<li>它非常适合用于存储临时数据的临时表，以及数据仓库中的纬度表。Memory存储引擎默认使用哈希索引，而不是我们熟悉的B+树索引</li>
-<li>虽然Memory存储引擎速度非常快，但在使用上还是有一定的限制。比如，只支持表锁，并发性能较差，并且不支持TEXT和BLOB列类型。最重要的是，存储变长字段时是按照定常字段的方式进行的，因此会浪费内存</li>
-</ul>
-</li>
-<li>Archive存储引擎<ul>
-<li>Archive存储引擎只支持INSERT和SELECT操作，从MySQL 5.1开始支持索引</li>
-<li>Archive存储引擎使用zlib算法将数据行（row）进行压缩后存储，压缩比一般可达1∶10。正如其名字所示，Archive存储引擎非常适合存储归档数据，如日志信息</li>
-<li>Archive存储引擎使用行锁来实现高并发的插入操作，但是其本身并不是事务安全的存储引擎，其设计目标主要是提供高速的插入和压缩功能</li>
-</ul>
-</li>
-<li>Maria存储引擎<ul>
-<li>Maria存储引擎是新开发的引擎，设计目标主要是用来取代原有的MyISAM存储引擎，从而成为MySQL的默认存储引擎。它可以看做是MyISAM的后续版本</li>
-<li>Maria存储引擎的特点是：支持缓存数据和索引文件，应用了行锁设计，提供了MVCC功能，支持事务和非事务安全的选项，以及更好的BLOB字符类型的处理性能</li>
-</ul>
-</li>
-</ul>
-<h4 id="4-Mysql事务隔离级别"><a href="#4-Mysql事务隔离级别" class="headerlink" title="4. Mysql事务隔离级别"></a>4. Mysql事务隔离级别</h4><p>Mysql有四种事务隔离级别，默认的是可重复读</p>
-<table>
-<thead>
-<tr>
-<th align="left">事务隔离级别</th>
-<th align="left">脏读</th>
-<th align="left">不可重复读</th>
-<th align="left">幻读</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">读未提交</td>
-<td align="left">是</td>
-<td align="left">是</td>
-<td align="left">是</td>
-</tr>
-<tr>
-<td align="left">读已提交</td>
-<td align="left">否</td>
-<td align="left">是</td>
-<td align="left">是</td>
-</tr>
-<tr>
-<td align="left">可重复读</td>
-<td align="left">否</td>
-<td align="left">否</td>
-<td align="left">是</td>
-</tr>
-<tr>
-<td align="left">串行</td>
-<td align="left">否</td>
-<td align="left">否</td>
-<td align="left">否</td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>读未提交(Read uncommitted)</p>
-<p>一个事务可以读取另一个未提交事务的数据，最低级别，任何情况都无法保证</p>
-<ul>
-<li>所有事务都可以看到其他未提交事务的执行结果</li>
-<li>本隔离级别很少用于实际应用，因为它的性能也不比其他级别好多少</li>
-<li>该级别引发的问题是——脏读(Dirty Read)：读取到了未提交的数据</li>
-</ul>
-</li>
-<li><p>读已提交(Read committed)</p>
-<p>一个事务要等另一个事务提交后才能读取数据，可避免脏读的发生</p>
-<ul>
-<li>这是大多数数据库系统的默认隔离级别（但不是MySQL默认的）</li>
-<li>它满足了隔离的简单定义：一个事务只能看见已经提交事务所做的改变</li>
-<li>这种隔离级别出现的问题是——不可重复读(Nonrepeatable Read)，不可重复读意味着我们在同一个事务中执行完全相同的select语句时可能看到不一样的结果</li>
-</ul>
-<p>导致这种情况的原因可能有：</p>
-<ul>
-<li>有一个交叉的事务有新的commit，导致了数据的改变</li>
-<li>一个数据库被多个实例操作时，同一事务的其他实例在该实例处理其间可能会有新的commit</li>
-</ul>
-</li>
-<li><p>可重复读(Repeatable read)</p>
-<p>就是在开始读取数据（事务开启）时，不再允许修改操作，可避免脏读、不可重复读的发生</p>
-<ul>
-<li>这是MySQL的默认事务隔离级别</li>
-<li>它确保同一事务的多个实例在并发读取数据时，会看到同样的数据行</li>
-<li>此级别可能出现的问题——幻读(Phantom Read)：当用户读取某一范围的数据行时，另一个事务又在该范围内插入了新行，当用户再读取该范围的数据行时，会发现有新的“幻影” 行</li>
-<li>InnoDB和Falcon存储引擎通过多版本并发控制(MVCC，Multiversion Concurrency Control)机制解决了该问题.InnoDB采用MVCC来支持高并发，实现了四个标准隔离级别。默认基本是可重复读，并且提供间隙锁（next-key locks）策略防止幻读出现</li>
-</ul>
-</li>
-<li><p>串行(Serializable)</p>
-<p>串行(Serializable)，是最高的事务隔离级别，在该级别下，事务串行化顺序执行，可以避免脏读、不可重复读与幻读。但是这种事务隔离级别效率低下，比较耗数据库性能，一般不使用。Mysql的默认隔离级别是Repeatable read</p>
-<ul>
-<li>这是最高的隔离级别</li>
-<li>它通过强制事务排序，使之不可能相互冲突，从而解决幻读问题。简言之，它是在每个读的数据行上加上共享锁</li>
-<li>在这个级别，可能导致大量的超时现象和锁竞争</li>
-</ul>
-</li>
-</ul>
-<h4 id="5-Mysql高可用方案有哪些"><a href="#5-Mysql高可用方案有哪些" class="headerlink" title="5. Mysql高可用方案有哪些"></a>5. Mysql高可用方案有哪些</h4><ul>
-<li>主从复制方案<ul>
-<li>这是MySQL自身提供的一种高可用解决方案，数据同步方法采用的是<code>MySQL replication</code>技术。<code>MySQL replication</code>就是从服务器到主服务器拉取二进制日志文件，然后再将日志文件解析成相应的SQL在从服务器上重新执行一遍主服务器的操作，通过这种方式保证数据的一致性</li>
-<li>为了达到更高的可用性，在实际的应用环境中，一般都是采用<code>MySQL replication</code>技术配合高可用集群软件<code>keepalived</code>来实现自动<code>failover</code>，这种方式可以实现95.000%的SLA</li>
-</ul>
-</li>
-<li>MMM&#x2F;MHA高可用方案<ul>
-<li>MMM提供了MySQL主主复制配置的监控、故障转移和管理的一套可伸缩的脚本套件。在MMM高可用方案中，典型的应用是双主多从架构，通过MySQL replication技术可以实现两个服务器互为主从，且在任何时候只有一个节点可以被写入，避免了多点写入的数据冲突</li>
-<li>同时，当可写的主节点故障时，MMM套件可以立刻监控到，然后将服务自动切换到另一个主节点，继续提供服务，从而实现MySQL的高可用</li>
-</ul>
-</li>
-<li>Heartbeat&#x2F;SAN高可用方案<ul>
-<li>在这个方案中，处理failover的方式是高可用集群软件Heartbeat，它监控和管理各个节点间连接的网络，并监控集群服务，当节点出现故障或者服务不可用时，自动在其他节点启动集群服务</li>
-<li>在数据共享方面，通过SAN（Storage Area Network）存储来共享数据，这种方案可以实现99.990%的SLA</li>
-</ul>
-</li>
-<li>Heartbeat&#x2F;DRBD高可用方案<ul>
-<li>这个方案处理failover的方式上依旧采用Heartbeat，不同的是，在数据共享方面，采用了基于块级别的数据同步软件DRBD来实现</li>
-<li>DRBD是一个用软件实现的、无共享的、服务器之间镜像块设备内容的存储复制解决方案。和SAN网络不同，它并不共享存储，而是通过服务器之间的网络复制数据</li>
-</ul>
-</li>
-<li>NDB CLUSTER高可用方案<ul>
-<li>国内用NDB集群的公司非常少，貌似有些银行有用。NDB集群不需要依赖第三方组件，全部都使用官方组件，能保证数据的一致性，某个数据节点挂掉，其他数据节点依然可以提供服务，管理节点需要做冗余以防挂掉</li>
-<li>缺点是：管理和配置都很复杂，而且某些SQL语句例如join语句需要避免</li>
-</ul>
-</li>
-</ul>
-<h4 id="6-Mysql中utf8和utf8mb4区别"><a href="#6-Mysql中utf8和utf8mb4区别" class="headerlink" title="6. Mysql中utf8和utf8mb4区别"></a>6. Mysql中utf8和utf8mb4区别</h4><ul>
-<li>MySQL在5.5.3之后增加了这个utf8mb4的编码，mb4就是most bytes 4的意思，专门用来兼容四字节的unicode。好在utf8mb4是utf8的超集，除了将编码改为utf8mb4外不需要做其他转换。当然，为了节省空间，一般情况下使用utf8也就可以了</li>
-<li>Mysql支持的utf8编码最大字符长度为3字节，如果遇到4字节的宽字符就会插入异常了。三个字节的UTF-8最大能编码的Unicode字符是0xffff，也就是Unicode中的基本多文种平面(BMP)。任何不在基本多文本平面的Unicode字符，都无法使用Mysql的utf8字符集存储</li>
-<li>包括 Emoji 表情(Emoji是一种特殊的Unicode编码，常见于ios和android手机上)，和很多不常用的汉字，以及任何新增的Unicode字符等等</li>
-<li>Mysql中保存4字节长度的UTF-8字符，需要使用utf8mb4字符集，但只有5.5.3版本以后的才支持(查看版本： select version();)。因此呢，为了获取更好的兼容性，应该总是使用utf8mb4而非utf8</li>
-<li>对于CHAR类型数据，utf8mb4会多消耗一些空间，根据Mysql官方建议，使用VARCHAR替代CHAR</li>
-</ul>
-<h4 id="7-Mysql中乐观锁和悲观锁区别"><a href="#7-Mysql中乐观锁和悲观锁区别" class="headerlink" title="7. Mysql中乐观锁和悲观锁区别"></a>7. Mysql中乐观锁和悲观锁区别</h4><ul>
-<li><p>悲观锁(Pessimistic Lock)</p>
-<ul>
-<li>悲观锁顾名思义，就是很悲观，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会block直到它拿到锁</li>
-<li>传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁</li>
-</ul>
-</li>
-<li><p>乐观锁(Optimistic Lock)</p>
-<ul>
-<li>乐观锁顾名思义，就是很乐观，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号等机制</li>
-<li>乐观锁适用于多读的应用类型，这样可以提高吞吐量，像数据库如果提供类似于<code>write_condition</code>机制的其实都是提供的乐观锁</li>
-<li>乐观锁的特点先进行业务操作，不到万不得已不去拿锁。即“乐观”的认为拿锁多半是会成功的，因此在进行完业务操作需要实际更新数据的最后一步再去拿一下锁就好</li>
-</ul>
-</li>
-<li><p>两种锁各有优缺点，不可认为一种好于另一种，像乐观锁适用于写比较少的情况下，即冲突真的很少发生的时候，这样可以省去了锁的开销，加大了系统的整个吞吐量。但如果经常产生冲突，上层应用会不断的进行retry，这样反倒是降低了性能，所以这种情况下用悲观锁就比较合适</p>
-</li>
-</ul>
-<h4 id="8-Mysql索引主要是哪些"><a href="#8-Mysql索引主要是哪些" class="headerlink" title="8. Mysql索引主要是哪些"></a>8. Mysql索引主要是哪些</h4><p>索引的目的在于提高查询效率</p>
-<ul>
-<li>UNIQUE(唯一索引)：不可以出现相同的值，可以有NULL值</li>
-<li>INDEX(普通索引)：允许出现相同的索引内容</li>
-<li>PROMARY KEY(主键索引)：不允许出现相同的值</li>
-<li>fulltext index(全文索引)：可以针对值中的某个单词，但效率确实不敢恭维</li>
-<li>组合索引：实质上是将多个字段建到一个索引里，列值的组合必须唯一</li>
 </ul>
 <hr>
-<h5 id="8-1-索引的缺点"><a href="#8-1-索引的缺点" class="headerlink" title="8.1 索引的缺点"></a>8.1 索引的缺点</h5><ul>
-<li>虽然索引大大提高了查询速度，同时却会降低更新表的速度，如对表进行INSERT，UPDATE和DELETE。因为更新表时，mysql不仅要保存数据，还要保存一下索引文件</li>
-<li>建立索引会占用磁盘空间的索引文件。一般情况这个问题不太严重，但如果你在要给大表上建了多种组合索引，索引文件会膨胀很宽， 索引只是提高效率的一个方式，如果mysql有大数据量的表，就要花时间研究建立最优的索引，或优化查询语句</li>
+<ul>
+<li><p>Hash哈希</p>
+<p>在Redis中，哈希类型是指键值本身又是一个键值对结构，哈希可以用来存放用户信息，比如实现购物车</p>
+</li>
 </ul>
 <hr>
-<h5 id="8-2-索引使用技巧"><a href="#8-2-索引使用技巧" class="headerlink" title="8.2 索引使用技巧"></a>8.2 索引使用技巧</h5><ul>
-<li><strong>索引不会包含有NULL的列：</strong> 只要列中包含有NULL值，都将不会被包含在索引中，复合索引中只要有一列含有NULL值，那么这一列对于此符合索引就是无效的</li>
-<li><strong>使用短索引：</strong> 对串列进行索引，如果可以就应该指定一个前缀长度。例如，如果有一个char（255）的列，如果在前10个或20个字符内，多数值是唯一的，那么就不要对整个列进行索引。短索引不仅可以提高查询速度而且可以节省磁盘空间和I&#x2F;O操作</li>
-<li><strong>索引列排序：</strong>mysql查询只使用一个索引，因此如果where子句中已经使用了索引的话，那么order by中的列是不会使用索引的。因此数据库默认排序可以符合要求的情况下不要使用排序操作，尽量不要包含多个列的排序，如果需要最好给这些列建复合索引</li>
-<li><strong>like语句操作：</strong>一般情况下不鼓励使用like操作，如果非使用不可，注意正确的使用方式。<code>like ‘%aaa%’</code>不会使用索引，而<code>like ‘aaa%’</code>可以使用索引</li>
-<li>不要在列上进行运算</li>
-<li>不使用<code>NOT IN</code> 、<code>&lt;&gt;</code>、<code>！=</code>操作，但<code>&lt;</code>，<code>&lt;=</code>，<code>=</code>，<code>&gt;</code>，<code>&gt;=</code>，BETWEEN，IN是可以用到索引的</li>
-<li>索引要建立在经常进行select操作的字段上。这是因为，如果这些列很少用到，那么有无索引并不能明显改变查询速度。相反，由于增加了索引，反而降低了系统的维护速度和增大了空间需求</li>
-<li>索引要建立在值比较唯一的字段上。</li>
-<li>对于那些定义为text、image和bit数据类型的列不应该增加索引。因为这些列的数据量要么相当大，要么取值很少</li>
-<li>在where和join中出现的列需要建立索引。</li>
-<li>where的查询条件里有不等号(where column !&#x3D; …)，mysql将无法使用索引。</li>
-<li>如果where字句的查询条件里使用了函数(如：where DAY(column)&#x3D;…)，mysql将无法使用索引</li>
-<li>在join操作中(需要从多个数据表提取数据时)，mysql只有在主键和外键的数据类型相同时才能使用索引，否则及时建立了索引也不会使用</li>
+<ul>
+<li><p>List列表（双向链表）</p>
+<p>列表（list）类型是用来存储多个有序的字符串。可以做简单的消息队列的功能</p>
+</li>
 </ul>
 <hr>
-<h5 id="8-3-组合索引的作用"><a href="#8-3-组合索引的作用" class="headerlink" title="8.3 组合索引的作用"></a>8.3 组合索引的作用</h5><ul>
-<li>减少开销<ul>
-<li>建一个组合索引(col1，col2，col3)，实际相当于建了(col1)，(col1，col2)，(col1，col2，col3)三个索引。每多一个索引，都会增加写操作的开销和磁盘空间的开销。对于大量数据的表，使用组合索引会大大的减少开销</li>
-</ul>
-</li>
-<li>覆盖索引<ul>
-<li>通常指一个查询语句的执行只用从索引中就能够取得，不必从数据表中读取。也可以称之为实现了索引覆盖</li>
-<li>对组合索引(col1，col2，col3)，如果有如下的<code>sql: select col1，col2，col3 from test where col1=1 and col2=2</code></li>
-<li>那么MySQL可以直接通过遍历索引取得数据，而无需回表，这减少了很多的随机io操作。减少io操作，特别的随机io其实是dba主要的优化策略。所以，在真正的实际应用中，覆盖索引是主要的提升性能的优化手段之一</li>
-</ul>
-</li>
-<li>效率高<ul>
-<li>索引列越多，通过索引筛选出的数据越快</li>
-</ul>
-</li>
-</ul>
-<h4 id="9-Mysql联合索引最左匹配原则"><a href="#9-Mysql联合索引最左匹配原则" class="headerlink" title="9. Mysql联合索引最左匹配原则"></a>9. Mysql联合索引最左匹配原则</h4><ul>
-<li>在MySQL建立联合索引时会遵守最左前缀匹配原则，即最左优先<ul>
-<li>在检索数据时从联合索引的最左边开始匹配，Mysql会一直向右匹配直到遇到范围查询（<code>&gt;、&lt;、between、like</code>）就停止匹配了</li>
-<li>就比如 <code>a=3 and b=4 and c&gt;5 and d=6</code>如果建立(abcd)顺序的索引，d就用不到索引了，如果建立(abdc)的索引则都可以用到索引，其中abd的顺序可以任意调整，因为查询优化器会重新编排（即使是c&gt;5 and b&#x3D;4 and d&#x3D;6 and a&#x3D;3也会全部用到 abdc索引 ）</li>
-</ul>
-</li>
-<li><code>=</code>和<code>in</code>可以乱序，比如<code>a=1 and b=2 and c=3</code> 建立(abc)索引可以任意顺序，mysql查询优化器会优化顺序<ul>
-<li>这里需要注意下，比如abc索引 那么只要查询条件有a即可用到abc索引（如abc ab ac a），没有a就用不到</li>
-<li>最左前缀匹配成因：Mysql是创建复合索引的规则是根据索引最左边的字段进行排序，在第一个字段排序的基础上再进行第二个字段排序，类似于order by col1，col2… 所以第一个字段是绝对有序的 第二个字段就是无序的了，所以Mysql强调最左前缀匹配</li>
-</ul>
-</li>
-</ul>
-<h4 id="10-聚簇索引和非聚簇索引区别"><a href="#10-聚簇索引和非聚簇索引区别" class="headerlink" title="10. 聚簇索引和非聚簇索引区别"></a>10. 聚簇索引和非聚簇索引区别</h4><ul>
-<li>聚簇索引与非聚簇索引的区别是：叶子节点是否存放一整行记录</li>
-<li>InnoDB 主键使用的是聚簇索引，MyISAM 不管是主键索引，还是二级索引使用的都是非聚簇索引</li>
-<li>对于聚簇索引表来说（左图），表数据是和主键一起存储的，主键索引的叶结点存储行数据(包含了主键值)，二级索引的叶结点存储行的主键值。使用的是B+树作为索引的存储结构，非叶子节点都是索引关键字，但非叶子节点中的关键字中不存储对应记录的具体内容或内容地址。叶子节点上的数据是主键与具体记录(数据内容)</li>
-<li>对于非聚簇索引表来说（右图），表数据和索引是分成两部分存储的，主键索引和二级索引存储上没有任何区别。使用的是B+树作为索引的存储结构，所有的节点都是索引，叶子节点存储的是索引+索引对应的记录的数据</li>
-<li>因此，聚簇索引的叶子节点就是数据节点，而非聚簇索引的叶子节点仍然是索引节点，只不过有指向对应数据块的指针</li>
-</ul>
-<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7lczbhkshj318611ik0y.jpg" alt="image.png" style="zoom: 20%;" /></div>
-
-<h4 id="11-如何查询一个字段是否命中了索引"><a href="#11-如何查询一个字段是否命中了索引" class="headerlink" title="11. 如何查询一个字段是否命中了索引"></a>11. 如何查询一个字段是否命中了索引</h4><ul>
-<li>通过explain sql可看下SQL是否走了索引，很快对比出来 </li>
-<li>当一个sql中索引字段为int类型时，例如搜索条件<code>where num=&quot;111&quot;</code>与<code>where num=111</code>都可以使用该字段的索引。当一个中索引字段为varchar类型时，例如搜索条件<code>where num=&quot;111&quot;</code>可以使用索引，<code>where num=111</code>不可以使用索引</li>
-</ul>
-<h4 id="12-Mysql中查询数据什么情况下不会命中索引"><a href="#12-Mysql中查询数据什么情况下不会命中索引" class="headerlink" title="12. Mysql中查询数据什么情况下不会命中索引"></a>12. Mysql中查询数据什么情况下不会命中索引</h4><ul>
-<li>索引规范不合理，sql解析器不命中索引</li>
-<li>表中索引是以表中数据量字段最多的建立的索引，sql解析器不命中索引(实际就是索引没用，最后全局查找了)</li>
-<li>bool的字段做索引，sql选择器不命中索引</li>
-<li>模糊查询 %like</li>
-<li>索引列参与计算，使用了函数</li>
-<li>非最左前缀顺序</li>
-<li>where对null判断</li>
-<li>where不等于</li>
-<li>or操作有至少一个字段没有索引</li>
-<li>需要回表的查询结果集过大（超过配置的范围）</li>
-</ul>
-<h4 id="13-Mysql中的MVCC是什么"><a href="#13-Mysql中的MVCC是什么" class="headerlink" title="13. Mysql中的MVCC是什么"></a>13. Mysql中的MVCC是什么</h4><p>数据库并发控制——锁:Multiversion (version) concurrency control (MCC or MVCC) 多版本并发控制 ，它是数据库管理系统一种常见的并发控制</p>
-<p>并发控制常用的是锁，当线程要对一个共享资源进行操作的时候，加锁是一种非常简单粗暴的方法(事务开始时给 DQL 加读锁，给 DML 加写锁)，这种锁是一种 悲观 的实现方式，也就是说这会给其他事务造成堵塞，从而影响数据库性能</p>
-<p>其中在数据库中最常见的就是悲观锁和乐观锁：</p>
 <ul>
-<li>悲观锁：当一个线程需要对共享资源进行操作的时候，首先对共享资源进行加锁，当该线程持有该资源的锁的时候，其他线程对该资源进行操作的时候会被阻塞.</li>
-<li>乐观锁：当一个线程需要对一个共享资源进行操作的时候，不对它进行加锁，而是在操作完成之后进行判断。比如乐观锁会通过一个版本号控制，如果操作完成后通过版本号进行判断在该线程操作过程中是否有其他线程已经对该共享资源进行操作了，如果有则通知操作失败，如果没有则操作成功，当然除了版本号还有CAS，如果不了解的可以去学习一下，这里不做过多涉及</li>
+<li><p>Set集合</p>
+<p>集合（set）类型也是用来保存多个的字符串元素，但和列表类型不一 样的是，集合中不允许有重复元素，并且集合中的元素是无序的，不能通过索引下标获取元素。利用 Set 的交集、并集、差集等操作，可以计算共同喜好，全部的喜好，自己独有的喜好等功能</p>
+</li>
 </ul>
-<p>MVCC的两种读形式：</p>
+<hr>
 <ul>
-<li>快照读：读取的只是当前事务的可见版本，不用加锁。而你只要记住 简单的 <code>select</code>操作就是快照读(select * from table where id &#x3D; xxx)</li>
-<li>当前读：读取的是当前版本，比如 特殊的读操作，更新&#x2F;插入&#x2F;删除操作</li>
+<li><p>Sorted Set有序集合（跳表实现）</p>
+<p>Sorted Set 多了一个权重参数 Score，集合中的元素能够按 Score 进行排列。可以做排行榜应用，取 TOP N 操作</p>
+</li>
 </ul>
-<p>MVCC的实现原理：</p>
-<p>MVCC 使用了“三个隐藏字段”来实现版本并发控制，MySQL在创建建表的时候 innoDB 创建的真正的三个隐藏列吧</p>
-<table>
-<thead>
-<tr>
-<th align="left">RowID</th>
-<th align="left">DB_TRX_ID</th>
-<th align="left">DB_ROLL_PTR</th>
-<th align="left">id</th>
-<th align="left">name</th>
-<th align="left">password</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">自动创建的id</td>
-<td align="left">事务id</td>
-<td align="left">回滚指针</td>
-<td align="left">id</td>
-<td align="left">name</td>
-<td align="left">password</td>
-</tr>
-</tbody></table>
+<h4 id="2-Redis持久化的几种方式"><a href="#2-Redis持久化的几种方式" class="headerlink" title="2. Redis持久化的几种方式"></a>2. Redis持久化的几种方式</h4><p>Redis为了保证效率，数据缓存在了内存中，但是会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件中，以保证数据的持久化。Redis的持久化策略有两种：</p>
 <ul>
-<li>RowID：隐藏的自增ID，当建表没有指定主键，InnoDB会使用该RowID创建一个聚簇索引</li>
-<li>DB_TRX_ID：最近修改（更新&#x2F;删除&#x2F;插入）该记录的事务ID</li>
-<li>DB_ROLL_PTR：回滚指针，指向这条记录的上一个版本</li>
-</ul>
-<p>其实还有一个删除的flag字段，用来判断该行记录是否已经被删除。而 MVCC 使用的是其中的 事务字段，回滚指针字段，是否删除字段</p>
-<h4 id="14-Mvcc和Redolog和Undolog以及Binlog有什么不同"><a href="#14-Mvcc和Redolog和Undolog以及Binlog有什么不同" class="headerlink" title="14. Mvcc和Redolog和Undolog以及Binlog有什么不同"></a>14. Mvcc和Redolog和Undolog以及Binlog有什么不同</h4><ul>
-<li>Mvcc<ul>
-<li>MVCC多版本并发控制是MySQL中基于乐观锁理论实现隔离级别的方式，用于读已提交和可重复读取隔离级别的实现</li>
-<li>在MySQL中，会在表中每一条数据后面添加两个字段，最近修改该行数据的事务ID，指向该行（undolog表中）回滚段的指针</li>
-<li>Read View判断行的可见性，创建一个新事务时，copy一份当前系统中的活跃事务列表。意思是，当前不应该被本事务看到的其他事务id列表</li>
-</ul>
-</li>
-<li>UndoLog<ul>
-<li>UndoLog也就是我们常说的回滚日志文件 主要用于事务中执行失败，进行回滚，以及MVCC中对于数据历史版本的查看</li>
-<li>由引擎层的InnoDB引擎实现，是逻辑日志，记录数据修改被修改前的值，比如”把id&#x3D;’B’ 修改为id &#x3D; ‘B2’ ，那么undo日志就会用来存放id &#x3D;’B’的记录”</li>
-<li>当一条数据需要更新前，会先把修改前的记录存储在undolog中，如果这个修改出现异常，则会使用undo日志来实现回滚操作，保证事务的一致性</li>
-<li>当事务提交之后，undo log并不能立马被删除，而是会被放到待清理链表中，待判断没有事物用到该版本的信息时才可以清理相应undolog。它保存了事务发生之前的数据的一个版本，用于回滚，同时可以提供多版本并发控制下的读（MVCC），也即非锁定读</li>
-</ul>
-</li>
-<li>Redolog<ul>
-<li>Redolog是重做日志文件是记录数据修改之后的值，用于持久化到磁盘中</li>
-<li>Redolog包括两部分：一：是内存中的日志缓冲(redo log buffer)，该部分日志是易失性的；二：是磁盘上的重做日志文件(redo log file)，该部分日志是持久的</li>
-<li>由引擎层的InnoDB引擎实现，是物理日志，记录的是物理数据页修改的信息，比如“某个数据页上内容发生了哪些改动”。当一条数据需要更新时，InnoDB会先将数据更新，然后记录redoLog 在内存中，然后找个时间将redoLog的操作执行到磁盘上的文件上</li>
-<li>不管是否提交成功我都记录，你要是回滚了，那我连回滚的修改也记录。它确保了事务的持久性</li>
-</ul>
-</li>
-<li>Binlog<ul>
-<li>Binlog由Mysql的Server层实现，是逻辑日志，记录的是sql语句的原始逻辑，比如”把id&#x3D;’B’ 修改为id &#x3D; ‘B2’</li>
-<li>Binlog会写入指定大小的物理文件中，是追加写入的，当前文件写满则会创建新的文件写入</li>
-<li>产生:事务提交的时候，一次性将事务中的sql语句，按照一定的格式记录到binlog中</li>
-<li>用于复制和恢复在主从复制中，从库利用主库上的binlog进行重播(执行日志中记录的修改逻辑)，实现主从同步。业务数据不一致或者错了，用binlog恢复</li>
+<li><strong>RDB：</strong> 快照形式是直接把内存中的数据保存到一个dump的文件中，定时保存，保存策略<ul>
+<li>当Redis需要做持久化时，Redis会fork一个子进程，子进程将数据写到磁盘上一个临时RDB文件中。当子进程完成写临时文件后，将原来的RDB替换掉</li>
 </ul>
 </li>
 </ul>
-<h4 id="15-Mysql读写分离以及主从同步"><a href="#15-Mysql读写分离以及主从同步" class="headerlink" title="15. Mysql读写分离以及主从同步"></a>15. Mysql读写分离以及主从同步</h4><ul>
-<li>原理：主库将变更写binlog日志，然后从库连接到主库后，从库有一个IO线程，将主库的binlog日志拷贝到自己本地，写入一个中继日志中，接着从库中有一个sql线程会从中继日志读取binlog，然后执行binlog日志中的内容，也就是在自己本地再执行一遍sql，这样就可以保证自己跟主库的数据一致</li>
-<li>问题：这里有很重要一点，就是从库同步主库数据的过程是串行化的，也就是说主库上并行操作，在从库上会串行化执行，由于从库从主库拷贝日志以及串行化执行sql特点，在高并发情况下，从库数据一定比主库慢一点，是有延时的，所以经常出现，刚写入主库的数据可能读不到了，要过几十毫秒，甚至几百毫秒才能读取到。还有一个问题，如果突然主库宕机了，然后恰巧数据还没有同步到从库，那么有些数据可能在从库上是没有的，有些数据可能就丢失了。所以mysql实际上有两个机制，一个是半同步复制，用来解决主库数据丢失问题，一个是并行复制，用来解决主从同步延时问题</li>
-<li>半同步复制：semi-sync复制，指的就是主库写入binlog日志后，就会将强制此时立即将数据同步到从库，从库将日志写入自己本地的relay log之后，接着会返回一个ack给主库，主库接收到至少一个从库ack之后才会认为写完成</li>
-<li>并发复制：指的是从库开启多个线程，并行读取relay log中不同库的日志，然后并行重放不同库的日志，这样库级别的并行。（将主库分库也可缓解延迟问题）</li>
-</ul>
-<h4 id="16-InnoDB的关键特性"><a href="#16-InnoDB的关键特性" class="headerlink" title="16. InnoDB的关键特性"></a>16. InnoDB的关键特性</h4><ul>
-<li>插入缓冲：对于非聚集索引的插入或更新操作，不是每一次直接插入到索引页中，而是先判断插入的非聚集索引页是否在缓冲池中，若在，则直接插入；若不在，则先放入到一个Insert Buffer对象中。然后再以一定的频率和情况进行Insert Buffer和辅助索引页子节点的merge（合并）操作，这时通常能将多个插入合并到一个操作中（因为在一个索引页中），这就大大提高了对于非聚集索引插入的性能</li>
-<li>两次写：两次写带给InnoDB存储引擎的是数据页的可靠性，有经验的DBA也许会想，如果发生写失效，可以通过重做日志进行恢复。这是一个办法。但是必须清楚地认识到，如果这个页本身已经发生了损坏（物理到page页的物理日志成功页内逻辑日志失败），再对其进行重做是没有意义的。这就是说，在应用（apply）重做日志前，用户需要一个页的副本，当写入失效发生时，先通过页的副本来还原该页，再进行重做。在对缓冲池的脏页进行刷新时，并不直接写磁盘，而是会通过memcpy函数将脏页先复制到内存中的doublewrite buffer，之后通过doublewrite buffer再分两次，每次1MB顺序地写入共享表空间的物理磁盘上，这就是doublewrite</li>
-<li>自适应哈希索引：InnoDB存储引擎会监控对表上各索引页的查询。如果观察到建立哈希索引可以带来速度提升，则建立哈希索引，称之为自适应哈希索引</li>
-<li>异步IO：为了提高磁盘操作性能，当前的数据库系统都采用异步IO（AIO）的方式来处理磁盘操作。AIO的另一个优势是可以进行IO Merge操作，也就是将多个IO合并为1个IO，这样可以提高IOPS的性能</li>
-<li>刷新邻接页：当刷新一个脏页时，InnoDB存储引擎会检测该页所在区（extent）的所有页，如果是脏页，那么一起进行刷新。这样做的好处显而易见，通过AIO可以将多个IO写入操作合并为一个IO操作，故该工作机制在传统机械磁盘下有着显著的优势</li>
-</ul>
-<h4 id="17-Mysql如何保证一致性和持久性"><a href="#17-Mysql如何保证一致性和持久性" class="headerlink" title="17. Mysql如何保证一致性和持久性"></a>17. Mysql如何保证一致性和持久性</h4><ul>
-<li>Mysql为了保证<code>ACID</code>中的一致性和持久性，使用了WAL(<code>Write-Ahead Logging</code>，先写日志再写磁盘)。<code>Redo log</code>就是一种WAL的应用</li>
-<li>当数据库忽然掉电，再重新启动时，Mysql可以通过<code>Redo log</code>还原数据。也就是说，每次事务提交时，不用同步刷新磁盘数据文件，只需要同步刷新<code>Redo log</code>就足够了</li>
-</ul>
-<h4 id="18-为什么选择B-树作为索引结构"><a href="#18-为什么选择B-树作为索引结构" class="headerlink" title="18. 为什么选择B+树作为索引结构"></a>18. 为什么选择B+树作为索引结构</h4><ul>
-<li>Hash索引：Hash索引底层是哈希表，哈希表是一种以key-value存储数据的结构，所以多个数据在存储关系上是完全没有任何顺序关系的，所以，对于区间查询是无法直接通过索引查询的，就需要全表扫描。所以，哈希索引只适用于等值查询的场景。而B+ 树是一种多路平衡查询树，所以他的节点是天然有序的（左子节点小于父节点、父节点小于右子节点），所以对于范围查询的时候不需要做全表扫描</li>
-<li>二叉查找树：解决了排序的基本问题，但是由于无法保证平衡，可能退化为链表</li>
-<li>平衡二叉树：通过旋转解决了平衡的问题，但是旋转操作效率太低</li>
-<li>红黑树：通过舍弃严格的平衡和引入红黑节点，解决了AVL旋转效率过低的问题，但是在磁盘等场景下，树仍然太高，IO次数太多</li>
-<li>B+树：在B树的基础上，将非叶节点改造为不存储数据纯索引节点，进一步降低了树的高度；此外将叶节点使用指针连接成链表，范围查询更加高效。此外，B+树，主要是查询效率高，O(logN)，可以充分利用磁盘预读的特性，多叉树，深度小，叶子结点有序且存储数据</li>
-</ul>
-<h4 id="19-InnoDB的行锁模式"><a href="#19-InnoDB的行锁模式" class="headerlink" title="19. InnoDB的行锁模式"></a>19. InnoDB的行锁模式</h4><ul>
-<li>共享锁(S)：用法lock in share mode，又称读锁，允许一个事务去读一行，阻止其他事务获得相同数据集的排他锁<ul>
-<li>若事务T对数据对象A加上S锁，则事务T可以读A但不能修改A，其他事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁。这保证了其他事务可以读A，但在T释放A上的S锁之前不能对A做任何修改</li>
-</ul>
-</li>
-<li>排他锁(X)：用法for update，又称写锁，允许获取排他锁的事务更新数据，阻止其他事务取得相同的数据集共享读锁和排他写锁<ul>
-<li>若事务T对数据对象A加上X锁，事务T可以读A也可以修改A，其他事务不能再对A加任何锁，直到T释放A上的锁。在没有索引的情况下，InnoDB只能使用表锁</li>
-</ul>
-</li>
-</ul>
-<h4 id="20-哈希-hash-比树-tree-更快，索引结构为什么要设计成树型"><a href="#20-哈希-hash-比树-tree-更快，索引结构为什么要设计成树型" class="headerlink" title="20. 哈希(hash)比树(tree)更快，索引结构为什么要设计成树型"></a>20. 哈希(hash)比树(tree)更快，索引结构为什么要设计成树型</h4><p>加速查找速度的数据结构，常见的有两类：</p>
+<hr>
 <ul>
-<li>哈希，例如HashMap，查询&#x2F;插入&#x2F;修改&#x2F;删除的平均时间复杂度都是O(1)</li>
-<li>树，例如平衡二叉搜索树，查询&#x2F;插入&#x2F;修改&#x2F;删除的平均时间复杂度都是O(lg(n))</li>
-</ul>
-<p>哈希只能满足等值查询，不满足范围和大小查询，其次哈希不可以排序。Mysql是用等值查询，用树的话，等值查询只需要顺序遍历即可。但是对于排序查询的sql需求：分组：<code>group by</code> ，排序：<code>order by</code> ，比较：<code>&lt;、&gt;</code>等，哈希型的索引，时间复杂度会退化为O(n)，而树型的“有序”特性，依然能够保持O(log(n)) 的高效率</p>
-<h4 id="21-为什么索引的key长度不能太长"><a href="#21-为什么索引的key长度不能太长" class="headerlink" title="21. 为什么索引的key长度不能太长"></a>21. 为什么索引的key长度不能太长</h4><p>key 太长会导致一个页当中能够存放的 key 的数目变少，间接导致索引树的页数目变多，索引层次增加，从而影响整体查询变更的效率</p>
-<h4 id="22-Mysql的数据如何恢复到任意时间点"><a href="#22-Mysql的数据如何恢复到任意时间点" class="headerlink" title="22. Mysql的数据如何恢复到任意时间点"></a>22. Mysql的数据如何恢复到任意时间点</h4><p>恢复到任意时间点以定时的做全量备份，以及备份增量的 binlog 日志为前提。恢复到任意时间点首先将全量备份恢复之后，再此基础上回放增加的 binlog 直至指定的时间点</p>
-<h4 id="23-Mysql为什么加了索引可以加快查询"><a href="#23-Mysql为什么加了索引可以加快查询" class="headerlink" title="23. Mysql为什么加了索引可以加快查询"></a>23. Mysql为什么加了索引可以加快查询</h4><p>在数据十分庞大的时候，索引可以大大加快查询的速度，这是因为使用索引后可以不用扫描全表来定位某行的数据，而是先通过索引表找到该行数据对应的物理地址然后访问相应的数据</p>
-<ul>
-<li>优势：可以快速检索，减少I&#x2F;O次数，加快检索速度；根据索引分组和排序，可以加快分组和排序</li>
-<li>劣势：索引本身也是表，因此会占用存储空间，一般来说，索引表占用的空间的数据表的1.5倍；索引表的维护和创建需要时间成本，这个成本随着数据量增大而增大；构建索引会降低数据表的修改操作（删除，添加，修改）的效率，因为在修改数据表的同时还需要修改索引表</li>
-</ul>
-<h4 id="24-Explain命令有什么用"><a href="#24-Explain命令有什么用" class="headerlink" title="24. Explain命令有什么用"></a>24. Explain命令有什么用</h4><p>在开发的过程中，我们有时会用<strong>慢查询</strong>去记录一些执行时间比较久的Sql语句，找出这些Sql语句并不意味着完事了，这个时候我们就需要用到explain这个命令来查看一个这些Sql语句的执行计划，查看该Sql语句有没有使用上了索引，有没有做全表扫描，这些都可以通过explain命令来查看</p>
-<p>expain出来的信息有10列，分别是<code>id、select_type、table、type、possible_keys、key、key_len、ref、rows、Extra</code></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">- <span class="built_in">id</span>：select选择标识符</span><br><span class="line">- select_type：表示查询的类型</span><br><span class="line">- table：输出结果集的表</span><br><span class="line">- partitions：匹配的分区</span><br><span class="line">- <span class="built_in">type</span>：表示表的连接类型</span><br><span class="line">- possible_keys：表示查询时，可能使用的索引</span><br><span class="line">- key：表示实际使用的索引</span><br><span class="line">- key_len：索引字段的长度</span><br><span class="line">- ref：列与索引的比较</span><br><span class="line">- rows：扫描出的行数(估算的行数)</span><br><span class="line">- filtered：按表条件过滤的行百分比</span><br><span class="line">- Extra：执行情况的描述和说明</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>id：select选择标识符</p>
-<p>id是Sql执行的顺序的标识，Sql从大到小的执行</p>
-<ul>
-<li>id相同时，执行顺序由上至下</li>
-<li>如果是子查询，id的序号会递增，id值越大优先级越高，越先被执行</li>
-<li>id如果相同，可以认为是一组，从上往下顺序执行；在所有组中，id值越大，优先级越高，越先执行</li>
-</ul>
-</li>
-<li><p>select_type：表示查询的类型</p>
-<p>查询中每个select子句的类型</p>
-<ul>
-<li>SIMPLE(简单SELECT，不使用UNION或子查询等)</li>
-<li>PRIMARY(查询中若包含任何复杂的子部分，最外层的select被标记为PRIMARY)</li>
-<li>UNION(UNION中的第二个或后面的SELECT语句)</li>
-<li>DEPENDENT UNION(UNION中的第二个或后面的SELECT语句，取决于外面的查询)</li>
-<li>UNION RESULT(UNION的结果)</li>
-<li>SUBQUERY(子查询中的第一个SELECT)</li>
-<li>DEPENDENT SUBQUERY(子查询中的第一个SELECT，取决于外面的查询)</li>
-<li>DERIVED(派生表的SELECT，FROM子句的子查询)</li>
-<li>UNCACHEABLE SUBQUERY(一个子查询的结果不能被缓存，必须重新评估外链接的第一行)</li>
-</ul>
-</li>
-<li><p>table：输出结果集的表</p>
-<ul>
-<li>table显示这一行的数据是关于哪张表的，有时不是真实的表名字，看到的是derivedx</li>
-</ul>
-</li>
-<li><p>partitions：匹配的分区</p>
-</li>
-<li><p>type：表示表的连接类型</p>
-<p>type表示Mysql在表中找到所需行的方式，又称“访问类型”。常用的类型有： ALL， index， range， ref， eq_ref， const， system， NULL（从左到右，性能从差到好）</p>
-<ul>
-<li>ALL：Full Table Scan， Mysql将遍历全表以找到匹配的行</li>
-<li>index：Full Index Scan，index与ALL区别为index类型只遍历索引树</li>
-<li>range：只检索给定范围的行，使用一个索引来选择行</li>
-<li>ref：表示上述表的连接匹配条件，即哪些列或常量被用于查找索引列上的值</li>
-<li>eq_ref：类似ref，区别就在使用的索引是唯一索引，对于每个索引键值，表中只有一条记录匹配，简单来说，就是多表连接中使用primary key或者 unique key作为关联条件</li>
-<li>const、system：当Mysql对查询某部分进行优化，并转换为一个常量时，使用这些类型访问。如将主键置于where列表中，Mysql就能将该查询转换为一个常量，system是const类型的特例，当查询的表只有一行的情况下，使用system</li>
-<li>NULL：Mysql在优化过程中分解语句，执行时甚至不用访问表或索引，例如从一个索引列里选取最小值可以通过单独索引查找完成</li>
-</ul>
-</li>
-<li><p>possible_keys：表示查询时，可能使用的索引</p>
-<ul>
-<li>possible_keys指出Mysql能使用哪个索引在表中找到记录，查询涉及到的字段上若存在索引，则该索引将被列出，但不一定被查询使用</li>
-<li>该列完全独立于<code>EXPLAIN</code>输出所示的表的次序。这意味着在<code>possible_keys</code>中的某些键实际上不能按生成的表次序使用</li>
-<li>如果该列是NULL，则没有相关的索引。在这种情况下，可以通过检查WHERE子句看是否它引用某些列或适合索引的列来提高你的查询性能。如果是这样，创造一个适当的索引并且再次用EXPLAIN检查查询</li>
-</ul>
-</li>
-<li><p>key：表示实际使用的索引</p>
-<ul>
-<li>key列显示MySql实际决定使用的键（索引）</li>
-<li>如果没有选择索引，键是NULL。要想强制Mysql使用或忽视<code>possible_keys</code>列中的索引，在查询中使用<code>FORCE INDEX、USE INDEX</code>或者<code>IGNORE INDEX</code></li>
-</ul>
-</li>
-<li><p>key_len：索引字段的长度</p>
-<ul>
-<li>key_len表示索引中使用的字节数，可通过该列计算查询中使用的索引的长度（key_len显示的值为索引字段的最大可能长度，并非实际使用长度，即key_len是根据表定义计算而得，不是通过表内检索出的）不损失精确性的情况下，长度越短越好</li>
-</ul>
-</li>
-<li><p>ref：列与索引的比较</p>
-<ul>
-<li>ref表示上述表的连接匹配条件，即哪些列或常量被用于查找索引列上的值</li>
-</ul>
-</li>
-<li><p>rows：扫描出的行数(估算的行数)</p>
-<ul>
-<li>rows表示Mysql根据表统计信息及索引选用情况，估算的找到所需的记录所需要读取的行数</li>
-</ul>
-</li>
-<li><p>filtered：按表条件过滤的行百分比</p>
-</li>
-<li><p>Extra：执行情况的描述和说明</p>
-<p>该列包含Mysql解决查询的详细信息，有以下几种情况：</p>
-<ul>
-<li>Using where：列数据是从仅仅使用了索引中的信息而没有读取实际的行动的表返回的，这发生在对表的全部的请求列都是同一个索引的部分的时候，表示mysql服务器将在存储引擎检索行后再进行过滤</li>
-<li>Using temporary：表示Mysql需要使用临时表来存储结果集，常见于排序和分组查询</li>
-<li>Using filesort：Mysql中无法利用索引完成的排序操作称为“文件排序”</li>
-<li>Using join buffer：改值强调了在获取连接条件时没有使用索引，并且需要连接缓冲区来存储中间结果。如果出现了这个值，那应该注意，根据查询的具体情况可能需要添加索引来改进能</li>
-<li>Impossible where：这个值强调了where语句会导致没有符合条件的行</li>
-<li>Select tables optimized away：这个值意味着仅通过使用索引，优化器可能仅从聚合函数结果中返回一行</li>
+<li><strong>AOF：</strong> 把所有的对Redis的服务器进行修改的命令都存到一个文件里，命令的集合<ul>
+<li>使用AOF做持久化，每一个写命令都通过write函数追加到<code>appendonly.aof</code>中</li>
+<li>aof的默认策略是每秒钟fsync一次，在这种配置下，就算发生故障停机，也最多丢失一秒钟的数据</li>
+<li>缺点是对于相同的数据集来说，AOF的文件体积通常要大于RDB文件的体积。根据所使用的fsync策略，AOF的速度可能会慢于RDB</li>
 </ul>
 </li>
 </ul>
-<h4 id="25-MySQL优化"><a href="#25-MySQL优化" class="headerlink" title="25. MySQL优化"></a>25. MySQL优化</h4><ul>
-<li>避免不走索引的场景</li>
-<li>select语句其他优化</li>
-<li>增删改DML语句优化</li>
-<li>查询条件优化</li>
-<li>建表优化</li>
+<p>Redis默认是快照RDB的持久化方式。对于主从同步来说，主从刚刚连接的时候，进行全量同步（RDB），全同步结束后，进行增量同步(AOF)</p>
+<h4 id="3-Redis的LRU具体实现"><a href="#3-Redis的LRU具体实现" class="headerlink" title="3. Redis的LRU具体实现"></a>3. Redis的LRU具体实现</h4><ul>
+<li>传统的LRU是使用栈的形式，每次都将最新使用的移入栈顶，但是用栈的形式会导致执行<code>select *</code>的时候大量非热点数据占领头部数据，所以需要改进</li>
+<li>Redis每次按key获取一个值的时候，都会更新value中的lru字段为当前秒级别的时间戳。Redis初始的实现算法很简单，随机从dict中取出五个key，淘汰一个lru字段值最小的</li>
+<li>在3.0的时候，又改进了一版算法，首先第一次随机选取的key都会放入一个pool中(pool的大小为16)，pool中的key是按lru大小顺序排列的</li>
+<li>接下来每次随机选取的keylru值必须小于pool中最小的lru才会继续放入，直到将pool放满。放满之后，每次如果有新的key需要放入，需要将pool中lru最大的一个key取出。淘汰的时候，直接从pool中选取一个lru最小的值然后将其淘汰</li>
 </ul>
-<h5 id="25-1-避免不走索引的场景"><a href="#25-1-避免不走索引的场景" class="headerlink" title="25.1 避免不走索引的场景"></a>25.1 避免不走索引的场景</h5><ol>
-<li>尽量避免在字段开头模糊查询，会导致数据库引擎放弃索引进行全表扫描</li>
-<li>尽量避免使用<code>in</code>和<code>not in </code>，会导致引擎走全表扫描</li>
-<li>尽量避免使用<code>or</code>，会导致数据库引擎放弃索引进行全表扫描</li>
-<li>尽量避免进行<code>null</code>值的判断，会导致数据库引擎放弃索引进行全表扫描</li>
-<li>尽量避免在<code>where</code>条件中等号的左侧进行表达式、函数操作，会导致数据库引擎放弃索引进行全表扫描</li>
-<li>当数据量大时，避免使用<code>where 1=1</code>的条件，通常为了方便拼装查询条件，我们会默认使用该条件，数据库引擎会放弃索引进行全表扫描</li>
-<li>条件查询不能用<code>&lt;&gt;</code>或者<code>!=</code></li>
-<li><code>where</code>条件仅包含复合索引非前置列</li>
-<li>隐式类型转换造成不使用索引</li>
-<li><code>order by</code>条件要与<code>where</code>中条件一致，否则<code>order by</code>不会利用索引进行排序</li>
-<li>正确使用<code>hint</code>优化语句</li>
-</ol>
-<h5 id="25-2-select语句其他优化"><a href="#25-2-select语句其他优化" class="headerlink" title="25.2 select语句其他优化"></a>25.2 select语句其他优化</h5><ol>
-<li>避免出现<code>select *</code></li>
-<li>避免出现不确定结果的函数</li>
-<li>多表关联查询时，小表在前，大表在后</li>
-<li>使用表的别名</li>
-<li>用<code>where</code>语句替换<code>HAVING</code>字句</li>
-<li>调整<code>where</code>字句中的连接顺序</li>
-</ol>
-<h5 id="25-3-增删改DML语句优化"><a href="#25-3-增删改DML语句优化" class="headerlink" title="25.3 增删改DML语句优化"></a>25.3 增删改DML语句优化</h5><ol>
-<li>大批量插入数据</li>
-<li>适当使用<code>commit</code></li>
-<li>避免重复查询更新的数据</li>
-<li>查询优先还是更新<code>(insert、update、delete)</code>优先</li>
-</ol>
-<h5 id="25-4-查询条件优化"><a href="#25-4-查询条件优化" class="headerlink" title="25.4 查询条件优化"></a>25.4 查询条件优化</h5><ol>
-<li>对于复杂的查询，可以使用中间临时表暂存数据</li>
-<li>优化<code>group by</code>语句</li>
-<li>优化<code>join</code>语句</li>
-<li>优化<code>union</code>语句</li>
-<li>拆分复杂<code>SQL</code>为多个小<code>SQL</code>，避免大事务</li>
-<li>使用<code>truncate</code>代替<code>delete</code></li>
-<li>使用合理的分页方式以提高分页效率</li>
-</ol>
-<h5 id="25-5-建表优化"><a href="#25-5-建表优化" class="headerlink" title="25.5 建表优化"></a>25.5 建表优化</h5><ol>
-<li>在表中建立索引，优先考虑<code>where、order by</code>使用到的字段</li>
-<li>尽量使用数字类型（性别：男：1，女：2），若只含数值信息的字段尽量不要设计为字符型，这会降低查询和连接的性能，并会增加存储的开销</li>
-<li>查询数据量大的表，会造成查询缓慢。主要的原因是扫描行数过多，这个时候可以通过程序，分段分页进行查询，循环遍历，将结果合并处理进行展示</li>
-<li>用<code>varchar/nvarchar</code>代替<code>char/nchar</code></li>
-</ol>
-<h4 id="26-SQL注入"><a href="#26-SQL注入" class="headerlink" title="26. SQL注入"></a>26. SQL注入</h4><p>Sql注入攻击是通过将恶意的Sql查询或添加语句插入到应用的输入参数中，再在后台Sql服务器上解析执行进行的攻击，它目前黑客对数据库进行攻击的最常用手段之一。</p>
-<p><strong>避免SQL注入：</strong></p>
+<h4 id="4-单线程的Redis为什么快"><a href="#4-单线程的Redis为什么快" class="headerlink" title="4. 单线程的Redis为什么快"></a>4. 单线程的Redis为什么快</h4><ul>
+<li>纯内存操作</li>
+<li>单线程操作，避免了频繁的上下文切换</li>
+<li>合理高效的数据结构</li>
+<li>采用了非阻塞I&#x2F;O多路复用机制</li>
+</ul>
+<h4 id="5-Redis的数据过期策略"><a href="#5-Redis的数据过期策略" class="headerlink" title="5. Redis的数据过期策略"></a>5. Redis的数据过期策略</h4><p>Redis 中数据过期策略采用<strong>定期删除</strong>和<strong>惰性删除</strong>策略：</p>
 <ul>
-<li>参数校验，校验数据的类型，长度，特殊字符，数据库关键词等</li>
-<li>代码层面防止SQL注入攻击的最佳方案是SQL预编译，尽量不写SQL原生语句，使用ORM</li>
-<li>严格限制数据库权限</li>
-<li>避免直接响应一些SQL异常信息，SQL发生异常后，自定义异常进行响应</li>
+<li>定期删除策略<ul>
+<li>Redis 启用一个定时器定时监视所有的 key，判断key是否过期，过期的话就删除</li>
+<li>这种策略可以保证过期的 key 最终都会被删除，但是也存在严重的缺点：每次都遍历内存中所有的数据，非常消耗 CPU资源，并且当 key 已过期，但是定时器还处于未唤起状态，这段时间内 key 仍然可以用</li>
 </ul>
-<h4 id="27-MySQL、MongoDB、Redis区别，适用场景"><a href="#27-MySQL、MongoDB、Redis区别，适用场景" class="headerlink" title="27. MySQL、MongoDB、Redis区别，适用场景"></a>27. MySQL、MongoDB、Redis区别，适用场景</h4><h5 id="27-1-MySQL"><a href="#27-1-MySQL" class="headerlink" title="27.1 MySQL"></a>27.1 MySQL</h5><ol>
-<li>高度事务性系统。例如银行或会计系统，传统的关系型数据库目前还是更适用于需要大量原子性复杂事务的应用程序</li>
-<li>传统的商业智能应用，针对特定问题的<code>BI</code>数据库会产生高度优化的查询方式，对于此类应用，数据仓库可能是更合适的选择</li>
-</ol>
-<h5 id="27-2-MongoDB"><a href="#27-2-MongoDB" class="headerlink" title="27.2 MongoDB"></a>27.2 MongoDB</h5><ol>
-<li>网站数据：适合实时的插入，更新与查询，并具备网站实时数据存储所需的复制及高度伸缩性</li>
-<li>缓存：由于性能很高，也适合作为信息基础设施的缓存层，在系统重启之后，搭建的持久化缓存可以避免下层的数据源过载</li>
-<li>大尺寸、低价值的数据也是<code>MongoDB</code>的最佳选择，使用传统的关系型数据库存储一些数据时可能会比较贵，在此之前很多程序员往往会选择传统的文件进行存储</li>
-<li>高伸缩的场景，非常适合由数十台或数百台服务器组成的数据库</li>
-<li>用于对象及<code>json</code>数据的存储，<code>MongoDB</code>的<code>bson</code>数据格式非常适合文档格式化的存储及查询</li>
-</ol>
-<h5 id="27-3-Redis"><a href="#27-3-Redis" class="headerlink" title="27.3 Redis"></a>27.3 Redis</h5><ol>
-<li>用来做缓存：<code>Redis</code>的所有数据是存放在内存中的</li>
-<li>可以在某些特定应用场景下替代传统数据库：比如社交类的应用</li>
-<li>在一些大型系统中，巧妙的实现一些特定的功能：<code>session</code>共享、购物车</li>
-<li><code>MongoDB</code>不支持<code>SQL</code>语句</li>
-</ol>
+</li>
+</ul>
+<hr>
+<ul>
+<li>惰性删除策略<ul>
+<li>在获取 key 时，先判断 key 是否过期，如果过期则删除</li>
+<li>这种方式存在一个缺点：如果这个 key一直未被使用，那么它一直在内存中，其实它已经过期了，会浪费大量的空间</li>
+</ul>
+</li>
+</ul>
+<p>这两种策略天然的互补，结合起来之后，定时删除策略就发生了一些改变，不在是每次扫描全部的 key 了，而是随机抽取一部分 key 进行检查，这样就降低了对 CPU 资源的损耗，惰性删除策略互补了为检查到的key，基本上满足了所有要求</p>
+<p>但是有时候就是那么的巧，既没有被定时器抽取到，又没有被使用，这些数据又如何从内存中消失？这个时候就需要用到了，内存淘汰机制</p>
+<h5 id="5-1-内存淘汰机制"><a href="#5-1-内存淘汰机制" class="headerlink" title="5.1 内存淘汰机制"></a>5.1 内存淘汰机制</h5><ul>
+<li>当内存不足以容纳新写入数据时，新写入操作会报错。（Redis 默认策略）</li>
+<li>当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的 Key。（LRU推荐使用）</li>
+<li>当内存不足以容纳新写入数据时，在键空间中，随机移除某个 Key</li>
+<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，移除最近最少使用的 Key。这种情况一般是把 Redis 既当缓存，又做持久化存储的时候才用</li>
+<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，随机移除某个 Key</li>
+<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，有更早过期时间的 Key 优先移除</li>
+</ul>
+<h4 id="6-如何解决Redis缓存雪崩问题"><a href="#6-如何解决Redis缓存雪崩问题" class="headerlink" title="6. 如何解决Redis缓存雪崩问题"></a>6. 如何解决Redis缓存雪崩问题</h4><ul>
+<li>使用 Redis 高可用架构：使用 Redis 集群来保证 Redis 服务不会挂掉</li>
+<li>缓存时间不一致，给缓存的失效时间，加上一个随机值，避免集体失效</li>
+<li>限流降级策略：有一定的备案，比如个性推荐服务不可用了，换成热点数据推荐服务</li>
+</ul>
+<h4 id="7-如何解决Redis缓存穿透问题"><a href="#7-如何解决Redis缓存穿透问题" class="headerlink" title="7. 如何解决Redis缓存穿透问题"></a>7. 如何解决Redis缓存穿透问题</h4><ul>
+<li>在接口层做校验</li>
+<li>存null值（缓存击穿加锁）</li>
+<li>布隆过滤器拦截：将所有可能的查询key 先映射到布隆过滤器中，查询时先判断key是否存在布隆过滤器中，存在才继续向下执行，如果不存在，则直接返回<br>布隆过滤器将值进行多次哈希bit存储，布隆过滤器说某个元素在，可能会被误判。布隆过滤器说某个元素不在，那么一定不在</li>
+</ul>
+<h4 id="8-Redis并发竞争key如何解决"><a href="#8-Redis并发竞争key如何解决" class="headerlink" title="8. Redis并发竞争key如何解决"></a>8. Redis并发竞争key如何解决</h4><ul>
+<li>可以利用分布式锁和时间戳来解决</li>
+<li>利用消息队列解决</li>
+</ul>
+<h4 id="9-Redis的主从模式和哨兵模式和集群模式区别"><a href="#9-Redis的主从模式和哨兵模式和集群模式区别" class="headerlink" title="9. Redis的主从模式和哨兵模式和集群模式区别"></a>9. Redis的主从模式和哨兵模式和集群模式区别</h4><p>Redis集群方式共有三种：<strong>主从模式</strong>，<strong>哨兵模式</strong>，<strong>集群(cluster)模式</strong></p>
+<ul>
+<li><p>主从模式</p>
+<p>主从模式是三种集群方式里最简单的。它主要是基于Redis的主从复制特性架构的。通常我们会设置一个主节点，N个从节点;默认情况下，主节点负责处理使用者的IO操作，而从节点则会对主节点的数据进行备份，并且也会对外提供读操作的处理。主要的特点如下：</p>
+<ul>
+<li>主从模式下，当某一节点损坏时，因为其会将数据备份到其它Redis实例上，这样做在很大程度上可以恢复丢失的数据</li>
+<li>主从模式下，可以保证负载均衡.</li>
+<li>主从模式下，主节点和从节点是读写分离的。使用者不仅可以从主节点上读取数据，还可以很方便的从从节点上读取到数据，这在一定程度上缓解了主机的压力</li>
+</ul>
+<p>从节点也是能够支持写入数据的，只不过从从节点写入的数据不会同步到主节点以及其它的从节点下。从以上，我们不难看出Redis在主从模式下，必须保证主节点不会宕机——一旦主节点宕机，其它节点不会竞争称为主节点，此时，Redis将丧失写的能力。这点在生产环境中，是致命的</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>哨兵模式</p>
+<p>哨兵模式是基于主从模式做的一定变化，它能够为Redis提供了高可用性</p>
+<p>在实际生产中，服务器难免不会遇到一些突发状况：服务器宕机，停电，硬件损坏等。这些情况一旦发生，其后果往往是不可估量的</p>
+<p>而哨兵模式在一定程度上能够帮我们规避掉这些意外导致的灾难性后果。其实，哨兵模式的核心还是主从复制</p>
+<p>只不过相对于主从模式在主节点宕机导致不可写的情况下，多了一个竞选机制——从所有的从节点竞选出新的主节点。竞选机制的实现，是依赖于在系统中启动一个sentinel进程。sentinel特点：</p>
+<ul>
+<li>监控：它会监听主服务器和从服务器之间是否在正常工作</li>
+<li>通知：它能够通过API告诉系统管理员或者程序，集群中某个实例出了问题。</li>
+<li>故障转移：它在主节点出了问题的情况下，会在所有的从节点中竞选出一个节点，并将其作为新的主节点。</li>
+<li>提供主服务器地址：它还能够向使用者提供当前主节点的地址。这在故障转移后，使用者不用做任何修改就可以知道当前主节点地址</li>
+</ul>
+<p>sentinel，也可以集群，部署多个哨兵，sentinel可以通过发布与订阅来自动发现Redis集群上的其它sentinel。sentinel在发现其它sentinel进程后，会将其放入一个列表中，这个列表存储了所有已被发现的sentinel</p>
+<p>集群中的所有sentinel不会并发着去对同一个主节点进行故障转移。故障转移只会从第一个sentinel开始，当第一个故障转移失败后，才会尝试下一个</p>
+<p>当选择一个从节点作为新的主节点后，故障转移即成功了(而不会等到所有的从节点配置了新的主节点后)。这过程中，如果重启了旧的主节点，那么就会出现无主节点的情况，这种情况下，只能重启集群</p>
+<p>当竞选出新的主节点后，被选为新的主节点的从节点的配置信息会被sentinel改写为旧的主节点的配置信息。完成改写后，再将新主节点的配置广播给所有的从节点</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>集群模式</p>
+<p>Redis 集群是一个提供在多个Redis间节点间共享数据的程序集， 其中Redis集群分为主节点和从节点。主节点用于处理槽，而从节点用于复制某个主节点，并在被复制的主节点下线时，代替下线的主节点继续处理命令请求</p>
+<p>Redis集群并不支持处理多个keys的命令，因为这需要在不同的节点间移动数据，从而达不到像Redis那样的性能，在高负载的情况下可能会导致不可预料的错误</p>
+<p>Redis 集群通过分区来提供一定程度的可用性，在实际环境中当某个节点宕机或者不可达的情况下继续处理命令. Redis 集群的优势：自动分割数据到不同的节点上</p>
+<p>整个集群的部分节点失败或者不可达的情况下能够继续处理命令</p>
+<p>Redis集群的数据分片 Redis 集群没有使用一致性hash， 而是引入了哈希槽的概念</p>
+<p>Redis 集群有16384个哈希槽，每个key通过CRC16校验后对16384取模来决定放置哪个槽.集群的每个节点负责一部分hash槽</p>
+</li>
+</ul>
+<h4 id="10-Redis事物的了解CheckAndSet操作实现乐观锁"><a href="#10-Redis事物的了解CheckAndSet操作实现乐观锁" class="headerlink" title="10. Redis事物的了解CheckAndSet操作实现乐观锁"></a>10. Redis事物的了解CheckAndSet操作实现乐观锁</h4><p>和众多其它数据库一样，Redis作为NoSQL数据库也同样提供了事务机制。在Redis中，<code>MULTI</code>，<code>EXEC</code>，<code>DISCARD</code>，<code>WATCH</code>这四个命令是我们实现事务的基石。相信对有关系型数据库开发经验的开发者而言这一概念并不陌生，即便如此，我们还是会简要的列出 Redis中事务的实现特征 ：</p>
+<ul>
+<li>在事务中的所有命令都将会被串行化的顺序执行，事务执行期间，Redis不会再为其它客户端的请求提供任何服务，从而保证了事物中的所有命令被原子的执行</li>
+<li>和关系型数据库中的事务相比，在Redis事务中如果有某一条命令执行失败，其后的命令仍然会被继续执行</li>
+<li>我们可以通过MULTI命令开启一个事务，有关系型数据库开发经验的人可以将其理解为”BEGIN TRANSACTION”语句。在该语句之后执行的命令都将被视为事务之内的操作，最后我们可以通过执行<code>EXEC</code>，<code>DISCARD</code>命令来提交，回滚该事务内的所有操作。这两个Redis命令可被视为等同于关系型数据库中的COMMIT&#x2F;ROLLBACK语句</li>
+<li>在事务开启之前，如果客户端与服务器之间出现通讯故障并导致网络断开，其后所有待执行的语句都将不会被服务器执行。然而如果网络中断事件是发生在客户端执行EXEC命令之后，那么该事务中的所有命令都会被服务器执行</li>
+<li>当使用<code>Append-Only</code>模式时，Redis会通过调用系统函数write将该事务内的所有写操作在本次调用中全部写入磁盘。然而如果在写入的过程中出现系统崩溃，如电源故障导致的宕机，那么此时也许只有部分数据被写入到磁盘，而另外一部分数据却已经丢失。Redis服务器会在重新启动时执行一系列必要的一致性检测，一旦发现类似问题，就会立即退出并给出相应的错误提示。此时，我们就要充分利用Redis工具包中提供的<code>redis-check-aof</code>工具，该工具可以帮助我们定位到数据不一致的错误，并将已经写入的部分数据进行回滚。修复之后我们就可以再次重新启动Redis服务器了</li>
+</ul>
+<h4 id="11-Redis有序集合zset底层怎么实现的"><a href="#11-Redis有序集合zset底层怎么实现的" class="headerlink" title="11. Redis有序集合zset底层怎么实现的"></a>11. Redis有序集合zset底层怎么实现的</h4><ul>
+<li>跳表是一个随机化的数据结构，实质就是一种可以进行二分查找的有序链表</li>
+<li>跳表在原有的有序链表上面增加了多级索引，通过索引来实现快速查找</li>
+<li>跳表不仅能提高搜索性能，同时也可以提高插入和删除操作的性能</li>
+</ul>
+<hr>
+<ul>
+<li>跳表是可以实现二分查找的有序链表</li>
+<li>每个元素插入时随机生成它的level</li>
+<li>最低层包含所有的元素</li>
+<li>如果一个元素出现在level(x)，那么它肯定出现在x以下的level中</li>
+<li>每个索引节点包含两个指针，一个向下，一个向右</li>
+<li>跳表查询、插入、删除的时间复杂度为O(log n)，与平衡二叉树接近</li>
+</ul>
+<hr>
+<h5 id="11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN"><a href="#11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN" class="headerlink" title="11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))"></a>11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))</h5><p>首先，我们来分析下Redis的有序集合支持的操作：</p>
+<ul>
+<li>插入元素</li>
+<li>删除元素</li>
+<li>查找元素</li>
+<li>有序输出所有元素</li>
+<li>查找区间内所有元素</li>
+</ul>
+<p>其中，前4项红黑树都可以完成，且时间复杂度与跳表一致。但是，最后一项，红黑树的效率就没有跳表高了。在跳表中，要查找区间的元素，我们只要定位到两个区间端点在最低层级的位置，然后按顺序遍历元素就可以了，非常高效</p>
+<p>而红黑树只能定位到端点后，再从首位置开始每次都要查找后继节点，相对来说是比较耗时的。此外，跳表实现起来很容易且易读，红黑树实现起来相对困难，所以Redis选择使用跳表来实现有序集合</p>
+<h4 id="12-跳表的查询过程是怎么样的，查询和插入的时间复杂度"><a href="#12-跳表的查询过程是怎么样的，查询和插入的时间复杂度" class="headerlink" title="12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度"></a>12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度</h4><p>先从第一层查找，不满足就下沉到第二层找，因为每一层都是有序的，写入和插入的时间复杂度都是O(logN)</p>
 <hr>
 ]]></content>
       <categories>
@@ -2281,14 +2296,14 @@
       </categories>
       <tags>
         <tag>八股文</tag>
-        <tag>MySQL</tag>
+        <tag>Redis</tag>
       </tags>
   </entry>
   <entry>
     <title>关于博客</title>
     <url>/2022/10/27/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容">
-  <script id="hbeData" type="hbeData" data-hmacdigest="2a0afdbb0c30a0a9438b76bae99b33ffdd74c983f0787b5a9144ccc7477fba92">a17b4de793b95f7877066d2186f5861555e2d6b9cb5641947e36c8450a9062244141303af7f6ac122ca280e580e95da40c8ee95d99d2439c2f200eaab162cbb1875108085071c26de1a7a2252b96fcbe0f08370a21f14470abd2a2d2b018211a390d4a79c82cf2a64ae884fb7caded6082fa0005ef84e7ea431151015e2060bda837f3b622c77b40ee17a251d882f100278d00b9963489c074d217f528b9e8e054d830314c2ebd97fa3c76a53976dbdc3aa54c7b15ce70a5882de8489603f7173418c015d0ef7e8aa5ae4a33046644b0e563b4499cb8d0d6173282b0a21575c27f9144f5086203cb49e7bd9f84fa510fa7ca67502f97fdebb306ef8a69773c81e40bf148ee8b9d8ad2d1bdf194c6075caa40305d045fbb2a1c2119103f08f156ceaebc719357118924dd869dcd27372f3549487bee4f166e5c77adcb1ac7794dbe0a673ebfa66aa2595818250b9851cbcad400d4687e30b48667a8013245d51dce6aae77d5905b91f53b574fc443b1684c92af0bac92b0aacfa2311b89865521de7bc0054eeb9670d5568a2e98652854cf0ed9fc027967d196f3a30f8b2b14066b2b52b741727573fadde89b47e0d9fa69fed76a226477fc8a2f55fb32f9e4a53348a2747f494b15c8d7565c27afbb068f7ce813b4e1ddedada52692a9c6d917f278d17b970668263eeaaefcc44df89bcde5edc1ad4988985ab067b75e6cd1d6f6083dd6b1ce8e775db02a7d9533537b178a63ec573a5043bc15bbd2fc963c4f3aa122ec4f0b3fc30cca5257817db4bd4ffccc7a43fd006bc392e64e161e7b59542881b1b7db7805b0003d89224d2ef64a29bbcbd982ea90041c78c6f87bee6da444542e072c9c6786ea8101f8bf295aee03c0d6033a3e19116bae338e4be2520f564c69e09cabcbd5249b3c4c50d66ab39b30dd90f909ea126d2b48f8245d175a365531c939ef6e9a42c17a33a69c8b52de48e4757f5f25a4fef9493350305d558c5c0c806c0698893aaa568476e50e6079fe997df4194d8fb35a21ea8958bff697c158b049a30bd3bcd0e162772f352d83b202daafb229c098c33cda25c04e715a81f80f6673a1a70c6f17a033b3ddcd772068cce43302f1602f71d2b7a5e121056818a837126e27c0990955f13ad5ed1fe26d0e0aee808c0717a47a38999c20411f7ce53f8b1bc86018e5b9287eeaa3caf58b4244ae291f351667c000a7830273ef3d8a17f8c1254d819d16bcb2a2d9683972c91763ebbda2a379442d0b07437cfe123ac3be67f7318fb7803470146435bd3d593263e5e37c32705f6ad8b8d0decb68839c28c9a838f97b8613f4c483eee116afbea3097e72e0077f5a4ed396ad4c4be49ee36f3726809e0efa9aa8a9e0e3181b1126675c191b7b9a7fcf1ff115b2e87efd6ec64274d47cbdbd09c899a776819132d9566fea583fa1897209395d8dfb78cf6cdc2819d6c0e75da888e88ad236667388f965855fd7fc36d1249a1a1d24eab917be709ea423f9491f59038c726eac3ffed3707f0d3bdb8c90e1951f96ef89d1abfd2d4679259ea0d69c9a1f152594c71981fcc4dece41fa6dbc07cd2a1a3a0949396cebc5a8a3f13d0033e3ed78f7473fa5c9d6d5802e15232fa8b6bdd1feee2a12f22c2449c68bb1e7d8052c8ae42bfcc1f65444565986cbc63a4381f9bb0b27d0f5387f2f04a80432645dcd2a57c171892bdd3ffce03a5852a2768dfd5d53ac1fa5e321da9dba979819096a00897281370689f9e75e450560f86f506e598fff748d42ec26aab61b453561f9facad5af053d0c77652e200b75d59620b32899f0977b4d7f947cf1fd9beb68e8280f53cbfcdf2ef9ab67cdbb3bba405d77af100b02287ea616c931799fd7eb8c65b4843c926b2651e5d68b33e0e8cde998c763b06347c459de9fc8b6d5b10460a3388c750b194669523e2e6628d25d736b401ce307f71cc25241f4c82561bc6fa56eb3924f23148fbf518a80344233e7f71a3fe7150d9566a5b2d78802878628dcbe3aae5d400d10be685cf3015c07fa9981fe3645873b7089878cf1743cb0f6eb1796b83b00fe30bb78a6d55e94b4d4f0a2ededbfc36e8de15a8c68506befc43dc69e9abaaa7cd55a6b0f6e6792c45997a7acc30f602b783f1c2d9e0a430ab0a3fe4708ccebd7296c44cfbbed6e7cdf13078753bfd0f6d1866bcb3909c3a07cbdb5faa777ce9e8229c9f734f9bd4b8345ac641766ecb4180dff676c9eb4ac91e0330e530705671b54027ce8d3d33fc6fc9a01753866b28e5bcb8d028adb423edbaf834b45079379af6dbf75c379ec6cbe97f5acab496506713300ee2fa1d677ec006f8460d04a3a797a316a88ba832955f99e291cda035b1663c676618e95cc59dcd3414befa5426a4c35a12f9f95d1bf2fb1b12fe350b0b1b3bc504578eb3ab16aaff15505b218ec2b0fbc933d9034bea8be11ca2ace22f04b861883fd863a5ec6c16ab8ff90a72fbc89fe91f9c2b84601a8dd28de98bfe0d12ebbfbb14b201090325fbfdd352e276c6fbbdc989d94ee96b47b57a5aeff3af3e8bf9f7a0cafd74b8a28cf11b86ae485563e16bc071035388116b04012ae9d36e259252145eaf552be23a474c5c6069c29b15df7194f40734f61e4f0f9e7da86c08944a68a2b6e7768e608d01145a35e4973f948119045948996df2410aa5c019c24fbb7c8615d0409ea313ebeb78d6ee8c9ea6fabd9c504713c21c54b21e773fee2c29468af30e00839978e769b07780286f5ba0b35971772053de944880873743e8073f3ca90778c45d558733835666daba6285c05162bbf1873a03e9a29994cc53678aca15cddcc1d2d8ca360828c2dc48f9a536ab4d309b01814f0a7627862f3b718b4b95fad03b8299e80e08b96e73105d9198cefc55bf0a26c8e13906b900bebc96b87960b5763d31f03f411ef027006cdae44aef11472578447a913034088d6d861c71de18fb99a9ce6932e0072cfd030bb49c34cb8286c90aed1408f146dbc39e78b0ffe602096c078d6c92ca59e264608df236ad9ee41f99c24f97b379a8d06636842e2d54008152997c8beb6cb86971dbd8b476596e0fec9229e959c1ad4a20259b1d1580e789a16c5b860e447a97f6c6daa850e83715e9236f6fa882a6adf7daee4e66d54b0ddf0966b181098e9998014905ba6b79e76f0c7cb3a6ffc3bf6640b20551704fe94216a732df2642e8d1fa25aebe51b04b3eb634a9e00f307e266f3cf9271e3faab8a828182a0e514f37888a805a4d3cc60c3ce428e9db37be132155b55740d4f93b7addd70d38ba8ac286921ab9ca32690350d35098782c618a7a6aef460e67652366c7b919d0a0aac2646daf741e55bfc9c650539dd6d755574cad07af9359895132f201d2eda1229b7540487750ba60e705158636e473b1a7ecb944b98587de86c6eebfc6a7e64291374129bcd142da570765bdb65cbc046c0a07cee6a59d7153a389ff2c27e0ce590808f50429d5877bcf24e2f1e2a72d63b464ad6bb91eac128ee19d1ed8bd6143604eae097c485dbeb04c56de34f94d28846fd5621c08a6609e7d408b1fd03e36defa8d59dc0cb9400a4a7e614d4aace51ebd7252c40a67ce237573a934fdeb1b9e0e127f5718fe4315a5026a455e2dacd45ae5e352aac9a03e56e8aba77b182194d330a5e68dda7b4202a9ccaf2864a34814a2cb060cfec55b655b899e7f66f11348acf51964d5603025054b1be35317c7de9a4941b5ed3fc3c3038be497bd3762134b9e892b01fe7791b0037cd8a6d15476c3b22aed3e7276c5ff1f8fdb1a7ae77715a81f0dd955e18fc54c6d1d28e4a6779546eb93449b288da309947a747dfed8c497520513b1bc7d271cbae4bf199355f37b5964535f0be92998aea448384e17cf990b8b339c8301edf9ac37219ebf580e1c60a7d2b7719d0856e8dc8c1e56141c0abd47916b1cf6a9f735b60278b3bd02567a54d01ccc1926134111fe7184a54d872ce230aca60f6625700d5bfc925d2d178b3251a1a5dfa97d824b585dbdfdd24303f1af300c79882c82ac677764761dbf2497fc2692ef13eabf8f75914376ae2d870c272f8d50828f1ad29d5f39d2d17a5f40b62d01cc10f9067e72fbf8a64abf11db7a154fcfdc2a246a074cf4fad6058df30d63893581dd4e643a4067a26cf9ad99dc00a2428d4fc1ea6269371358a98ac96075883b5afb47da32a16d1e710ca17171b9d9a672106c8ffd65a3d736314ef7f7565d9b5a5167b09b964647bb16d64acca1f5fb4e4d7c77d7231b2ffd44f49b26114450ff399482595e7e4944fcd2aa8b51db1817d1c85672ffdd06128a6cea9979d6f5d21e0c776773bf98664fe200a1385f15fc747a5109614c79d8e5ddaea38beeae3df3dc66a9609ca51b4b77421c29e270f13b470fb9064eb2c7337f8b8cadd7f8f46db0e885d8a6c2fdadb226ccbcc963d128198eea37b72c738b0617ec7b706bf2e1319ced1c4bed6b9f89d4f9f8fce6253b8c0718eefa341caf689c11a3b7e9e2468c390141a75123a22a9778686b5fb9153a16ae9aaebcf1efe2e65097a27e392be7c40eef4f89a21ef027a2b02848cceabd148899cc00feef565c7ca4763ccf8df0cc725e504442b7762b816a28abf87cc691b04aff02609c24a3096f6cda6f10934092d210c80253b7ab0aa094f07b2bde74027c08628d4be8c0d1d694f4281a80942a0513c4bf7d69a5710da1bff7162f55481ebc01412afb661d4f15e9b852485209297a86917ae77f93da5dfb61f3c28caf621d2bb6b774e504b25e1cca8bc4fba4779b37fd53beb9e32702f607a3da09f36e4627a85c705326704f75fde436e9e0027506bff83a24ba9b9435d9996a20bc04f57af90ce584828fedd43668ce9edf082e80c9c0a5304f197cc2dc850438269c0ba4f59fce714ff2ad759aa04e0d269af9349539dd6637523a7cd0346623af4f10b3c9eee6b52243ec6645277a27a0b9b530c24c3edc9ba1329e8ec7af7760c9194d276264915df27ad0e40e0b2d4ba0ece0c256cacbe276f3194e7baa25fd5c3b24488f71a4351a3cda0d12f137f22dcb53b0505b4dc2480242ca0153b5e1a681cfe8650460984367b1d6d57adefd262fe260091dd41a4aa954d33742a76ea453feaf354be02c6ef52cb72a5a8d95bf83c57ae34722a45a9058138303aa098b2ee8cca5739b3f79d9529b047f3606a52cc396a159181aea8d341d332aa993ef449926b0608c5356ce90a9867cbcc409ad57c13d97687377876c95a82720dd6bcc77804a65e45a11f5628b8299ca1f4ea9fafc7991e7be9b4d85c9772604e6dcbee78cc0fe3ef7b7ce5d65a4d616c548b6dcf260e2c45e90122cad56a82cb877214e943a45da00a6d6ce6ff7bc36b41075f493ccd5ddc1ed24e1b29fa197e502ee6c10a2adfbff8e87aa0368e6b4ffce4473e4b06c534a48e6005b862a7b1c4904cc354a15b81328e8784e0d88fea417f3bbae96950897714d1b18b566ad8969919082522a2154502441c3c8934903296d249e57bc2d0fe910b429072fbfd644037ccd8f20a462b4d78aafd35b00288279cd49012099279759ddde53c64f36348b03f3eb9ca3ffa5d57c069d20d9c02014b3a5e070672d4084f71494c0e4017aeb6c80fa9f1504e50e566994efd59468621d27a50159a5be9f8273c1af878f8b3d27316ff01c0916259138c84bf87db48d65922edb92f3e5ff3e796dad9ad7acc1a8553f88166817330681804213f94285cd1b9a4a19880ffc0f5409d8051e09b4c38d484256d15b410f4bd85f398c9e5ea6fa06fe6f7c442015b12af608c083a9389fcc978c3b0b72be782ea75e558f9492ca03f42645cf4c84c30fe9b3e0d31ea7c96065a733ae5e71fccb1b41c78799f0953b7a97694c577c41f99666ab1b13606c59df11835b8ab5d60206cc9a029bf5030e59b851893dd77a9f3bef6f26ee1a0686501dcf07985e61b13c359f74f87729376c1566f335c4a8860eeb7acaf05ffd0a5dfdb3b807d6934c527de798ccbd600f16c8ce01839cce11c7e28fcad77948ac806d31ea896f6a6c5cdf157e0dc4ca98132faff947e3a6b740a64334ab4c6b6161c636420facfdd21a7aa9b19bf25333cb70ff558209a4cbb1fc56744ee509e2495ad8f6d3ecb663aba5c67b24a0fe69b97ae1567991c7071289e23d484a0d2cc45f5dfc6988d77a0c162913abc3a6bf3345be5e1812d908780485c2afb9348b4bf266a74eef05d431ded0e5a1d14f59be3f6e5ea23a7b88ebff753e33cb6b55512f8a21ba9cb106258826caaa8505267dc3f0ec1a19c29d75057950eab2a9d314d7e1e170d97558fd23b34d7919fec64e3e15656ecf15ed78cb06e572d958752583543e9d434a227fc6821facd09e7f08e60c0686734c315b548b0c157e077f844dfbe25ae65f0d14c0864c9198d71164f2623fa9da8007fb2bf99e94ddde86450662be28fbf04119df8e320b101793189a228efc3e90a13f5824fdee8969ed34a371d6caea5bca5c657a40f4753feb42edbf79ccbe58c4282292f740896f7152058adfccfe009ab53db0230dc6578f311d370ba029898c67c6ff022abbf3bfa08bbbe653c002a303561dc9f9ae2b2466d97baf11c3a3b5e6e1e14a6a54c4abc045aff6c568108bee73a1528e78236be07dba72d95daa0536a4db6095217dd538fa7d7e184aa3880078bd0d07e7bf303447b55b27b164e70096a981e3db4c173c2fc4859d867c263255885b568a7dafdd0f2d09096d4dc20301b2042905969e5a46384b0873e96957a7bb3d7c1570b84e69f493f62aa66a00cc5fa37bd838713a6ad34045268c20b68bda8be346524cf451319129c748140a178b779160fa01ac6a032892387d4e3f93a287235cdc08fd9c1526fdf9bf71472be7d4d6d828d6120901e8a559650c88a01a8f3f1846a6f1fadb68018a58140c73ce21e674fe5d7e16e58b183885fde9e71d4ca223a6c9fd7f8033ee32fca69b7fbbcd42aab924350af5f478f254e2df02b26263e9cb0073e6fd646aeb6d4d610b3f939fcef232bd25f669ab0db1c0f2b028e6f97d02d425cc927d7df8a6a4365f42e3764560b5db3a1dff3f7410d7bf453777ba8c09833d9f0eed9aa3891ee633927afe6b933213b5576bc8453c73a17d014abfab01402f549d57dbe33a344bf8ff50b10e95d7d52ffa3ce7f18732ca65ef62a93a9ed01094650a05722a7ce8231638fa44aeb99a8a0407a7689ccbcd4ba35a14a8745b3c5519eb4b30f3a3d3163c89a3ab528f7216ecd8882efd6bbb416a4f70351fb5e7f900779e1492ce8443d4ceec05ea72bbd88c9fe825830fcb68a0823bc10b4269431bd97cda885ff528fc412cc2481840e5f93a4f2f4f6a0346fd9a740b6f287f65dc00bbe6a95faa7300db364fb597f617a932c21c2a6881f4f9ac790372d4a041e4abcf65090b34c3ef51e3e8de58a49ce43b6c768c902de99754e21a8beb84d65af5ef9cbf31ec6e0ede274b672d0d8fae2599cb87be095916d94d58d5cf1e573f3096cdae4a0fd7ab4c04311e5d432afa9a49ac49d99cd4af018130b6b09af30b566c8aa5d42a19b35a3a38380cac7cb5c6498e1b7ca4046176ae0af1e0a8c270156451018890948ceb96ca382b42312e3ab3b836b07dc6fc84ca00d3011e8093014a12aed70c67273ab8961e9825b09054a506c15e850aeefc3d099460b667367da0cf86015b11b8c684a331010d7adf0865ef7eaa2742a9f28eacecf4a721525ca97300f7644e5aab970d0d25ecbda263a8a1a68d2534420ba0a7dbb10f45d500a98a75b338537e7ce47b0ff8c2b5f0a60b1754bd105d9067338b399a4cc00b2efef5f447050ace2dd7ef0e87ae30479386008b82531079688929c3bb24ef4842027ef1853804c9915de3439518b688e70cb3c50de8aa18f08c696643a688c7858d9078297d4b763c1c838646f439c4c27d66765a2043ada6d316029b770e00993692cdeb2c1e6e21ec1835fe03162d2a28bf3037e285e060a785734c975449a5665c6c2320d02b989190439b3b67449b36bb4361950d8c7984323878588fb5961ffc71708e0ebcad2e2a9e075d63636fe395d6275e563daecd8fccc482fbfcff368c8178c5da360be76089045a6a1504fc74a33dcaf614b936b6884b078022a66ef29169523be82da07b22054e262662eb18f708da868f2328a15d850f18d079b5c0479b28597eb24a604b35d8bfc07f4464ac91111d337064f06205a34da97ccd3780253cfec2e20f60e626360a2e0f73822b8035d22be673ad8144f200e9b7481d366e4c2d9f59f01b60a315aff2ebff0c3d3b2b086187db65d0ddb679ebcb26c7c0d3ac00814a292247ecf019398ac805c7fcf9e2f9f294fe25df2bff8f345ccbbf3da126cdfacb502dd1f5f3c9071573163cae1d2b1a0eba82b2055f3d8f9e474b6d188f2f525f15ab00a223721301b8c8eaaa7a6f6f528b434b2add729a2d95dace12e8d07387a68a9086b308c50fe288f86ae4792db0d872c05cd26af9b859b100e57c06c8f993f05c6667641632cb9620b0cfecae5a3fdb8a3f667386ed7104c09cf9073a3c70f4cc5d019113b438546c4ede56af1984b6e6819d268873b9b79fb988aad380cfefb96a036fe6836214c29af010397a15a7b7b2aeb226180e21b41c715a657ddecdf15fb23f10804e63fb843ef78315ddd7b232af70221962af08c1839573547ba2bcd3d9cd5717eb16329785704494c5d3091b1c5c64aee505f8fb8f1d5a96c1fe482cd23c6cc59e10f723393ded9a8db02196d061371ab54cfdfb6f3bc24e5b331a61635906172c7d17632fe56b69e03afa626653b8802e59a5300b80997863f2450f7c343f97b0c6a54403242f3d54c4076810aea8ea8f119edfba0d6330321981512f27ed2ad93544753559cd5cf794507b87c0f9f47ab1bd11a615fbee8596056cf0be18901dcdfa6c68e264541bd51284542cab9cb0e7ac16e480e9592edb9155f5ac67f8a544d6112c864709cfbed9abcec30064b70e4e12e297dd56fdb9da898e1b5bdda373ccad7d62b45d690a82ef15d6a190a19a9d1945612fa9823cf8cea59cdc4cdb310eb8eeba9eb7acb5e96b403bdba39b90eb69162576b328f9f8fb37446cc0c8f9fff6d601b24b0cff399041beda8bb5efd9c1e69f306eb977c955f8754062da048effd01b75e846419fc1cc193de7b8dd6ee932e1f69be4bc68f580cbe79e99adbd84305ac3ece6bd1caca25ed7cd9b1fe70f602ff87b2addeea829265e5369f49c3723cf0e92d420722488a660c188b045fa9854e81965f690f0d42ba528231e96d3745e8ef6f324a237518da59aaf276767f3e2db8fda40897b9cac0604a6a2e3600ca12da937fc40493270a57a7ede3cf07a18eb926a3b5a65052e730d6f32e895412aa2e5d6374e12795d67322d9e120eed38c4eed22aab2636ae8dfdac70eaea7413916d47ba0448182579dd5c46722165df5053f964ce72b5a4cf5da33e66439446a44068f1be977b6e1a13c623a979fcaed32b2ffac3994a072ba9c5574d77b7050dcf4b587ef70acfba1a54b16208b7cfed7d543e8da9593695ae7f03aec0a3800df55a3bcbc64d777f066783511a81b61721be212cbe85584cc0dcce2932a53dd51b5869ff4a101fde2181848d41a75046ff8c66d21348fcd0d7602cc7b17ccd1d81ce568fcda5fe3e416e3a78cfa9a6f088b632ab7c104c6e59a76a8347d256cf2f5ffe7b5ee4a3b1b9412c318d8e9a4b0e3c7a8ebbc24740d8d68fe93ab2b18e76751433fa0697d5f132655a1344f71a5f9fd9bf99e2f2fff042c2fea507f6e418c8074922c6fdc871e261da27e23a91f9971453d66e54521ce1496250941de723aebedec69e05fa49796f02cc84acd10dfed78d4d0dd159561b96d0e48c10d68a8bec7f31c1b423cc84e6a48e4c376c8f45f5ede76884134ff5d1ec3795f2a0778fb9afe5d9546c4a879f8765332ccb318ec409c973a5143eac5ca9da3c8e3789782726668a873879eba0203b9972d0790167fdc5d3e2ec15b311c3e5332de3394a031a1aa7b1612544c0cdc892aa672321f8a4d9e75fdfbdbf287188f124002c3aea497ccbd4073d8784e3130f847bbf06d77a7ea3efa997d62bebcf61a45944608e34cff03969a35dee275d1c5994b1d27837765d0cf078527ef0f5e1616d3f1b2d8552a8ccf8c7faa1dee6ccf5af5e5ddb2fb3bbd4b1899236a0b1aaacbed6315012bdc3081e8ca889f200423d3b03313ef97f7d7da9ff1980d09291582df0628bcca3a895ff78d1b2f8401b8d5f1ae68f33c2ca7f6be0c3dd6f4b6ec106ab7d1e7161a07ba1178ff1614bcccb55013c950b4a057eaaa6f6dec5710dda5b1ab21c48ebf847f9f6e2f816c4dbbc0ea697a7d3642ffcd8289cbf1bb2cf101548f75224589d8939202de45782c8b9bcbca410557332e2b4dd97112220a81efdeea8d35fae566bf508bb629677fffcc8ab5ec07abff55816b212e23db3fb37d452b47c3d22b5820242921e8acc8b6659b0af62518a4b5ab22a0cbef273f916d07cc02a3ff4ce411c0dad52183d2b2efda492290d62b66b6825c1f0907fa668b45e52afe3ecaf5b43c3ac70a5cec24b0e09ab0e52db05079694f144d7a12193e3bb12710877cfcbec16f375ba4212bccaea570560bcbef51f53af7f875d4f0fec523928d8f91e02ea00892e388663dbcfff1631ee48bb0cd906867c77188b5a741dc55d865279a1eef0bbfa9630bcaab10998a067cbf3d8c9b8ac01c440048e7a3ddc32cb3f2bea5c2fed8c7d565ef534cb5e4c40e584dd14c171e48df66b1b04c5732fc2e3fbaa842dfdf1a565004c10bab71b1adb14059575e8f2268b6e365e1e95c4fc1719fd464dfeac64ff1ba0e4411a89635907ac3f30bab600362aa12706f64bcd043a3bee2a1d6cdf14e7d7c70d52be64ff4de077c3f6b12e8a92d47c2e402d443f8ea5f6a0b3e7eaefa4445eae67fde095dcf4b2363d2d6f6ef750190ab609872ad48bdaabf7ca2befa68e544788cf2345346118a71a9938e0ebcd58b66c1df7872277b0b3151717703a54295bb845f33435bc0e8af4835ad6272d666d3827dd27329cb3c54a71cc192a206a91b66250eefdcbfa7767897b5468cabc7e2cb9e3939b3b8fddf49cb58941297444b188f52499744375ecb978ccbbe07bbfdc545b0d066adafc2c8a5a83ad5f043ca9690233132610b36a1f943fa6edb3e08e614db3adf7d805a867abb67231ccea617e39635f8b940e2aff2f7073729a919e9897efbad34d3b0f2ed7377a8b35a6c42bee5bb445bf2f50dcb06c8c8137a30750424d1812a8efbccbbd5b4294d902bc03f7a5c8b13768b7c5c63a07b156e27ff04190779877beeb247b104fd126b6fcb9f33641b7052df55ca9d6217a703ad6e056865bf9a516616095ec967043cf34d5623f16bfc9ea7047bd3b79ea9a8004c4e264e4bdfcaeb0d4ef2d5ed4b42ea198e0ff31d74bc9f791054f291d19061e397dc56ebee89f7436f770826b2586997cae9ef661ea5ca2a2fcd98529ad25f7d9dfec9f73dafdabebc5e7fb460fccbed711e2d8cf44677f5148c717ab2e89bf07a143b824742ef58153eda497fe70f01b15a4389159deefd8e67baf4600c5ab749ff3e62b421d6b733ca176701638583adc8e5c5a61d1b875ed63bdaa0b12f5f7cbe5078b99e9cce20a8dc9c33ace1828f9e2b8d24658588f0160d875026ad6c7a47bb211a0add1786f6f24f6433b917f655b70dc9f56f21801c2f22c91912b716f5a6096a2ab46fd7ab01e02d27f738e2b73b2dd100bc355586cc35f8eb2c90f5df61e93724b431a55372f0c76cbfc8c5319335cf6dde1e1b6b47f81ab6ae5940e2ade29d1c9676a8137c705503e6927df0a2a567cfec45dd533f8885471588feb9ca11fb0606204768754b152eeae554e0b55df1262b3c34b94e0085554d1bd8329c91794d00d1c76a2f3c467df5d185f99792f324c9692dd50a4d06bddb9edd2375b5d34425df3faad20629cc2506c76f892a399ae26f7c383af54b4b59322713f4c3367b1a23254a40df1f564f36dd45ff9a04aceeb1c9d8ffa3967fd3b90abbda07e8de0113ec5d0a6bfd20a7c68cc1bcbb56b731a83c65fdd706641fa5bff4212a8e776b3861c3878b7561bfe7082e17464ec00e88f8466f699c50af484948a9e3699dbcd6c773696fc67931f5d9a7064646823dbfd47cd291133e02eb3a06295ca768ca8d6e38d86e06a12da1cd27003a8bde47872ce0e5310e3f510d734bed115406744021230aeb5bbd731be83fe1599d2eae46266ecce3eb134ef559820f02dcde863def2598ba992ab1301d9a1b11ce9ae165dcefddf013c0246ec0b26d25ea90db4d9792e4e80b4fbb80be1506517be693ba005f37b1ca0e64a401715098a8b0808eaa2189babfe499f2a5472ccd7dd46187ce1736e66bd2f46ed2f6184da5a4141ff4f7e9407c8c17eabcfe9dd2ec51cfd313a84089ebf6c58acd8012ed2f73c25e5cb4a0e09d61d277af6b75804c8f179c67db51a32650b2fc483229fc7f44fe4640283d0ae2084f8797e9b824154698d4bb20875832d46636fb966d730431861e82b695972caf5156eaec4a5416856e17f6fe0815a7786d9a3186ecc78fb49c44c5725a9b909b7231e724db6deb2a05e535200fe2d1bff2bc846cef2e292c4b150692f58051e0ae78cd4526af655a1bc37666f797fa69ce3413ed964a24b9c19f4a41cb2667df6351762e744010a455bdfa2990efc636617baf04f54b5baa530ee864ee03eef131c516a56b65bfd61e26bdb5daf9b5d4098ce6339dd1f46de6f4d56f4856abe9c1e5dc2343e739abc227ccc1f9d69564783e2fcd8634b98c162e652a9f0712d92627e096923a6b3d923ba2530b9ee3088f2761af3cda403f79fd2d5090605091e0d27838de176bdccbf193b9e3e4a78cf63b15877b58d3f470d8d151e50e4328dc53ac49c84199b0504e26b8fd1941cdea2217b3aa328a9a1649170f1bbec50bbe1a15a5160ac1b3631b0dda556a0aac00b78afe4eb174a2328fb1b38ce5a1e094a1da5c3b1d17aaa0646ed45284eae63e68c54a8fb9983bf342e3d90454734c761573ee93f38eb61bf9f00b5cee096ae8998c5bd20b770c9176d3a36645faefa96ed6fb77b44e50f26972619107d9686096c3b18160f51197f88c98e78e38d084ead46be47ac8ff1d13e64abe60</script>
+  <script id="hbeData" type="hbeData" data-hmacdigest="ab4776d2f33dd789b78edba694d6cab85dbf3cc0bfa78cb2915fb9e33ab9fcfd">a17b4de793b95f7877066d2186f5861555e2d6b9cb5641947e36c8450a9062244141303af7f6ac122ca280e580e95da40c8ee95d99d2439c2f200eaab162cbb1875108085071c26de1a7a2252b96fcbe0f08370a21f14470abd2a2d2b018211a390d4a79c82cf2a64ae884fb7caded6082fa0005ef84e7ea431151015e2060bda837f3b622c77b40ee17a251d882f100278d00b9963489c074d217f528b9e8e054d830314c2ebd97fa3c76a53976dbdc3aa54c7b15ce70a5882de8489603f7173418c015d0ef7e8aa5ae4a33046644b0e563b4499cb8d0d6173282b0a21575c27f9144f5086203cb49e7bd9f84fa510fa7ca67502f97fdebb306ef8a69773c81e40bf148ee8b9d8ad2d1bdf194c6075caa40305d045fbb2a1c2119103f08f156ceaebc719357118924dd869dcd27372f3549487bee4f166e5c77adcb1ac7794dbe0a673ebfa66aa2595818250b9851cbcad400d4687e30b48667a8013245d51dce6aae77d5905b91f53b574fc443b1684c92af0bac92b0aacfa2311b89865521de7bc0054eeb9670d5568a2e98652854cf0ed9fc027967d196f3a30f8b2b14066b2b52b741727573fadde89b47e0d9fa69fed76a226477fc8a2f55fb32f9e4a53348a2747f494b15c8d7565c27afbb068f7ce813b4e1ddedada52692a9c6d917f278d17b970668263eeaaefcc44df89bcde5edc1ad4988985ab067b75e6cd1d6f6083dd6b1ce8e775db02a7d9533537b178a63ec573a5043bc15bbd2fc963c4f3aa122ec4f0b3fc30cca5257817db4bd4ffccc7a43fd006bc392e64e161e7b59542881b1b7db7805b0003d89224d2ef64a29bbcbd982ea90041c78c6f87bee6da444542e072c9c6786ea8101f8bf295aee03c0d6033a3e19116bae338e4be2520f564c69e09cabcbd5249b3c4c50d66ab39b30dd90f909ea126d2b48f8245d175a365531c939ef6e9a42c17a33a69c8b52de48e4757f5f25a4fef9493350305d558c5c0c806c0698893aaa568476e50e6079fe997df4194d8fb35a21ea8958bff697c158b049a30bd3bcd0e162772f352d83b202daafb229c098c33cda25c04e715a81f80f6673a1a70c6f17a033b3ddcd772068cce43302f1602f71d2b7a5e121056818a837126e27c0990955f13ad5ed1fe26d0e0aee808c0717a47a38999c20411f7ce53f8b1bc86018e5b9287eeaa3caf58b4244ae291f351667c000a7830273ef3d8a17f8c1254d819d16bcb2a2d9683972c91763ebbda2a379442d0b07437cfe123ac3be67f7318fb7803470146435bd3d593263e5e37c32705f6ad8b8d0decb68839c28c9a838f97b8613f4c483eee116afbea3097e72e0077f5a4ed396ad4c4be49ee36f3726809e0efa9aa8a9e0e3181b1126675c191b7b9a7fcf1ff115b2e87efd6ec64274d47cbdbd09c899a776819132d9566fea583fa1897209395d8dfb78cf6cdc2819d6c0e75da888e88ad236667388f965855fd7fc36d1249a1a1d24eab917be709ea423f9491f59038c726eac3ffed3707f0d3bdb8c90e1951f96ef89d1abfd2d4679259ea0d69c9a1f152594c71981fcc4dece41fa6dbc07cd2a1a3a0949396cebc5a8a3f13d0033e3ed78f7473fa5c9d6d5802e15232fa8b6bdd1feee2a12f22c2449c68bb1e7d8052c8ae42bfcc1f65444565986cbc63a4381f9bb0b27d0f5387f2f04a80432645dcd2a57c171892bdd3ffce03a5852a2768dfd5d53ac1fa5e321da9dba979819096a00897281370689f9e75e450560f86f506e598fff748d42ec26aab61b453561f9facad5af053d0c77652e200b75d59620b32899f0977b4d7f947cf1fd9beb68e8280f53cbfcdf2ef9ab67cdbb3bba405d77af100b02287ea616c931799fd7eb8c65b4843c926b2651e5d68b33e0e8cde998c763b06347c459de9fc8b6d5b10460a3388c750b194669523e2e6628d25d736b401ce307f71cc25241f4c82561bc6fa56eb3924f23148fbf518a80344233e7f71a3fe7150d9566a5b2d78802878628dcbe3aae5d400d10be685cf3015c07fa9981fe3645873b7089878cf1743cb0f6eb1796b83b00fe30bb78a6d55e94b4d4f0a2ededbfc36e8de15a8c68506befc43dc69e9abaaa7cd55a6b0f6e6792c45997a7acc30f602b783f1c2d9e0a430ab0a3fe4708ccebd7296c44cfbbed6e7cdf13078753bfd0f6d1866bcb3909c3a07cbdb5faa777ce9e8229c9f734f9bd4b8345ac641766ecb4180dff676c9eb4ac91e0330e530705671b54027ce8d3d33fc6fc9a01753866b28e5bcb8d028adb423edbaf834b45079379af6dbf75c379ec6cbe97f5acab496506713300ee2fa1d677ec006f8460d04a3a797a316a88ba832955f99e291cda035b1663c676618e95cc59dcd3414befa5426a4c35a12f9f95d1bf2fb1b12fe350b0b1b3bc504578eb3ab16aaff15505b218ec2b0fbc933d9034bea8be11ca2ace22f04b861883fd863a5ec6c16ab8ff90a72fbc89fe91f9c2b84601a8dd28de98bfe0d12ebbfbb14b201090325fbfdd352e276c6fbbdc989d94ee96b47b57a5aeff3af3e8bf9f7a0cafd74b8a28cf11b86ae485563e16bc071035388116b04012ae9d36e259252145eaf552be23a474c5c6069c29b15df7194f40734f61e4f0f9e7da86c08944a68a2b6e7768e608d01145a35e4973f948119045948996df2410aa5c019c24fbb7c8615d0409ea313ebeb78d6ee8c9ea6fabd9c504713c21c54b21e773fee2c29468af30e00839978e769b07780286f5ba0b35971772053de944880873743e8073f3ca90778c45d558733835666daba6285c05162bbf1873a03e9a29994cc53678aca15cddcc1d2d8ca360828c2dc48f9a536ab4d309b01814f0a7627862f3b718b4b95fad03b8299e80e08b96e73105d9198cefc55bf0a26c8e13906b900bebc96b87960b5763d31f03f411ef027006cdae44aef11472578447a913034088d6d861c71de18fb99a9ce6932e0072cfd030bb49c34cb8286c90aed1408f146dbc39e78b0ffe602096c078d6c92ca59e264608df236ad9ee41f99c24f97b379a8d06636842e2d54008152997c8beb6cb86971dbd8b476596e0fec9229e959c1ad4a20259b1d1580e789a16c5b860e447a97f6c6daa850e83715e9236f6fa882a6adf7daee4e66d54b0ddf0966b181098e9998014905ba6b79e76f0c7cb3a6ffc3bf6640b20551704fe94216a732df2642e8d1fa25aebe51b04b3eb634a9e00f307e266f3cf9271e3faab8a828182a0e514f37888a805a4d3cc60c3ce428e9db37be132155b55740d4f93b7addd70d38ba8ac286921ab9ca32690350d35098782c618a7a6aef460e67652366c7b919d0a0aac2646daf741e55bfc9c650539dd6d755574cad07af9359895132f201d2eda1229b7540487750ba60e705158636e473b1a7ecb944b98587de86c6eebfc6a7e64291374129bcd142da570765bdb65cbc046c0a07cee6a59d7153a389ff2c27e0ce590808f50429d5877bcf24e2f1e2a72d63b464ad6bb91eac128ee19d1ed8bd6143604eae097c485dbeb04c56de34f94d28846fd5621c08a6609e7d408b1fd03e36defa8d59dc0cb9400a4a7e614d4aace51ebd7252c40a67ce237573a934fdeb1b9e0e127f5718fe4315a5026a455e2dacd45ae5e352aac9a03e56e8aba77b182194d330a5e68dda7b4202a9ccaf2864a34814a2cb060cfec55b655b899e7f66f11348acf51964d5603025054b1be35317c7de9a4941b5ed3fc3c3038be497bd3762134b9e892b01fe7791b0037cd8a6d15476c3b22aed3e7276c5ff1f8fdb1a7ae77715a81f0dd955e18fc54c6d1d28e4a6779546eb93449b288da309947a747dfed8c497520513b1bc7d271cbae4bf199355f37b5964535f0be92998aea448384e17cf990b8b339c8301edf9ac37219ebf580e1c60a7d2b7719d0856e8dc8c1e56141c0abd47916b1cf6a9f735b60278b3bd02567a54d01ccc1926134111fe7184a54d872ce230aca60f6625700d5bfc925d2d178b3251a1a5dfa97d824b585dbdfdd24303f1af300c79882c82ac677764761dbf2497fc2692ef13eabf8f75914376ae2d870c272f8d50828f1ad29d5f39d2d17a5f40b62d01cc10f9067e72fbf8a64abf11db7a154fcfdc2a246a074cf4fad6058df30d63893581dd4e643a4067a26cf9ad99dc00a2428d4fc1ea6269371358a98ac96075883b5afb47da32a16d1e710ca17171b9d9a672106c8ffd65a3d736314ef7f7565d9b5a5167b09b964647bb16d64acca1f5fb4e4d7c77d7231b2ffd44f49b26114450ff399482595e7e4944fcd2aa8b51db1817d1c85672ffdd06128a6cea9979d6f5d21e0c776773bf98664fe200a1385f15fc747a5109614c79d8e5ddaea38beeae3df3dc66a9609ca51b4b77421c29e270f13b470fb9064eb2c7337f8b8cadd7f8f46db0e885d8a6c2fdadb226ccbcc963d128198eea37b72c738b0617ec7b706bf2e1319ced1c4bed6b9f89d4f9f8fce6253b8c0718eefa341caf689c11a3b7e9e2468c390141a75123a22a9778686b5fb9153a16ae9aaebcf1efe2e65097a27e392be7c40eef4f89a21ef027a2b02848cceabd148899cc00feef565c7ca4763ccf8df0cc725e504442b7762b816a28abf87cc691b04aff02609c24a3096f6cda6f10934092d210c80253b7ab0aa094f07b2bde74027c08628d4be8c0d1d694f4281a80942a0513c4bf7d69a5710da1bff7162f55481ebc01412afb661d4f15e9b852485209297a86917ae77f93da5dfb61f3c28caf621d2bb6b774e504b25e1cca8bc4fba4779b37fd53beb9e32702f607a3da09f36e4627a85c705326704f75fde436e9e0027506bff83a24ba9b9435d9996a20bc04f57af90ce584828fedd43668ce9edf082e80c9c0a5304f197cc2dc850438269c0ba4f59fce714ff2ad759aa04e0d269af9349539dd6637523a7cd0346623af4f10b3c9eee6b52243ec6645277a27a0b9b530c24c3edc9ba1329e8ec7af7760c9194d276264915df27ad0e40e0b2d4ba0ece0c256cacbe276f3194e7baa25fd5c3b24488f71a4351a3cda0d12f137f22dcb53b0505b4dc2480242ca0153b5e1a681cfe8650460984367b1d6d57adefd262fe260091dd41a4aa954d33742a76ea453feaf354be02c6ef52cb72a5a8d95bf83c57ae34722a45a9058138303aa098b2ee8cca5739b3f79d9529b047f3606a52cc396a159181aea8d341d332aa993ef449926b0608c5356ce90a9867cbcc409ad57c13d97687377876c95a82720dd6bcc77804a65e45a11f5628b8299ca1f4ea9fafc7991e7be9b4d85c9772604e6dcbee78cc0fe3ef7b7ce5d65a4d616c548b6dcf260e2c45e90122cad56a82cb877214e943a45da00a6d6ce6ff7bc36b41075f493ccd5ddc1ed24e1b29fa197e502ee6c10a2adfbff8e87aa0368e6b4ffce4473e4b06c534a48e6005b862a7b1c4904cc354a15b81328e8784e0d88fea417f3bbae96950897714d1b18b566ad8969919082522a2154502441c3c8934903296d249e57bc2d0fe910b429072fbfd644037ccd8f20a462b4d78aafd35b00288279cd49012099279759ddde53c64f36348b03f3eb9ca3ffa5d57c069d20d9c02014b3a5e070672d4084f71494c0e4017aeb6c80fa9f1504e50e566994efd59468621d27a50159a5be9f8273c1af878f8b3d27316ff01c0916259138c84bf87db48d65922edb92f3e5ff3e796dad9ad7acc1a8553f88166817330681804213f94285cd1b9a4a19880ffc0f5409d8051e09b4c38d484256d15b410f4bd85f398c9e5ea6fa06fe6f7c442015b12af608c083a9389fcc978c3b0b72be782ea75e558f9492ca03f42645cf4c84c30fe9b3e0d31ea7c96065a733ae5e71fccb1b41c78799f0953b7a97694c577c41f99666ab1b13606c59df11835b8ab5d60206cc9a029bf5030e59b851893dd77a9f3bef6f26ee1a0686501dcf07985e61b13c359f74f87729376c1566f335c4a8860eeb7acaf05ffd0a5dfdb3b807d6934c527de798ccbd600f16c8ce01839cce11c7e28fcad77948ac806d31ea896f6a6c5cdf157e0dc4ca98132faff947e3a6b740a64334ab4c6b6161c636420facfdd21a7aa9b19bf25333cb70ff558209a4cbb1fc56744ee509e2495ad8f6d3ecb663aba5c67b24a0fe69b97ae1567991c7071289e23d484a0d2cc45f5dfc6988d77a0c162913abc3a6bf3345be5e1812d90878048a1702fb5aa554d1d4b9710f319c27176b05ab25af699caebb5ec5b79e1bbb3c9bcd201090e7e66f4d34d2afc1531c9f7c3ca18616f5e24d5fec6bca4eb1b03ee93fb7a46190521e2af235009ba06c49fe8f1d166a91392be6553f0f07811eb93f18f750cefa7de45fb5261567019ed530e21e6acf06c9ba76fefbdb6fd620f1e859a18a1b5869d9c2762319207ce5cc40aa5019c213b376fa3cbd81b76e88db9f9abcb3de44d79f76c4279d1c73030755680206f5aac40d679120c2ec3ea388013efa5f0e9398f4f16e24dd15d62b2f6465aff5dae123073bbb70087866601dc0763541b4d4aefe46d97a68ec5982f83bbb85fdabc4f2389b928c817f5a3005294ddee20b4444dc8a803df86cdbe6031ea6b611538f72de52ad840d9aa90c7d0d38e9cc8410589007eaea63b55a6c07c5175a7531dba0534ac0fc67c18d824395d241a021b9a20b9509b8903c587a83b32d764ae561ad974ce1bbe9c2ff9ba2994b1cfb55dc40df9b30c6597d05c32a2232d67d6494d03051454f1d8a968a744e788902853073e3bd0d8557429d6d786c1bb4ad9f42f1c183f1c72da143d263bbfe9dc15a977ee45ada37712302e1f34850f113fda831c134266302481820b0be5b199f255f52cad9d9669610739019141af3156239786049af870977219d9149c6b1ff6accbfcddacb38735bc33ec98e66af7e6ef65e9e96c2b10aaee31c4f0aa272793e76b54b84b62c16b3668d3f1cac1c691fa1672b87beac3249457c3363544e630f466dd9e0dd17cb7b8c980c8d06db8a6ba861c87fc55de1b89d0841b7bc56ee4e57bcdaedd4ac739b6265db1c058100999a0298a462ebb10a839dcc46f00e9158e511110ecdd0b9429a3d850a0c30c752dff1d47660e96400b5f3289e8a179c02549c7b4fa193f9998be101c6ac8c20ff0517d75ec1960ed5cd7f3f9883598c264465f80cd685a5c1aa17060a7e7c33923397ce75397f3a7d98453300cbb28dd317f78d9a960ce185e400da5745741218e803d754ee2b7a0b3759cc3932c254896523cfd81d9919a493b5664b06ace45d9eb9dfdf2731bc7269f68db5833f6085cdc3d13a9e3373c91b9330dc6fd610b4245abf240366747c4284742cf42a40aae593136d1c89e82e5304fb47260e39865485e4e320d3749959dc8bc4b091633f0b9b02a61ef98d994669bf34c874ff8932e513f54648ae0502ab0f24ecfdae9063c01aa450356f71ea58dd6ce348e49ffef856dda4fc49689acda6c23e95b6599714ccf4c7d3e71706b5858cb2488d25e1f48cbde0410d846fde8859aed61730950f887d2d8c608f2388d222c830ce7fb07f3ce1684ac5a8c82514a9059f8bbdf8691aad2d5ae730493cb42e5dac5b649e920f871cad50ead9bb6975c813d0ad2ec2ebede2f4c5e8a3e13c5b799428b0d080c8153edceaf526dfb55c0234d063f1b7dd8069118cb75dc2d91da5e5e1f11a7668b05429080e02e27e0031f8c7f000716ebe81cdcd6610a4d77d12d196325015ea8bc7d217e599816a79fe9015b2d510f9225fc80d1d6deeba76c41cda7cc8805ef367af42f148dd0bd0b8234ef004220c6edcfd7c8f80cdb2395b4482cd9cc520f826471c20f740a817f55d49913ae569b80883b3c9643c9d55208b1dfb71537333ab4f84cae9064d2e5fb6b14140efa35cc35a0e05f0b050b2709a707e054895208b9021c28e39b3c61a78440c48d6433c40ff65c86e01571abafaf2bb40b94e48e5a9697480f39a3754af44fab9ede883d7c2924c7ec032ddf7fc847f15bd3f5dd7051ff9a3ff663caa641cf2c7c9bb9664efaab437c589e0baac0e2cd34d4ae282dd9f680c114b62925cb1d022064b2754958519b6641f390360216a0dd60783b7d034110cf8b4768d2e15c78e1c741a9e901cc9e83fb514d6d68769fb3822ffbbca1df4a53f01f38986cb02f4f4a308bba35243c6465d4433944785a84af4c131528775a6a458be946d9b91c6752ae65ae1b095310d8bc320f2589d7ce12e786a37b59ba9fb8ac830575b480ee7d2ffcf2b040a68280122bb6c641c1eb8c81e5079635d835280a7a5b0421f638d60ec2283376615cc52ab3fdcc2ff7e4c8668031ca3d6f4ff49b46e4cc1d087f085d73582e1b4d664e8f4280162afea7405e3224176ae2ba6e45af7c44fdd929c997895e99cf1f94209cde32605ba585aff2c40d5e30d3ae8867e2685e91a9d355cfc184b2caf0ea01d532834eb9ea6427bf96b5b7ee48cac7c0add109dead7752d14df43fe02d5622d445cb36ca34e9dd3af83af5c4858512560b047c0b0accf303b0ba840f95ad5bff96dfd1eb94203abc482d51976f8bb0b0f554b07908432c035bd470f2ba93f71a3976affea523205651407610208ab48366f5063bbe3c395c74cfef9110cf6fabfbb56b0c1b2811ec0c47840fc86351ac6e16b9618476586ea211005d781bb02d0d91ecc4e2915641bd7e31b8493eb12f7e0c919aac3aebbdb35bce3989b361a167316d94255ac93cb9e4c7640d648432a983b6b2d13610bafe3df56191117ab7b083ae9a2551264e40fb0041bf3b47a322cc047f9329590b18be5812ccf2b04166793a2045a3324035d35c65e997c97d67614a0e36e7f027857995bda085cb16d5427d1100ecd665090916108fd3d7021e9c43b9c008b8790339d0c7b4f097445a5087579b77a1ebb07490696830af5389b2e84b58568161d731ce53806a083d0f19f5ab25b660099db2f5f92c989656710b38a682ed9efcd42bb879b9a13c0ec5359299d165fcd7ad41b6fdc99c2037b97a6471d01e2e80c0282d818b0003f97b7307a480478e8c53f7eb55063c174738699d3994d24822951cdc29e72032b15e396d1cafd85072a1b1320005491d60f5b02397d60b50c4e696e6410cd647d2d4e6e207e71b1119cfe28210f800b7f26ec66b5bdeb48624779cd2d6d8edcd92aceb15e8b5fc7a31bcbb04a61f19615844155146084d2ae91e008342c4c2d6457c0b02eb29754eae9dd725edd39095e0f35c78a753c07b270624e5790aee8a9873b6c3144f9a9958c23e7321189dcd7ab382e55869f655388c1797230a990a4487e0f4623139ea9dad6552ca6f9a9003e7453a8307f3965670c4f72abc8d94d3bd8940e15a45ba56b7943d53c82c7877e833694f0b4fd5015fbd2d5e851082fd3d9167dc635cf277c1b80191ee05b0b8b136a62ed7e4a142c8952047cc72af6265e372b16634f4a3a3e6057ecb03cec0314a0339bac04bc23682571857efa25d8e093709e27e109fc46fef6c4da5de3b58f63321ec66bdd48696e84eb7d3d251da77fac86888f42b717aa29ef5ef0e441658d0ad39d21e139a9a1dbe3e46cd19c650720ddf4f83d7351b7d297b0445c792e4485f3280e1f824ba1fa6d41dbf018744f81e0ee3817b3e22db6114f8f7bad82d1ef8e9db13a6cf73003a86e8888a98d581f51c98f1d1f1a3214bc5e20797196fd3d168224c71607f71925e1b8ce6e6a810c725035d9d5d4a4efebd876340b87336b356d73d34b7f6ace135cc71157d816d97e58dc705597cbb3d7a35bf3a738254422b198e4c37710ebe727054d7d21dbe0263961300f32733b19150297dc2b142959b9236b7eda7a6185c746ea78b66ffd82f4e953c5d06244beec36c83a6c531a917c512e3c690ab520092f8ac9e9de1584174b327dbbe013a246cfdfeef6d3f6cda269c6cc9c51b486cad2ee3fbefea47e85b4cbe95acfe280689ad13a4ba9ff73d39519dcb2bb6582524317d05c6c041d87efcf628ca96fa4925b7fe17977f52e90685ec9920106b93bdf7a6976ebdd01fb4199ef55e571f5effd84ba958ccc056d3fb1da4d4ddb2496c100a230650ddf02c5487aa523ff6c465ef4d8549e7e174d09aa9e81cec1c2077b835bfcd989d57572488093ba280f314fc803ae75edcee7707ad32a50ea7480c679cc4f3161a9a6c73f51044de2195b1eb848cdd8425cf9facc9633b37dae08e40788a64d0bc3dc39d368b88fe77ef510810cdd9d7f2a0eabeb5545d20e2a7a67d715fc744649d443984bb547808830872c80e793fbfb9a620941f13f50508be1a590f15ee6603ff89555901fb3f6952edc788eef1012e63c840adca083cb34250a1ff6d37e683ab99f774fe4421e50eefd55a59af91862153ee3be580e8a147317dce06629fd6e9441fd8a8bcd56eeaab161e6797b63d6218d4b24c0158147f388398077ddcd06debf493fc8db393c410b64c5f9892fcdfa0314977db4d51489487c7cf14b8f7fd56405e4d5ca0de09744c6e948e8168b07824d1185397fc0af9f4bc773cfec4efe963d3b4c6a38817bc1c0937cc2dcb9a135f8079c5d052351be383441d9ce70b4a5da7b3ffb0db88e086648f08c476b679e9d0d29c6018343d6befcee7e38f5b326bc02c81eff7f24b038ac8fcbfd5623acfdc98e460abd68ee965d467dc0398e3ffd6a2f6cf4265034805ecca2460c8e97f7c6ec5ac65c4604cc9787052dd90a147254c078b4ec6891b635ffa23ebc16cfcba37074e8a2ab7902ee257caa31c0676a92d3ccc7168071705237e67f86cc32342505bc2936c7116b589398657e2d8b5ce0b8520c35070dff3a35ff72fb5576757a47a663f163670bfa9e159685fa68d3a551d4227e1b2cc8a849f284d41a109c1d63eaa5d555c9d2fcc4d2f844bce132865609abf5789614a0723facaba3a865c07fd4be383680ee075bb04e33e881ead4ede8229d94104c149e9bc89a5c01e4ffbd28f0ca746cd5c97a69070c0d12e56f4743acb214a9cb4c8157a818b4316188bf632d4d7b02a57cdf36f92f4239c6322c20a5ede2ecb24cb8850db4995dfbd0fa887342d20547947fd8abe222b365c3a4847287094d164f13392d47d6c6ae3dcbc8f44eaf62dde4c4477757de829b5a5731629dfd18205fe5bcc22bb5ee15fc8c22ad165a83fd3049313ed2dd3a05562c082278e54f6a9d88deb82ad8468ccc2aa8218db3ee2faaf4dd648a5130f40bde3a2ca321f69471f7df239c2580dc902c1447827d06cfe5e9e3477743abd8e07ed0046dd95edae16cca09b4e3eb7189dafb4fac1ee3818b15b0554c1acfd4e99d95fc7294c3efaa076936409d2c3b6b2f68c9c87888a1ff816f0314d6696496c1b2cdaea9b920a6631cdfc45d633cfc4dc98697ce0e33e7ad53eeb90f73fb74e994ab3c9ffe532302fc5ec132271603a894ba9e76b74740c12e779f138e273779e57ffd13891c53aa57a503f25601b9200fdb74ec6fa68ff437d53edbacd96e79bcd3b1d401af3b2a022d24b2a03c8ffb43d69e63e59fd82c8864871224e5122b0c1fe279c17a5d4517c675d3ada3f4f6efa8715b36ffb18f77b8a538d688c09fafa460c47a3123c90d44136ba74396ff8d6a282a96e741b5011e45c436ad09142c399085c133ebf039aedb3983d88d7fe9a3aea2826cab6b2496db9aece34ea01a5b7f5555d6f6991917e70eab6ab81bd852d2cd4a78236d6ce0a7f0775c4bd3fc43bee118eeb1be38f6b035c2b26b7708be8c6c2407fc38d8c34f9d6eac1e5d87892d25732cf9dcebffc4ca00c1d5654700cf3f087a3a21ce4b6ab5b406e5c8983c82ddbac3bfd32cb3681157efe923042b55c4d1d9589b654e55b568ea65f8867b8c1df242e06680d11a11c866a1b942fe05ebaef9052a660fb213dab5b2539f9935d7abb2e9f161bfc8cd5793f3bbfd4ac969c78cde682281a12b38ad5aac40982982d6429c12116cbf03f050f86bd9929777a10ca58f7fcfcc668b8edc56c6566ddcb6d3f02e642daa288c9a5f7a9f4b5eabf1b4c3ee0110d006581395ae65b56f66a6051243be934598eafffe79c849eba136033ceb8ec4e4643a44e33a74802bb6c0bcbb58b92a130d970e3fd675dcb92baa038f611eabfe8267bb529d357dda06232c102b96defc468f5138b4a8dcff55a790f6ffe6c9e38fe17cdbc9d4ef8562ac8b52d59b8ddf96c4730db8e68dae1b3fe0e4ec13ce3848b6c1780e9016da7db6d8863df07a3b96f5af9ba60beecf5af6840419b092752ee0efbe3ce83488cdb830003055b46ff9c5d3a6c1ba62ee7fbbfcaf082c3dfbf80d3bf23a323b07f6c16d4e9fde54ccf6801fd1829c2ed13d82f0db71fbb9acd6089f101ce8ceb9ccc60924783af78c19c9600afc69b4e98ad442a14ae87b0b29cea25cbde2231c6489e60889ebcfc68fe69abcc993d1a66e77f592ba68e1862c64e5e56761704c215f87793221b5f75db6fc7f3bba7114db2f68649ba38b9e42b8498f6530f90cd0d5a0836b64322e1464ad29dcbb20bb3cf7f3d30f6d8d236e92982681bc4ccd23811c43c442c4a82200fff22e37fc3c22e14aa1e4852555b43ada6702a2dfa0d80dcc525008604dcf316e4817a5d0b2e477d908ea4bd70b9aeb08209ef509b568211f868ed6399bab7641c197d2e5b04c8cd4712c3636ae0f697e0de6efb8ed9309571c71fafe8c0164906a49cb5932c69993d6a5d2b3b079b71724cc2bcd17356c7935d708f5adc8344ee9e213377a7d934e1597875bcd1f3e803a94499198849a69410123dabede4fe2a92f1f9c646b4c78219ccf4eb6738b546dcde12497715254d7797b93bbe63b0f780e83e5d410c45f74b2ecc60fe4f6a6a76acf8a19adb1d84b4b2b02c2231d7515c7220ab1c009603e5f4043f12dab834e1b566a196eb96473da42755e0b0ff89a2e97ca712eb4845db74274cfd235fc18122c6939b83f7f760f260b869fdc9adda0709d95d82a6afcccc0e48171087dd28ac0ff9d0ccda93729cc457253bf50e95f45806c51df773f6db941fc16617bb4e2432a0803376ff73001b3676d02834a5c37061c2dff17da3a802374395f8bae7d4676d8ca6095090337daa30032344ac051354e16aa1913ac8b06c826751aa5eb962658992dbb489f225e876eec781f2010e40b736e715fa31120349867155deb787672e1a3cfec9d7b31ac0abcea9cf65e89eeb4aeb927ffb418622ee79e56d6afb5f87e56944b4ac697c3c000857562c1d48989d3d9773881eb49251ebe826753f138f1a3c56bb026d7a92a0f23f3fe783b3985c9ee436f0a39562d973d879fa1132f34b111ed3f4e46480c19a407ef0f63d9748edd18f26ce4b5f74caa534927ce9d3abba57992bdd7a69f658498a0fdca325ea3429f32225729de8236cf03995fdb0f7f00ec645233453ef2e17b34566896e62b1aef95061e9df61ecfaff2c1a2b4c52277f0642fd06d4cb6afee2e64daf4de9066ada9cbcf7f927ce19bc3d604d7d5b94043228959206547ac31bc3b1542e68f99788fbc51ce4012e44f55d93b73f3df64526841af7b77fe57630ad3163eb06c2f435152420c22ca2d01cb789ff59d56ce5fdf6a03dbac1f170d608eaf7653d89f2f43fc632fa1f0cd826abfb7692b42add033c0e57da12c8d9222e5ddf2c7c3f4eae3bdd7ee7b93fe8f7506cb19ecffa</script>
   <div class="hbe hbe-content">
     <div class="hbe hbe-input hbe-input-default">
       <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
@@ -3659,7 +3674,6 @@
         <category>面试</category>
       </categories>
       <tags>
-        <tag>八股文</tag>
         <tag>算法</tag>
       </tags>
   </entry>

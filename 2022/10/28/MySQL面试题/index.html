@@ -23,7 +23,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h7lczbhkshj318611ik0y.jpg">
 <meta property="article:published_time" content="2022-10-28T06:09:46.000Z">
-<meta property="article:modified_time" content="2022-10-30T14:00:06.096Z">
+<meta property="article:modified_time" content="2022-11-16T05:46:12.795Z">
 <meta property="article:author" content="可可西里">
 <meta property="article:tag" content="八股文">
 <meta property="article:tag" content="MySQL">
@@ -189,7 +189,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-2.png" style="max-height: 240px;">
+      <img src="/images/random/material-12.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">MySQL面试题</div>
@@ -240,17 +240,17 @@
     </header>
     <div class="mdui-card-content mdui-typo">
       <p>MySQL常见面试题、八股文</p>
-<h4 id="1-Mysql索引用的是什么算法"><a href="#1-Mysql索引用的是什么算法" class="headerlink" title="1. Mysql索引用的是什么算法"></a>1. Mysql索引用的是什么算法</h4><ul>
+<h4 id="1-Mysql索引用的是什么算法"><a href="#1-Mysql索引用的是什么算法" class="headerlink" title="1. Mysql索引用的是什么算法"></a><font color=DarkOrange>1. Mysql索引用的是什么算法</font></h4><ul>
 <li>Mysql索引选用的是B+树，平衡二叉树的高度太高，查找可能需要较多的磁盘IO。B树索引占用内存较高(非叶子节点存储数据)</li>
 <li>B+树，主要是查询效率高，O(logN)，可以充分利用磁盘预读的特性，多叉树，深度小，叶子结点有序且存储数据</li>
 </ul>
-<h4 id="2-Mysql事务的基本要素"><a href="#2-Mysql事务的基本要素" class="headerlink" title="2. Mysql事务的基本要素"></a>2. Mysql事务的基本要素</h4><ul>
+<h4 id="2-Mysql事务的基本要素"><a href="#2-Mysql事务的基本要素" class="headerlink" title="2. Mysql事务的基本要素"></a><font color=DarkOrange>2. Mysql事务的基本要素</font></h4><ul>
 <li>原子性：事务是一个原子操作单元，其对数据的修改，要么全都执行，要么全都不执行</li>
 <li>一致性：事务开始前和结束后，数据库的完整性约束没有被破坏</li>
 <li>隔离性：同一时间，只允许一个事务请求同一数据，不同的事务之间彼此没有任何干扰</li>
 <li>持久性：事务完成后，事务对数据库的所有更新将被保存到数据库，不能回滚</li>
 </ul>
-<h4 id="3-Mysql的存储引擎"><a href="#3-Mysql的存储引擎" class="headerlink" title="3. Mysql的存储引擎"></a>3. Mysql的存储引擎</h4><ul>
+<h4 id="3-Mysql的存储引擎"><a href="#3-Mysql的存储引擎" class="headerlink" title="3. Mysql的存储引擎"></a><font color=DarkOrange>3. Mysql的存储引擎</font></h4><ul>
 <li>InnoDB存储引擎<ul>
 <li>InnoDB存储引擎支持事务，其设计目标主要面向在线事务处理（OLTP）的应用</li>
 <li>其特点是行锁设计，支持外键，并支持非锁定锁，即默认读取操作不会产生锁。从Mysql5.5.8版本开始，InnoDB存储引擎是默认的存储引擎</li>
@@ -285,7 +285,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="4-Mysql事务隔离级别"><a href="#4-Mysql事务隔离级别" class="headerlink" title="4. Mysql事务隔离级别"></a>4. Mysql事务隔离级别</h4><p>Mysql有四种事务隔离级别，默认的是可重复读</p>
+<h4 id="4-Mysql事务隔离级别"><a href="#4-Mysql事务隔离级别" class="headerlink" title="4. Mysql事务隔离级别"></a><font color=DarkOrange>4. Mysql事务隔离级别</font></h4><p>Mysql有四种事务隔离级别，默认的是可重复读</p>
 <table>
 <thead>
 <tr>
@@ -360,7 +360,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="5-Mysql高可用方案有哪些"><a href="#5-Mysql高可用方案有哪些" class="headerlink" title="5. Mysql高可用方案有哪些"></a>5. Mysql高可用方案有哪些</h4><ul>
+<h4 id="5-Mysql高可用方案有哪些"><a href="#5-Mysql高可用方案有哪些" class="headerlink" title="5. Mysql高可用方案有哪些"></a><font color=DarkOrange>5. Mysql高可用方案有哪些</font></h4><ul>
 <li>主从复制方案<ul>
 <li>这是MySQL自身提供的一种高可用解决方案，数据同步方法采用的是<code>MySQL replication</code>技术。<code>MySQL replication</code>就是从服务器到主服务器拉取二进制日志文件，然后再将日志文件解析成相应的SQL在从服务器上重新执行一遍主服务器的操作，通过这种方式保证数据的一致性</li>
 <li>为了达到更高的可用性，在实际的应用环境中，一般都是采用<code>MySQL replication</code>技术配合高可用集群软件<code>keepalived</code>来实现自动<code>failover</code>，这种方式可以实现95.000%的SLA</li>
@@ -387,14 +387,14 @@
 </ul>
 </li>
 </ul>
-<h4 id="6-Mysql中utf8和utf8mb4区别"><a href="#6-Mysql中utf8和utf8mb4区别" class="headerlink" title="6. Mysql中utf8和utf8mb4区别"></a>6. Mysql中utf8和utf8mb4区别</h4><ul>
+<h4 id="6-Mysql中utf8和utf8mb4区别"><a href="#6-Mysql中utf8和utf8mb4区别" class="headerlink" title="6. Mysql中utf8和utf8mb4区别"></a><font color=DarkOrange>6. Mysql中utf8和utf8mb4区别</font></h4><ul>
 <li>MySQL在5.5.3之后增加了这个utf8mb4的编码，mb4就是most bytes 4的意思，专门用来兼容四字节的unicode。好在utf8mb4是utf8的超集，除了将编码改为utf8mb4外不需要做其他转换。当然，为了节省空间，一般情况下使用utf8也就可以了</li>
 <li>Mysql支持的utf8编码最大字符长度为3字节，如果遇到4字节的宽字符就会插入异常了。三个字节的UTF-8最大能编码的Unicode字符是0xffff，也就是Unicode中的基本多文种平面(BMP)。任何不在基本多文本平面的Unicode字符，都无法使用Mysql的utf8字符集存储</li>
 <li>包括 Emoji 表情(Emoji是一种特殊的Unicode编码，常见于ios和android手机上)，和很多不常用的汉字，以及任何新增的Unicode字符等等</li>
 <li>Mysql中保存4字节长度的UTF-8字符，需要使用utf8mb4字符集，但只有5.5.3版本以后的才支持(查看版本： select version();)。因此呢，为了获取更好的兼容性，应该总是使用utf8mb4而非utf8</li>
 <li>对于CHAR类型数据，utf8mb4会多消耗一些空间，根据Mysql官方建议，使用VARCHAR替代CHAR</li>
 </ul>
-<h4 id="7-Mysql中乐观锁和悲观锁区别"><a href="#7-Mysql中乐观锁和悲观锁区别" class="headerlink" title="7. Mysql中乐观锁和悲观锁区别"></a>7. Mysql中乐观锁和悲观锁区别</h4><ul>
+<h4 id="7-Mysql中乐观锁和悲观锁区别"><a href="#7-Mysql中乐观锁和悲观锁区别" class="headerlink" title="7. Mysql中乐观锁和悲观锁区别"></a><font color=DarkOrange>7. Mysql中乐观锁和悲观锁区别</font></h4><ul>
 <li><p>悲观锁(Pessimistic Lock)</p>
 <ul>
 <li>悲观锁顾名思义，就是很悲观，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会block直到它拿到锁</li>
@@ -411,7 +411,7 @@
 <li><p>两种锁各有优缺点，不可认为一种好于另一种，像乐观锁适用于写比较少的情况下，即冲突真的很少发生的时候，这样可以省去了锁的开销，加大了系统的整个吞吐量。但如果经常产生冲突，上层应用会不断的进行retry，这样反倒是降低了性能，所以这种情况下用悲观锁就比较合适</p>
 </li>
 </ul>
-<h4 id="8-Mysql索引主要是哪些"><a href="#8-Mysql索引主要是哪些" class="headerlink" title="8. Mysql索引主要是哪些"></a>8. Mysql索引主要是哪些</h4><p>索引的目的在于提高查询效率</p>
+<h4 id="8-Mysql索引主要是哪些"><a href="#8-Mysql索引主要是哪些" class="headerlink" title="8. Mysql索引主要是哪些"></a><font color=DarkOrange>8. Mysql索引主要是哪些</font></h4><p>索引的目的在于提高查询效率</p>
 <ul>
 <li>UNIQUE(唯一索引)：不可以出现相同的值，可以有NULL值</li>
 <li>INDEX(普通索引)：允许出现相同的索引内容</li>
@@ -420,12 +420,12 @@
 <li>组合索引：实质上是将多个字段建到一个索引里，列值的组合必须唯一</li>
 </ul>
 <hr>
-<h5 id="8-1-索引的缺点"><a href="#8-1-索引的缺点" class="headerlink" title="8.1 索引的缺点"></a>8.1 索引的缺点</h5><ul>
+<h5 id="8-1-索引的缺点"><a href="#8-1-索引的缺点" class="headerlink" title="8.1 索引的缺点"></a><font color=DarkOrange>8.1 索引的缺点</font></h5><ul>
 <li>虽然索引大大提高了查询速度，同时却会降低更新表的速度，如对表进行INSERT，UPDATE和DELETE。因为更新表时，mysql不仅要保存数据，还要保存一下索引文件</li>
 <li>建立索引会占用磁盘空间的索引文件。一般情况这个问题不太严重，但如果你在要给大表上建了多种组合索引，索引文件会膨胀很宽， 索引只是提高效率的一个方式，如果mysql有大数据量的表，就要花时间研究建立最优的索引，或优化查询语句</li>
 </ul>
 <hr>
-<h5 id="8-2-索引使用技巧"><a href="#8-2-索引使用技巧" class="headerlink" title="8.2 索引使用技巧"></a>8.2 索引使用技巧</h5><ul>
+<h5 id="8-2-索引使用技巧"><a href="#8-2-索引使用技巧" class="headerlink" title="8.2 索引使用技巧"></a><font color=DarkOrange>8.2 索引使用技巧</font></h5><ul>
 <li><strong>索引不会包含有NULL的列：</strong> 只要列中包含有NULL值，都将不会被包含在索引中，复合索引中只要有一列含有NULL值，那么这一列对于此符合索引就是无效的</li>
 <li><strong>使用短索引：</strong> 对串列进行索引，如果可以就应该指定一个前缀长度。例如，如果有一个char（255）的列，如果在前10个或20个字符内，多数值是唯一的，那么就不要对整个列进行索引。短索引不仅可以提高查询速度而且可以节省磁盘空间和I&#x2F;O操作</li>
 <li><strong>索引列排序：</strong>mysql查询只使用一个索引，因此如果where子句中已经使用了索引的话，那么order by中的列是不会使用索引的。因此数据库默认排序可以符合要求的情况下不要使用排序操作，尽量不要包含多个列的排序，如果需要最好给这些列建复合索引</li>
@@ -441,7 +441,7 @@
 <li>在join操作中(需要从多个数据表提取数据时)，mysql只有在主键和外键的数据类型相同时才能使用索引，否则及时建立了索引也不会使用</li>
 </ul>
 <hr>
-<h5 id="8-3-组合索引的作用"><a href="#8-3-组合索引的作用" class="headerlink" title="8.3 组合索引的作用"></a>8.3 组合索引的作用</h5><ul>
+<h5 id="8-3-组合索引的作用"><a href="#8-3-组合索引的作用" class="headerlink" title="8.3 组合索引的作用"></a><font color=DarkOrange>8.3 组合索引的作用</font></h5><ul>
 <li>减少开销<ul>
 <li>建一个组合索引(col1，col2，col3)，实际相当于建了(col1)，(col1，col2)，(col1，col2，col3)三个索引。每多一个索引，都会增加写操作的开销和磁盘空间的开销。对于大量数据的表，使用组合索引会大大的减少开销</li>
 </ul>
@@ -457,7 +457,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="9-Mysql联合索引最左匹配原则"><a href="#9-Mysql联合索引最左匹配原则" class="headerlink" title="9. Mysql联合索引最左匹配原则"></a>9. Mysql联合索引最左匹配原则</h4><ul>
+<h4 id="9-Mysql联合索引最左匹配原则"><a href="#9-Mysql联合索引最左匹配原则" class="headerlink" title="9. Mysql联合索引最左匹配原则"></a><font color=DarkOrange>9. Mysql联合索引最左匹配原则</font></h4><ul>
 <li>在MySQL建立联合索引时会遵守最左前缀匹配原则，即最左优先<ul>
 <li>在检索数据时从联合索引的最左边开始匹配，Mysql会一直向右匹配直到遇到范围查询（<code>&gt;、&lt;、between、like</code>）就停止匹配了</li>
 <li>就比如 <code>a=3 and b=4 and c&gt;5 and d=6</code>如果建立(abcd)顺序的索引，d就用不到索引了，如果建立(abdc)的索引则都可以用到索引，其中abd的顺序可以任意调整，因为查询优化器会重新编排（即使是c&gt;5 and b&#x3D;4 and d&#x3D;6 and a&#x3D;3也会全部用到 abdc索引 ）</li>
@@ -469,7 +469,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="10-聚簇索引和非聚簇索引区别"><a href="#10-聚簇索引和非聚簇索引区别" class="headerlink" title="10. 聚簇索引和非聚簇索引区别"></a>10. 聚簇索引和非聚簇索引区别</h4><ul>
+<h4 id="10-聚簇索引和非聚簇索引区别"><a href="#10-聚簇索引和非聚簇索引区别" class="headerlink" title="10. 聚簇索引和非聚簇索引区别"></a><font color=DarkOrange>10. 聚簇索引和非聚簇索引区别</font></h4><ul>
 <li>聚簇索引与非聚簇索引的区别是：叶子节点是否存放一整行记录</li>
 <li>InnoDB 主键使用的是聚簇索引，MyISAM 不管是主键索引，还是二级索引使用的都是非聚簇索引</li>
 <li>对于聚簇索引表来说（左图），表数据是和主键一起存储的，主键索引的叶结点存储行数据(包含了主键值)，二级索引的叶结点存储行的主键值。使用的是B+树作为索引的存储结构，非叶子节点都是索引关键字，但非叶子节点中的关键字中不存储对应记录的具体内容或内容地址。叶子节点上的数据是主键与具体记录(数据内容)</li>
@@ -478,11 +478,11 @@
 </ul>
 <div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7lczbhkshj318611ik0y.jpg" alt="image.png" style="zoom: 20%;" /></div>
 
-<h4 id="11-如何查询一个字段是否命中了索引"><a href="#11-如何查询一个字段是否命中了索引" class="headerlink" title="11. 如何查询一个字段是否命中了索引"></a>11. 如何查询一个字段是否命中了索引</h4><ul>
+<h4 id="11-如何查询一个字段是否命中了索引"><a href="#11-如何查询一个字段是否命中了索引" class="headerlink" title="11. 如何查询一个字段是否命中了索引"></a><font color=DarkOrange>11. 如何查询一个字段是否命中了索引</font></h4><ul>
 <li>通过explain sql可看下SQL是否走了索引，很快对比出来 </li>
 <li>当一个sql中索引字段为int类型时，例如搜索条件<code>where num=&quot;111&quot;</code>与<code>where num=111</code>都可以使用该字段的索引。当一个中索引字段为varchar类型时，例如搜索条件<code>where num=&quot;111&quot;</code>可以使用索引，<code>where num=111</code>不可以使用索引</li>
 </ul>
-<h4 id="12-Mysql中查询数据什么情况下不会命中索引"><a href="#12-Mysql中查询数据什么情况下不会命中索引" class="headerlink" title="12. Mysql中查询数据什么情况下不会命中索引"></a>12. Mysql中查询数据什么情况下不会命中索引</h4><ul>
+<h4 id="12-Mysql中查询数据什么情况下不会命中索引"><a href="#12-Mysql中查询数据什么情况下不会命中索引" class="headerlink" title="12. Mysql中查询数据什么情况下不会命中索引"></a><font color=DarkOrange>12. Mysql中查询数据什么情况下不会命中索引</font></h4><ul>
 <li>索引规范不合理，sql解析器不命中索引</li>
 <li>表中索引是以表中数据量字段最多的建立的索引，sql解析器不命中索引(实际就是索引没用，最后全局查找了)</li>
 <li>bool的字段做索引，sql选择器不命中索引</li>
@@ -494,7 +494,7 @@
 <li>or操作有至少一个字段没有索引</li>
 <li>需要回表的查询结果集过大（超过配置的范围）</li>
 </ul>
-<h4 id="13-Mysql中的MVCC是什么"><a href="#13-Mysql中的MVCC是什么" class="headerlink" title="13. Mysql中的MVCC是什么"></a>13. Mysql中的MVCC是什么</h4><p>数据库并发控制——锁:Multiversion (version) concurrency control (MCC or MVCC) 多版本并发控制 ，它是数据库管理系统一种常见的并发控制</p>
+<h4 id="13-Mysql中的MVCC是什么"><a href="#13-Mysql中的MVCC是什么" class="headerlink" title="13. Mysql中的MVCC是什么"></a><font color=DarkOrange>13. Mysql中的MVCC是什么</font></h4><p>数据库并发控制——锁:Multiversion (version) concurrency control (MCC or MVCC) 多版本并发控制 ，它是数据库管理系统一种常见的并发控制</p>
 <p>并发控制常用的是锁，当线程要对一个共享资源进行操作的时候，加锁是一种非常简单粗暴的方法(事务开始时给 DQL 加读锁，给 DML 加写锁)，这种锁是一种 悲观 的实现方式，也就是说这会给其他事务造成堵塞，从而影响数据库性能</p>
 <p>其中在数据库中最常见的就是悲观锁和乐观锁：</p>
 <ul>
@@ -534,7 +534,7 @@
 <li>DB_ROLL_PTR：回滚指针，指向这条记录的上一个版本</li>
 </ul>
 <p>其实还有一个删除的flag字段，用来判断该行记录是否已经被删除。而 MVCC 使用的是其中的 事务字段，回滚指针字段，是否删除字段</p>
-<h4 id="14-Mvcc和Redolog和Undolog以及Binlog有什么不同"><a href="#14-Mvcc和Redolog和Undolog以及Binlog有什么不同" class="headerlink" title="14. Mvcc和Redolog和Undolog以及Binlog有什么不同"></a>14. Mvcc和Redolog和Undolog以及Binlog有什么不同</h4><ul>
+<h4 id="14-Mvcc和Redolog和Undolog以及Binlog有什么不同"><a href="#14-Mvcc和Redolog和Undolog以及Binlog有什么不同" class="headerlink" title="14. Mvcc和Redolog和Undolog以及Binlog有什么不同"></a><font color=DarkOrange>14. Mvcc和Redolog和Undolog以及Binlog有什么不同</font></h4><ul>
 <li>Mvcc<ul>
 <li>MVCC多版本并发控制是MySQL中基于乐观锁理论实现隔离级别的方式，用于读已提交和可重复读取隔离级别的实现</li>
 <li>在MySQL中，会在表中每一条数据后面添加两个字段，最近修改该行数据的事务ID，指向该行（undolog表中）回滚段的指针</li>
@@ -563,31 +563,31 @@
 </ul>
 </li>
 </ul>
-<h4 id="15-Mysql读写分离以及主从同步"><a href="#15-Mysql读写分离以及主从同步" class="headerlink" title="15. Mysql读写分离以及主从同步"></a>15. Mysql读写分离以及主从同步</h4><ul>
+<h4 id="15-Mysql读写分离以及主从同步"><a href="#15-Mysql读写分离以及主从同步" class="headerlink" title="15. Mysql读写分离以及主从同步"></a><font color=DarkOrange>15. Mysql读写分离以及主从同步</font></h4><ul>
 <li>原理：主库将变更写binlog日志，然后从库连接到主库后，从库有一个IO线程，将主库的binlog日志拷贝到自己本地，写入一个中继日志中，接着从库中有一个sql线程会从中继日志读取binlog，然后执行binlog日志中的内容，也就是在自己本地再执行一遍sql，这样就可以保证自己跟主库的数据一致</li>
 <li>问题：这里有很重要一点，就是从库同步主库数据的过程是串行化的，也就是说主库上并行操作，在从库上会串行化执行，由于从库从主库拷贝日志以及串行化执行sql特点，在高并发情况下，从库数据一定比主库慢一点，是有延时的，所以经常出现，刚写入主库的数据可能读不到了，要过几十毫秒，甚至几百毫秒才能读取到。还有一个问题，如果突然主库宕机了，然后恰巧数据还没有同步到从库，那么有些数据可能在从库上是没有的，有些数据可能就丢失了。所以mysql实际上有两个机制，一个是半同步复制，用来解决主库数据丢失问题，一个是并行复制，用来解决主从同步延时问题</li>
 <li>半同步复制：semi-sync复制，指的就是主库写入binlog日志后，就会将强制此时立即将数据同步到从库，从库将日志写入自己本地的relay log之后，接着会返回一个ack给主库，主库接收到至少一个从库ack之后才会认为写完成</li>
 <li>并发复制：指的是从库开启多个线程，并行读取relay log中不同库的日志，然后并行重放不同库的日志，这样库级别的并行。（将主库分库也可缓解延迟问题）</li>
 </ul>
-<h4 id="16-InnoDB的关键特性"><a href="#16-InnoDB的关键特性" class="headerlink" title="16. InnoDB的关键特性"></a>16. InnoDB的关键特性</h4><ul>
+<h4 id="16-InnoDB的关键特性"><a href="#16-InnoDB的关键特性" class="headerlink" title="16. InnoDB的关键特性"></a><font color=DarkOrange>16. InnoDB的关键特性</font></h4><ul>
 <li>插入缓冲：对于非聚集索引的插入或更新操作，不是每一次直接插入到索引页中，而是先判断插入的非聚集索引页是否在缓冲池中，若在，则直接插入；若不在，则先放入到一个Insert Buffer对象中。然后再以一定的频率和情况进行Insert Buffer和辅助索引页子节点的merge（合并）操作，这时通常能将多个插入合并到一个操作中（因为在一个索引页中），这就大大提高了对于非聚集索引插入的性能</li>
 <li>两次写：两次写带给InnoDB存储引擎的是数据页的可靠性，有经验的DBA也许会想，如果发生写失效，可以通过重做日志进行恢复。这是一个办法。但是必须清楚地认识到，如果这个页本身已经发生了损坏（物理到page页的物理日志成功页内逻辑日志失败），再对其进行重做是没有意义的。这就是说，在应用（apply）重做日志前，用户需要一个页的副本，当写入失效发生时，先通过页的副本来还原该页，再进行重做。在对缓冲池的脏页进行刷新时，并不直接写磁盘，而是会通过memcpy函数将脏页先复制到内存中的doublewrite buffer，之后通过doublewrite buffer再分两次，每次1MB顺序地写入共享表空间的物理磁盘上，这就是doublewrite</li>
 <li>自适应哈希索引：InnoDB存储引擎会监控对表上各索引页的查询。如果观察到建立哈希索引可以带来速度提升，则建立哈希索引，称之为自适应哈希索引</li>
 <li>异步IO：为了提高磁盘操作性能，当前的数据库系统都采用异步IO（AIO）的方式来处理磁盘操作。AIO的另一个优势是可以进行IO Merge操作，也就是将多个IO合并为1个IO，这样可以提高IOPS的性能</li>
 <li>刷新邻接页：当刷新一个脏页时，InnoDB存储引擎会检测该页所在区（extent）的所有页，如果是脏页，那么一起进行刷新。这样做的好处显而易见，通过AIO可以将多个IO写入操作合并为一个IO操作，故该工作机制在传统机械磁盘下有着显著的优势</li>
 </ul>
-<h4 id="17-Mysql如何保证一致性和持久性"><a href="#17-Mysql如何保证一致性和持久性" class="headerlink" title="17. Mysql如何保证一致性和持久性"></a>17. Mysql如何保证一致性和持久性</h4><ul>
+<h4 id="17-Mysql如何保证一致性和持久性"><a href="#17-Mysql如何保证一致性和持久性" class="headerlink" title="17. Mysql如何保证一致性和持久性"></a><font color=DarkOrange>17. Mysql如何保证一致性和持久性</font></h4><ul>
 <li>Mysql为了保证<code>ACID</code>中的一致性和持久性，使用了WAL(<code>Write-Ahead Logging</code>，先写日志再写磁盘)。<code>Redo log</code>就是一种WAL的应用</li>
 <li>当数据库忽然掉电，再重新启动时，Mysql可以通过<code>Redo log</code>还原数据。也就是说，每次事务提交时，不用同步刷新磁盘数据文件，只需要同步刷新<code>Redo log</code>就足够了</li>
 </ul>
-<h4 id="18-为什么选择B-树作为索引结构"><a href="#18-为什么选择B-树作为索引结构" class="headerlink" title="18. 为什么选择B+树作为索引结构"></a>18. 为什么选择B+树作为索引结构</h4><ul>
+<h4 id="18-为什么选择B-树作为索引结构"><a href="#18-为什么选择B-树作为索引结构" class="headerlink" title="18. 为什么选择B+树作为索引结构"></a><font color=DarkOrange>18. 为什么选择B+树作为索引结构</font></h4><ul>
 <li>Hash索引：Hash索引底层是哈希表，哈希表是一种以key-value存储数据的结构，所以多个数据在存储关系上是完全没有任何顺序关系的，所以，对于区间查询是无法直接通过索引查询的，就需要全表扫描。所以，哈希索引只适用于等值查询的场景。而B+ 树是一种多路平衡查询树，所以他的节点是天然有序的（左子节点小于父节点、父节点小于右子节点），所以对于范围查询的时候不需要做全表扫描</li>
 <li>二叉查找树：解决了排序的基本问题，但是由于无法保证平衡，可能退化为链表</li>
 <li>平衡二叉树：通过旋转解决了平衡的问题，但是旋转操作效率太低</li>
 <li>红黑树：通过舍弃严格的平衡和引入红黑节点，解决了AVL旋转效率过低的问题，但是在磁盘等场景下，树仍然太高，IO次数太多</li>
 <li>B+树：在B树的基础上，将非叶节点改造为不存储数据纯索引节点，进一步降低了树的高度；此外将叶节点使用指针连接成链表，范围查询更加高效。此外，B+树，主要是查询效率高，O(logN)，可以充分利用磁盘预读的特性，多叉树，深度小，叶子结点有序且存储数据</li>
 </ul>
-<h4 id="19-InnoDB的行锁模式"><a href="#19-InnoDB的行锁模式" class="headerlink" title="19. InnoDB的行锁模式"></a>19. InnoDB的行锁模式</h4><ul>
+<h4 id="19-InnoDB的行锁模式"><a href="#19-InnoDB的行锁模式" class="headerlink" title="19. InnoDB的行锁模式"></a><font color=DarkOrange>19. InnoDB的行锁模式</font></h4><ul>
 <li>共享锁(S)：用法lock in share mode，又称读锁，允许一个事务去读一行，阻止其他事务获得相同数据集的排他锁<ul>
 <li>若事务T对数据对象A加上S锁，则事务T可以读A但不能修改A，其他事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁。这保证了其他事务可以读A，但在T释放A上的S锁之前不能对A做任何修改</li>
 </ul>
@@ -597,20 +597,20 @@
 </ul>
 </li>
 </ul>
-<h4 id="20-哈希-hash-比树-tree-更快，索引结构为什么要设计成树型"><a href="#20-哈希-hash-比树-tree-更快，索引结构为什么要设计成树型" class="headerlink" title="20. 哈希(hash)比树(tree)更快，索引结构为什么要设计成树型"></a>20. 哈希(hash)比树(tree)更快，索引结构为什么要设计成树型</h4><p>加速查找速度的数据结构，常见的有两类：</p>
+<h4 id="20-哈希-hash-比树-tree-更快，索引结构为什么要设计成树型"><a href="#20-哈希-hash-比树-tree-更快，索引结构为什么要设计成树型" class="headerlink" title="20. 哈希(hash)比树(tree)更快，索引结构为什么要设计成树型"></a><font color=DarkOrange>20. 哈希(hash)比树(tree)更快，索引结构为什么要设计成树型</font></h4><p>加速查找速度的数据结构，常见的有两类：</p>
 <ul>
 <li>哈希，例如HashMap，查询&#x2F;插入&#x2F;修改&#x2F;删除的平均时间复杂度都是O(1)</li>
 <li>树，例如平衡二叉搜索树，查询&#x2F;插入&#x2F;修改&#x2F;删除的平均时间复杂度都是O(lg(n))</li>
 </ul>
 <p>哈希只能满足等值查询，不满足范围和大小查询，其次哈希不可以排序。Mysql是用等值查询，用树的话，等值查询只需要顺序遍历即可。但是对于排序查询的sql需求：分组：<code>group by</code> ，排序：<code>order by</code> ，比较：<code>&lt;、&gt;</code>等，哈希型的索引，时间复杂度会退化为O(n)，而树型的“有序”特性，依然能够保持O(log(n)) 的高效率</p>
-<h4 id="21-为什么索引的key长度不能太长"><a href="#21-为什么索引的key长度不能太长" class="headerlink" title="21. 为什么索引的key长度不能太长"></a>21. 为什么索引的key长度不能太长</h4><p>key 太长会导致一个页当中能够存放的 key 的数目变少，间接导致索引树的页数目变多，索引层次增加，从而影响整体查询变更的效率</p>
-<h4 id="22-Mysql的数据如何恢复到任意时间点"><a href="#22-Mysql的数据如何恢复到任意时间点" class="headerlink" title="22. Mysql的数据如何恢复到任意时间点"></a>22. Mysql的数据如何恢复到任意时间点</h4><p>恢复到任意时间点以定时的做全量备份，以及备份增量的 binlog 日志为前提。恢复到任意时间点首先将全量备份恢复之后，再此基础上回放增加的 binlog 直至指定的时间点</p>
-<h4 id="23-Mysql为什么加了索引可以加快查询"><a href="#23-Mysql为什么加了索引可以加快查询" class="headerlink" title="23. Mysql为什么加了索引可以加快查询"></a>23. Mysql为什么加了索引可以加快查询</h4><p>在数据十分庞大的时候，索引可以大大加快查询的速度，这是因为使用索引后可以不用扫描全表来定位某行的数据，而是先通过索引表找到该行数据对应的物理地址然后访问相应的数据</p>
+<h4 id="21-为什么索引的key长度不能太长"><a href="#21-为什么索引的key长度不能太长" class="headerlink" title="21. 为什么索引的key长度不能太长"></a><font color=DarkOrange>21. 为什么索引的key长度不能太长</font></h4><p>key 太长会导致一个页当中能够存放的 key 的数目变少，间接导致索引树的页数目变多，索引层次增加，从而影响整体查询变更的效率</p>
+<h4 id="22-Mysql的数据如何恢复到任意时间点"><a href="#22-Mysql的数据如何恢复到任意时间点" class="headerlink" title="22. Mysql的数据如何恢复到任意时间点"></a><font color=DarkOrange>22. Mysql的数据如何恢复到任意时间点</font></h4><p>恢复到任意时间点以定时的做全量备份，以及备份增量的 binlog 日志为前提。恢复到任意时间点首先将全量备份恢复之后，再此基础上回放增加的 binlog 直至指定的时间点</p>
+<h4 id="23-Mysql为什么加了索引可以加快查询"><a href="#23-Mysql为什么加了索引可以加快查询" class="headerlink" title="23. Mysql为什么加了索引可以加快查询"></a><font color=DarkOrange>23. Mysql为什么加了索引可以加快查询</font></h4><p>在数据十分庞大的时候，索引可以大大加快查询的速度，这是因为使用索引后可以不用扫描全表来定位某行的数据，而是先通过索引表找到该行数据对应的物理地址然后访问相应的数据</p>
 <ul>
 <li>优势：可以快速检索，减少I&#x2F;O次数，加快检索速度；根据索引分组和排序，可以加快分组和排序</li>
 <li>劣势：索引本身也是表，因此会占用存储空间，一般来说，索引表占用的空间的数据表的1.5倍；索引表的维护和创建需要时间成本，这个成本随着数据量增大而增大；构建索引会降低数据表的修改操作（删除，添加，修改）的效率，因为在修改数据表的同时还需要修改索引表</li>
 </ul>
-<h4 id="24-Explain命令有什么用"><a href="#24-Explain命令有什么用" class="headerlink" title="24. Explain命令有什么用"></a>24. Explain命令有什么用</h4><p>在开发的过程中，我们有时会用<strong>慢查询</strong>去记录一些执行时间比较久的Sql语句，找出这些Sql语句并不意味着完事了，这个时候我们就需要用到explain这个命令来查看一个这些Sql语句的执行计划，查看该Sql语句有没有使用上了索引，有没有做全表扫描，这些都可以通过explain命令来查看</p>
+<h4 id="24-Explain命令有什么用"><a href="#24-Explain命令有什么用" class="headerlink" title="24. Explain命令有什么用"></a><font color=DarkOrange>24. Explain命令有什么用</font></h4><p>在开发的过程中，我们有时会用<strong>慢查询</strong>去记录一些执行时间比较久的Sql语句，找出这些Sql语句并不意味着完事了，这个时候我们就需要用到explain这个命令来查看一个这些Sql语句的执行计划，查看该Sql语句有没有使用上了索引，有没有做全表扫描，这些都可以通过explain命令来查看</p>
 <p>expain出来的信息有10列，分别是<code>id、select_type、table、type、possible_keys、key、key_len、ref、rows、Extra</code></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- <span class="built_in">id</span>：select选择标识符</span><br><span class="line">- select_type：表示查询的类型</span><br><span class="line">- table：输出结果集的表</span><br><span class="line">- partitions：匹配的分区</span><br><span class="line">- <span class="built_in">type</span>：表示表的连接类型</span><br><span class="line">- possible_keys：表示查询时，可能使用的索引</span><br><span class="line">- key：表示实际使用的索引</span><br><span class="line">- key_len：索引字段的长度</span><br><span class="line">- ref：列与索引的比较</span><br><span class="line">- rows：扫描出的行数(估算的行数)</span><br><span class="line">- filtered：按表条件过滤的行百分比</span><br><span class="line">- Extra：执行情况的描述和说明</span><br></pre></td></tr></table></figure>
 
@@ -698,14 +698,14 @@
 </ul>
 </li>
 </ul>
-<h4 id="25-MySQL优化"><a href="#25-MySQL优化" class="headerlink" title="25. MySQL优化"></a>25. MySQL优化</h4><ul>
+<h4 id="25-MySQL优化"><a href="#25-MySQL优化" class="headerlink" title="25. MySQL优化"></a><font color=DarkOrange>25. MySQL优化</font></h4><ul>
 <li>避免不走索引的场景</li>
 <li>select语句其他优化</li>
 <li>增删改DML语句优化</li>
 <li>查询条件优化</li>
 <li>建表优化</li>
 </ul>
-<h5 id="25-1-避免不走索引的场景"><a href="#25-1-避免不走索引的场景" class="headerlink" title="25.1 避免不走索引的场景"></a>25.1 避免不走索引的场景</h5><ol>
+<h5 id="25-1-避免不走索引的场景"><a href="#25-1-避免不走索引的场景" class="headerlink" title="25.1 避免不走索引的场景"></a><font color=DarkOrange>25.1 避免不走索引的场景</font></h5><ol>
 <li>尽量避免在字段开头模糊查询，会导致数据库引擎放弃索引进行全表扫描</li>
 <li>尽量避免使用<code>in</code>和<code>not in </code>，会导致引擎走全表扫描</li>
 <li>尽量避免使用<code>or</code>，会导致数据库引擎放弃索引进行全表扫描</li>
@@ -718,7 +718,7 @@
 <li><code>order by</code>条件要与<code>where</code>中条件一致，否则<code>order by</code>不会利用索引进行排序</li>
 <li>正确使用<code>hint</code>优化语句</li>
 </ol>
-<h5 id="25-2-select语句其他优化"><a href="#25-2-select语句其他优化" class="headerlink" title="25.2 select语句其他优化"></a>25.2 select语句其他优化</h5><ol>
+<h5 id="25-2-select语句其他优化"><a href="#25-2-select语句其他优化" class="headerlink" title="25.2 select语句其他优化"></a><font color=DarkOrange>25.2 select语句其他优化</font></h5><ol>
 <li>避免出现<code>select *</code></li>
 <li>避免出现不确定结果的函数</li>
 <li>多表关联查询时，小表在前，大表在后</li>
@@ -726,13 +726,13 @@
 <li>用<code>where</code>语句替换<code>HAVING</code>字句</li>
 <li>调整<code>where</code>字句中的连接顺序</li>
 </ol>
-<h5 id="25-3-增删改DML语句优化"><a href="#25-3-增删改DML语句优化" class="headerlink" title="25.3 增删改DML语句优化"></a>25.3 增删改DML语句优化</h5><ol>
+<h5 id="25-3-增删改DML语句优化"><a href="#25-3-增删改DML语句优化" class="headerlink" title="25.3 增删改DML语句优化"></a><font color=DarkOrange>25.3 增删改DML语句优化</font></h5><ol>
 <li>大批量插入数据</li>
 <li>适当使用<code>commit</code></li>
 <li>避免重复查询更新的数据</li>
 <li>查询优先还是更新<code>(insert、update、delete)</code>优先</li>
 </ol>
-<h5 id="25-4-查询条件优化"><a href="#25-4-查询条件优化" class="headerlink" title="25.4 查询条件优化"></a>25.4 查询条件优化</h5><ol>
+<h5 id="25-4-查询条件优化"><a href="#25-4-查询条件优化" class="headerlink" title="25.4 查询条件优化"></a><font color=DarkOrange>25.4 查询条件优化</font></h5><ol>
 <li>对于复杂的查询，可以使用中间临时表暂存数据</li>
 <li>优化<code>group by</code>语句</li>
 <li>优化<code>join</code>语句</li>
@@ -741,13 +741,13 @@
 <li>使用<code>truncate</code>代替<code>delete</code></li>
 <li>使用合理的分页方式以提高分页效率</li>
 </ol>
-<h5 id="25-5-建表优化"><a href="#25-5-建表优化" class="headerlink" title="25.5 建表优化"></a>25.5 建表优化</h5><ol>
+<h5 id="25-5-建表优化"><a href="#25-5-建表优化" class="headerlink" title="25.5 建表优化"></a><font color=DarkOrange>25.5 建表优化</font></h5><ol>
 <li>在表中建立索引，优先考虑<code>where、order by</code>使用到的字段</li>
 <li>尽量使用数字类型（性别：男：1，女：2），若只含数值信息的字段尽量不要设计为字符型，这会降低查询和连接的性能，并会增加存储的开销</li>
 <li>查询数据量大的表，会造成查询缓慢。主要的原因是扫描行数过多，这个时候可以通过程序，分段分页进行查询，循环遍历，将结果合并处理进行展示</li>
 <li>用<code>varchar/nvarchar</code>代替<code>char/nchar</code></li>
 </ol>
-<h4 id="26-SQL注入"><a href="#26-SQL注入" class="headerlink" title="26. SQL注入"></a>26. SQL注入</h4><p>Sql注入攻击是通过将恶意的Sql查询或添加语句插入到应用的输入参数中，再在后台Sql服务器上解析执行进行的攻击，它目前黑客对数据库进行攻击的最常用手段之一。</p>
+<h4 id="26-SQL注入"><a href="#26-SQL注入" class="headerlink" title="26. SQL注入"></a><font color=DarkOrange>26. SQL注入</font></h4><p>Sql注入攻击是通过将恶意的Sql查询或添加语句插入到应用的输入参数中，再在后台Sql服务器上解析执行进行的攻击，它目前黑客对数据库进行攻击的最常用手段之一。</p>
 <p><strong>避免SQL注入：</strong></p>
 <ul>
 <li>参数校验，校验数据的类型，长度，特殊字符，数据库关键词等</li>
@@ -755,18 +755,18 @@
 <li>严格限制数据库权限</li>
 <li>避免直接响应一些SQL异常信息，SQL发生异常后，自定义异常进行响应</li>
 </ul>
-<h4 id="27-MySQL、MongoDB、Redis区别，适用场景"><a href="#27-MySQL、MongoDB、Redis区别，适用场景" class="headerlink" title="27. MySQL、MongoDB、Redis区别，适用场景"></a>27. MySQL、MongoDB、Redis区别，适用场景</h4><h5 id="27-1-MySQL"><a href="#27-1-MySQL" class="headerlink" title="27.1 MySQL"></a>27.1 MySQL</h5><ol>
+<h4 id="27-MySQL、MongoDB、Redis区别，适用场景"><a href="#27-MySQL、MongoDB、Redis区别，适用场景" class="headerlink" title="27. MySQL、MongoDB、Redis区别，适用场景"></a><font color=DarkOrange>27. MySQL、MongoDB、Redis区别，适用场景</font></h4><h5 id="27-1-MySQL"><a href="#27-1-MySQL" class="headerlink" title="27.1 MySQL"></a><font color=DarkOrange>27.1 MySQL</font></h5><ol>
 <li>高度事务性系统。例如银行或会计系统，传统的关系型数据库目前还是更适用于需要大量原子性复杂事务的应用程序</li>
 <li>传统的商业智能应用，针对特定问题的<code>BI</code>数据库会产生高度优化的查询方式，对于此类应用，数据仓库可能是更合适的选择</li>
 </ol>
-<h5 id="27-2-MongoDB"><a href="#27-2-MongoDB" class="headerlink" title="27.2 MongoDB"></a>27.2 MongoDB</h5><ol>
+<h5 id="27-2-MongoDB"><a href="#27-2-MongoDB" class="headerlink" title="27.2 MongoDB"></a><font color=DarkOrange>27.2 MongoDB</font></h5><ol>
 <li>网站数据：适合实时的插入，更新与查询，并具备网站实时数据存储所需的复制及高度伸缩性</li>
 <li>缓存：由于性能很高，也适合作为信息基础设施的缓存层，在系统重启之后，搭建的持久化缓存可以避免下层的数据源过载</li>
 <li>大尺寸、低价值的数据也是<code>MongoDB</code>的最佳选择，使用传统的关系型数据库存储一些数据时可能会比较贵，在此之前很多程序员往往会选择传统的文件进行存储</li>
 <li>高伸缩的场景，非常适合由数十台或数百台服务器组成的数据库</li>
 <li>用于对象及<code>json</code>数据的存储，<code>MongoDB</code>的<code>bson</code>数据格式非常适合文档格式化的存储及查询</li>
 </ol>
-<h5 id="27-3-Redis"><a href="#27-3-Redis" class="headerlink" title="27.3 Redis"></a>27.3 Redis</h5><ol>
+<h5 id="27-3-Redis"><a href="#27-3-Redis" class="headerlink" title="27.3 Redis"></a><font color=DarkOrange>27.3 Redis</font></h5><ol>
 <li>用来做缓存：<code>Redis</code>的所有数据是存放在内存中的</li>
 <li>可以在某些特定应用场景下替代传统数据库：比如社交类的应用</li>
 <li>在一些大型系统中，巧妙的实现一些特定的功能：<code>session</code>共享、购物车</li>

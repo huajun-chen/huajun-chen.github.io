@@ -22,7 +22,7 @@
 <meta property="og:description" content="Redis面试常见问题汇总 1. Redis的数据结构及使用场景 String字符串 字符串类型是 Redis 最基础的数据结构，首先键都是字符串类型，而且 其他几种数据结构都是在字符串类型基础上构建的，我们常使用的 set key value 命令就是字符串。常用在缓存、计数、共享Session、限速等     Hash哈希 在Redis中，哈希类型是指键值本身又是一个键值对结构，哈希可以用来存">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-28T08:50:10.000Z">
-<meta property="article:modified_time" content="2022-10-30T14:00:17.829Z">
+<meta property="article:modified_time" content="2022-11-16T05:46:47.329Z">
 <meta property="article:author" content="可可西里">
 <meta property="article:tag" content="八股文">
 <meta property="article:tag" content="Redis">
@@ -187,7 +187,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-2.png" style="max-height: 240px;">
+      <img src="/images/random/material-6.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">Redis面试题</div>
@@ -238,7 +238,7 @@
     </header>
     <div class="mdui-card-content mdui-typo">
       <p>Redis面试常见问题汇总</p>
-<h4 id="1-Redis的数据结构及使用场景"><a href="#1-Redis的数据结构及使用场景" class="headerlink" title="1. Redis的数据结构及使用场景"></a>1. Redis的数据结构及使用场景</h4><ul>
+<h4 id="1-Redis的数据结构及使用场景"><a href="#1-Redis的数据结构及使用场景" class="headerlink" title="1. Redis的数据结构及使用场景"></a><font color=DarkOrange>1. Redis的数据结构及使用场景</font></h4><ul>
 <li><p>String字符串</p>
 <p>字符串类型是 Redis 最基础的数据结构，首先键都是字符串类型，而且 其他几种数据结构都是在字符串类型基础上构建的，我们常使用的 set key value 命令就是字符串。常用在缓存、计数、共享Session、限速等</p>
 </li>
@@ -267,7 +267,7 @@
 <p>Sorted Set 多了一个权重参数 Score，集合中的元素能够按 Score 进行排列。可以做排行榜应用，取 TOP N 操作</p>
 </li>
 </ul>
-<h4 id="2-Redis持久化的几种方式"><a href="#2-Redis持久化的几种方式" class="headerlink" title="2. Redis持久化的几种方式"></a>2. Redis持久化的几种方式</h4><p>Redis为了保证效率，数据缓存在了内存中，但是会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件中，以保证数据的持久化。Redis的持久化策略有两种：</p>
+<h4 id="2-Redis持久化的几种方式"><a href="#2-Redis持久化的几种方式" class="headerlink" title="2. Redis持久化的几种方式"></a><font color=DarkOrange>2. Redis持久化的几种方式</font></h4><p>Redis为了保证效率，数据缓存在了内存中，但是会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件中，以保证数据的持久化。Redis的持久化策略有两种：</p>
 <ul>
 <li><strong>RDB：</strong> 快照形式是直接把内存中的数据保存到一个dump的文件中，定时保存，保存策略<ul>
 <li>当Redis需要做持久化时，Redis会fork一个子进程，子进程将数据写到磁盘上一个临时RDB文件中。当子进程完成写临时文件后，将原来的RDB替换掉</li>
@@ -284,19 +284,19 @@
 </li>
 </ul>
 <p>Redis默认是快照RDB的持久化方式。对于主从同步来说，主从刚刚连接的时候，进行全量同步（RDB），全同步结束后，进行增量同步(AOF)</p>
-<h4 id="3-Redis的LRU具体实现"><a href="#3-Redis的LRU具体实现" class="headerlink" title="3. Redis的LRU具体实现"></a>3. Redis的LRU具体实现</h4><ul>
+<h4 id="3-Redis的LRU具体实现"><a href="#3-Redis的LRU具体实现" class="headerlink" title="3. Redis的LRU具体实现"></a><font color=DarkOrange>3. Redis的LRU具体实现</font></h4><ul>
 <li>传统的LRU是使用栈的形式，每次都将最新使用的移入栈顶，但是用栈的形式会导致执行<code>select *</code>的时候大量非热点数据占领头部数据，所以需要改进</li>
 <li>Redis每次按key获取一个值的时候，都会更新value中的lru字段为当前秒级别的时间戳。Redis初始的实现算法很简单，随机从dict中取出五个key，淘汰一个lru字段值最小的</li>
 <li>在3.0的时候，又改进了一版算法，首先第一次随机选取的key都会放入一个pool中(pool的大小为16)，pool中的key是按lru大小顺序排列的</li>
 <li>接下来每次随机选取的keylru值必须小于pool中最小的lru才会继续放入，直到将pool放满。放满之后，每次如果有新的key需要放入，需要将pool中lru最大的一个key取出。淘汰的时候，直接从pool中选取一个lru最小的值然后将其淘汰</li>
 </ul>
-<h4 id="4-单线程的Redis为什么快"><a href="#4-单线程的Redis为什么快" class="headerlink" title="4. 单线程的Redis为什么快"></a>4. 单线程的Redis为什么快</h4><ul>
+<h4 id="4-单线程的Redis为什么快"><a href="#4-单线程的Redis为什么快" class="headerlink" title="4. 单线程的Redis为什么快"></a><font color=DarkOrange>4. 单线程的Redis为什么快</font></h4><ul>
 <li>纯内存操作</li>
 <li>单线程操作，避免了频繁的上下文切换</li>
 <li>合理高效的数据结构</li>
 <li>采用了非阻塞I&#x2F;O多路复用机制</li>
 </ul>
-<h4 id="5-Redis的数据过期策略"><a href="#5-Redis的数据过期策略" class="headerlink" title="5. Redis的数据过期策略"></a>5. Redis的数据过期策略</h4><p>Redis 中数据过期策略采用<strong>定期删除</strong>和<strong>惰性删除</strong>策略：</p>
+<h4 id="5-Redis的数据过期策略"><a href="#5-Redis的数据过期策略" class="headerlink" title="5. Redis的数据过期策略"></a><font color=DarkOrange>5. Redis的数据过期策略</font></h4><p>Redis 中数据过期策略采用<strong>定期删除</strong>和<strong>惰性删除</strong>策略：</p>
 <ul>
 <li>定期删除策略<ul>
 <li>Redis 启用一个定时器定时监视所有的 key，判断key是否过期，过期的话就删除</li>
@@ -314,7 +314,7 @@
 </ul>
 <p>这两种策略天然的互补，结合起来之后，定时删除策略就发生了一些改变，不在是每次扫描全部的 key 了，而是随机抽取一部分 key 进行检查，这样就降低了对 CPU 资源的损耗，惰性删除策略互补了为检查到的key，基本上满足了所有要求</p>
 <p>但是有时候就是那么的巧，既没有被定时器抽取到，又没有被使用，这些数据又如何从内存中消失？这个时候就需要用到了，内存淘汰机制</p>
-<h5 id="5-1-内存淘汰机制"><a href="#5-1-内存淘汰机制" class="headerlink" title="5.1 内存淘汰机制"></a>5.1 内存淘汰机制</h5><ul>
+<h5 id="5-1-内存淘汰机制"><a href="#5-1-内存淘汰机制" class="headerlink" title="5.1 内存淘汰机制"></a><font color=DarkOrange>5.1 内存淘汰机制</font></h5><ul>
 <li>当内存不足以容纳新写入数据时，新写入操作会报错。（Redis 默认策略）</li>
 <li>当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的 Key。（LRU推荐使用）</li>
 <li>当内存不足以容纳新写入数据时，在键空间中，随机移除某个 Key</li>
@@ -322,21 +322,21 @@
 <li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，随机移除某个 Key</li>
 <li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，有更早过期时间的 Key 优先移除</li>
 </ul>
-<h4 id="6-如何解决Redis缓存雪崩问题"><a href="#6-如何解决Redis缓存雪崩问题" class="headerlink" title="6. 如何解决Redis缓存雪崩问题"></a>6. 如何解决Redis缓存雪崩问题</h4><ul>
+<h4 id="6-如何解决Redis缓存雪崩问题"><a href="#6-如何解决Redis缓存雪崩问题" class="headerlink" title="6. 如何解决Redis缓存雪崩问题"></a><font color=DarkOrange>6. 如何解决Redis缓存雪崩问题</font></h4><ul>
 <li>使用 Redis 高可用架构：使用 Redis 集群来保证 Redis 服务不会挂掉</li>
 <li>缓存时间不一致，给缓存的失效时间，加上一个随机值，避免集体失效</li>
 <li>限流降级策略：有一定的备案，比如个性推荐服务不可用了，换成热点数据推荐服务</li>
 </ul>
-<h4 id="7-如何解决Redis缓存穿透问题"><a href="#7-如何解决Redis缓存穿透问题" class="headerlink" title="7. 如何解决Redis缓存穿透问题"></a>7. 如何解决Redis缓存穿透问题</h4><ul>
+<h4 id="7-如何解决Redis缓存穿透问题"><a href="#7-如何解决Redis缓存穿透问题" class="headerlink" title="7. 如何解决Redis缓存穿透问题"></a><font color=DarkOrange>7. 如何解决Redis缓存穿透问题</font></h4><ul>
 <li>在接口层做校验</li>
 <li>存null值（缓存击穿加锁）</li>
 <li>布隆过滤器拦截：将所有可能的查询key 先映射到布隆过滤器中，查询时先判断key是否存在布隆过滤器中，存在才继续向下执行，如果不存在，则直接返回<br>布隆过滤器将值进行多次哈希bit存储，布隆过滤器说某个元素在，可能会被误判。布隆过滤器说某个元素不在，那么一定不在</li>
 </ul>
-<h4 id="8-Redis并发竞争key如何解决"><a href="#8-Redis并发竞争key如何解决" class="headerlink" title="8. Redis并发竞争key如何解决"></a>8. Redis并发竞争key如何解决</h4><ul>
+<h4 id="8-Redis并发竞争key如何解决"><a href="#8-Redis并发竞争key如何解决" class="headerlink" title="8. Redis并发竞争key如何解决"></a><font color=DarkOrange>8. Redis并发竞争key如何解决</font></h4><ul>
 <li>可以利用分布式锁和时间戳来解决</li>
 <li>利用消息队列解决</li>
 </ul>
-<h4 id="9-Redis的主从模式和哨兵模式和集群模式区别"><a href="#9-Redis的主从模式和哨兵模式和集群模式区别" class="headerlink" title="9. Redis的主从模式和哨兵模式和集群模式区别"></a>9. Redis的主从模式和哨兵模式和集群模式区别</h4><p>Redis集群方式共有三种：<strong>主从模式</strong>，<strong>哨兵模式</strong>，<strong>集群(cluster)模式</strong></p>
+<h4 id="9-Redis的主从模式和哨兵模式和集群模式区别"><a href="#9-Redis的主从模式和哨兵模式和集群模式区别" class="headerlink" title="9. Redis的主从模式和哨兵模式和集群模式区别"></a><font color=DarkOrange>9. Redis的主从模式和哨兵模式和集群模式区别</font></h4><p>Redis集群方式共有三种：<strong>主从模式</strong>，<strong>哨兵模式</strong>，<strong>集群(cluster)模式</strong></p>
 <ul>
 <li><p>主从模式</p>
 <p>主从模式是三种集群方式里最简单的。它主要是基于Redis的主从复制特性架构的。通常我们会设置一个主节点，N个从节点;默认情况下，主节点负责处理使用者的IO操作，而从节点则会对主节点的数据进行备份，并且也会对外提供读操作的处理。主要的特点如下：</p>
@@ -378,7 +378,7 @@
 <p>Redis 集群有16384个哈希槽，每个key通过CRC16校验后对16384取模来决定放置哪个槽.集群的每个节点负责一部分hash槽</p>
 </li>
 </ul>
-<h4 id="10-Redis事物的了解CheckAndSet操作实现乐观锁"><a href="#10-Redis事物的了解CheckAndSet操作实现乐观锁" class="headerlink" title="10. Redis事物的了解CheckAndSet操作实现乐观锁"></a>10. Redis事物的了解CheckAndSet操作实现乐观锁</h4><p>和众多其它数据库一样，Redis作为NoSQL数据库也同样提供了事务机制。在Redis中，<code>MULTI</code>，<code>EXEC</code>，<code>DISCARD</code>，<code>WATCH</code>这四个命令是我们实现事务的基石。相信对有关系型数据库开发经验的开发者而言这一概念并不陌生，即便如此，我们还是会简要的列出 Redis中事务的实现特征 ：</p>
+<h4 id="10-Redis事物的了解CheckAndSet操作实现乐观锁"><a href="#10-Redis事物的了解CheckAndSet操作实现乐观锁" class="headerlink" title="10. Redis事物的了解CheckAndSet操作实现乐观锁"></a><font color=DarkOrange>10. Redis事物的了解CheckAndSet操作实现乐观锁</font></h4><p>和众多其它数据库一样，Redis作为NoSQL数据库也同样提供了事务机制。在Redis中，<code>MULTI</code>，<code>EXEC</code>，<code>DISCARD</code>，<code>WATCH</code>这四个命令是我们实现事务的基石。相信对有关系型数据库开发经验的开发者而言这一概念并不陌生，即便如此，我们还是会简要的列出 Redis中事务的实现特征 ：</p>
 <ul>
 <li>在事务中的所有命令都将会被串行化的顺序执行，事务执行期间，Redis不会再为其它客户端的请求提供任何服务，从而保证了事物中的所有命令被原子的执行</li>
 <li>和关系型数据库中的事务相比，在Redis事务中如果有某一条命令执行失败，其后的命令仍然会被继续执行</li>
@@ -386,7 +386,7 @@
 <li>在事务开启之前，如果客户端与服务器之间出现通讯故障并导致网络断开，其后所有待执行的语句都将不会被服务器执行。然而如果网络中断事件是发生在客户端执行EXEC命令之后，那么该事务中的所有命令都会被服务器执行</li>
 <li>当使用<code>Append-Only</code>模式时，Redis会通过调用系统函数write将该事务内的所有写操作在本次调用中全部写入磁盘。然而如果在写入的过程中出现系统崩溃，如电源故障导致的宕机，那么此时也许只有部分数据被写入到磁盘，而另外一部分数据却已经丢失。Redis服务器会在重新启动时执行一系列必要的一致性检测，一旦发现类似问题，就会立即退出并给出相应的错误提示。此时，我们就要充分利用Redis工具包中提供的<code>redis-check-aof</code>工具，该工具可以帮助我们定位到数据不一致的错误，并将已经写入的部分数据进行回滚。修复之后我们就可以再次重新启动Redis服务器了</li>
 </ul>
-<h4 id="11-Redis有序集合zset底层怎么实现的"><a href="#11-Redis有序集合zset底层怎么实现的" class="headerlink" title="11. Redis有序集合zset底层怎么实现的"></a>11. Redis有序集合zset底层怎么实现的</h4><ul>
+<h4 id="11-Redis有序集合zset底层怎么实现的"><a href="#11-Redis有序集合zset底层怎么实现的" class="headerlink" title="11. Redis有序集合zset底层怎么实现的"></a><font color=DarkOrange>11. Redis有序集合zset底层怎么实现的</font></h4><ul>
 <li>跳表是一个随机化的数据结构，实质就是一种可以进行二分查找的有序链表</li>
 <li>跳表在原有的有序链表上面增加了多级索引，通过索引来实现快速查找</li>
 <li>跳表不仅能提高搜索性能，同时也可以提高插入和删除操作的性能</li>
@@ -401,7 +401,7 @@
 <li>跳表查询、插入、删除的时间复杂度为O(log n)，与平衡二叉树接近</li>
 </ul>
 <hr>
-<h5 id="11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN"><a href="#11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN" class="headerlink" title="11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))"></a>11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))</h5><p>首先，我们来分析下Redis的有序集合支持的操作：</p>
+<h5 id="11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN"><a href="#11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN" class="headerlink" title="11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))"></a><font color=DarkOrange>11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))</font></h5><p>首先，我们来分析下Redis的有序集合支持的操作：</p>
 <ul>
 <li>插入元素</li>
 <li>删除元素</li>
@@ -411,7 +411,7 @@
 </ul>
 <p>其中，前4项红黑树都可以完成，且时间复杂度与跳表一致。但是，最后一项，红黑树的效率就没有跳表高了。在跳表中，要查找区间的元素，我们只要定位到两个区间端点在最低层级的位置，然后按顺序遍历元素就可以了，非常高效</p>
 <p>而红黑树只能定位到端点后，再从首位置开始每次都要查找后继节点，相对来说是比较耗时的。此外，跳表实现起来很容易且易读，红黑树实现起来相对困难，所以Redis选择使用跳表来实现有序集合</p>
-<h4 id="12-跳表的查询过程是怎么样的，查询和插入的时间复杂度"><a href="#12-跳表的查询过程是怎么样的，查询和插入的时间复杂度" class="headerlink" title="12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度"></a>12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度</h4><p>先从第一层查找，不满足就下沉到第二层找，因为每一层都是有序的，写入和插入的时间复杂度都是O(logN)</p>
+<h4 id="12-跳表的查询过程是怎么样的，查询和插入的时间复杂度"><a href="#12-跳表的查询过程是怎么样的，查询和插入的时间复杂度" class="headerlink" title="12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度"></a><font color=DarkOrange>12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度</font></h4><p>先从第一层查找，不满足就下沉到第二层找，因为每一层都是有序的，写入和插入的时间复杂度都是O(logN)</p>
 <hr>
 
       

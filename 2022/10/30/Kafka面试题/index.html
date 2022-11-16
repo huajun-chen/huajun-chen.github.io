@@ -22,7 +22,7 @@
 <meta property="og:description" content="Kafka面试题 1. Kafka都有哪些特点 高吞吐量、低延迟：kafka每秒可以处理几十万条消息，它的延迟最低只有几毫秒，每个topic可以分多个partition, consumer group 对partition进行consume操作 可扩展性：kafka集群支持热扩展 持久性、可靠性：消息被持久化到本地磁盘，并且支持数据备份防止数据丢失 容错性：允许集群中节点失败（若副本数量为n,则允">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-30T12:36:11.000Z">
-<meta property="article:modified_time" content="2022-10-31T14:36:10.667Z">
+<meta property="article:modified_time" content="2022-11-16T05:45:09.929Z">
 <meta property="article:author" content="可可西里">
 <meta property="article:tag" content="八股文">
 <meta property="article:tag" content="Kafka">
@@ -187,7 +187,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-2.png" style="max-height: 240px;">
+      <img src="/images/random/material-11.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">Kafka面试题</div>
@@ -238,21 +238,21 @@
     </header>
     <div class="mdui-card-content mdui-typo">
       <p>Kafka面试题</p>
-<h4 id="1-Kafka都有哪些特点"><a href="#1-Kafka都有哪些特点" class="headerlink" title="1. Kafka都有哪些特点"></a>1. Kafka都有哪些特点</h4><ul>
+<h4 id="1-Kafka都有哪些特点"><a href="#1-Kafka都有哪些特点" class="headerlink" title="1. Kafka都有哪些特点"></a><font color=DarkOrange>1. Kafka都有哪些特点</font></h4><ul>
 <li>高吞吐量、低延迟：kafka每秒可以处理几十万条消息，它的延迟最低只有几毫秒，每个topic可以分多个partition, consumer group 对partition进行consume操作</li>
 <li>可扩展性：kafka集群支持热扩展</li>
 <li>持久性、可靠性：消息被持久化到本地磁盘，并且支持数据备份防止数据丢失</li>
 <li>容错性：允许集群中节点失败（若副本数量为n,则允许n-1个节点失败）</li>
 <li>高并发：支持数千个客户端同时读写</li>
 </ul>
-<h4 id="2-请简述下你在哪些场景下会选择Kafka"><a href="#2-请简述下你在哪些场景下会选择Kafka" class="headerlink" title="2. 请简述下你在哪些场景下会选择Kafka"></a>2. 请简述下你在哪些场景下会选择Kafka</h4><ul>
+<h4 id="2-请简述下你在哪些场景下会选择Kafka"><a href="#2-请简述下你在哪些场景下会选择Kafka" class="headerlink" title="2. 请简述下你在哪些场景下会选择Kafka"></a><font color=DarkOrange>2. 请简述下你在哪些场景下会选择Kafka</font></h4><ul>
 <li>日志收集：一个公司可以用Kafka可以收集各种服务的log，通过kafka以统一接口服务的方式开放给各种consumer，例如hadoop、HBase、Solr等</li>
 <li>消息系统：解耦和生产者和消费者、缓存消息等</li>
 <li>用户活动跟踪：Kafka经常被用来记录web用户或者app用户的各种活动，如浏览网页、搜索、点击等活动，这些活动信息被各个服务器发布到kafka的topic中，然后订阅者通过订阅这些topic来做实时的监控分析，或者装载到hadoop、数据仓库中做离线分析和挖掘</li>
 <li>运营指标：Kafka也经常用来记录运营监控数据。包括收集各种分布式应用的数据，生产各种操作的集中反馈，比如报警和报告</li>
 <li>流式处理：比如spark streaming和 Flink</li>
 </ul>
-<h4 id="3-Kafka的设计架构你知道吗"><a href="#3-Kafka的设计架构你知道吗" class="headerlink" title="3. Kafka的设计架构你知道吗"></a>3. Kafka的设计架构你知道吗</h4><p>Kafka架构分为以下几个部分：</p>
+<h4 id="3-Kafka的设计架构你知道吗"><a href="#3-Kafka的设计架构你知道吗" class="headerlink" title="3. Kafka的设计架构你知道吗"></a><font color=DarkOrange>3. Kafka的设计架构你知道吗</font></h4><p>Kafka架构分为以下几个部分：</p>
 <ul>
 <li>Producer ：消息生产者，就是向 kafka broker 发消息的客户端</li>
 <li>Consumer ：消息消费者，向 kafka broker 取消息的客户端</li>
@@ -262,47 +262,47 @@
 <li>Partition：为了实现扩展性，一个非常大的 topic 可以分布到多个 broker上，每个 partition 是一个有序的队列。partition 中的每条消息都会被分配一个有序的id（offset）。将消息发给 consumer，kafka 只保证按一个 partition 中的消息的顺序，不保证一个 topic 的整体（多个 partition 间）的顺序</li>
 <li>Offset：kafka 的存储文件都是按照 offset.kafka 来命名，用 offset 做名字的好处是方便查找。例如你想找位于 2049 的位置，只要找到 2048.kafka 的文件即可。当然 the first offset 就是 00000000000.kafka</li>
 </ul>
-<h4 id="4-Kafka分区的目的"><a href="#4-Kafka分区的目的" class="headerlink" title="4. Kafka分区的目的"></a>4. Kafka分区的目的</h4><p>分区对于 Kafka 集群的好处是：实现负载均衡。分区对于消费者来说，可以提高并发度，提高效率</p>
-<h4 id="5-你知道Kafka是如何做到消息的有序性"><a href="#5-你知道Kafka是如何做到消息的有序性" class="headerlink" title="5. 你知道Kafka是如何做到消息的有序性"></a>5. 你知道Kafka是如何做到消息的有序性</h4><p>kafka 中的每个 partition 中的消息在写入时都是有序的，而且单独一个 partition 只能由一个消费者去消费，可以在里面保证消息的顺序性。但是分区之间的消息是不保证有序的</p>
-<h4 id="6-Kafka的高可靠性是怎么实现的"><a href="#6-Kafka的高可靠性是怎么实现的" class="headerlink" title="6. Kafka的高可靠性是怎么实现的"></a>6. Kafka的高可靠性是怎么实现的</h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
-<h4 id="7-请谈一谈Kafka数据一致性原理"><a href="#7-请谈一谈Kafka数据一致性原理" class="headerlink" title="7. 请谈一谈Kafka数据一致性原理"></a>7. 请谈一谈Kafka数据一致性原理</h4><h4 id="8-ISR、OSR、AR-是什么"><a href="#8-ISR、OSR、AR-是什么" class="headerlink" title="8. ISR、OSR、AR 是什么"></a>8. ISR、OSR、AR 是什么</h4><ul>
+<h4 id="4-Kafka分区的目的"><a href="#4-Kafka分区的目的" class="headerlink" title="4. Kafka分区的目的"></a><font color=DarkOrange>4. Kafka分区的目的</font></h4><p>分区对于 Kafka 集群的好处是：实现负载均衡。分区对于消费者来说，可以提高并发度，提高效率</p>
+<h4 id="5-你知道Kafka是如何做到消息的有序性"><a href="#5-你知道Kafka是如何做到消息的有序性" class="headerlink" title="5. 你知道Kafka是如何做到消息的有序性"></a><font color=DarkOrange>5. 你知道Kafka是如何做到消息的有序性</font></h4><p>kafka 中的每个 partition 中的消息在写入时都是有序的，而且单独一个 partition 只能由一个消费者去消费，可以在里面保证消息的顺序性。但是分区之间的消息是不保证有序的</p>
+<h4 id="6-Kafka的高可靠性是怎么实现的"><a href="#6-Kafka的高可靠性是怎么实现的" class="headerlink" title="6. Kafka的高可靠性是怎么实现的"></a><font color=DarkOrange>6. Kafka的高可靠性是怎么实现的</font></h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
+<h4 id="7-请谈一谈Kafka数据一致性原理"><a href="#7-请谈一谈Kafka数据一致性原理" class="headerlink" title="7. 请谈一谈Kafka数据一致性原理"></a><font color=DarkOrange>7. 请谈一谈Kafka数据一致性原理</font></h4><h4 id="8-ISR、OSR、AR-是什么"><a href="#8-ISR、OSR、AR-是什么" class="headerlink" title="8. ISR、OSR、AR 是什么"></a><font color=DarkOrange>8. ISR、OSR、AR 是什么</font></h4><ul>
 <li>SR：In-Sync Replicas 副本同步队列</li>
 <li>OSR：Out-of-Sync Replicas</li>
 <li>AR：Assigned Replicas 所有副本</li>
 </ul>
 <p>ISR是由leader维护，follower从leader同步数据有一些延迟，超过相应的阈值会把 follower 剔除出 ISR, 存入OSR（Out-of-Sync Replicas ）列表，新加入的follower也会先存放在OSR中。AR&#x3D;ISR+OSR</p>
-<h4 id="9-LEO、HW、LSO、LW等分别代表什么"><a href="#9-LEO、HW、LSO、LW等分别代表什么" class="headerlink" title="9. LEO、HW、LSO、LW等分别代表什么"></a>9. LEO、HW、LSO、LW等分别代表什么</h4><ul>
+<h4 id="9-LEO、HW、LSO、LW等分别代表什么"><a href="#9-LEO、HW、LSO、LW等分别代表什么" class="headerlink" title="9. LEO、HW、LSO、LW等分别代表什么"></a><font color=DarkOrange>9. LEO、HW、LSO、LW等分别代表什么</font></h4><ul>
 <li>LEO：是 LogEndOffset 的简称，代表当前日志文件中下一条</li>
 <li>HW：水位或水印（watermark）一词，也可称为高水位(high watermark)，通常被用在流式处理领域（比如Apache Flink、Apache Spark等），以表征元素或事件在基于时间层面上的进度。在Kafka中，水位的概念反而与时间无关，而是与位置信息相关。严格来说，它表示的就是位置信息，即位移（offset）。取 partition 对应的 ISR中 最小的 LEO 作为 HW，consumer 最多只能消费到 HW 所在的位置上一条信息</li>
 <li>LSO：是 LastStableOffset 的简称，对未完成的事务而言，LSO 的值等于事务中第一条消息的位置(firstUnstableOffset)，对已完成的事务而言，它的值同 HW 相同</li>
 <li>LW：Low Watermark 低水位, 代表 AR 集合中最小的 logStartOffset 值</li>
 </ul>
-<h4 id="10-Kafka在什么情况下会出现消息丢失"><a href="#10-Kafka在什么情况下会出现消息丢失" class="headerlink" title="10. Kafka在什么情况下会出现消息丢失"></a>10. Kafka在什么情况下会出现消息丢失</h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
-<h4 id="11-怎么尽可能保证Kafka的可靠性"><a href="#11-怎么尽可能保证Kafka的可靠性" class="headerlink" title="11. 怎么尽可能保证Kafka的可靠性"></a>11. 怎么尽可能保证Kafka的可靠性</h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
-<h4 id="12-消费者和消费者组有什么关系"><a href="#12-消费者和消费者组有什么关系" class="headerlink" title="12. 消费者和消费者组有什么关系"></a>12. 消费者和消费者组有什么关系</h4><h4 id="13-Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区"><a href="#13-Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区" class="headerlink" title="13. Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区"></a>13. Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区</h4><h4 id="14-数据传输的事务有几种"><a href="#14-数据传输的事务有几种" class="headerlink" title="14. 数据传输的事务有几种"></a>14. 数据传输的事务有几种</h4><p>数据传输的事务定义通常有以下三种级别：</p>
+<h4 id="10-Kafka在什么情况下会出现消息丢失"><a href="#10-Kafka在什么情况下会出现消息丢失" class="headerlink" title="10. Kafka在什么情况下会出现消息丢失"></a><font color=DarkOrange>10. Kafka在什么情况下会出现消息丢失</font></h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
+<h4 id="11-怎么尽可能保证Kafka的可靠性"><a href="#11-怎么尽可能保证Kafka的可靠性" class="headerlink" title="11. 怎么尽可能保证Kafka的可靠性"></a><font color=DarkOrange>11. 怎么尽可能保证Kafka的可靠性</font></h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
+<h4 id="12-消费者和消费者组有什么关系"><a href="#12-消费者和消费者组有什么关系" class="headerlink" title="12. 消费者和消费者组有什么关系"></a><font color=DarkOrange>12. 消费者和消费者组有什么关系</font></h4><h4 id="13-Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区"><a href="#13-Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区" class="headerlink" title="13. Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区"></a><font color=DarkOrange>13. Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区</font></h4><h4 id="14-数据传输的事务有几种"><a href="#14-数据传输的事务有几种" class="headerlink" title="14. 数据传输的事务有几种"></a><font color=DarkOrange>14. 数据传输的事务有几种</font></h4><p>数据传输的事务定义通常有以下三种级别：</p>
 <ul>
 <li>最多一次：消息不会被重复发送，最多被传输一次，但也有可能一次不传输</li>
 <li>最少一次：消息不会被漏发送，最少被传输一次，但也有可能被重复传输</li>
 <li>精确的一次（Exactly once）：不会漏传输也不会重复传输，每个消息都传输被</li>
 </ul>
-<h4 id="15-Kafka消费者是否可以消费指定分区消息"><a href="#15-Kafka消费者是否可以消费指定分区消息" class="headerlink" title="15. Kafka消费者是否可以消费指定分区消息"></a>15. Kafka消费者是否可以消费指定分区消息</h4><p>Kafa consumer消费消息时，向broker发出fetch请求去消费特定分区的消息，consumer指定消息在日志中的偏移量（offset），就可以消费从这个位置开始的消息，customer拥有了offset的控制权，可以向后回滚去重新消费之前的消息，这是很有意义的</p>
-<h4 id="16-Kafka消息是采用Pull模式，还是Push模式"><a href="#16-Kafka消息是采用Pull模式，还是Push模式" class="headerlink" title="16. Kafka消息是采用Pull模式，还是Push模式"></a>16. Kafka消息是采用Pull模式，还是Push模式</h4><p>Kafka最初考虑的问题是，customer应该从brokes拉取消息还是brokers将消息推送到consumer，也就是pull还push。在这方面，Kafka遵循了一种大部分消息系统共同的传统的设计：producer将消息推送到broker，consumer从broker拉取消息</p>
+<h4 id="15-Kafka消费者是否可以消费指定分区消息"><a href="#15-Kafka消费者是否可以消费指定分区消息" class="headerlink" title="15. Kafka消费者是否可以消费指定分区消息"></a><font color=DarkOrange>15. Kafka消费者是否可以消费指定分区消息</font></h4><p>Kafa consumer消费消息时，向broker发出fetch请求去消费特定分区的消息，consumer指定消息在日志中的偏移量（offset），就可以消费从这个位置开始的消息，customer拥有了offset的控制权，可以向后回滚去重新消费之前的消息，这是很有意义的</p>
+<h4 id="16-Kafka消息是采用Pull模式，还是Push模式"><a href="#16-Kafka消息是采用Pull模式，还是Push模式" class="headerlink" title="16. Kafka消息是采用Pull模式，还是Push模式"></a><font color=DarkOrange>16. Kafka消息是采用Pull模式，还是Push模式</font></h4><p>Kafka最初考虑的问题是，customer应该从brokes拉取消息还是brokers将消息推送到consumer，也就是pull还push。在这方面，Kafka遵循了一种大部分消息系统共同的传统的设计：producer将消息推送到broker，consumer从broker拉取消息</p>
 <p>一些消息系统比如Scribe和Apache Flume采用了push模式，将消息推送到下游的consumer。这样做有好处也有坏处：由broker决定消息推送的速率，对于不同消费速率的consumer就不太好处理了。消息系统都致力于让consumer以最大的速率最快速的消费消息，但不幸的是，push模式下，当broker推送的速率远大于consumer消费的速率时，consumer恐怕就要崩溃了。最终Kafka还是选取了传统的pull模式</p>
 <p>Pull模式的另外一个好处是consumer可以自主决定是否批量的从broker拉取数据。Push模式必须在不知道下游consumer消费能力和消费策略的情况下决定是立即推送每条消息还是缓存之后批量推送。如果为了避免consumer崩溃而采用较低的推送速率，将可能导致一次只推送较少的消息而造成浪费。Pull模式下，consumer就可以根据自己的消费能力去决定这些策略</p>
 <p>Pull有个缺点是，如果broker没有可供消费的消息，将导致consumer不断在循环中轮询，直到新消息到t达。为了避免这点，Kafka有个参数可以让consumer阻塞知道新消息到达(当然也可以阻塞知道消息的数量达到某个特定的量这样就可以批量发</p>
-<h4 id="17-Kafka-消息格式的演变清楚吗"><a href="#17-Kafka-消息格式的演变清楚吗" class="headerlink" title="17. Kafka 消息格式的演变清楚吗"></a>17. Kafka 消息格式的演变清楚吗</h4><h4 id="18-Kafka-偏移量的演变清楚吗"><a href="#18-Kafka-偏移量的演变清楚吗" class="headerlink" title="18. Kafka 偏移量的演变清楚吗"></a>18. Kafka 偏移量的演变清楚吗</h4><h4 id="19-Kafka高效文件存储设计特点"><a href="#19-Kafka高效文件存储设计特点" class="headerlink" title="19. Kafka高效文件存储设计特点"></a>19. Kafka高效文件存储设计特点</h4><ul>
+<h4 id="17-Kafka-消息格式的演变清楚吗"><a href="#17-Kafka-消息格式的演变清楚吗" class="headerlink" title="17. Kafka 消息格式的演变清楚吗"></a><font color=DarkOrange>17. Kafka 消息格式的演变清楚吗</font></h4><h4 id="18-Kafka-偏移量的演变清楚吗"><a href="#18-Kafka-偏移量的演变清楚吗" class="headerlink" title="18. Kafka 偏移量的演变清楚吗"></a><font color=DarkOrange>18. Kafka 偏移量的演变清楚吗</font></h4><h4 id="19-Kafka高效文件存储设计特点"><a href="#19-Kafka高效文件存储设计特点" class="headerlink" title="19. Kafka高效文件存储设计特点"></a><font color=DarkOrange>19. Kafka高效文件存储设计特点</font></h4><ul>
 <li>Kafka把topic中一个parition大文件分成多个小文件段，通过多个小文件段，就容易定期清除或删除已经消费完文件，减少磁盘占用</li>
 <li>通过索引信息可以快速定位message和确定response的最大大小</li>
 <li>通过index元数据全部映射到memory，可以避免segment file的IO磁盘操作</li>
 <li>通过索引文件稀疏存储，可以大幅降低index文件元数据占用空间大小</li>
 </ul>
-<h4 id="20-Kafka创建Topic时如何将分区放置到不同的Broker中"><a href="#20-Kafka创建Topic时如何将分区放置到不同的Broker中" class="headerlink" title="20. Kafka创建Topic时如何将分区放置到不同的Broker中"></a>20. Kafka创建Topic时如何将分区放置到不同的Broker中</h4><h4 id="21-Kafka新建的分区会在哪个目录下创建"><a href="#21-Kafka新建的分区会在哪个目录下创建" class="headerlink" title="21. Kafka新建的分区会在哪个目录下创建"></a>21. Kafka新建的分区会在哪个目录下创建</h4><h4 id="22-谈一谈Kafka的再均衡"><a href="#22-谈一谈Kafka的再均衡" class="headerlink" title="22. 谈一谈Kafka的再均衡"></a>22. 谈一谈Kafka的再均衡</h4><p>在Kafka中，当有新消费者加入或者订阅的topic数发生变化时，会触发Rebalance(再均衡：在同一个消费者组当中，分区的所有权从一个消费者转移到另外一个消费者)机制，Rebalance顾名思义就是重新均衡消费者消费。Rebalance的过程如下：</p>
+<h4 id="20-Kafka创建Topic时如何将分区放置到不同的Broker中"><a href="#20-Kafka创建Topic时如何将分区放置到不同的Broker中" class="headerlink" title="20. Kafka创建Topic时如何将分区放置到不同的Broker中"></a><font color=DarkOrange>20. Kafka创建Topic时如何将分区放置到不同的Broker中</font></h4><h4 id="21-Kafka新建的分区会在哪个目录下创建"><a href="#21-Kafka新建的分区会在哪个目录下创建" class="headerlink" title="21. Kafka新建的分区会在哪个目录下创建"></a><font color=DarkOrange>21. Kafka新建的分区会在哪个目录下创建</font></h4><h4 id="22-谈一谈Kafka的再均衡"><a href="#22-谈一谈Kafka的再均衡" class="headerlink" title="22. 谈一谈Kafka的再均衡"></a><font color=DarkOrange>22. 谈一谈Kafka的再均衡</font></h4><p>在Kafka中，当有新消费者加入或者订阅的topic数发生变化时，会触发Rebalance(再均衡：在同一个消费者组当中，分区的所有权从一个消费者转移到另外一个消费者)机制，Rebalance顾名思义就是重新均衡消费者消费。Rebalance的过程如下：</p>
 <ul>
 <li>第一步：所有成员都向coordinator发送请求，请求入组。一旦所有成员都发送了请求，coordinator会从中选择一个consumer担任leader的角色，并把组成员信息以及订阅信息发给leader</li>
 <li>第二步：leader开始分配消费方案，指明具体哪个consumer负责消费哪些topic的哪些partition。一旦完成分配，leader会将这个方案发给coordinator。coordinator接收到分配方案之后会把方案发给各个consumer，这样组内的所有成员就都知道自己应该消费哪些分区了</li>
 </ul>
 <p>所以对于Rebalance来说，Coordinator起着至关重要的作用</p>
-<h4 id="23-谈谈Kafka分区分配策略"><a href="#23-谈谈Kafka分区分配策略" class="headerlink" title="23. 谈谈Kafka分区分配策略"></a>23. 谈谈Kafka分区分配策略</h4><h4 id="24-Kafka-Producer是如何动态感知主题分区数变化的"><a href="#24-Kafka-Producer是如何动态感知主题分区数变化的" class="headerlink" title="24. Kafka Producer是如何动态感知主题分区数变化的"></a>24. Kafka Producer是如何动态感知主题分区数变化的</h4><h4 id="25-Kafka是如何实现高吞吐率的"><a href="#25-Kafka是如何实现高吞吐率的" class="headerlink" title="25. Kafka是如何实现高吞吐率的"></a>25. Kafka是如何实现高吞吐率的</h4><p>Kafka是分布式消息系统，需要处理海量的消息，Kafka的设计是把所有的消息都写入速度低容量大的硬盘，以此来换取更强的存储能力，但实际上，使用硬盘并没有带来过多的性能损失。kafka主要使用了以下几个方式实现了超高的吞吐率：</p>
+<h4 id="23-谈谈Kafka分区分配策略"><a href="#23-谈谈Kafka分区分配策略" class="headerlink" title="23. 谈谈Kafka分区分配策略"></a><font color=DarkOrange>23. 谈谈Kafka分区分配策略</font></h4><h4 id="24-Kafka-Producer是如何动态感知主题分区数变化的"><a href="#24-Kafka-Producer是如何动态感知主题分区数变化的" class="headerlink" title="24. Kafka Producer是如何动态感知主题分区数变化的"></a><font color=DarkOrange>24. Kafka Producer是如何动态感知主题分区数变化的</font></h4><h4 id="25-Kafka是如何实现高吞吐率的"><a href="#25-Kafka是如何实现高吞吐率的" class="headerlink" title="25. Kafka是如何实现高吞吐率的"></a><font color=DarkOrange>25. Kafka是如何实现高吞吐率的</font></h4><p>Kafka是分布式消息系统，需要处理海量的消息，Kafka的设计是把所有的消息都写入速度低容量大的硬盘，以此来换取更强的存储能力，但实际上，使用硬盘并没有带来过多的性能损失。kafka主要使用了以下几个方式实现了超高的吞吐率：</p>
 <ul>
 <li>顺序读写</li>
 <li>零拷贝</li>
@@ -310,7 +310,7 @@
 <li>批量发送</li>
 <li>数据压缩</li>
 </ul>
-<h4 id="26-Kafka监控都有哪些"><a href="#26-Kafka监控都有哪些" class="headerlink" title="26. Kafka监控都有哪些"></a>26. Kafka监控都有哪些</h4><h4 id="27-如何为Kafka集群选择合适的Topics-x2F-Partitions数量"><a href="#27-如何为Kafka集群选择合适的Topics-x2F-Partitions数量" class="headerlink" title="27. 如何为Kafka集群选择合适的Topics&#x2F;Partitions数量"></a>27. 如何为Kafka集群选择合适的Topics&#x2F;Partitions数量</h4><h4 id="28-谈谈你对Kafka事务的了解"><a href="#28-谈谈你对Kafka事务的了解" class="headerlink" title="28. 谈谈你对Kafka事务的了解"></a>28. 谈谈你对Kafka事务的了解</h4><h4 id="29-谈谈你对Kafka幂等的了解"><a href="#29-谈谈你对Kafka幂等的了解" class="headerlink" title="29. 谈谈你对Kafka幂等的了解"></a>29. 谈谈你对Kafka幂等的了解</h4><h4 id="30-Kafka缺点"><a href="#30-Kafka缺点" class="headerlink" title="30. Kafka缺点"></a>30. Kafka缺点</h4><ul>
+<h4 id="26-Kafka监控都有哪些"><a href="#26-Kafka监控都有哪些" class="headerlink" title="26. Kafka监控都有哪些"></a><font color=DarkOrange>26. Kafka监控都有哪些</font></h4><h4 id="27-如何为Kafka集群选择合适的Topics-x2F-Partitions数量"><a href="#27-如何为Kafka集群选择合适的Topics-x2F-Partitions数量" class="headerlink" title="27. 如何为Kafka集群选择合适的Topics&#x2F;Partitions数量"></a><font color=DarkOrange>27. 如何为Kafka集群选择合适的Topics&#x2F;Partitions数量</font></h4><h4 id="28-谈谈你对Kafka事务的了解"><a href="#28-谈谈你对Kafka事务的了解" class="headerlink" title="28. 谈谈你对Kafka事务的了解"></a><font color=DarkOrange>28. 谈谈你对Kafka事务的了解</font></h4><h4 id="29-谈谈你对Kafka幂等的了解"><a href="#29-谈谈你对Kafka幂等的了解" class="headerlink" title="29. 谈谈你对Kafka幂等的了解"></a><font color=DarkOrange>29. 谈谈你对Kafka幂等的了解</font></h4><h4 id="30-Kafka缺点"><a href="#30-Kafka缺点" class="headerlink" title="30. Kafka缺点"></a><font color=DarkOrange>30. Kafka缺点</font></h4><ul>
 <li>由于是批量发送，数据并非真正的实时</li>
 <li>对于mqtt协议不支持</li>
 <li>不支持物联网传感数据直接接入</li>
@@ -318,8 +318,8 @@
 <li>监控不完善，需要安装插件</li>
 <li>依赖zookeeper进行元数据管理</li>
 </ul>
-<h4 id="31-Kafka新旧消费者的区别"><a href="#31-Kafka新旧消费者的区别" class="headerlink" title="31. Kafka新旧消费者的区别"></a>31. Kafka新旧消费者的区别</h4><p>旧的 Kafka 消费者 API 主要包括：SimpleConsumer（简单消费者） 和 ZookeeperConsumerConnectir（高级消费者）。SimpleConsumer 名字看起来是简单消费者，但是其实用起来很不简单，可以使用它从特定的分区和偏移量开始读取消息。高级消费者和现在新的消费者有点像，有消费者群组，有分区再均衡，不过它使用 ZK 来管理消费者群组，并不具备偏移量和再均衡的可操控性</p>
-<h4 id="32-Kafka分区数可以增加或减少吗？为什么"><a href="#32-Kafka分区数可以增加或减少吗？为什么" class="headerlink" title="32. Kafka分区数可以增加或减少吗？为什么"></a>32. Kafka分区数可以增加或减少吗？为什么</h4><p>我们可以使用 bin&#x2F;kafka-topics.sh 命令对 Kafka 增加 Kafka 的分区数据，但是 Kafka 不支持减少分区数</p>
+<h4 id="31-Kafka新旧消费者的区别"><a href="#31-Kafka新旧消费者的区别" class="headerlink" title="31. Kafka新旧消费者的区别"></a><font color=DarkOrange>31. Kafka新旧消费者的区别</font></h4><p>旧的 Kafka 消费者 API 主要包括：SimpleConsumer（简单消费者） 和 ZookeeperConsumerConnectir（高级消费者）。SimpleConsumer 名字看起来是简单消费者，但是其实用起来很不简单，可以使用它从特定的分区和偏移量开始读取消息。高级消费者和现在新的消费者有点像，有消费者群组，有分区再均衡，不过它使用 ZK 来管理消费者群组，并不具备偏移量和再均衡的可操控性</p>
+<h4 id="32-Kafka分区数可以增加或减少吗？为什么"><a href="#32-Kafka分区数可以增加或减少吗？为什么" class="headerlink" title="32. Kafka分区数可以增加或减少吗？为什么"></a><font color=DarkOrange>32. Kafka分区数可以增加或减少吗？为什么</font></h4><p>我们可以使用 bin&#x2F;kafka-topics.sh 命令对 Kafka 增加 Kafka 的分区数据，但是 Kafka 不支持减少分区数</p>
 <p>Kafka 分区数据不支持减少是由很多原因的，比如减少的分区其数据放到哪里去？是删除，还是保留？删除的话，那么这些没消费的消息不就丢了。如果保留这些消息如何放到其他分区里面？追加到其他分区后面的话那么就破坏了 Kafka 单个分区的有序性。如果要保证删除分区数据插入到其他分区保证有序性，那么实现起来逻辑就会非常复杂</p>
 <hr>
 

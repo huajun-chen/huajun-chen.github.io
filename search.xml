@@ -7,7 +7,7 @@
 <p>CodeTop地址：<a href="https://codetop.cc/home">点击跳转</a></p>
 <p><strong>备注：</strong>出现的频率会随时间变化而变化，具体以CodeTop出现频率为准</p>
 <h4 id="1-无重复字符的最长子串-中等"><a href="#1-无重复字符的最长子串-中等" class="headerlink" title="1. 无重复字符的最长子串-中等"></a><font color=DarkOrange>1. 无重复字符的最长子串-中等</font></h4><p><strong>题目：</strong><br><strong>思路：</strong><br><strong>代码：</strong></p>
-<h4 id="2-反转链表-容易"><a href="#2-反转链表-容易" class="headerlink" title="2. 反转链表-容易"></a><font color=DarkOrange>2. 反转链表-容易</font></h4><p><strong>题目：</strong><br><strong>思路：</strong><br><strong>代码：</strong></p>
+<h4 id="2-反转链表-简单"><a href="#2-反转链表-简单" class="headerlink" title="2. 反转链表-简单"></a><font color=DarkOrange>2. 反转链表-简单</font></h4><p><strong>题目：</strong><br><strong>思路：</strong><br><strong>代码：</strong></p>
 <h4 id="3-LRU缓存-中等"><a href="#3-LRU缓存-中等" class="headerlink" title="3. LRU缓存-中等"></a><font color=DarkOrange>3. LRU缓存-中等</font></h4><p><strong>题目：</strong><br><strong>思路：</strong><br><strong>代码：</strong></p>
 <h4 id="4-数组中的第K个最大元素-中等"><a href="#4-数组中的第K个最大元素-中等" class="headerlink" title="4. 数组中的第K个最大元素-中等"></a><font color=DarkOrange>4. 数组中的第K个最大元素-中等</font></h4><p><strong>题目：</strong><br><strong>思路：</strong><br><strong>代码：</strong></p>
 <h4 id="5-K个一组翻转链表-困难"><a href="#5-K个一组翻转链表-困难" class="headerlink" title="5. K个一组翻转链表-困难"></a><font color=DarkOrange>5. K个一组翻转链表-困难</font></h4><p><strong>题目：</strong><br><strong>思路：</strong><br><strong>代码：</strong></p>
@@ -47,7 +47,7 @@
 <h4 id="39-爬楼梯-简单"><a href="#39-爬楼梯-简单" class="headerlink" title="39. 爬楼梯-简单"></a><font color=DarkOrange>39. 爬楼梯-简单</font></h4><p><strong>题目：</strong><br><strong>思路：</strong><br><strong>代码：</strong></p>
 <h4 id="40-合并区间-中等"><a href="#40-合并区间-中等" class="headerlink" title="40. 合并区间-中等"></a><font color=DarkOrange>40. 合并区间-中等</font></h4><p><strong>题目：</strong><br><strong>思路：</strong><br><strong>代码：</strong></p>
 <h4 id="41-排序链表-中等"><a href="#41-排序链表-中等" class="headerlink" title="41. 排序链表-中等"></a><font color=DarkOrange>41. 排序链表-中等</font></h4><p><strong>题目：</strong><br><strong>思路：</strong><br><strong>代码：</strong></p>
-<h4 id="42-删除排序链表中的重复元素-II"><a href="#42-删除排序链表中的重复元素-II" class="headerlink" title="42. 删除排序链表中的重复元素 II"></a><font color=DarkOrange>42. 删除排序链表中的重复元素 II</font></h4><p><strong>题目：</strong><br><strong>思路：</strong><br><strong>代码：</strong></p>
+<h4 id="42-删除排序链表中的重复元素-II-中等"><a href="#42-删除排序链表中的重复元素-II-中等" class="headerlink" title="42. 删除排序链表中的重复元素 II-中等"></a><font color=DarkOrange>42. 删除排序链表中的重复元素 II-中等</font></h4><p><strong>题目：</strong><br><strong>思路：</strong><br><strong>代码：</strong></p>
 <h4 id="43-下一个排列-中等"><a href="#43-下一个排列-中等" class="headerlink" title="43. 下一个排列-中等"></a><font color=DarkOrange>43. 下一个排列-中等</font></h4><p><strong>题目：</strong><br><strong>思路：</strong><br><strong>代码：</strong></p>
 <h4 id="44-x-的平方根-简单"><a href="#44-x-的平方根-简单" class="headerlink" title="44. x 的平方根 -简单"></a><font color=DarkOrange>44. x 的平方根 -简单</font></h4><p><strong>题目：</strong><br><strong>思路：</strong><br><strong>代码：</strong></p>
 <h4 id="45-两数相加-中等"><a href="#45-两数相加-中等" class="headerlink" title="45. 两数相加-中等"></a><font color=DarkOrange>45. 两数相加-中等</font></h4><p><strong>题目：</strong><br><strong>思路：</strong><br><strong>代码：</strong></p>
@@ -354,100 +354,137 @@
       </tags>
   </entry>
   <entry>
-    <title>Kafka面试题</title>
-    <url>/2022/10/30/Kafka%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p>Kafka面试题</p>
-<h4 id="1-Kafka都有哪些特点"><a href="#1-Kafka都有哪些特点" class="headerlink" title="1. Kafka都有哪些特点"></a><font color=DarkOrange>1. Kafka都有哪些特点</font></h4><ul>
-<li>高吞吐量、低延迟：kafka每秒可以处理几十万条消息，它的延迟最低只有几毫秒，每个topic可以分多个partition, consumer group 对partition进行consume操作</li>
-<li>可扩展性：kafka集群支持热扩展</li>
-<li>持久性、可靠性：消息被持久化到本地磁盘，并且支持数据备份防止数据丢失</li>
-<li>容错性：允许集群中节点失败（若副本数量为n,则允许n-1个节点失败）</li>
-<li>高并发：支持数千个客户端同时读写</li>
-</ul>
-<h4 id="2-请简述下你在哪些场景下会选择Kafka"><a href="#2-请简述下你在哪些场景下会选择Kafka" class="headerlink" title="2. 请简述下你在哪些场景下会选择Kafka"></a><font color=DarkOrange>2. 请简述下你在哪些场景下会选择Kafka</font></h4><ul>
-<li>日志收集：一个公司可以用Kafka可以收集各种服务的log，通过kafka以统一接口服务的方式开放给各种consumer，例如hadoop、HBase、Solr等</li>
-<li>消息系统：解耦和生产者和消费者、缓存消息等</li>
-<li>用户活动跟踪：Kafka经常被用来记录web用户或者app用户的各种活动，如浏览网页、搜索、点击等活动，这些活动信息被各个服务器发布到kafka的topic中，然后订阅者通过订阅这些topic来做实时的监控分析，或者装载到hadoop、数据仓库中做离线分析和挖掘</li>
-<li>运营指标：Kafka也经常用来记录运营监控数据。包括收集各种分布式应用的数据，生产各种操作的集中反馈，比如报警和报告</li>
-<li>流式处理：比如spark streaming和 Flink</li>
-</ul>
-<h4 id="3-Kafka的设计架构你知道吗"><a href="#3-Kafka的设计架构你知道吗" class="headerlink" title="3. Kafka的设计架构你知道吗"></a><font color=DarkOrange>3. Kafka的设计架构你知道吗</font></h4><p>Kafka架构分为以下几个部分：</p>
-<ul>
-<li>Producer ：消息生产者，就是向 kafka broker 发消息的客户端</li>
-<li>Consumer ：消息消费者，向 kafka broker 取消息的客户端</li>
-<li>Topic ：可以理解为一个队列，一个 Topic 又分为一个或多个分区</li>
-<li>Consumer Group：这是 kafka 用来实现一个 topic 消息的广播（发给所有的 consumer）和单播（发给任意一个 consumer）的手段。一个 topic 可以有多个 Consumer Group</li>
-<li>Broker ：一台 kafka 服务器就是一个 broker。一个集群由多个 broker 组成。一个 broker 可以容纳多个 topic</li>
-<li>Partition：为了实现扩展性，一个非常大的 topic 可以分布到多个 broker上，每个 partition 是一个有序的队列。partition 中的每条消息都会被分配一个有序的id（offset）。将消息发给 consumer，kafka 只保证按一个 partition 中的消息的顺序，不保证一个 topic 的整体（多个 partition 间）的顺序</li>
-<li>Offset：kafka 的存储文件都是按照 offset.kafka 来命名，用 offset 做名字的好处是方便查找。例如你想找位于 2049 的位置，只要找到 2048.kafka 的文件即可。当然 the first offset 就是 00000000000.kafka</li>
-</ul>
-<h4 id="4-Kafka分区的目的"><a href="#4-Kafka分区的目的" class="headerlink" title="4. Kafka分区的目的"></a><font color=DarkOrange>4. Kafka分区的目的</font></h4><p>分区对于 Kafka 集群的好处是：实现负载均衡。分区对于消费者来说，可以提高并发度，提高效率</p>
-<h4 id="5-你知道Kafka是如何做到消息的有序性"><a href="#5-你知道Kafka是如何做到消息的有序性" class="headerlink" title="5. 你知道Kafka是如何做到消息的有序性"></a><font color=DarkOrange>5. 你知道Kafka是如何做到消息的有序性</font></h4><p>kafka 中的每个 partition 中的消息在写入时都是有序的，而且单独一个 partition 只能由一个消费者去消费，可以在里面保证消息的顺序性。但是分区之间的消息是不保证有序的</p>
-<h4 id="6-Kafka的高可靠性是怎么实现的"><a href="#6-Kafka的高可靠性是怎么实现的" class="headerlink" title="6. Kafka的高可靠性是怎么实现的"></a><font color=DarkOrange>6. Kafka的高可靠性是怎么实现的</font></h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
-<h4 id="7-请谈一谈Kafka数据一致性原理"><a href="#7-请谈一谈Kafka数据一致性原理" class="headerlink" title="7. 请谈一谈Kafka数据一致性原理"></a><font color=DarkOrange>7. 请谈一谈Kafka数据一致性原理</font></h4><h4 id="8-ISR、OSR、AR-是什么"><a href="#8-ISR、OSR、AR-是什么" class="headerlink" title="8. ISR、OSR、AR 是什么"></a><font color=DarkOrange>8. ISR、OSR、AR 是什么</font></h4><ul>
-<li>SR：In-Sync Replicas 副本同步队列</li>
-<li>OSR：Out-of-Sync Replicas</li>
-<li>AR：Assigned Replicas 所有副本</li>
-</ul>
-<p>ISR是由leader维护，follower从leader同步数据有一些延迟，超过相应的阈值会把 follower 剔除出 ISR, 存入OSR（Out-of-Sync Replicas ）列表，新加入的follower也会先存放在OSR中。AR&#x3D;ISR+OSR</p>
-<h4 id="9-LEO、HW、LSO、LW等分别代表什么"><a href="#9-LEO、HW、LSO、LW等分别代表什么" class="headerlink" title="9. LEO、HW、LSO、LW等分别代表什么"></a><font color=DarkOrange>9. LEO、HW、LSO、LW等分别代表什么</font></h4><ul>
-<li>LEO：是 LogEndOffset 的简称，代表当前日志文件中下一条</li>
-<li>HW：水位或水印（watermark）一词，也可称为高水位(high watermark)，通常被用在流式处理领域（比如Apache Flink、Apache Spark等），以表征元素或事件在基于时间层面上的进度。在Kafka中，水位的概念反而与时间无关，而是与位置信息相关。严格来说，它表示的就是位置信息，即位移（offset）。取 partition 对应的 ISR中 最小的 LEO 作为 HW，consumer 最多只能消费到 HW 所在的位置上一条信息</li>
-<li>LSO：是 LastStableOffset 的简称，对未完成的事务而言，LSO 的值等于事务中第一条消息的位置(firstUnstableOffset)，对已完成的事务而言，它的值同 HW 相同</li>
-<li>LW：Low Watermark 低水位, 代表 AR 集合中最小的 logStartOffset 值</li>
-</ul>
-<h4 id="10-Kafka在什么情况下会出现消息丢失"><a href="#10-Kafka在什么情况下会出现消息丢失" class="headerlink" title="10. Kafka在什么情况下会出现消息丢失"></a><font color=DarkOrange>10. Kafka在什么情况下会出现消息丢失</font></h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
-<h4 id="11-怎么尽可能保证Kafka的可靠性"><a href="#11-怎么尽可能保证Kafka的可靠性" class="headerlink" title="11. 怎么尽可能保证Kafka的可靠性"></a><font color=DarkOrange>11. 怎么尽可能保证Kafka的可靠性</font></h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
-<h4 id="12-消费者和消费者组有什么关系"><a href="#12-消费者和消费者组有什么关系" class="headerlink" title="12. 消费者和消费者组有什么关系"></a><font color=DarkOrange>12. 消费者和消费者组有什么关系</font></h4><h4 id="13-Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区"><a href="#13-Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区" class="headerlink" title="13. Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区"></a><font color=DarkOrange>13. Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区</font></h4><h4 id="14-数据传输的事务有几种"><a href="#14-数据传输的事务有几种" class="headerlink" title="14. 数据传输的事务有几种"></a><font color=DarkOrange>14. 数据传输的事务有几种</font></h4><p>数据传输的事务定义通常有以下三种级别：</p>
-<ul>
-<li>最多一次：消息不会被重复发送，最多被传输一次，但也有可能一次不传输</li>
-<li>最少一次：消息不会被漏发送，最少被传输一次，但也有可能被重复传输</li>
-<li>精确的一次（Exactly once）：不会漏传输也不会重复传输，每个消息都传输被</li>
-</ul>
-<h4 id="15-Kafka消费者是否可以消费指定分区消息"><a href="#15-Kafka消费者是否可以消费指定分区消息" class="headerlink" title="15. Kafka消费者是否可以消费指定分区消息"></a><font color=DarkOrange>15. Kafka消费者是否可以消费指定分区消息</font></h4><p>Kafa consumer消费消息时，向broker发出fetch请求去消费特定分区的消息，consumer指定消息在日志中的偏移量（offset），就可以消费从这个位置开始的消息，customer拥有了offset的控制权，可以向后回滚去重新消费之前的消息，这是很有意义的</p>
-<h4 id="16-Kafka消息是采用Pull模式，还是Push模式"><a href="#16-Kafka消息是采用Pull模式，还是Push模式" class="headerlink" title="16. Kafka消息是采用Pull模式，还是Push模式"></a><font color=DarkOrange>16. Kafka消息是采用Pull模式，还是Push模式</font></h4><p>Kafka最初考虑的问题是，customer应该从brokes拉取消息还是brokers将消息推送到consumer，也就是pull还push。在这方面，Kafka遵循了一种大部分消息系统共同的传统的设计：producer将消息推送到broker，consumer从broker拉取消息</p>
-<p>一些消息系统比如Scribe和Apache Flume采用了push模式，将消息推送到下游的consumer。这样做有好处也有坏处：由broker决定消息推送的速率，对于不同消费速率的consumer就不太好处理了。消息系统都致力于让consumer以最大的速率最快速的消费消息，但不幸的是，push模式下，当broker推送的速率远大于consumer消费的速率时，consumer恐怕就要崩溃了。最终Kafka还是选取了传统的pull模式</p>
-<p>Pull模式的另外一个好处是consumer可以自主决定是否批量的从broker拉取数据。Push模式必须在不知道下游consumer消费能力和消费策略的情况下决定是立即推送每条消息还是缓存之后批量推送。如果为了避免consumer崩溃而采用较低的推送速率，将可能导致一次只推送较少的消息而造成浪费。Pull模式下，consumer就可以根据自己的消费能力去决定这些策略</p>
-<p>Pull有个缺点是，如果broker没有可供消费的消息，将导致consumer不断在循环中轮询，直到新消息到t达。为了避免这点，Kafka有个参数可以让consumer阻塞知道新消息到达(当然也可以阻塞知道消息的数量达到某个特定的量这样就可以批量发</p>
-<h4 id="17-Kafka-消息格式的演变清楚吗"><a href="#17-Kafka-消息格式的演变清楚吗" class="headerlink" title="17. Kafka 消息格式的演变清楚吗"></a><font color=DarkOrange>17. Kafka 消息格式的演变清楚吗</font></h4><h4 id="18-Kafka-偏移量的演变清楚吗"><a href="#18-Kafka-偏移量的演变清楚吗" class="headerlink" title="18. Kafka 偏移量的演变清楚吗"></a><font color=DarkOrange>18. Kafka 偏移量的演变清楚吗</font></h4><h4 id="19-Kafka高效文件存储设计特点"><a href="#19-Kafka高效文件存储设计特点" class="headerlink" title="19. Kafka高效文件存储设计特点"></a><font color=DarkOrange>19. Kafka高效文件存储设计特点</font></h4><ul>
-<li>Kafka把topic中一个parition大文件分成多个小文件段，通过多个小文件段，就容易定期清除或删除已经消费完文件，减少磁盘占用</li>
-<li>通过索引信息可以快速定位message和确定response的最大大小</li>
-<li>通过index元数据全部映射到memory，可以避免segment file的IO磁盘操作</li>
-<li>通过索引文件稀疏存储，可以大幅降低index文件元数据占用空间大小</li>
-</ul>
-<h4 id="20-Kafka创建Topic时如何将分区放置到不同的Broker中"><a href="#20-Kafka创建Topic时如何将分区放置到不同的Broker中" class="headerlink" title="20. Kafka创建Topic时如何将分区放置到不同的Broker中"></a><font color=DarkOrange>20. Kafka创建Topic时如何将分区放置到不同的Broker中</font></h4><h4 id="21-Kafka新建的分区会在哪个目录下创建"><a href="#21-Kafka新建的分区会在哪个目录下创建" class="headerlink" title="21. Kafka新建的分区会在哪个目录下创建"></a><font color=DarkOrange>21. Kafka新建的分区会在哪个目录下创建</font></h4><h4 id="22-谈一谈Kafka的再均衡"><a href="#22-谈一谈Kafka的再均衡" class="headerlink" title="22. 谈一谈Kafka的再均衡"></a><font color=DarkOrange>22. 谈一谈Kafka的再均衡</font></h4><p>在Kafka中，当有新消费者加入或者订阅的topic数发生变化时，会触发Rebalance(再均衡：在同一个消费者组当中，分区的所有权从一个消费者转移到另外一个消费者)机制，Rebalance顾名思义就是重新均衡消费者消费。Rebalance的过程如下：</p>
-<ul>
-<li>第一步：所有成员都向coordinator发送请求，请求入组。一旦所有成员都发送了请求，coordinator会从中选择一个consumer担任leader的角色，并把组成员信息以及订阅信息发给leader</li>
-<li>第二步：leader开始分配消费方案，指明具体哪个consumer负责消费哪些topic的哪些partition。一旦完成分配，leader会将这个方案发给coordinator。coordinator接收到分配方案之后会把方案发给各个consumer，这样组内的所有成员就都知道自己应该消费哪些分区了</li>
-</ul>
-<p>所以对于Rebalance来说，Coordinator起着至关重要的作用</p>
-<h4 id="23-谈谈Kafka分区分配策略"><a href="#23-谈谈Kafka分区分配策略" class="headerlink" title="23. 谈谈Kafka分区分配策略"></a><font color=DarkOrange>23. 谈谈Kafka分区分配策略</font></h4><h4 id="24-Kafka-Producer是如何动态感知主题分区数变化的"><a href="#24-Kafka-Producer是如何动态感知主题分区数变化的" class="headerlink" title="24. Kafka Producer是如何动态感知主题分区数变化的"></a><font color=DarkOrange>24. Kafka Producer是如何动态感知主题分区数变化的</font></h4><h4 id="25-Kafka是如何实现高吞吐率的"><a href="#25-Kafka是如何实现高吞吐率的" class="headerlink" title="25. Kafka是如何实现高吞吐率的"></a><font color=DarkOrange>25. Kafka是如何实现高吞吐率的</font></h4><p>Kafka是分布式消息系统，需要处理海量的消息，Kafka的设计是把所有的消息都写入速度低容量大的硬盘，以此来换取更强的存储能力，但实际上，使用硬盘并没有带来过多的性能损失。kafka主要使用了以下几个方式实现了超高的吞吐率：</p>
-<ul>
-<li>顺序读写</li>
-<li>零拷贝</li>
-<li>文件分段</li>
-<li>批量发送</li>
-<li>数据压缩</li>
-</ul>
-<h4 id="26-Kafka监控都有哪些"><a href="#26-Kafka监控都有哪些" class="headerlink" title="26. Kafka监控都有哪些"></a><font color=DarkOrange>26. Kafka监控都有哪些</font></h4><h4 id="27-如何为Kafka集群选择合适的Topics-x2F-Partitions数量"><a href="#27-如何为Kafka集群选择合适的Topics-x2F-Partitions数量" class="headerlink" title="27. 如何为Kafka集群选择合适的Topics&#x2F;Partitions数量"></a><font color=DarkOrange>27. 如何为Kafka集群选择合适的Topics&#x2F;Partitions数量</font></h4><h4 id="28-谈谈你对Kafka事务的了解"><a href="#28-谈谈你对Kafka事务的了解" class="headerlink" title="28. 谈谈你对Kafka事务的了解"></a><font color=DarkOrange>28. 谈谈你对Kafka事务的了解</font></h4><h4 id="29-谈谈你对Kafka幂等的了解"><a href="#29-谈谈你对Kafka幂等的了解" class="headerlink" title="29. 谈谈你对Kafka幂等的了解"></a><font color=DarkOrange>29. 谈谈你对Kafka幂等的了解</font></h4><h4 id="30-Kafka缺点"><a href="#30-Kafka缺点" class="headerlink" title="30. Kafka缺点"></a><font color=DarkOrange>30. Kafka缺点</font></h4><ul>
-<li>由于是批量发送，数据并非真正的实时</li>
-<li>对于mqtt协议不支持</li>
-<li>不支持物联网传感数据直接接入</li>
-<li>仅支持统一分区内消息有序，无法实现全局消息有序</li>
-<li>监控不完善，需要安装插件</li>
-<li>依赖zookeeper进行元数据管理</li>
-</ul>
-<h4 id="31-Kafka新旧消费者的区别"><a href="#31-Kafka新旧消费者的区别" class="headerlink" title="31. Kafka新旧消费者的区别"></a><font color=DarkOrange>31. Kafka新旧消费者的区别</font></h4><p>旧的 Kafka 消费者 API 主要包括：SimpleConsumer（简单消费者） 和 ZookeeperConsumerConnectir（高级消费者）。SimpleConsumer 名字看起来是简单消费者，但是其实用起来很不简单，可以使用它从特定的分区和偏移量开始读取消息。高级消费者和现在新的消费者有点像，有消费者群组，有分区再均衡，不过它使用 ZK 来管理消费者群组，并不具备偏移量和再均衡的可操控性</p>
-<h4 id="32-Kafka分区数可以增加或减少吗？为什么"><a href="#32-Kafka分区数可以增加或减少吗？为什么" class="headerlink" title="32. Kafka分区数可以增加或减少吗？为什么"></a><font color=DarkOrange>32. Kafka分区数可以增加或减少吗？为什么</font></h4><p>我们可以使用 bin&#x2F;kafka-topics.sh 命令对 Kafka 增加 Kafka 的分区数据，但是 Kafka 不支持减少分区数</p>
-<p>Kafka 分区数据不支持减少是由很多原因的，比如减少的分区其数据放到哪里去？是删除，还是保留？删除的话，那么这些没消费的消息不就丢了。如果保留这些消息如何放到其他分区里面？追加到其他分区后面的话那么就破坏了 Kafka 单个分区的有序性。如果要保证删除分区数据插入到其他分区保证有序性，那么实现起来逻辑就会非常复杂</p>
+    <title>Linux操作系统面试题</title>
+    <url>/2022/10/28/Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<p>Linux常见面试题整理</p>
 <hr>
+<p><strong>50个最常用的Unix&#x2F;Linux命令</strong></p>
+<h4 id="1-tar"><a href="#1-tar" class="headerlink" title="1. tar"></a><font color=DarkOrange>1. tar</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">tar cvf archive_name.tar <span class="built_in">dirname</span>/ 创建一个新的tar文件</span><br><span class="line">tar xvf archive_name.tar 解压tar文件</span><br><span class="line">tar tvf archive_name.tar 查看tar文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-grep"><a href="#2-grep" class="headerlink" title="2. grep"></a><font color=DarkOrange>2. grep</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">grep -i <span class="string">&quot;the&quot;</span> demo_file 在文件中查找字符串(不区分大小写)</span><br><span class="line">grep -A 3 -i <span class="string">&quot;example&quot;</span> demo_text 输出成功匹配的行，以及该行之后的三行</span><br><span class="line">grep -r <span class="string">&quot;ramesh&quot;</span> * 在一个文件夹中递归查询包含指定字符串的文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-find"><a href="#3-find" class="headerlink" title="3. find"></a><font color=DarkOrange>3. find</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">find -iname <span class="string">&quot;MyProgram.c&quot;</span> 查找指定文件名的文件(不区分大小写)</span><br><span class="line">find -iname <span class="string">&quot;MyProgram.c&quot;</span> -<span class="built_in">exec</span> <span class="built_in">md5sum</span> &#123;&#125; \; 对找到的文件执行某个命令</span><br><span class="line">find ~ -empty 查找home目录下的所有空文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-ssh"><a href="#4-ssh" class="headerlink" title="4. ssh"></a><font color=DarkOrange>4. ssh</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh -l jsmith remotehost.example.com 登录到远程主机</span><br><span class="line">ssh -v -l jsmith remotehost.example.com 调试ssh客户端</span><br><span class="line">ssh -V 显示ssh客户端版本</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-sed"><a href="#5-sed" class="headerlink" title="5. sed"></a><font color=DarkOrange>5. sed</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sed <span class="string">&#x27;s/.$//&#x27;</span> filename 当你将Dos系统中的文件复制到Unix/Linux后，这个文件每行都会以\r\n结尾，sed可以轻易将其转换为Unix格式的文件，使用\n结尾的文件</span><br><span class="line">sed -n <span class="string">&#x27;1!G; h; p&#x27;</span> filename 反转文件内容并输出</span><br><span class="line">sed <span class="string">&#x27;/./=&#x27;</span> thegeekstuff.txt | sed <span class="string">&#x27;N; s/\n/ /&#x27;</span> 为非空行添加行号</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-awk"><a href="#6-awk" class="headerlink" title="6. awk"></a><font color=DarkOrange>6. awk</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">awk <span class="string">&#x27;!($0 in array) &#123; array[$0]; print&#125;&#x27;</span> temp 删除重复行</span><br><span class="line">awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;$3=$4&#x27;</span> /etc/passwd 打印/etc/passwd中所有包含同样的uid和gid的行</span><br><span class="line">awk <span class="string">&#x27;&#123;print $2,$5;&#125;&#x27;</span> employee.txt 打印文件中的指定部分的字段</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-vim"><a href="#7-vim" class="headerlink" title="7. vim"></a><font color=DarkOrange>7. vim</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">vim +10 filename.txt 打开文件并跳到第10行</span><br><span class="line">vim +/search-term filename.txt 打开文件跳到第一个匹配的行</span><br><span class="line">vim -R /etc/passwd 以只读模式打开文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-diff"><a href="#8-diff" class="headerlink" title="8. diff"></a><font color=DarkOrange>8. diff</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">diff -w name_list.txt name_list_new.txt 比较的时候忽略空白符</span><br></pre></td></tr></table></figure>
+
+<h4 id="9-sort"><a href="#9-sort" class="headerlink" title="9. sort"></a><font color=DarkOrange>9. sort</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sort</span> names.txt 以升序对文件内容排序</span><br><span class="line"><span class="built_in">sort</span> -r names.txt 以降序对文件内容排序</span><br><span class="line"><span class="built_in">sort</span> -t: -k 3n /etc/passwd | more 以第三个字段对/etc/passwd的内容排序</span><br></pre></td></tr></table></figure>
+
+<h4 id="10-export"><a href="#10-export" class="headerlink" title="10. export"></a><font color=DarkOrange>10. export</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> | grep ORCALE 输出跟字符串oracle匹配的环境变量</span><br><span class="line"><span class="built_in">export</span> ORACLE_HOME=/u01/app/oracle/product/10.2.0 设置全局环境变量</span><br></pre></td></tr></table></figure>
+
+<h4 id="11-xargs"><a href="#11-xargs" class="headerlink" title="11. xargs"></a><font color=DarkOrange>11. xargs</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> *.jpg | xargs -n1 -i <span class="built_in">cp</span> &#123;&#125; /external-hard-drive/directory 将所有图片文件拷贝到外部驱动器</span><br><span class="line">find / -name *.jpg -<span class="built_in">type</span> f -<span class="built_in">print</span> | xargs tar -cvzf images.tar.gz 将系统中所有jpd文件压缩打包</span><br><span class="line"><span class="built_in">cat</span> url-list.txt | xargs wget –c 下载文件中列出的所有url对应的页面</span><br></pre></td></tr></table></figure>
+
+<h4 id="12-ls"><a href="#12-ls" class="headerlink" title="12. ls"></a><font color=DarkOrange>12. ls</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -lh 以易读的方式显示文件大小(显示为MB,GB...)</span><br><span class="line"><span class="built_in">ls</span> -ltr 以最后修改时间升序列出文件</span><br><span class="line"><span class="built_in">ls</span> -F 在文件名后面显示文件类型</span><br></pre></td></tr></table></figure>
+
+<h4 id="13-pwd"><a href="#13-pwd" class="headerlink" title="13. pwd"></a><font color=DarkOrange>13. pwd</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">输出当前工作目录</span><br></pre></td></tr></table></figure>
+
+<h4 id="14-cd"><a href="#14-cd" class="headerlink" title="14. cd"></a><font color=DarkOrange>14. cd</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> 可以在最近工作的两个目录间切换</span><br><span class="line"><span class="built_in">cd</span> ../ 跳到上级目录</span><br><span class="line"><span class="built_in">cd</span> /opt 不管现在到那直接跳到指定的opt文件夹中</span><br><span class="line"><span class="built_in">cd</span> ~ 切换当前用户的家目录。root用户的家目录就是root目录</span><br></pre></td></tr></table></figure>
+
+<h4 id="15-gzip"><a href="#15-gzip" class="headerlink" title="15. gzip"></a><font color=DarkOrange>15. gzip</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">gzip test.txt 创建一个*.gz的压缩文件</span><br><span class="line">gzip -d test.txt.gz 解压*.gz文件</span><br><span class="line">gzip -l *.gz 显示压缩的比率</span><br></pre></td></tr></table></figure>
+
+<h4 id="16-bzip2"><a href="#16-bzip2" class="headerlink" title="16. bzip2"></a><font color=DarkOrange>16. bzip2</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">bzip2 test.txt 创建*.bz2压缩文件</span><br><span class="line">bzip2 -d test.txt.bz2 解压*.bz2文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="17-uzip"><a href="#17-uzip" class="headerlink" title="17. uzip"></a><font color=DarkOrange>17. uzip</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">unzip test.zip 解压*.zip文件</span><br><span class="line">unzip -l jasper.zip 查看*.zip文件的内容</span><br></pre></td></tr></table></figure>
+
+<h4 id="18-shutdown"><a href="#18-shutdown" class="headerlink" title="18. shutdown"></a><font color=DarkOrange>18. shutdown</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">shutdown -h now 关闭系统并立即关机</span><br><span class="line">shutdown -h +10 10分钟后关机</span><br><span class="line">shutdown -r now 重启</span><br><span class="line">shutdown -Fr now 重启期间强制进行系统检查</span><br></pre></td></tr></table></figure>
+
+<h4 id="19-ftp"><a href="#19-ftp" class="headerlink" title="19. ftp"></a><font color=DarkOrange>19. ftp</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ftp IP/hostname ftp命令和sftp命令的用法基本相似连接ftp服务器并下载多个文件</span><br><span class="line">ftp&gt; mls *.html - 显示远程主机上文件列表</span><br></pre></td></tr></table></figure>
+
+<h4 id="20-crontab"><a href="#20-crontab" class="headerlink" title="20. crontab"></a><font color=DarkOrange>20. crontab</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">crontab -u john -l 查看某个用户的crontab入口</span><br><span class="line">*/10 * * * * /home/ramesh/check-disk-space 设置一个每十分钟执行一次的计划任务</span><br></pre></td></tr></table></figure>
+
+<h4 id="21-service"><a href="#21-service" class="headerlink" title="21. service"></a><font color=DarkOrange>21. service</font></h4><p>service命令用于运行System V init脚本，这些脚本一般位于&#x2F;etc&#x2F;init.d文件下，这个命令可以直接运行这个文件夹里面的脚本，而不用加上路径</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">service ssh status 查看服务状态</span><br><span class="line">service --status-all 查看所有服务状态</span><br><span class="line">service ssh restart 重启服务</span><br></pre></td></tr></table></figure>
+
+<h4 id="22-ps"><a href="#22-ps" class="headerlink" title="22. ps"></a><font color=DarkOrange>22. ps</font></h4><p>ps命令用于显示正在运行中的进程的信息，ps命令有很多选项，这里只列出了几个</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ps -ef | more 查看当前正在运行的所有进程</span><br><span class="line">ps -efH | more 以树状结构显示当前正在运行的进程，H选项表示显示进程的层次结构</span><br></pre></td></tr></table></figure>
+
+<h4 id="23-free"><a href="#23-free" class="headerlink" title="23. free"></a><font color=DarkOrange>23. free</font></h4><p>这个命令用于显示系统当前内存的使用情况，包括已用内存、可用内存和交换内存的情况</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">free 默认情况下free会以字节为单位输出内存的使用量</span><br><span class="line">free -g 如果你想以其他单位输出内存的使用量，需要加一个选项，-g为GB，-m为MB，-k为KB，-b为字节</span><br><span class="line">free -t 如果你想查看所有内存的汇总，请使用-t选项，使用这个选项会在输出中加一个汇总行</span><br></pre></td></tr></table></figure>
+
+<h4 id="24-top"><a href="#24-top" class="headerlink" title="24. top"></a><font color=DarkOrange>24. top</font></h4><p>top命令会显示当前系统中占用资源最多的一些进程（默认以CPU占用率排序）如果你想改变排序方式，可以在结果列表中点击O（大写字母O）会显示所有可用于排序的列，这个时候你就可以选择你想排序的列</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">top -u oracle 如果只想显示某个特定用户的进程，可以使用-u选项</span><br></pre></td></tr></table></figure>
+
+<h4 id="25-df"><a href="#25-df" class="headerlink" title="25. df"></a><font color=DarkOrange>25. df</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">df</span> -k 显示文件系统的磁盘使用情况，默认情况下<span class="built_in">df</span> -k 将以字节为单位输出磁盘的使用量</span><br><span class="line"><span class="built_in">df</span> -h 使用-h选项可以以更符合阅读习惯的方式显示磁盘使用量</span><br><span class="line"><span class="built_in">df</span> -T 使用-T选项显示文件系统类型</span><br></pre></td></tr></table></figure>
+
+<h4 id="26-kill"><a href="#26-kill" class="headerlink" title="26. kill"></a><font color=DarkOrange>26. kill</font></h4><p>kill用于终止一个进程。一般我们会先用<code>ps -ef</code>查找某个进程得到它的进程号，然后再使用<code>kill -9 进程号</code>终止该进程。你还可以使用killall、pkill、xkill来终止进程</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ps -ef | grep vim</span><br><span class="line">	ramesh    7243  7222  9 22:43 pts/2    00:00:00 vim</span><br><span class="line"><span class="built_in">kill</span> -9 7243</span><br></pre></td></tr></table></figure>
+
+<h4 id="27-rm"><a href="#27-rm" class="headerlink" title="27. rm"></a><font color=DarkOrange>27. rm</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> -i filename.txt 删除文件前先确认</span><br><span class="line"><span class="built_in">rm</span> -i file* 在文件名中使用shell的元字符会非常有用。删除文件前先打印文件名并进行确认</span><br><span class="line"><span class="built_in">rm</span> -r example 递归删除文件夹下所有文件，并删除该文件夹</span><br></pre></td></tr></table></figure>
+
+<h4 id="28-cp"><a href="#28-cp" class="headerlink" title="28. cp"></a><font color=DarkOrange>28. cp</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> -p file1 file2 拷贝文件1到文件2，并保持文件的权限、属主和时间戳</span><br><span class="line"><span class="built_in">cp</span> -i file1 file2 拷贝file1到file2，如果file2存在会提示是否覆盖</span><br></pre></td></tr></table></figure>
+
+<h4 id="29-mv"><a href="#29-mv" class="headerlink" title="29. mv"></a><font color=DarkOrange>29. mv</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">注意如果使用-f选项则不会进行提示</span><br><span class="line"><span class="built_in">mv</span> -i file1 file2 将文件名file1重命名为file2，如果file2存在则提示是否覆盖</span><br><span class="line"><span class="built_in">mv</span> -v file1 file2 -v会输出重命名的过程，当文件名中包含通配符时，这个选项会非常方便</span><br></pre></td></tr></table></figure>
+
+<h4 id="30-cat"><a href="#30-cat" class="headerlink" title="30. cat"></a><font color=DarkOrange>30. cat</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> file1 file2 你可以一次查看多个文件的内容，下面的命令会先打印file1的内容，然后打印file2的内容</span><br><span class="line"><span class="built_in">cat</span> -n /etc/logrotate.conf -n命令可以在每行的前面加上行号</span><br></pre></td></tr></table></figure>
+
+<h4 id="31-mount"><a href="#31-mount" class="headerlink" title="31. mount"></a><font color=DarkOrange>31. mount</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /u01</span><br><span class="line">mount /dev/sdb1 /u01 如果要挂载一个文件系统，需要先创建一个目录，然后将这个文件系统挂载到这个目录上</span><br><span class="line">/dev/sdb1 /u01 ext2 defaults 0 2 也可以把它添加到fstab中进行自动挂载，这样任何时候系统重启的时候，文件系统都会被加载</span><br></pre></td></tr></table></figure>
+
+<h4 id="32-chmod"><a href="#32-chmod" class="headerlink" title="32. chmod"></a><font color=DarkOrange>32. chmod</font></h4><p>chmod用于改变文件和目录的权限</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> ug+rwx file.txt 给指定文件的属主和属组所有权限(包括读、写、执行)</span><br><span class="line"><span class="built_in">chmod</span> g-rwx file.txt 删除指定文件的属组的所有权限</span><br><span class="line"><span class="built_in">chmod</span> -R ug+rwx file.txt 修改目录的权限，以及递归修改目录下面所有文件和子目录的权限</span><br></pre></td></tr></table></figure>
+
+<h4 id="33-chown"><a href="#33-chown" class="headerlink" title="33. chown"></a><font color=DarkOrange>33. chown</font></h4><p>chown用于改变文件属主和属组</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chown</span> oracle:dba dbora.sh 同时将某个文件的属主改为oracle，属组改为db</span><br><span class="line"><span class="built_in">chown</span> -R oracle:dba /home/oracle 使用-R选项对目录和目录下的文件进行递归修改</span><br></pre></td></tr></table></figure>
+
+<h4 id="34-passwd"><a href="#34-passwd" class="headerlink" title="34. passwd"></a><font color=DarkOrange>34. passwd</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">passwd passwd用于在命令行修改密码，使用这个命令会要求你先输入旧密码，然后输入新密码</span><br><span class="line">passwd USERNAME 超级用户可以用这个命令修改其他用户的密码，这个时候不需要输入用户的密码</span><br><span class="line">passwd -d USERNAME passwd还可以删除某个用户的密码，这个命令只有root用户才能操作，删除密码后，这个用户不需要输入密码就可以登录到系统</span><br></pre></td></tr></table></figure>
+
+<h4 id="35-mkdir"><a href="#35-mkdir" class="headerlink" title="35. mkdir"></a><font color=DarkOrange>35. mkdir</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/temp 在home目录下创建一个名为temp的目录</span><br><span class="line"><span class="built_in">mkdir</span> -p dir1/dir2/dir3/dir4/ 使用-p选项可以创建一个路径上所有不存在的目录</span><br></pre></td></tr></table></figure>
+
+<h4 id="36-ifconfig"><a href="#36-ifconfig" class="headerlink" title="36. ifconfig"></a><font color=DarkOrange>36. ifconfig</font></h4><p>ifconfig用于查看和配置Linux系统的网络接口</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ifconfig -a 查看所有网络接口及其状态</span><br><span class="line">ifconfig eth0 up 使用up命令启动某个接口</span><br><span class="line">ifconfig eth0 down 使用down命令停止某个接口</span><br></pre></td></tr></table></figure>
+
+<h4 id="37-uname"><a href="#37-uname" class="headerlink" title="37. uname"></a><font color=DarkOrange>37. uname</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">uname</span> -a <span class="built_in">uname</span>可以显示一些重要的系统信息，例如内核名称、主机名、内核版本号、处理器类型之类的信息</span><br></pre></td></tr></table></figure>
+
+<h4 id="38-whereis"><a href="#38-whereis" class="headerlink" title="38. whereis"></a><font color=DarkOrange>38. whereis</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">whereis <span class="built_in">ls</span> 当你不知道某个命令的位置时可以使用whereis命令，下面使用whereis查找<span class="built_in">ls</span>的位置</span><br><span class="line">whereis -u -B /tmp -f lsmk 当你想查找某个可执行程序的位置，但这个程序又不在whereis的默认目录下，你可以使用-B选项，并指定目录作为这个选项的参数。下面的命令在/tmp目录下查找lsmk命令</span><br></pre></td></tr></table></figure>
+
+<h4 id="39-whatis"><a href="#39-whatis" class="headerlink" title="39. whatis"></a><font color=DarkOrange>39. whatis</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">whatis <span class="built_in">ls</span> wathis显示某个命令的描述信息</span><br><span class="line">whatis ifconfig wathis显示某个命令的描述信息</span><br></pre></td></tr></table></figure>
+
+<h4 id="40-locate"><a href="#40-locate" class="headerlink" title="40. locate"></a><font color=DarkOrange>40. locate</font></h4><p>locate命名可以显示某个指定文件（或一组文件）的路径，它会使用由updatedb创建的数据库</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">locate crontab 命令会显示系统中所有包含crontab字符串的文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="41-man"><a href="#41-man" class="headerlink" title="41. man"></a><font color=DarkOrange>41. man</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">man crontab 显示某个命令的man页面</span><br><span class="line">man SECTION-NUMBER commandname 有些命令可能会有多个man页面，每个man页面对应一种命令类型</span><br></pre></td></tr></table></figure>
+
+<h4 id="42-tail"><a href="#42-tail" class="headerlink" title="42. tail"></a><font color=DarkOrange>42. tail</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">tail</span> filename.txt <span class="built_in">tail</span>命令默认显示文件最后的10行文本</span><br><span class="line"><span class="built_in">tail</span> -n N filename.txt 你可以使用-n选项指定要显示的行数</span><br><span class="line"><span class="built_in">tail</span> -f log-file 你也可以使用-f选项进行实时查看，这个命令执行后会等待，如果有新行添加到文件尾部，它会继续输出新的行，在查看日志时这个选项会非常有用。你可以通过CTRL-C终止命令的执行</span><br></pre></td></tr></table></figure>
+
+<h4 id="43-less"><a href="#43-less" class="headerlink" title="43. less"></a><font color=DarkOrange>43. less</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">less huge-log-file.log 这个命名可以在不加载整个文件的前提下显示文件内容，在查看大型日志文件的时候这个命令会非常有用</span><br></pre></td></tr></table></figure>
+
+<h4 id="44-su"><a href="#44-su" class="headerlink" title="44. su"></a><font color=DarkOrange>44. su</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">su - USERNAME su命令用于切换用户账号，超级用户使用这个命令可以切换到任何其他用户而不用输入密码</span><br><span class="line">su -s <span class="string">&#x27;SHELLNAME&#x27;</span> USERNAME 用指定用户登录，并且使用指定的shell程序，而不用默认的</span><br></pre></td></tr></table></figure>
+
+<h4 id="45-mysql"><a href="#45-mysql" class="headerlink" title="45. mysql"></a><font color=DarkOrange>45. mysql</font></h4><p>mysql可能是Linux上使用最广泛的数据库，即使你没有在你的服务器上安装mysql，你也可以使用mysql客户端连接到远程的mysql服务器</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mysql -u root -p -h 192.168.1.2 连接一个远程数据库，需要输入密码</span><br><span class="line">mysql -u root -p 连接本地数据库</span><br></pre></td></tr></table></figure>
+
+<p>你也可以在命令行中输入数据库密码，只需要在-p后面加上密码作为参数，可以直接写在p后面而不用加空格</p>
+<h4 id="46-yum"><a href="#46-yum" class="headerlink" title="46. yum"></a><font color=DarkOrange>46. yum</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum install httpd 使用yum安装apache</span><br><span class="line">yum update httpd 更新apache</span><br><span class="line">yum remove httpd 卸载/删除apache</span><br></pre></td></tr></table></figure>
+
+<h4 id="47-rpm"><a href="#47-rpm" class="headerlink" title="47. rpm"></a><font color=DarkOrange>47. rpm</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">rpm -ivh httpd-2.2.3-22.0.1.el5.i386.rpm 使用rpm安装apache</span><br><span class="line">rpm -uvh httpd-2.2.3-22.0.1.el5.i386.rpm 更新apache</span><br><span class="line">rpm -ev httpd 卸载/删除apache</span><br></pre></td></tr></table></figure>
+
+<h4 id="48-ping"><a href="#48-ping" class="headerlink" title="48. ping"></a><font color=DarkOrange>48. ping</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ping -c 5 gmail.com ping一个远程主机，只发5个数据包</span><br></pre></td></tr></table></figure>
+
+<h4 id="49-date"><a href="#49-date" class="headerlink" title="49. date"></a><font color=DarkOrange>49. date</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">date</span> -s <span class="string">&quot;01/31/2010 23:59:53&quot;</span> 设置系统日期</span><br><span class="line">---</span><br><span class="line">当你修改了系统时间，你需要同步硬件时间和系统时间</span><br><span class="line">hwclock –systohc</span><br><span class="line">hwclock --systohc –utc</span><br></pre></td></tr></table></figure>
+
+<h4 id="50-wget"><a href="#50-wget" class="headerlink" title="50. wget"></a><font color=DarkOrange>50. wget</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-3.2.1.tar.gz 使用wget从网上下载软件、音乐、视频</span><br><span class="line">wget -O taglist.zip http://www.vim.org/scripts/download_script.php?src_id=7701 下载文件并以指定的文件名保存文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="51-CPU100-怎么排查和处理"><a href="#51-CPU100-怎么排查和处理" class="headerlink" title="51. CPU100%怎么排查和处理"></a><font color=DarkOrange>51. CPU100%怎么排查和处理</font></h4><p>使用top命令定位进程，再用top命令定位线程，再打印线程堆栈查看运行情况</p>
+<ol>
+<li><code>top</code>命令显示进程运行列表，找到最耗<code>CPU</code>的进程<code>PID</code></li>
+<li>找到最耗<code>CPU</code>的线程，<code>top -Hp 进程PID号</code>，显示进程的线程运行列表，找到最耗<code>CPU</code>的线程<code>PID</code></li>
+<li>将线程<code>PID</code>转化为16进制，<code>printf &quot;%x\n&quot; 线程PID号</code>，因为在堆栈里，线程<code>ID</code>是用16进制表示的</li>
+<li>查看堆栈，找到线程在干嘛，<code>pstack/jstack/grep</code>，<code>jstack 进程PID | grep ‘线程PID的16进制数’ -C5 --color</code>打印进程堆栈，通过线程<code>ID</code>，过滤得到线程堆栈，根据线程<code>PID</code>的16进制数找到消耗<code>CPU</code>高的线程对应的线程的名称，以及看到了改线程正在执行代码的堆栈</li>
+</ol>
+<h4 id="52"><a href="#52" class="headerlink" title="52. "></a><font color=DarkOrange>52. </font></h4><h4 id="53"><a href="#53" class="headerlink" title="53. "></a><font color=DarkOrange>53. </font></h4><h4 id="54"><a href="#54" class="headerlink" title="54. "></a><font color=DarkOrange>54. </font></h4><h4 id="55"><a href="#55" class="headerlink" title="55."></a><font color=DarkOrange>55.</font></h4><h4 id="56"><a href="#56" class="headerlink" title="56. "></a><font color=DarkOrange>56. </font></h4><h4 id="57"><a href="#57" class="headerlink" title="57. "></a><font color=DarkOrange>57. </font></h4><hr>
 ]]></content>
       <categories>
         <category>面试</category>
       </categories>
       <tags>
         <tag>八股文</tag>
-        <tag>Kafka</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1045,317 +1082,92 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux操作系统面试题</title>
-    <url>/2022/10/28/Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p>Linux常见面试题整理</p>
-<hr>
-<p><strong>50个最常用的Unix&#x2F;Linux命令</strong></p>
-<h4 id="1-tar"><a href="#1-tar" class="headerlink" title="1. tar"></a><font color=DarkOrange>1. tar</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">tar cvf archive_name.tar <span class="built_in">dirname</span>/ 创建一个新的tar文件</span><br><span class="line">tar xvf archive_name.tar 解压tar文件</span><br><span class="line">tar tvf archive_name.tar 查看tar文件</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-grep"><a href="#2-grep" class="headerlink" title="2. grep"></a><font color=DarkOrange>2. grep</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">grep -i <span class="string">&quot;the&quot;</span> demo_file 在文件中查找字符串(不区分大小写)</span><br><span class="line">grep -A 3 -i <span class="string">&quot;example&quot;</span> demo_text 输出成功匹配的行，以及该行之后的三行</span><br><span class="line">grep -r <span class="string">&quot;ramesh&quot;</span> * 在一个文件夹中递归查询包含指定字符串的文件</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-find"><a href="#3-find" class="headerlink" title="3. find"></a><font color=DarkOrange>3. find</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">find -iname <span class="string">&quot;MyProgram.c&quot;</span> 查找指定文件名的文件(不区分大小写)</span><br><span class="line">find -iname <span class="string">&quot;MyProgram.c&quot;</span> -<span class="built_in">exec</span> <span class="built_in">md5sum</span> &#123;&#125; \; 对找到的文件执行某个命令</span><br><span class="line">find ~ -empty 查找home目录下的所有空文件</span><br></pre></td></tr></table></figure>
-
-<h4 id="4-ssh"><a href="#4-ssh" class="headerlink" title="4. ssh"></a><font color=DarkOrange>4. ssh</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh -l jsmith remotehost.example.com 登录到远程主机</span><br><span class="line">ssh -v -l jsmith remotehost.example.com 调试ssh客户端</span><br><span class="line">ssh -V 显示ssh客户端版本</span><br></pre></td></tr></table></figure>
-
-<h4 id="5-sed"><a href="#5-sed" class="headerlink" title="5. sed"></a><font color=DarkOrange>5. sed</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sed <span class="string">&#x27;s/.$//&#x27;</span> filename 当你将Dos系统中的文件复制到Unix/Linux后，这个文件每行都会以\r\n结尾，sed可以轻易将其转换为Unix格式的文件，使用\n结尾的文件</span><br><span class="line">sed -n <span class="string">&#x27;1!G; h; p&#x27;</span> filename 反转文件内容并输出</span><br><span class="line">sed <span class="string">&#x27;/./=&#x27;</span> thegeekstuff.txt | sed <span class="string">&#x27;N; s/\n/ /&#x27;</span> 为非空行添加行号</span><br></pre></td></tr></table></figure>
-
-<h4 id="6-awk"><a href="#6-awk" class="headerlink" title="6. awk"></a><font color=DarkOrange>6. awk</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">awk <span class="string">&#x27;!($0 in array) &#123; array[$0]; print&#125;&#x27;</span> temp 删除重复行</span><br><span class="line">awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;$3=$4&#x27;</span> /etc/passwd 打印/etc/passwd中所有包含同样的uid和gid的行</span><br><span class="line">awk <span class="string">&#x27;&#123;print $2,$5;&#125;&#x27;</span> employee.txt 打印文件中的指定部分的字段</span><br></pre></td></tr></table></figure>
-
-<h4 id="7-vim"><a href="#7-vim" class="headerlink" title="7. vim"></a><font color=DarkOrange>7. vim</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">vim +10 filename.txt 打开文件并跳到第10行</span><br><span class="line">vim +/search-term filename.txt 打开文件跳到第一个匹配的行</span><br><span class="line">vim -R /etc/passwd 以只读模式打开文件</span><br></pre></td></tr></table></figure>
-
-<h4 id="8-diff"><a href="#8-diff" class="headerlink" title="8. diff"></a><font color=DarkOrange>8. diff</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">diff -w name_list.txt name_list_new.txt 比较的时候忽略空白符</span><br></pre></td></tr></table></figure>
-
-<h4 id="9-sort"><a href="#9-sort" class="headerlink" title="9. sort"></a><font color=DarkOrange>9. sort</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sort</span> names.txt 以升序对文件内容排序</span><br><span class="line"><span class="built_in">sort</span> -r names.txt 以降序对文件内容排序</span><br><span class="line"><span class="built_in">sort</span> -t: -k 3n /etc/passwd | more 以第三个字段对/etc/passwd的内容排序</span><br></pre></td></tr></table></figure>
-
-<h4 id="10-export"><a href="#10-export" class="headerlink" title="10. export"></a><font color=DarkOrange>10. export</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> | grep ORCALE 输出跟字符串oracle匹配的环境变量</span><br><span class="line"><span class="built_in">export</span> ORACLE_HOME=/u01/app/oracle/product/10.2.0 设置全局环境变量</span><br></pre></td></tr></table></figure>
-
-<h4 id="11-xargs"><a href="#11-xargs" class="headerlink" title="11. xargs"></a><font color=DarkOrange>11. xargs</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> *.jpg | xargs -n1 -i <span class="built_in">cp</span> &#123;&#125; /external-hard-drive/directory 将所有图片文件拷贝到外部驱动器</span><br><span class="line">find / -name *.jpg -<span class="built_in">type</span> f -<span class="built_in">print</span> | xargs tar -cvzf images.tar.gz 将系统中所有jpd文件压缩打包</span><br><span class="line"><span class="built_in">cat</span> url-list.txt | xargs wget –c 下载文件中列出的所有url对应的页面</span><br></pre></td></tr></table></figure>
-
-<h4 id="12-ls"><a href="#12-ls" class="headerlink" title="12. ls"></a><font color=DarkOrange>12. ls</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -lh 以易读的方式显示文件大小(显示为MB,GB...)</span><br><span class="line"><span class="built_in">ls</span> -ltr 以最后修改时间升序列出文件</span><br><span class="line"><span class="built_in">ls</span> -F 在文件名后面显示文件类型</span><br></pre></td></tr></table></figure>
-
-<h4 id="13-pwd"><a href="#13-pwd" class="headerlink" title="13. pwd"></a><font color=DarkOrange>13. pwd</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">输出当前工作目录</span><br></pre></td></tr></table></figure>
-
-<h4 id="14-cd"><a href="#14-cd" class="headerlink" title="14. cd"></a><font color=DarkOrange>14. cd</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> 可以在最近工作的两个目录间切换</span><br><span class="line"><span class="built_in">cd</span> ../ 跳到上级目录</span><br><span class="line"><span class="built_in">cd</span> /opt 不管现在到那直接跳到指定的opt文件夹中</span><br><span class="line"><span class="built_in">cd</span> ~ 切换当前用户的家目录。root用户的家目录就是root目录</span><br></pre></td></tr></table></figure>
-
-<h4 id="15-gzip"><a href="#15-gzip" class="headerlink" title="15. gzip"></a><font color=DarkOrange>15. gzip</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">gzip test.txt 创建一个*.gz的压缩文件</span><br><span class="line">gzip -d test.txt.gz 解压*.gz文件</span><br><span class="line">gzip -l *.gz 显示压缩的比率</span><br></pre></td></tr></table></figure>
-
-<h4 id="16-bzip2"><a href="#16-bzip2" class="headerlink" title="16. bzip2"></a><font color=DarkOrange>16. bzip2</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">bzip2 test.txt 创建*.bz2压缩文件</span><br><span class="line">bzip2 -d test.txt.bz2 解压*.bz2文件</span><br></pre></td></tr></table></figure>
-
-<h4 id="17-uzip"><a href="#17-uzip" class="headerlink" title="17. uzip"></a><font color=DarkOrange>17. uzip</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">unzip test.zip 解压*.zip文件</span><br><span class="line">unzip -l jasper.zip 查看*.zip文件的内容</span><br></pre></td></tr></table></figure>
-
-<h4 id="18-shutdown"><a href="#18-shutdown" class="headerlink" title="18. shutdown"></a><font color=DarkOrange>18. shutdown</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">shutdown -h now 关闭系统并立即关机</span><br><span class="line">shutdown -h +10 10分钟后关机</span><br><span class="line">shutdown -r now 重启</span><br><span class="line">shutdown -Fr now 重启期间强制进行系统检查</span><br></pre></td></tr></table></figure>
-
-<h4 id="19-ftp"><a href="#19-ftp" class="headerlink" title="19. ftp"></a><font color=DarkOrange>19. ftp</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ftp IP/hostname ftp命令和sftp命令的用法基本相似连接ftp服务器并下载多个文件</span><br><span class="line">ftp&gt; mls *.html - 显示远程主机上文件列表</span><br></pre></td></tr></table></figure>
-
-<h4 id="20-crontab"><a href="#20-crontab" class="headerlink" title="20. crontab"></a><font color=DarkOrange>20. crontab</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">crontab -u john -l 查看某个用户的crontab入口</span><br><span class="line">*/10 * * * * /home/ramesh/check-disk-space 设置一个每十分钟执行一次的计划任务</span><br></pre></td></tr></table></figure>
-
-<h4 id="21-service"><a href="#21-service" class="headerlink" title="21. service"></a><font color=DarkOrange>21. service</font></h4><p>service命令用于运行System V init脚本，这些脚本一般位于&#x2F;etc&#x2F;init.d文件下，这个命令可以直接运行这个文件夹里面的脚本，而不用加上路径</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">service ssh status 查看服务状态</span><br><span class="line">service --status-all 查看所有服务状态</span><br><span class="line">service ssh restart 重启服务</span><br></pre></td></tr></table></figure>
-
-<h4 id="22-ps"><a href="#22-ps" class="headerlink" title="22. ps"></a><font color=DarkOrange>22. ps</font></h4><p>ps命令用于显示正在运行中的进程的信息，ps命令有很多选项，这里只列出了几个</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ps -ef | more 查看当前正在运行的所有进程</span><br><span class="line">ps -efH | more 以树状结构显示当前正在运行的进程，H选项表示显示进程的层次结构</span><br></pre></td></tr></table></figure>
-
-<h4 id="23-free"><a href="#23-free" class="headerlink" title="23. free"></a><font color=DarkOrange>23. free</font></h4><p>这个命令用于显示系统当前内存的使用情况，包括已用内存、可用内存和交换内存的情况</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">free 默认情况下free会以字节为单位输出内存的使用量</span><br><span class="line">free -g 如果你想以其他单位输出内存的使用量，需要加一个选项，-g为GB，-m为MB，-k为KB，-b为字节</span><br><span class="line">free -t 如果你想查看所有内存的汇总，请使用-t选项，使用这个选项会在输出中加一个汇总行</span><br></pre></td></tr></table></figure>
-
-<h4 id="24-top"><a href="#24-top" class="headerlink" title="24. top"></a><font color=DarkOrange>24. top</font></h4><p>top命令会显示当前系统中占用资源最多的一些进程（默认以CPU占用率排序）如果你想改变排序方式，可以在结果列表中点击O（大写字母O）会显示所有可用于排序的列，这个时候你就可以选择你想排序的列</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">top -u oracle 如果只想显示某个特定用户的进程，可以使用-u选项</span><br></pre></td></tr></table></figure>
-
-<h4 id="25-df"><a href="#25-df" class="headerlink" title="25. df"></a><font color=DarkOrange>25. df</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">df</span> -k 显示文件系统的磁盘使用情况，默认情况下<span class="built_in">df</span> -k 将以字节为单位输出磁盘的使用量</span><br><span class="line"><span class="built_in">df</span> -h 使用-h选项可以以更符合阅读习惯的方式显示磁盘使用量</span><br><span class="line"><span class="built_in">df</span> -T 使用-T选项显示文件系统类型</span><br></pre></td></tr></table></figure>
-
-<h4 id="26-kill"><a href="#26-kill" class="headerlink" title="26. kill"></a><font color=DarkOrange>26. kill</font></h4><p>kill用于终止一个进程。一般我们会先用<code>ps -ef</code>查找某个进程得到它的进程号，然后再使用<code>kill -9 进程号</code>终止该进程。你还可以使用killall、pkill、xkill来终止进程</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ps -ef | grep vim</span><br><span class="line">	ramesh    7243  7222  9 22:43 pts/2    00:00:00 vim</span><br><span class="line"><span class="built_in">kill</span> -9 7243</span><br></pre></td></tr></table></figure>
-
-<h4 id="27-rm"><a href="#27-rm" class="headerlink" title="27. rm"></a><font color=DarkOrange>27. rm</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> -i filename.txt 删除文件前先确认</span><br><span class="line"><span class="built_in">rm</span> -i file* 在文件名中使用shell的元字符会非常有用。删除文件前先打印文件名并进行确认</span><br><span class="line"><span class="built_in">rm</span> -r example 递归删除文件夹下所有文件，并删除该文件夹</span><br></pre></td></tr></table></figure>
-
-<h4 id="28-cp"><a href="#28-cp" class="headerlink" title="28. cp"></a><font color=DarkOrange>28. cp</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> -p file1 file2 拷贝文件1到文件2，并保持文件的权限、属主和时间戳</span><br><span class="line"><span class="built_in">cp</span> -i file1 file2 拷贝file1到file2，如果file2存在会提示是否覆盖</span><br></pre></td></tr></table></figure>
-
-<h4 id="29-mv"><a href="#29-mv" class="headerlink" title="29. mv"></a><font color=DarkOrange>29. mv</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">注意如果使用-f选项则不会进行提示</span><br><span class="line"><span class="built_in">mv</span> -i file1 file2 将文件名file1重命名为file2，如果file2存在则提示是否覆盖</span><br><span class="line"><span class="built_in">mv</span> -v file1 file2 -v会输出重命名的过程，当文件名中包含通配符时，这个选项会非常方便</span><br></pre></td></tr></table></figure>
-
-<h4 id="30-cat"><a href="#30-cat" class="headerlink" title="30. cat"></a><font color=DarkOrange>30. cat</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> file1 file2 你可以一次查看多个文件的内容，下面的命令会先打印file1的内容，然后打印file2的内容</span><br><span class="line"><span class="built_in">cat</span> -n /etc/logrotate.conf -n命令可以在每行的前面加上行号</span><br></pre></td></tr></table></figure>
-
-<h4 id="31-mount"><a href="#31-mount" class="headerlink" title="31. mount"></a><font color=DarkOrange>31. mount</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /u01</span><br><span class="line">mount /dev/sdb1 /u01 如果要挂载一个文件系统，需要先创建一个目录，然后将这个文件系统挂载到这个目录上</span><br><span class="line">/dev/sdb1 /u01 ext2 defaults 0 2 也可以把它添加到fstab中进行自动挂载，这样任何时候系统重启的时候，文件系统都会被加载</span><br></pre></td></tr></table></figure>
-
-<h4 id="32-chmod"><a href="#32-chmod" class="headerlink" title="32. chmod"></a><font color=DarkOrange>32. chmod</font></h4><p>chmod用于改变文件和目录的权限</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> ug+rwx file.txt 给指定文件的属主和属组所有权限(包括读、写、执行)</span><br><span class="line"><span class="built_in">chmod</span> g-rwx file.txt 删除指定文件的属组的所有权限</span><br><span class="line"><span class="built_in">chmod</span> -R ug+rwx file.txt 修改目录的权限，以及递归修改目录下面所有文件和子目录的权限</span><br></pre></td></tr></table></figure>
-
-<h4 id="33-chown"><a href="#33-chown" class="headerlink" title="33. chown"></a><font color=DarkOrange>33. chown</font></h4><p>chown用于改变文件属主和属组</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chown</span> oracle:dba dbora.sh 同时将某个文件的属主改为oracle，属组改为db</span><br><span class="line"><span class="built_in">chown</span> -R oracle:dba /home/oracle 使用-R选项对目录和目录下的文件进行递归修改</span><br></pre></td></tr></table></figure>
-
-<h4 id="34-passwd"><a href="#34-passwd" class="headerlink" title="34. passwd"></a><font color=DarkOrange>34. passwd</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">passwd passwd用于在命令行修改密码，使用这个命令会要求你先输入旧密码，然后输入新密码</span><br><span class="line">passwd USERNAME 超级用户可以用这个命令修改其他用户的密码，这个时候不需要输入用户的密码</span><br><span class="line">passwd -d USERNAME passwd还可以删除某个用户的密码，这个命令只有root用户才能操作，删除密码后，这个用户不需要输入密码就可以登录到系统</span><br></pre></td></tr></table></figure>
-
-<h4 id="35-mkdir"><a href="#35-mkdir" class="headerlink" title="35. mkdir"></a><font color=DarkOrange>35. mkdir</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/temp 在home目录下创建一个名为temp的目录</span><br><span class="line"><span class="built_in">mkdir</span> -p dir1/dir2/dir3/dir4/ 使用-p选项可以创建一个路径上所有不存在的目录</span><br></pre></td></tr></table></figure>
-
-<h4 id="36-ifconfig"><a href="#36-ifconfig" class="headerlink" title="36. ifconfig"></a><font color=DarkOrange>36. ifconfig</font></h4><p>ifconfig用于查看和配置Linux系统的网络接口</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ifconfig -a 查看所有网络接口及其状态</span><br><span class="line">ifconfig eth0 up 使用up命令启动某个接口</span><br><span class="line">ifconfig eth0 down 使用down命令停止某个接口</span><br></pre></td></tr></table></figure>
-
-<h4 id="37-uname"><a href="#37-uname" class="headerlink" title="37. uname"></a><font color=DarkOrange>37. uname</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">uname</span> -a <span class="built_in">uname</span>可以显示一些重要的系统信息，例如内核名称、主机名、内核版本号、处理器类型之类的信息</span><br></pre></td></tr></table></figure>
-
-<h4 id="38-whereis"><a href="#38-whereis" class="headerlink" title="38. whereis"></a><font color=DarkOrange>38. whereis</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">whereis <span class="built_in">ls</span> 当你不知道某个命令的位置时可以使用whereis命令，下面使用whereis查找<span class="built_in">ls</span>的位置</span><br><span class="line">whereis -u -B /tmp -f lsmk 当你想查找某个可执行程序的位置，但这个程序又不在whereis的默认目录下，你可以使用-B选项，并指定目录作为这个选项的参数。下面的命令在/tmp目录下查找lsmk命令</span><br></pre></td></tr></table></figure>
-
-<h4 id="39-whatis"><a href="#39-whatis" class="headerlink" title="39. whatis"></a><font color=DarkOrange>39. whatis</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">whatis <span class="built_in">ls</span> wathis显示某个命令的描述信息</span><br><span class="line">whatis ifconfig wathis显示某个命令的描述信息</span><br></pre></td></tr></table></figure>
-
-<h4 id="40-locate"><a href="#40-locate" class="headerlink" title="40. locate"></a><font color=DarkOrange>40. locate</font></h4><p>locate命名可以显示某个指定文件（或一组文件）的路径，它会使用由updatedb创建的数据库</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">locate crontab 命令会显示系统中所有包含crontab字符串的文件</span><br></pre></td></tr></table></figure>
-
-<h4 id="41-man"><a href="#41-man" class="headerlink" title="41. man"></a><font color=DarkOrange>41. man</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">man crontab 显示某个命令的man页面</span><br><span class="line">man SECTION-NUMBER commandname 有些命令可能会有多个man页面，每个man页面对应一种命令类型</span><br></pre></td></tr></table></figure>
-
-<h4 id="42-tail"><a href="#42-tail" class="headerlink" title="42. tail"></a><font color=DarkOrange>42. tail</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">tail</span> filename.txt <span class="built_in">tail</span>命令默认显示文件最后的10行文本</span><br><span class="line"><span class="built_in">tail</span> -n N filename.txt 你可以使用-n选项指定要显示的行数</span><br><span class="line"><span class="built_in">tail</span> -f log-file 你也可以使用-f选项进行实时查看，这个命令执行后会等待，如果有新行添加到文件尾部，它会继续输出新的行，在查看日志时这个选项会非常有用。你可以通过CTRL-C终止命令的执行</span><br></pre></td></tr></table></figure>
-
-<h4 id="43-less"><a href="#43-less" class="headerlink" title="43. less"></a><font color=DarkOrange>43. less</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">less huge-log-file.log 这个命名可以在不加载整个文件的前提下显示文件内容，在查看大型日志文件的时候这个命令会非常有用</span><br></pre></td></tr></table></figure>
-
-<h4 id="44-su"><a href="#44-su" class="headerlink" title="44. su"></a><font color=DarkOrange>44. su</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">su - USERNAME su命令用于切换用户账号，超级用户使用这个命令可以切换到任何其他用户而不用输入密码</span><br><span class="line">su -s <span class="string">&#x27;SHELLNAME&#x27;</span> USERNAME 用指定用户登录，并且使用指定的shell程序，而不用默认的</span><br></pre></td></tr></table></figure>
-
-<h4 id="45-mysql"><a href="#45-mysql" class="headerlink" title="45. mysql"></a><font color=DarkOrange>45. mysql</font></h4><p>mysql可能是Linux上使用最广泛的数据库，即使你没有在你的服务器上安装mysql，你也可以使用mysql客户端连接到远程的mysql服务器</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mysql -u root -p -h 192.168.1.2 连接一个远程数据库，需要输入密码</span><br><span class="line">mysql -u root -p 连接本地数据库</span><br></pre></td></tr></table></figure>
-
-<p>你也可以在命令行中输入数据库密码，只需要在-p后面加上密码作为参数，可以直接写在p后面而不用加空格</p>
-<h4 id="46-yum"><a href="#46-yum" class="headerlink" title="46. yum"></a><font color=DarkOrange>46. yum</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum install httpd 使用yum安装apache</span><br><span class="line">yum update httpd 更新apache</span><br><span class="line">yum remove httpd 卸载/删除apache</span><br></pre></td></tr></table></figure>
-
-<h4 id="47-rpm"><a href="#47-rpm" class="headerlink" title="47. rpm"></a><font color=DarkOrange>47. rpm</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">rpm -ivh httpd-2.2.3-22.0.1.el5.i386.rpm 使用rpm安装apache</span><br><span class="line">rpm -uvh httpd-2.2.3-22.0.1.el5.i386.rpm 更新apache</span><br><span class="line">rpm -ev httpd 卸载/删除apache</span><br></pre></td></tr></table></figure>
-
-<h4 id="48-ping"><a href="#48-ping" class="headerlink" title="48. ping"></a><font color=DarkOrange>48. ping</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ping -c 5 gmail.com ping一个远程主机，只发5个数据包</span><br></pre></td></tr></table></figure>
-
-<h4 id="49-date"><a href="#49-date" class="headerlink" title="49. date"></a><font color=DarkOrange>49. date</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">date</span> -s <span class="string">&quot;01/31/2010 23:59:53&quot;</span> 设置系统日期</span><br><span class="line">---</span><br><span class="line">当你修改了系统时间，你需要同步硬件时间和系统时间</span><br><span class="line">hwclock –systohc</span><br><span class="line">hwclock --systohc –utc</span><br></pre></td></tr></table></figure>
-
-<h4 id="50-wget"><a href="#50-wget" class="headerlink" title="50. wget"></a><font color=DarkOrange>50. wget</font></h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-3.2.1.tar.gz 使用wget从网上下载软件、音乐、视频</span><br><span class="line">wget -O taglist.zip http://www.vim.org/scripts/download_script.php?src_id=7701 下载文件并以指定的文件名保存文件</span><br></pre></td></tr></table></figure>
-
-<h4 id="51-CPU100-怎么排查和处理"><a href="#51-CPU100-怎么排查和处理" class="headerlink" title="51. CPU100%怎么排查和处理"></a><font color=DarkOrange>51. CPU100%怎么排查和处理</font></h4><p>使用top命令定位进程，再用top命令定位线程，再打印线程堆栈查看运行情况</p>
-<ol>
-<li><code>top</code>命令显示进程运行列表，找到最耗<code>CPU</code>的进程<code>PID</code></li>
-<li>找到最耗<code>CPU</code>的线程，<code>top -Hp 进程PID号</code>，显示进程的线程运行列表，找到最耗<code>CPU</code>的线程<code>PID</code></li>
-<li>将线程<code>PID</code>转化为16进制，<code>printf &quot;%x\n&quot; 线程PID号</code>，因为在堆栈里，线程<code>ID</code>是用16进制表示的</li>
-<li>查看堆栈，找到线程在干嘛，<code>pstack/jstack/grep</code>，<code>jstack 进程PID | grep ‘线程PID的16进制数’ -C5 --color</code>打印进程堆栈，通过线程<code>ID</code>，过滤得到线程堆栈，根据线程<code>PID</code>的16进制数找到消耗<code>CPU</code>高的线程对应的线程的名称，以及看到了改线程正在执行代码的堆栈</li>
-</ol>
-<h4 id="52"><a href="#52" class="headerlink" title="52. "></a><font color=DarkOrange>52. </font></h4><h4 id="53"><a href="#53" class="headerlink" title="53. "></a><font color=DarkOrange>53. </font></h4><h4 id="54"><a href="#54" class="headerlink" title="54. "></a><font color=DarkOrange>54. </font></h4><h4 id="55"><a href="#55" class="headerlink" title="55."></a><font color=DarkOrange>55.</font></h4><h4 id="56"><a href="#56" class="headerlink" title="56. "></a><font color=DarkOrange>56. </font></h4><h4 id="57"><a href="#57" class="headerlink" title="57. "></a><font color=DarkOrange>57. </font></h4><hr>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>八股文</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Redis面试题</title>
-    <url>/2022/10/28/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p>Redis面试常见问题汇总</p>
-<h4 id="1-Redis的数据结构及使用场景"><a href="#1-Redis的数据结构及使用场景" class="headerlink" title="1. Redis的数据结构及使用场景"></a><font color=DarkOrange>1. Redis的数据结构及使用场景</font></h4><ul>
-<li><p>String字符串</p>
-<p>字符串类型是 Redis 最基础的数据结构，首先键都是字符串类型，而且 其他几种数据结构都是在字符串类型基础上构建的，我们常使用的 set key value 命令就是字符串。常用在缓存、计数、共享Session、限速等</p>
-</li>
+    <title>Kafka面试题</title>
+    <url>/2022/10/30/Kafka%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<p>Kafka面试题</p>
+<h4 id="1-Kafka都有哪些特点"><a href="#1-Kafka都有哪些特点" class="headerlink" title="1. Kafka都有哪些特点"></a><font color=DarkOrange>1. Kafka都有哪些特点</font></h4><ul>
+<li>高吞吐量、低延迟：kafka每秒可以处理几十万条消息，它的延迟最低只有几毫秒，每个topic可以分多个partition, consumer group 对partition进行consume操作</li>
+<li>可扩展性：kafka集群支持热扩展</li>
+<li>持久性、可靠性：消息被持久化到本地磁盘，并且支持数据备份防止数据丢失</li>
+<li>容错性：允许集群中节点失败（若副本数量为n,则允许n-1个节点失败）</li>
+<li>高并发：支持数千个客户端同时读写</li>
 </ul>
-<hr>
+<h4 id="2-请简述下你在哪些场景下会选择Kafka"><a href="#2-请简述下你在哪些场景下会选择Kafka" class="headerlink" title="2. 请简述下你在哪些场景下会选择Kafka"></a><font color=DarkOrange>2. 请简述下你在哪些场景下会选择Kafka</font></h4><ul>
+<li>日志收集：一个公司可以用Kafka可以收集各种服务的log，通过kafka以统一接口服务的方式开放给各种consumer，例如hadoop、HBase、Solr等</li>
+<li>消息系统：解耦和生产者和消费者、缓存消息等</li>
+<li>用户活动跟踪：Kafka经常被用来记录web用户或者app用户的各种活动，如浏览网页、搜索、点击等活动，这些活动信息被各个服务器发布到kafka的topic中，然后订阅者通过订阅这些topic来做实时的监控分析，或者装载到hadoop、数据仓库中做离线分析和挖掘</li>
+<li>运营指标：Kafka也经常用来记录运营监控数据。包括收集各种分布式应用的数据，生产各种操作的集中反馈，比如报警和报告</li>
+<li>流式处理：比如spark streaming和 Flink</li>
+</ul>
+<h4 id="3-Kafka的设计架构你知道吗"><a href="#3-Kafka的设计架构你知道吗" class="headerlink" title="3. Kafka的设计架构你知道吗"></a><font color=DarkOrange>3. Kafka的设计架构你知道吗</font></h4><p>Kafka架构分为以下几个部分：</p>
 <ul>
-<li><p>Hash哈希</p>
-<p>在Redis中，哈希类型是指键值本身又是一个键值对结构，哈希可以用来存放用户信息，比如实现购物车</p>
-</li>
+<li>Producer ：消息生产者，就是向 kafka broker 发消息的客户端</li>
+<li>Consumer ：消息消费者，向 kafka broker 取消息的客户端</li>
+<li>Topic ：可以理解为一个队列，一个 Topic 又分为一个或多个分区</li>
+<li>Consumer Group：这是 kafka 用来实现一个 topic 消息的广播（发给所有的 consumer）和单播（发给任意一个 consumer）的手段。一个 topic 可以有多个 Consumer Group</li>
+<li>Broker ：一台 kafka 服务器就是一个 broker。一个集群由多个 broker 组成。一个 broker 可以容纳多个 topic</li>
+<li>Partition：为了实现扩展性，一个非常大的 topic 可以分布到多个 broker上，每个 partition 是一个有序的队列。partition 中的每条消息都会被分配一个有序的id（offset）。将消息发给 consumer，kafka 只保证按一个 partition 中的消息的顺序，不保证一个 topic 的整体（多个 partition 间）的顺序</li>
+<li>Offset：kafka 的存储文件都是按照 offset.kafka 来命名，用 offset 做名字的好处是方便查找。例如你想找位于 2049 的位置，只要找到 2048.kafka 的文件即可。当然 the first offset 就是 00000000000.kafka</li>
 </ul>
-<hr>
+<h4 id="4-Kafka分区的目的"><a href="#4-Kafka分区的目的" class="headerlink" title="4. Kafka分区的目的"></a><font color=DarkOrange>4. Kafka分区的目的</font></h4><p>分区对于 Kafka 集群的好处是：实现负载均衡。分区对于消费者来说，可以提高并发度，提高效率</p>
+<h4 id="5-你知道Kafka是如何做到消息的有序性"><a href="#5-你知道Kafka是如何做到消息的有序性" class="headerlink" title="5. 你知道Kafka是如何做到消息的有序性"></a><font color=DarkOrange>5. 你知道Kafka是如何做到消息的有序性</font></h4><p>kafka 中的每个 partition 中的消息在写入时都是有序的，而且单独一个 partition 只能由一个消费者去消费，可以在里面保证消息的顺序性。但是分区之间的消息是不保证有序的</p>
+<h4 id="6-Kafka的高可靠性是怎么实现的"><a href="#6-Kafka的高可靠性是怎么实现的" class="headerlink" title="6. Kafka的高可靠性是怎么实现的"></a><font color=DarkOrange>6. Kafka的高可靠性是怎么实现的</font></h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
+<h4 id="7-请谈一谈Kafka数据一致性原理"><a href="#7-请谈一谈Kafka数据一致性原理" class="headerlink" title="7. 请谈一谈Kafka数据一致性原理"></a><font color=DarkOrange>7. 请谈一谈Kafka数据一致性原理</font></h4><h4 id="8-ISR、OSR、AR-是什么"><a href="#8-ISR、OSR、AR-是什么" class="headerlink" title="8. ISR、OSR、AR 是什么"></a><font color=DarkOrange>8. ISR、OSR、AR 是什么</font></h4><ul>
+<li>SR：In-Sync Replicas 副本同步队列</li>
+<li>OSR：Out-of-Sync Replicas</li>
+<li>AR：Assigned Replicas 所有副本</li>
+</ul>
+<p>ISR是由leader维护，follower从leader同步数据有一些延迟，超过相应的阈值会把 follower 剔除出 ISR, 存入OSR（Out-of-Sync Replicas ）列表，新加入的follower也会先存放在OSR中。AR&#x3D;ISR+OSR</p>
+<h4 id="9-LEO、HW、LSO、LW等分别代表什么"><a href="#9-LEO、HW、LSO、LW等分别代表什么" class="headerlink" title="9. LEO、HW、LSO、LW等分别代表什么"></a><font color=DarkOrange>9. LEO、HW、LSO、LW等分别代表什么</font></h4><ul>
+<li>LEO：是 LogEndOffset 的简称，代表当前日志文件中下一条</li>
+<li>HW：水位或水印（watermark）一词，也可称为高水位(high watermark)，通常被用在流式处理领域（比如Apache Flink、Apache Spark等），以表征元素或事件在基于时间层面上的进度。在Kafka中，水位的概念反而与时间无关，而是与位置信息相关。严格来说，它表示的就是位置信息，即位移（offset）。取 partition 对应的 ISR中 最小的 LEO 作为 HW，consumer 最多只能消费到 HW 所在的位置上一条信息</li>
+<li>LSO：是 LastStableOffset 的简称，对未完成的事务而言，LSO 的值等于事务中第一条消息的位置(firstUnstableOffset)，对已完成的事务而言，它的值同 HW 相同</li>
+<li>LW：Low Watermark 低水位, 代表 AR 集合中最小的 logStartOffset 值</li>
+</ul>
+<h4 id="10-Kafka在什么情况下会出现消息丢失"><a href="#10-Kafka在什么情况下会出现消息丢失" class="headerlink" title="10. Kafka在什么情况下会出现消息丢失"></a><font color=DarkOrange>10. Kafka在什么情况下会出现消息丢失</font></h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
+<h4 id="11-怎么尽可能保证Kafka的可靠性"><a href="#11-怎么尽可能保证Kafka的可靠性" class="headerlink" title="11. 怎么尽可能保证Kafka的可靠性"></a><font color=DarkOrange>11. 怎么尽可能保证Kafka的可靠性</font></h4><p>参考：Kafka 是如何保证数据可靠性和一致性</p>
+<h4 id="12-消费者和消费者组有什么关系"><a href="#12-消费者和消费者组有什么关系" class="headerlink" title="12. 消费者和消费者组有什么关系"></a><font color=DarkOrange>12. 消费者和消费者组有什么关系</font></h4><h4 id="13-Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区"><a href="#13-Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区" class="headerlink" title="13. Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区"></a><font color=DarkOrange>13. Kafka的每个分区只能被一个消费者线程，如何做到多个线程同时消费一个分区</font></h4><h4 id="14-数据传输的事务有几种"><a href="#14-数据传输的事务有几种" class="headerlink" title="14. 数据传输的事务有几种"></a><font color=DarkOrange>14. 数据传输的事务有几种</font></h4><p>数据传输的事务定义通常有以下三种级别：</p>
 <ul>
-<li><p>List列表（双向链表）</p>
-<p>列表（list）类型是用来存储多个有序的字符串。可以做简单的消息队列的功能</p>
-</li>
+<li>最多一次：消息不会被重复发送，最多被传输一次，但也有可能一次不传输</li>
+<li>最少一次：消息不会被漏发送，最少被传输一次，但也有可能被重复传输</li>
+<li>精确的一次（Exactly once）：不会漏传输也不会重复传输，每个消息都传输被</li>
 </ul>
-<hr>
+<h4 id="15-Kafka消费者是否可以消费指定分区消息"><a href="#15-Kafka消费者是否可以消费指定分区消息" class="headerlink" title="15. Kafka消费者是否可以消费指定分区消息"></a><font color=DarkOrange>15. Kafka消费者是否可以消费指定分区消息</font></h4><p>Kafa consumer消费消息时，向broker发出fetch请求去消费特定分区的消息，consumer指定消息在日志中的偏移量（offset），就可以消费从这个位置开始的消息，customer拥有了offset的控制权，可以向后回滚去重新消费之前的消息，这是很有意义的</p>
+<h4 id="16-Kafka消息是采用Pull模式，还是Push模式"><a href="#16-Kafka消息是采用Pull模式，还是Push模式" class="headerlink" title="16. Kafka消息是采用Pull模式，还是Push模式"></a><font color=DarkOrange>16. Kafka消息是采用Pull模式，还是Push模式</font></h4><p>Kafka最初考虑的问题是，customer应该从brokes拉取消息还是brokers将消息推送到consumer，也就是pull还push。在这方面，Kafka遵循了一种大部分消息系统共同的传统的设计：producer将消息推送到broker，consumer从broker拉取消息</p>
+<p>一些消息系统比如Scribe和Apache Flume采用了push模式，将消息推送到下游的consumer。这样做有好处也有坏处：由broker决定消息推送的速率，对于不同消费速率的consumer就不太好处理了。消息系统都致力于让consumer以最大的速率最快速的消费消息，但不幸的是，push模式下，当broker推送的速率远大于consumer消费的速率时，consumer恐怕就要崩溃了。最终Kafka还是选取了传统的pull模式</p>
+<p>Pull模式的另外一个好处是consumer可以自主决定是否批量的从broker拉取数据。Push模式必须在不知道下游consumer消费能力和消费策略的情况下决定是立即推送每条消息还是缓存之后批量推送。如果为了避免consumer崩溃而采用较低的推送速率，将可能导致一次只推送较少的消息而造成浪费。Pull模式下，consumer就可以根据自己的消费能力去决定这些策略</p>
+<p>Pull有个缺点是，如果broker没有可供消费的消息，将导致consumer不断在循环中轮询，直到新消息到t达。为了避免这点，Kafka有个参数可以让consumer阻塞知道新消息到达(当然也可以阻塞知道消息的数量达到某个特定的量这样就可以批量发</p>
+<h4 id="17-Kafka-消息格式的演变清楚吗"><a href="#17-Kafka-消息格式的演变清楚吗" class="headerlink" title="17. Kafka 消息格式的演变清楚吗"></a><font color=DarkOrange>17. Kafka 消息格式的演变清楚吗</font></h4><h4 id="18-Kafka-偏移量的演变清楚吗"><a href="#18-Kafka-偏移量的演变清楚吗" class="headerlink" title="18. Kafka 偏移量的演变清楚吗"></a><font color=DarkOrange>18. Kafka 偏移量的演变清楚吗</font></h4><h4 id="19-Kafka高效文件存储设计特点"><a href="#19-Kafka高效文件存储设计特点" class="headerlink" title="19. Kafka高效文件存储设计特点"></a><font color=DarkOrange>19. Kafka高效文件存储设计特点</font></h4><ul>
+<li>Kafka把topic中一个parition大文件分成多个小文件段，通过多个小文件段，就容易定期清除或删除已经消费完文件，减少磁盘占用</li>
+<li>通过索引信息可以快速定位message和确定response的最大大小</li>
+<li>通过index元数据全部映射到memory，可以避免segment file的IO磁盘操作</li>
+<li>通过索引文件稀疏存储，可以大幅降低index文件元数据占用空间大小</li>
+</ul>
+<h4 id="20-Kafka创建Topic时如何将分区放置到不同的Broker中"><a href="#20-Kafka创建Topic时如何将分区放置到不同的Broker中" class="headerlink" title="20. Kafka创建Topic时如何将分区放置到不同的Broker中"></a><font color=DarkOrange>20. Kafka创建Topic时如何将分区放置到不同的Broker中</font></h4><h4 id="21-Kafka新建的分区会在哪个目录下创建"><a href="#21-Kafka新建的分区会在哪个目录下创建" class="headerlink" title="21. Kafka新建的分区会在哪个目录下创建"></a><font color=DarkOrange>21. Kafka新建的分区会在哪个目录下创建</font></h4><h4 id="22-谈一谈Kafka的再均衡"><a href="#22-谈一谈Kafka的再均衡" class="headerlink" title="22. 谈一谈Kafka的再均衡"></a><font color=DarkOrange>22. 谈一谈Kafka的再均衡</font></h4><p>在Kafka中，当有新消费者加入或者订阅的topic数发生变化时，会触发Rebalance(再均衡：在同一个消费者组当中，分区的所有权从一个消费者转移到另外一个消费者)机制，Rebalance顾名思义就是重新均衡消费者消费。Rebalance的过程如下：</p>
 <ul>
-<li><p>Set集合</p>
-<p>集合（set）类型也是用来保存多个的字符串元素，但和列表类型不一 样的是，集合中不允许有重复元素，并且集合中的元素是无序的，不能通过索引下标获取元素。利用 Set 的交集、并集、差集等操作，可以计算共同喜好，全部的喜好，自己独有的喜好等功能</p>
-</li>
+<li>第一步：所有成员都向coordinator发送请求，请求入组。一旦所有成员都发送了请求，coordinator会从中选择一个consumer担任leader的角色，并把组成员信息以及订阅信息发给leader</li>
+<li>第二步：leader开始分配消费方案，指明具体哪个consumer负责消费哪些topic的哪些partition。一旦完成分配，leader会将这个方案发给coordinator。coordinator接收到分配方案之后会把方案发给各个consumer，这样组内的所有成员就都知道自己应该消费哪些分区了</li>
 </ul>
-<hr>
+<p>所以对于Rebalance来说，Coordinator起着至关重要的作用</p>
+<h4 id="23-谈谈Kafka分区分配策略"><a href="#23-谈谈Kafka分区分配策略" class="headerlink" title="23. 谈谈Kafka分区分配策略"></a><font color=DarkOrange>23. 谈谈Kafka分区分配策略</font></h4><h4 id="24-Kafka-Producer是如何动态感知主题分区数变化的"><a href="#24-Kafka-Producer是如何动态感知主题分区数变化的" class="headerlink" title="24. Kafka Producer是如何动态感知主题分区数变化的"></a><font color=DarkOrange>24. Kafka Producer是如何动态感知主题分区数变化的</font></h4><h4 id="25-Kafka是如何实现高吞吐率的"><a href="#25-Kafka是如何实现高吞吐率的" class="headerlink" title="25. Kafka是如何实现高吞吐率的"></a><font color=DarkOrange>25. Kafka是如何实现高吞吐率的</font></h4><p>Kafka是分布式消息系统，需要处理海量的消息，Kafka的设计是把所有的消息都写入速度低容量大的硬盘，以此来换取更强的存储能力，但实际上，使用硬盘并没有带来过多的性能损失。kafka主要使用了以下几个方式实现了超高的吞吐率：</p>
 <ul>
-<li><p>Sorted Set有序集合（跳表实现）</p>
-<p>Sorted Set 多了一个权重参数 Score，集合中的元素能够按 Score 进行排列。可以做排行榜应用，取 TOP N 操作</p>
-</li>
+<li>顺序读写</li>
+<li>零拷贝</li>
+<li>文件分段</li>
+<li>批量发送</li>
+<li>数据压缩</li>
 </ul>
-<h4 id="2-Redis持久化的几种方式"><a href="#2-Redis持久化的几种方式" class="headerlink" title="2. Redis持久化的几种方式"></a><font color=DarkOrange>2. Redis持久化的几种方式</font></h4><p>Redis为了保证效率，数据缓存在了内存中，但是会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件中，以保证数据的持久化。Redis的持久化策略有两种：</p>
-<ul>
-<li><strong>RDB：</strong> 快照形式是直接把内存中的数据保存到一个dump的文件中，定时保存，保存策略<ul>
-<li>当Redis需要做持久化时，Redis会fork一个子进程，子进程将数据写到磁盘上一个临时RDB文件中。当子进程完成写临时文件后，将原来的RDB替换掉</li>
+<h4 id="26-Kafka监控都有哪些"><a href="#26-Kafka监控都有哪些" class="headerlink" title="26. Kafka监控都有哪些"></a><font color=DarkOrange>26. Kafka监控都有哪些</font></h4><h4 id="27-如何为Kafka集群选择合适的Topics-x2F-Partitions数量"><a href="#27-如何为Kafka集群选择合适的Topics-x2F-Partitions数量" class="headerlink" title="27. 如何为Kafka集群选择合适的Topics&#x2F;Partitions数量"></a><font color=DarkOrange>27. 如何为Kafka集群选择合适的Topics&#x2F;Partitions数量</font></h4><h4 id="28-谈谈你对Kafka事务的了解"><a href="#28-谈谈你对Kafka事务的了解" class="headerlink" title="28. 谈谈你对Kafka事务的了解"></a><font color=DarkOrange>28. 谈谈你对Kafka事务的了解</font></h4><h4 id="29-谈谈你对Kafka幂等的了解"><a href="#29-谈谈你对Kafka幂等的了解" class="headerlink" title="29. 谈谈你对Kafka幂等的了解"></a><font color=DarkOrange>29. 谈谈你对Kafka幂等的了解</font></h4><h4 id="30-Kafka缺点"><a href="#30-Kafka缺点" class="headerlink" title="30. Kafka缺点"></a><font color=DarkOrange>30. Kafka缺点</font></h4><ul>
+<li>由于是批量发送，数据并非真正的实时</li>
+<li>对于mqtt协议不支持</li>
+<li>不支持物联网传感数据直接接入</li>
+<li>仅支持统一分区内消息有序，无法实现全局消息有序</li>
+<li>监控不完善，需要安装插件</li>
+<li>依赖zookeeper进行元数据管理</li>
 </ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><strong>AOF：</strong> 把所有的对Redis的服务器进行修改的命令都存到一个文件里，命令的集合<ul>
-<li>使用AOF做持久化，每一个写命令都通过write函数追加到<code>appendonly.aof</code>中</li>
-<li>aof的默认策略是每秒钟fsync一次，在这种配置下，就算发生故障停机，也最多丢失一秒钟的数据</li>
-<li>缺点是对于相同的数据集来说，AOF的文件体积通常要大于RDB文件的体积。根据所使用的fsync策略，AOF的速度可能会慢于RDB</li>
-</ul>
-</li>
-</ul>
-<p>Redis默认是快照RDB的持久化方式。对于主从同步来说，主从刚刚连接的时候，进行全量同步（RDB），全同步结束后，进行增量同步(AOF)</p>
-<h4 id="3-Redis的LRU具体实现"><a href="#3-Redis的LRU具体实现" class="headerlink" title="3. Redis的LRU具体实现"></a><font color=DarkOrange>3. Redis的LRU具体实现</font></h4><ul>
-<li>传统的LRU是使用栈的形式，每次都将最新使用的移入栈顶，但是用栈的形式会导致执行<code>select *</code>的时候大量非热点数据占领头部数据，所以需要改进</li>
-<li>Redis每次按key获取一个值的时候，都会更新value中的lru字段为当前秒级别的时间戳。Redis初始的实现算法很简单，随机从dict中取出五个key，淘汰一个lru字段值最小的</li>
-<li>在3.0的时候，又改进了一版算法，首先第一次随机选取的key都会放入一个pool中(pool的大小为16)，pool中的key是按lru大小顺序排列的</li>
-<li>接下来每次随机选取的keylru值必须小于pool中最小的lru才会继续放入，直到将pool放满。放满之后，每次如果有新的key需要放入，需要将pool中lru最大的一个key取出。淘汰的时候，直接从pool中选取一个lru最小的值然后将其淘汰</li>
-</ul>
-<h4 id="4-单线程的Redis为什么快"><a href="#4-单线程的Redis为什么快" class="headerlink" title="4. 单线程的Redis为什么快"></a><font color=DarkOrange>4. 单线程的Redis为什么快</font></h4><ul>
-<li>纯内存操作</li>
-<li>单线程操作，避免了频繁的上下文切换</li>
-<li>合理高效的数据结构</li>
-<li>采用了非阻塞I&#x2F;O多路复用机制</li>
-</ul>
-<h4 id="5-Redis的数据过期策略"><a href="#5-Redis的数据过期策略" class="headerlink" title="5. Redis的数据过期策略"></a><font color=DarkOrange>5. Redis的数据过期策略</font></h4><p>Redis 中数据过期策略采用<strong>定期删除</strong>和<strong>惰性删除</strong>策略：</p>
-<ul>
-<li>定期删除策略<ul>
-<li>Redis 启用一个定时器定时监视所有的 key，判断key是否过期，过期的话就删除</li>
-<li>这种策略可以保证过期的 key 最终都会被删除，但是也存在严重的缺点：每次都遍历内存中所有的数据，非常消耗 CPU资源，并且当 key 已过期，但是定时器还处于未唤起状态，这段时间内 key 仍然可以用</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li>惰性删除策略<ul>
-<li>在获取 key 时，先判断 key 是否过期，如果过期则删除</li>
-<li>这种方式存在一个缺点：如果这个 key一直未被使用，那么它一直在内存中，其实它已经过期了，会浪费大量的空间</li>
-</ul>
-</li>
-</ul>
-<p>这两种策略天然的互补，结合起来之后，定时删除策略就发生了一些改变，不在是每次扫描全部的 key 了，而是随机抽取一部分 key 进行检查，这样就降低了对 CPU 资源的损耗，惰性删除策略互补了为检查到的key，基本上满足了所有要求</p>
-<p>但是有时候就是那么的巧，既没有被定时器抽取到，又没有被使用，这些数据又如何从内存中消失？这个时候就需要用到了，内存淘汰机制</p>
-<h5 id="5-1-内存淘汰机制"><a href="#5-1-内存淘汰机制" class="headerlink" title="5.1 内存淘汰机制"></a><font color=DarkOrange>5.1 内存淘汰机制</font></h5><ul>
-<li>当内存不足以容纳新写入数据时，新写入操作会报错。（Redis 默认策略）</li>
-<li>当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的 Key。（LRU推荐使用）</li>
-<li>当内存不足以容纳新写入数据时，在键空间中，随机移除某个 Key</li>
-<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，移除最近最少使用的 Key。这种情况一般是把 Redis 既当缓存，又做持久化存储的时候才用</li>
-<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，随机移除某个 Key</li>
-<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，有更早过期时间的 Key 优先移除</li>
-</ul>
-<h4 id="6-如何解决Redis缓存雪崩问题"><a href="#6-如何解决Redis缓存雪崩问题" class="headerlink" title="6. 如何解决Redis缓存雪崩问题"></a><font color=DarkOrange>6. 如何解决Redis缓存雪崩问题</font></h4><ul>
-<li>使用 Redis 高可用架构：使用 Redis 集群来保证 Redis 服务不会挂掉</li>
-<li>缓存时间不一致，给缓存的失效时间，加上一个随机值，避免集体失效</li>
-<li>限流降级策略：有一定的备案，比如个性推荐服务不可用了，换成热点数据推荐服务</li>
-</ul>
-<h4 id="7-如何解决Redis缓存穿透问题"><a href="#7-如何解决Redis缓存穿透问题" class="headerlink" title="7. 如何解决Redis缓存穿透问题"></a><font color=DarkOrange>7. 如何解决Redis缓存穿透问题</font></h4><ul>
-<li>在接口层做校验</li>
-<li>存null值（缓存击穿加锁）</li>
-<li>布隆过滤器拦截：将所有可能的查询key 先映射到布隆过滤器中，查询时先判断key是否存在布隆过滤器中，存在才继续向下执行，如果不存在，则直接返回<br>布隆过滤器将值进行多次哈希bit存储，布隆过滤器说某个元素在，可能会被误判。布隆过滤器说某个元素不在，那么一定不在</li>
-</ul>
-<h4 id="8-Redis并发竞争key如何解决"><a href="#8-Redis并发竞争key如何解决" class="headerlink" title="8. Redis并发竞争key如何解决"></a><font color=DarkOrange>8. Redis并发竞争key如何解决</font></h4><ul>
-<li>可以利用分布式锁和时间戳来解决</li>
-<li>利用消息队列解决</li>
-</ul>
-<h4 id="9-Redis的主从模式和哨兵模式和集群模式区别"><a href="#9-Redis的主从模式和哨兵模式和集群模式区别" class="headerlink" title="9. Redis的主从模式和哨兵模式和集群模式区别"></a><font color=DarkOrange>9. Redis的主从模式和哨兵模式和集群模式区别</font></h4><p>Redis集群方式共有三种：<strong>主从模式</strong>，<strong>哨兵模式</strong>，<strong>集群(cluster)模式</strong></p>
-<ul>
-<li><p>主从模式</p>
-<p>主从模式是三种集群方式里最简单的。它主要是基于Redis的主从复制特性架构的。通常我们会设置一个主节点，N个从节点;默认情况下，主节点负责处理使用者的IO操作，而从节点则会对主节点的数据进行备份，并且也会对外提供读操作的处理。主要的特点如下：</p>
-<ul>
-<li>主从模式下，当某一节点损坏时，因为其会将数据备份到其它Redis实例上，这样做在很大程度上可以恢复丢失的数据</li>
-<li>主从模式下，可以保证负载均衡.</li>
-<li>主从模式下，主节点和从节点是读写分离的。使用者不仅可以从主节点上读取数据，还可以很方便的从从节点上读取到数据，这在一定程度上缓解了主机的压力</li>
-</ul>
-<p>从节点也是能够支持写入数据的，只不过从从节点写入的数据不会同步到主节点以及其它的从节点下。从以上，我们不难看出Redis在主从模式下，必须保证主节点不会宕机——一旦主节点宕机，其它节点不会竞争称为主节点，此时，Redis将丧失写的能力。这点在生产环境中，是致命的</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>哨兵模式</p>
-<p>哨兵模式是基于主从模式做的一定变化，它能够为Redis提供了高可用性</p>
-<p>在实际生产中，服务器难免不会遇到一些突发状况：服务器宕机，停电，硬件损坏等。这些情况一旦发生，其后果往往是不可估量的</p>
-<p>而哨兵模式在一定程度上能够帮我们规避掉这些意外导致的灾难性后果。其实，哨兵模式的核心还是主从复制</p>
-<p>只不过相对于主从模式在主节点宕机导致不可写的情况下，多了一个竞选机制——从所有的从节点竞选出新的主节点。竞选机制的实现，是依赖于在系统中启动一个sentinel进程。sentinel特点：</p>
-<ul>
-<li>监控：它会监听主服务器和从服务器之间是否在正常工作</li>
-<li>通知：它能够通过API告诉系统管理员或者程序，集群中某个实例出了问题。</li>
-<li>故障转移：它在主节点出了问题的情况下，会在所有的从节点中竞选出一个节点，并将其作为新的主节点。</li>
-<li>提供主服务器地址：它还能够向使用者提供当前主节点的地址。这在故障转移后，使用者不用做任何修改就可以知道当前主节点地址</li>
-</ul>
-<p>sentinel，也可以集群，部署多个哨兵，sentinel可以通过发布与订阅来自动发现Redis集群上的其它sentinel。sentinel在发现其它sentinel进程后，会将其放入一个列表中，这个列表存储了所有已被发现的sentinel</p>
-<p>集群中的所有sentinel不会并发着去对同一个主节点进行故障转移。故障转移只会从第一个sentinel开始，当第一个故障转移失败后，才会尝试下一个</p>
-<p>当选择一个从节点作为新的主节点后，故障转移即成功了(而不会等到所有的从节点配置了新的主节点后)。这过程中，如果重启了旧的主节点，那么就会出现无主节点的情况，这种情况下，只能重启集群</p>
-<p>当竞选出新的主节点后，被选为新的主节点的从节点的配置信息会被sentinel改写为旧的主节点的配置信息。完成改写后，再将新主节点的配置广播给所有的从节点</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>集群模式</p>
-<p>Redis 集群是一个提供在多个Redis间节点间共享数据的程序集， 其中Redis集群分为主节点和从节点。主节点用于处理槽，而从节点用于复制某个主节点，并在被复制的主节点下线时，代替下线的主节点继续处理命令请求</p>
-<p>Redis集群并不支持处理多个keys的命令，因为这需要在不同的节点间移动数据，从而达不到像Redis那样的性能，在高负载的情况下可能会导致不可预料的错误</p>
-<p>Redis 集群通过分区来提供一定程度的可用性，在实际环境中当某个节点宕机或者不可达的情况下继续处理命令. Redis 集群的优势：自动分割数据到不同的节点上</p>
-<p>整个集群的部分节点失败或者不可达的情况下能够继续处理命令</p>
-<p>Redis集群的数据分片 Redis 集群没有使用一致性hash， 而是引入了哈希槽的概念</p>
-<p>Redis 集群有16384个哈希槽，每个key通过CRC16校验后对16384取模来决定放置哪个槽.集群的每个节点负责一部分hash槽</p>
-</li>
-</ul>
-<h4 id="10-Redis事物的了解CheckAndSet操作实现乐观锁"><a href="#10-Redis事物的了解CheckAndSet操作实现乐观锁" class="headerlink" title="10. Redis事物的了解CheckAndSet操作实现乐观锁"></a><font color=DarkOrange>10. Redis事物的了解CheckAndSet操作实现乐观锁</font></h4><p>和众多其它数据库一样，Redis作为NoSQL数据库也同样提供了事务机制。在Redis中，<code>MULTI</code>，<code>EXEC</code>，<code>DISCARD</code>，<code>WATCH</code>这四个命令是我们实现事务的基石。相信对有关系型数据库开发经验的开发者而言这一概念并不陌生，即便如此，我们还是会简要的列出 Redis中事务的实现特征 ：</p>
-<ul>
-<li>在事务中的所有命令都将会被串行化的顺序执行，事务执行期间，Redis不会再为其它客户端的请求提供任何服务，从而保证了事物中的所有命令被原子的执行</li>
-<li>和关系型数据库中的事务相比，在Redis事务中如果有某一条命令执行失败，其后的命令仍然会被继续执行</li>
-<li>我们可以通过MULTI命令开启一个事务，有关系型数据库开发经验的人可以将其理解为”BEGIN TRANSACTION”语句。在该语句之后执行的命令都将被视为事务之内的操作，最后我们可以通过执行<code>EXEC</code>，<code>DISCARD</code>命令来提交，回滚该事务内的所有操作。这两个Redis命令可被视为等同于关系型数据库中的COMMIT&#x2F;ROLLBACK语句</li>
-<li>在事务开启之前，如果客户端与服务器之间出现通讯故障并导致网络断开，其后所有待执行的语句都将不会被服务器执行。然而如果网络中断事件是发生在客户端执行EXEC命令之后，那么该事务中的所有命令都会被服务器执行</li>
-<li>当使用<code>Append-Only</code>模式时，Redis会通过调用系统函数write将该事务内的所有写操作在本次调用中全部写入磁盘。然而如果在写入的过程中出现系统崩溃，如电源故障导致的宕机，那么此时也许只有部分数据被写入到磁盘，而另外一部分数据却已经丢失。Redis服务器会在重新启动时执行一系列必要的一致性检测，一旦发现类似问题，就会立即退出并给出相应的错误提示。此时，我们就要充分利用Redis工具包中提供的<code>redis-check-aof</code>工具，该工具可以帮助我们定位到数据不一致的错误，并将已经写入的部分数据进行回滚。修复之后我们就可以再次重新启动Redis服务器了</li>
-</ul>
-<h4 id="11-Redis有序集合zset底层怎么实现的"><a href="#11-Redis有序集合zset底层怎么实现的" class="headerlink" title="11. Redis有序集合zset底层怎么实现的"></a><font color=DarkOrange>11. Redis有序集合zset底层怎么实现的</font></h4><ul>
-<li>跳表是一个随机化的数据结构，实质就是一种可以进行二分查找的有序链表</li>
-<li>跳表在原有的有序链表上面增加了多级索引，通过索引来实现快速查找</li>
-<li>跳表不仅能提高搜索性能，同时也可以提高插入和删除操作的性能</li>
-</ul>
-<hr>
-<ul>
-<li>跳表是可以实现二分查找的有序链表</li>
-<li>每个元素插入时随机生成它的level</li>
-<li>最低层包含所有的元素</li>
-<li>如果一个元素出现在level(x)，那么它肯定出现在x以下的level中</li>
-<li>每个索引节点包含两个指针，一个向下，一个向右</li>
-<li>跳表查询、插入、删除的时间复杂度为O(log n)，与平衡二叉树接近</li>
-</ul>
-<hr>
-<h5 id="11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN"><a href="#11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN" class="headerlink" title="11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))"></a><font color=DarkOrange>11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))</font></h5><p>首先，我们来分析下Redis的有序集合支持的操作：</p>
-<ul>
-<li>插入元素</li>
-<li>删除元素</li>
-<li>查找元素</li>
-<li>有序输出所有元素</li>
-<li>查找区间内所有元素</li>
-</ul>
-<p>其中，前4项红黑树都可以完成，且时间复杂度与跳表一致。但是，最后一项，红黑树的效率就没有跳表高了。在跳表中，要查找区间的元素，我们只要定位到两个区间端点在最低层级的位置，然后按顺序遍历元素就可以了，非常高效</p>
-<p>而红黑树只能定位到端点后，再从首位置开始每次都要查找后继节点，相对来说是比较耗时的。此外，跳表实现起来很容易且易读，红黑树实现起来相对困难，所以Redis选择使用跳表来实现有序集合</p>
-<h4 id="12-跳表的查询过程是怎么样的，查询和插入的时间复杂度"><a href="#12-跳表的查询过程是怎么样的，查询和插入的时间复杂度" class="headerlink" title="12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度"></a><font color=DarkOrange>12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度</font></h4><p>先从第一层查找，不满足就下沉到第二层找，因为每一层都是有序的，写入和插入的时间复杂度都是O(logN)</p>
+<h4 id="31-Kafka新旧消费者的区别"><a href="#31-Kafka新旧消费者的区别" class="headerlink" title="31. Kafka新旧消费者的区别"></a><font color=DarkOrange>31. Kafka新旧消费者的区别</font></h4><p>旧的 Kafka 消费者 API 主要包括：SimpleConsumer（简单消费者） 和 ZookeeperConsumerConnectir（高级消费者）。SimpleConsumer 名字看起来是简单消费者，但是其实用起来很不简单，可以使用它从特定的分区和偏移量开始读取消息。高级消费者和现在新的消费者有点像，有消费者群组，有分区再均衡，不过它使用 ZK 来管理消费者群组，并不具备偏移量和再均衡的可操控性</p>
+<h4 id="32-Kafka分区数可以增加或减少吗？为什么"><a href="#32-Kafka分区数可以增加或减少吗？为什么" class="headerlink" title="32. Kafka分区数可以增加或减少吗？为什么"></a><font color=DarkOrange>32. Kafka分区数可以增加或减少吗？为什么</font></h4><p>我们可以使用 bin&#x2F;kafka-topics.sh 命令对 Kafka 增加 Kafka 的分区数据，但是 Kafka 不支持减少分区数</p>
+<p>Kafka 分区数据不支持减少是由很多原因的，比如减少的分区其数据放到哪里去？是删除，还是保留？删除的话，那么这些没消费的消息不就丢了。如果保留这些消息如何放到其他分区里面？追加到其他分区后面的话那么就破坏了 Kafka 单个分区的有序性。如果要保证删除分区数据插入到其他分区保证有序性，那么实现起来逻辑就会非常复杂</p>
 <hr>
 ]]></content>
       <categories>
@@ -1363,644 +1175,7 @@
       </categories>
       <tags>
         <tag>八股文</tag>
-        <tag>Redis</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>云原生训练营课程大纲</title>
-    <url>/2022/11/06/%E4%BA%91%E5%8E%9F%E7%94%9F%E8%AE%AD%E7%BB%83%E8%90%A5%E8%AF%BE%E7%A8%8B%E5%A4%A7%E7%BA%B2/</url>
-    <content><![CDATA[<h4 id="第一部分：Go-语言基础"><a href="#第一部分：Go-语言基础" class="headerlink" title="第一部分：Go 语言基础"></a><font color=DarkOrange>第一部分：Go 语言基础</font></h4><h5 id="模块一：Go-语言特性"><a href="#模块一：Go-语言特性" class="headerlink" title="模块一：Go 语言特性"></a><font color=DarkOrange>模块一：Go 语言特性</font></h5><p><strong>教学目标：</strong></p>
-<ol>
-<li><p>理解 Go 语言基本语法</p>
-</li>
-<li><p>理解 Go 语言常用数据类型</p>
-</li>
-<li><p>理解 Go 语言常用小技巧</p>
-</li>
-<li><p>深入理解 Go 语言的多线程编程</p>
-</li>
-</ol>
-<p><strong>针对的用户痛点：</strong></p>
-<ol>
-<li><p>云原生从业者因为未熟练掌握 Go 语言，在阅读 Docker、containerd、Kubernetes 代码时有困难</p>
-</li>
-<li><p>未熟练掌握 Go 语言，在需要编写云原生组件时无法高效率高质量交付</p>
-</li>
-</ol>
-<p><strong>通过学习掌握的核心能力：</strong></p>
-<ol>
-<li><p>阅读 Go 语言代码的能力</p>
-</li>
-<li><p>用 Go 语言编写应用程序的基本能力</p>
-</li>
-<li><p>用 Go 语言编写一个 Kubernetes 中最常见的生产者消费者小程序</p>
-</li>
-</ol>
-<p><strong>详细内容：</strong></p>
-<ol>
-<li><p>Go 语言编译环境设置</p>
-</li>
-<li><p>Go 语言常用数据结构</p>
-</li>
-<li><p>Go 语言函数调用，深入理解 Channel 并基于 Channel 编写一个生产者消费者程序</p>
-</li>
-</ol>
-<hr>
-<h5 id="模块二：使用-Go-语言编写一个小-Demo"><a href="#模块二：使用-Go-语言编写一个小-Demo" class="headerlink" title="模块二：使用 Go 语言编写一个小 Demo "></a><font color=DarkOrange>模块二：使用 Go 语言编写一个小 Demo </font></h5><p><strong>教学目标：</strong></p>
-<ol>
-<li><p>理解 Go 语言的调度原理</p>
-</li>
-<li><p>理解 Go 语言的内存管理</p>
-</li>
-<li><p>Go 语言依赖管理</p>
-</li>
-<li><p>Go 语言调试和问题分析 pprof</p>
-</li>
-</ol>
-<p><strong>针对的用户痛点：</strong></p>
-<ol>
-<li><p>对 Goroutine 无深入理解，无法利用 Go 语言强大的并发能力</p>
-</li>
-<li><p>面对众多的 Go 语言项目包依赖管理工具无所适从，不知道该用哪一个工具</p>
-</li>
-<li><p>针对 Go 语言编写的程序，不知道如何调试</p>
-</li>
-</ol>
-<p><strong>通过学习掌握的核心能力：</strong></p>
-<ol>
-<li><p>了解 Go 语言的高级话题，如线程调度原理，内存管理等，使得学员有能力编写高效程序</p>
-</li>
-<li><p>理解 Go 语言的依赖管理方法，以便能够正确地管理项目依赖</p>
-</li>
-<li><p>学会用 pprof 对应用运行时的调用栈、内存等进行分析</p>
-</li>
-<li><p>学会用 Go 语言编写一个简单的 HTTP 服务器供后续云原生应用使用</p>
-</li>
-</ol>
-<p><strong>详细内容：</strong></p>
-<ol>
-<li><p>Goroutine 的调度</p>
-</li>
-<li><p>内存管理</p>
-</li>
-<li><p>学会用 Go 语言编写一个简单的 HTTP 服务器</p>
-</li>
-</ol>
-<hr>
-<h4 id="第二部分：云原生技术栈"><a href="#第二部分：云原生技术栈" class="headerlink" title="第二部分：云原生技术栈"></a><font color=DarkOrange>第二部分：云原生技术栈</font></h4><h5 id="模块三：Docker-核心技术"><a href="#模块三：Docker-核心技术" class="headerlink" title="模块三：Docker 核心技术"></a><font color=DarkOrange>模块三：Docker 核心技术</font></h5><p><strong>教学目标：</strong></p>
-<ol>
-<li><p>理解容器特性以及相比虚拟化技术所具备的优势</p>
-</li>
-<li><p>了解容器技术的实现细节：Namespace、cgroup、文件系统</p>
-</li>
-</ol>
-<p><strong>针对的用户痛点：</strong></p>
-<ol>
-<li><p>分不清容器技术和虚拟化技术的差异，在做技术决策时没有理论支撑</p>
-</li>
-<li><p>因为不了解技术原理，排查容器问题时毫无头绪</p>
-</li>
-</ol>
-<p><strong>通过学习掌握的核心能力：</strong></p>
-<ol>
-<li><p>了解 Namespace 技术的原理以及基于 Namespace 的问题排查方法</p>
-</li>
-<li><p>理解 cgroup 控制资源限额的方法，查看 cgroup 配置并临时调整 cgroup 配置</p>
-</li>
-<li><p>理解容器文件系统如何高效管理运行时和数据</p>
-</li>
-<li><p>理解容器网络，为进一步理解 Kubernetes 网络插件奠定基础</p>
-</li>
-<li><p>基于 Dockerfile 将应用程序打包成容器镜像</p>
-</li>
-</ol>
-<p><strong>详细内容：</strong></p>
-<ol>
-<li><p>容器技术的本质以及技术优势，Namespace、cgroup、文件系统、网络连通</p>
-</li>
-<li><p>容器镜像与镜像仓库</p>
-</li>
-<li><p>将 Go 语言编写的 HTTP 服务器打包成容器镜像</p>
-</li>
-</ol>
-<hr>
-<h5 id="模块四：Kubernetes-架构原则和对象设计"><a href="#模块四：Kubernetes-架构原则和对象设计" class="headerlink" title="模块四：Kubernetes 架构原则和对象设计"></a><font color=DarkOrange>模块四：Kubernetes 架构原则和对象设计</font></h5><p><strong>教学目标：</strong></p>
-<ol>
-<li><p>理解 Kubenretes 架构原则</p>
-</li>
-<li><p>理解 Kubernetes 的对象设计与 API 定义</p>
-</li>
-<li><p>理解 Kubernetes 控制器模式与多组件联动机制</p>
-</li>
-</ol>
-<p><strong>针对的用户痛点：</strong></p>
-<ol>
-<li><p>对 Kubernetes 有简单认知，但无法编写出高效的、符合云原生规范和最佳实践的组件</p>
-</li>
-<li><p>对组件和基本对象只有浅层次的理解，对 API 的统一性和差异性无深入理解</p>
-</li>
-<li><p>不了解 Kubernetes 的控制器原理，对 Kubernetes 控制面板组件如何运作无深入理解</p>
-</li>
-</ol>
-<p><strong>通过学习掌握的核心能力：</strong></p>
-<ol>
-<li><p>动手搭建 Kubernetes 环境</p>
-</li>
-<li><p>理解 Kubernetes 架构原则</p>
-</li>
-<li><p>理解 Kubernetes API 定义的设计原则，理解 Kubernetes 对象中的重要属性</p>
-</li>
-<li><p>理解 Kubernetes 控制器的联动机制</p>
-</li>
-</ol>
-<p><strong>详细内容：</strong></p>
-<ol>
-<li><p>环境搭建</p>
-</li>
-<li><p>Kubernetes 架构优势及架构原则</p>
-</li>
-<li><p>Kubernetes 核心组件</p>
-</li>
-<li><p>Kubernetes 对象设计与 API 定义</p>
-</li>
-<li><p>Kubernetes 控制器模式</p>
-</li>
-</ol>
-<hr>
-<h5 id="模块五：Kubernetes-控制平面组件：etcd"><a href="#模块五：Kubernetes-控制平面组件：etcd" class="headerlink" title="模块五：Kubernetes 控制平面组件：etcd"></a><font color=DarkOrange>模块五：Kubernetes 控制平面组件：etcd</font></h5><p><strong>教学目标：</strong></p>
-<ol>
-<li><p>深入理解 Kubernetes 的唯一数据存储组件 etcd</p>
-</li>
-<li><p>掌握构建生产系统中 etcd 集群的方法</p>
-</li>
-<li><p>熟悉 etcd 的优化管理，了解灾备方案</p>
-</li>
-</ol>
-<p><strong>针对的用户痛点：</strong></p>
-<ol>
-<li><p>对 etcd 的实现机制不了解，不知道在生产化应用过程中可能遇到的问题</p>
-</li>
-<li><p>不知道应该如何构建生产系统中的 etcd 集群</p>
-</li>
-<li><p>不知道如何进行数据的备份和灾难恢复</p>
-</li>
-</ol>
-<p><strong>通过学习掌握的核心能力：</strong></p>
-<ol>
-<li><p>理解 Raft 协议的工作机制和 etcd 的实现原理，针对 etcd 生产系统的配置优化以及数据灾备</p>
-</li>
-<li><p>深入理解 API Server 的实现机制，包括与企业认证系统整合、鉴权、准入插件的实现等等</p>
-</li>
-<li><p>深入理解 Kubernetes 的对象实现</p>
-</li>
-<li><p>如何构建高可用的 etcd 和 API Server 控制平面</p>
-</li>
-</ol>
-<p><strong>详细内容：</strong></p>
-<ol>
-<li><p>深入理解 Kubernetes 的数据存储 etcd</p>
-</li>
-<li><p>了解 Raft 协议</p>
-</li>
-<li><p>生产系统中 etcd 的配置</p>
-</li>
-<li><p>etcd operator</p>
-</li>
-<li><p>etcd 的灾备方案</p>
-</li>
-<li><p>生产系统中常见问题解析</p>
-</li>
-</ol>
-<hr>
-<h5 id="模块六：Kubernetes-控制平面组件：API-Server"><a href="#模块六：Kubernetes-控制平面组件：API-Server" class="headerlink" title="模块六：Kubernetes 控制平面组件：API Server"></a><font color=DarkOrange>模块六：Kubernetes 控制平面组件：API Server</font></h5><p><strong>教学目标：</strong></p>
-<ol>
-<li><p>深入理解 Kubernetes API Server 的实现机制</p>
-</li>
-<li><p>掌握基于 API Server Webhook 的整合方案</p>
-</li>
-</ol>
-<p><strong>针对的用户痛点：</strong></p>
-<ol>
-<li><p>缺乏对 Kubernetes 对象实现方法的理解</p>
-</li>
-<li><p>对 API Server 缺乏理解，不知道如何与企业认证系统整合，不会基于鉴权准入等机制打造多租户 Kubernetes 平台</p>
-</li>
-</ol>
-<p><strong>通过学习掌握的核心能力：</strong></p>
-<ol>
-<li><p>理解 Kubernetes 对象设计的实现机制</p>
-</li>
-<li><p>理解 API Server 缓存的工作机制</p>
-</li>
-<li><p>掌握生产系统中 API Server 的常用配置</p>
-</li>
-<li><p>掌握 API Server 与企业生态系统的整合方法</p>
-</li>
-</ol>
-<p><strong>详细内容：</strong></p>
-<ol>
-<li><p>深入理解 Kubernetes API Server</p>
-</li>
-<li><p>API Server 代码走读</p>
-</li>
-<li><p>理解 internalVersion、externalVersion 和 storageVersion</p>
-</li>
-<li><p>理解 conversion</p>
-</li>
-<li><p>基于 client-go 生成 Kubernetes 框架代码</p>
-</li>
-<li><p>理解 lister 和 informer 框架</p>
-</li>
-<li><p>理解 API Server 缓存</p>
-</li>
-<li><p>API Server 与企业生态系统的整合：认证接入、鉴权、准入控制</p>
-</li>
-<li><p>API Server 常用配置与常见问题解析</p>
-</li>
-</ol>
-<hr>
-<h5 id="模块七：Kubernetes-控制平面组件：调度器和控制器"><a href="#模块七：Kubernetes-控制平面组件：调度器和控制器" class="headerlink" title="模块七：Kubernetes 控制平面组件：调度器和控制器"></a><font color=DarkOrange>模块七：Kubernetes 控制平面组件：调度器和控制器</font></h5><p><strong>教学目标：</strong></p>
-<ol>
-<li><p>理解 Kubernetes 调度器原理以及常用调度插件</p>
-</li>
-<li><p>理解 Kubernetes 调度的常用技巧，利用亲和性与反亲和性进行调度</p>
-</li>
-<li><p>理解 Kubernetes 的常见控制器</p>
-</li>
-<li><p>深入理解 Kubelet 对 Pod 声明周期的管理</p>
-</li>
-</ol>
-<p><strong>针对的用户痛点：</strong></p>
-<ol>
-<li><p>对 Kubernetes 调度器无深入理解，在 Pod 无法调度时，不知道如何排查问题</p>
-</li>
-<li><p>不会利用 Kubernetes 调度器实现应用的高效、高可用部署</p>
-</li>
-<li><p>对 Kubernetes 控制器缺乏全面认知</p>
-</li>
-<li><p>对 Kubernetes 如何管理 Pod 生命周期缺乏认知</p>
-</li>
-</ol>
-<p><strong>通过学习掌握的核心能力：</strong></p>
-<ol>
-<li><p>排查调度故障，利用调度器实现应用的高可用部署</p>
-</li>
-<li><p>扩展对 Kubernetes 控制器的认知，理解更多的 Kubernetes 控制平面行为</p>
-</li>
-<li><p>深入理解 CRI、CNI 和 CSI</p>
-</li>
-</ol>
-<p><strong>详细内容：</strong></p>
-<ol>
-<li><p>深入理解 Kubernetes 调度器</p>
-</li>
-<li><p>深入理解 Kubenretes 控制器</p>
-</li>
-<li><p>深入理解 Kubelet</p>
-</li>
-<li><p>如何运行你的 Pod（CRI、CNI、CSI）</p>
-</li>
-<li><p>Kubelet Pod 代码走读</p>
-</li>
-<li><p>containerd 代码走读</p>
-</li>
-<li><p>CNI 代码走读</p>
-</li>
-<li><p>全方位的 CSI 一站式解决方案：Rook</p>
-</li>
-</ol>
-<hr>
-<h5 id="模块八：Kubernetes-控制平面组件：生命周期管理和服务发现"><a href="#模块八：Kubernetes-控制平面组件：生命周期管理和服务发现" class="headerlink" title="模块八：Kubernetes 控制平面组件：生命周期管理和服务发现"></a><font color=DarkOrange>模块八：Kubernetes 控制平面组件：生命周期管理和服务发现</font></h5><p><strong>教学目标：</strong></p>
-<ol>
-<li><p>深入理解 Pod 的完整生命周期和就绪状态控制</p>
-</li>
-<li><p>深入理解 Pod 状态控制对应用可用性的影响</p>
-</li>
-<li><p>深入理解 Kubernetes 中的服务发现机制，包括负载均衡配置和域名服务</p>
-</li>
-</ol>
-<p><strong>针对的用户痛点：</strong></p>
-<ol>
-<li><p>解决日常运维的困扰，比如，在 Pod 初始化或故障转移时或者版本发布时，如何不影响业务？</p>
-</li>
-<li><p>我发布的服务经常出现服务中断，是缺了什么配置吗？</p>
-</li>
-</ol>
-<p><strong>通过学习掌握的核心能力：</strong></p>
-<ol>
-<li><p>理解 Pod 的完整生命周期，如何初始化、如何控制就绪状态、如何探活、如何优雅终止</p>
-</li>
-<li><p>如何发布服务，如何剔出异常实例</p>
-</li>
-</ol>
-<p><strong>详细内容：</strong></p>
-<ol>
-<li><p>深入理解 Kubernetes 的服务实例对象 Pod：Pod 生命周期详解、健康探针、ReadinessGate</p>
-</li>
-<li><p>深入理解 Kube-Proxy：如何发布你的服务、代码走读、负载均衡配置</p>
-</li>
-<li><p>域名管理</p>
-</li>
-<li><p>基于 Ingress 以及 Service API 的入站流量管理</p>
-</li>
-</ol>
-<hr>
-<h5 id="模块九：生产化集群的管理"><a href="#模块九：生产化集群的管理" class="headerlink" title="模块九：生产化集群的管理"></a><font color=DarkOrange>模块九：生产化集群的管理</font></h5><p><strong>教学目标：</strong></p>
-<ol>
-<li><p>掌握生产化集群的搭建技术</p>
-</li>
-<li><p>掌握生产化集群持续运维过程中最重要的节点管理能力</p>
-</li>
-<li><p>如何在不影响业务的前提下完成 Kubernetes 升级</p>
-</li>
-</ol>
-<p><strong>针对的用户痛点：</strong></p>
-<ol>
-<li><p>不知道如何快速构建本地集群供研发测试使用</p>
-</li>
-<li><p>未掌握构建生产化集群的方法，缺少对集群节点的管控，节点出现故障以后需要人为介入</p>
-</li>
-<li><p>如何实现生产化集群的管理，比如计算节点的监控与管理</p>
-</li>
-<li><p>不了解完成了集群搭建以后离生产化还有多远</p>
-</li>
-</ol>
-<p><strong>通过学习掌握的核心能力：</strong></p>
-<p>快速构建本地集群的能力</p>
-<p>理解 Kubernetes 集群构建的原理，掌握搭建 Kubernetes 集群的能力</p>
-<p>基于 Cluster API 完成生产化集群的构建和持续运维</p>
-<p><strong>详细内容：</strong></p>
-<ol>
-<li><p>利用 kind 构建本地集群</p>
-</li>
-<li><p>利用 kubeadm 构建基于虚拟机的集群</p>
-</li>
-<li><p>利用 Cluster API 完成生产化集群的搭建</p>
-</li>
-<li><p>持续运维的考量：节点健康检查、Kubernetes 升级、主机操作系统升级</p>
-</li>
-</ol>
-<hr>
-<h5 id="模块十：Kubernetes-的生产化运维"><a href="#模块十：Kubernetes-的生产化运维" class="headerlink" title="模块十：Kubernetes 的生产化运维"></a><font color=DarkOrange>模块十：Kubernetes 的生产化运维</font></h5><p><strong>教学目标：</strong></p>
-<ol>
-<li><p>如何实现基于 Kubernetes 的 CI&#x2F;CD</p>
-</li>
-<li><p>如何实现生产化集群的监控</p>
-</li>
-</ol>
-<p><strong>针对的用户痛点：</strong></p>
-<ol>
-<li><p>缺少企业统一的镜像仓库</p>
-</li>
-<li><p>镜像安全应该如何保证</p>
-</li>
-<li><p>企业缺少持续集成持续部署能力</p>
-</li>
-<li><p>缺少对整个集群的监控，希望实现无人值守</p>
-</li>
-</ol>
-<p><strong>通过学习掌握的核心能力：</strong></p>
-<ol>
-<li><p>打造持续集成平台</p>
-</li>
-<li><p>基于自动化管理生产化集群</p>
-</li>
-<li><p>实现对集群控制面板以及重要应用的监控和告警</p>
-</li>
-</ol>
-<p><strong>详细内容：</strong></p>
-<ol>
-<li><p>镜像仓库和容器镜像缓存</p>
-</li>
-<li><p>镜像扫描和镜像安全保证</p>
-</li>
-<li><p>基于 Kubernetes、Jenkins、Tekton 打造 CI&#x2F;CD Pipeline</p>
-</li>
-<li><p>集群监控：日志收集和分析，事件、指标和告警（Event、Metrics 和 Alert）</p>
-</li>
-</ol>
-<hr>
-<h5 id="模块十一：将应用迁移至-Kubernetes-平台"><a href="#模块十一：将应用迁移至-Kubernetes-平台" class="headerlink" title="模块十一：将应用迁移至 Kubernetes 平台"></a><font color=DarkOrange>模块十一：将应用迁移至 Kubernetes 平台</font></h5><p><strong>教学目标：</strong></p>
-<ol>
-<li><p>如何将无状态应用发布到 Kubernetes 平台</p>
-</li>
-<li><p>如何基于 Kubernetes 原生能力将有状态应用发布到 Kubernetes 平台</p>
-</li>
-<li><p>基于 Kubernetes 对象扩展，将更复杂的应用发布到 Kubernetes 平台</p>
-</li>
-</ol>
-<p><strong>针对的用户痛点：</strong></p>
-<ol>
-<li><p>缺少将应用发布到 Kubernetes 平台上的理论指导</p>
-</li>
-<li><p>对于有状态应用，更不知道如何借助 Kubernetes 平台的优势进行处理</p>
-</li>
-</ol>
-<p><strong>通过学习掌握的核心能力：</strong></p>
-<ol>
-<li><p>掌握 Kubernetes 提供的应用管理框架，包括有状态应用和无状态应用</p>
-</li>
-<li><p>掌握 Operator 模式，具备通过 Kubebuilder 构建自己的 CRD，并且基于 CRD 编写控制器的能力</p>
-</li>
-<li><p>利用 Kubebuilder 完成控制器的测试和发布</p>
-</li>
-<li><p>借助 Helm 完成复杂的应用模板管理</p>
-</li>
-</ol>
-<p><strong>详细内容：</strong></p>
-<ol>
-<li><p>应用容器化</p>
-</li>
-<li><p>无状态应用移植到 Kubernetes 平台的考量</p>
-</li>
-<li><p>有状态应用移植到 Kubernetes 平台的考量</p>
-</li>
-<li><p>理解 Operator</p>
-</li>
-<li><p>借助 Kubebuilder 开发一个 Operator</p>
-</li>
-<li><p>借助 Helm 管理应用发布</p>
-</li>
-</ol>
-<hr>
-<h5 id="模块十二：基于-Istio-的高级流量管理"><a href="#模块十二：基于-Istio-的高级流量管理" class="headerlink" title="模块十二：基于 Istio 的高级流量管理"></a><font color=DarkOrange>模块十二：基于 Istio 的高级流量管理</font></h5><p><strong>教学目标：</strong></p>
-<ol>
-<li><p>理解基于 TCP&#x2F;UDP 协议的 Kubernetes Service 的局限性</p>
-</li>
-<li><p>理解 Kubernetes 入站流量管理的场景和原生方案</p>
-</li>
-<li><p>理解原生方案的局限性和社区的方向</p>
-</li>
-<li><p>深入理解 Envoy 的服务发现机制、线程模型以及扩展机制</p>
-</li>
-<li><p>理解如何基于 Istio 实现入站、出站流量管理以及服务网格管理</p>
-</li>
-</ol>
-<p><strong>针对的用户痛点：</strong></p>
-<ol>
-<li><p>社区的 Ingress 对象无法毕业，为支持生产化应用，应该用什么方案提供入站流量支撑</p>
-</li>
-<li><p>Envoy 为什么变成了 Kubernetes 中七层代理的首选</p>
-</li>
-<li><p>社区爆火的 Istio 背后的技术驱动力是什么，我应该选 Istio 作为入站流量管理平面组件吗</p>
-</li>
-</ol>
-<p><strong>通过学习掌握的核心能力：</strong></p>
-<ol>
-<li><p>深入理解 Envoy 的实现机制</p>
-</li>
-<li><p>深入理解 Istio 的实现机制，了解为什么 Istio 会成为服务网格的标准</p>
-</li>
-</ol>
-<p><strong>详细内容：</strong></p>
-<ol>
-<li><p>入站流量管理 Ingress 和 Service API</p>
-</li>
-<li><p>Istio 和 Envoy</p>
-</li>
-<li><p>深入理解 Envoy：发现机制、线程模型、filter 机制、高级特性</p>
-</li>
-<li><p>深入理解 Isito：入站流量、出站流量、Service Mesh（服务网格）、Istio 服务发现代码走读</p>
-</li>
-<li><p>安全保证</p>
-</li>
-</ol>
-<hr>
-<h5 id="模块十三：Kubernetes-集群联邦和-Istio-多集群管理"><a href="#模块十三：Kubernetes-集群联邦和-Istio-多集群管理" class="headerlink" title="模块十三：Kubernetes 集群联邦和 Istio 多集群管理"></a><font color=DarkOrange>模块十三：Kubernetes 集群联邦和 Istio 多集群管理</font></h5><p><strong>教学目标：</strong></p>
-<ol>
-<li><p>如何通过集群联邦的统一控制平面管理多个集群</p>
-</li>
-<li><p>如何部署跨地域的高可用应用</p>
-</li>
-<li><p>如何通过 Istio 多集群方案管理跨集群的 Service Mesh（服务网格）</p>
-</li>
-</ol>
-<p><strong>针对的用户痛点：</strong></p>
-<ol>
-<li><p>针对真正的生产化应用，跨地域部署是确保应用高可用的一个强需求，那么如何管理多个 Kubernetes 集群</p>
-</li>
-<li><p>针对跨集群部署的应用，如何确保其接入流量高可用，如何借助 Istio 实现这一目的</p>
-</li>
-</ol>
-<p><strong>通过学习掌握的核心能力：</strong></p>
-<ol>
-<li><p>Kubernetes 集群联邦的实现原理和配置方法</p>
-</li>
-<li><p>Istio 多集群实现原理和配置方法</p>
-</li>
-</ol>
-<p><strong>详细内容：</strong></p>
-<ol>
-<li><p>Kubernetes 集群联邦</p>
-</li>
-<li><p>基于集群联邦的跨地域高可用部署</p>
-</li>
-<li><p>基于 Istio 多集群的流量高可用方案</p>
-</li>
-</ol>
-<hr>
-<h5 id="模块十四：基于-Kubernetes-和-Istio-的安全保证"><a href="#模块十四：基于-Kubernetes-和-Istio-的安全保证" class="headerlink" title="模块十四：基于 Kubernetes 和 Istio 的安全保证"></a><font color=DarkOrange>模块十四：基于 Kubernetes 和 Istio 的安全保证</font></h5><p><strong>教学目标：</strong></p>
-<ol>
-<li><p>理解传统安全架构的挑战</p>
-</li>
-<li><p>掌握零信任架构的意义和机遇</p>
-</li>
-<li><p>掌握 Kubernetes 平台本身的安全保证手段</p>
-</li>
-<li><p>学习如何基于 Kubernetes 和 Istio 实现对应用的隔离和安全保证</p>
-</li>
-</ol>
-<p><strong>针对的用户痛点：</strong></p>
-<ol>
-<li><p>如何确保 Kubernetes 平台的安全性</p>
-</li>
-<li><p>如何确保 Kubernetes 中数据保存的安全性</p>
-</li>
-<li><p>如何确保 Kubernetes 上运行应用的安全性</p>
-</li>
-</ol>
-<p><strong>通过学习掌握的核心能力：</strong></p>
-<ol>
-<li><p>如何保证 etcd 中保存的数据安全性</p>
-</li>
-<li><p>如何保证 Kubernetes 控制面板的安全性</p>
-</li>
-<li><p>如何确保 API 网关的安全性</p>
-</li>
-<li><p>对应用进行安全隔离</p>
-</li>
-<li><p>如何基于零信任架构完成应用的认证和授权</p>
-</li>
-</ol>
-<p><strong>详细内容：</strong></p>
-<ol>
-<li><p>理解 etcd 的加密方法</p>
-</li>
-<li><p>掌握 Kubernetes 控制面板的安全配置</p>
-</li>
-<li><p>掌握应用隔离的常规手段以及在 Kubernetes 中配置的方式</p>
-</li>
-<li><p>掌握 API 网关的安全配置</p>
-</li>
-<li><p>了解基于 Istio 的认证鉴权机制</p>
-</li>
-</ol>
-<hr>
-<h4 id="第三部分：云原生项目实战"><a href="#第三部分：云原生项目实战" class="headerlink" title="第三部分：云原生项目实战"></a><font color=DarkOrange>第三部分：云原生项目实战</font></h4><h5 id="模块十五：微服务项目的开发和部署案例"><a href="#模块十五：微服务项目的开发和部署案例" class="headerlink" title="模块十五：微服务项目的开发和部署案例"></a><font color=DarkOrange>模块十五：微服务项目的开发和部署案例</font></h5><p><strong>教学目标：</strong></p>
-<p>完成一个复杂的异构的微服务系统在 Kubernetes 平台上的部署，以 Istio 的 Bookinfo 为例</p>
-<p><strong>针对的用户痛点：</strong></p>
-<ol>
-<li><p>随着业务复杂度的增加，微服务的部署和运维变得越来越有挑战性，如何保证微服务应用部署的高性能是一个复杂问题</p>
-</li>
-<li><p>如何基于熔断、限流等手段保护核心业务</p>
-</li>
-<li><p>如何基于基础架构平台确保应用安全</p>
-</li>
-</ol>
-<p><strong>通过学习掌握的核心能力：</strong></p>
-<ol>
-<li><p>基于微服务架构的复杂应用部署</p>
-</li>
-<li><p>熔断、限流、故障注入</p>
-</li>
-<li><p>应用的安全保证</p>
-</li>
-</ol>
-<p><strong>详细内容：</strong></p>
-<p>本模块是之前所有模块的综合复习模块，希望借助本模块完成基于 Kubernetes 框架下面微服务治理这一重要命题的回顾和总结</p>
-<hr>
-<h4 id="石墨文档"><a href="#石墨文档" class="headerlink" title="石墨文档"></a><font color=DarkOrange>石墨文档</font></h4><p>石墨文档的链接可能会更新，在此附上原地址链接</p>
-<p>云原生训练营课程大纲：<a href="https://shimo.im/docs/6VdchtKxdjrCqDdY/read">点击跳转</a></p>
-<p>云原生训练营实战项目：<a href="https://shimo.im/docs/RKAWV8xgZ7tKWXk8/read">点击跳转</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>后端</category>
-      </categories>
-      <tags>
-        <tag>云原生</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于博客</title>
-    <url>/2022/10/27/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容">
-  <script id="hbeData" type="hbeData" data-hmacdigest="f36bec946086959a464da45b90aa4c104a3170ffe12af792cec2e00339d1c052">a17b4de793b95f7877066d2186f5861555e2d6b9cb5641947e36c8450a9062244141303af7f6ac122ca280e580e95da40c8ee95d99d2439c2f200eaab162cbb1875108085071c26de1a7a2252b96fcbe0f08370a21f14470abd2a2d2b018211a390d4a79c82cf2a64ae884fb7caded6082fa0005ef84e7ea431151015e2060bda837f3b622c77b40ee17a251d882f100f700e0f17f23a270fe7ebd41b2243cd40ccd7f393f2143466b0ea5bdf3266f6004fd025806d055fdf16972dbe19ea6f6c37d97c0ec9f9195a561038b369eaad95fb14282041c916d086e8ce7bbfcfb544cf1b90b1de81950e764be9c2f080779cbe47199af8958ab3a0ad36ebfc779d09b31bfa79d723269636c61715b52f710078993bac08a29a3ad6007b30954c8b13f65b3e853a84bcfe82b95d5e85bb4137aa7178c3610cda3a5b754340859cdc7fca3689b81ea5c0a9ba0bbe924a538e8d6037459f4e277a27a0c862da116b03c1f64db3f9d6fdb28a3e2bfcbd848c16d429b31e0efb3183f6f95239336c03a22f2e979b8fcd98ecb41afecf3768301ab51d70780e5e5f4537775693fba05a1c784e5826374ea2b89bc16d31220a382a3de7fff0368fe505183121ee6f1d42960ed0cbc0c1b7147b78248738c471b1f88de6aea3955825ffca764b3c3b206b7fe801eade00bb35c37834382bfcee73ffe05bf54c5e3ba78499631e12d2a56dc9411fae3b1f27999ad68946b2eb02ee5efc3013d1841b74d246e6fd5d6f9a1b722679561b7dd617e32ccaa0a404adb5fc3ab7c3ac3b6c080b03ac402f699bcd99d336c0548be2e600b24e8562259111f2d73e92b3485ef2e00cc4ee6d7769b88d09562a30e82b6a71942bd779e8e81e64756d5121942f5eac45616febd435eeea0d63b35c25a65acac75cf445d226fbe95074cfbfc12b6878617943c53b3dec8bca9da0dc79d3b10828150927bdf470010dbfda25dcac915857e453ae06ef03e078bf511c8f368925e49698cc0c16f50c3d7dd368c60fd19c04e8a634c86a7c0f1a4c162c11a9956e07bdda9190eb3eacabdebaa4ed58fade62247024da73550d178aff0f9217d46dc4b2f02d5cc0541e32e572d900bfc2fed4c4f7e7d57f023d1d7dd02ab502957c488e0b591fe809354cb6e918f2c96d3f388640171ccbc8df58a395c93a7c390c46ef0fbf8379d7b13d70c8e6c0a48270e52c2f067b84a9ed79d9b0f8fceb3ca649da3e21896e1648ac7d516988d2a6748e8d7b5f1a99db4b510113673230cbd5ce8b063ab6c8ad0ae21574ccb57a0172310b77269ac41e9511fc6bb75588ede87cfcf08f0cc89c7d7a2192b59c0504f4240c3c2c97dff8bd74686c5d157ea1a4cdbf69495e08704104887a96723740b54cd1767c237fe99422a75b88f9ab86bc2cdb30fe996c84bc61da4bfe573b1dc8ac4e0a2a7446a8688f068d0a9ae1157b628be49dffe4a990b38009d5d92e3b0fee5c71de385936df9994623a68e5b82e8f0974c7fb7e559c96bc1452d44237516f723118c9377b8319866e50cda28ac75a369b05384b7aeef4fdbb2c4e5a9a03c72c7bdc6b590eb198749e958ddea5ea01d6ca15f398b48579893e23da7d06f895d94dea14f376f4f34049d2f7b9f95542b6d2068b36f14e729447da91128c7a869805bcec99dd20fd8a42ce9630c0bdfa62ed231bb8307ed0bd5c62831efaa8d6a93c8b0cec68378e7e250de628f129c95160ad65b9a8fa6fcabb88802dfeedd6fb2e33192524a1563671272f8083cc049207c71facd85f922f3a2afb168aab5e55bca6ae8337e0857acc4fffd719a02820cabcd4d36107d905dfa1280b0151a57f997d0577610ca0e63781fd8aaf33b434cb6ed3c49a0eae32da7feada31530777433eb63c93298030a18b0a29e6b869b3f3785db02faf2720f85505153ae862babd61d1ee2832341345b2624341e3c124c6992c5ac9408582198de36fb85cefec07e5bc33c21b0e081302a1a699dfd7f374f3d7faea640ed64f7d064fa9f6d63d0c5bf1cc2036421c967bfe0b9e42b5e481a7d8c7b250dbf661514274161a91e68f5a2c5bfd6f6067074b96e34b6b61d8aaab7c9dd82ae92320915ef83f5ecd15cc1c07c089e6d875eb278c790b04cee421d6906c63eb7fb72da066bbcf58e2852b94f6e25274fb8797e2589637332cfcda09668693ba2da1f36887b056757f59255b785c9d03ca6323414a1c067e8394723eb6c701f6ed04cceaf394fba9f2aa65ced20b3582d9c6dd94d63827a62b58984f462079eef29a0b8f5068d22ac105e06090d716247e63bcc79ed97434bd526393ebdc530fea048a4172a2acc552fa61d2584185d7362f5dcd23d324b33ebaecbdcd2e26266fb4f4f095949af594b196a4e23da3d82905a74da2c7f29bc8b401497fffa82fff4d13fd323b9174d117fb3d7823ad94dbca2f12123146291680237593f2260ce6e7fa9581353c678b10a6419cbc8c6686d485c9838ce4b5cd8a1c6ef3dc8b80897480613ae22b87dd5b72632120137ff93c2eb474479ceabf24643e4841639cd6b1e0c396c468850e5eeaa582c4713e706a630a07e73309d23aa29ef61a86e98fe4d407fa27055b0cf22bc2bf56835f3b49e475f4ba808a766d3db139d8ccf6ebbdd59464d3884a76f6a7a10dd7e155edb4afe6df89974a2e96f7e08d83d94017ebd62924bf8289a5ab23522461f4b86b670ed46a4bc84ae1c8402660213f85a01e0ed661482a0983e5f50c28b2ab3aca3fd37b536a239b0e86c057e84aaf6c1442b762b9e5e41d683eec1b615d9ce49cad81020daba26011bd23f8dfa2cdf4b88134201dbddeb2daa9eaf9ae0149ffc3bb2d1260ee888891a59d40a3b82704673121a003ad347cbfea01b229e683df227c0ab94ff3cb6dde5a21feb2a11080fba3129d5fc25bddc45ab3d15550d23d7fdd748a9730f3fde6a7d2e044aa652f85d6a21a2e96731989570d4f8ba534c08afff6ac428c2a2b9bf532578114b3b4f8305f4ac550312ed01bd2874e535564210a14d526066639d60c9ee979366b5441456ae861e9362fad3459de02d52c403e31c18333148c41c0bbde1fdf6bd9080826ac11d132559d44af1826b5c534d89ed1ec451bd1c0b74da13be129f851aa142222477893ad95971a7c918651edda30197613156d9cbf36b74de4f8244c166b26ab8bf47a931db668dd371d5c1480b60a79a4fa09b1cff180d7726077fbed60565d48afd98fef3d081fe83f79ec5f358e8570cab24eab93047b854cc1e7397c8545820739e69d5744bbf09af631a1589b3efa4bf56e0ff35ce9239a6c6f360c4c56d6aa1965e4020e355b69bf5cbfecf60b7c56978965a9e47fc0beed6e106017e63d8299e26550d07395453b537f0d680d8ec0d4598ccf31d873f485ce55a80ce7f915dd5bd7b4e9e377f81adf14ddf161755cac93d6b7d4f99610884991e3254239fa50b2b2d62b79e461217d655d9d659bb074dde9bc6048ddfcb3169eec1c8266de67ca94e8713852e783f6d9cf35fdb1d7382060c466295e80c2a038630af00ccfa7ae0797d68dfdcfb0085d9204b44b11a4d2d66056ffa4257a55ddaa78e2a016fe05f4d58d795c71acf35968e5a252a2f85560ca020463580ba239e7d3489b3a4298eff7741c4bf4933048166a90e00683fd0cf6c28c59146cd38258612a3d6b906bf554bc808ebb82a5e6f62981161d1673f4828a68da8dd8e1a5d7d58beb5deac69a9c55abea8de2ab821f8b93929d1a0101fc08c494010431ea2764791920f1354b97d315aeaed81468c15d43b50f8a106aad458c78d31bc1d5c7866f106a55bfb81147f54d017e1ac04323bad64b3ff4c46596362ce87aaf0b202aecf3a7c5f42f21674329d221df57e8646bb03d3298d3313294e2c04d2db5269f74b27585ba67e7b9961e2b345af546fb3acb355c36287c51ff43fabbcff6a27f5e8d14446332f4ef8b08537cd61f4aa8046fb4809a4da1132d5bafa2676bede7e39549e62fdb876600ca7f2d85813f82134db05738bd00f52577d391010992d14fa99360391284e5a2d729d469f114a0e99e39cc61b10d0915dcc20cf76ca09c5da97573b7bab8f281e10cd661862e02f7b0974bca4c5755dec0185e9e094cdaf0ede67d283b2b3debc26a391797dc6a282d20f8c372729aeddb19e4727617ae371c3b0c2a0cd9bd5d938b018c03037516069dbe27929b35d26ebefa9d37080cf95200e448f25841ba72d4594f4c91568ed17b3d29bcf318a015ae2a9f1706c160632eb2564e20807d8a5537a42a61b2c8265a9bed5f327e7dcb40d1e0a16c6ec3736036727e66ecce0ae007126e879d0b0dbc721fa62f987a8c639ccbc16db997a95f9076aff50dc3fd2aa1e4ebd3cb6a23dbd8c17daee3f5937c295ae6daa36697899f188798c5e61e8b074bb1776f2eccc3a702d68c5151c1ea7b6ad3b2887d7f2fa131021f8e5041e0f30690755bea88ca584131ef2f6e92f07459b6e55712ea2aa750dc493d5b1dc50badf571f9fa33e219fe990c325bb1e4f975cd95fb5538b6008b7f2af3cacdc5dcd147263256ff2a066c0d5fe38cc5f6eba6138137e2c0176b8b1f4cc0de41ffbe58cec464f90c49a56b3ef875225d6e3fbd4a0d7e7de5c932b6acb0b0aad132fb8e7c85fca48df6a3ae302decfd345667737e5ba84be1d8d070f727b17f996aa79080750554ec888308bda6d4aceb5f310ccfd1aeda8281577bf6a85b88b5bebb3f83eb7569b9fdfcae52062eca6b4aeba410595b722d481fb913d02d46d49cd497a280c3cfe5fe56d6459230dfaed3930f35aeb6fbba375238d55edd8b131577837cb7c3298e9f3b0854b11441cfd645830eee30b63a48814bde123ab8e256b384be57ec296538dd4baf0c6e28be52c2f132333b1f4fe3bad7b5bc9de72ef35b180a2cc4ba486b2979eaedffc3db8ec558539959be563bd589be870264422dcd7d063b107888727dfa72f32674e503f6fb3bc4348a3f64153797da2f7890925d2a3df8deada2f75e00d752416bd7c93e968c52e538618e71cf72b4d6ce99b7f741932c591d4018aeba61edc0c046989c238f6face10018ddd0a9eb93b4f7b1df5e7d12a67c3c56769e2ac4ece628f781868581dd4cb6b04699d462f56e319d12983f922965739642881e7ef7261acf63dc355573491151c212397d9bdf0340b4b3d7a2cb116d28ef19f220fb4c4c9137ac9b05e3f244415101ba6c2fac3606ee3b638bde97214ae91cac1f8349a9df0593e880d450e05dd54f8d5356f6791cdbf2e37db3ef10d93db4cee1c706a1e505c07add56cc8ea91a14651022b7857a20ef3d219c8df14247636694a132375e84f08a3bb2f923da5688577e5743deea181f099819d6d042894402796b27edeb0d757773cf7d95723a0b69b0e7c28314267775b171bfbacec28cb5e5085efe9f73acd11f88a93aeae68d1b476830dd1276ce9768f2a669feae6ea6a81ec64721cd9a9b6640bf8aa0109f6f6f664b3456236e3927f7c58604e55dc6dc33141c1331caf61669fdb6b267c3fc9041176937bfdb7cac87bb6273b91bd2e612668bd48e9404178b895919f3e010dd2abe7077972fe7bc6a1ba80c6391b748e9a8acdae4b865b6116195ce150de9ba36a53fd7c2c19a4724923c77ed1a1c03d5b3c7510767c089ac48eb353de309653702998fa73463f7fcb39cbbafaa0062497823a65df7607eb5be4c769ba28a2d841441631cd733062723415020e48cbe9a3c27fde96f4bfcb3c09aa6dcb6f1f1538b7becdaa72edcb87712e27bc7e0cb2ca21ee27a1947bd3926a6779ae4cb8cce2c27a55738acdb470ed3a87b66f989e1067a95804602cd31fc9d51c08da433b202706673594f585405bb48a7f8a3cc9cefc613b3248a421a35cac9e1f98b0633a2d233c8093aa0ff5d1aa4d72285b3bb196efabdeb388838da366e066761bf8c2726f5f93eaafe20f34e4b534ab2e7ed584ee8691329b5fa2e39133e35934a7d24f21637a44c756a68eeefdc20c745264dfb42102eb2855b1d0322f9b08f81303a4046c827a58ebe0d51ad37c0ab3b4941b4b455e3481445432524f8c682d010538ad59540a15590cef4ee58c4b492508691085ff3d87f890de61b4458ef957b5116dbec4663cecd18faeafba6f9d6b05e9aea67bc88cd21f8149773938a69507b2db8a02ff20c6ec0c7e217b4221366bb78408dc6a2ad3970de0edeaac1a2ca1c751aed9cfb4676b903d98b0305da653514cbc7122e1aee067720db4b3e1e3ded436f01a298a5413740debd4a1b0d4806583d8f8cd93eb5c160a837fe984195730ab6bcf8728bd6612b2e1ee6f203ffab8250f78da03e32b90716021cc9e6e0946de430fcd10df88d0db66a9437c2766e1ba542ec32262ac115d766700395cff495ed1fb29ce5cf31a1f44471025fb571d381f8e6b6393b0444ba3889b315dbab4788f9389f978fd9981904cb9c743a401824199da8a78d47eb271fbb46eb04128a246b3ba5d6dbb95c8e60e9069895ef33af06df72e8143c354bbcebd183986f911dcca027266256eee8f09950272291ccddc7e8d28b24fa820e05b986a145e96fa2694a7f28774736c1ec1ac0fb8f8aa6372c3e30fdac81dd30e2d27349d9deed24c5caa8d27881ea593e07186bb569688d929fa1bfd41cd34d2f32b238d5fbc2633ea43064e346692da4000a41e46b2310af7f52c04aafe57f5bbd0c3709714e0f9f48549ca0c28e6a09c1cfe8aab59e6d23ff9ab75016338c5d968678741a25b439ebd5559b9a179a439a72d0b7dfeb14d7be503d8aed58f0475152192f1408291a150fecf563dce593fda127457a56f4cec2b12928a524f751b1a6348413bfc3ac52c88fd4a7a3b802cdbf103f27f35435ffe16fc1cafd0b195343b228a572e44ffa5280f5df971006a12664d104ba193e872b57d811bd9061cd222696ac2a220b461a68ac395213b6f601e448514dedaafbef5c2a38162231dd836ff715c2ee95c1a6aa71996b741518170b8a360ef7efa4b9bf643f7d49bec9a2929f90952ace92e6456d627b2d22aac8e0c34a66bcec0a5925dc13aaaaa6cd1c5e9c19f4cae09f83fffeec68efb9621b46cd83ec1e5c141d140ede3b0dd22fa1c55353e8cee19bddc0a456cfd636e03dd3ef6823b34a07b9783dffbec50241fdc193f7b917739cb8ef6dce3afb981596e9c5656586a683a454b7328396c38716d8d0d67c89b0d1aaef81bf8ab01f05678bd7cc4d1460694c8070b126d99ac9c0c365de3e2383748b006128630a8ed3270cee456c7db983f5ad2ce616dd7d50e4df50737c70887ddb997db80e1ee3e3ae59d9e641647b0167d31b143f770ba39e75ab828b33c5a3ec6c944d0757b07a206e1a075ea5b42a6997eeb2364e5f5523026c8c12a9f8646666d4b91a0b9499b3badc9158fd760ca55452906e3aa09868ff594191b8f09c58ed268461e059ac9a5a496199539f4d1614d70902effb80d735b96e88376ef7a2b41c10ef78a0e5edcf7cac3ca3545b44ab42011749d5ce8533cb93be73516aa38e083dbcbbb2066be1eed1f0348ac7bbc7d121ec06e1cb5b21a84bafb5fbe6fec31d8bfaa1f30fffffaf954be4cb1a15d2ee9b7bb5eb93e005a0bea9c1c3d4b7e00ba15b783a29250418bc1f873d3e070d1fe60da3c02ed6da8684ebaaa3517f2ee54c9200dc75c3cbb52ab9a84ef21eaf5f41568229b51785103c9d8651095c3d0ef4fa76b5bd6c06452b2015ffdaacbece57cba6ea3b71e57e90a7e5983e5dca2c3b5a243186b4955f09409b7f30ad1673c91e4787bc8ec0a99c4e657293d184381d90fb70592bd15d639fb2e7e2ad5e07c9b650c64d679e81c0a1d10e8784952e1575af2666bcfa17bd3ccc53dd341a6ffacc19d8f96a899944496731294b237220111daef199bfeb737002698de4cb2b5fb2174ced6140f0b1ab7a0add2974f4735c599753de3bf345ca9921a6ef5b6815e42bf3483b8493ad5b6e92819c638bbdf868a02334bf825125becc8d5b8a2228dc03dda56e12b50b69f037a7ff82db1f55da2071f23278db4aca6dd4d5d17421e1210cec186d2cdc96552fa53b8faad607a025344b4f90683fd1469680c96b719b9805fdaf03068c9a5d06c3d3fa64ca787c2fd8335f7736b6576d7e75830ce6b6a8ae65bcf3464ae7969b613fdede9e6ec141e4ff241ae622044cc823d65e3e39b7cf60d4670f180e6f87e25feb3417753c37fa7540bb58ea5da2ac0f5c1ba57a9047864aaf125383e85c1859bd9d371195be00bfa12e863563030c4aefb0cce24326eef2f9716c551ab911997a189ec6b43efbb28c85ce23244419f03d17c1641579969eb1cbe4e8c4c4cf54855d7c07db35f15267454f47e15a7890aca881848ddea36128b12e0fd078e37dd0659228e63a198d744c0d03ad8ab210c95c582c2cba87376e55c2a3e8baec511ae4072b40ac7a2fbfa5d4115a448cbd6cbe0a960d83388de0ac92d0a05e4c528a7079408fb329559f4eda4e45286137833f57ea23ec537befccc862dd7f19f90c2aa81afd496d0b0eedeba42ec64ee7b14a6b7d83576541e22329103eaeffa73aa43f113594ac8a8749d10048acd654d832bc7cd5387c91ac61ffcf6d6dc90a05aeb538c707dd8fa3ec31fc86fbd225a7cfd8444ecef3b1240ab76cf8a0b185b34e8fd097173f7aa14e81bd6e0a613834be83563a04c31c80d8626144783f943cb0ec1f1c071adb542292091874ae7523d45111102be1ab9d27b1860b0595e8270489ba57cc3eec3ec850e5b1f0b33c5ef95e8e744a609a9c5a6567ec50f95960887a5cb7ba3a6442a159ad796e10541bc519b9491177896b274b8b5339e070c3a8e57901ba034cafa360b20a1178acc1d1cdc3c76cadc127f149b39f1ff2a84f2e9526d672dc1ed927a5e3ace12dd38adefd678782e0d25ff53a704280073de776eae5015664755d825b25b3cc721a064106e0145b460e35f7b64487df9a52f3b8437a2037f563ff7f69b9a8be0a08c36618965abfd1cac7f7e0560412f84268ddf3aec2ea3be2810fca3d14bffdc3c448e432c101edc8c6c29f0c759a5761b78e46247c5dbf0ebbdd0513b428f559f79f7a0a0523661f1f7dabc27f3abaf9d4cd823ad364f29eb390952eef05a51f400753652f5e7b0fad85885f1b767ba38b800cd12fa7a77df28f4fe9d3322b990ff31e453196ab00bef032ba1b1c95598157e842946cdd429f54c42368105362a241bde5bbff5b779b465cc41e78af93a3e995a724e66b212c7f544a1f988fcbbfba478a199a6114f72023ae8637f824054dc92fac9d36edcb4fc4f162c32b0fbd3db96c59d2b96e835db3262916523c48aa7df7edf096fedd838895f68f0ff2ed4c757a523ddfc7f76ed9f243feedd31b1f82c52d5cd7fbb16a6541c22ecb67fea801eda51523ecddee57e10f6a2190dd3e68cf382b6cae47763699c928ec04ae0db70305d648544d86fe6c6e87de69ca2d99220005e8eb76c037ed998a81729c844752aa8e81bff702c4163028e1c0e8602f00f03a728b03ff287a7c1781ae6418bf66b2632ae56a862f02e05c3ab0feef78796a3b1daebc500e4e10b3cf69929caa3806f5185dbbd41c5e20a7796cea0a63a1473380d9bff85ebcbecffbacc6be9175ed83e74f356b38e74250ca6817e6ceeda05e7a67b84533203e40a1a0c98e8434d6bffc3c714d13538cc0470a95cd92294a949828cb22cd3ab31c5928eedae039b6bca00f9352f40ee8b2e258148ea71e5cc308b48f7a425a12164ed5989dc100c061660e989e3f5f48d5b2aa072cda6f2462252b97eaf82eb7b7a94813fc9e2e2f2db69413fd0560eacb8416cacbf0302f233daf552caba515df5dc00e39ea09bc861d1348927cc8372171d321092212fb1ad40daae334e92a7c4da3ce821694fef0bc5f7b3315551a5912dec9702b47dfdae73a8093df3f05c949b7df4a5afb5ec0eb33217759d26dae113e3ef3060597e02879527c5271d788dfe44246f532f3bb4119f385665f99f05e2f15be0ed33fc9587a962fde28b3d001961343741d308e0aac41c3f6d226966974ffb22d39dd1fb45d7bb881f9c8f2ad517c485c8e004c36c73569304f24e5b3c39635aed1b0c7a091d95474d76b72ce81d699cb74d7fbf103000cecc3bf357eaf5fe015dd2a3dfd10afb3fdb813f8946874d7569a02104ce32d861a703041fe87e179852229c61acf57140c5ee25e9460cff51a043b8ddc4ec9a639950618358183d2d9d2e9cb29b6fb80f8e092c285912ec6603a59753a653eb18372d0d4f548a7735e276c8a1d94ae879f4fbda3315c0b1f159e9c28c2446e382c95cdbe22086fe88680204da23e109cee76df1e72236aa6207b1cc6cc2cb7d5f7a91b7596ac58eaeb8e5505579fee27eb2941a1b5e5a386afde5f7fdd7248f3e0ec9935df39363253e02badbdaa32b5dc5f9fb040d677b731a0bdfc541389cfcaad75b44a31980057cd03aa16715df4fa809b7c7009512ae702bad9dcee1fa12a4e36de338c7639ed13c0c4b9fc930d84f73bf9917542e5de7b90f6185c2747d9be38e60c38fc89ff7229d2f81eee291d49fec6ace083c61de446e5fc79ded3f4e0edc74bdabd164d8e78858ba54da7fd2af1edcfdb96df44e077942099784b13b66e17aa5f1d7c50ed70d249ff10b3b5988185d28647a5bd332aa81b08174dde0fd8e8222c0b4d6d3d5427ec12b73879c2d1678bb7f25c5cf8673de6a6b956121cfc189f5195c0970c9124e3f33c2b2ca0cf24e5dcb9868d97719e523cffe68af11cdab5e631029f61bd2846b5f29cdc264b441fec7d2ab904fc4ead7427e16600a2a69dd753085e68627c193821c2ea172aa8a21ea7e8c0e2f83d5074ad293c08847b42676b9deba425a963160cef95125455147c7971b84aaf23042044088b816aee6e4f890bb2593ad03c41c486793e71bb4875b72ae5dad1210d41d283f2be33db6c609e78a2b0f0f955c2e2503abab011f95611adcdc1b00eed5c13d6a89d2e11f90815b9ed238110149df4f0f78b4be0d508198a4cc95b262ccc2947d1e7da0de634e77febd891d65d6eff59fd9ebb1a558f636bb06bf4a05227ca852958342ee30de0650e6c0b5e224ba243ccd3c176815508e7d6cd5f732aa45d4a7bf05fc1b5956912323673ff28e1c6eb372021318d2f9c8099e1977693ee7fc81be1707cc394146b70f22cf081fc33317b79e28e7ea8af9b2f31d7cdcdb7130c2f17bb85c40c88ac7bfebdcfef01160483e673d11733e473fd7a9f8787597394d6564c5fb425795e46062ef7fd224445a179cc24cdd4a1907b9aa57c2f15f5efba3e502b25acd7e19751e26c279162dcd46dcdd40999368b7f9f04b4e091a3cde1e2100a705376c35d8d7e2dc96e45868d87ac40d28505f7e7dc86d308cf451f85110d466ba436a3a687fb7b391d0545064acded2d9d2ab576fefb9e9de587dcbd69f68eb4d74a92099c96374aec2b90b243b4ab637c4fba32eae9bab8b63721f6ed62900e8429aff3311903ab2481f39d424de7b6ec99116c1b07635044625c6bc38f7b9b44400e9d835dd9ddae9bca7729b395051308dcbf78dfaa5762da3e9af6ac21019b4700dd97db0edde666e9b161bb383331db29e72033ab1cd2dadb6a2b14be549be1cf15859a8924d85ce4b7590274823a423af2f380292226af6d4a56467801e0c63307fbb8647730ea863f7df1db8b13e63175b13589e00973894eb744f36fc13917a4ec5eceb93375c2a9c0e0fe8474274e9e8a6ebc005e5dc259d4223674f783c626b03dcadd92b58ae2fb57ab01880b510c8198bff7489682c25838cbb7f4ab172f773cae5cb35d21005c59aec78ab3621aa36799f4436392a34b76bacf59a030ec4f9db50b4762b303808a94f0e1d1f66de390cac743abac93ae417ed62725ffa7cb184373f468812cb9a1331844469308ef5db3dfd39bc50f07bac42ecb570f7a654d7d88d924bf2138d902d38961c0d7d597ae70d985ab04896c3801c2d0f8c6fe3ecede3d81de7c384d1daa90dc599ad35d5b1e30d9303253377050a2e8f270e9cd0a259c4a115d90bc4244ec83dbdba12e6e9a3ae9b01d8764117380a58b5d8ace48a1a12a7edc741648c6572e3e9caaada42bc83db122a66ebe0bb480f675ee364675113be63bf5c37fddf4aedc94fee277953cb0d715e6d31228f9cc04d5647eed37d9a83aff4a8bb0805f6b432906895624e14a140ae46a3b06c4c374e00600e56acf676dddabb44c2d0aadda6b78eee43d9e4253adaa508dd2fe147994f1acf7e6e25faee8539a757b5a6b84f6e4261cbcc6e7837939de6cfcd826a898be954831d48fbf8846f3b1924ed80aa4e61cd930cfad02f24ed828dcc462a20e71e8060f4fe4ce4921ef41c15d730e1aa5c958696e65d21840d343ba90b3f8dd68e6d1e3db992235c70a635d5a12367e84b36764fbfa80b66c2c042e897b5a12b80428c674633b4d4ff541c5b3bd4ef2ad267c2a86aafb237f150539e2a7121b02d34e7454bd64626c8ec4d786c444a146708b8f585b49cd5d7db7bee3cb98725765821725e64a5bb8e59c023e15f249d38ca037b2b24cad9fff61442d6aa953b3333635a656c41b983648f3a6ca738086ae7d694ad3504d4efd3136a0a95504a8ecfd64413104207e1509549ec7bc0fd915bda642c0190c9124fc390bbcfeb1c1c8c3712085f2ec5f1d6d3e2f221e6a3f7b97e05550a125ba95aaa3cff914b6ff5103029c2c7a43ac0da1709fdb25e05c10cbb0cd05743760517d7060423760a9a565d9b88b040a515ad7d30d682da6c87b5175662f38bc9f4540380badbff55b27bf1714892ce4e6a4b9483dcdcd20a26c30d81d980050302b6b5207cb3cd2f2208e887ab8c9d83cd3122ed4b717a8792a0666f536dda97c0f145e456dd5e1238d02da40fc95d499d7d77ba95fd3ab8f7dbe359e2e28fa41eac4f3bb9cb9f4cd3579a940b0ef1ae3872254ec15d2f37d138cc21a92879aa35653de00febf2db8c58691e8c7bb5044ce7ba483532bf6904c5c628bad856a5f6472ed0e1a6d646db986b1b72b2aafa4b9cf6c8303b2734eded076127437c60b89a6ee69bce39ad9b50a57b2a9e16f0ea032c81b611e0cd13f4a3b085505e5f5808cf6453944929c79c139c188d3006d877382c56d25c65f2908d62301b5aa42b61a178948e2fc42b0c51109f330e23a9e7fe9449f38603b115ebba63e61f062d56eb4a637778b66b4f56b26318ad7efef88492467373c713287d75f3f9075a95d5e6536dbfe37e8883e9058da126ccc39060a4a51a1f6720039b4d361d5098d2597a4edfe948ce00f3aaa6173b197bf6400d15f788a79ba22b5d401759756e1dc61af8ccf28701c76e351db5d3a47277c525eeb3f587b988cdc2b9099e165966ab7b4e554dcc4f92785bb66933d408b0393e7e505b1ea3cc4cb006ef1f2d7638b2fd4feafd6a12d6170167ec8d0d540e3d8da8038edac70e91c8e42cfcce309b2076eaa8331f2aaaead28d832379e1b265d0cfbab0bdf7a4ba8b6dc1ec7cca6b994e1779d20632dbb3adb2ccd979de0a194acdfd017af5f9505ee6f1687e535c4c69889892c6486ce409d1ebade5ca0f4ae1849d36e0ca2db8d907cee20f1be99426eb0948df9e48e0544dab7e62337fffa587f3cd361460389be0a8c46e6143cc2b48f167216cc9522f1eaf9973c720f0ae373892fe0bf2a6f19f9b42316de6a90fd261ee244a39e96025a7e5a314a280adc14d40711c02823102c2c2a404d0c362433ca51fe8f63c2f5f803ff951b124f30ee6364d96a4e9362d83c8409b9720d8677efc1141cd32d7ba1a6a0f6d105a560c18d2d6a93e4e501f31392cc34af49e4dc896e59a18e871f5ceb3d53728306e687063bee18975d81fc4a7ff5e66ecb734c9ce3ec098fc38ecbc074ce5eede6fc293e25164a5be9f53bfbae13dd85780c784f278e97de910ef33dd3c76f31cd3a4d1361a8d6c8eb92372377bdaf17ab66eb639ab69cd98c94bf8300704717fe2635f429a2684a6b56ff0a6a73e45469cef21fb0903022c825bb9e9442f3542c163ff7c7efd38fa6d551af866822165c38f97962a6460ff516ed0090e30b250f02ee601f6ecc3fa4c61dced8481cd9b60fd7ee9f6a2734e5438baef6b35d1d6fa86a648276f7de63a38c062ed79d54e9c9b5153f2eb1c9ca15adc1bc62a4d88196540cdeeecca8272b0aa9077c5213746f813005652d5a3fa95e09a8bdc9d7c945bb7101fd49390daf5e9da248b1b0b0943caec0657fe754eb703594899dc4d445e19364649e3c2accfb6bcbeffc2959ed36647e747f9a4a457673d35530a141ed2748ec5b4c99be6e42377e7b39fd5a2990e28553e0b59f728f42389fc89726b9e44d080e00633e274be1578f0455a823c487d76ab950943c85bf93eb77e6b15515245b6334f0f639dbf0d4678f8e7796ecf63f8cb149e0105a4612ba605d7a6e5c919764cd637f92e25c38f297fae296bcffacf206044ec4050e71ab59c047021992a51fe3d94f798efa45f083ce4724d75bfb354c5c0bb5cb467edd79959d7c115d07708ae91cbc8356469a6fa4fa3c8c3597f5e7fa5ec23f55441da335968a4d942aa17fd1487e0139ecd586e14b201796c34640cde0b9c5ccc9a34ca6f74c700b68f67b9ed4325971df6499ee6a41cb4b116ad1114e7b112b88fe2a5da9a930b141ca3da1aa42deea317136d07859f7aff476aaaff91f0f3a63fe3abb957447983581658aa18dc7970969bf3cdd0c8370efdb89f6df6664699e5802aba1a67daf2c9a968cf5588f5ea2554c730b454dc55a79331a8d415273ea9e49639d758d9c93e4b2fe65091bcf0ce46dc23dae009a46bf8c7859b7878cec79702d629a7c562f1c113fd7fff3c01c3f5c0f6777db31e6a446130a09197c7447c834ae719eb8a0f736cab4e363ffb6c2a480fc477e0c1f4328ae61e7c70cb15511a2a1a04d9c6f9c405c49280c2431b372a71f9524d2dc7f129b9acd575fe94360fe91c857875c421136c7b49f510d96a3b2101ba4debd1c366972b6388ce9034dbc60c7836555a59dfbb2e9fc6d0c5c2bd0f594f92e0eee9ff9f26869f09bcaa9ea18da2f8e8f5afbc0417d11b59f49da7689316b05574bcb73f3281bdfbe38e2b9bd5177e704407f3d7ddd241af530e35126ab25380032f460377d34f903dd323398fe4a44756e63be2b1249e4548ee883f5cf81a254b962f191a1eef4b98a47b6381a4429992a4aa20a760a9a5a17ab1c5c96ad60464a13a45727ede26d2ab224e01fbf159cfdf3af7bb93fdf17de1e9bfda2dcc26c9a81acf9569a0dead6308187cfee20cead6fcaa4a614fc0fb62f3ff2fde82</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 请输入密码</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-      <tags>
-        <tag>关于博客</tag>
+        <tag>Kafka</tag>
       </tags>
   </entry>
   <entry>
@@ -2547,6 +1722,216 @@
       <tags>
         <tag>八股文</tag>
         <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于博客</title>
+    <url>/2022/10/27/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容">
+  <script id="hbeData" type="hbeData" data-hmacdigest="f36bec946086959a464da45b90aa4c104a3170ffe12af792cec2e00339d1c052">a17b4de793b95f7877066d2186f5861555e2d6b9cb5641947e36c8450a9062244141303af7f6ac122ca280e580e95da40c8ee95d99d2439c2f200eaab162cbb1875108085071c26de1a7a2252b96fcbe0f08370a21f14470abd2a2d2b018211a390d4a79c82cf2a64ae884fb7caded6082fa0005ef84e7ea431151015e2060bda837f3b622c77b40ee17a251d882f100f700e0f17f23a270fe7ebd41b2243cd40ccd7f393f2143466b0ea5bdf3266f6004fd025806d055fdf16972dbe19ea6f6c37d97c0ec9f9195a561038b369eaad95fb14282041c916d086e8ce7bbfcfb544cf1b90b1de81950e764be9c2f080779cbe47199af8958ab3a0ad36ebfc779d09b31bfa79d723269636c61715b52f710078993bac08a29a3ad6007b30954c8b13f65b3e853a84bcfe82b95d5e85bb4137aa7178c3610cda3a5b754340859cdc7fca3689b81ea5c0a9ba0bbe924a538e8d6037459f4e277a27a0c862da116b03c1f64db3f9d6fdb28a3e2bfcbd848c16d429b31e0efb3183f6f95239336c03a22f2e979b8fcd98ecb41afecf3768301ab51d70780e5e5f4537775693fba05a1c784e5826374ea2b89bc16d31220a382a3de7fff0368fe505183121ee6f1d42960ed0cbc0c1b7147b78248738c471b1f88de6aea3955825ffca764b3c3b206b7fe801eade00bb35c37834382bfcee73ffe05bf54c5e3ba78499631e12d2a56dc9411fae3b1f27999ad68946b2eb02ee5efc3013d1841b74d246e6fd5d6f9a1b722679561b7dd617e32ccaa0a404adb5fc3ab7c3ac3b6c080b03ac402f699bcd99d336c0548be2e600b24e8562259111f2d73e92b3485ef2e00cc4ee6d7769b88d09562a30e82b6a71942bd779e8e81e64756d5121942f5eac45616febd435eeea0d63b35c25a65acac75cf445d226fbe95074cfbfc12b6878617943c53b3dec8bca9da0dc79d3b10828150927bdf470010dbfda25dcac915857e453ae06ef03e078bf511c8f368925e49698cc0c16f50c3d7dd368c60fd19c04e8a634c86a7c0f1a4c162c11a9956e07bdda9190eb3eacabdebaa4ed58fade62247024da73550d178aff0f9217d46dc4b2f02d5cc0541e32e572d900bfc2fed4c4f7e7d57f023d1d7dd02ab502957c488e0b591fe809354cb6e918f2c96d3f388640171ccbc8df58a395c93a7c390c46ef0fbf8379d7b13d70c8e6c0a48270e52c2f067b84a9ed79d9b0f8fceb3ca649da3e21896e1648ac7d516988d2a6748e8d7b5f1a99db4b510113673230cbd5ce8b063ab6c8ad0ae21574ccb57a0172310b77269ac41e9511fc6bb75588ede87cfcf08f0cc89c7d7a2192b59c0504f4240c3c2c97dff8bd74686c5d157ea1a4cdbf69495e08704104887a96723740b54cd1767c237fe99422a75b88f9ab86bc2cdb30fe996c84bc61da4bfe573b1dc8ac4e0a2a7446a8688f068d0a9ae1157b628be49dffe4a990b38009d5d92e3b0fee5c71de385936df9994623a68e5b82e8f0974c7fb7e559c96bc1452d44237516f723118c9377b8319866e50cda28ac75a369b05384b7aeef4fdbb2c4e5a9a03c72c7bdc6b590eb198749e958ddea5ea01d6ca15f398b48579893e23da7d06f895d94dea14f376f4f34049d2f7b9f95542b6d2068b36f14e729447da91128c7a869805bcec99dd20fd8a42ce9630c0bdfa62ed231bb8307ed0bd5c62831efaa8d6a93c8b0cec68378e7e250de628f129c95160ad65b9a8fa6fcabb88802dfeedd6fb2e33192524a1563671272f8083cc049207c71facd85f922f3a2afb168aab5e55bca6ae8337e0857acc4fffd719a02820cabcd4d36107d905dfa1280b0151a57f997d0577610ca0e63781fd8aaf33b434cb6ed3c49a0eae32da7feada31530777433eb63c93298030a18b0a29e6b869b3f3785db02faf2720f85505153ae862babd61d1ee2832341345b2624341e3c124c6992c5ac9408582198de36fb85cefec07e5bc33c21b0e081302a1a699dfd7f374f3d7faea640ed64f7d064fa9f6d63d0c5bf1cc2036421c967bfe0b9e42b5e481a7d8c7b250dbf661514274161a91e68f5a2c5bfd6f6067074b96e34b6b61d8aaab7c9dd82ae92320915ef83f5ecd15cc1c07c089e6d875eb278c790b04cee421d6906c63eb7fb72da066bbcf58e2852b94f6e25274fb8797e2589637332cfcda09668693ba2da1f36887b056757f59255b785c9d03ca6323414a1c067e8394723eb6c701f6ed04cceaf394fba9f2aa65ced20b3582d9c6dd94d63827a62b58984f462079eef29a0b8f5068d22ac105e06090d716247e63bcc79ed97434bd526393ebdc530fea048a4172a2acc552fa61d2584185d7362f5dcd23d324b33ebaecbdcd2e26266fb4f4f095949af594b196a4e23da3d82905a74da2c7f29bc8b401497fffa82fff4d13fd323b9174d117fb3d7823ad94dbca2f12123146291680237593f2260ce6e7fa9581353c678b10a6419cbc8c6686d485c9838ce4b5cd8a1c6ef3dc8b80897480613ae22b87dd5b72632120137ff93c2eb474479ceabf24643e4841639cd6b1e0c396c468850e5eeaa582c4713e706a630a07e73309d23aa29ef61a86e98fe4d407fa27055b0cf22bc2bf56835f3b49e475f4ba808a766d3db139d8ccf6ebbdd59464d3884a76f6a7a10dd7e155edb4afe6df89974a2e96f7e08d83d94017ebd62924bf8289a5ab23522461f4b86b670ed46a4bc84ae1c8402660213f85a01e0ed661482a0983e5f50c28b2ab3aca3fd37b536a239b0e86c057e84aaf6c1442b762b9e5e41d683eec1b615d9ce49cad81020daba26011bd23f8dfa2cdf4b88134201dbddeb2daa9eaf9ae0149ffc3bb2d1260ee888891a59d40a3b82704673121a003ad347cbfea01b229e683df227c0ab94ff3cb6dde5a21feb2a11080fba3129d5fc25bddc45ab3d15550d23d7fdd748a9730f3fde6a7d2e044aa652f85d6a21a2e96731989570d4f8ba534c08afff6ac428c2a2b9bf532578114b3b4f8305f4ac550312ed01bd2874e535564210a14d526066639d60c9ee979366b5441456ae861e9362fad3459de02d52c403e31c18333148c41c0bbde1fdf6bd9080826ac11d132559d44af1826b5c534d89ed1ec451bd1c0b74da13be129f851aa142222477893ad95971a7c918651edda30197613156d9cbf36b74de4f8244c166b26ab8bf47a931db668dd371d5c1480b60a79a4fa09b1cff180d7726077fbed60565d48afd98fef3d081fe83f79ec5f358e8570cab24eab93047b854cc1e7397c8545820739e69d5744bbf09af631a1589b3efa4bf56e0ff35ce9239a6c6f360c4c56d6aa1965e4020e355b69bf5cbfecf60b7c56978965a9e47fc0beed6e106017e63d8299e26550d07395453b537f0d680d8ec0d4598ccf31d873f485ce55a80ce7f915dd5bd7b4e9e377f81adf14ddf161755cac93d6b7d4f99610884991e3254239fa50b2b2d62b79e461217d655d9d659bb074dde9bc6048ddfcb3169eec1c8266de67ca94e8713852e783f6d9cf35fdb1d7382060c466295e80c2a038630af00ccfa7ae0797d68dfdcfb0085d9204b44b11a4d2d66056ffa4257a55ddaa78e2a016fe05f4d58d795c71acf35968e5a252a2f85560ca020463580ba239e7d3489b3a4298eff7741c4bf4933048166a90e00683fd0cf6c28c59146cd38258612a3d6b906bf554bc808ebb82a5e6f62981161d1673f4828a68da8dd8e1a5d7d58beb5deac69a9c55abea8de2ab821f8b93929d1a0101fc08c494010431ea2764791920f1354b97d315aeaed81468c15d43b50f8a106aad458c78d31bc1d5c7866f106a55bfb81147f54d017e1ac04323bad64b3ff4c46596362ce87aaf0b202aecf3a7c5f42f21674329d221df57e8646bb03d3298d3313294e2c04d2db5269f74b27585ba67e7b9961e2b345af546fb3acb355c36287c51ff43fabbcff6a27f5e8d14446332f4ef8b08537cd61f4aa8046fb4809a4da1132d5bafa2676bede7e39549e62fdb876600ca7f2d85813f82134db05738bd00f52577d391010992d14fa99360391284e5a2d729d469f114a0e99e39cc61b10d0915dcc20cf76ca09c5da97573b7bab8f281e10cd661862e02f7b0974bca4c5755dec0185e9e094cdaf0ede67d283b2b3debc26a391797dc6a282d20f8c372729aeddb19e4727617ae371c3b0c2a0cd9bd5d938b018c03037516069dbe27929b35d26ebefa9d37080cf95200e448f25841ba72d4594f4c91568ed17b3d29bcf318a015ae2a9f1706c160632eb2564e20807d8a5537a42a61b2c8265a9bed5f327e7dcb40d1e0a16c6ec3736036727e66ecce0ae007126e879d0b0dbc721fa62f987a8c639ccbc16db997a95f9076aff50dc3fd2aa1e4ebd3cb6a23dbd8c17daee3f5937c295ae6daa36697899f188798c5e61e8b074bb1776f2eccc3a702d68c5151c1ea7b6ad3b2887d7f2fa131021f8e5041e0f30690755bea88ca584131ef2f6e92f07459b6e55712ea2aa750dc493d5b1dc50badf571f9fa33e219fe990c325bb1e4f975cd95fb5538b6008b7f2af3cacdc5dcd147263256ff2a066c0d5fe38cc5f6eba6138137e2c0176b8b1f4cc0de41ffbe58cec464f90c49a56b3ef875225d6e3fbd4a0d7e7de5c932b6acb0b0aad132fb8e7c85fca48df6a3ae302decfd345667737e5ba84be1d8d070f727b17f996aa79080750554ec888308bda6d4aceb5f310ccfd1aeda8281577bf6a85b88b5bebb3f83eb7569b9fdfcae52062eca6b4aeba410595b722d481fb913d02d46d49cd497a280c3cfe5fe56d6459230dfaed3930f35aeb6fbba375238d55edd8b131577837cb7c3298e9f3b0854b11441cfd645830eee30b63a48814bde123ab8e256b384be57ec296538dd4baf0c6e28be52c2f132333b1f4fe3bad7b5bc9de72ef35b180a2cc4ba486b2979eaedffc3db8ec558539959be563bd589be870264422dcd7d063b107888727dfa72f32674e503f6fb3bc4348a3f64153797da2f7890925d2a3df8deada2f75e00d752416bd7c93e968c52e538618e71cf72b4d6ce99b7f741932c591d4018aeba61edc0c046989c238f6face10018ddd0a9eb93b4f7b1df5e7d12a67c3c56769e2ac4ece628f781868581dd4cb6b04699d462f56e319d12983f922965739642881e7ef7261acf63dc355573491151c212397d9bdf0340b4b3d7a2cb116d28ef19f220fb4c4c9137ac9b05e3f244415101ba6c2fac3606ee3b638bde97214ae91cac1f8349a9df0593e880d450e05dd54f8d5356f6791cdbf2e37db3ef10d93db4cee1c706a1e505c07add56cc8ea91a14651022b7857a20ef3d219c8df14247636694a132375e84f08a3bb2f923da5688577e5743deea181f099819d6d042894402796b27edeb0d757773cf7d95723a0b69b0e7c28314267775b171bfbacec28cb5e5085efe9f73acd11f88a93aeae68d1b476830dd1276ce9768f2a669feae6ea6a81ec64721cd9a9b6640bf8aa0109f6f6f664b3456236e3927f7c58604e55dc6dc33141c1331caf61669fdb6b267c3fc9041176937bfdb7cac87bb6273b91bd2e612668bd48e9404178b895919f3e010dd2abe7077972fe7bc6a1ba80c6391b748e9a8acdae4b865b6116195ce150de9ba36a53fd7c2c19a4724923c77ed1a1c03d5b3c7510767c089ac48eb353de309653702998fa73463f7fcb39cbbafaa0062497823a65df7607eb5be4c769ba28a2d841441631cd733062723415020e48cbe9a3c27fde96f4bfcb3c09aa6dcb6f1f1538b7becdaa72edcb87712e27bc7e0cb2ca21ee27a1947bd3926a6779ae4cb8cce2c27a55738acdb470ed3a87b66f989e1067a95804602cd31fc9d51c08da433b202706673594f585405bb48a7f8a3cc9cefc613b3248a421a35cac9e1f98b0633a2d233c8093aa0ff5d1aa4d72285b3bb196efabdeb388838da366e066761bf8c2726f5f93eaafe20f34e4b534ab2e7ed584ee8691329b5fa2e39133e35934a7d24f21637a44c756a68eeefdc20c745264dfb42102eb2855b1d0322f9b08f81303a4046c827a58ebe0d51ad37c0ab3b4941b4b455e3481445432524f8c682d010538ad59540a15590cef4ee58c4b492508691085ff3d87f890de61b4458ef957b5116dbec4663cecd18faeafba6f9d6b05e9aea67bc88cd21f8149773938a69507b2db8a02ff20c6ec0c7e217b4221366bb78408dc6a2ad3970de0edeaac1a2ca1c751aed9cfb4676b903d98b0305da653514cbc7122e1aee067720db4b3e1e3ded436f01a298a5413740debd4a1b0d4806583d8f8cd93eb5c160a837fe984195730ab6bcf8728bd6612b2e1ee6f203ffab8250f78da03e32b90716021cc9e6e0946de430fcd10df88d0db66a9437c2766e1ba542ec32262ac115d766700395cff495ed1fb29ce5cf31a1f44471025fb571d381f8e6b6393b0444ba3889b315dbab4788f9389f978fd9981904cb9c743a401824199da8a78d47eb271fbb46eb04128a246b3ba5d6dbb95c8e60e9069895ef33af06df72e8143c354bbcebd183986f911dcca027266256eee8f09950272291ccddc7e8d28b24fa820e05b986a145e96fa2694a7f28774736c1ec1ac0fb8f8aa6372c3e30fdac81dd30e2d27349d9deed24c5caa8d27881ea593e07186bb569688d929fa1bfd41cd34d2f32b238d5fbc2633ea43064e346692da4000a41e46b2310af7f52c04aafe57f5bbd0c3709714e0f9f48549ca0c28e6a09c1cfe8aab59e6d23ff9ab75016338c5d968678741a25b439ebd5559b9a179a439a72d0b7dfeb14d7be503d8aed58f0475152192f1408291a150fecf563dce593fda127457a56f4cec2b12928a524f751b1a6348413bfc3ac52c88fd4a7a3b802cdbf103f27f35435ffe16fc1cafd0b195343b228a572e44ffa5280f5df971006a12664d104ba193e872b57d811bd9061cd222696ac2a220b461a68ac395213b6f601e448514dedaafbef5c2a38162231dd836ff715c2ee95c1a6aa71996b741518170b8a360ef7efa4b9bf643f7d49bec9a2929f90952ace92e6456d627b2d22aac8e0c34a66bcec0a5925dc13aaaaa6cd1c5e9c19f4cae09f83fffeec68efb9621b46cd83ec1e5c141d140ede3b0dd22fa1c55353e8cee19bddc0a456cfd636e03dd3ef6823b34a07b9783dffbec50241fdc193f7b917739cb8ef6dce3afb981596e9c5656586a683a454b7328396c38716d8d0d67c89b0d1aaef81bf8ab01f05678bd7cc4d1460694c8070b126d99ac9c0c365de3e2383748b006128630a8ed3270cee456c7db983f5ad2ce616dd7d50e4df50737c70887ddb997db80e1ee3e3ae59d9e641647b0167d31b143f770ba39e75ab828b33c5a3ec6c944d0757b07a206e1a075ea5b42a6997eeb2364e5f5523026c8c12a9f8646666d4b91a0b9499b3badc9158fd760ca55452906e3aa09868ff594191b8f09c58ed268461e059ac9a5a496199539f4d1614d70902effb80d735b96e88376ef7a2b41c10ef78a0e5edcf7cac3ca3545b44ab42011749d5ce8533cb93be73516aa38e083dbcbbb2066be1eed1f0348ac7bbc7d121ec06e1cb5b21a84bafb5fbe6fec31d8bfaa1f30fffffaf954be4cb1a15d2ee9b7bb5eb93e005a0bea9c1c3d4b7e00ba15b783a29250418bc1f873d3e070d1fe60da3c02ed6da8684ebaaa3517f2ee54c9200dc75c3cbb52ab9a84ef21eaf5f41568229b51785103c9d8651095c3d0ef4fa76b5bd6c06452b2015ffdaacbece57cba6ea3b71e57e90a7e5983e5dca2c3b5a243186b4955f09409b7f30ad1673c91e4787bc8ec0a99c4e657293d184381d90fb70592bd15d639fb2e7e2ad5e07c9b650c64d679e81c0a1d10e8784952e1575af2666bcfa17bd3ccc53dd341a6ffacc19d8f96a899944496731294b237220111daef199bfeb737002698de4cb2b5fb2174ced6140f0b1ab7a0add2974f4735c599753de3bf345ca9921a6ef5b6815e42bf3483b8493ad5b6e92819c638bbdf868a02334bf825125becc8d5b8a2228dc03dda56e12b50b69f037a7ff82db1f55da2071f23278db4aca6dd4d5d17421e1210cec186d2cdc96552fa53b8faad607a025344b4f90683fd1469680c96b719b9805fdaf03068c9a5d06c3d3fa64ca787c2fd8335f7736b6576d7e75830ce6b6a8ae65bcf3464ae7969b613fdede9e6ec141e4ff241ae622044cc823d65e3e39b7cf60d4670f180e6f87e25feb3417753c37fa7540bb58ea5da2ac0f5c1ba57a9047864aaf125383e85c1859bd9d371195be00bfa12e863563030c4aefb0cce24326eef2f9716c551ab911997a189ec6b43efbb28c85ce23244419f03d17c1641579969eb1cbe4e8c4c4cf54855d7c07db35f15267454f47e15a7890aca881848ddea36128b12e0fd078e37dd0659228e63a198d744c0d03ad8ab210c95c582c2cba87376e55c2a3e8baec511ae4072b40ac7a2fbfa5d4115a448cbd6cbe0a960d83388de0ac92d0a05e4c528a7079408fb329559f4eda4e45286137833f57ea23ec537befccc862dd7f19f90c2aa81afd496d0b0eedeba42ec64ee7b14a6b7d83576541e22329103eaeffa73aa43f113594ac8a8749d10048acd654d832bc7cd5387c91ac61ffcf6d6dc90a05aeb538c707dd8fa3ec31fc86fbd225a7cfd8444ecef3b1240ab76cf8a0b185b34e8fd097173f7aa14e81bd6e0a613834be83563a04c31c80d8626144783f943cb0ec1f1c071adb542292091874ae7523d45111102be1ab9d27b1860b0595e8270489ba57cc3eec3ec850e5b1f0b33c5ef95e8e744a609a9c5a6567ec50f95960887a5cb7ba3a6442a159ad796e10541bc519b9491177896b274b8b5339e070c3a8e57901ba034cafa360b20a1178acc1d1cdc3c76cadc127f149b39f1ff2a84f2e9526d672dc1ed927a5e3ace12dd38adefd678782e0d25ff53a704280073de776eae5015664755d825b25b3cc721a064106e0145b460e35f7b64487df9a52f3b8437a2037f563ff7f69b9a8be0a08c36618965abfd1cac7f7e0560412f84268ddf3aec2ea3be2810fca3d14bffdc3c448e432c101edc8c6c29f0c759a5761b78e46247c5dbf0ebbdd0513b428f559f79f7a0a0523661f1f7dabc27f3abaf9d4cd823ad364f29eb390952eef05a51f400753652f5e7b0fad85885f1b767ba38b800cd12fa7a77df28f4fe9d3322b990ff31e453196ab00bef032ba1b1c95598157e842946cdd429f54c42368105362a241bde5bbff5b779b465cc41e78af93a3e995a724e66b212c7f544a1f988fcbbfba478a199a6114f72023ae8637f824054dc92fac9d36edcb4fc4f162c32b0fbd3db96c59d2b96e835db3262916523c48aa7df7edf096fedd838895f68f0ff2ed4c757a523ddfc7f76ed9f243feedd31b1f82c52d5cd7fbb16a6541c22ecb67fea801eda51523ecddee57e10f6a2190dd3e68cf382b6cae47763699c928ec04ae0db70305d648544d86fe6c6e87de69ca2d99220005e8eb76c037ed998a81729c844752aa8e81bff702c4163028e1c0e8602f00f03a728b03ff287a7c1781ae6418bf66b2632ae56a862f02e05c3ab0feef78796a3b1daebc500e4e10b3cf69929caa3806f5185dbbd41c5e20a7796cea0a63a1473380d9bff85ebcbecffbacc6be9175ed83e74f356b38e74250ca6817e6ceeda05e7a67b84533203e40a1a0c98e8434d6bffc3c714d13538cc0470a95cd92294a949828cb22cd3ab31c5928eedae039b6bca00f9352f40ee8b2e258148ea71e5cc308b48f7a425a12164ed5989dc100c061660e989e3f5f48d5b2aa072cda6f2462252b97eaf82eb7b7a94813fc9e2e2f2db69413fd0560eacb8416cacbf0302f233daf552caba515df5dc00e39ea09bc861d1348927cc8372171d321092212fb1ad40daae334e92a7c4da3ce821694fef0bc5f7b3315551a5912dec9702b47dfdae73a8093df3f05c949b7df4a5afb5ec0eb33217759d26dae113e3ef3060597e02879527c5271d788dfe44246f532f3bb4119f385665f99f05e2f15be0ed33fc9587a962fde28b3d001961343741d308e0aac41c3f6d226966974ffb22d39dd1fb45d7bb881f9c8f2ad517c485c8e004c36c73569304f24e5b3c39635aed1b0c7a091d95474d76b72ce81d699cb74d7fbf103000cecc3bf357eaf5fe015dd2a3dfd10afb3fdb813f8946874d7569a02104ce32d861a703041fe87e179852229c61acf57140c5ee25e9460cff51a043b8ddc4ec9a639950618358183d2d9d2e9cb29b6fb80f8e092c285912ec6603a59753a653eb18372d0d4f548a7735e276c8a1d94ae879f4fbda3315c0b1f159e9c28c2446e382c95cdbe22086fe88680204da23e109cee76df1e72236aa6207b1cc6cc2cb7d5f7a91b7596ac58eaeb8e5505579fee27eb2941a1b5e5a386afde5f7fdd7248f3e0ec9935df39363253e02badbdaa32b5dc5f9fb040d677b731a0bdfc541389cfcaad75b44a31980057cd03aa16715df4fa809b7c7009512ae702bad9dcee1fa12a4e36de338c7639ed13c0c4b9fc930d84f73bf9917542e5de7b90f6185c2747d9be38e60c38fc89ff7229d2f81eee291d49fec6ace083c61de446e5fc79ded3f4e0edc74bdabd164d8e78858ba54da7fd2af1edcfdb96df44e077942099784b13b66e17aa5f1d7c50ed70d249ff10b3b5988185d28647a5bd332aa81b08174dde0fd8e8222c0b4d6d3d5427ec12b73879c2d1678bb7f25c5cf8673de6a6b956121cfc189f5195c0970c9124e3f33c2b2ca0cf24e5dcb9868d97719e523cffe68af11cdab5e631029f61bd2846b5f29cdc264b441fec7d2ab904fc4ead7427e16600a2a69dd753085e68627c193821c2ea172aa8a21ea7e8c0e2f83d5074ad293c08847b42676b9deba425a963160cef95125455147c7971b84aaf23042044088b816aee6e4f890bb2593ad03c41c486793e71bb4875b72ae5dad1210d41d283f2be33db6c609e78a2b0f0f955c2e2503abab011f95611adcdc1b00eed5c13d6a89d2e11f90815b9ed238110149df4f0f78b4be0d508198a4cc95b262ccc2947d1e7da0de634e77febd891d65d6eff59fd9ebb1a558f636bb06bf4a05227ca852958342ee30de0650e6c0b5e224ba243ccd3c176815508e7d6cd5f732aa45d4a7bf05fc1b5956912323673ff28e1c6eb372021318d2f9c8099e1977693ee7fc81be1707cc394146b70f22cf081fc33317b79e28e7ea8af9b2f31d7cdcdb7130c2f17bb85c40c88ac7bfebdcfef01160483e673d11733e473fd7a9f8787597394d6564c5fb425795e46062ef7fd224445a179cc24cdd4a1907b9aa57c2f15f5efba3e502b25acd7e19751e26c279162dcd46dcdd40999368b7f9f04b4e091a3cde1e2100a705376c35d8d7e2dc96e45868d87ac40d28505f7e7dc86d308cf451f85110d466ba436a3a687fb7b391d0545064acded2d9d2ab576fefb9e9de587dcbd69f68eb4d74a92099c96374aec2b90b243b4ab637c4fba32eae9bab8b63721f6ed62900e8429aff3311903ab2481f39d424de7b6ec99116c1b07635044625c6bc38f7b9b44400e9d835dd9ddae9bca7729b395051308dcbf78dfaa5762da3e9af6ac21019b4700dd97db0edde666e9b161bb383331db29e72033ab1cd2dadb6a2b14be549be1cf15859a8924d85ce4b7590274823a423af2f380292226af6d4a56467801e0c63307fbb8647730ea863f7df1db8b13e63175b13589e00973894eb744f36fc13917a4ec5eceb93375c2a9c0e0fe8474274e9e8a6ebc005e5dc259d4223674f783c626b03dcadd92b58ae2fb57ab01880b510c8198bff7489682c25838cbb7f4ab172f773cae5cb35d21005c59aec78ab3621aa36799f4436392a34b76bacf59a030ec4f9db50b4762b303808a94f0e1d1f66de390cac743abac93ae417ed62725ffa7cb184373f468812cb9a1331844469308ef5db3dfd39bc50f07bac42ecb570f7a654d7d88d924bf2138d902d38961c0d7d597ae70d985ab04896c3801c2d0f8c6fe3ecede3d81de7c384d1daa90dc599ad35d5b1e30d9303253377050a2e8f270e9cd0a259c4a115d90bc4244ec83dbdba12e6e9a3ae9b01d8764117380a58b5d8ace48a1a12a7edc741648c6572e3e9caaada42bc83db122a66ebe0bb480f675ee364675113be63bf5c37fddf4aedc94fee277953cb0d715e6d31228f9cc04d5647eed37d9a83aff4a8bb0805f6b432906895624e14a140ae46a3b06c4c374e00600e56acf676dddabb44c2d0aadda6b78eee43d9e4253adaa508dd2fe147994f1acf7e6e25faee8539a757b5a6b84f6e4261cbcc6e7837939de6cfcd826a898be954831d48fbf8846f3b1924ed80aa4e61cd930cfad02f24ed828dcc462a20e71e8060f4fe4ce4921ef41c15d730e1aa5c958696e65d21840d343ba90b3f8dd68e6d1e3db992235c70a635d5a12367e84b36764fbfa80b66c2c042e897b5a12b80428c674633b4d4ff541c5b3bd4ef2ad267c2a86aafb237f150539e2a7121b02d34e7454bd64626c8ec4d786c444a146708b8f585b49cd5d7db7bee3cb98725765821725e64a5bb8e59c023e15f249d38ca037b2b24cad9fff61442d6aa953b3333635a656c41b983648f3a6ca738086ae7d694ad3504d4efd3136a0a95504a8ecfd64413104207e1509549ec7bc0fd915bda642c0190c9124fc390bbcfeb1c1c8c3712085f2ec5f1d6d3e2f221e6a3f7b97e05550a125ba95aaa3cff914b6ff5103029c2c7a43ac0da1709fdb25e05c10cbb0cd05743760517d7060423760a9a565d9b88b040a515ad7d30d682da6c87b5175662f38bc9f4540380badbff55b27bf1714892ce4e6a4b9483dcdcd20a26c30d81d980050302b6b5207cb3cd2f2208e887ab8c9d83cd3122ed4b717a8792a0666f536dda97c0f145e456dd5e1238d02da40fc95d499d7d77ba95fd3ab8f7dbe359e2e28fa41eac4f3bb9cb9f4cd3579a940b0ef1ae3872254ec15d2f37d138cc21a92879aa35653de00febf2db8c58691e8c7bb5044ce7ba483532bf6904c5c628bad856a5f6472ed0e1a6d646db986b1b72b2aafa4b9cf6c8303b2734eded076127437c60b89a6ee69bce39ad9b50a57b2a9e16f0ea032c81b611e0cd13f4a3b085505e5f5808cf6453944929c79c139c188d3006d877382c56d25c65f2908d62301b5aa42b61a178948e2fc42b0c51109f330e23a9e7fe9449f38603b115ebba63e61f062d56eb4a637778b66b4f56b26318ad7efef88492467373c713287d75f3f9075a95d5e6536dbfe37e8883e9058da126ccc39060a4a51a1f6720039b4d361d5098d2597a4edfe948ce00f3aaa6173b197bf6400d15f788a79ba22b5d401759756e1dc61af8ccf28701c76e351db5d3a47277c525eeb3f587b988cdc2b9099e165966ab7b4e554dcc4f92785bb66933d408b0393e7e505b1ea3cc4cb006ef1f2d7638b2fd4feafd6a12d6170167ec8d0d540e3d8da8038edac70e91c8e42cfcce309b2076eaa8331f2aaaead28d832379e1b265d0cfbab0bdf7a4ba8b6dc1ec7cca6b994e1779d20632dbb3adb2ccd979de0a194acdfd017af5f9505ee6f1687e535c4c69889892c6486ce409d1ebade5ca0f4ae1849d36e0ca2db8d907cee20f1be99426eb0948df9e48e0544dab7e62337fffa587f3cd361460389be0a8c46e6143cc2b48f167216cc9522f1eaf9973c720f0ae373892fe0bf2a6f19f9b42316de6a90fd261ee244a39e96025a7e5a314a280adc14d40711c02823102c2c2a404d0c362433ca51fe8f63c2f5f803ff951b124f30ee6364d96a4e9362d83c8409b9720d8677efc1141cd32d7ba1a6a0f6d105a560c18d2d6a93e4e501f31392cc34af49e4dc896e59a18e871f5ceb3d53728306e687063bee18975d81fc4a7ff5e66ecb734c9ce3ec098fc38ecbc074ce5eede6fc293e25164a5be9f53bfbae13dd85780c784f278e97de910ef33dd3c76f31cd3a4d1361a8d6c8eb92372377bdaf17ab66eb639ab69cd98c94bf8300704717fe2635f429a2684a6b56ff0a6a73e45469cef21fb0903022c825bb9e9442f3542c163ff7c7efd38fa6d551af866822165c38f97962a6460ff516ed0090e30b250f02ee601f6ecc3fa4c61dced8481cd9b60fd7ee9f6a2734e5438baef6b35d1d6fa86a648276f7de63a38c062ed79d54e9c9b5153f2eb1c9ca15adc1bc62a4d88196540cdeeecca8272b0aa9077c5213746f813005652d5a3fa95e09a8bdc9d7c945bb7101fd49390daf5e9da248b1b0b0943caec0657fe754eb703594899dc4d445e19364649e3c2accfb6bcbeffc2959ed36647e747f9a4a457673d35530a141ed2748ec5b4c99be6e42377e7b39fd5a2990e28553e0b59f728f42389fc89726b9e44d080e00633e274be1578f0455a823c487d76ab950943c85bf93eb77e6b15515245b6334f0f639dbf0d4678f8e7796ecf63f8cb149e0105a4612ba605d7a6e5c919764cd637f92e25c38f297fae296bcffacf206044ec4050e71ab59c047021992a51fe3d94f798efa45f083ce4724d75bfb354c5c0bb5cb467edd79959d7c115d07708ae91cbc8356469a6fa4fa3c8c3597f5e7fa5ec23f55441da335968a4d942aa17fd1487e0139ecd586e14b201796c34640cde0b9c5ccc9a34ca6f74c700b68f67b9ed4325971df6499ee6a41cb4b116ad1114e7b112b88fe2a5da9a930b141ca3da1aa42deea317136d07859f7aff476aaaff91f0f3a63fe3abb957447983581658aa18dc7970969bf3cdd0c8370efdb89f6df6664699e5802aba1a67daf2c9a968cf5588f5ea2554c730b454dc55a79331a8d415273ea9e49639d758d9c93e4b2fe65091bcf0ce46dc23dae009a46bf8c7859b7878cec79702d629a7c562f1c113fd7fff3c01c3f5c0f6777db31e6a446130a09197c7447c834ae719eb8a0f736cab4e363ffb6c2a480fc477e0c1f4328ae61e7c70cb15511a2a1a04d9c6f9c405c49280c2431b372a71f9524d2dc7f129b9acd575fe94360fe91c857875c421136c7b49f510d96a3b2101ba4debd1c366972b6388ce9034dbc60c7836555a59dfbb2e9fc6d0c5c2bd0f594f92e0eee9ff9f26869f09bcaa9ea18da2f8e8f5afbc0417d11b59f49da7689316b05574bcb73f3281bdfbe38e2b9bd5177e704407f3d7ddd241af530e35126ab25380032f460377d34f903dd323398fe4a44756e63be2b1249e4548ee883f5cf81a254b962f191a1eef4b98a47b6381a4429992a4aa20a760a9a5a17ab1c5c96ad60464a13a45727ede26d2ab224e01fbf159cfdf3af7bb93fdf17de1e9bfda2dcc26c9a81acf9569a0dead6308187cfee20cead6fcaa4a614fc0fb62f3ff2fde82</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 请输入密码</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>关于博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Redis面试题</title>
+    <url>/2022/10/28/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<p>Redis面试常见问题汇总</p>
+<h4 id="1-Redis的数据结构及使用场景"><a href="#1-Redis的数据结构及使用场景" class="headerlink" title="1. Redis的数据结构及使用场景"></a><font color=DarkOrange>1. Redis的数据结构及使用场景</font></h4><ul>
+<li><p>String字符串</p>
+<p>字符串类型是 Redis 最基础的数据结构，首先键都是字符串类型，而且 其他几种数据结构都是在字符串类型基础上构建的，我们常使用的 set key value 命令就是字符串。常用在缓存、计数、共享Session、限速等</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>Hash哈希</p>
+<p>在Redis中，哈希类型是指键值本身又是一个键值对结构，哈希可以用来存放用户信息，比如实现购物车</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>List列表（双向链表）</p>
+<p>列表（list）类型是用来存储多个有序的字符串。可以做简单的消息队列的功能</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>Set集合</p>
+<p>集合（set）类型也是用来保存多个的字符串元素，但和列表类型不一 样的是，集合中不允许有重复元素，并且集合中的元素是无序的，不能通过索引下标获取元素。利用 Set 的交集、并集、差集等操作，可以计算共同喜好，全部的喜好，自己独有的喜好等功能</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>Sorted Set有序集合（跳表实现）</p>
+<p>Sorted Set 多了一个权重参数 Score，集合中的元素能够按 Score 进行排列。可以做排行榜应用，取 TOP N 操作</p>
+</li>
+</ul>
+<h4 id="2-Redis持久化的几种方式"><a href="#2-Redis持久化的几种方式" class="headerlink" title="2. Redis持久化的几种方式"></a><font color=DarkOrange>2. Redis持久化的几种方式</font></h4><p>Redis为了保证效率，数据缓存在了内存中，但是会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件中，以保证数据的持久化。Redis的持久化策略有两种：</p>
+<ul>
+<li><strong>RDB：</strong> 快照形式是直接把内存中的数据保存到一个dump的文件中，定时保存，保存策略<ul>
+<li>当Redis需要做持久化时，Redis会fork一个子进程，子进程将数据写到磁盘上一个临时RDB文件中。当子进程完成写临时文件后，将原来的RDB替换掉</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>AOF：</strong> 把所有的对Redis的服务器进行修改的命令都存到一个文件里，命令的集合<ul>
+<li>使用AOF做持久化，每一个写命令都通过write函数追加到<code>appendonly.aof</code>中</li>
+<li>aof的默认策略是每秒钟fsync一次，在这种配置下，就算发生故障停机，也最多丢失一秒钟的数据</li>
+<li>缺点是对于相同的数据集来说，AOF的文件体积通常要大于RDB文件的体积。根据所使用的fsync策略，AOF的速度可能会慢于RDB</li>
+</ul>
+</li>
+</ul>
+<p>Redis默认是快照RDB的持久化方式。对于主从同步来说，主从刚刚连接的时候，进行全量同步（RDB），全同步结束后，进行增量同步(AOF)</p>
+<h4 id="3-Redis的LRU具体实现"><a href="#3-Redis的LRU具体实现" class="headerlink" title="3. Redis的LRU具体实现"></a><font color=DarkOrange>3. Redis的LRU具体实现</font></h4><ul>
+<li>传统的LRU是使用栈的形式，每次都将最新使用的移入栈顶，但是用栈的形式会导致执行<code>select *</code>的时候大量非热点数据占领头部数据，所以需要改进</li>
+<li>Redis每次按key获取一个值的时候，都会更新value中的lru字段为当前秒级别的时间戳。Redis初始的实现算法很简单，随机从dict中取出五个key，淘汰一个lru字段值最小的</li>
+<li>在3.0的时候，又改进了一版算法，首先第一次随机选取的key都会放入一个pool中(pool的大小为16)，pool中的key是按lru大小顺序排列的</li>
+<li>接下来每次随机选取的keylru值必须小于pool中最小的lru才会继续放入，直到将pool放满。放满之后，每次如果有新的key需要放入，需要将pool中lru最大的一个key取出。淘汰的时候，直接从pool中选取一个lru最小的值然后将其淘汰</li>
+</ul>
+<h4 id="4-单线程的Redis为什么快"><a href="#4-单线程的Redis为什么快" class="headerlink" title="4. 单线程的Redis为什么快"></a><font color=DarkOrange>4. 单线程的Redis为什么快</font></h4><ul>
+<li>纯内存操作</li>
+<li>单线程操作，避免了频繁的上下文切换</li>
+<li>合理高效的数据结构</li>
+<li>采用了非阻塞I&#x2F;O多路复用机制</li>
+</ul>
+<h4 id="5-Redis的数据过期策略"><a href="#5-Redis的数据过期策略" class="headerlink" title="5. Redis的数据过期策略"></a><font color=DarkOrange>5. Redis的数据过期策略</font></h4><p>Redis 中数据过期策略采用<strong>定期删除</strong>和<strong>惰性删除</strong>策略：</p>
+<ul>
+<li>定期删除策略<ul>
+<li>Redis 启用一个定时器定时监视所有的 key，判断key是否过期，过期的话就删除</li>
+<li>这种策略可以保证过期的 key 最终都会被删除，但是也存在严重的缺点：每次都遍历内存中所有的数据，非常消耗 CPU资源，并且当 key 已过期，但是定时器还处于未唤起状态，这段时间内 key 仍然可以用</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>惰性删除策略<ul>
+<li>在获取 key 时，先判断 key 是否过期，如果过期则删除</li>
+<li>这种方式存在一个缺点：如果这个 key一直未被使用，那么它一直在内存中，其实它已经过期了，会浪费大量的空间</li>
+</ul>
+</li>
+</ul>
+<p>这两种策略天然的互补，结合起来之后，定时删除策略就发生了一些改变，不在是每次扫描全部的 key 了，而是随机抽取一部分 key 进行检查，这样就降低了对 CPU 资源的损耗，惰性删除策略互补了为检查到的key，基本上满足了所有要求</p>
+<p>但是有时候就是那么的巧，既没有被定时器抽取到，又没有被使用，这些数据又如何从内存中消失？这个时候就需要用到了，内存淘汰机制</p>
+<h5 id="5-1-内存淘汰机制"><a href="#5-1-内存淘汰机制" class="headerlink" title="5.1 内存淘汰机制"></a><font color=DarkOrange>5.1 内存淘汰机制</font></h5><ul>
+<li>当内存不足以容纳新写入数据时，新写入操作会报错。（Redis 默认策略）</li>
+<li>当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的 Key。（LRU推荐使用）</li>
+<li>当内存不足以容纳新写入数据时，在键空间中，随机移除某个 Key</li>
+<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，移除最近最少使用的 Key。这种情况一般是把 Redis 既当缓存，又做持久化存储的时候才用</li>
+<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，随机移除某个 Key</li>
+<li>当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，有更早过期时间的 Key 优先移除</li>
+</ul>
+<h4 id="6-如何解决Redis缓存雪崩问题"><a href="#6-如何解决Redis缓存雪崩问题" class="headerlink" title="6. 如何解决Redis缓存雪崩问题"></a><font color=DarkOrange>6. 如何解决Redis缓存雪崩问题</font></h4><ul>
+<li>使用 Redis 高可用架构：使用 Redis 集群来保证 Redis 服务不会挂掉</li>
+<li>缓存时间不一致，给缓存的失效时间，加上一个随机值，避免集体失效</li>
+<li>限流降级策略：有一定的备案，比如个性推荐服务不可用了，换成热点数据推荐服务</li>
+</ul>
+<h4 id="7-如何解决Redis缓存穿透问题"><a href="#7-如何解决Redis缓存穿透问题" class="headerlink" title="7. 如何解决Redis缓存穿透问题"></a><font color=DarkOrange>7. 如何解决Redis缓存穿透问题</font></h4><ul>
+<li>在接口层做校验</li>
+<li>存null值（缓存击穿加锁）</li>
+<li>布隆过滤器拦截：将所有可能的查询key 先映射到布隆过滤器中，查询时先判断key是否存在布隆过滤器中，存在才继续向下执行，如果不存在，则直接返回<br>布隆过滤器将值进行多次哈希bit存储，布隆过滤器说某个元素在，可能会被误判。布隆过滤器说某个元素不在，那么一定不在</li>
+</ul>
+<h4 id="8-Redis并发竞争key如何解决"><a href="#8-Redis并发竞争key如何解决" class="headerlink" title="8. Redis并发竞争key如何解决"></a><font color=DarkOrange>8. Redis并发竞争key如何解决</font></h4><ul>
+<li>可以利用分布式锁和时间戳来解决</li>
+<li>利用消息队列解决</li>
+</ul>
+<h4 id="9-Redis的主从模式和哨兵模式和集群模式区别"><a href="#9-Redis的主从模式和哨兵模式和集群模式区别" class="headerlink" title="9. Redis的主从模式和哨兵模式和集群模式区别"></a><font color=DarkOrange>9. Redis的主从模式和哨兵模式和集群模式区别</font></h4><p>Redis集群方式共有三种：<strong>主从模式</strong>，<strong>哨兵模式</strong>，<strong>集群(cluster)模式</strong></p>
+<ul>
+<li><p>主从模式</p>
+<p>主从模式是三种集群方式里最简单的。它主要是基于Redis的主从复制特性架构的。通常我们会设置一个主节点，N个从节点;默认情况下，主节点负责处理使用者的IO操作，而从节点则会对主节点的数据进行备份，并且也会对外提供读操作的处理。主要的特点如下：</p>
+<ul>
+<li>主从模式下，当某一节点损坏时，因为其会将数据备份到其它Redis实例上，这样做在很大程度上可以恢复丢失的数据</li>
+<li>主从模式下，可以保证负载均衡.</li>
+<li>主从模式下，主节点和从节点是读写分离的。使用者不仅可以从主节点上读取数据，还可以很方便的从从节点上读取到数据，这在一定程度上缓解了主机的压力</li>
+</ul>
+<p>从节点也是能够支持写入数据的，只不过从从节点写入的数据不会同步到主节点以及其它的从节点下。从以上，我们不难看出Redis在主从模式下，必须保证主节点不会宕机——一旦主节点宕机，其它节点不会竞争称为主节点，此时，Redis将丧失写的能力。这点在生产环境中，是致命的</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>哨兵模式</p>
+<p>哨兵模式是基于主从模式做的一定变化，它能够为Redis提供了高可用性</p>
+<p>在实际生产中，服务器难免不会遇到一些突发状况：服务器宕机，停电，硬件损坏等。这些情况一旦发生，其后果往往是不可估量的</p>
+<p>而哨兵模式在一定程度上能够帮我们规避掉这些意外导致的灾难性后果。其实，哨兵模式的核心还是主从复制</p>
+<p>只不过相对于主从模式在主节点宕机导致不可写的情况下，多了一个竞选机制——从所有的从节点竞选出新的主节点。竞选机制的实现，是依赖于在系统中启动一个sentinel进程。sentinel特点：</p>
+<ul>
+<li>监控：它会监听主服务器和从服务器之间是否在正常工作</li>
+<li>通知：它能够通过API告诉系统管理员或者程序，集群中某个实例出了问题。</li>
+<li>故障转移：它在主节点出了问题的情况下，会在所有的从节点中竞选出一个节点，并将其作为新的主节点。</li>
+<li>提供主服务器地址：它还能够向使用者提供当前主节点的地址。这在故障转移后，使用者不用做任何修改就可以知道当前主节点地址</li>
+</ul>
+<p>sentinel，也可以集群，部署多个哨兵，sentinel可以通过发布与订阅来自动发现Redis集群上的其它sentinel。sentinel在发现其它sentinel进程后，会将其放入一个列表中，这个列表存储了所有已被发现的sentinel</p>
+<p>集群中的所有sentinel不会并发着去对同一个主节点进行故障转移。故障转移只会从第一个sentinel开始，当第一个故障转移失败后，才会尝试下一个</p>
+<p>当选择一个从节点作为新的主节点后，故障转移即成功了(而不会等到所有的从节点配置了新的主节点后)。这过程中，如果重启了旧的主节点，那么就会出现无主节点的情况，这种情况下，只能重启集群</p>
+<p>当竞选出新的主节点后，被选为新的主节点的从节点的配置信息会被sentinel改写为旧的主节点的配置信息。完成改写后，再将新主节点的配置广播给所有的从节点</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>集群模式</p>
+<p>Redis 集群是一个提供在多个Redis间节点间共享数据的程序集， 其中Redis集群分为主节点和从节点。主节点用于处理槽，而从节点用于复制某个主节点，并在被复制的主节点下线时，代替下线的主节点继续处理命令请求</p>
+<p>Redis集群并不支持处理多个keys的命令，因为这需要在不同的节点间移动数据，从而达不到像Redis那样的性能，在高负载的情况下可能会导致不可预料的错误</p>
+<p>Redis 集群通过分区来提供一定程度的可用性，在实际环境中当某个节点宕机或者不可达的情况下继续处理命令. Redis 集群的优势：自动分割数据到不同的节点上</p>
+<p>整个集群的部分节点失败或者不可达的情况下能够继续处理命令</p>
+<p>Redis集群的数据分片 Redis 集群没有使用一致性hash， 而是引入了哈希槽的概念</p>
+<p>Redis 集群有16384个哈希槽，每个key通过CRC16校验后对16384取模来决定放置哪个槽.集群的每个节点负责一部分hash槽</p>
+</li>
+</ul>
+<h4 id="10-Redis事物的了解CheckAndSet操作实现乐观锁"><a href="#10-Redis事物的了解CheckAndSet操作实现乐观锁" class="headerlink" title="10. Redis事物的了解CheckAndSet操作实现乐观锁"></a><font color=DarkOrange>10. Redis事物的了解CheckAndSet操作实现乐观锁</font></h4><p>和众多其它数据库一样，Redis作为NoSQL数据库也同样提供了事务机制。在Redis中，<code>MULTI</code>，<code>EXEC</code>，<code>DISCARD</code>，<code>WATCH</code>这四个命令是我们实现事务的基石。相信对有关系型数据库开发经验的开发者而言这一概念并不陌生，即便如此，我们还是会简要的列出 Redis中事务的实现特征 ：</p>
+<ul>
+<li>在事务中的所有命令都将会被串行化的顺序执行，事务执行期间，Redis不会再为其它客户端的请求提供任何服务，从而保证了事物中的所有命令被原子的执行</li>
+<li>和关系型数据库中的事务相比，在Redis事务中如果有某一条命令执行失败，其后的命令仍然会被继续执行</li>
+<li>我们可以通过MULTI命令开启一个事务，有关系型数据库开发经验的人可以将其理解为”BEGIN TRANSACTION”语句。在该语句之后执行的命令都将被视为事务之内的操作，最后我们可以通过执行<code>EXEC</code>，<code>DISCARD</code>命令来提交，回滚该事务内的所有操作。这两个Redis命令可被视为等同于关系型数据库中的COMMIT&#x2F;ROLLBACK语句</li>
+<li>在事务开启之前，如果客户端与服务器之间出现通讯故障并导致网络断开，其后所有待执行的语句都将不会被服务器执行。然而如果网络中断事件是发生在客户端执行EXEC命令之后，那么该事务中的所有命令都会被服务器执行</li>
+<li>当使用<code>Append-Only</code>模式时，Redis会通过调用系统函数write将该事务内的所有写操作在本次调用中全部写入磁盘。然而如果在写入的过程中出现系统崩溃，如电源故障导致的宕机，那么此时也许只有部分数据被写入到磁盘，而另外一部分数据却已经丢失。Redis服务器会在重新启动时执行一系列必要的一致性检测，一旦发现类似问题，就会立即退出并给出相应的错误提示。此时，我们就要充分利用Redis工具包中提供的<code>redis-check-aof</code>工具，该工具可以帮助我们定位到数据不一致的错误，并将已经写入的部分数据进行回滚。修复之后我们就可以再次重新启动Redis服务器了</li>
+</ul>
+<h4 id="11-Redis有序集合zset底层怎么实现的"><a href="#11-Redis有序集合zset底层怎么实现的" class="headerlink" title="11. Redis有序集合zset底层怎么实现的"></a><font color=DarkOrange>11. Redis有序集合zset底层怎么实现的</font></h4><ul>
+<li>跳表是一个随机化的数据结构，实质就是一种可以进行二分查找的有序链表</li>
+<li>跳表在原有的有序链表上面增加了多级索引，通过索引来实现快速查找</li>
+<li>跳表不仅能提高搜索性能，同时也可以提高插入和删除操作的性能</li>
+</ul>
+<hr>
+<ul>
+<li>跳表是可以实现二分查找的有序链表</li>
+<li>每个元素插入时随机生成它的level</li>
+<li>最低层包含所有的元素</li>
+<li>如果一个元素出现在level(x)，那么它肯定出现在x以下的level中</li>
+<li>每个索引节点包含两个指针，一个向下，一个向右</li>
+<li>跳表查询、插入、删除的时间复杂度为O(log n)，与平衡二叉树接近</li>
+</ul>
+<hr>
+<h5 id="11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN"><a href="#11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN" class="headerlink" title="11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))"></a><font color=DarkOrange>11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))</font></h5><p>首先，我们来分析下Redis的有序集合支持的操作：</p>
+<ul>
+<li>插入元素</li>
+<li>删除元素</li>
+<li>查找元素</li>
+<li>有序输出所有元素</li>
+<li>查找区间内所有元素</li>
+</ul>
+<p>其中，前4项红黑树都可以完成，且时间复杂度与跳表一致。但是，最后一项，红黑树的效率就没有跳表高了。在跳表中，要查找区间的元素，我们只要定位到两个区间端点在最低层级的位置，然后按顺序遍历元素就可以了，非常高效</p>
+<p>而红黑树只能定位到端点后，再从首位置开始每次都要查找后继节点，相对来说是比较耗时的。此外，跳表实现起来很容易且易读，红黑树实现起来相对困难，所以Redis选择使用跳表来实现有序集合</p>
+<h4 id="12-跳表的查询过程是怎么样的，查询和插入的时间复杂度"><a href="#12-跳表的查询过程是怎么样的，查询和插入的时间复杂度" class="headerlink" title="12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度"></a><font color=DarkOrange>12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度</font></h4><p>先从第一层查找，不满足就下沉到第二层找，因为每一层都是有序的，写入和插入的时间复杂度都是O(logN)</p>
+<hr>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>八股文</tag>
+        <tag>Redis</tag>
       </tags>
   </entry>
   <entry>
@@ -3922,6 +3307,621 @@
       </categories>
       <tags>
         <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>云原生训练营课程大纲</title>
+    <url>/2022/11/06/%E4%BA%91%E5%8E%9F%E7%94%9F%E8%AE%AD%E7%BB%83%E8%90%A5%E8%AF%BE%E7%A8%8B%E5%A4%A7%E7%BA%B2/</url>
+    <content><![CDATA[<h4 id="第一部分：Go-语言基础"><a href="#第一部分：Go-语言基础" class="headerlink" title="第一部分：Go 语言基础"></a><font color=DarkOrange>第一部分：Go 语言基础</font></h4><h5 id="模块一：Go-语言特性"><a href="#模块一：Go-语言特性" class="headerlink" title="模块一：Go 语言特性"></a><font color=DarkOrange>模块一：Go 语言特性</font></h5><p><strong>教学目标：</strong></p>
+<ol>
+<li><p>理解 Go 语言基本语法</p>
+</li>
+<li><p>理解 Go 语言常用数据类型</p>
+</li>
+<li><p>理解 Go 语言常用小技巧</p>
+</li>
+<li><p>深入理解 Go 语言的多线程编程</p>
+</li>
+</ol>
+<p><strong>针对的用户痛点：</strong></p>
+<ol>
+<li><p>云原生从业者因为未熟练掌握 Go 语言，在阅读 Docker、containerd、Kubernetes 代码时有困难</p>
+</li>
+<li><p>未熟练掌握 Go 语言，在需要编写云原生组件时无法高效率高质量交付</p>
+</li>
+</ol>
+<p><strong>通过学习掌握的核心能力：</strong></p>
+<ol>
+<li><p>阅读 Go 语言代码的能力</p>
+</li>
+<li><p>用 Go 语言编写应用程序的基本能力</p>
+</li>
+<li><p>用 Go 语言编写一个 Kubernetes 中最常见的生产者消费者小程序</p>
+</li>
+</ol>
+<p><strong>详细内容：</strong></p>
+<ol>
+<li><p>Go 语言编译环境设置</p>
+</li>
+<li><p>Go 语言常用数据结构</p>
+</li>
+<li><p>Go 语言函数调用，深入理解 Channel 并基于 Channel 编写一个生产者消费者程序</p>
+</li>
+</ol>
+<hr>
+<h5 id="模块二：使用-Go-语言编写一个小-Demo"><a href="#模块二：使用-Go-语言编写一个小-Demo" class="headerlink" title="模块二：使用 Go 语言编写一个小 Demo "></a><font color=DarkOrange>模块二：使用 Go 语言编写一个小 Demo </font></h5><p><strong>教学目标：</strong></p>
+<ol>
+<li><p>理解 Go 语言的调度原理</p>
+</li>
+<li><p>理解 Go 语言的内存管理</p>
+</li>
+<li><p>Go 语言依赖管理</p>
+</li>
+<li><p>Go 语言调试和问题分析 pprof</p>
+</li>
+</ol>
+<p><strong>针对的用户痛点：</strong></p>
+<ol>
+<li><p>对 Goroutine 无深入理解，无法利用 Go 语言强大的并发能力</p>
+</li>
+<li><p>面对众多的 Go 语言项目包依赖管理工具无所适从，不知道该用哪一个工具</p>
+</li>
+<li><p>针对 Go 语言编写的程序，不知道如何调试</p>
+</li>
+</ol>
+<p><strong>通过学习掌握的核心能力：</strong></p>
+<ol>
+<li><p>了解 Go 语言的高级话题，如线程调度原理，内存管理等，使得学员有能力编写高效程序</p>
+</li>
+<li><p>理解 Go 语言的依赖管理方法，以便能够正确地管理项目依赖</p>
+</li>
+<li><p>学会用 pprof 对应用运行时的调用栈、内存等进行分析</p>
+</li>
+<li><p>学会用 Go 语言编写一个简单的 HTTP 服务器供后续云原生应用使用</p>
+</li>
+</ol>
+<p><strong>详细内容：</strong></p>
+<ol>
+<li><p>Goroutine 的调度</p>
+</li>
+<li><p>内存管理</p>
+</li>
+<li><p>学会用 Go 语言编写一个简单的 HTTP 服务器</p>
+</li>
+</ol>
+<hr>
+<h4 id="第二部分：云原生技术栈"><a href="#第二部分：云原生技术栈" class="headerlink" title="第二部分：云原生技术栈"></a><font color=DarkOrange>第二部分：云原生技术栈</font></h4><h5 id="模块三：Docker-核心技术"><a href="#模块三：Docker-核心技术" class="headerlink" title="模块三：Docker 核心技术"></a><font color=DarkOrange>模块三：Docker 核心技术</font></h5><p><strong>教学目标：</strong></p>
+<ol>
+<li><p>理解容器特性以及相比虚拟化技术所具备的优势</p>
+</li>
+<li><p>了解容器技术的实现细节：Namespace、cgroup、文件系统</p>
+</li>
+</ol>
+<p><strong>针对的用户痛点：</strong></p>
+<ol>
+<li><p>分不清容器技术和虚拟化技术的差异，在做技术决策时没有理论支撑</p>
+</li>
+<li><p>因为不了解技术原理，排查容器问题时毫无头绪</p>
+</li>
+</ol>
+<p><strong>通过学习掌握的核心能力：</strong></p>
+<ol>
+<li><p>了解 Namespace 技术的原理以及基于 Namespace 的问题排查方法</p>
+</li>
+<li><p>理解 cgroup 控制资源限额的方法，查看 cgroup 配置并临时调整 cgroup 配置</p>
+</li>
+<li><p>理解容器文件系统如何高效管理运行时和数据</p>
+</li>
+<li><p>理解容器网络，为进一步理解 Kubernetes 网络插件奠定基础</p>
+</li>
+<li><p>基于 Dockerfile 将应用程序打包成容器镜像</p>
+</li>
+</ol>
+<p><strong>详细内容：</strong></p>
+<ol>
+<li><p>容器技术的本质以及技术优势，Namespace、cgroup、文件系统、网络连通</p>
+</li>
+<li><p>容器镜像与镜像仓库</p>
+</li>
+<li><p>将 Go 语言编写的 HTTP 服务器打包成容器镜像</p>
+</li>
+</ol>
+<hr>
+<h5 id="模块四：Kubernetes-架构原则和对象设计"><a href="#模块四：Kubernetes-架构原则和对象设计" class="headerlink" title="模块四：Kubernetes 架构原则和对象设计"></a><font color=DarkOrange>模块四：Kubernetes 架构原则和对象设计</font></h5><p><strong>教学目标：</strong></p>
+<ol>
+<li><p>理解 Kubenretes 架构原则</p>
+</li>
+<li><p>理解 Kubernetes 的对象设计与 API 定义</p>
+</li>
+<li><p>理解 Kubernetes 控制器模式与多组件联动机制</p>
+</li>
+</ol>
+<p><strong>针对的用户痛点：</strong></p>
+<ol>
+<li><p>对 Kubernetes 有简单认知，但无法编写出高效的、符合云原生规范和最佳实践的组件</p>
+</li>
+<li><p>对组件和基本对象只有浅层次的理解，对 API 的统一性和差异性无深入理解</p>
+</li>
+<li><p>不了解 Kubernetes 的控制器原理，对 Kubernetes 控制面板组件如何运作无深入理解</p>
+</li>
+</ol>
+<p><strong>通过学习掌握的核心能力：</strong></p>
+<ol>
+<li><p>动手搭建 Kubernetes 环境</p>
+</li>
+<li><p>理解 Kubernetes 架构原则</p>
+</li>
+<li><p>理解 Kubernetes API 定义的设计原则，理解 Kubernetes 对象中的重要属性</p>
+</li>
+<li><p>理解 Kubernetes 控制器的联动机制</p>
+</li>
+</ol>
+<p><strong>详细内容：</strong></p>
+<ol>
+<li><p>环境搭建</p>
+</li>
+<li><p>Kubernetes 架构优势及架构原则</p>
+</li>
+<li><p>Kubernetes 核心组件</p>
+</li>
+<li><p>Kubernetes 对象设计与 API 定义</p>
+</li>
+<li><p>Kubernetes 控制器模式</p>
+</li>
+</ol>
+<hr>
+<h5 id="模块五：Kubernetes-控制平面组件：etcd"><a href="#模块五：Kubernetes-控制平面组件：etcd" class="headerlink" title="模块五：Kubernetes 控制平面组件：etcd"></a><font color=DarkOrange>模块五：Kubernetes 控制平面组件：etcd</font></h5><p><strong>教学目标：</strong></p>
+<ol>
+<li><p>深入理解 Kubernetes 的唯一数据存储组件 etcd</p>
+</li>
+<li><p>掌握构建生产系统中 etcd 集群的方法</p>
+</li>
+<li><p>熟悉 etcd 的优化管理，了解灾备方案</p>
+</li>
+</ol>
+<p><strong>针对的用户痛点：</strong></p>
+<ol>
+<li><p>对 etcd 的实现机制不了解，不知道在生产化应用过程中可能遇到的问题</p>
+</li>
+<li><p>不知道应该如何构建生产系统中的 etcd 集群</p>
+</li>
+<li><p>不知道如何进行数据的备份和灾难恢复</p>
+</li>
+</ol>
+<p><strong>通过学习掌握的核心能力：</strong></p>
+<ol>
+<li><p>理解 Raft 协议的工作机制和 etcd 的实现原理，针对 etcd 生产系统的配置优化以及数据灾备</p>
+</li>
+<li><p>深入理解 API Server 的实现机制，包括与企业认证系统整合、鉴权、准入插件的实现等等</p>
+</li>
+<li><p>深入理解 Kubernetes 的对象实现</p>
+</li>
+<li><p>如何构建高可用的 etcd 和 API Server 控制平面</p>
+</li>
+</ol>
+<p><strong>详细内容：</strong></p>
+<ol>
+<li><p>深入理解 Kubernetes 的数据存储 etcd</p>
+</li>
+<li><p>了解 Raft 协议</p>
+</li>
+<li><p>生产系统中 etcd 的配置</p>
+</li>
+<li><p>etcd operator</p>
+</li>
+<li><p>etcd 的灾备方案</p>
+</li>
+<li><p>生产系统中常见问题解析</p>
+</li>
+</ol>
+<hr>
+<h5 id="模块六：Kubernetes-控制平面组件：API-Server"><a href="#模块六：Kubernetes-控制平面组件：API-Server" class="headerlink" title="模块六：Kubernetes 控制平面组件：API Server"></a><font color=DarkOrange>模块六：Kubernetes 控制平面组件：API Server</font></h5><p><strong>教学目标：</strong></p>
+<ol>
+<li><p>深入理解 Kubernetes API Server 的实现机制</p>
+</li>
+<li><p>掌握基于 API Server Webhook 的整合方案</p>
+</li>
+</ol>
+<p><strong>针对的用户痛点：</strong></p>
+<ol>
+<li><p>缺乏对 Kubernetes 对象实现方法的理解</p>
+</li>
+<li><p>对 API Server 缺乏理解，不知道如何与企业认证系统整合，不会基于鉴权准入等机制打造多租户 Kubernetes 平台</p>
+</li>
+</ol>
+<p><strong>通过学习掌握的核心能力：</strong></p>
+<ol>
+<li><p>理解 Kubernetes 对象设计的实现机制</p>
+</li>
+<li><p>理解 API Server 缓存的工作机制</p>
+</li>
+<li><p>掌握生产系统中 API Server 的常用配置</p>
+</li>
+<li><p>掌握 API Server 与企业生态系统的整合方法</p>
+</li>
+</ol>
+<p><strong>详细内容：</strong></p>
+<ol>
+<li><p>深入理解 Kubernetes API Server</p>
+</li>
+<li><p>API Server 代码走读</p>
+</li>
+<li><p>理解 internalVersion、externalVersion 和 storageVersion</p>
+</li>
+<li><p>理解 conversion</p>
+</li>
+<li><p>基于 client-go 生成 Kubernetes 框架代码</p>
+</li>
+<li><p>理解 lister 和 informer 框架</p>
+</li>
+<li><p>理解 API Server 缓存</p>
+</li>
+<li><p>API Server 与企业生态系统的整合：认证接入、鉴权、准入控制</p>
+</li>
+<li><p>API Server 常用配置与常见问题解析</p>
+</li>
+</ol>
+<hr>
+<h5 id="模块七：Kubernetes-控制平面组件：调度器和控制器"><a href="#模块七：Kubernetes-控制平面组件：调度器和控制器" class="headerlink" title="模块七：Kubernetes 控制平面组件：调度器和控制器"></a><font color=DarkOrange>模块七：Kubernetes 控制平面组件：调度器和控制器</font></h5><p><strong>教学目标：</strong></p>
+<ol>
+<li><p>理解 Kubernetes 调度器原理以及常用调度插件</p>
+</li>
+<li><p>理解 Kubernetes 调度的常用技巧，利用亲和性与反亲和性进行调度</p>
+</li>
+<li><p>理解 Kubernetes 的常见控制器</p>
+</li>
+<li><p>深入理解 Kubelet 对 Pod 声明周期的管理</p>
+</li>
+</ol>
+<p><strong>针对的用户痛点：</strong></p>
+<ol>
+<li><p>对 Kubernetes 调度器无深入理解，在 Pod 无法调度时，不知道如何排查问题</p>
+</li>
+<li><p>不会利用 Kubernetes 调度器实现应用的高效、高可用部署</p>
+</li>
+<li><p>对 Kubernetes 控制器缺乏全面认知</p>
+</li>
+<li><p>对 Kubernetes 如何管理 Pod 生命周期缺乏认知</p>
+</li>
+</ol>
+<p><strong>通过学习掌握的核心能力：</strong></p>
+<ol>
+<li><p>排查调度故障，利用调度器实现应用的高可用部署</p>
+</li>
+<li><p>扩展对 Kubernetes 控制器的认知，理解更多的 Kubernetes 控制平面行为</p>
+</li>
+<li><p>深入理解 CRI、CNI 和 CSI</p>
+</li>
+</ol>
+<p><strong>详细内容：</strong></p>
+<ol>
+<li><p>深入理解 Kubernetes 调度器</p>
+</li>
+<li><p>深入理解 Kubenretes 控制器</p>
+</li>
+<li><p>深入理解 Kubelet</p>
+</li>
+<li><p>如何运行你的 Pod（CRI、CNI、CSI）</p>
+</li>
+<li><p>Kubelet Pod 代码走读</p>
+</li>
+<li><p>containerd 代码走读</p>
+</li>
+<li><p>CNI 代码走读</p>
+</li>
+<li><p>全方位的 CSI 一站式解决方案：Rook</p>
+</li>
+</ol>
+<hr>
+<h5 id="模块八：Kubernetes-控制平面组件：生命周期管理和服务发现"><a href="#模块八：Kubernetes-控制平面组件：生命周期管理和服务发现" class="headerlink" title="模块八：Kubernetes 控制平面组件：生命周期管理和服务发现"></a><font color=DarkOrange>模块八：Kubernetes 控制平面组件：生命周期管理和服务发现</font></h5><p><strong>教学目标：</strong></p>
+<ol>
+<li><p>深入理解 Pod 的完整生命周期和就绪状态控制</p>
+</li>
+<li><p>深入理解 Pod 状态控制对应用可用性的影响</p>
+</li>
+<li><p>深入理解 Kubernetes 中的服务发现机制，包括负载均衡配置和域名服务</p>
+</li>
+</ol>
+<p><strong>针对的用户痛点：</strong></p>
+<ol>
+<li><p>解决日常运维的困扰，比如，在 Pod 初始化或故障转移时或者版本发布时，如何不影响业务？</p>
+</li>
+<li><p>我发布的服务经常出现服务中断，是缺了什么配置吗？</p>
+</li>
+</ol>
+<p><strong>通过学习掌握的核心能力：</strong></p>
+<ol>
+<li><p>理解 Pod 的完整生命周期，如何初始化、如何控制就绪状态、如何探活、如何优雅终止</p>
+</li>
+<li><p>如何发布服务，如何剔出异常实例</p>
+</li>
+</ol>
+<p><strong>详细内容：</strong></p>
+<ol>
+<li><p>深入理解 Kubernetes 的服务实例对象 Pod：Pod 生命周期详解、健康探针、ReadinessGate</p>
+</li>
+<li><p>深入理解 Kube-Proxy：如何发布你的服务、代码走读、负载均衡配置</p>
+</li>
+<li><p>域名管理</p>
+</li>
+<li><p>基于 Ingress 以及 Service API 的入站流量管理</p>
+</li>
+</ol>
+<hr>
+<h5 id="模块九：生产化集群的管理"><a href="#模块九：生产化集群的管理" class="headerlink" title="模块九：生产化集群的管理"></a><font color=DarkOrange>模块九：生产化集群的管理</font></h5><p><strong>教学目标：</strong></p>
+<ol>
+<li><p>掌握生产化集群的搭建技术</p>
+</li>
+<li><p>掌握生产化集群持续运维过程中最重要的节点管理能力</p>
+</li>
+<li><p>如何在不影响业务的前提下完成 Kubernetes 升级</p>
+</li>
+</ol>
+<p><strong>针对的用户痛点：</strong></p>
+<ol>
+<li><p>不知道如何快速构建本地集群供研发测试使用</p>
+</li>
+<li><p>未掌握构建生产化集群的方法，缺少对集群节点的管控，节点出现故障以后需要人为介入</p>
+</li>
+<li><p>如何实现生产化集群的管理，比如计算节点的监控与管理</p>
+</li>
+<li><p>不了解完成了集群搭建以后离生产化还有多远</p>
+</li>
+</ol>
+<p><strong>通过学习掌握的核心能力：</strong></p>
+<p>快速构建本地集群的能力</p>
+<p>理解 Kubernetes 集群构建的原理，掌握搭建 Kubernetes 集群的能力</p>
+<p>基于 Cluster API 完成生产化集群的构建和持续运维</p>
+<p><strong>详细内容：</strong></p>
+<ol>
+<li><p>利用 kind 构建本地集群</p>
+</li>
+<li><p>利用 kubeadm 构建基于虚拟机的集群</p>
+</li>
+<li><p>利用 Cluster API 完成生产化集群的搭建</p>
+</li>
+<li><p>持续运维的考量：节点健康检查、Kubernetes 升级、主机操作系统升级</p>
+</li>
+</ol>
+<hr>
+<h5 id="模块十：Kubernetes-的生产化运维"><a href="#模块十：Kubernetes-的生产化运维" class="headerlink" title="模块十：Kubernetes 的生产化运维"></a><font color=DarkOrange>模块十：Kubernetes 的生产化运维</font></h5><p><strong>教学目标：</strong></p>
+<ol>
+<li><p>如何实现基于 Kubernetes 的 CI&#x2F;CD</p>
+</li>
+<li><p>如何实现生产化集群的监控</p>
+</li>
+</ol>
+<p><strong>针对的用户痛点：</strong></p>
+<ol>
+<li><p>缺少企业统一的镜像仓库</p>
+</li>
+<li><p>镜像安全应该如何保证</p>
+</li>
+<li><p>企业缺少持续集成持续部署能力</p>
+</li>
+<li><p>缺少对整个集群的监控，希望实现无人值守</p>
+</li>
+</ol>
+<p><strong>通过学习掌握的核心能力：</strong></p>
+<ol>
+<li><p>打造持续集成平台</p>
+</li>
+<li><p>基于自动化管理生产化集群</p>
+</li>
+<li><p>实现对集群控制面板以及重要应用的监控和告警</p>
+</li>
+</ol>
+<p><strong>详细内容：</strong></p>
+<ol>
+<li><p>镜像仓库和容器镜像缓存</p>
+</li>
+<li><p>镜像扫描和镜像安全保证</p>
+</li>
+<li><p>基于 Kubernetes、Jenkins、Tekton 打造 CI&#x2F;CD Pipeline</p>
+</li>
+<li><p>集群监控：日志收集和分析，事件、指标和告警（Event、Metrics 和 Alert）</p>
+</li>
+</ol>
+<hr>
+<h5 id="模块十一：将应用迁移至-Kubernetes-平台"><a href="#模块十一：将应用迁移至-Kubernetes-平台" class="headerlink" title="模块十一：将应用迁移至 Kubernetes 平台"></a><font color=DarkOrange>模块十一：将应用迁移至 Kubernetes 平台</font></h5><p><strong>教学目标：</strong></p>
+<ol>
+<li><p>如何将无状态应用发布到 Kubernetes 平台</p>
+</li>
+<li><p>如何基于 Kubernetes 原生能力将有状态应用发布到 Kubernetes 平台</p>
+</li>
+<li><p>基于 Kubernetes 对象扩展，将更复杂的应用发布到 Kubernetes 平台</p>
+</li>
+</ol>
+<p><strong>针对的用户痛点：</strong></p>
+<ol>
+<li><p>缺少将应用发布到 Kubernetes 平台上的理论指导</p>
+</li>
+<li><p>对于有状态应用，更不知道如何借助 Kubernetes 平台的优势进行处理</p>
+</li>
+</ol>
+<p><strong>通过学习掌握的核心能力：</strong></p>
+<ol>
+<li><p>掌握 Kubernetes 提供的应用管理框架，包括有状态应用和无状态应用</p>
+</li>
+<li><p>掌握 Operator 模式，具备通过 Kubebuilder 构建自己的 CRD，并且基于 CRD 编写控制器的能力</p>
+</li>
+<li><p>利用 Kubebuilder 完成控制器的测试和发布</p>
+</li>
+<li><p>借助 Helm 完成复杂的应用模板管理</p>
+</li>
+</ol>
+<p><strong>详细内容：</strong></p>
+<ol>
+<li><p>应用容器化</p>
+</li>
+<li><p>无状态应用移植到 Kubernetes 平台的考量</p>
+</li>
+<li><p>有状态应用移植到 Kubernetes 平台的考量</p>
+</li>
+<li><p>理解 Operator</p>
+</li>
+<li><p>借助 Kubebuilder 开发一个 Operator</p>
+</li>
+<li><p>借助 Helm 管理应用发布</p>
+</li>
+</ol>
+<hr>
+<h5 id="模块十二：基于-Istio-的高级流量管理"><a href="#模块十二：基于-Istio-的高级流量管理" class="headerlink" title="模块十二：基于 Istio 的高级流量管理"></a><font color=DarkOrange>模块十二：基于 Istio 的高级流量管理</font></h5><p><strong>教学目标：</strong></p>
+<ol>
+<li><p>理解基于 TCP&#x2F;UDP 协议的 Kubernetes Service 的局限性</p>
+</li>
+<li><p>理解 Kubernetes 入站流量管理的场景和原生方案</p>
+</li>
+<li><p>理解原生方案的局限性和社区的方向</p>
+</li>
+<li><p>深入理解 Envoy 的服务发现机制、线程模型以及扩展机制</p>
+</li>
+<li><p>理解如何基于 Istio 实现入站、出站流量管理以及服务网格管理</p>
+</li>
+</ol>
+<p><strong>针对的用户痛点：</strong></p>
+<ol>
+<li><p>社区的 Ingress 对象无法毕业，为支持生产化应用，应该用什么方案提供入站流量支撑</p>
+</li>
+<li><p>Envoy 为什么变成了 Kubernetes 中七层代理的首选</p>
+</li>
+<li><p>社区爆火的 Istio 背后的技术驱动力是什么，我应该选 Istio 作为入站流量管理平面组件吗</p>
+</li>
+</ol>
+<p><strong>通过学习掌握的核心能力：</strong></p>
+<ol>
+<li><p>深入理解 Envoy 的实现机制</p>
+</li>
+<li><p>深入理解 Istio 的实现机制，了解为什么 Istio 会成为服务网格的标准</p>
+</li>
+</ol>
+<p><strong>详细内容：</strong></p>
+<ol>
+<li><p>入站流量管理 Ingress 和 Service API</p>
+</li>
+<li><p>Istio 和 Envoy</p>
+</li>
+<li><p>深入理解 Envoy：发现机制、线程模型、filter 机制、高级特性</p>
+</li>
+<li><p>深入理解 Isito：入站流量、出站流量、Service Mesh（服务网格）、Istio 服务发现代码走读</p>
+</li>
+<li><p>安全保证</p>
+</li>
+</ol>
+<hr>
+<h5 id="模块十三：Kubernetes-集群联邦和-Istio-多集群管理"><a href="#模块十三：Kubernetes-集群联邦和-Istio-多集群管理" class="headerlink" title="模块十三：Kubernetes 集群联邦和 Istio 多集群管理"></a><font color=DarkOrange>模块十三：Kubernetes 集群联邦和 Istio 多集群管理</font></h5><p><strong>教学目标：</strong></p>
+<ol>
+<li><p>如何通过集群联邦的统一控制平面管理多个集群</p>
+</li>
+<li><p>如何部署跨地域的高可用应用</p>
+</li>
+<li><p>如何通过 Istio 多集群方案管理跨集群的 Service Mesh（服务网格）</p>
+</li>
+</ol>
+<p><strong>针对的用户痛点：</strong></p>
+<ol>
+<li><p>针对真正的生产化应用，跨地域部署是确保应用高可用的一个强需求，那么如何管理多个 Kubernetes 集群</p>
+</li>
+<li><p>针对跨集群部署的应用，如何确保其接入流量高可用，如何借助 Istio 实现这一目的</p>
+</li>
+</ol>
+<p><strong>通过学习掌握的核心能力：</strong></p>
+<ol>
+<li><p>Kubernetes 集群联邦的实现原理和配置方法</p>
+</li>
+<li><p>Istio 多集群实现原理和配置方法</p>
+</li>
+</ol>
+<p><strong>详细内容：</strong></p>
+<ol>
+<li><p>Kubernetes 集群联邦</p>
+</li>
+<li><p>基于集群联邦的跨地域高可用部署</p>
+</li>
+<li><p>基于 Istio 多集群的流量高可用方案</p>
+</li>
+</ol>
+<hr>
+<h5 id="模块十四：基于-Kubernetes-和-Istio-的安全保证"><a href="#模块十四：基于-Kubernetes-和-Istio-的安全保证" class="headerlink" title="模块十四：基于 Kubernetes 和 Istio 的安全保证"></a><font color=DarkOrange>模块十四：基于 Kubernetes 和 Istio 的安全保证</font></h5><p><strong>教学目标：</strong></p>
+<ol>
+<li><p>理解传统安全架构的挑战</p>
+</li>
+<li><p>掌握零信任架构的意义和机遇</p>
+</li>
+<li><p>掌握 Kubernetes 平台本身的安全保证手段</p>
+</li>
+<li><p>学习如何基于 Kubernetes 和 Istio 实现对应用的隔离和安全保证</p>
+</li>
+</ol>
+<p><strong>针对的用户痛点：</strong></p>
+<ol>
+<li><p>如何确保 Kubernetes 平台的安全性</p>
+</li>
+<li><p>如何确保 Kubernetes 中数据保存的安全性</p>
+</li>
+<li><p>如何确保 Kubernetes 上运行应用的安全性</p>
+</li>
+</ol>
+<p><strong>通过学习掌握的核心能力：</strong></p>
+<ol>
+<li><p>如何保证 etcd 中保存的数据安全性</p>
+</li>
+<li><p>如何保证 Kubernetes 控制面板的安全性</p>
+</li>
+<li><p>如何确保 API 网关的安全性</p>
+</li>
+<li><p>对应用进行安全隔离</p>
+</li>
+<li><p>如何基于零信任架构完成应用的认证和授权</p>
+</li>
+</ol>
+<p><strong>详细内容：</strong></p>
+<ol>
+<li><p>理解 etcd 的加密方法</p>
+</li>
+<li><p>掌握 Kubernetes 控制面板的安全配置</p>
+</li>
+<li><p>掌握应用隔离的常规手段以及在 Kubernetes 中配置的方式</p>
+</li>
+<li><p>掌握 API 网关的安全配置</p>
+</li>
+<li><p>了解基于 Istio 的认证鉴权机制</p>
+</li>
+</ol>
+<hr>
+<h4 id="第三部分：云原生项目实战"><a href="#第三部分：云原生项目实战" class="headerlink" title="第三部分：云原生项目实战"></a><font color=DarkOrange>第三部分：云原生项目实战</font></h4><h5 id="模块十五：微服务项目的开发和部署案例"><a href="#模块十五：微服务项目的开发和部署案例" class="headerlink" title="模块十五：微服务项目的开发和部署案例"></a><font color=DarkOrange>模块十五：微服务项目的开发和部署案例</font></h5><p><strong>教学目标：</strong></p>
+<p>完成一个复杂的异构的微服务系统在 Kubernetes 平台上的部署，以 Istio 的 Bookinfo 为例</p>
+<p><strong>针对的用户痛点：</strong></p>
+<ol>
+<li><p>随着业务复杂度的增加，微服务的部署和运维变得越来越有挑战性，如何保证微服务应用部署的高性能是一个复杂问题</p>
+</li>
+<li><p>如何基于熔断、限流等手段保护核心业务</p>
+</li>
+<li><p>如何基于基础架构平台确保应用安全</p>
+</li>
+</ol>
+<p><strong>通过学习掌握的核心能力：</strong></p>
+<ol>
+<li><p>基于微服务架构的复杂应用部署</p>
+</li>
+<li><p>熔断、限流、故障注入</p>
+</li>
+<li><p>应用的安全保证</p>
+</li>
+</ol>
+<p><strong>详细内容：</strong></p>
+<p>本模块是之前所有模块的综合复习模块，希望借助本模块完成基于 Kubernetes 框架下面微服务治理这一重要命题的回顾和总结</p>
+<hr>
+<h4 id="石墨文档"><a href="#石墨文档" class="headerlink" title="石墨文档"></a><font color=DarkOrange>石墨文档</font></h4><p>石墨文档的链接可能会更新，在此附上原地址链接</p>
+<p>云原生训练营课程大纲：<a href="https://shimo.im/docs/6VdchtKxdjrCqDdY/read">点击跳转</a></p>
+<p>云原生训练营实战项目：<a href="https://shimo.im/docs/RKAWV8xgZ7tKWXk8/read">点击跳转</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>后端</category>
+      </categories>
+      <tags>
+        <tag>云原生</tag>
       </tags>
   </entry>
   <entry>

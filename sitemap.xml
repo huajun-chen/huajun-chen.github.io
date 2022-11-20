@@ -317,14 +317,7 @@
 
   
   <url>
-    <loc>https://huajun-chen.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2022-11-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://huajun-chen.github.io/tags/ES/</loc>
+    <loc>https://huajun-chen.github.io/tags/Kafka/</loc>
     <lastmod>2022-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -338,7 +331,7 @@
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/tags/Kafka/</loc>
+    <loc>https://huajun-chen.github.io/tags/ES/</loc>
     <lastmod>2022-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -352,7 +345,7 @@
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/tags/Golang/</loc>
+    <loc>https://huajun-chen.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2022-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -360,6 +353,13 @@
   
   <url>
     <loc>https://huajun-chen.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/</loc>
+    <lastmod>2022-11-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://huajun-chen.github.io/tags/Golang/</loc>
     <lastmod>2022-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h7nojprq3uj30ns0kgdi9.jpg">
 <meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h82o60shgaj312i0x2wn7.jpg">
 <meta property="article:published_time" content="2022-10-28T00:24:34.000Z">
-<meta property="article:modified_time" content="2022-11-22T02:23:15.445Z">
+<meta property="article:modified_time" content="2022-11-22T03:12:24.408Z">
 <meta property="article:author" content="可可西里">
 <meta property="article:tag" content="八股文">
 <meta property="article:tag" content="Golang">
@@ -191,7 +191,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-9.png" style="max-height: 240px;">
+      <img src="/images/random/material-3.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">Golang面试题</div>
@@ -688,7 +688,7 @@
 </ul>
 <ol>
 <li>new该方法的参数要求传入一个类型，而不是一个值，它会申请一个该类型大小的内存空间，并会初始化为对应的零值，返回指向该内存空间的一个指针。new只用于分配内存，返回一个指向地址的<strong>指针</strong>。它为每个新类型分配一片内存，初始化为0且返回类型*T的内存地址，它相当于&amp;T{}</li>
-<li>make也是用于内存分配，但是和new不同，只用来引用对象slice、map和channel的内存创建，它返回的类型就是类型本身，而不是它们的指针类型。make只可用于<strong>slice</strong>，<strong>map</strong>，<strong>channel</strong>的初始化,返回的是<strong>引用</strong></li>
+<li>make也是用于内存分配，但是和new不同，只用来引用对象slice、map和channel的内存创建，它返回的类型就是类型本身，而不是它们的指针类型。make只可用于<strong>slice</strong>，<strong>map</strong>，<strong>channel</strong>的初始化，返回的是<strong>引用</strong></li>
 </ol>
 <h4 id="38-Go的defer原理是什么"><a href="#38-Go的defer原理是什么" class="headerlink" title="38. Go的defer原理是什么"></a><font color=DarkOrange>38. Go的defer原理是什么</font></h4><p>defer意为延迟，在 golang 中用于延迟执行一个函数。它可以帮助我们处理容易忽略的问题，如资源释放、连接关闭等。但在实际使用过程中，有一些需要注意的地方：</p>
 <ul>

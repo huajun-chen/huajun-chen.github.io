@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h7nojprq3uj30ns0kgdi9.jpg">
 <meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h82o60shgaj312i0x2wn7.jpg">
 <meta property="article:published_time" content="2022-10-28T00:24:34.000Z">
-<meta property="article:modified_time" content="2022-11-19T04:47:30.102Z">
+<meta property="article:modified_time" content="2022-11-22T02:23:15.445Z">
 <meta property="article:author" content="可可西里">
 <meta property="article:tag" content="八股文">
 <meta property="article:tag" content="Golang">
@@ -191,7 +191,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-5.png" style="max-height: 240px;">
+      <img src="/images/random/material-9.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">Golang面试题</div>
@@ -320,7 +320,7 @@
 <ul>
 <li>G（Goroutine） ：我们所说的协程，为用户级的轻量级线程，每个Goroutine对象中的sched保存着其上下文信息</li>
 <li>M（Machine） ：对Os内核级线程的封装，数量对应真实的CPU数（真正干活的对象）</li>
-<li>P（Processor） ：逻辑处理器,即为G和M的调度对象，用来调度G和M之间的关联关系，其数量可通过GOMAXPROCS()来设置，默认为核心数</li>
+<li>P（Processor） ：逻辑处理器，即为G和M的调度对象，用来调度G和M之间的关联关系，其数量可通过GOMAXPROCS()来设置，默认为核心数</li>
 </ul>
 <p>在单核情况下，所有Goroutine运行在同一个线程（M0）中，每一个线程维护一个上下文（P），任何时刻，一个上下文中只有一个Goroutine，其他Goroutine在runqueue中等待。一个Goroutine运行完自己的时间片后，让出上下文，自己回到runqueue中（如下图所示）</p>
 <div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7nojprq3uj30ns0kgdi9.jpg" alt="image.png" style="zoom:38%;" /></div>

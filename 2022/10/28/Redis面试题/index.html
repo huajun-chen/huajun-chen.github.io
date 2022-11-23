@@ -21,12 +21,15 @@
 <meta property="og:site_name" content="可可西里-博客">
 <meta property="og:description" content="Redis面试常见问题汇总 1. Redis的数据结构及使用场景 String字符串 字符串类型是 Redis 最基础的数据结构，首先键都是字符串类型，而且 其他几种数据结构都是在字符串类型基础上构建的，我们常使用的 set key value 命令就是字符串。常用在缓存、计数、共享Session、限速等     Hash哈希 在Redis中，哈希类型是指键值本身又是一个键值对结构，哈希可以用来存">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h8evssatocj30i30bwq48.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h8evydq8vhj30fk0dfdk7.jpg">
 <meta property="article:published_time" content="2022-10-28T08:50:10.000Z">
-<meta property="article:modified_time" content="2022-11-16T05:46:47.329Z">
+<meta property="article:modified_time" content="2022-11-23T03:18:32.223Z">
 <meta property="article:author" content="可可西里">
 <meta property="article:tag" content="八股文">
 <meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h8evssatocj30i30bwq48.jpg">
 
   <meta name="keywords" content=",八股文,Redis">
   <meta name="format-detection" content="telephone=no,email=no">
@@ -187,7 +190,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-6.png" style="max-height: 240px;">
+      <img src="/images/random/material-2.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">Redis面试题</div>
@@ -339,7 +342,7 @@
 <h4 id="9-Redis的主从模式和哨兵模式和集群模式区别"><a href="#9-Redis的主从模式和哨兵模式和集群模式区别" class="headerlink" title="9. Redis的主从模式和哨兵模式和集群模式区别"></a><font color=DarkOrange>9. Redis的主从模式和哨兵模式和集群模式区别</font></h4><p>Redis集群方式共有三种：<strong>主从模式</strong>，<strong>哨兵模式</strong>，<strong>集群(cluster)模式</strong></p>
 <ul>
 <li><p>主从模式</p>
-<p>主从模式是三种集群方式里最简单的。它主要是基于Redis的主从复制特性架构的。通常我们会设置一个主节点，N个从节点;默认情况下，主节点负责处理使用者的IO操作，而从节点则会对主节点的数据进行备份，并且也会对外提供读操作的处理。主要的特点如下：</p>
+<p>主从模式是三种集群方式里最简单的。它主要是基于Redis的主从复制特性架构的。通常我们会设置一个主节点，N个从节点；默认情况下，主节点负责处理使用者的IO操作，而从节点则会对主节点的数据进行备份，并且也会对外提供读操作的处理。主要的特点如下：</p>
 <ul>
 <li>主从模式下，当某一节点损坏时，因为其会将数据备份到其它Redis实例上，这样做在很大程度上可以恢复丢失的数据</li>
 <li>主从模式下，可以保证负载均衡.</li>
@@ -378,7 +381,91 @@
 <p>Redis 集群有16384个哈希槽，每个key通过CRC16校验后对16384取模来决定放置哪个槽.集群的每个节点负责一部分hash槽</p>
 </li>
 </ul>
-<h4 id="10-Redis事物的了解CheckAndSet操作实现乐观锁"><a href="#10-Redis事物的了解CheckAndSet操作实现乐观锁" class="headerlink" title="10. Redis事物的了解CheckAndSet操作实现乐观锁"></a><font color=DarkOrange>10. Redis事物的了解CheckAndSet操作实现乐观锁</font></h4><p>和众多其它数据库一样，Redis作为NoSQL数据库也同样提供了事务机制。在Redis中，<code>MULTI</code>，<code>EXEC</code>，<code>DISCARD</code>，<code>WATCH</code>这四个命令是我们实现事务的基石。相信对有关系型数据库开发经验的开发者而言这一概念并不陌生，即便如此，我们还是会简要的列出 Redis中事务的实现特征 ：</p>
+<h4 id="10-单机、主从、哨兵、集群模式优缺点"><a href="#10-单机、主从、哨兵、集群模式优缺点" class="headerlink" title="10. 单机、主从、哨兵、集群模式优缺点"></a><font color=DarkOrange>10. 单机、主从、哨兵、集群模式优缺点</font></h4><h5 id="10-1-单机模式"><a href="#10-1-单机模式" class="headerlink" title="10.1 单机模式"></a><font color=DarkOrange>10.1 单机模式</font></h5><p>Redis 单副本，采用单个 Redis 节点部署架构，没有备用节点实时同步数据，不提供数据持久化和备份策略，适用于数据可靠性要求不高的纯缓存业务场景</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>架构简单，部署方便</li>
+<li>高性价比：缓存使用时无需备用节点(单实例可用性可以用 supervisor 或 crontab 保证)，当然为了满足业务的高可用性，也可以牺牲一个备用节点，但同时刻只有一个实例对外提供服务</li>
+<li>高性能</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>不保证数据的可靠性</li>
+<li>在缓存使用，进程重启后，数据丢失，即使有备用的节点解决高可用性，但是仍然不能解决缓存预热问题，因此不适用于数据可靠性要求高的业务</li>
+<li>高性能受限于单核 CPU 的处理能力(Redis 是单线程机制)，CPU 为主要瓶颈，所以适合操作命令简单，排序、计算较少的场景。也可以考虑用 Memcached 替代</li>
+</ul>
+<h5 id="10-2-主从模式"><a href="#10-2-主从模式" class="headerlink" title="10.2 主从模式"></a><font color=DarkOrange>10.2 主从模式</font></h5><p>主（master）和 从（slave）部署在不同的服务器上，当主节点服务器写入数据时会同步到从节点的服务器上，一般主节点负责写入数据，从节点负责读取数据</p>
+<blockquote>
+<p><strong>从节点设置只读属性，而主节点没有只写属性，因此，主节点可读可以写</strong></p>
+</blockquote>
+<p><strong>优点：</strong></p>
+<ul>
+<li><p>读写分离，提高效率</p>
+<p>主节点负责写操作，从节点负责读操作；如果写少读多场景，配置多个从节点的话，效率非常高</p>
+</li>
+<li><p>数据热备份，提供多个副本</p>
+<p>从节点宕机，影响较小</p>
+</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li><p>主节点故障，集群则无法进行工作，可用性比较低，从节点升主节点需要人工手动干预</p>
+<p>因为只有主节点能进行写操作，一旦主节点宕机，整个服务就无法使用。当然此时从节点仍可以进行读操作，但是对于整个服务流程来说，是无法使用的</p>
+</li>
+<li><p>Master的写的压力难以降低</p>
+<p>如果写操作比较多，那么只有一个主节点的话，无法分担压力</p>
+</li>
+<li><p>主节点存储能力受到单击限制</p>
+<p>主节点只能有一个，因此单节点内存大小不会太大，因此存储数据量受限</p>
+</li>
+<li><p>主从数据同步，可能产生部分的性能影响甚至同步风暴</p>
+<p>风暴问题，对于任何集群分布式来说都存在，要合理分布节点</p>
+</li>
+</ul>
+<h5 id="10-3-哨兵模式"><a href="#10-3-哨兵模式" class="headerlink" title="10.3 哨兵模式"></a><font color=DarkOrange>10.3 哨兵模式</font></h5><p>为了解决这两个问题，在2.8版本之后redis正式提供了sentinel架构</p>
+<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h8evssatocj30i30bwq48.jpg" alt="image.png" style="zoom:67%;" /></div>
+
+<p>在redis3.0以前的版本要实现集群一般是借助哨兵sentinel工具来监控master节点的状态</p>
+<p>如果master节点异常，则会做主从切换，将某一台slave作为master，哨兵的配置略微复杂，并且性能和高可用性等各方面表现一般</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>对节点进行监控，来完成自动的故障发现与转移</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>特别是在主从切换的瞬间存在访问瞬断的情况，等待时间比较长，至少十来秒不可用</li>
+<li>哨兵模式只有一个主节点对外提供服务，没法支持很高的并发</li>
+<li>单个主节点内存也不宜设置得过大，否则会导致持久化文件过大，影响数据恢复或主从同步的效率</li>
+</ul>
+<p><strong>与主从相比，哨兵仅解决了手动切换主从节点问题，至于其他的问题，基本上仍然存在</strong></p>
+<p><strong>哨兵的主要问题还是由于中心架构，仅存在一个master节点引起的，写的效率太低</strong></p>
+<h5 id="10-4-集群模式"><a href="#10-4-集群模式" class="headerlink" title="10.4 集群模式"></a><font color=DarkOrange>10.4 集群模式</font></h5><p>Redis Cluster 是 3.0 版后推出的 Redis 分布式集群解决方案，主要解决 Redis 分布式方面的需求，比如，当遇到单机内存，并发和流量等瓶颈的时候，Redis Cluster 能起到很好的负载均衡的目的</p>
+<p>Redis Cluster 集群节点<font color=Red><strong>最小配置 6 个节点以上(3 主 3 从)</strong></font>，其中主节点提供读写操作，从节点作为备用节点，不提供请求，只作为故障转移使用。Redis Cluster 采用虚拟槽分区，所有的键根据哈希函数映射到 0～16383 个整数槽内，每个节点负责维护一部分槽以及槽所印映射的键值数据</p>
+<blockquote>
+<p>注意：集群模式下 从节点不提供读写，与主从模式不一样。 总结一下经验，分布式 场景下：集群模式一般从节点不参与读写，仅作为备用节点。而主从一般都要负责读或写，都要参与具体的工作</p>
+</blockquote>
+<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h8evydq8vhj30fk0dfdk7.jpg" alt="image.png" style="zoom:80%;" /></div>
+
+<p> <strong>优点：</strong></p>
+<ul>
+<li><p>无中心架构</p>
+<p>即有多个master节点，不像哨兵模式下仅有一个。这样写的压力就可以分散了；并且存储量也可以扩展了，因为多个主节点都可以存储一部分数据，总量要远大于单主节点架构</p>
+</li>
+<li><p>数据按照 slot 存储分布在多个节点，节点间数据共享，可动态调整数据分布</p>
+</li>
+<li><p>可扩展性：可线性扩展到 1000 多个节点，<code>节点可动态添加或删除</code></p>
+</li>
+<li><p>高可用性：部分节点不可用时，集群仍可用。通过增加 Slave 做 standby 数据副本，能够 实现故障自动 failover，节点之间通过 gossip 协议交换状态信息，用投票机制完成 Slave 到 Master 的角色提升</p>
+</li>
+</ul>
+<blockquote>
+<p>当然，如果某个槽归属的小群内都不可用时，整个服务仍然是不可用的！通过cluster-require-full-coverageyes 控制该特性， 默认yes 即需要集群完整，方可对外提供服务，设置为no ，其他的小集群仍然可以对外提供服务</p>
+</blockquote>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>如果主节点A和它的从节点A1都宕机了，那么该集群就无法再提供服务了</li>
+</ul>
+<h4 id="11-Redis事物的了解CheckAndSet操作实现乐观锁"><a href="#11-Redis事物的了解CheckAndSet操作实现乐观锁" class="headerlink" title="11. Redis事物的了解CheckAndSet操作实现乐观锁"></a><font color=DarkOrange>11. Redis事物的了解CheckAndSet操作实现乐观锁</font></h4><p>和众多其它数据库一样，Redis作为NoSQL数据库也同样提供了事务机制。在Redis中，<code>MULTI</code>，<code>EXEC</code>，<code>DISCARD</code>，<code>WATCH</code>这四个命令是我们实现事务的基石。相信对有关系型数据库开发经验的开发者而言这一概念并不陌生，即便如此，我们还是会简要的列出 Redis中事务的实现特征 ：</p>
 <ul>
 <li>在事务中的所有命令都将会被串行化的顺序执行，事务执行期间，Redis不会再为其它客户端的请求提供任何服务，从而保证了事物中的所有命令被原子的执行</li>
 <li>和关系型数据库中的事务相比，在Redis事务中如果有某一条命令执行失败，其后的命令仍然会被继续执行</li>
@@ -386,7 +473,7 @@
 <li>在事务开启之前，如果客户端与服务器之间出现通讯故障并导致网络断开，其后所有待执行的语句都将不会被服务器执行。然而如果网络中断事件是发生在客户端执行EXEC命令之后，那么该事务中的所有命令都会被服务器执行</li>
 <li>当使用<code>Append-Only</code>模式时，Redis会通过调用系统函数write将该事务内的所有写操作在本次调用中全部写入磁盘。然而如果在写入的过程中出现系统崩溃，如电源故障导致的宕机，那么此时也许只有部分数据被写入到磁盘，而另外一部分数据却已经丢失。Redis服务器会在重新启动时执行一系列必要的一致性检测，一旦发现类似问题，就会立即退出并给出相应的错误提示。此时，我们就要充分利用Redis工具包中提供的<code>redis-check-aof</code>工具，该工具可以帮助我们定位到数据不一致的错误，并将已经写入的部分数据进行回滚。修复之后我们就可以再次重新启动Redis服务器了</li>
 </ul>
-<h4 id="11-Redis有序集合zset底层怎么实现的"><a href="#11-Redis有序集合zset底层怎么实现的" class="headerlink" title="11. Redis有序集合zset底层怎么实现的"></a><font color=DarkOrange>11. Redis有序集合zset底层怎么实现的</font></h4><ul>
+<h4 id="12-Redis有序集合zset底层怎么实现的"><a href="#12-Redis有序集合zset底层怎么实现的" class="headerlink" title="12. Redis有序集合zset底层怎么实现的"></a><font color=DarkOrange>12. Redis有序集合zset底层怎么实现的</font></h4><ul>
 <li>跳表是一个随机化的数据结构，实质就是一种可以进行二分查找的有序链表</li>
 <li>跳表在原有的有序链表上面增加了多级索引，通过索引来实现快速查找</li>
 <li>跳表不仅能提高搜索性能，同时也可以提高插入和删除操作的性能</li>
@@ -401,7 +488,7 @@
 <li>跳表查询、插入、删除的时间复杂度为O(log n)，与平衡二叉树接近</li>
 </ul>
 <hr>
-<h5 id="11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN"><a href="#11-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN" class="headerlink" title="11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))"></a><font color=DarkOrange>11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))</font></h5><p>首先，我们来分析下Redis的有序集合支持的操作：</p>
+<h5 id="12-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN"><a href="#12-1-为什么Redis选择使用跳表而不是红黑树来实现有序集合？-O-logN" class="headerlink" title="12.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))"></a><font color=DarkOrange>12.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))</font></h5><p>首先，我们来分析下Redis的有序集合支持的操作：</p>
 <ul>
 <li>插入元素</li>
 <li>删除元素</li>
@@ -411,7 +498,7 @@
 </ul>
 <p>其中，前4项红黑树都可以完成，且时间复杂度与跳表一致。但是，最后一项，红黑树的效率就没有跳表高了。在跳表中，要查找区间的元素，我们只要定位到两个区间端点在最低层级的位置，然后按顺序遍历元素就可以了，非常高效</p>
 <p>而红黑树只能定位到端点后，再从首位置开始每次都要查找后继节点，相对来说是比较耗时的。此外，跳表实现起来很容易且易读，红黑树实现起来相对困难，所以Redis选择使用跳表来实现有序集合</p>
-<h4 id="12-跳表的查询过程是怎么样的，查询和插入的时间复杂度"><a href="#12-跳表的查询过程是怎么样的，查询和插入的时间复杂度" class="headerlink" title="12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度"></a><font color=DarkOrange>12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度</font></h4><p>先从第一层查找，不满足就下沉到第二层找，因为每一层都是有序的，写入和插入的时间复杂度都是O(logN)</p>
+<h4 id="13-跳表的查询过程是怎么样的，查询和插入的时间复杂度"><a href="#13-跳表的查询过程是怎么样的，查询和插入的时间复杂度" class="headerlink" title="13. 跳表的查询过程是怎么样的，查询和插入的时间复杂度"></a><font color=DarkOrange>13. 跳表的查询过程是怎么样的，查询和插入的时间复杂度</font></h4><p>先从第一层查找，不满足就下沉到第二层找，因为每一层都是有序的，写入和插入的时间复杂度都是O(logN)</p>
 <hr>
 
       
@@ -459,7 +546,7 @@
   <div style="position: fixed !important; left: 240px; top: 30%;">
     <button class="mdui-fab mdui-fab-mini mdui-ripple" mdui-menu="{target: '#toc'}"><i class="mdui-icon material-icons">toc</i></button>
     <ul class="mdui-menu" id="toc">
-      <li class="mdui-menu-item" disabled><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">1. Redis的数据结构及使用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Redis%E6%8C%81%E4%B9%85%E5%8C%96%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-text">2. Redis持久化的几种方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Redis%E7%9A%84LRU%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="toc-text">3. Redis的LRU具体实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%9A%84Redis%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%AB"><span class="toc-text">4. 单线程的Redis为什么快</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E8%BF%87%E6%9C%9F%E7%AD%96%E7%95%A5"><span class="toc-text">5. Redis的数据过期策略</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-1-%E5%86%85%E5%AD%98%E6%B7%98%E6%B1%B0%E6%9C%BA%E5%88%B6"><span class="toc-text">5.1 内存淘汰机制</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3Redis%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9%E9%97%AE%E9%A2%98"><span class="toc-text">6. 如何解决Redis缓存雪崩问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3Redis%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E9%97%AE%E9%A2%98"><span class="toc-text">7. 如何解决Redis缓存穿透问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-Redis%E5%B9%B6%E5%8F%91%E7%AB%9E%E4%BA%89key%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3"><span class="toc-text">8. Redis并发竞争key如何解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-Redis%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%A8%A1%E5%BC%8F%E5%92%8C%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F%E5%92%8C%E9%9B%86%E7%BE%A4%E6%A8%A1%E5%BC%8F%E5%8C%BA%E5%88%AB"><span class="toc-text">9. Redis的主从模式和哨兵模式和集群模式区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-Redis%E4%BA%8B%E7%89%A9%E7%9A%84%E4%BA%86%E8%A7%A3CheckAndSet%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0%E4%B9%90%E8%A7%82%E9%94%81"><span class="toc-text">10. Redis事物的了解CheckAndSet操作实现乐观锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-Redis%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88zset%E5%BA%95%E5%B1%82%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84"><span class="toc-text">11. Redis有序集合zset底层怎么实现的</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#11-1-%E4%B8%BA%E4%BB%80%E4%B9%88Redis%E9%80%89%E6%8B%A9%E4%BD%BF%E7%94%A8%E8%B7%B3%E8%A1%A8%E8%80%8C%E4%B8%8D%E6%98%AF%E7%BA%A2%E9%BB%91%E6%A0%91%E6%9D%A5%E5%AE%9E%E7%8E%B0%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88%EF%BC%9F-O-logN"><span class="toc-text">11.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-%E8%B7%B3%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E8%BF%87%E7%A8%8B%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E7%9A%84%EF%BC%8C%E6%9F%A5%E8%AF%A2%E5%92%8C%E6%8F%92%E5%85%A5%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">12. 跳表的查询过程是怎么样的，查询和插入的时间复杂度</span></a></li></ol></li>
+      <li class="mdui-menu-item" disabled><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">1. Redis的数据结构及使用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Redis%E6%8C%81%E4%B9%85%E5%8C%96%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-text">2. Redis持久化的几种方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Redis%E7%9A%84LRU%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="toc-text">3. Redis的LRU具体实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%9A%84Redis%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%AB"><span class="toc-text">4. 单线程的Redis为什么快</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E8%BF%87%E6%9C%9F%E7%AD%96%E7%95%A5"><span class="toc-text">5. Redis的数据过期策略</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-1-%E5%86%85%E5%AD%98%E6%B7%98%E6%B1%B0%E6%9C%BA%E5%88%B6"><span class="toc-text">5.1 内存淘汰机制</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3Redis%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9%E9%97%AE%E9%A2%98"><span class="toc-text">6. 如何解决Redis缓存雪崩问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3Redis%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E9%97%AE%E9%A2%98"><span class="toc-text">7. 如何解决Redis缓存穿透问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-Redis%E5%B9%B6%E5%8F%91%E7%AB%9E%E4%BA%89key%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3"><span class="toc-text">8. Redis并发竞争key如何解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-Redis%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%A8%A1%E5%BC%8F%E5%92%8C%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F%E5%92%8C%E9%9B%86%E7%BE%A4%E6%A8%A1%E5%BC%8F%E5%8C%BA%E5%88%AB"><span class="toc-text">9. Redis的主从模式和哨兵模式和集群模式区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-%E5%8D%95%E6%9C%BA%E3%80%81%E4%B8%BB%E4%BB%8E%E3%80%81%E5%93%A8%E5%85%B5%E3%80%81%E9%9B%86%E7%BE%A4%E6%A8%A1%E5%BC%8F%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">10. 单机、主从、哨兵、集群模式优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#10-1-%E5%8D%95%E6%9C%BA%E6%A8%A1%E5%BC%8F"><span class="toc-text">10.1 单机模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-2-%E4%B8%BB%E4%BB%8E%E6%A8%A1%E5%BC%8F"><span class="toc-text">10.2 主从模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-3-%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F"><span class="toc-text">10.3 哨兵模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-4-%E9%9B%86%E7%BE%A4%E6%A8%A1%E5%BC%8F"><span class="toc-text">10.4 集群模式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-Redis%E4%BA%8B%E7%89%A9%E7%9A%84%E4%BA%86%E8%A7%A3CheckAndSet%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0%E4%B9%90%E8%A7%82%E9%94%81"><span class="toc-text">11. Redis事物的了解CheckAndSet操作实现乐观锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-Redis%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88zset%E5%BA%95%E5%B1%82%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84"><span class="toc-text">12. Redis有序集合zset底层怎么实现的</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#12-1-%E4%B8%BA%E4%BB%80%E4%B9%88Redis%E9%80%89%E6%8B%A9%E4%BD%BF%E7%94%A8%E8%B7%B3%E8%A1%A8%E8%80%8C%E4%B8%8D%E6%98%AF%E7%BA%A2%E9%BB%91%E6%A0%91%E6%9D%A5%E5%AE%9E%E7%8E%B0%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88%EF%BC%9F-O-logN"><span class="toc-text">12.1 为什么Redis选择使用跳表而不是红黑树来实现有序集合？(O(logN))</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-%E8%B7%B3%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E8%BF%87%E7%A8%8B%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E7%9A%84%EF%BC%8C%E6%9F%A5%E8%AF%A2%E5%92%8C%E6%8F%92%E5%85%A5%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">13. 跳表的查询过程是怎么样的，查询和插入的时间复杂度</span></a></li></ol></li>
     </ul>
   </div>
 

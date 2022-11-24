@@ -10,28 +10,30 @@
   <meta name="google-site-verification" content="7_aCpLDu0s7bOCrqbIhiPhkHrFGEKMhTyXB5-my2L4g" />
 
   
-  <title>标签: 系统设计与架构 | 可可西里-博客</title>
+  <title>Docker、k8s面试题 | 可可西里-博客</title>
 
   <link rel="shortcut icon" href="/images/favicon.png">
   <link rel="alternate" href="/atom.xml" title="可可西里-博客" type="application/atom+xml">
-  <meta name="description" content="可可西里-博客-描述">
-<meta property="og:type" content="website">
-<meta property="og:title" content="可可西里-博客">
-<meta property="og:url" content="https://huajun-chen.github.io/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%B6%E6%9E%84/index.html">
+  <meta name="description" content="参考链接：点击跳转 阿里云开发者社区链接：点击跳转">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker、k8s面试题">
+<meta property="og:url" content="https://huajun-chen.github.io/2022/11/24/Docker%E3%80%81k8s%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
 <meta property="og:site_name" content="可可西里-博客">
-<meta property="og:description" content="可可西里-博客-描述">
+<meta property="og:description" content="参考链接：点击跳转 阿里云开发者社区链接：点击跳转">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-24T10:10:56.000Z">
+<meta property="article:modified_time" content="2022-11-24T10:18:26.068Z">
 <meta property="article:author" content="可可西里">
-<meta property="article:tag" content="可可西里-博客-关键词">
+<meta property="article:tag" content="云原生">
 <meta name="twitter:card" content="summary">
 
-  <meta name="keywords" content="可可西里-博客-关键词">
+  <meta name="keywords" content=",云原生">
   <meta name="format-detection" content="telephone=no,email=no">
   <meta name="theme-color" content="#9C27B0">
 
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="可可西里-博客">
-  <meta name="msapplication-starturl" content="https://huajun-chen.github.io/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%B6%E6%9E%84/">
+  <meta name="msapplication-starturl" content="https://huajun-chen.github.io/2022/11/24/Docker%E3%80%81k8s%E9%9D%A2%E8%AF%95%E9%A2%98/">
   <meta name="msapplication-navbutton-color" content="#9C27B0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="可可西里-博客">
@@ -39,7 +41,7 @@
   <link rel="apple-touch-icon" href="/images/favicon.png">
 
   
-    <link rel="canonical" href="https://huajun-chen.github.io/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%B6%E6%9E%84/index.html">
+    <link rel="canonical" href="https://huajun-chen.github.io/2022/11/24/Docker%E3%80%81k8s%E9%9D%A2%E8%AF%95%E9%A2%98/">
   
 
   
@@ -177,46 +179,102 @@
 </aside>
 
   <main id="main" class="mdui-m-t-5 fadeIn animated">
+  
+<link rel="stylesheet" href="//cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
 
-
-
-  <div class="mdui-chip mdui-m-b-3">
-    <span class="mdui-chip-icon mdui-color-theme-accent"><i class="mdui-icon material-icons">place</i></span>
-    <span class="mdui-chip-title">标签：系统设计与架构</span>
-  </div>
-
-
-  <article class="mdui-card mdui-m-b-5 mdui-hoverable">
-    <a href="/2022/11/01/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%B6%E6%9E%84/">
-      <header class="mdui-card-media mdui-ripple">
-        <img src="/images/random/material-6.png" style="max-height: 240px;">
-        <div class="mdui-card-media-covered">
-          <div class="mdui-card-primary">
-            <div class="mdui-card-primary-title">系统设计与架构</div>
-            <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2022-11-01 / <i class="iconfont">&#xe601;</i> 可可西里</div>
-          </div>
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/images/random/material-18.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">Docker、k8s面试题</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2022-11-24 / <i class="iconfont">&#xe601;</i> 可可西里</div>
         </div>
+      </div>
+      <div class="mdui-card-menu">
+<!--        -->
+<!--          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#qrcode', align: 'right'}"><i class="mdui-icon material-icons">devices</i></button>-->
+<!--          <ul class="mdui-menu" id="qrcode">-->
+<!--            -->
+<!--              <li class="mdui-menu-item"><a class="mdui-text-center mdui-ripple">发送到手机</a></li>-->
+<!--            -->
+<!--            <li class="mdui-menu-item" disabled>-->
+<!--              -->
+<!--                <img src="//qr.liantu.com/api.php?w=246&m=10&text=https://huajun-chen.github.io/2022/11/24/Docker%E3%80%81k8s%E9%9D%A2%E8%AF%95%E9%A2%98/">-->
+<!--              -->
+<!--            </li>-->
+<!--          </ul>-->
+<!--        -->
         
-      </header>
-    </a>
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="https://service.weibo.com/share/share.php?appkey=&title=Docker、k8s面试题&url=https://huajun-chen.github.io/2022/11/24/Docker%E3%80%81k8s%E9%9D%A2%E8%AF%95%E9%A2%98/&pic=https://huajun-chen.github.io/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=Docker、k8s面试题&url=https://huajun-chen.github.io/2022/11/24/Docker%E3%80%81k8s%E9%9D%A2%E8%AF%95%E9%A2%98/&via=可可西里" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://huajun-chen.github.io/2022/11/24/Docker%E3%80%81k8s%E9%9D%A2%E8%AF%95%E9%A2%98/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=https://huajun-chen.github.io/2022/11/24/Docker%E3%80%81k8s%E9%9D%A2%E8%AF%95%E9%A2%98/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://huajun-chen.github.io/2022/11/24/Docker%E3%80%81k8s%E9%9D%A2%E8%AF%95%E9%A2%98/&title=Docker、k8s面试题" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://connect.qq.com/widget/shareqq/index.html?site=可可西里-博客&title=Docker、k8s面试题&pics=https://huajun-chen.github.io/images/favicon.png&url=https://huajun-chen.github.io/2022/11/24/Docker%E3%80%81k8s%E9%9D%A2%E8%AF%95%E9%A2%98/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=https://huajun-chen.github.io/2022/11/24/Docker%E3%80%81k8s%E9%9D%A2%E8%AF%95%E9%A2%98/&text=Docker、k8s面试题" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
     <div class="mdui-card-content mdui-typo">
+      <p>参考链接：<a target="_blank" rel="noopener" href="https://dockone.io/article/2434304">点击跳转</a></p>
+<p>阿里云开发者社区链接：<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/873550">点击跳转</a></p>
+<hr>
+
       
-        系统设计与架构常见题整理
-GitHub地址：……
-      
-    </div>
-    <div class="mdui-text-center">
-      <a href="/2022/11/01/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%B6%E6%9E%84/" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple">阅读全文</a>
+      <blockquote>
+        
+        <strong>本文链接：</strong><br><a href="https://huajun-chen.github.io/2022/11/24/Docker%E3%80%81k8s%E9%9D%A2%E8%AF%95%E9%A2%98/">https://huajun-chen.github.io/2022/11/24/Docker、k8s面试题/</a>
+      </blockquote>
     </div>
     <footer class="mdui-card-actions">
       
         <a class="mdui-ripple article_categories-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a>
       
       
-        <a class="mdui-ripple article_tags-link" href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%B6%E6%9E%84/" rel="tag">系统设计与架构</a>
+        <a class="mdui-ripple article_tags-link" href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/" rel="tag">云原生</a>
       
     </footer>
+    
   </article>
+  
+<script src="//cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+  <nav id="paginator">
+    
+    <div class="spacer"></div>
+    
+      <a rel="next" class="extend next" href="/2022/11/24/Go-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+        <span class="mdui-p-x-3" mdui-tooltip="{content: 'Go-设计模式'}">下一篇</span>
+        <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
+      </a>
+    
+  </nav>
+
+
 
 
 

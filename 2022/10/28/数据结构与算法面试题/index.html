@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://i.bmp.ovh/imgs/2022/06/21/736001c2f7e7a333.png">
 <meta property="og:image" content="https://i.bmp.ovh/imgs/2022/06/22/f79a7d99292db85e.png">
 <meta property="article:published_time" content="2022-10-28T12:29:11.000Z">
-<meta property="article:modified_time" content="2022-11-25T03:15:00.026Z">
+<meta property="article:modified_time" content="2022-11-25T08:33:10.512Z">
 <meta property="article:author" content="可可西里">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
@@ -192,7 +192,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-10.png" style="max-height: 240px;">
+      <img src="/images/random/material-3.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">数据结构与算法面试题</div>
@@ -420,7 +420,7 @@
 </ul>
 <p><strong>思路：</strong></p>
 <p>方法一：模拟<br>思路与算法</p>
-<p>本题我们只需要对两个大整数模拟「竖式加法」的过程。竖式加法就是我们平常学习生活中常用的对两个整数相加的方法，回想一下我们在纸上对两个整数相加的操作，是不是如下图将相同数位对齐，从低到高逐位相加，如果当前位和超过 1010，则向高位进一位？因此我们只要将这个过程用代码写出来即可</p>
+<p>本题我们只需要对两个大整数模拟「竖式加法」的过程。竖式加法就是我们平常学习生活中常用的对两个整数相加的方法，回想一下我们在纸上对两个整数相加的操作，是不是如下图将相同数位对齐，从低到高逐位相加，如果当前位和超过 10，则向高位进一位？因此我们只要将这个过程用代码写出来即可</p>
 <p>具体实现也不复杂，我们定义两个指针 i 和 j 分别指向 num1  和 num 2 的末尾，即最低位，同时定义一个变量 add 维护当前是否有进位，然后从末尾到开头逐位相加即可。你可能会想两个数字位数不同怎么处理，这里我们统一在指针当前下标处于负数的时候返回 0，等价于对位数较短的数字进行了补零操作，这样就可以除去两个数字位数不同情况的处理，具体可以看下面的代码</p>
 <div align="center"><img src="https://i.bmp.ovh/imgs/2022/06/21/83dd1b48338dee5d.png" style="zoom:50%;" /></div>
 

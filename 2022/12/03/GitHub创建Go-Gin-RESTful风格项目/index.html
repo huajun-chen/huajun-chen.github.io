@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+<!--  <meta name="baidu-site-verification" content="code-ofAqabWYEE" />-->
+  <meta name="google-site-verification" content="7_aCpLDu0s7bOCrqbIhiPhkHrFGEKMhTyXB5-my2L4g" />
+
+  
+  <title>GitHub + Go + Gin创建RESTful风格的项目 | 可可西里-博客</title>
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="alternate" href="/atom.xml" title="可可西里-博客" type="application/atom+xml">
+  <meta name="description" content="通过GitHub + Go + Gin创建RESTful风格的项目，搭建一个基础的脚手架 完整项目GitHub地址：点击跳转 1. GutHub New打开GitHub，进入首页，点击New开始创建新项目  2. 创建项目点击New之后，填写项目名、项目描述，填写完项目名之后，后面会显示此项目名是否可用，&amp;#10003;为可用，&amp;#10005;为不可用，其他选项默认即可，然后点击C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GitHub + Go + Gin创建RESTful风格的项目">
+<meta property="og:url" content="https://huajun-chen.github.io/2022/12/03/GitHub%E5%88%9B%E5%BB%BAGo-Gin-RESTful%E9%A3%8E%E6%A0%BC%E9%A1%B9%E7%9B%AE/index.html">
+<meta property="og:site_name" content="可可西里-博客">
+<meta property="og:description" content="通过GitHub + Go + Gin创建RESTful风格的项目，搭建一个基础的脚手架 完整项目GitHub地址：点击跳转 1. GutHub New打开GitHub，进入首页，点击New开始创建新项目  2. 创建项目点击New之后，填写项目名、项目描述，填写完项目名之后，后面会显示此项目名是否可用，&amp;#10003;为可用，&amp;#10005;为不可用，其他选项默认即可，然后点击C">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h8qkp3xulaj328016g4qp.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h8qky746qaj3280160ndf.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h8ql0g1krlj328016gauw.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h8ql7fxamdj30ua0v2qlc.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h8qlextrflj31ik13kwnl.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h8qlkroqh3j32801cgn9j.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h8qlpgvihqj32801cg1kx.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h8qly589jgj32801ce1f4.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h8qlxcsj7bj30pc09040d.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h8qm74jjgtj31880sw791.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h8qmdi8artj32801cih82.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h8qn4b53z1j328016gdy4.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h8qn5bc2u0j328016g7ma.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h8qn67pkhaj328016i1ew.jpg">
+<meta property="article:published_time" content="2022-12-03T05:40:30.000Z">
+<meta property="article:modified_time" content="2022-12-03T08:02:21.460Z">
+<meta property="article:author" content="可可西里">
+<meta property="article:tag" content="Go">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h8qkp3xulaj328016g4qp.jpg">
+
+  <meta name="keywords" content=",Go">
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="theme-color" content="#9C27B0">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="可可西里-博客">
+  <meta name="msapplication-starturl" content="https://huajun-chen.github.io/2022/12/03/GitHub%E5%88%9B%E5%BB%BAGo-Gin-RESTful%E9%A3%8E%E6%A0%BC%E9%A1%B9%E7%9B%AE/">
+  <meta name="msapplication-navbutton-color" content="#9C27B0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="可可西里-博客">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
+
+  
+    <link rel="canonical" href="https://huajun-chen.github.io/2022/12/03/GitHub%E5%88%9B%E5%BB%BAGo-Gin-RESTful%E9%A3%8E%E6%A0%BC%E9%A1%B9%E7%9B%AE/">
+  
+
+  
+  
+
+  
+  
+  
+
+  
+<link rel="stylesheet" href="/css/mdui.css">
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/custom.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="mdui-appbar-with-toolbar mdui-theme-primary-grey mdui-theme-accent-deep-purple">
+  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <script>if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <script>var a=localStorage.getItem("mdui-drawer-close");if(!a){document.getElementsByTagName("body")[0].className+=" mdui-drawer-body-left"};</script>
+  <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
+  <div class="mdui-toolbar mdui-color-theme">
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
+    <a href="/" class="mdui-typo-headline">可可西里-博客</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons">search</i></a>
+    <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
+<!--      <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}" style="margin-right: 0px"><i class="mdui-icon material-icons" style="cursor:pointer">brightness_4</i></a>-->
+      <a href="javascript:;" class="mdui-btn mdui-btn-icon" style="margin-right: 0px"><i class="mdui-icon material-icons" style="cursor:pointer">brightness_4</i></a>
+      <div style="margin-left: 0px;cursor:pointer">长按切换</div>
+  </div>
+</header>
+<div class="mdui-dialog" id="search">
+  
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="请输入关键字"><input type="hidden" name="sitesearch" value="https://huajun-chen.github.io"></form>
+    <div class="search-result"></div>
+  
+</div>
+
+  <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
+  <script>var a=localStorage.getItem("mdui-drawer-close");if(a){document.getElementById("sidebar").className+=" mdui-drawer-close"};</script>
+  <div class="mdui-grid-tile">
+    <img src="/images/banner.png" style="height: 160px;">
+    <img src="/images/avatar.png" class="avatar-animation" style="position: absolute; top: 10%; left: 24px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
+    <div class="mdui-grid-tile-actions">
+      <div class="mdui-grid-tile-text">
+        <div class="mdui-grid-tile-title">可可西里</div>
+<!--        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i>好好吃饭 好好睡觉 好好上班</div>-->
+        <div class="mdui-grid-tile-subtitle">好好吃饭 好好睡觉 好好上班</div>
+      </div>
+      
+        <div class="mdui-grid-tile-buttons">
+          <a href="mailto:hellowuhan@protonmail.com" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'hellowuhan@protonmail.com'}"><i class="mdui-icon material-icons">email</i></a>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    <a href="/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
+      <div class="mdui-list-item-content">主页</div>
+    </a>
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-0");if(a){document.getElementsByClassName("mdui-collapse-item")[0].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">archive</i>
+        <div class="mdui-list-item-content">归档</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/archives/2022/12/">十二月 2022<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2022/11/">十一月 2022<span class="mdui-ripple sidebar_archives-count">22</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2022/10/">十月 2022<span class="mdui-ripple sidebar_archives-count">10</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-1");if(a){document.getElementsByClassName("mdui-collapse-item")[1].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">class</i>
+        <div class="mdui-list-item-content">分类</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/categories/%E5%8A%A0%E5%AF%86/">加密<span class="mdui-ripple sidebar_archives-count">3</span></a><a class="mdui-ripple sidebar_archives-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试<span class="mdui-ripple sidebar_archives-count">12</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-2");if(a){document.getElementsByClassName("mdui-collapse-item")[2].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-brown">bookmark</i>
+        <div class="mdui-list-item-content">标签</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/tags/ES/" rel="tag">ES<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Go/" rel="tag">Go<span class="mdui-ripple sidebar_archives-count">5</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Kafka/" rel="tag">Kafka<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Linux/" rel="tag">Linux<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/MySQL/" rel="tag">MySQL<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Redis/" rel="tag">Redis<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/" rel="tag">云原生<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%B6%E6%9E%84/" rel="tag">系统设计与架构<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <a href="/about" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
+      <div class="mdui-list-item-content">关于</div>
+    </a>
+  </div>
+
+  <div class="mdui-divider"></div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    
+      <a href="/timeline" class="mdui-list-item mdui-ripple">时间轴</a>
+    
+      <a href="/tagcloud" class="mdui-list-item mdui-ripple">标签云</a>
+    
+      <a href="/gallery" class="mdui-list-item mdui-ripple">相册</a>
+    
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-3");if(a){document.getElementsByClassName("mdui-collapse-item")[3].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <div class="mdui-list-item-content">友情链接</div>
+        <i class="mdui-list-item-icon mdui-icon material-icons">link</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        
+          <a href="javascript:;" class="mdui-list-item mdui-p-l-2 mdui-text-color-theme mdui-ripple" style="justify-content: center;">链接为空</a>
+        
+      </div>
+    </div>
+  </div>
+</aside>
+
+  <main id="main" class="mdui-m-t-5 fadeIn animated">
+  
+<link rel="stylesheet" href="//cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/images/random/material-12.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">GitHub + Go + Gin创建RESTful风格的项目</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2022-12-03 / <i class="iconfont">&#xe601;</i> 可可西里</div>
+        </div>
+      </div>
+      <div class="mdui-card-menu">
+<!--        -->
+<!--          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#qrcode', align: 'right'}"><i class="mdui-icon material-icons">devices</i></button>-->
+<!--          <ul class="mdui-menu" id="qrcode">-->
+<!--            -->
+<!--              <li class="mdui-menu-item"><a class="mdui-text-center mdui-ripple">发送到手机</a></li>-->
+<!--            -->
+<!--            <li class="mdui-menu-item" disabled>-->
+<!--              -->
+<!--                <img src="//qr.liantu.com/api.php?w=246&m=10&text=https://huajun-chen.github.io/2022/12/03/GitHub%E5%88%9B%E5%BB%BAGo-Gin-RESTful%E9%A3%8E%E6%A0%BC%E9%A1%B9%E7%9B%AE/">-->
+<!--              -->
+<!--            </li>-->
+<!--          </ul>-->
+<!--        -->
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="https://service.weibo.com/share/share.php?appkey=&title=GitHub + Go + Gin创建RESTful风格的项目&url=https://huajun-chen.github.io/2022/12/03/GitHub%E5%88%9B%E5%BB%BAGo-Gin-RESTful%E9%A3%8E%E6%A0%BC%E9%A1%B9%E7%9B%AE/&pic=https://huajun-chen.github.io/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=GitHub + Go + Gin创建RESTful风格的项目&url=https://huajun-chen.github.io/2022/12/03/GitHub%E5%88%9B%E5%BB%BAGo-Gin-RESTful%E9%A3%8E%E6%A0%BC%E9%A1%B9%E7%9B%AE/&via=可可西里" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://huajun-chen.github.io/2022/12/03/GitHub%E5%88%9B%E5%BB%BAGo-Gin-RESTful%E9%A3%8E%E6%A0%BC%E9%A1%B9%E7%9B%AE/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=https://huajun-chen.github.io/2022/12/03/GitHub%E5%88%9B%E5%BB%BAGo-Gin-RESTful%E9%A3%8E%E6%A0%BC%E9%A1%B9%E7%9B%AE/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://huajun-chen.github.io/2022/12/03/GitHub%E5%88%9B%E5%BB%BAGo-Gin-RESTful%E9%A3%8E%E6%A0%BC%E9%A1%B9%E7%9B%AE/&title=GitHub + Go + Gin创建RESTful风格的项目" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://connect.qq.com/widget/shareqq/index.html?site=可可西里-博客&title=GitHub + Go + Gin创建RESTful风格的项目&pics=https://huajun-chen.github.io/images/favicon.png&url=https://huajun-chen.github.io/2022/12/03/GitHub%E5%88%9B%E5%BB%BAGo-Gin-RESTful%E9%A3%8E%E6%A0%BC%E9%A1%B9%E7%9B%AE/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=https://huajun-chen.github.io/2022/12/03/GitHub%E5%88%9B%E5%BB%BAGo-Gin-RESTful%E9%A3%8E%E6%A0%BC%E9%A1%B9%E7%9B%AE/&text=GitHub + Go + Gin创建RESTful风格的项目" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
+    <div class="mdui-card-content mdui-typo">
+      <p>通过GitHub + Go + Gin创建RESTful风格的项目，搭建一个基础的脚手架</p>
+<p>完整项目GitHub地址：<a target="_blank" rel="noopener" href="https://github.com/huajun-chen/GinRESTful">点击跳转</a></p>
+<h4 id="1-GutHub-New"><a href="#1-GutHub-New" class="headerlink" title="1. GutHub New"></a><font color=DarkOrange>1. GutHub New</font></h4><p>打开GitHub，进入首页，点击<code>New</code>开始创建新项目</p>
+<p><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h8qkp3xulaj328016g4qp.jpg" alt="image.png"></p>
+<h4 id="2-创建项目"><a href="#2-创建项目" class="headerlink" title="2. 创建项目"></a><font color=DarkOrange>2. 创建项目</font></h4><p>点击<code>New</code>之后，填写项目名、项目描述，填写完项目名之后，后面会显示此项目名是否可用，&amp;#10003;为可用，&amp;#10005;为不可用，其他选项默认即可，然后点击<code>Create repository</code>按钮创建项目</p>
+<p><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h8qky746qaj3280160ndf.jpg" alt="image.png"></p>
+<h4 id="3-创建成功"><a href="#3-创建成功" class="headerlink" title="3. 创建成功"></a><font color=DarkOrange>3. 创建成功</font></h4><p>创建项目成功之后页面会跳转，在此页面复制项目地址</p>
+<p><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h8ql0g1krlj328016gauw.jpg" alt="image.png"></p>
+<h4 id="4-克隆项目"><a href="#4-克隆项目" class="headerlink" title="4. 克隆项目"></a><font color=DarkOrange>4. 克隆项目</font></h4><p>在本地电脑，进行需要存放项目的目录下，将项目克隆到本地，并且在本地新建<code>dev</code>开发分支</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> 项目地址 // 克隆项目</span><br><span class="line"><span class="built_in">cd</span> 项目名 // 进行项目目录</span><br><span class="line">git checkout -b 分支名 // 新建分支并切换到此分支</span><br></pre></td></tr></table></figure>
+
+<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h8ql7fxamdj30ua0v2qlc.jpg" alt="image.png" style="zoom:50%;" /></div>
+
+<h4 id="5-打开项目"><a href="#5-打开项目" class="headerlink" title="5. 打开项目"></a><font color=DarkOrange>5. 打开项目</font></h4><p>使用本地<code>IDE</code>打开项目（这里以<code>Goland IDE</code>演示），在项目里添加<code>GOPROXY</code></p>
+<p>路径：<code>Goland</code>-&gt;<code>Preferences...</code>-&gt;<code>Go</code>-&gt;<code>Go Modules</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GOPROXY=https://goproxy.cn</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h8qlextrflj31ik13kwnl.jpg" alt="image.png"></p>
+<h4 id="6-创建go-mod"><a href="#6-创建go-mod" class="headerlink" title="6. 创建go mod"></a><font color=DarkOrange>6. 创建go mod</font></h4><p>在编译器里，打开终端，在终端通过命令的方式创建<code>go mod</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod init 项目名</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h8qlkroqh3j32801cgn9j.jpg" alt="image.png"></p>
+<h4 id="7-安装Gin"><a href="#7-安装Gin" class="headerlink" title="7. 安装Gin"></a><font color=DarkOrange>7. 安装Gin</font></h4><p>在终端通过命令的方式下载并安装<code>Gin</code>包</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get -u github.com/gin-gonic/gin</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h8qlpgvihqj32801cg1kx.jpg" alt="image.png"></p>
+<h4 id="8-main程序"><a href="#8-main程序" class="headerlink" title="8. main程序"></a><font color=DarkOrange>8. main程序</font></h4><p>新建<code>main.go</code>文件，在<code>main</code>文件里编写第一个<code>Gin</code>示例</p>
+<p>在<code>main</code>文件所在的目录下执行<code>go run main.go</code>运行<code>main</code>函数</p>
+<p><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h8qly589jgj32801ce1f4.jpg" alt="image.png"></p>
+<h4 id="9-浏览器访问"><a href="#9-浏览器访问" class="headerlink" title="9. 浏览器访问"></a><font color=DarkOrange>9. 浏览器访问</font></h4><p>在浏览器通过访问<code>localhost:8080/ping</code>或<code>127.0.0.1:8080/ping</code>的方式访问服务</p>
+<div align="center"><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h8qlxcsj7bj30pc09040d.jpg" alt="image.png" style="zoom:67%;" /></div>
+
+<h4 id="10-添加文件"><a href="#10-添加文件" class="headerlink" title="10. 添加文件"></a><font color=DarkOrange>10. 添加文件</font></h4><p>在项目里添加<code>.gitignore</code>和<code>README.md</code>文件</p>
+<p><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h8qm74jjgtj31880sw791.jpg" alt="image.png"></p>
+<h4 id="11-提交代码"><a href="#11-提交代码" class="headerlink" title="11. 提交代码"></a><font color=DarkOrange>11. 提交代码</font></h4><p>编写代码之后，在本地进行代码提交</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line">git add 文件名</span><br><span class="line">git commit -m <span class="string">&quot;本次提交描述&quot;</span></span><br><span class="line">git push origin dev</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h8qmdi8artj32801cih82.jpg" alt="image.png"></p>
+<h4 id="12-合并代码"><a href="#12-合并代码" class="headerlink" title="12. 合并代码"></a><font color=DarkOrange>12. 合并代码</font></h4><p>代码从本地提交到远程仓库之后，需要在远程仓库对代码进行合并</p>
+<p><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h8qn4b53z1j328016gdy4.jpg" alt="image.png"></p>
+<p><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h8qn5bc2u0j328016g7ma.jpg" alt="image.png"></p>
+<p><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h8qn67pkhaj328016i1ew.jpg" alt="image.png"></p>
+<p>此项目会继续更新，敬请期待…</p>
+<hr>
+
+      
+      <blockquote>
+        
+        <strong>本文链接：</strong><br><a href="https://huajun-chen.github.io/2022/12/03/GitHub%E5%88%9B%E5%BB%BAGo-Gin-RESTful%E9%A3%8E%E6%A0%BC%E9%A1%B9%E7%9B%AE/">https://huajun-chen.github.io/2022/12/03/GitHub创建Go-Gin-RESTful风格项目/</a>
+      </blockquote>
+    </div>
+    <footer class="mdui-card-actions">
+      
+        <a class="mdui-ripple article_categories-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+      
+      
+        <a class="mdui-ripple article_tags-link" href="/tags/Go/" rel="tag">Go</a>
+      
+    </footer>
+    
+  </article>
+  
+<script src="//cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+  <nav id="paginator">
+    
+    <div class="spacer"></div>
+    
+      <a rel="next" class="extend next" href="/2022/11/24/Docker%E3%80%81k8s%E9%9D%A2%E8%AF%95%E9%A2%98/">
+        <span class="mdui-p-x-3" mdui-tooltip="{content: 'Docker、k8s面试题'}">下一篇</span>
+        <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
+      </a>
+    
+  </nav>
+
+
+
+
+  <div style="position: fixed !important; left: 240px; top: 30%;">
+    <button class="mdui-fab mdui-fab-mini mdui-ripple" mdui-menu="{target: '#toc'}"><i class="mdui-icon material-icons">toc</i></button>
+    <ul class="mdui-menu" id="toc">
+      <li class="mdui-menu-item" disabled><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-GutHub-New"><span class="toc-text">1. GutHub New</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-text">2. 创建项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BA%E6%88%90%E5%8A%9F"><span class="toc-text">3. 创建成功</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%85%8B%E9%9A%86%E9%A1%B9%E7%9B%AE"><span class="toc-text">4. 克隆项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E6%89%93%E5%BC%80%E9%A1%B9%E7%9B%AE"><span class="toc-text">5. 打开项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%88%9B%E5%BB%BAgo-mod"><span class="toc-text">6. 创建go mod</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E5%AE%89%E8%A3%85Gin"><span class="toc-text">7. 安装Gin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-main%E7%A8%8B%E5%BA%8F"><span class="toc-text">8. main程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BF%E9%97%AE"><span class="toc-text">9. 浏览器访问</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6"><span class="toc-text">10. 添加文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81"><span class="toc-text">11. 提交代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-%E5%90%88%E5%B9%B6%E4%BB%A3%E7%A0%81"><span class="toc-text">12. 合并代码</span></a></li></ol></li>
+    </ul>
+  </div>
+
+
+</main>
+  <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
+  <div class="mdui-p-y-0 mdui-text-center">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+  <div class="mdui-p-y-1 mdui-text-center">
+    Copyright &copy; 2022 可可西里<br>
+    Powered by <a href="https://hexo.io/" target="_blank" class="mdui-text-color-theme-accent">Hexo</a>
+    
+  </div>
+</footer>
+
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_upward</i></button>
+  
+  
+<script src="/js/mdui.js"></script>
+<script src="/js/script.js"></script>
+
+  
+<script src="/custom.js"></script>
+
+</body>
+</html>

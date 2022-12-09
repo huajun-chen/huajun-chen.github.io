@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+<!--  <meta name="baidu-site-verification" content="code-ofAqabWYEE" />-->
+  <meta name="google-site-verification" content="7_aCpLDu0s7bOCrqbIhiPhkHrFGEKMhTyXB5-my2L4g" />
+
+  
+  <title>Go语言使用Validator进行参数校验 | 可可西里-博客</title>
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="alternate" href="/atom.xml" title="可可西里-博客" type="application/atom+xml">
+  <meta name="description" content="Validator包是一个用于验证数据的库。它可以帮助您确保输入数据符合您的预期格式，以避免在应用程序中出现错误。它可以验证数据类型、字符串格式、数字范围等内容。例如，您可以使用它来验证用户提供的电子邮件地址是否有效，或者确保输入的年龄在合法范围内 Validator包地址：点击跳转 1. 安装使用首先，需要安装Validator包。可以使用以下命令安装： 1go get -u gopkg.in&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go语言使用Validator进行参数校验">
+<meta property="og:url" content="https://huajun-chen.github.io/2022/12/08/Go%E8%AF%AD%E8%A8%80%E4%BD%BF%E7%94%A8Validator%E8%BF%9B%E8%A1%8C%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/index.html">
+<meta property="og:site_name" content="可可西里-博客">
+<meta property="og:description" content="Validator包是一个用于验证数据的库。它可以帮助您确保输入数据符合您的预期格式，以避免在应用程序中出现错误。它可以验证数据类型、字符串格式、数字范围等内容。例如，您可以使用它来验证用户提供的电子邮件地址是否有效，或者确保输入的年龄在合法范围内 Validator包地址：点击跳转 1. 安装使用首先，需要安装Validator包。可以使用以下命令安装： 1go get -u gopkg.in&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-08T09:43:18.000Z">
+<meta property="article:modified_time" content="2022-12-09T11:03:25.601Z">
+<meta property="article:author" content="可可西里">
+<meta property="article:tag" content="Go">
+<meta name="twitter:card" content="summary">
+
+  <meta name="keywords" content=",Go">
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="theme-color" content="#9C27B0">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="可可西里-博客">
+  <meta name="msapplication-starturl" content="https://huajun-chen.github.io/2022/12/08/Go%E8%AF%AD%E8%A8%80%E4%BD%BF%E7%94%A8Validator%E8%BF%9B%E8%A1%8C%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/">
+  <meta name="msapplication-navbutton-color" content="#9C27B0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="可可西里-博客">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
+
+  
+    <link rel="canonical" href="https://huajun-chen.github.io/2022/12/08/Go%E8%AF%AD%E8%A8%80%E4%BD%BF%E7%94%A8Validator%E8%BF%9B%E8%A1%8C%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/">
+  
+
+  
+  
+
+  
+  
+  
+
+  
+<link rel="stylesheet" href="/css/mdui.css">
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/custom.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="mdui-appbar-with-toolbar mdui-theme-primary-grey mdui-theme-accent-deep-purple">
+  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <script>if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <script>var a=localStorage.getItem("mdui-drawer-close");if(!a){document.getElementsByTagName("body")[0].className+=" mdui-drawer-body-left"};</script>
+  <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
+  <div class="mdui-toolbar mdui-color-theme">
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
+    <a href="/" class="mdui-typo-headline">可可西里-博客</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons">search</i></a>
+    <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
+<!--      <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}" style="margin-right: 0px"><i class="mdui-icon material-icons" style="cursor:pointer">brightness_4</i></a>-->
+      <a href="javascript:;" class="mdui-btn mdui-btn-icon" style="margin-right: 0px"><i class="mdui-icon material-icons" style="cursor:pointer">brightness_4</i></a>
+      <div style="margin-left: 0px;cursor:pointer">长按切换</div>
+  </div>
+</header>
+<div class="mdui-dialog" id="search">
+  
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="请输入关键字"><input type="hidden" name="sitesearch" value="https://huajun-chen.github.io"></form>
+    <div class="search-result"></div>
+  
+</div>
+
+  <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
+  <script>var a=localStorage.getItem("mdui-drawer-close");if(a){document.getElementById("sidebar").className+=" mdui-drawer-close"};</script>
+  <div class="mdui-grid-tile">
+    <img src="/images/banner.png" style="height: 160px;">
+    <img src="/images/avatar.png" class="avatar-animation" style="position: absolute; top: 10%; left: 24px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
+    <div class="mdui-grid-tile-actions">
+      <div class="mdui-grid-tile-text">
+        <div class="mdui-grid-tile-title">可可西里</div>
+<!--        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i>好好吃饭 好好睡觉 好好上班</div>-->
+        <div class="mdui-grid-tile-subtitle">好好吃饭 好好睡觉 好好上班</div>
+      </div>
+      
+        <div class="mdui-grid-tile-buttons">
+          <a href="mailto:hellowuhan@protonmail.com" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'hellowuhan@protonmail.com'}"><i class="mdui-icon material-icons">email</i></a>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    <a href="/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
+      <div class="mdui-list-item-content">主页</div>
+    </a>
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-0");if(a){document.getElementsByClassName("mdui-collapse-item")[0].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">archive</i>
+        <div class="mdui-list-item-content">归档</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/archives/2022/12/">十二月 2022<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2022/11/">十一月 2022<span class="mdui-ripple sidebar_archives-count">22</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2022/10/">十月 2022<span class="mdui-ripple sidebar_archives-count">10</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-1");if(a){document.getElementsByClassName("mdui-collapse-item")[1].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">class</i>
+        <div class="mdui-list-item-content">分类</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/categories/%E5%8A%A0%E5%AF%86/">加密<span class="mdui-ripple sidebar_archives-count">3</span></a><a class="mdui-ripple sidebar_archives-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端<span class="mdui-ripple sidebar_archives-count">19</span></a><a class="mdui-ripple sidebar_archives-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试<span class="mdui-ripple sidebar_archives-count">12</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-2");if(a){document.getElementsByClassName("mdui-collapse-item")[2].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-brown">bookmark</i>
+        <div class="mdui-list-item-content">标签</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/tags/ES/" rel="tag">ES<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Go/" rel="tag">Go<span class="mdui-ripple sidebar_archives-count">6</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Kafka/" rel="tag">Kafka<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Linux/" rel="tag">Linux<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/MySQL/" rel="tag">MySQL<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Redis/" rel="tag">Redis<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/" rel="tag">云原生<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%B6%E6%9E%84/" rel="tag">系统设计与架构<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <a href="/about" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
+      <div class="mdui-list-item-content">关于</div>
+    </a>
+  </div>
+
+  <div class="mdui-divider"></div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    
+      <a href="/timeline" class="mdui-list-item mdui-ripple">时间轴</a>
+    
+      <a href="/tagcloud" class="mdui-list-item mdui-ripple">标签云</a>
+    
+      <a href="/gallery" class="mdui-list-item mdui-ripple">相册</a>
+    
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-3");if(a){document.getElementsByClassName("mdui-collapse-item")[3].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <div class="mdui-list-item-content">友情链接</div>
+        <i class="mdui-list-item-icon mdui-icon material-icons">link</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        
+          <a href="javascript:;" class="mdui-list-item mdui-p-l-2 mdui-text-color-theme mdui-ripple" style="justify-content: center;">链接为空</a>
+        
+      </div>
+    </div>
+  </div>
+</aside>
+
+  <main id="main" class="mdui-m-t-5 fadeIn animated">
+  
+<link rel="stylesheet" href="//cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/images/random/material-15.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">Go语言使用Validator进行参数校验</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2022-12-08 / <i class="iconfont">&#xe601;</i> 可可西里</div>
+        </div>
+      </div>
+      <div class="mdui-card-menu">
+<!--        -->
+<!--          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#qrcode', align: 'right'}"><i class="mdui-icon material-icons">devices</i></button>-->
+<!--          <ul class="mdui-menu" id="qrcode">-->
+<!--            -->
+<!--              <li class="mdui-menu-item"><a class="mdui-text-center mdui-ripple">发送到手机</a></li>-->
+<!--            -->
+<!--            <li class="mdui-menu-item" disabled>-->
+<!--              -->
+<!--                <img src="//qr.liantu.com/api.php?w=246&m=10&text=https://huajun-chen.github.io/2022/12/08/Go%E8%AF%AD%E8%A8%80%E4%BD%BF%E7%94%A8Validator%E8%BF%9B%E8%A1%8C%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/">-->
+<!--              -->
+<!--            </li>-->
+<!--          </ul>-->
+<!--        -->
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="https://service.weibo.com/share/share.php?appkey=&title=Go语言使用Validator进行参数校验&url=https://huajun-chen.github.io/2022/12/08/Go%E8%AF%AD%E8%A8%80%E4%BD%BF%E7%94%A8Validator%E8%BF%9B%E8%A1%8C%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/&pic=https://huajun-chen.github.io/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=Go语言使用Validator进行参数校验&url=https://huajun-chen.github.io/2022/12/08/Go%E8%AF%AD%E8%A8%80%E4%BD%BF%E7%94%A8Validator%E8%BF%9B%E8%A1%8C%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/&via=可可西里" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://huajun-chen.github.io/2022/12/08/Go%E8%AF%AD%E8%A8%80%E4%BD%BF%E7%94%A8Validator%E8%BF%9B%E8%A1%8C%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=https://huajun-chen.github.io/2022/12/08/Go%E8%AF%AD%E8%A8%80%E4%BD%BF%E7%94%A8Validator%E8%BF%9B%E8%A1%8C%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://huajun-chen.github.io/2022/12/08/Go%E8%AF%AD%E8%A8%80%E4%BD%BF%E7%94%A8Validator%E8%BF%9B%E8%A1%8C%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/&title=Go语言使用Validator进行参数校验" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://connect.qq.com/widget/shareqq/index.html?site=可可西里-博客&title=Go语言使用Validator进行参数校验&pics=https://huajun-chen.github.io/images/favicon.png&url=https://huajun-chen.github.io/2022/12/08/Go%E8%AF%AD%E8%A8%80%E4%BD%BF%E7%94%A8Validator%E8%BF%9B%E8%A1%8C%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=https://huajun-chen.github.io/2022/12/08/Go%E8%AF%AD%E8%A8%80%E4%BD%BF%E7%94%A8Validator%E8%BF%9B%E8%A1%8C%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/&text=Go语言使用Validator进行参数校验" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
+    <div class="mdui-card-content mdui-typo">
+      <p>Validator包是一个用于验证数据的库。它可以帮助您确保输入数据符合您的预期格式，以避免在应用程序中出现错误。它可以验证数据类型、字符串格式、数字范围等内容。例如，您可以使用它来验证用户提供的电子邮件地址是否有效，或者确保输入的年龄在合法范围内</p>
+<p>Validator包地址：<a target="_blank" rel="noopener" href="https://pkg.go.dev/github.com/go-playground/validator/v10">点击跳转</a></p>
+<h4 id="1-安装使用"><a href="#1-安装使用" class="headerlink" title="1. 安装使用"></a><font color=DarkOrange>1. 安装使用</font></h4><p>首先，需要安装Validator包。可以使用以下命令安装：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">go</span> get -u gopkg.in/<span class="keyword">go</span>-playground/validator.v10</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，在代码中引入validator包：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;gopkg.in/go-playground/validator.v10&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-简单示例"><a href="#2-简单示例" class="headerlink" title="2. 简单示例"></a><font color=DarkOrange>2. 简单示例</font></h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;gopkg.in/go-playground/validator.v10&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span> <span class="string">`validate:&quot;required&quot;`</span></span><br><span class="line">    Age  <span class="type">int</span>    <span class="string">`validate:&quot;gte=0,lte=130&quot;`</span></span><br><span class="line">    Email <span class="type">string</span> <span class="string">`validate:&quot;required,email&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    user := &amp;User&#123;</span><br><span class="line">        Name: <span class="string">&quot;John Doe&quot;</span>,</span><br><span class="line">        Age:  <span class="number">40</span>,</span><br><span class="line">        Email: <span class="string">&quot;john.doe@example.com&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    validate := validator.New()</span><br><span class="line"></span><br><span class="line">    err := validate.Struct(user)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="comment">// 参数校验失败，输出错误信息</span></span><br><span class="line">        fmt.Println(err)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的例子中，我们定义了一个User结构体，用于表示用户信息。结构体字段上使用了validate标签，用于指定字段的约束条件。在上面的例子中，Name字段被设置为必填，Age字段的值必须大于等于0且小于等于130，Email字段的值必须是一个有效的邮件地址</p>
+<p>在主函数中，我们实例化了一个User对象，并将其传入Validator的Struct方法中。Validator会对结构体中的每个字段进行校验，如果某个字段不符合约束条件，则会返回错误信息</p>
+<p>除了使用结构体的方式进行校验之外，Validator还提供了各种其他验证函数，可以用来验证单个字段。例如，下面是一个验证字符串长度的示例：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> err := validate.Var(user.Name, <span class="string">&quot;required,min=3,max=100&quot;</span>); err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">// 字符串长度不符合要求</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-操作符"><a href="#3-操作符" class="headerlink" title="3. 操作符"></a><font color=DarkOrange>3. 操作符</font></h4><table>
+<thead>
+<tr>
+<th>标记</th>
+<th>标记说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>,</td>
+<td>分割多个操作符，多个操作符之间使用,进行分割</td>
+</tr>
+<tr>
+<td>|</td>
+<td>或操作；使用多个约束，只需要满足其中一个，例如：rgb|rgba</td>
+</tr>
+<tr>
+<td>-</td>
+<td>跳过该字段验证，不检验</td>
+</tr>
+</tbody></table>
+<h4 id="4-常用标记"><a href="#4-常用标记" class="headerlink" title="4. 常用标记"></a><font color=DarkOrange>4. 常用标记</font></h4><p><strong>在定义结构体时使用<code>binding</code>或<code>validate</code>标识相关校验规则</strong></p>
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>标记说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>required</td>
+<td>必填</td>
+<td>Field或Struct <code>validate:&quot;required&quot;</code></td>
+</tr>
+<tr>
+<td>omitempty</td>
+<td>空时忽略</td>
+<td>Field或Struct <code>validate:&quot;omitempty&quot;</code></td>
+</tr>
+<tr>
+<td>len</td>
+<td>长度</td>
+<td>Field <code>validate:&quot;len=0&quot;</code></td>
+</tr>
+<tr>
+<td>eq</td>
+<td>等于</td>
+<td>Field <code>validate:&quot;eq=0&quot;</code></td>
+</tr>
+<tr>
+<td>gt</td>
+<td>大于</td>
+<td>Field <code>validate:&quot;gt=0&quot;</code></td>
+</tr>
+<tr>
+<td>gte</td>
+<td>大于等于</td>
+<td>Field <code>validate:&quot;gte=0&quot;</code></td>
+</tr>
+<tr>
+<td>lt</td>
+<td>小于</td>
+<td>Field <code>validate:&quot;lt=0&quot;</code></td>
+</tr>
+<tr>
+<td>lte</td>
+<td>小于等于</td>
+<td>Field <code>validate:&quot;lte=0&quot;</code></td>
+</tr>
+<tr>
+<td>eqfield</td>
+<td>同一结构体字段相等</td>
+<td>Field <code>validate:&quot;eqfield=Field2&quot;</code></td>
+</tr>
+<tr>
+<td>nefield</td>
+<td>同一结构体字段不相等</td>
+<td>Field <code>validate:&quot;nefield=Field2&quot;</code></td>
+</tr>
+<tr>
+<td>gtfield</td>
+<td>大于同一结构体字段</td>
+<td>Field <code>validate:&quot;gtfield=Field2&quot;</code></td>
+</tr>
+<tr>
+<td>gtefield</td>
+<td>大于等于同一结构体字段</td>
+<td>Field <code>validate:&quot;gtefield=Field2&quot;</code></td>
+</tr>
+<tr>
+<td>ltfield</td>
+<td>小于同一结构体字段</td>
+<td>Field <code>validate:&quot;ltfield=Field2&quot;</code></td>
+</tr>
+<tr>
+<td>ltefield</td>
+<td>小于等于同一结构体字段</td>
+<td>Field <code>validate:&quot;ltefield=Field2&quot;</code></td>
+</tr>
+<tr>
+<td>eqcsfield</td>
+<td>跨不同结构体字段相等</td>
+<td>Struct1.Field <code>validate:&quot;eqcsfield=Struct2.Field2&quot;</code></td>
+</tr>
+<tr>
+<td>necsfield</td>
+<td>跨不同结构体字段不相等</td>
+<td>Struct1.Field <code>validate:&quot;necsfield=Struct2.Field2&quot;</code></td>
+</tr>
+<tr>
+<td>gtcsfield</td>
+<td>大于跨不同结构体字段</td>
+<td>Struct1.Field <code>validate:&quot;gtcsfield=Struct2.Field2&quot;</code></td>
+</tr>
+<tr>
+<td>gtecsfield</td>
+<td>大于等于跨不同结构体字段</td>
+<td>Struct1.Field <code>validate:&quot;gtecsfield=Struct2.Field2&quot;</code></td>
+</tr>
+<tr>
+<td>ltcsfield</td>
+<td>小于跨不同结构体字段</td>
+<td>Struct1.Field <code>validate:&quot;ltcsfield=Struct2.Field2&quot;</code></td>
+</tr>
+<tr>
+<td>ltecsfield</td>
+<td>小于等于跨不同结构体字段</td>
+<td>Struct1.Field <code>validate:&quot;ltecsfield=Struct2.Field2&quot;</code></td>
+</tr>
+<tr>
+<td>min</td>
+<td>最大值</td>
+<td>Field <code>validate:&quot;min=1&quot;</code></td>
+</tr>
+<tr>
+<td>max</td>
+<td>最小值</td>
+<td>Field <code>validate:&quot;max=2&quot;</code></td>
+</tr>
+<tr>
+<td>structonly</td>
+<td>仅验证结构体，不验证任何结构体字段</td>
+<td>Struct <code>validate:&quot;structonly&quot;</code></td>
+</tr>
+<tr>
+<td>nostructlevel</td>
+<td>不运行任何结构级别的验证</td>
+<td>Struct <code>validate:&quot;nostructlevel&quot;</code></td>
+</tr>
+<tr>
+<td>dive</td>
+<td>向下延伸验证，多层向下需要多个dive标记</td>
+<td>[][]string <code>validate:&quot;gt=0,dive,len=1,dive,required&quot;</code></td>
+</tr>
+<tr>
+<td>dive Keys &amp; EndKeys</td>
+<td>与dive同时使用，用于对map对象的键的和值的验证，keys为键，endkeys为值</td>
+<td>map[string]string <code>validate:&quot;gt=0,dive,keys,eq=1|eq=2,endkeys,required&quot;</code></td>
+</tr>
+<tr>
+<td>required_with</td>
+<td>其他字段其中一个不为空且当前字段不为空</td>
+<td>Field <code>validate:&quot;required_with=Field1 Field2&quot;</code></td>
+</tr>
+<tr>
+<td>required_with_all</td>
+<td>其他所有字段不为空且当前字段不为空</td>
+<td>Field <code>validate:&quot;required_with_all=Field1 Field2&quot;</code></td>
+</tr>
+<tr>
+<td>required_without</td>
+<td>其他字段其中一个为空且当前字段不为空</td>
+<td>Field &#96;validate:”required_without&#x3D;Field1 Field2”</td>
+</tr>
+<tr>
+<td>required_without_all</td>
+<td>其他所有字段为空且当前字段不为空</td>
+<td>Field <code>validate:&quot;required_without_all=Field1 Field2&quot;</code></td>
+</tr>
+<tr>
+<td>isdefault</td>
+<td>是默认值</td>
+<td>Field <code>validate:&quot;isdefault=0&quot;</code></td>
+</tr>
+<tr>
+<td>oneof</td>
+<td>其中之一</td>
+<td>Field <code>validate:&quot;oneof=5 7 9&quot;</code></td>
+</tr>
+<tr>
+<td>containsfield</td>
+<td>字段包含另一个字段</td>
+<td>Field <code>validate:&quot;containsfield=Field2&quot;</code></td>
+</tr>
+<tr>
+<td>excludesfield</td>
+<td>字段不包含另一个字段</td>
+<td>Field <code>validate:&quot;excludesfield=Field2&quot;</code></td>
+</tr>
+<tr>
+<td>unique</td>
+<td>是否唯一，通常用于切片或结构体</td>
+<td>Field <code>validate:&quot;unique&quot;</code></td>
+</tr>
+<tr>
+<td>alphanum</td>
+<td>字符串值是否只包含 ASCII 字母数字字符</td>
+<td>Field <code>validate:&quot;alphanum&quot;</code></td>
+</tr>
+<tr>
+<td>alphaunicode</td>
+<td>字符串值是否只包含 unicode 字符</td>
+<td>Field <code>validate:&quot;alphaunicode&quot;</code></td>
+</tr>
+<tr>
+<td>alphanumunicode</td>
+<td>字符串值是否只包含 unicode 字母数字字符</td>
+<td>Field <code>validate:&quot;alphanumunicode&quot;</code></td>
+</tr>
+<tr>
+<td>numeric</td>
+<td>字符串值是否包含基本的数值</td>
+<td>Field <code>validate:&quot;numeric&quot;</code></td>
+</tr>
+<tr>
+<td>hexadecimal</td>
+<td>字符串值是否包含有效的十六进制</td>
+<td>Field <code>validate:&quot;hexadecimal&quot;</code></td>
+</tr>
+<tr>
+<td>hexcolor</td>
+<td>字符串值是否包含有效的十六进制颜色</td>
+<td>Field <code>validate:&quot;hexcolor&quot;</code></td>
+</tr>
+<tr>
+<td>lowercase</td>
+<td>符串值是否只包含小写字符</td>
+<td>Field <code>validate:&quot;lowercase&quot;</code></td>
+</tr>
+<tr>
+<td>uppercase</td>
+<td>符串值是否只包含大写字符</td>
+<td>Field <code>validate:&quot;uppercase&quot;</code></td>
+</tr>
+<tr>
+<td>email</td>
+<td>字符串值包含一个有效的电子邮件</td>
+<td>Field <code>validate:&quot;email&quot;</code></td>
+</tr>
+<tr>
+<td>json</td>
+<td>字符串值是否为有效的 JSON</td>
+<td>Field <code>validate:&quot;json&quot;</code></td>
+</tr>
+<tr>
+<td>file</td>
+<td>符串值是否包含有效的文件路径，以及该文件是否存在于计算机上</td>
+<td>Field <code>validate:&quot;file&quot;</code></td>
+</tr>
+<tr>
+<td>url</td>
+<td>符串值是否包含有效的 url</td>
+<td>Field <code>validate:&quot;url&quot;</code></td>
+</tr>
+<tr>
+<td>uri</td>
+<td>符串值是否包含有效的 uri</td>
+<td>Field <code>validate:&quot;uri&quot;</code></td>
+</tr>
+<tr>
+<td>base64</td>
+<td>字符串值是否包含有效的 base64值</td>
+<td>Field <code>validate:&quot;base64&quot;</code></td>
+</tr>
+<tr>
+<td>contains</td>
+<td>字符串值包含子字符串值</td>
+<td>Field <code>validate:&quot;contains=@&quot;</code></td>
+</tr>
+<tr>
+<td>containsany</td>
+<td>字符串值包含子字符串值中的任何字符</td>
+<td>Field <code>validate:&quot;containsany=abc&quot;</code></td>
+</tr>
+<tr>
+<td>containsrune</td>
+<td>字符串值包含提供的特殊符号值</td>
+<td>Field <code>validate:&quot;containsrune=☢&quot;</code></td>
+</tr>
+<tr>
+<td>excludes</td>
+<td>字符串值不包含子字符串值</td>
+<td>Field <code>validate:&quot;excludes=@&quot;</code></td>
+</tr>
+<tr>
+<td>excludesall</td>
+<td>字符串值不包含任何子字符串值</td>
+<td>Field <code>validate:&quot;excludesall=abc&quot;</code></td>
+</tr>
+<tr>
+<td>excludesrune</td>
+<td>字符串值不包含提供的特殊符号值</td>
+<td>Field <code>validate:&quot;containsrune=☢&quot;</code></td>
+</tr>
+<tr>
+<td>startswith</td>
+<td>字符串以提供的字符串值开始</td>
+<td>Field <code>validate:&quot;startswith=abc&quot;</code></td>
+</tr>
+<tr>
+<td>endswith</td>
+<td>字符串以提供的字符串值结束</td>
+<td>Field <code>validate:&quot;endswith=abc&quot;</code></td>
+</tr>
+<tr>
+<td>ip</td>
+<td>字符串值是否包含有效的 IP 地址</td>
+<td>Field <code>validate:&quot;ip&quot;</code></td>
+</tr>
+<tr>
+<td>ipv4</td>
+<td>字符串值是否包含有效的 ipv4地址</td>
+<td>Field <code>validate:&quot;ipv4&quot;</code></td>
+</tr>
+<tr>
+<td>datetime</td>
+<td>字符串值是否包含有效的 日期</td>
+<td>Field <code>validate:&quot;datetime&quot;</code></td>
+</tr>
+</tbody></table>
+<h4 id="5-使用注意"><a href="#5-使用注意" class="headerlink" title="5. 使用注意"></a><font color=DarkOrange>5. 使用注意</font></h4><p>当搜索条件与特殊标记冲突时,如：逗号（,），或操作（|），中横线（-）等则需要使用 UTF-8十六进制表示形式</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Test <span class="keyword">struct</span> &#123;</span><br><span class="line">	Field1 <span class="type">string</span> <span class="string">`validate:&quot;excludesall=|&quot;`</span>    <span class="comment">// 错误</span></span><br><span class="line">	Field2 <span class="type">string</span> <span class="string">`validate:&quot;excludesall=0x7C&quot;`</span> <span class="comment">// 正确</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+
+      
+      <blockquote>
+        
+        <strong>本文链接：</strong><br><a href="https://huajun-chen.github.io/2022/12/08/Go%E8%AF%AD%E8%A8%80%E4%BD%BF%E7%94%A8Validator%E8%BF%9B%E8%A1%8C%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/">https://huajun-chen.github.io/2022/12/08/Go语言使用Validator进行参数校验/</a>
+      </blockquote>
+    </div>
+    <footer class="mdui-card-actions">
+      
+        <a class="mdui-ripple article_categories-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+      
+      
+        <a class="mdui-ripple article_tags-link" href="/tags/Go/" rel="tag">Go</a>
+      
+    </footer>
+    
+  </article>
+  
+<script src="//cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+  <nav id="paginator">
+    
+    <div class="spacer"></div>
+    
+      <a rel="next" class="extend next" href="/2022/12/03/GitHub%E5%88%9B%E5%BB%BAGo-Gin-RESTful%E9%A3%8E%E6%A0%BC%E9%A1%B9%E7%9B%AE/">
+        <span class="mdui-p-x-3" mdui-tooltip="{content: 'GitHub + Go + Gin创建RESTful风格的项目'}">下一篇</span>
+        <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
+      </a>
+    
+  </nav>
+
+
+
+
+  <div style="position: fixed !important; left: 240px; top: 30%;">
+    <button class="mdui-fab mdui-fab-mini mdui-ripple" mdui-menu="{target: '#toc'}"><i class="mdui-icon material-icons">toc</i></button>
+    <ul class="mdui-menu" id="toc">
+      <li class="mdui-menu-item" disabled><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8"><span class="toc-text">1. 安装使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B"><span class="toc-text">2. 简单示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-text">3. 操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%B8%B8%E7%94%A8%E6%A0%87%E8%AE%B0"><span class="toc-text">4. 常用标记</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F"><span class="toc-text">5. 使用注意</span></a></li></ol></li>
+    </ul>
+  </div>
+
+
+</main>
+  <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
+  <div class="mdui-p-y-0 mdui-text-center">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+  <div class="mdui-p-y-1 mdui-text-center">
+    Copyright &copy; 2022 可可西里<br>
+    Powered by <a href="https://hexo.io/" target="_blank" class="mdui-text-color-theme-accent">Hexo</a>
+    
+  </div>
+</footer>
+
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_upward</i></button>
+  
+  
+<script src="/js/mdui.js"></script>
+<script src="/js/script.js"></script>
+
+  
+<script src="/custom.js"></script>
+
+</body>
+</html>

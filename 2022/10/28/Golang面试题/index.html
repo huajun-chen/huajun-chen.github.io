@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h7nojprq3uj30ns0kgdi9.jpg">
 <meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h82o60shgaj312i0x2wn7.jpg">
 <meta property="article:published_time" content="2022-10-28T00:24:34.000Z">
-<meta property="article:modified_time" content="2022-11-24T08:55:09.068Z">
+<meta property="article:modified_time" content="2023-02-21T06:54:24.053Z">
 <meta property="article:author" content="可可西里">
 <meta property="article:tag" content="Go">
 <meta name="twitter:card" content="summary">
@@ -190,7 +190,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-4.png" style="max-height: 240px;">
+      <img src="/images/random/material-13.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">Go-面试题</div>
@@ -635,7 +635,14 @@
 <li>Context的Value相关方法应该传递必须的数据，不要什么数据都使用这个传递</li>
 <li>Context是线程安全的，可以放心的在多个goroutine中传递</li>
 </ul>
-<h4 id="32-Go中对nil的Slice和空Slice的处理是一致的吗"><a href="#32-Go中对nil的Slice和空Slice的处理是一致的吗" class="headerlink" title="32. Go中对nil的Slice和空Slice的处理是一致的吗"></a><font color=DarkOrange>32. Go中对nil的Slice和空Slice的处理是一致的吗</font></h4><p>首先Go的JSON 标准库对 <code>nil slice</code> 和 空 <code>slice</code> 的处理是不一致</p>
+<h4 id="32-Go中对nil的Slice和空Slice的处理是一致的吗"><a href="#32-Go中对nil的Slice和空Slice的处理是一致的吗" class="headerlink" title="32. Go中对nil的Slice和空Slice的处理是一致的吗"></a><font color=DarkOrange>32. Go中对nil的Slice和空Slice的处理是一致的吗</font></h4><p>在Go中，<code>nil slice</code>和<code>空 slice</code>是有区别的</p>
+<ul>
+<li><code>nil slice</code>是一个指向<code>nil</code>的指针，它没有分配任何内存空间</li>
+<li><code>空 slice</code>是一个长度为0的切片，它指向一块已经分配的内存空间</li>
+</ul>
+<p>在对 <code>nil slice</code>执行任何操作之前，必须将其初始化为空切片，否则会出现空指针异常。而对于<code>空 slice</code>，可以直接进行操作而不会出现异常</p>
+<hr>
+<p>Go的JSON 标准库对 <code>nil slice</code> 和 <code>空 slice</code> 的处理是不一致</p>
 <p>通常错误的用法，会报数组越界的错误，因为只是声明了slice，却没有给实例化的对象。nil的slice定义如下：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> slice []<span class="type">int</span></span><br></pre></td></tr></table></figure>
 

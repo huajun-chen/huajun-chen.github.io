@@ -14,18 +14,18 @@
 
   <link rel="shortcut icon" href="/images/favicon.png">
   <link rel="alternate" href="/atom.xml" title="可可西里-博客" type="application/atom+xml">
-  <meta name="description" content="Go常见面试题分享，涵盖了常见的Go面试八股文 1. 无缓冲Chan的发送和接收是否同步12ch :&#x3D; make(chan int)    无缓冲的channel由于没有缓冲发送和接收需要同步ch :&#x3D; make(chan int, 2) 有缓冲channel不要求发送和接收操作同步   channel无缓冲时，发送阻塞直到数据被接收，接收阻塞直到读到数据 channel有缓冲时，当缓冲满时发送阻">
+  <meta name="description" content="Go常见面试题分享，涵盖了常见的Go面试八股文 Go语言特点 Go语言是一种开源的编程语言，由Google开发，主要用于编写高效、可维护的系统软件。以下是Go语言的一些特性：  并发编程：Go语言天生支持并发编程，内置goroutine（协程）和channel（通道）机制，简化了并发编程的实现 内存管理：Go语言自带的垃圾回收机制可以自动管理内存，减少了程序员的负担，提高了代码的健壮性和可靠性 语">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go-面试题">
 <meta property="og:url" content="https://huajun-chen.github.io/2022/10/28/Golang%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
 <meta property="og:site_name" content="可可西里-博客">
-<meta property="og:description" content="Go常见面试题分享，涵盖了常见的Go面试八股文 1. 无缓冲Chan的发送和接收是否同步12ch :&#x3D; make(chan int)    无缓冲的channel由于没有缓冲发送和接收需要同步ch :&#x3D; make(chan int, 2) 有缓冲channel不要求发送和接收操作同步   channel无缓冲时，发送阻塞直到数据被接收，接收阻塞直到读到数据 channel有缓冲时，当缓冲满时发送阻">
+<meta property="og:description" content="Go常见面试题分享，涵盖了常见的Go面试八股文 Go语言特点 Go语言是一种开源的编程语言，由Google开发，主要用于编写高效、可维护的系统软件。以下是Go语言的一些特性：  并发编程：Go语言天生支持并发编程，内置goroutine（协程）和channel（通道）机制，简化了并发编程的实现 内存管理：Go语言自带的垃圾回收机制可以自动管理内存，减少了程序员的负担，提高了代码的健壮性和可靠性 语">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h7no7xmdcgj313c0b0jtt.jpg">
 <meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h7nojprq3uj30ns0kgdi9.jpg">
 <meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h82o60shgaj312i0x2wn7.jpg">
 <meta property="article:published_time" content="2022-10-28T00:24:34.000Z">
-<meta property="article:modified_time" content="2023-02-21T06:54:24.053Z">
+<meta property="article:modified_time" content="2023-03-06T08:16:45.453Z">
 <meta property="article:author" content="可可西里">
 <meta property="article:tag" content="Go">
 <meta name="twitter:card" content="summary">
@@ -190,7 +190,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-4.png" style="max-height: 240px;">
+      <img src="/images/random/material-3.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">Go-面试题</div>
@@ -241,6 +241,18 @@
     </header>
     <div class="mdui-card-content mdui-typo">
       <p>Go常见面试题分享，涵盖了常见的Go面试八股文</p>
+<p><font color=DarkOrange>Go语言特点</font></p>
+<p>Go语言是一种开源的编程语言，由Google开发，主要用于编写高效、可维护的系统软件。以下是Go语言的一些特性：</p>
+<ol>
+<li>并发编程：Go语言天生支持并发编程，内置goroutine（协程）和channel（通道）机制，简化了并发编程的实现</li>
+<li>内存管理：Go语言自带的垃圾回收机制可以自动管理内存，减少了程序员的负担，提高了代码的健壮性和可靠性</li>
+<li>语法简洁：Go语言的语法简洁明了，支持面向对象和函数式编程风格，使得代码易读易写</li>
+<li>高效编译：Go语言编译速度快，可生成可执行文件，可以在不同的平台上轻松地交叉编译</li>
+<li>强类型语言：Go语言是一种强类型语言，可以在编译时检查类型错误，避免了一些常见的程序错误</li>
+<li>标准库丰富：Go语言的标准库提供了丰富的API，包括网络编程、文件操作、加密、并发等方面，使得开发者可以更快地实现功能。</li>
+<li>可靠性：Go语言的设计注重可靠性和健壮性，可以有效地避免空指针和数组越界等常见的编程错误</li>
+</ol>
+<p>总的来说，Go语言具有简洁、高效、并发、可靠等特性，适合用于编写高性能的服务器端、分布式系统和网络应用等</p>
 <h4 id="1-无缓冲Chan的发送和接收是否同步"><a href="#1-无缓冲Chan的发送和接收是否同步" class="headerlink" title="1. 无缓冲Chan的发送和接收是否同步"></a><font color=DarkOrange>1. 无缓冲Chan的发送和接收是否同步</font></h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ch := make(chan int)    无缓冲的channel由于没有缓冲发送和接收需要同步</span><br><span class="line">ch := make(chan int, 2) 有缓冲channel不要求发送和接收操作同步</span><br></pre></td></tr></table></figure>
 
 <ul>

@@ -360,6 +360,13 @@
   </url>
   
   <url>
+    <loc>https://huajun-chen.github.io/tags/ES/</loc>
+    <lastmod>2023-03-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://huajun-chen.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2023-03-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -368,13 +375,6 @@
   
   <url>
     <loc>https://huajun-chen.github.io/tags/Go/</loc>
-    <lastmod>2023-03-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://huajun-chen.github.io/tags/ES/</loc>
     <lastmod>2023-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -402,14 +402,14 @@
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/tags/Redis/</loc>
+    <loc>https://huajun-chen.github.io/tags/MySQL/</loc>
     <lastmod>2023-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/tags/MySQL/</loc>
+    <loc>https://huajun-chen.github.io/tags/Redis/</loc>
     <lastmod>2023-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

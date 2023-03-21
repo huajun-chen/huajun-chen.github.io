@@ -22,7 +22,7 @@
 <meta property="og:description" content="常见Docker、K8S、etcd面试题整理  1. 什么是Docker Docker是一种开源的容器化平台 它允许开发者在容器中打包、部署和运行应用程序 Docker容器是一种轻量级、可移植的虚拟化技术 Docker平台的优点是它可以将应用程序及其所有依赖项打包成一个轻量级的容器 这些容器可以在任何地方运行，无需对底层系统进行修改 Docker容器提供了一种更加简单和高效的方式来管理应用程序的生">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-11-24T10:10:56.000Z">
-<meta property="article:modified_time" content="2023-03-21T16:09:11.920Z">
+<meta property="article:modified_time" content="2023-03-21T16:12:07.829Z">
 <meta property="article:author" content="可可西里">
 <meta property="article:tag" content="云原生">
 <meta name="twitter:card" content="summary">
@@ -186,7 +186,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-7.png" style="max-height: 240px;">
+      <img src="/images/random/material-5.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">Docker、k8s、etcd面试题</div>
@@ -763,11 +763,11 @@
 <p>在实现watch机制时，etcd利用了其内部的事件循环机制。当客户端注册watcher对象时，etcd会将其加入到内部的事件循环队列中。当etcd服务器上的数据发生变化时，etcd会将变化事件加入到事件循环队列中，然后依次处理队列中的事件，并将变化通知给相应的watcher对象</p>
 <p><strong>注意：</strong>etcd的watch机制并不是完全实时的，因为etcd需要处理多个客户端的watch请求，因此存在一定的延迟。同时，etcd还会使用心跳机制来保证watcher对象的健康状态，如果watcher对象出现故障，etcd会将其从事件循环队列中移除，避免对etcd服务器的性能造成影响</p>
 <h4 id="47-如何通过etcd实现配置中心"><a href="#47-如何通过etcd实现配置中心" class="headerlink" title="47. 如何通过etcd实现配置中心"></a><font color=DarkOrange>47. 如何通过etcd实现配置中心</font></h4><ol>
-<li>使用etcd的watch机制 etcd提供了watch机制，可以监控etcd中某个key的变化。可以将配置信息存储在etcd中的某个key下，然后通过watch机制来监控该key的变化，从而实现配置中心的功能</li>
+<li>使用etcd的watch机制 etcd提供了watch机制，可以监控etcd中某个key的变化。可以将配置信息存储在etcd中的某个key下，然后通过watch机制来监控该key的变化</li>
 <li>使用etcd的租约机制 etcd提供了租约机制，可以为某个key设置一个过期时间。可以将配置信息存储在etcd中的某个key下，并为该key设置一个较短的过期时间，然后在应用程序中定时从etcd中读取该key的值</li>
 <li>使用etcd的分布式锁机制 etcd提供了分布式锁机制，可以保证在分布式环境下的互斥访问。可以将配置信息存储在etcd中的某个key下，并使用etcd的分布式锁机制来保证在多个应用程序同时访问该key时的互斥性</li>
 <li>使用etcd的事务机制 etcd提供了事务机制，可以保证多个操作的原子性。可以将配置信息存储在etcd中的多个key下，并使用etcd的事务机制来保证多个操作的原子性</li>
-<li>使用etcd的目录机制 etcd提供了目录机制，可以将多个key组织成一个目录。可以将配置信息存储在etcd中的某个目录下，并使用etcd的目录机制来组织这些key，从而实现配置中心的功能</li>
+<li>使用etcd的目录机制 etcd提供了目录机制，可以将多个key组织成一个目录。可以将配置信息存储在etcd中的某个目录下，并使用etcd的目录机制来组织这些key</li>
 </ol>
 <h4 id="48-etcd在网络分区情况下会发生什么"><a href="#48-etcd在网络分区情况下会发生什么" class="headerlink" title="48. etcd在网络分区情况下会发生什么"></a><font color=DarkOrange>48. etcd在网络分区情况下会发生什么</font></h4><p>在网络分区情况下，即网络被切割成两个或多个部分时，etcd 集群可能会发生以下情况：</p>
 <ol>

@@ -369,6 +369,13 @@
   </url>
   
   <url>
+    <loc>https://huajun-chen.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/</loc>
+    <lastmod>2023-03-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://huajun-chen.github.io/tags/ES/</loc>
     <lastmod>2023-03-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -390,13 +397,6 @@
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/</loc>
-    <lastmod>2023-03-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://huajun-chen.github.io/tags/Kafka/</loc>
     <lastmod>2023-03-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -404,14 +404,14 @@
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/tags/MySQL/</loc>
+    <loc>https://huajun-chen.github.io/tags/Linux/</loc>
     <lastmod>2023-03-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/tags/Linux/</loc>
+    <loc>https://huajun-chen.github.io/tags/MySQL/</loc>
     <lastmod>2023-03-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

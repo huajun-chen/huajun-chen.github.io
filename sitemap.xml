@@ -20,6 +20,15 @@
   </url>
   
   <url>
+    <loc>https://huajun-chen.github.io/2022/10/28/Golang%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
+    
+    <lastmod>2023-03-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://huajun-chen.github.io/2022/11/03/%E8%A1%8C%E4%B8%BA%E9%9D%A2%E8%AF%95/</loc>
     
     <lastmod>2023-03-22</lastmod>
@@ -41,15 +50,6 @@
     <loc>https://huajun-chen.github.io/2023/03/01/Python%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
     
     <lastmod>2023-03-21</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://huajun-chen.github.io/2022/10/28/Golang%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
-    
-    <lastmod>2023-03-20</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -378,6 +378,13 @@
   </url>
   
   <url>
+    <loc>https://huajun-chen.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/</loc>
+    <lastmod>2023-03-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://huajun-chen.github.io/tags/ES/</loc>
     <lastmod>2023-03-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -399,13 +406,6 @@
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/</loc>
-    <lastmod>2023-03-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://huajun-chen.github.io/tags/Linux/</loc>
     <lastmod>2023-03-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -420,7 +420,7 @@
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/tags/Python/</loc>
+    <loc>https://huajun-chen.github.io/tags/MySQL/</loc>
     <lastmod>2023-03-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -434,7 +434,7 @@
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/tags/MySQL/</loc>
+    <loc>https://huajun-chen.github.io/tags/Python/</loc>
     <lastmod>2023-03-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

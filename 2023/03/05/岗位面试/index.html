@@ -22,7 +22,7 @@
 <meta property="og:description" content="与后端有关的不同的岗位要求面试题整理 1. 调度相关1.1 调度系统有哪些，主流调度系统的异同点调度系统是一种可以自动安排和管理任务的软件工具，它可以帮助用户在一组计算机资源上执行任务，并监控这些任务的执行情况，以确保任务按时完成 主流调度系统：  Kubernetes Kubernetes是一个用于容器编排的开源平台，它可以自动化部署、扩展和管理容器化应用程序。Kubernetes使用Pods作">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-05T03:13:45.000Z">
-<meta property="article:modified_time" content="2023-03-22T08:24:11.801Z">
+<meta property="article:modified_time" content="2023-03-23T08:52:24.077Z">
 <meta property="article:author" content="可可西里">
 <meta property="article:tag" content="可可西里-博客-关键词">
 <meta name="twitter:card" content="summary">
@@ -186,7 +186,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-2.png" style="max-height: 240px;">
+      <img src="/images/random/material-6.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">岗位面试</div>
@@ -671,6 +671,161 @@
 </ul>
 </li>
 </ol>
+<h4 id="6-Git相关"><a href="#6-Git相关" class="headerlink" title="6. Git相关"></a><font color=DarkOrange>6. Git相关</font></h4><h5 id="6-1-什么是Git？Git常用命令"><a href="#6-1-什么是Git？Git常用命令" class="headerlink" title="6.1 什么是Git？Git常用命令"></a><font color=DarkOrange>6.1 什么是Git？Git常用命令</font></h5><p>Git是一种分布式版本控制系统，它能够追踪文件的更改历史并帮助团队进行协作开发。Git可以记录每个版本的变化，帮助开发者在项目开发过程中进行更好的版本管理，方便代码的分享、合并和撤销。Git还提供了分支、合并等功能，可以让多个开发者同时进行不同的代码开发，最终合并成一个完整的代码库</p>
+<p>熟练使用Git是非常重要的技能，可以提高代码开发效率、协作效率和代码质量。在日常开发工作中，我们可以使用Git来跟踪文件变化、查看历史记录、创建和合并分支等等。同时，我们还可以使用Git与其他开发者协作，共同开发和维护代码库</p>
+<p><strong>常用命令：</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git init</code></td>
+<td>在当前目录中创建一个新的Git仓库</td>
+</tr>
+<tr>
+<td><code>git clone &lt;url&gt;</code></td>
+<td>克隆一个远程Git仓库到本地</td>
+</tr>
+<tr>
+<td><code>git add &lt;file&gt;</code></td>
+<td>将文件添加到Git仓库的暂存区中</td>
+</tr>
+<tr>
+<td><code>git commit -m &quot;&lt;message&gt;&quot;</code></td>
+<td>提交暂存区中的文件到Git仓库，并添加提交信息</td>
+</tr>
+<tr>
+<td><code>git status</code></td>
+<td>显示当前Git仓库的状态，包括已修改、已暂存和未跟踪的文件</td>
+</tr>
+<tr>
+<td><code>git log</code></td>
+<td>查看Git仓库的提交历史记录</td>
+</tr>
+<tr>
+<td><code>git branch</code></td>
+<td>查看本地分支列表，以及当前所在分支</td>
+</tr>
+<tr>
+<td><code>git checkout &lt;branch&gt;</code></td>
+<td>切换到指定的分支</td>
+</tr>
+<tr>
+<td><code>git merge &lt;branch&gt;</code></td>
+<td>将指定分支的更改合并到当前分支</td>
+</tr>
+<tr>
+<td><code>git pull</code></td>
+<td>从远程Git仓库拉取最新的更改到本地</td>
+</tr>
+<tr>
+<td><code>git push</code></td>
+<td>将本地的更改推送到远程Git仓库</td>
+</tr>
+<tr>
+<td><code>git diff</code></td>
+<td>显示未暂存文件与上次提交之间的差异</td>
+</tr>
+<tr>
+<td><code>git reset &lt;file&gt;</code></td>
+<td>将指定文件从暂存区中移除，但不会删除文件</td>
+</tr>
+<tr>
+<td><code>git rm &lt;file&gt;</code></td>
+<td>从Git仓库中删除指定的文件</td>
+</tr>
+<tr>
+<td><code>git remote -v</code></td>
+<td>显示Git仓库的远程地址列表</td>
+</tr>
+<tr>
+<td><code>git config</code></td>
+<td>配置Git仓库的全局或局部参数，如用户名、邮箱等</td>
+</tr>
+</tbody></table>
+<h5 id="6-2-Git中的分支有哪些类型？请描述它们的特点"><a href="#6-2-Git中的分支有哪些类型？请描述它们的特点" class="headerlink" title="6.2 Git中的分支有哪些类型？请描述它们的特点"></a><font color=DarkOrange>6.2 Git中的分支有哪些类型？请描述它们的特点</font></h5><ol>
+<li>主分支（master branch）：主分支是Git中默认的分支，通常用于发布稳定版本或者生产环境。所有的提交都会基于主分支进行合并，保证代码的稳定性和可靠性</li>
+<li>开发分支（develop branch）：开发分支是主分支的一个副本，通常用于开发新功能或者进行大型的重构。在开发过程中，开发者可以在开发分支上进行自由的提交和修改，最终再将开发分支合并回主分支</li>
+<li>功能分支（feature branch）：功能分支通常用于实现某个具体的功能，比如添加一个新的页面或者修改某个模块的逻辑。功能分支是从开发分支上切出来的，开发者可以在功能分支上自由地进行开发和提交，等到功能开发完成之后再将功能分支合并回开发分支</li>
+<li>发布分支（release branch）：发布分支通常用于准备发布新版本，包括进行测试、修改bug、更新文档等工作。发布分支是从开发分支上切出来的，一旦发布完成之后，发布分支就会被合并回主分支和开发分支</li>
+<li>补丁分支（hotfix branch）：补丁分支通常用于修复已经发布的版本中的紧急bug，它是从主分支上切出来的。一旦修复完成之后，补丁分支会被合并回主分支和开发分支</li>
+</ol>
+<h5 id="6-3-如果想要合并两个分支，应该如何操作？请简要描述一下"><a href="#6-3-如果想要合并两个分支，应该如何操作？请简要描述一下" class="headerlink" title="6.3 如果想要合并两个分支，应该如何操作？请简要描述一下"></a><font color=DarkOrange>6.3 如果想要合并两个分支，应该如何操作？请简要描述一下</font></h5><p>合并两个分支可以使用<code>git merge</code>命令。具体操作步骤如下：</p>
+<ol>
+<li>首先，切换到需要被合并的目标分支上。比如，如果你要将特性分支合并到主分支上，那么你需要先切换到主分支上，使用命令<code>git checkout main</code></li>
+<li>然后，使用<code>git merge</code>命令将需要合并的分支合并到当前分支上。比如，如果你要将特性分支<code>feature-branch</code>合并到主分支上，那么你需要使用命令<code>git merge feature-branch</code></li>
+<li>如果存在冲突，Git会提示你需要手动解决冲突。你可以使用命令<code>git status</code>来查看哪些文件存在冲突，然后手动编辑这些文件，解决冲突</li>
+<li>最后，提交合并的结果。如果没有冲突，Git会自动创建一个新的提交，包含两个分支的修改。如果存在冲突，你需要手动编辑冲突的文件并使用<code>git add</code>命令将修改添加到暂存区，最后使用<code>git commit</code>命令提交合并结果</li>
+</ol>
+<p>合并分支是Git中非常重要的操作，在合并分支的过程中，需要注意避免冲突，保证代码的稳定性和可靠性</p>
+<h5 id="6-4-如果想要撤销已经提交的Git提交记录，应该如何操作？请简要描述一下"><a href="#6-4-如果想要撤销已经提交的Git提交记录，应该如何操作？请简要描述一下" class="headerlink" title="6.4 如果想要撤销已经提交的Git提交记录，应该如何操作？请简要描述一下"></a><font color=DarkOrange>6.4 如果想要撤销已经提交的Git提交记录，应该如何操作？请简要描述一下</font></h5><p>在Git中，如果想要撤销已经提交的提交记录，可以使用<code>git revert</code>或者<code>git reset</code>命令。具体操作步骤如下：</p>
+<ol>
+<li>使用<code>git log</code>命令查看提交记录，找到需要撤销的提交记录的commit ID</li>
+<li>如果想要保留提交记录并创建一个新的提交来撤销该提交记录，可以使用<code>git revert</code>命令。比如，如果要撤销commit ID为<code>abc123</code>的提交记录，可以使用命令<code>git revert abc123</code>，Git会自动创建一个新的提交记录来撤销该提交记录</li>
+<li>如果想要完全删除该提交记录以及其之后的提交记录，可以使用<code>git reset</code>命令。比如，如果要删除commit ID为<code>abc123</code>及其之后的提交记录，可以使用命令<code>git reset abc123</code>，Git会将HEAD指针和当前分支指针都指向该提交记录，从而删除该提交记录及其之后的提交记录。注意，使用<code>git reset</code>命令删除提交记录是一种非常危险的操作，应该谨慎使用</li>
+</ol>
+<p>无论是使用<code>git revert</code>还是<code>git reset</code>命令，都需要注意该操作会改变Git仓库中的历史记录，可能会对其他开发者产生影响，因此需要谨慎操作。建议在进行该操作前先备份代码，并且在团队协作开发中与其他开发者进行充分的沟通和协商</p>
+<h5 id="6-5-Git中的三个工作区是哪些？它们之间的区别是什么"><a href="#6-5-Git中的三个工作区是哪些？它们之间的区别是什么" class="headerlink" title="6.5 Git中的三个工作区是哪些？它们之间的区别是什么"></a><font color=DarkOrange>6.5 Git中的三个工作区是哪些？它们之间的区别是什么</font></h5><ol>
+<li>工作区（working directory）：也称为工作目录，是指Git仓库中存储项目文件的目录，它包含了所有源代码文件、文档、图像等文件。在工作区中进行的所有修改都会被记录在Git中，但还没有被提交</li>
+<li>暂存区（staging area）：也称为索引（index），是介于工作区和版本库之间的一个区域。它是一个临时的区域，用来存储已经被修改的文件，这些修改还没有被提交到版本库中</li>
+<li>版本库（repository）：也称为Git目录，是Git仓库中存储版本历史记录的地方。它包含了所有的提交记录、分支、标签等信息，是Git中最重要的部分。版本库通常包括了一个HEAD指针，指向当前所在的分支和一个对象库，存储了所有的历史版本快照</li>
+</ol>
+<p>这三个工作区之间的主要区别在于它们所存储的内容和作用：</p>
+<ul>
+<li>工作区：存储了未被跟踪的文件和修改的文件，是用户在本地编辑代码的地方</li>
+<li>暂存区：存储了已被修改的文件，这些修改已经被暂时保存起来，准备提交到版本库中</li>
+<li>版本库：存储了所有的历史版本记录，包括了所有的提交记录、分支、标签等信息，是Git中最重要的部分</li>
+</ul>
+<h4 id="7-gRPC相关"><a href="#7-gRPC相关" class="headerlink" title="7. gRPC相关"></a><font color=DarkOrange>7. gRPC相关</font></h4><h5 id="7-1-gRPC是什么？它的工作原理是什么"><a href="#7-1-gRPC是什么？它的工作原理是什么" class="headerlink" title="7.1 gRPC是什么？它的工作原理是什么"></a><font color=DarkOrange>7.1 gRPC是什么？它的工作原理是什么</font></h5><p>gRPC是一种高性能、跨语言的远程过程调用（RPC）框架，由Google开发。它基于协议缓冲区（Protocol Buffers）和HTTP&#x2F;2协议构建，并支持多种语言（如C++, Java, Python, Go等）。gRPC的设计目标是使得客户端可以像本地方法调用一样方便地调用远程服务，同时提供高效的网络传输和序列化机制</p>
+<p>gRPC的工作原理如下：</p>
+<ol>
+<li>定义服务：首先需要定义要提供的服务和接口，这是使用协议缓冲区定义的。这个定义文件包含服务名称、方法名称和参数以及返回值等信息</li>
+<li>生成代码：接下来需要根据定义文件生成客户端和服务端的代码。通过使用gRPC提供的工具，可以生成不同语言的代码，以便在客户端和服务端中使用</li>
+<li>实现服务端：服务端实现具体的业务逻辑。在实现过程中需要继承自动生成的代码中提供的服务接口，并重写接口中的方法</li>
+<li>实现客户端：客户端使用生成的代码中提供的客户端Stub对象，调用远程服务。通过客户端Stub对象调用远程服务时，gRPC将负责将数据序列化并通过HTTP&#x2F;2协议传输给服务端</li>
+<li>序列化和传输数据：gRPC使用协议缓冲区将数据序列化为二进制格式，并使用HTTP&#x2F;2协议传输。HTTP&#x2F;2协议支持流、多路复用和头部压缩等特性，可以有效提高网络传输效率</li>
+<li>处理数据：服务端接收到请求后，将数据反序列化，处理请求并返回响应。服务端通过gRPC提供的Context对象可以访问请求的元数据，如请求的来源地址、身份验证信息等</li>
+<li>返回响应：服务端将处理结果序列化，并使用HTTP&#x2F;2协议返回给客户端。客户端接收到响应后，将数据反序列化，并返回给应用程序</li>
+</ol>
+<h5 id="7-2-gRPC支持哪些序列化协议？请简要描述它们的特点"><a href="#7-2-gRPC支持哪些序列化协议？请简要描述它们的特点" class="headerlink" title="7.2 gRPC支持哪些序列化协议？请简要描述它们的特点"></a><font color=DarkOrange>7.2 gRPC支持哪些序列化协议？请简要描述它们的特点</font></h5><p>gRPC支持使用Google开发的协议缓冲区（Protocol Buffers）进行数据序列化和反序列化。Protocol Buffers是一种高效的二进制序列化协议，具有以下特点：</p>
+<ol>
+<li>紧凑性：Protocol Buffers序列化后的数据非常紧凑，相比XML和JSON等文本协议，可以节省大量的网络带宽和存储空间</li>
+<li>可扩展性：Protocol Buffers支持定义可扩展的消息类型，可以很方便地添加、删除和修改消息的字段，而不会影响现有的消息格式</li>
+<li>语言无关性：Protocol Buffers支持多种编程语言，包括C++, Java, Python, Go等，可以方便地实现跨语言的数据交换</li>
+</ol>
+<p>除了使用Protocol Buffers，gRPC还支持使用JSON进行数据序列化和反序列化。JSON是一种轻量级的文本协议，具有以下特点：</p>
+<ol>
+<li>可读性：JSON序列化后的数据具有可读性，易于调试和理解</li>
+<li>易于使用：JSON在很多编程语言中都有内置的支持，可以很方便地进行编码和解码</li>
+<li>可扩展性：JSON支持嵌套结构，可以很方便地实现复杂的数据模型</li>
+</ol>
+<p><strong>注意：</strong>相比于使用Protocol Buffers，使用JSON进行数据序列化和反序列化会带来一定的性能损失，同时JSON不支持所有的数据类型，因此在选择序列化协议时需要根据实际情况进行权衡</p>
+<h5 id="7-3-gRPC支持哪些负载均衡策略？请简述它们的优点和缺点"><a href="#7-3-gRPC支持哪些负载均衡策略？请简述它们的优点和缺点" class="headerlink" title="7.3 gRPC支持哪些负载均衡策略？请简述它们的优点和缺点"></a><font color=DarkOrange>7.3 gRPC支持哪些负载均衡策略？请简述它们的优点和缺点</font></h5><p>gRPC支持多种负载均衡策略，如轮询（Round Robin）、最少连接（Least Connection）、随机（Random）和一致性哈希（Consistent Hashing）等。每种负载均衡策略都有其优点和缺点，具体如下：</p>
+<ol>
+<li>轮询（Round Robin）：将请求依次分配给每个可用的服务端，循环往复。优点是实现简单，适用于服务数量较少的情况，缺点是当服务的处理能力不均衡时，可能会导致某些服务的负载过高</li>
+<li>最少连接（Least Connection）：将请求分配给当前连接数最少的服务端，以实现负载均衡。优点是可以更加均衡地分配请求，缺点是需要实时监测每个服务端的连接数，实现复杂</li>
+<li>随机（Random）：随机选择一个可用的服务端处理请求。优点是实现简单，适用于服务数量较少的情况，缺点是负载不够均衡，可能会导致某些服务的负载过高</li>
+<li>一致性哈希（Consistent Hashing）：将每个服务端的地址映射到一个哈希环上，并根据请求的哈希值选择一个服务端处理请求。优点是在服务端的动态上下线时，能够保持原有的哈希环不变，避免大量请求被重新路由，缺点是实现相对复杂，需要维护哈希环和哈希函数</li>
+</ol>
+<h5 id="7-4-请解释gRPC中的流式RPC是什么？它们有什么用途"><a href="#7-4-请解释gRPC中的流式RPC是什么？它们有什么用途" class="headerlink" title="7.4 请解释gRPC中的流式RPC是什么？它们有什么用途"></a><font color=DarkOrange>7.4 请解释gRPC中的流式RPC是什么？它们有什么用途</font></h5><p>gRPC中的流式RPC是一种允许客户端和服务器之间建立持久连接并在这些连接上发送多个消息的RPC方式。这种类型的RPC可以分为两种：客户端流式RPC和服务器流式RPC</p>
+<p>在客户端流式RPC中，客户端将多个请求消息发送到服务器，并等待服务器对每个请求进行响应。这种方式适用于客户端需要发送一系列相关数据的情况，例如上传文件或流媒体</p>
+<p>在服务器流式RPC中，服务器将多个响应消息发送到客户端，直到处理完请求或客户端中止连接。这种方式适用于服务器需要处理大量数据的情况，例如实时日志记录或向客户端提供流媒体数据</p>
+<p>流式RPC的优势在于它们可以通过单个持久连接处理大量数据，从而减少网络开销和资源占用，并提高系统性能。此外，流式RPC还允许实现实时或流式应用程序，例如视频流或实时数据分析</p>
+<h5 id="7-5-gRPC提供了哪些安全机制？请简述它们的优点和缺点"><a href="#7-5-gRPC提供了哪些安全机制？请简述它们的优点和缺点" class="headerlink" title="7.5 gRPC提供了哪些安全机制？请简述它们的优点和缺点"></a><font color=DarkOrange>7.5 gRPC提供了哪些安全机制？请简述它们的优点和缺点</font></h5><p>gRPC提供了多种安全机制来保护通信的机密性、完整性和身份验证，其中包括：</p>
+<ol>
+<li>SSL &#x2F; TLS：通过SSL &#x2F; TLS提供端到端的加密和身份验证，防止中间人攻击和数据篡改</li>
+<li>Token-based authentication：基于Token的身份验证机制，允许客户端和服务器之间交换认证和授权信息，以确保只有经过身份验证的用户才能访问受保护的资源</li>
+<li>Access control lists（ACLs）：通过ACLs提供基于角色的授权机制，使得只有拥有特定权限的用户才能访问受保护的资源</li>
+</ol>
+<p>这些安全机制都有其优点和缺点：</p>
+<ol>
+<li>SSL &#x2F; TLS的优点在于它提供了端到端的加密和身份验证，同时具有广泛的浏览器和操作系统支持，但其缺点在于它可能会增加通信延迟，并且需要额外的计算资源</li>
+<li>Token-based身份验证的优点在于它是无状态的，不需要维护会话，同时具有可扩展性和灵活性，但其缺点在于Token可以被截获和重播，从而导致安全漏洞</li>
+<li>ACLs的优点在于它提供了基于角色的授权机制，使得只有特定的用户和组可以访问受保护的资源，同时具有灵活性和可扩展性，但其缺点在于管理ACLs可能会变得复杂和繁琐，尤其是在大型系统中</li>
+</ol>
 <hr>
 
       
@@ -711,7 +866,7 @@
   <div style="position: fixed !important; left: 240px; top: 30%;">
     <button class="mdui-fab mdui-fab-mini mdui-ripple" mdui-menu="{target: '#toc'}"><i class="mdui-icon material-icons">toc</i></button>
     <ul class="mdui-menu" id="toc">
-      <li class="mdui-menu-item" disabled><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%B0%83%E5%BA%A6%E7%9B%B8%E5%85%B3"><span class="toc-text">1. 调度相关</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%8C%E4%B8%BB%E6%B5%81%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BC%82%E5%90%8C%E7%82%B9"><span class="toc-text">1.1 调度系统有哪些，主流调度系统的异同点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-%E8%AF%B7%E8%A7%A3%E9%87%8A%E4%B8%8B%E4%BB%80%E4%B9%88%E6%98%AF%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%EF%BC%8C%E5%B9%B6%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E%E4%B8%80%E4%B8%8B%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">1.2 请解释下什么是任务调度，并举例说明一下任务调度的应用场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E8%B0%83%E5%BA%A6%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7%E5%92%8C%E5%AE%B9%E9%94%99%E6%80%A7"><span class="toc-text">1.3 如何保证调度任务的可靠性和容错性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-4-%E4%BB%80%E4%B9%88%E6%98%AF%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%8C%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E%E4%B8%80%E4%B8%8B%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-text">1.4 什么是调度算法，举例说明一下几种常见的调度算法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-5-%E5%88%86%E5%B8%83%E5%BC%8F%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%92%8C%E5%AE%9E%E7%8E%B0"><span class="toc-text">1.5 分布式调度系统的设计和实现</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AD%98%E5%82%A8%E7%9B%B8%E5%85%B3"><span class="toc-text">2. 存储相关</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%8C%E5%B9%B6%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E%E5%AE%83%E4%BB%AC%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">2.1 数据存储方式有哪些，并举例说明它们的优缺点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E7%A7%8D%E9%AB%98%E6%80%A7%E8%83%BD%E3%80%81%E9%AB%98%E5%8F%AF%E9%9D%A0%E6%80%A7%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F"><span class="toc-text">2.2 如何设计一种高性能、高可靠性的分布式存储系统</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%80%E8%87%B4%E6%80%A7%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%9C%A8%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">2.3 什么是一致性哈希算法，以及在分布式存储系统中的应用场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-%E4%BB%8B%E7%BB%8D%E4%B8%8B%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%92%8C%E5%AE%9E%E7%8E%B0"><span class="toc-text">2.4 介绍下分布式文件系统的设计和实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-5-%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E6%8D%AE%E5%86%97%E4%BD%99%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%9C%A8%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">2.5 什么是数据冗余，以及在存储系统中的应用场景</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%9B%91%E6%8E%A7%E7%9B%B8%E5%85%B3"><span class="toc-text">3. 监控相关</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-%E4%BB%8B%E7%BB%8D%E4%B8%8B%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%92%8C%E5%B8%B8%E8%A7%81%E7%9A%84%E7%9B%91%E6%8E%A7%E6%89%8B%E6%AE%B5"><span class="toc-text">3.1 介绍下系统监控的基本原理和常见的监控手段</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-%E4%BB%80%E4%B9%88%E6%98%AF%E6%8C%87%E6%A0%87%E7%9B%91%E6%8E%A7%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%9C%A8%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">3.2 什么是指标监控，以及在系统监控中的应用场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%B9%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%9B%91%E6%8E%A7%E5%92%8C%E6%95%85%E9%9A%9C%E8%AF%8A%E6%96%AD"><span class="toc-text">3.3 如何实现对分布式系统的监控和故障诊断</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-4-%E4%BB%80%E4%B9%88%E6%98%AF%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%9C%A8%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">3.4 什么是日志监控，以及在系统监控中的应用场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-5-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E5%8F%AF%E6%89%A9%E5%B1%95%E7%9A%84%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F"><span class="toc-text">3.5 如何设计一个可扩展的监控系统</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%97%A5%E5%BF%97%E7%9B%B8%E5%85%B3"><span class="toc-text">4. 日志相关</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-%E5%B8%B8%E8%A7%81%E7%9A%84%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95%E6%96%B9%E5%BC%8F%EF%BC%8C%E5%B9%B6%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E%E5%AE%83%E4%BB%AC%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">4.1 常见的日志记录方式，并举例说明它们的优缺点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E9%AB%98%E6%80%A7%E8%83%BD%E3%80%81%E9%AB%98%E5%8F%AF%E9%9D%A0%E6%80%A7%E7%9A%84%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F"><span class="toc-text">4.2 如何设计一个高性能、高可靠性的日志系统</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-%E4%BB%80%E4%B9%88%E6%98%AF%E6%97%A5%E5%BF%97%E8%81%9A%E5%90%88%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%9C%A8%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">4.3 什么是日志聚合，以及在日志系统中的应用场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-4-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%B9%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E5%92%8C%E5%88%86%E6%9E%90"><span class="toc-text">4.4 如何实现对分布式系统的日志收集和分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-5-%E5%88%86%E5%B8%83%E5%BC%8F%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%92%8C%E5%AE%9E%E7%8E%B0"><span class="toc-text">4.5 分布式日志系统的设计和实现</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-IM%E5%8D%95%E8%81%8A%E7%BE%A4%E8%81%8A%E6%9E%B6%E6%9E%84"><span class="toc-text">5. IM单聊群聊架构</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-1-IM%E5%8D%95%E8%81%8A%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="toc-text">5.1 IM单聊架构设计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-2-IM%E7%BE%A4%E8%81%8A%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="toc-text">5.2 IM群聊架构设计</span></a></li></ol></li></ol></li>
+      <li class="mdui-menu-item" disabled><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%B0%83%E5%BA%A6%E7%9B%B8%E5%85%B3"><span class="toc-text">1. 调度相关</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%8C%E4%B8%BB%E6%B5%81%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BC%82%E5%90%8C%E7%82%B9"><span class="toc-text">1.1 调度系统有哪些，主流调度系统的异同点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-%E8%AF%B7%E8%A7%A3%E9%87%8A%E4%B8%8B%E4%BB%80%E4%B9%88%E6%98%AF%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%EF%BC%8C%E5%B9%B6%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E%E4%B8%80%E4%B8%8B%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">1.2 请解释下什么是任务调度，并举例说明一下任务调度的应用场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E8%B0%83%E5%BA%A6%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7%E5%92%8C%E5%AE%B9%E9%94%99%E6%80%A7"><span class="toc-text">1.3 如何保证调度任务的可靠性和容错性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-4-%E4%BB%80%E4%B9%88%E6%98%AF%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%8C%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E%E4%B8%80%E4%B8%8B%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-text">1.4 什么是调度算法，举例说明一下几种常见的调度算法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-5-%E5%88%86%E5%B8%83%E5%BC%8F%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%92%8C%E5%AE%9E%E7%8E%B0"><span class="toc-text">1.5 分布式调度系统的设计和实现</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AD%98%E5%82%A8%E7%9B%B8%E5%85%B3"><span class="toc-text">2. 存储相关</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%8C%E5%B9%B6%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E%E5%AE%83%E4%BB%AC%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">2.1 数据存储方式有哪些，并举例说明它们的优缺点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E7%A7%8D%E9%AB%98%E6%80%A7%E8%83%BD%E3%80%81%E9%AB%98%E5%8F%AF%E9%9D%A0%E6%80%A7%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F"><span class="toc-text">2.2 如何设计一种高性能、高可靠性的分布式存储系统</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%80%E8%87%B4%E6%80%A7%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%9C%A8%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">2.3 什么是一致性哈希算法，以及在分布式存储系统中的应用场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-%E4%BB%8B%E7%BB%8D%E4%B8%8B%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%92%8C%E5%AE%9E%E7%8E%B0"><span class="toc-text">2.4 介绍下分布式文件系统的设计和实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-5-%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E6%8D%AE%E5%86%97%E4%BD%99%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%9C%A8%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">2.5 什么是数据冗余，以及在存储系统中的应用场景</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%9B%91%E6%8E%A7%E7%9B%B8%E5%85%B3"><span class="toc-text">3. 监控相关</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-%E4%BB%8B%E7%BB%8D%E4%B8%8B%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%92%8C%E5%B8%B8%E8%A7%81%E7%9A%84%E7%9B%91%E6%8E%A7%E6%89%8B%E6%AE%B5"><span class="toc-text">3.1 介绍下系统监控的基本原理和常见的监控手段</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-%E4%BB%80%E4%B9%88%E6%98%AF%E6%8C%87%E6%A0%87%E7%9B%91%E6%8E%A7%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%9C%A8%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">3.2 什么是指标监控，以及在系统监控中的应用场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%B9%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%9B%91%E6%8E%A7%E5%92%8C%E6%95%85%E9%9A%9C%E8%AF%8A%E6%96%AD"><span class="toc-text">3.3 如何实现对分布式系统的监控和故障诊断</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-4-%E4%BB%80%E4%B9%88%E6%98%AF%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%9C%A8%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">3.4 什么是日志监控，以及在系统监控中的应用场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-5-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E5%8F%AF%E6%89%A9%E5%B1%95%E7%9A%84%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F"><span class="toc-text">3.5 如何设计一个可扩展的监控系统</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%97%A5%E5%BF%97%E7%9B%B8%E5%85%B3"><span class="toc-text">4. 日志相关</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-%E5%B8%B8%E8%A7%81%E7%9A%84%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95%E6%96%B9%E5%BC%8F%EF%BC%8C%E5%B9%B6%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E%E5%AE%83%E4%BB%AC%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">4.1 常见的日志记录方式，并举例说明它们的优缺点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E9%AB%98%E6%80%A7%E8%83%BD%E3%80%81%E9%AB%98%E5%8F%AF%E9%9D%A0%E6%80%A7%E7%9A%84%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F"><span class="toc-text">4.2 如何设计一个高性能、高可靠性的日志系统</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-%E4%BB%80%E4%B9%88%E6%98%AF%E6%97%A5%E5%BF%97%E8%81%9A%E5%90%88%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%9C%A8%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">4.3 什么是日志聚合，以及在日志系统中的应用场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-4-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%B9%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E5%92%8C%E5%88%86%E6%9E%90"><span class="toc-text">4.4 如何实现对分布式系统的日志收集和分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-5-%E5%88%86%E5%B8%83%E5%BC%8F%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%92%8C%E5%AE%9E%E7%8E%B0"><span class="toc-text">4.5 分布式日志系统的设计和实现</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-IM%E5%8D%95%E8%81%8A%E7%BE%A4%E8%81%8A%E6%9E%B6%E6%9E%84"><span class="toc-text">5. IM单聊群聊架构</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-1-IM%E5%8D%95%E8%81%8A%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="toc-text">5.1 IM单聊架构设计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-2-IM%E7%BE%A4%E8%81%8A%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="toc-text">5.2 IM群聊架构设计</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Git%E7%9B%B8%E5%85%B3"><span class="toc-text">6. Git相关</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#6-1-%E4%BB%80%E4%B9%88%E6%98%AFGit%EF%BC%9FGit%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">6.1 什么是Git？Git常用命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-2-Git%E4%B8%AD%E7%9A%84%E5%88%86%E6%94%AF%E6%9C%89%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%EF%BC%9F%E8%AF%B7%E6%8F%8F%E8%BF%B0%E5%AE%83%E4%BB%AC%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-text">6.2 Git中的分支有哪些类型？请描述它们的特点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-3-%E5%A6%82%E6%9E%9C%E6%83%B3%E8%A6%81%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E5%88%86%E6%94%AF%EF%BC%8C%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E6%93%8D%E4%BD%9C%EF%BC%9F%E8%AF%B7%E7%AE%80%E8%A6%81%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B"><span class="toc-text">6.3 如果想要合并两个分支，应该如何操作？请简要描述一下</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-4-%E5%A6%82%E6%9E%9C%E6%83%B3%E8%A6%81%E6%92%A4%E9%94%80%E5%B7%B2%E7%BB%8F%E6%8F%90%E4%BA%A4%E7%9A%84Git%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95%EF%BC%8C%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E6%93%8D%E4%BD%9C%EF%BC%9F%E8%AF%B7%E7%AE%80%E8%A6%81%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B"><span class="toc-text">6.4 如果想要撤销已经提交的Git提交记录，应该如何操作？请简要描述一下</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-5-Git%E4%B8%AD%E7%9A%84%E4%B8%89%E4%B8%AA%E5%B7%A5%E4%BD%9C%E5%8C%BA%E6%98%AF%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%AE%83%E4%BB%AC%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">6.5 Git中的三个工作区是哪些？它们之间的区别是什么</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-gRPC%E7%9B%B8%E5%85%B3"><span class="toc-text">7. gRPC相关</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#7-1-gRPC%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%AE%83%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">7.1 gRPC是什么？它的工作原理是什么</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-2-gRPC%E6%94%AF%E6%8C%81%E5%93%AA%E4%BA%9B%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%EF%BC%9F%E8%AF%B7%E7%AE%80%E8%A6%81%E6%8F%8F%E8%BF%B0%E5%AE%83%E4%BB%AC%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-text">7.2 gRPC支持哪些序列化协议？请简要描述它们的特点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-3-gRPC%E6%94%AF%E6%8C%81%E5%93%AA%E4%BA%9B%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AD%96%E7%95%A5%EF%BC%9F%E8%AF%B7%E7%AE%80%E8%BF%B0%E5%AE%83%E4%BB%AC%E7%9A%84%E4%BC%98%E7%82%B9%E5%92%8C%E7%BC%BA%E7%82%B9"><span class="toc-text">7.3 gRPC支持哪些负载均衡策略？请简述它们的优点和缺点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-4-%E8%AF%B7%E8%A7%A3%E9%87%8AgRPC%E4%B8%AD%E7%9A%84%E6%B5%81%E5%BC%8FRPC%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%AE%83%E4%BB%AC%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8%E9%80%94"><span class="toc-text">7.4 请解释gRPC中的流式RPC是什么？它们有什么用途</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-5-gRPC%E6%8F%90%E4%BE%9B%E4%BA%86%E5%93%AA%E4%BA%9B%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6%EF%BC%9F%E8%AF%B7%E7%AE%80%E8%BF%B0%E5%AE%83%E4%BB%AC%E7%9A%84%E4%BC%98%E7%82%B9%E5%92%8C%E7%BC%BA%E7%82%B9"><span class="toc-text">7.5 gRPC提供了哪些安全机制？请简述它们的优点和缺点</span></a></li></ol></li></ol></li>
     </ul>
   </div>
 

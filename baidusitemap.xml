@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://huajun-chen.github.io/2022/10/30/Elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
+    <lastmod>2023-03-24</lastmod>
+  </url>
+  <url>
     <loc>https://huajun-chen.github.io/2023/03/05/%E5%B2%97%E4%BD%8D%E9%9D%A2%E8%AF%95/</loc>
     <lastmod>2023-03-23</lastmod>
   </url>
@@ -50,10 +54,6 @@
   </url>
   <url>
     <loc>https://huajun-chen.github.io/2022/11/24/Go-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2022-11-24</lastmod>
-  </url>
-  <url>
-    <loc>https://huajun-chen.github.io/2022/10/30/Elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
     <lastmod>2022-11-24</lastmod>
   </url>
   <url>

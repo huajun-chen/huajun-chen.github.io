@@ -14,21 +14,18 @@
 
   <link rel="shortcut icon" href="/images/favicon.png">
   <link rel="alternate" href="/atom.xml" title="可可西里-博客" type="application/atom+xml">
-  <meta name="description" content="ES常见面试题 1. ElasticSearch基础1.1 什么是ElasticsearchElasticsearch 是基于 Lucene 的 Restful 的分布式实时全文搜索引擎，每个字段都被索引并可被搜索，可以快速存储、搜索、分析海量的数据  全文检索是指对每一个词建立一个索引，指明该词在文章中出现的次数和位置。当查询时，根据事先建立的索引进行查找，并将查找的结果反馈给用户的检索方式。这">
+  <meta name="description" content="ES常见面试题 1. 什么是ESElasticsearch是一个基于Lucene的开源搜索和分析引擎，旨在快速、可扩展、具有高度可靠性和易于管理的特性。它可以处理各种类型的数据，包括文本、数字、地理空间等，可以进行全文搜索、结构化搜索、分析和可视化等操作 Elasticsearch采用分布式架构，可以轻松地扩展到数百台服务器，并支持水平扩展和垂直扩展。它还提供了一个强大的RESTful API，可">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Elasticsearch面试题">
 <meta property="og:url" content="https://huajun-chen.github.io/2022/10/30/Elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
 <meta property="og:site_name" content="可可西里-博客">
-<meta property="og:description" content="ES常见面试题 1. ElasticSearch基础1.1 什么是ElasticsearchElasticsearch 是基于 Lucene 的 Restful 的分布式实时全文搜索引擎，每个字段都被索引并可被搜索，可以快速存储、搜索、分析海量的数据  全文检索是指对每一个词建立一个索引，指明该词在文章中出现的次数和位置。当查询时，根据事先建立的索引进行查找，并将查找的结果反馈给用户的检索方式。这">
+<meta property="og:description" content="ES常见面试题 1. 什么是ESElasticsearch是一个基于Lucene的开源搜索和分析引擎，旨在快速、可扩展、具有高度可靠性和易于管理的特性。它可以处理各种类型的数据，包括文本、数字、地理空间等，可以进行全文搜索、结构化搜索、分析和可视化等操作 Elasticsearch采用分布式架构，可以轻松地扩展到数百台服务器，并支持水平扩展和垂直扩展。它还提供了一个强大的RESTful API，可">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h7ov3hao7ij30pr0bndhh.jpg">
-<meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h7ov576wq8j30s20avjtl.jpg">
 <meta property="article:published_time" content="2022-10-30T13:57:09.000Z">
-<meta property="article:modified_time" content="2022-11-24T08:56:54.153Z">
+<meta property="article:modified_time" content="2023-03-24T09:31:14.341Z">
 <meta property="article:author" content="可可西里">
 <meta property="article:tag" content="ES">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h7ov3hao7ij30pr0bndhh.jpg">
 
   <meta name="keywords" content=",ES">
   <meta name="format-detection" content="telephone=no,email=no">
@@ -189,7 +186,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-5.png" style="max-height: 240px;">
+      <img src="/images/random/material-12.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">Elasticsearch面试题</div>
@@ -240,130 +237,249 @@
     </header>
     <div class="mdui-card-content mdui-typo">
       <p>ES常见面试题</p>
-<h4 id="1-ElasticSearch基础"><a href="#1-ElasticSearch基础" class="headerlink" title="1. ElasticSearch基础"></a><font color=DarkOrange>1. ElasticSearch基础</font></h4><h5 id="1-1-什么是Elasticsearch"><a href="#1-1-什么是Elasticsearch" class="headerlink" title="1.1 什么是Elasticsearch"></a><font color=DarkOrange>1.1 什么是Elasticsearch</font></h5><p>Elasticsearch 是基于 Lucene 的 Restful 的分布式实时全文搜索引擎，每个字段都被索引并可被搜索，可以快速存储、搜索、分析海量的数据</p>
-<blockquote>
-<p>全文检索是指对每一个词建立一个索引，指明该词在文章中出现的次数和位置。当查询时，根据事先建立的索引进行查找，并将查找的结果反馈给用户的检索方式。这个过程类似于通过字典中的检索字表查字的过程</p>
-</blockquote>
-<h5 id="1-2-Elasticsearch-的基本概念"><a href="#1-2-Elasticsearch-的基本概念" class="headerlink" title="1.2 Elasticsearch 的基本概念"></a><font color=DarkOrange>1.2 Elasticsearch 的基本概念</font></h5><ul>
-<li>index 索引：索引类似于mysql 中的数据库，Elasticesearch 中的索引是存在数据的地方，包含了一堆有相似结构的文档数据</li>
-<li>type 类型：类型是用来定义数据结构，可以认为是 mysql 中的一张表，type 是 index 中的一个逻辑数据分类</li>
-<li>document 文档：类似于 MySQL 中的一行，不同之处在于 ES 中的每个文档可以有不同的字段，但是对于通用字段应该具有相同的数据类型，文档是es中的最小数据单元，可以认为一个文档就是一条记录</li>
-<li>Field 字段：Field是Elasticsearch的最小单位，一个document里面有多个field</li>
-<li>shard 分片：单台机器无法存储大量数据，es可以将一个索引中的数据切分为多个shard，分布在多台服务器上存储。有了shard就可以横向扩展，存储更多数据，让搜索和分析等操作分布到多台服务器上去执行，提升吞吐量和性能。shard 分片数量在建立索引时设置，设置后不能修改，默认5个；replica 副本数量默认1个，可随时修改数量</li>
-<li>replica 副本：任何服务器随时可能故障或宕机，此时 shard 可能会丢失，通过创建 replica 副本，可以在 shard 故障时提供备用服务，保证数据不丢失，另外 replica 还可以提升搜索操作的吞吐量</li>
-</ul>
-<h5 id="1-3-什么是倒排索引"><a href="#1-3-什么是倒排索引" class="headerlink" title="1.3 什么是倒排索引"></a><font color=DarkOrange>1.3 什么是倒排索引</font></h5><p>在搜索引擎中，每个文档都有对应的文档 ID，文档内容可以表示为一系列关键词的集合，例如，某个文档经过分词，提取了 20 个关键词，而通过倒排索引，可以记录每个关键词在文档中出现的次数和出现位置。也就是说，倒排索引是 关键词到文档 ID 的映射，每个关键词都对应着一系列的文件，这些文件中都出现了该关键词</p>
-<p><strong>要注意倒排索引的两个细节：</strong></p>
-<ul>
-<li>倒排索引中的所有词项对应一个或多个文档</li>
-<li>倒排索引中的词项 根据字典顺序升序排列</li>
-</ul>
-<h5 id="1-4-doc-values-的作用"><a href="#1-4-doc-values-的作用" class="headerlink" title="1.4 doc_values 的作用"></a><font color=DarkOrange>1.4 doc_values 的作用</font></h5><p>倒排索引虽然可以提高搜索性能，但也存在缺陷，比如我们需要对数据做排序或聚合等操作时，lucene 会提取所有出现在文档集合的排序字段，然后构建一个排好序的文档集合，而这个步骤是基于内存的，如果排序数据量巨大的话，容易造成内存溢出和性能缓慢</p>
-<p>doc_values 就是 es 在构建倒排索引的同时，会对开启 doc_values 的字段构建一个有序的 “document文档 &#x3D;&#x3D;&gt; field value” 的列式存储映射，可以看作是以文档维度，实现了根据指定字段进行排序和聚合的功能，降低对内存的依赖。另外 doc_values 保存在操作系统的磁盘中，当 doc_values 大于节点的可用内存，ES可以从操作系统页缓存中加载或弹出，从而避免发生内存溢出的异常，但如果 docValues 远小于节点的可用内存，操作系统就自然将所有 doc_values 存于内存中（堆外内存），有助于快速访问</p>
-<h5 id="1-5-text-和-keyword类型的区别"><a href="#1-5-text-和-keyword类型的区别" class="headerlink" title="1.5 text 和 keyword类型的区别"></a><font color=DarkOrange>1.5 text 和 keyword类型的区别</font></h5><p>两个类型的区别主要是分词：keyword 类型是不会分词的，直接根据字符串内容建立倒排索引，所以keyword类型的字段只能通过精确值搜索到；Text 类型在存入 Elasticsearch 的时候，会先分词，然后根据分词后的内容建立倒排索引</p>
-<h5 id="1-6-query-和-filter-的区别"><a href="#1-6-query-和-filter-的区别" class="headerlink" title="1.6 query 和 filter 的区别"></a><font color=DarkOrange>1.6 query 和 filter 的区别</font></h5><ul>
-<li>query：查询操作不仅仅会进行查询，还会计算分值，用于确定相关度</li>
-<li>filter：查询操作仅判断是否满足查询条件，不会计算任何分值，也不会关心返回的排序问题，同时，filter 查询的结果可以被缓存，提高性能</li>
-</ul>
-<h4 id="2-ES的写入流程"><a href="#2-ES的写入流程" class="headerlink" title="2. ES的写入流程"></a><font color=DarkOrange>2. ES的写入流程</font></h4><h5 id="2-1-ES写数据的整体流程"><a href="#2-1-ES写数据的整体流程" class="headerlink" title="2.1 ES写数据的整体流程"></a><font color=DarkOrange>2.1 ES写数据的整体流程</font></h5><p><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7ov3hao7ij30pr0bndhh.jpg" alt="image.png"></p>
-<ul>
-<li>客户端选择 ES 的某个 node 发送请求过去，这个 node 就是协调节点 coordinating node</li>
-<li>coordinating node 对 document 进行路由，将请求转发给对应的 node（有 primary shard）</li>
-<li>实际的 node 上的 primary shard 处理请求，然后将数据同步到 replica node</li>
-<li>coordinating node 等到 primary node 和所有 replica node 都执行成功之后，最后返回响应结果给客户端</li>
-</ul>
-<h5 id="2-2-ES主分片写数据的详细流程"><a href="#2-2-ES主分片写数据的详细流程" class="headerlink" title="2.2 ES主分片写数据的详细流程"></a><font color=DarkOrange>2.2 ES主分片写数据的详细流程</font></h5><p><img src="http://tva1.sinaimg.cn/large/0079DIvogy1h7ov576wq8j30s20avjtl.jpg" alt="image.png"></p>
-<ol>
-<li><p>主分片先将数据写入ES的 memory buffer，然后定时（默认1s）将 memory buffer 中的数据写入一个新的 segment 文件中，并进入操作系统缓存 Filesystem cache（同时清空 memory buffer），这个过程就叫做 refresh；每个 segment 文件实际上是一些倒排索引的集合， 只有经历了 refresh 操作之后，这些数据才能变成可检索的</p>
-<blockquote>
-<p>ES 的近实时性：数据存在 memory buffer 时是搜索不到的，只有数据被 refresh 到  Filesystem cache 之后才能被搜索到，而 refresh 是每秒一次， 所以称 es 是近实时的；可以手动调用 es 的 api 触发一次 refresh 操作，让数据马上可以被搜索到</p>
-</blockquote>
+<h4 id="1-什么是ES"><a href="#1-什么是ES" class="headerlink" title="1. 什么是ES"></a><font color=DarkOrange>1. 什么是ES</font></h4><p>Elasticsearch是一个基于Lucene的开源搜索和分析引擎，旨在快速、可扩展、具有高度可靠性和易于管理的特性。它可以处理各种类型的数据，包括文本、数字、地理空间等，可以进行全文搜索、结构化搜索、分析和可视化等操作</p>
+<p>Elasticsearch采用分布式架构，可以轻松地扩展到数百台服务器，并支持水平扩展和垂直扩展。它还提供了一个强大的RESTful API，可以与各种编程语言和工具进行集成</p>
+<p>Elasticsearch还有许多相关的工具和插件，例如Kibana、Logstash、Beats等，它们可以帮助用户进行数据收集、分析和可视化等操作，形成了一个完整的ELK（Elasticsearch、Logstash、Kibana）堆栈</p>
+<h4 id="2-ES的基本概念有哪些"><a href="#2-ES的基本概念有哪些" class="headerlink" title="2. ES的基本概念有哪些"></a><font color=DarkOrange>2. ES的基本概念有哪些</font></h4><ol>
+<li>Index（索引）：Elasticsearch中的基本单元，类似于数据库中的表。它包含了一系列文档和它们的属性</li>
+<li>Document（文档）：Elasticsearch中的文本数据单元，存储为JSON格式。一个文档可以看作是一个类似于数据库中行的数据结构</li>
+<li>Field（字段）：文档中的属性，类似于数据库中的列</li>
+<li>Mapping（映射）：定义索引中每个字段的数据类型和属性的过程。它类似于关系型数据库中的模式定义</li>
+<li>Type（类型）：在Elasticsearch 7.x及以后的版本中已经不再使用，而在之前版本中，Type是在索引中定义的逻辑类别，一个索引可以包含多个Type，每个Type中包含多个Document</li>
+<li>Query（查询）：用于搜索文档的语句，可以根据不同的条件过滤文档</li>
+<li>Aggregation（聚合）：对搜索结果进行统计和分析的操作，例如计算平均值、最大值、最小值等</li>
+<li>Analyzer（分析器）：将文本数据分解成有意义的词语的过程，包括分词、过滤、归一化等</li>
+<li>Shards（分片）：Elasticsearch将索引分成多个分片进行存储和处理，以实现水平扩展和负载均衡</li>
+<li>Replica（副本）：为了提高可用性和容错性，Elasticsearch可以将每个分片的副本存储在不同的节点上</li>
+</ol>
+<h4 id="3-ES与传统数据库的区别是什么"><a href="#3-ES与传统数据库的区别是什么" class="headerlink" title="3. ES与传统数据库的区别是什么"></a><font color=DarkOrange>3. ES与传统数据库的区别是什么</font></h4><ol>
+<li>数据存储方式：传统数据库采用基于行和列的表格形式存储数据，而Elasticsearch使用文档存储方式，即将所有相关数据存储在一个文档中。这种文档存储方式使得Elasticsearch更加灵活和可扩展</li>
+<li>查询方式：传统数据库使用结构化查询语言(SQL)进行查询，而Elasticsearch使用自己的查询语言，可以根据多种条件进行复杂的全文搜索和分析</li>
+<li>数据处理方式：传统数据库是事务性的，即支持ACID（原子性、一致性、隔离性、持久性）特性，可以保证数据的完整性和一致性。而Elasticsearch是面向文档的，不支持ACID特性，但是具有强大的搜索和分析能力</li>
+<li>水平扩展：传统数据库在数据量增加时，需要更换更强大的服务器或升级硬件，而Elasticsearch采用分布式架构，可以通过增加节点来水平扩展，实现更好的性能和可扩展性</li>
+<li>多用途性：传统数据库一般用于事务性的数据存储和管理，而Elasticsearch可以用于全文搜索、日志分析、数据可视化等多种用途</li>
+</ol>
+<h4 id="4-ES的数据结构是什么"><a href="#4-ES的数据结构是什么" class="headerlink" title="4. ES的数据结构是什么"></a><font color=DarkOrange>4. ES的数据结构是什么</font></h4><ol>
+<li>Index（索引）：Elasticsearch中的基本单元，类似于数据库中的表。一个索引可以包含多个文档和它们的属性，每个文档都有一个唯一的ID标识</li>
+<li>Document（文档）：Elasticsearch中的文本数据单元，存储为JSON格式。一个文档可以看作是一个类似于数据库中行的数据结构，包含了一个或多个字段（Field）和其对应的值</li>
+<li>Field（字段）：文档中的属性，类似于数据库中的列。每个字段都有一个数据类型，例如文本、数字、日期等，以及一些属性，例如分词器、存储方式等</li>
+<li>Mapping（映射）：定义索引中每个字段的数据类型和属性的过程。它类似于关系型数据库中的模式定义。Elasticsearch会自动推断每个字段的数据类型，但也可以手动定义映射</li>
+<li>Analyzer（分析器）：将文本数据分解成有意义的词语的过程，包括分词、过滤、归一化等。Elasticsearch提供了一些内置的分析器，也支持自定义分析器</li>
+<li>Shards（分片）：Elasticsearch将索引分成多个分片进行存储和处理，以实现水平扩展和负载均衡。每个分片都是一个完整的Lucene索引</li>
+<li>Replica（副本）：为了提高可用性和容错性，Elasticsearch可以将每个分片的副本存储在不同的节点上。每个分片可以有多个副本，副本与原始分片数据保持同步</li>
+</ol>
+<h4 id="5-ES的索引是什么（Index）"><a href="#5-ES的索引是什么（Index）" class="headerlink" title="5. ES的索引是什么（Index）"></a><font color=DarkOrange>5. ES的索引是什么（Index）</font></h4><p>索引（Index）是一个逻辑命名空间，用于组织和存储相关文档的集合。索引在某种程度上类似于关系型数据库中的表，它们都是用于存储数据的基本单元</p>
+<p>一个Elasticsearch集群可以包含多个索引，每个索引可以包含多个文档。每个文档都是以JSON格式表示的，它包含了一个或多个字段和对应的值。文档可以根据唯一的ID进行查找和访问</p>
+<p>索引可以包含多个分片（Shards），每个分片是一个独立的Lucene索引，它可以存储一部分文档数据。分片可以在不同的节点上进行分布式存储，以提高性能和可扩展性。此外，Elasticsearch还支持索引的副本（Replicas），副本是分片的拷贝，用于提高可用性和容错性</p>
+<p>索引的创建需要定义映射（Mapping），映射定义了索引中每个字段的数据类型和属性。Elasticsearch可以自动推断每个字段的数据类型，也可以手动指定映射</p>
+<p>索引是Elasticsearch中的基本单元之一，它提供了一个灵活的数据存储和查询机制，可以用于多种用途，例如全文搜索、数据分析等</p>
+<h4 id="6-怎么样创建一个索引（Index）"><a href="#6-怎么样创建一个索引（Index）" class="headerlink" title="6. 怎么样创建一个索引（Index）"></a><font color=DarkOrange>6. 怎么样创建一个索引（Index）</font></h4><ol>
+<li><p>确定索引名称和映射（Mapping）：索引名称是唯一的，用于标识索引。映射定义了索引中每个字段的数据类型和属性</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">PUT /my_index</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;mappings&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;properties&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;title&quot;</span>: &#123; <span class="string">&quot;type&quot;</span>: <span class="string">&quot;text&quot;</span> &#125;,</span><br><span class="line">      <span class="string">&quot;content&quot;</span>: &#123; <span class="string">&quot;type&quot;</span>: <span class="string">&quot;text&quot;</span> &#125;,</span><br><span class="line">      <span class="string">&quot;date&quot;</span>: &#123; <span class="string">&quot;type&quot;</span>: <span class="string">&quot;date&quot;</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个请求会创建一个名为“my_index”的索引，并定义了三个字段（title、content和date）及其数据类型（分别为文本、文本和日期）</p>
 </li>
-<li><p>由于 memory Buffer 和 Filesystem Cache 都是基于内存，假设服务器宕机，那么数据就会丢失，所以 ES 通过 translog 日志文件来保证数据的可靠性，在数据写入 memory buffer 的同时，将数据也写入 translog 日志文件中，当机器宕机重启时，es 会自动读取 translog 日志文件中的数据，恢复到 memory buffer 和 Filesystem cache 中去</p>
-<blockquote>
-<p>ES 数据丢失的问题：translog 也是先写入 Filesystem cache，然后默认每隔 5 秒刷一次到磁盘中，所以默认情况下，可能有 5 秒的数据会仅仅停留在 memory buffer 或者 translog 文件的 Filesystem cache中，而不在磁盘上，如果此时机器宕机，会丢失 5 秒钟的数据。也可以将 translog 设置成每次写操作必须是直接 fsync 到磁盘，但是性能会差很多</p>
-</blockquote>
-</li>
-<li><p>flush 操作：不断重复上面的步骤，translog 会变得越来越大，不过 translog 文件默认每30分钟或者 阈值超过 512M 时，就会触发 commit 操作，即 flush操作，将 memory buffer 中所有的数据写入新的 segment 文件中， 并将内存中所有的 segment 文件全部落盘，最后清空 translog 事务日志</p>
-<blockquote>
-<ul>
-<li>将 memory buffer 中的数据 refresh 到 Filesystem Cache 中去，清空 buffer</li>
-<li>创建一个新的 commit point（提交点），同时强行将 Filesystem Cache 中目前所有的数据都 fsync 到磁盘文件中</li>
-<li>删除旧的 translog 日志文件并创建一个新的 translog 日志文件，此时 commit 操作完成</li>
-</ul>
-</blockquote>
+<li><p>发送创建索引请求：使用Elasticsearch提供的API（如HTTP API或Java API）发送创建索引的请求。请求中需要指定索引名称和映射</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">curl -X PUT <span class="string">&quot;http://localhost:9200/my_index&quot;</span> -H <span class="string">&#x27;Content-Type: application/json&#x27;</span> -d<span class="string">&#x27;</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">  &quot;mappings&quot;: &#123;</span></span><br><span class="line"><span class="string">    &quot;properties&quot;: &#123;</span></span><br><span class="line"><span class="string">      &quot;title&quot;: &#123; &quot;type&quot;: &quot;text&quot; &#125;,</span></span><br><span class="line"><span class="string">      &quot;content&quot;: &#123; &quot;type&quot;: &quot;text&quot; &#125;,</span></span><br><span class="line"><span class="string">      &quot;date&quot;: &#123; &quot;type&quot;: &quot;date&quot; &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>这个请求也会创建一个名为“my_index”的索引，并定义了相同的映射</p>
 </li>
 </ol>
-<h4 id="3-ES的更新和删除流程"><a href="#3-ES的更新和删除流程" class="headerlink" title="3. ES的更新和删除流程"></a><font color=DarkOrange>3. ES的更新和删除流程</font></h4><p>删除和更新都是写操作，但是由于 Elasticsearch 中的文档是不可变的，因此不能被删除或者改动以展示其变更；所以 ES 利用 .del 文件 标记文档是否被删除，磁盘上的每个段都有一个相应的.del 文件</p>
+<p>创建索引时，还可以指定分片和副本的数量、设置索引的设置等。创建索引后，可以使用其他API来添加、更新或查询文档数据</p>
+<h4 id="7-ES中的映射（Mapping）是什么"><a href="#7-ES中的映射（Mapping）是什么" class="headerlink" title="7. ES中的映射（Mapping）是什么"></a><font color=DarkOrange>7. ES中的映射（Mapping）是什么</font></h4><p>映射（Mapping）是定义索引中字段的数据类型和属性的过程。它告诉Elasticsearch如何处理文档中的字段，包括如何索引和搜索它们、如何分析它们的内容等</p>
+<p>映射是可选的，如果没有指定映射，Elasticsearch会自动推断字段的数据类型。但是，如果需要更精确地控制字段的处理方式，就需要显式地指定映射</p>
+<p>映射可以定义以下内容：</p>
 <ul>
-<li>如果是删除操作，文档其实并没有真的被删除，而是在 .del 文件中被标记为 deleted 状态。该文档依然能匹配查询，但是会在结果中被过滤掉</li>
-<li>如果是更新操作，就是将旧的 doc 标识为 deleted 状态，然后创建一个新的 doc</li>
+<li>字段的数据类型：如文本（text）、数字（integer、float、double等）、日期（date）等</li>
+<li>字段的属性：如是否可以搜索、是否可以聚合、是否存储原始值、是否需要分析等</li>
+<li>对于复杂类型的字段，如嵌套对象（nested object）、数组（array）等，还需要定义它们的子字段和属性</li>
 </ul>
-<p>memory buffer 每 refresh 一次，就会产生一个 segment 文件 ，所以默认情况下是 1s 生成一个 segment 文件，这样下来 segment 文件会越来越多，此时会定期执行 merge。每次 merge 的时候，会将多个 segment 文件合并成一个，同时这里会将标识为 deleted 的 doc 给物理删除掉，不写入到新的 segment 中，然后将新的 segment 文件写入磁盘，这里会写一个 commit point ，标识所有新的 segment 文件，然后打开 segment 文件供搜索使用，同时删除旧的 segment 文件</p>
-<h4 id="4-ES的搜索流程"><a href="#4-ES的搜索流程" class="headerlink" title="4. ES的搜索流程"></a><font color=DarkOrange>4. ES的搜索流程</font></h4><p>搜索被执行成一个两阶段过程，即 Query Then Fetch：</p>
-<ul>
-<li>Query阶段<ul>
-<li>客户端发送请求到 coordinate node，协调节点将搜索请求广播到所有的 primary shard 或 replica，每个分片在本地执行搜索并构建一个匹配文档的大小为 from + size 的优先队列。接着每个分片返回各自优先队列中 所有 docId 和 打分值 给协调节点，由协调节点进行数据的合并、排序、分页等操作，产出最终结果</li>
-</ul>
+<p>映射可以通过API进行创建和更新。以下是一个映射的示例：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">PUT my_index/_mapping</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;properties&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;title&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;type&quot;</span>: <span class="string">&quot;text&quot;</span>,</span><br><span class="line">      <span class="string">&quot;analyzer&quot;</span>: <span class="string">&quot;english&quot;</span>,</span><br><span class="line">      <span class="string">&quot;fields&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;keyword&quot;</span>: &#123;</span><br><span class="line">          <span class="string">&quot;type&quot;</span>: <span class="string">&quot;keyword&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;content&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;type&quot;</span>: <span class="string">&quot;text&quot;</span>,</span><br><span class="line">      <span class="string">&quot;analyzer&quot;</span>: <span class="string">&quot;english&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;date&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;type&quot;</span>: <span class="string">&quot;date&quot;</span>,</span><br><span class="line">      <span class="string">&quot;format&quot;</span>: <span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个映射定义了一个名为“my_index”的索引，包含三个字段（title、content和date），每个字段都有不同的数据类型和属性。例如，title字段使用英语分析器（analyzer）进行分析，同时还定义了一个名为“keyword”的子字段，用于精确匹配。content字段也使用英语分析器，但没有定义子字段。date字段定义了日期格式</p>
+<h4 id="8-什么是分片（Shard）？为什么需要分片"><a href="#8-什么是分片（Shard）？为什么需要分片" class="headerlink" title="8. 什么是分片（Shard）？为什么需要分片"></a><font color=DarkOrange>8. 什么是分片（Shard）？为什么需要分片</font></h4><p>分片（Shard）是将索引拆分成多个部分的过程。每个分片都是一个独立的Lucene索引，可以在多个节点上分布存储和处理。分片是实现Elasticsearch分布式架构的关键之一</p>
+<p>分片可以带来以下好处：</p>
+<ol>
+<li>提高性能：将索引分成多个分片，可以将大量数据分散到多个节点上进行处理，从而提高查询和写入的性能</li>
+<li>支持扩展：通过添加更多的节点和分片，可以轻松地扩展Elasticsearch集群的容量和吞吐量</li>
+<li>提高可用性：如果某个节点或分片发生故障，其他节点和分片可以接管工作，从而保证系统的可用性</li>
+</ol>
+<p>在创建索引时，可以指定分片的数量。默认情况下，每个索引有5个主分片和1个副本分片。这意味着，每个索引可以在最多5个节点上进行存储和处理，同时还有1个副本分片可以在其他节点上进行复制和备份</p>
+<p><strong>注意：</strong>分片的数量对性能和可用性都有重要影响。如果分片过多，可能会导致过多的网络流量和磁盘IO，从而降低性能。同时，如果分片数量不足，可能会限制集群的容量和吞吐量。因此，分片的数量需要根据实际需求进行合理的配置</p>
+<h4 id="9-ES数据的增删改查"><a href="#9-ES数据的增删改查" class="headerlink" title="9. ES数据的增删改查"></a><font color=DarkOrange>9. ES数据的增删改查</font></h4><ol>
+<li><p>增加数据（Create&#x2F;Index API）</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PUT /my_index/_doc/1</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;title&quot;</span>: <span class="string">&quot;Elasticsearch 101&quot;</span>,</span><br><span class="line">  <span class="string">&quot;content&quot;</span>: <span class="string">&quot;Introduction to Elasticsearch&quot;</span>,</span><br><span class="line">  <span class="string">&quot;date&quot;</span>: <span class="string">&quot;2022-03-24&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个API将一个新文档添加到名为“my_index”的索引中。文档的ID是“1”，包含三个字段：title、content和date。如果该ID已经存在，则会抛出一个异常。如果想要强制覆盖现有文档，则需要使用Update API</p>
 </li>
-<li>Fetch阶段<ul>
-<li>协调节点根据 Query阶段产生的结果，去各个节点上查询 docId 实际的 document 内容，最后由协调节点返回结果给客户端</li>
-</ul>
+<li><p>修改数据（Update API）</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">POST /my_index/_doc/1/_update</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;doc&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;title&quot;</span>: <span class="string">&quot;Elasticsearch 201&quot;</span>,</span><br><span class="line">    <span class="string">&quot;content&quot;</span>: <span class="string">&quot;Advanced Elasticsearch Techniques&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个API将现有文档的title和content字段进行更新。注意，这里使用了POST请求而不是PUT请求，因为我们只是对文档进行部分更新。如果要替换整个文档，可以使用Create&#x2F;Index API</p>
 </li>
-</ul>
-<blockquote>
-<ul>
-<li>coordinate node 对 doc id 进行哈希路由，将请求转发到对应的 node，此时会使用 round-robin 随机轮询算法，在 primary shard 以及其所有 replica 中随机选择一个，让读请求负载均衡</li>
-<li>接收请求的 node 返回 document 给 coordinate node</li>
-<li>coordinate node 返回 document 给客户端</li>
-</ul>
-</blockquote>
-<p>Query Then Fetch 的搜索类型在文档相关性打分的时候参考的是本分片的数据，这样在文档数量较少的时候可能不够准确，DFS Query Then Fetch 增加了一个预查询的处理，询问 Term 和 Document frequency，这个评分更准确，但是性能会变差</p>
-<h4 id="5-ES在高并发下如何保证读写一致性"><a href="#5-ES在高并发下如何保证读写一致性" class="headerlink" title="5. ES在高并发下如何保证读写一致性"></a><font color=DarkOrange>5. ES在高并发下如何保证读写一致性</font></h4><ul>
-<li>对于更新操作：可以通过版本号使用乐观并发控制，以确保新版本不会被旧版本覆盖<ul>
-<li>每个文档都有一个_version 版本号，这个版本号在文档被改变时加一。Elasticsearch使用这个 _version 保证所有修改都被正确排序，当一个旧版本出现在新版本之后，它会被简单的忽略</li>
-<li>利用_version的这一优点确保数据不会因为修改冲突而丢失，比如指定文档的version来做更改，如果那个版本号不是现在的，我们的请求就失败了</li>
-</ul>
+<li><p>删除数据（Delete API）</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE /my_index/_doc/1</span><br></pre></td></tr></table></figure>
+
+<p>这个API将ID为“1”的文档从“my_index”索引中删除</p>
 </li>
-<li>对于写操作，一致性级别支持 quorum&#x2F;one&#x2F;all，默认为 quorum，即只有当大多数分片可用时才允许写操作。但即使大多数可用，也可能存在因为网络等原因导致写入副本失败，这样该副本被认为故障，副本将会在一个不同的节点上重建<ul>
-<li>one：写操作只要有一个primary shard是active活跃可用的，就可以执行</li>
-<li>all：写操作必须所有的primary shard和replica shard都是活跃可用的，才可以执行</li>
-<li>quorum：默认值，要求ES中大部分的shard是活跃可用的，才可以执行写操作</li>
-</ul>
+<li><p>查询数据（Search API）</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET /my_index/_search</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;query&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;match&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;title&quot;</span>: <span class="string">&quot;Elasticsearch&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个API将从“my_index”索引中查询所有title字段包含“Elasticsearch”的文档。查询结果将包含匹配的文档及其相关信息，如分数、ID、索引、字段等</p>
 </li>
-<li>对于读操作，可以设置 replication 为 sync(默认)，这使得操作在主分片和副本分片都完成后才会返回；如果设置replication 为 async 时，也可以通过设置搜索请求参数 _preference 为 primary 来查询主分片，确保文档是最新版本</li>
-</ul>
-<h4 id="6-ES集群如何选举Master节点"><a href="#6-ES集群如何选举Master节点" class="headerlink" title="6. ES集群如何选举Master节点"></a><font color=DarkOrange>6. ES集群如何选举Master节点</font></h4><h5 id="6-1-Elasticsearch的分布式原理"><a href="#6-1-Elasticsearch的分布式原理" class="headerlink" title="6.1 Elasticsearch的分布式原理"></a><font color=DarkOrange>6.1 Elasticsearch的分布式原理</font></h5><p>Elasticsearch 会对存储的数据进行切分，划分到不同的分片上，同时每一个分片会生成多个副本，从而保证分布式环境的高可用。ES集群中的节点是对等的，节点间会选出集群的 Master，由 Master 会负责维护集群状态信息，并同步给其他节点</p>
-<p>Elasticsearch 的性能会不会很低：不会，ES只有建立 index 和 type 时需要经过 Master，而数据的写入有一个简单的 Routing 规则，可以路由到集群中的任意节点，所以数据写入压力是分散在整个集群的</p>
-<h5 id="6-2-ES集群如何选举Master"><a href="#6-2-ES集群如何选举Master" class="headerlink" title="6.2 ES集群如何选举Master"></a><font color=DarkOrange>6.2 ES集群如何选举Master</font></h5><p>Elasticsearch 的选主是 ZenDiscovery 模块负责的，主要包含Ping（节点之间通过这个RPC来发现彼此）和 Unicast（单播模块包含一个主机列表以控制哪些节点需要ping通）这两部分</p>
-<ul>
-<li>确认候选主节点的最少投票通过数量（elasticsearch.yml 设置的值 discovery.zen.minimum_master_nodes）</li>
-<li>选举时，集群中每个节点对所有 master候选节点（node.master: true）根据 nodeId 进行字典排序，然后选出第一个节点（第0位），暂且认为它是master节点</li>
-<li>如果对某个节点的投票数达到阈值，并且该节点自己也选举自己，那这个节点就是master；否则重新选举一直到满足上述条件</li>
-</ul>
-<p><strong>补充：</strong> master节点的职责主要包括集群、节点和索引的管理，不负责文档级别的管理；data节点可以关闭http功能</p>
-<h5 id="6-3-Elasticsearch是如何避免脑裂现象"><a href="#6-3-Elasticsearch是如何避免脑裂现象" class="headerlink" title="6.3 Elasticsearch是如何避免脑裂现象"></a><font color=DarkOrange>6.3 Elasticsearch是如何避免脑裂现象</font></h5><ul>
-<li>当集群中 master 候选节点数量不小于3个时（node.master: true），可以通过设置最少投票通过数量（discovery.zen.minimum_master_nodes），设置超过所有候选节点一半以上来解决脑裂问题，即设置为 (N&#x2F;2)+1</li>
-<li>当集群 master 候选节点 只有两个时，这种情况是不合理的，最好把另外一个node.master改成false。如果我们不改节点设置，还是套上面的(N&#x2F;2)+1公式，此时discovery.zen.minimum_master_nodes应该设置为2。这就出现一个问题，两个master备选节点，只要有一个挂，就选不出master了</li>
-</ul>
-<h4 id="7-建立索引阶段性能提升方法"><a href="#7-建立索引阶段性能提升方法" class="headerlink" title="7. 建立索引阶段性能提升方法"></a><font color=DarkOrange>7. 建立索引阶段性能提升方法</font></h4><ul>
-<li>如果是大批量导入，可以设置 index.number_of_replicas: 0 关闭副本，等数据导入完成之后再开启副本</li>
-<li>使用批量请求并调整其大小：每次批量数据 5–15 MB 大是个不错的起始点</li>
-<li>如果搜索结果不需要近实时性，可以把每个索引的 index.refresh_interval 改到30s</li>
-<li>增加 index.translog.flush_threshold_size 设置，从默认的 512 MB 到更大一些的值，比如 1 GB</li>
-<li>使用 SSD 存储介质</li>
-<li>段和合并：Elasticsearch 默认值是 20 MB&#x2F;s。但如果用的是 SSD，可以考虑提高到 100–200 MB&#x2F;s。如果你在做批量导入，完全不在意搜索，你可以彻底关掉合并限流</li>
-</ul>
-<h4 id="8-ES的深度分页与滚动搜索scroll"><a href="#8-ES的深度分页与滚动搜索scroll" class="headerlink" title="8. ES的深度分页与滚动搜索scroll"></a><font color=DarkOrange>8. ES的深度分页与滚动搜索scroll</font></h4><ul>
-<li>深度分页<ul>
-<li>深度分页其实就是搜索的深浅度，比如第1页，第2页，第10页，第20页，是比较浅的；第10000页，第20000页就是很深了。搜索得太深，就会造成性能问题，会耗费内存和占用cpu。而且es为了性能，他不支持超过一万条数据以上的分页查询。那么如何解决深度分页带来的问题，我们应该避免深度分页操作（限制分页页数），比如最多只能提供100页的展示，从第101页开始就没了，毕竟用户也不会搜的那么深</li>
-</ul>
-</li>
-<li>滚动搜索<ul>
-<li>一次性查询1万+数据，往往会造成性能影响，因为数据量太多了。这个时候可以使用滚动搜索，也就是 scroll。 滚动搜索可以先查询出一些数据，然后再紧接着依次往下查询。在第一次查询的时候会有一个滚动id，相当于一个锚标记 ，随后再次滚动搜索会需要上一次搜索滚动id，根据这个进行下一次的搜索请求。每次搜索都是基于一个历史的数据快照，查询数据的期间，如果有数据变更，那么和搜索是没有关系的</li>
-</ul>
-</li>
-</ul>
+</ol>
+<h4 id="10-ES的写入流程"><a href="#10-ES的写入流程" class="headerlink" title="10. ES的写入流程"></a><font color=DarkOrange>10. ES的写入流程</font></h4><ol>
+<li>客户端向Elasticsearch集群发送写入请求，请求中包含待写入的文档数据</li>
+<li>Elasticsearch将请求发送给相关的分片（Shard），根据文档的ID计算出文档所属的分片编号，然后将文档写入对应的主分片（Primary Shard）</li>
+<li>主分片将文档写入自己的本地Lucene索引中，并将文档复制到相关的副本分片（Replica Shard）中。副本分片是主分片的精确副本，可以用于提高可用性和查询性能</li>
+<li>分片将写入成功的响应返回给客户端。客户端可以选择等待分片复制完成后再执行后续操作，也可以立即继续执行其他操作</li>
+<li>后台进程（如refresh进程）会定期刷新主分片的Lucene索引，使新写入的文档能够被搜索和查询。同时，副本分片也会在后台复制主分片的数据，并保持与主分片同步</li>
+</ol>
+<p><strong>注意：</strong>Elasticsearch的写入流程是异步的，即写入请求只是将文档添加到主分片中，而不会立即将文档复制到所有副本分片中。因此，在写入文档后，可能需要等待一段时间才能确保所有副本分片中都存在该文档。另外，写入流程中可能会涉及到一些其他的优化和调整，如分片的路由策略、并发控制、冲突检测等</p>
+<h4 id="11-ES的搜索流程"><a href="#11-ES的搜索流程" class="headerlink" title="11. ES的搜索流程"></a><font color=DarkOrange>11. ES的搜索流程</font></h4><ol>
+<li>客户端向Elasticsearch集群发送查询请求，请求中包含查询条件和搜索选项</li>
+<li>Elasticsearch将请求发送给相关的分片（Shard），根据查询条件和索引的映射信息确定需要查询哪些分片。如果查询涉及多个分片，则每个分片都会返回一个局部结果</li>
+<li>分片在本地Lucene索引中执行查询操作，并计算每个文档的匹配度得分（Score）。匹配度得分是根据文档与查询条件的匹配程度计算出来的，越匹配得分越高</li>
+<li>分片将局部结果返回给协调节点（Coordination Node），协调节点将所有分片的结果进行合并，并计算每个文档的最终得分</li>
+<li>协调节点将结果返回给客户端，客户端可以根据得分排序和筛选结果，并获取与每个文档相关的信息，如ID、索引、字段等</li>
+</ol>
+<p><strong>注意：</strong>Elasticsearch的搜索流程是分布式的，并且支持实时查询和深度分析。搜索请求可以同时查询多个索引和分片，可以使用各种查询语法和过滤器，还可以进行复杂的聚合和分析操作。另外，Elasticsearch还支持基于近似算法（如Bloom过滤器和k-近邻搜索）的高效搜索，可以快速定位包含某些关键词或特征的文档</p>
+<h4 id="12-ES的更新流程"><a href="#12-ES的更新流程" class="headerlink" title="12. ES的更新流程"></a><font color=DarkOrange>12. ES的更新流程</font></h4><ol>
+<li>客户端向Elasticsearch集群发送更新请求，请求中包含待更新文档的ID和更新内容</li>
+<li>Elasticsearch将请求发送给相关的分片（Shard），根据文档的ID计算出文档所属的分片编号，然后检查文档是否存在于对应的主分片（Primary Shard）中</li>
+<li>如果文档存在于主分片中，则将更新内容写入到主分片的Lucene索引中，并将文档更新操作复制到相关的副本分片（Replica Shard）中</li>
+<li>分片将更新成功的响应返回给客户端。客户端可以选择等待分片复制完成后再执行后续操作，也可以立即继续执行其他操作</li>
+<li>后台进程（如refresh进程）会定期刷新主分片的Lucene索引，使更新后的文档能够被搜索和查询。同时，副本分片也会在后台复制主分片的数据，并保持与主分片同步</li>
+</ol>
+<p><strong>注意：</strong>Elasticsearch的更新流程实际上是一种合并更新（Merge Update）的方式。即先将原始文档从主分片中检索出来，将更新内容与原始文档合并，然后将合并后的文档写入主分片。这种方式可以保证更新的原子性和一致性，同时还能够减少存储空间和I&#x2F;O操作。另外，更新流程中可能会涉及到一些其他的优化和调整，如并发控制、冲突检测、数据合并等</p>
+<h4 id="13-ES的删除流程"><a href="#13-ES的删除流程" class="headerlink" title="13. ES的删除流程"></a><font color=DarkOrange>13. ES的删除流程</font></h4><ol>
+<li>客户端向Elasticsearch集群发送删除请求，请求中包含待删除文档的ID和删除选项</li>
+<li>Elasticsearch将请求发送给相关的分片（Shard），根据文档的ID计算出文档所属的分片编号，然后检查文档是否存在于对应的主分片（Primary Shard）中</li>
+<li>如果文档存在于主分片中，则将文档的删除标记设置为true，并将文档删除操作复制到相关的副本分片（Replica Shard）中</li>
+<li>分片将删除成功的响应返回给客户端。客户端可以选择等待分片复制完成后再执行后续操作，也可以立即继续执行其他操作</li>
+<li>后台进程（如refresh进程）会定期刷新主分片的Lucene索引，将删除标记的文档从索引中删除。同时，副本分片也会在后台复制主分片的数据，并保持与主分片同步</li>
+</ol>
+<p><strong>注意：</strong>Elasticsearch的删除流程实际上是一种逻辑删除（Logical Delete）的方式。即并不是真正地从磁盘上删除文档，而是将文档的删除标记设置为true，并在查询和搜索时过滤掉已经删除的文档。这种方式可以保证删除的原子性和一致性，同时还能够减少存储空间和I&#x2F;O操作。另外，删除流程中可能会涉及到一些其他的优化和调整，如回收未使用的存储空间、合并碎片等</p>
+<h4 id="14-ES中text和keyword类型的区别"><a href="#14-ES中text和keyword类型的区别" class="headerlink" title="14. ES中text和keyword类型的区别"></a><font color=DarkOrange>14. ES中text和keyword类型的区别</font></h4><p>text和keyword是两种不同的字段类型，主要用于存储文本和字符串类型的数据</p>
+<ol>
+<li>text类型：text类型的字段用于存储长文本，它会被分析器（Analyzer）处理，并将文本分成单独的单词（Term），并将这些单词保存到倒排索引（Inverted Index）中，以支持全文搜索和模糊匹配。text类型的字段通常用于存储文章、博客、评论等文本类型的数据</li>
+<li>keyword类型：keyword类型的字段用于存储短文本和精确值，它不会被分析器处理，而是直接将整个文本保存到倒排索引中，以支持精确匹配和聚合操作。keyword类型的字段通常用于存储关键词、标签、ID等短文本类型的数据</li>
+</ol>
+<p><strong>总结：</strong>text类型适用于全文搜索和模糊匹配，而keyword类型适用于精确匹配和聚合操作。在实际使用中，需要根据具体的业务需求来选择合适的字段类型，并考虑相关的存储空间、查询性能和分析效果等因素</p>
+<h4 id="15-ES中query和filter的区别"><a href="#15-ES中query和filter的区别" class="headerlink" title="15. ES中query和filter的区别"></a><font color=DarkOrange>15. ES中query和filter的区别</font></h4><p>query和filter是两种不同的查询方式，主要区别在于它们对搜索结果的计算和缓存方式不同，以及对搜索性能和精度的影响不同</p>
+<ol>
+<li>Query查询：Query查询是一种评分（Scoring）查询方式，它会将所有符合查询条件的文档进行打分，并按照分数从高到低排序返回结果。Query查询通常用于全文搜索和模糊匹配，它可以支持复杂的查询表达式和搜索语法，并且可以对搜索结果进行相关性排序和分页处理。由于Query查询需要计算每个文档的得分，因此对搜索性能的影响较大，但可以提供更加准确和灵活的搜索结果</li>
+<li>Filter查询：Filter查询是一种过滤（Filtering）查询方式，它会根据查询条件对所有符合条件的文档进行过滤，并返回一个包含所有符合条件的文档的结果集。Filter查询通常用于精确匹配和聚合操作，它可以快速地过滤掉不符合条件的文档，并且可以对搜索结果进行缓存，以提高查询性能和减少计算开销。由于Filter查询不需要计算每个文档的得分，因此对搜索性能的影响较小，但可能会导致搜索结果缺乏相关性排序和分页处理的功能</li>
+</ol>
+<p><strong>总结：</strong>Query查询适用于全文搜索和模糊匹配，可以提供更加准确和灵活的搜索结果，但对搜索性能的影响较大；Filter查询适用于精确匹配和聚合操作，可以提高查询性能和缓存效果，但可能会导致搜索结果缺乏相关性排序和分页处理的功能。在实际使用中，需要根据具体的业务需求和查询场景来选择合适的查询方式，并权衡搜索性能和搜索精度的需求</p>
+<h4 id="16-ES在高并发下如何保证读写一致性"><a href="#16-ES在高并发下如何保证读写一致性" class="headerlink" title="16. ES在高并发下如何保证读写一致性"></a><font color=DarkOrange>16. ES在高并发下如何保证读写一致性</font></h4><ol>
+<li>分片和副本：Elasticsearch将索引划分为多个分片，每个分片可以被分配到不同的节点上进行读写操作，这样可以有效地分散读写压力。同时，每个分片还可以设置多个副本，当主分片出现故障时，副本可以接管主分片的读写操作，从而保证系统的高可用性和数据的一致性</li>
+<li>数据同步：在Elasticsearch中，每个节点上的分片和副本之间会定时进行数据同步，以保证分片和副本之间的数据一致性。数据同步过程中，节点会通过版本控制机制来判断哪些文档需要被更新或删除，并将最新的文档同步到所有相关的分片和副本上</li>
+<li>乐观并发控制：Elasticsearch采用乐观并发控制（Optimistic Concurrency Control）机制来保证多个客户端同时修改同一文档时的数据一致性。在这种机制下，每个文档都会有一个版本号，当多个客户端同时修改同一文档时，Elasticsearch会比较每个客户端提交的版本号和当前文档的版本号，如果版本号一致，则说明文档没有被其他客户端修改，可以直接提交；如果版本号不一致，则说明文档已经被其他客户端修改，需要进行冲突解决</li>
+<li>索引刷新和提交：在Elasticsearch中，写入操作默认是异步执行的，即当写入请求被接收后，并不会立即写入到磁盘上，而是先写入到内存缓冲区中，等待一定时间后再进行索引刷新和提交操作。索引刷新操作会将内存缓冲区中的数据写入到磁盘上，但并不保证数据的可见性；提交操作则会将索引刷新后的数据更新到主分片和副本中，并保证数据的可见性。在高并发下，可以通过控制索引刷新和提交的间隔时间来平衡数据一致性和写入性能</li>
+</ol>
+<p><strong>总结：</strong>Elasticsearch通过分片和副本、数据同步、乐观并发控制以及索引刷新和提交等机制来保证高并发下的读写一致性，从而提高系统的可用性和性能</p>
+<h4 id="17-ES支持哪些查询方式"><a href="#17-ES支持哪些查询方式" class="headerlink" title="17. ES支持哪些查询方式"></a><font color=DarkOrange>17. ES支持哪些查询方式</font></h4><ol>
+<li>Match Query：基于文本匹配的查询，可以进行全文搜索，支持模糊查询、短语匹配、前缀匹配等</li>
+<li>Term Query：基于词项匹配的查询，可以精确匹配一个词项</li>
+<li>Range Query：用于匹配一定范围内的数值、日期或者时间，支持大于、小于、大于等于、小于等于等多种查询</li>
+<li>Prefix Query：用于匹配一个前缀的词项</li>
+<li>Wildcard Query：用于匹配带有通配符的词项，支持 * 和 ? 通配符</li>
+<li>Bool Query：用于组合多个查询条件，支持逻辑运算符 AND、OR、NOT</li>
+<li>Nested Query：用于查询嵌套的文档</li>
+<li>Fuzzy Query：模糊查询，支持模糊匹配和模糊距离调整</li>
+<li>Regexp Query：用于匹配正则表达式的文本</li>
+<li>Term Aggregation：用于对某个字段进行聚合计算，例如计算每个词项的出现次数</li>
+<li>Range Aggregation：用于对某个字段进行范围聚合计算</li>
+<li>Date Histogram Aggregation：按照日期或者时间间隔进行聚合计算</li>
+<li>Geospatial Query：用于地理位置查询</li>
+<li>Script Query：用于执行自定义的查询脚本</li>
+<li>More Like This Query：用于查询和指定文档类似的文档</li>
+</ol>
+<p><strong>总结：</strong>Elasticsearch提供了丰富的查询方式，支持文本、数值、日期、地理位置等多种数据类型的查询和聚合计算，可以满足不同场景下的查询需求</p>
+<h4 id="18-什么是聚合（Aggregation）"><a href="#18-什么是聚合（Aggregation）" class="headerlink" title="18. 什么是聚合（Aggregation）"></a><font color=DarkOrange>18. 什么是聚合（Aggregation）</font></h4><p>聚合（Aggregation）是对数据进行分组、统计和计算的一种功能，可以帮助用户更好地理解数据，从而支持更复杂的分析和挖掘</p>
+<p>通过聚合，用户可以对文档进行分组，然后在每个分组内进行各种统计操作，例如求和、计数、平均值、最大值、最小值等等。聚合可以支持多层嵌套，以实现更加复杂的统计计算，例如按照日期、时间范围、地理位置等进行聚合计算</p>
+<p>聚合可以通过REST API、DSL查询语言或者客户端库来使用，通常需要在查询语句中指定聚合名称、聚合类型以及聚合字段等参数。聚合的结果会以JSON格式返回，可以方便地在应用程序中进行解析和使用</p>
+<p>聚合是Elasticsearch中非常重要的功能，它可以帮助用户快速、准确地获取数据的统计信息，支持复杂的数据分析和挖掘，为业务决策提供有力的支持</p>
+<h4 id="19-ES中的过滤器（Filter）是什么"><a href="#19-ES中的过滤器（Filter）是什么" class="headerlink" title="19. ES中的过滤器（Filter）是什么"></a><font color=DarkOrange>19. ES中的过滤器（Filter）是什么</font></h4><p>过滤器(Filter)是一种用于过滤搜索结果的机制。与查询(Query)不同，过滤器不会影响搜索结果的相关性得分，而是根据用户定义的条件过滤掉不符合条件的文档，以便于精确地获取所需的结果</p>
+<p>过滤器通常用于对搜索结果进行精确的筛选和过滤，例如根据时间范围、价格区间、地理位置、文档类型等条件来过滤文档。过滤器还可以缓存结果，以便于在下次查询时快速返回</p>
+<p>Elasticsearch提供了丰富的过滤器类型，包括Term Filter、Range Filter、Bool Filter、Exists Filter、Missing Filter、Prefix Filter、Wildcard Filter、Regexp Filter、Fuzzy Filter、Geo Distance Filter、Geo Bounding Box Filter等等。用户可以根据自己的需求选择合适的过滤器类型，以实现更精确、更高效的搜索和过滤</p>
+<p>过滤器(Filter)可以通过REST API、DSL查询语言或者客户端库来使用。在查询语句中指定过滤器名称、过滤器类型以及过滤器参数等参数。过滤器的结果会以JSON格式返回，可以方便地在应用程序中进行解析和使用</p>
+<h4 id="20-ES中的搜索建议（Suggestion）是什么"><a href="#20-ES中的搜索建议（Suggestion）是什么" class="headerlink" title="20. ES中的搜索建议（Suggestion）是什么"></a><font color=DarkOrange>20. ES中的搜索建议（Suggestion）是什么</font></h4><p>搜索建议（Suggestion）是一种自动完成和矫正用户输入的搜索功能。它可以根据用户输入的搜索关键词，快速地生成一组相关的搜索建议，以便于用户更快地找到所需的信息</p>
+<p>搜索建议通常分为两种类型：一是自动完成建议（Completion Suggestion），它能够根据用户输入的搜索关键词，快速地返回与之匹配的文档、词条或短语；另一种是矫正建议（Correction Suggestion），它能够根据用户输入的搜索关键词，自动矫正拼写错误或纠正语法问题，以便于返回更加精确的搜索结果</p>
+<p>ElasticSearch支持多种搜索建议算法，包括Term Suggestion、Phrase Suggestion、Completion Suggestion、Context Suggestion等等。用户可以根据自己的需求选择合适的建议算法，以实现更好的搜索建议效果</p>
+<p>搜索建议可以通过REST API、DSL查询语言或者客户端库来使用。在查询语句中指定建议名称、建议类型以及建议参数等参数。建议的结果会以JSON格式返回，可以方便地在应用程序中进行解析和使用</p>
+<h4 id="21-什么是倒排索引（Inverted-Index）"><a href="#21-什么是倒排索引（Inverted-Index）" class="headerlink" title="21. 什么是倒排索引（Inverted Index）"></a><font color=DarkOrange>21. 什么是倒排索引（Inverted Index）</font></h4><p>倒排索引（Inverted Index）是一种数据结构，用于支持文本搜索。它通过建立单词（Term）到文档（Document）的映射，以便于在文本中查找某个单词时能够快速地定位到包含该单词的所有文档</p>
+<p>倒排索引的基本思想是将文档集合中的每个文档分解成一个个单词（或称为术语、Term），并记录每个单词所出现的位置信息及所出现的文档编号。这样就可以通过单词在索引中的位置，快速地找到包含该单词的所有文档，从而实现高效的文本搜索功能</p>
+<p>具体来说，倒排索引通常包括两个主要的部分：词表（Vocabulary）和倒排列表（Inverted List）。词表记录了所有不重复的单词，以及它们在文档集合中出现的次数、文档频率（DF）等信息；倒排列表则记录了每个单词所出现的所有文档，以及每个文档中出现该单词的位置信息、出现次数、单词频率（TF）等信息</p>
+<p>倒排索引是搜索引擎实现的基础之一，Elasticsearch就是基于倒排索引实现的。它能够高效地支持各种搜索和过滤操作，从而使得在海量文本数据中进行精准的搜索和分析变得更加容易和快速</p>
+<h4 id="22-ES中的评分机制（Scoring）是什么"><a href="#22-ES中的评分机制（Scoring）是什么" class="headerlink" title="22. ES中的评分机制（Scoring）是什么"></a><font color=DarkOrange>22. ES中的评分机制（Scoring）是什么</font></h4><p>评分机制（Scoring）是Elasticsearch用来计算查询结果与搜索关键词的匹配程度的机制。评分机制根据搜索结果的匹配度，将结果按照相关度进行排序，并返回前N个最相关的结果</p>
+<p>评分机制的核心是TF-IDF算法，其中TF表示Term Frequency，表示某个词在文档中出现的频率；IDF表示Inverse Document Frequency，表示某个词的重要程度，通常被定义为整个文档集合中文档数量与包含该词的文档数量之比的对数的倒数。TF-IDF算法的基本思想是，某个词对于文档的重要程度越高，它在文档中的频率越高，但同时它在整个文档集合中的出现频率越低，则该词的TF-IDF值越大，对于文档的相关性也就越大</p>
+<p>Elasticsearch中的评分机制通过计算每个查询词的TF-IDF得分，并根据这些得分来确定查询结果的排名和相关度。在计算TF-IDF得分时，Elasticsearch还考虑了一些其他的因素，如文档长度归一化、域归一化、文档时间等，以提高评分机制的准确性</p>
+<p>评分机制是Elasticsearch的核心功能之一，它能够为用户提供高效、准确的搜索结果，并支持多种查询方式和高级功能，如搜索建议、聚合分析、多语言搜索等</p>
+<h4 id="23-ES的集群（Cluster）是什么"><a href="#23-ES的集群（Cluster）是什么" class="headerlink" title="23. ES的集群（Cluster）是什么"></a><font color=DarkOrange>23. ES的集群（Cluster）是什么</font></h4><p>Elasticsearch的集群（Cluster）是由多个节点组成的一个分布式系统。一个集群可以包含任意数量的节点，这些节点可以在同一台机器上或者在不同的机器上，它们通过网络协作来共同完成数据存储和搜索等任务</p>
+<p>在Elasticsearch中，集群的主要作用是实现数据的高可用和横向扩展。当一个节点失效或者宕机时，集群可以自动将数据重新分布到其他节点上，从而保证系统的可用性。同时，当数据量增加时，通过增加节点的数量可以实现集群的横向扩展，从而提高系统的性能和吞吐量</p>
+<p>在集群中，每个节点都有一个唯一的名称和一个集群名称，用来标识它所属的集群。节点之间通过TCP&#x2F;IP网络相互通信，并通过内部协议来协调各种操作，如数据分片、负载均衡、故障检测和自动恢复等</p>
+<p>Elasticsearch的集群架构非常灵活，可以根据需要对节点进行动态的增加或删除，以适应不同的应用场景和负载需求。同时，集群还提供了一系列的管理工具和API，可以用来监控集群的状态、配置和性能等信息，帮助用户快速诊断和解决各种问题</p>
+<h4 id="24-ES的集群如何选举Master节点"><a href="#24-ES的集群如何选举Master节点" class="headerlink" title="24. ES的集群如何选举Master节点"></a><font color=DarkOrange>24. ES的集群如何选举Master节点</font></h4><p>集群的Master节点是用来协调各个节点之间的操作，如分配和重分配分片、管理索引、控制节点加入和退出等。当Master节点失效或无法正常工作时，集群需要从剩余的节点中选举一个新的Master节点来继续处理集群操作</p>
+<p>集群中的Master节点的选举过程如下：</p>
+<ol>
+<li>各个节点启动时，会互相发现对方，并通过内部协议来建立连接和交换信息</li>
+<li>如果一个节点发现了当前集群中还没有Master节点，它会自己尝试竞选Master节点</li>
+<li>节点会先将自己提名为候选人，并向其他节点发送选举请求</li>
+<li>如果其他节点同意该候选人成为Master节点，它就会成为Master节点</li>
+<li>如果没有任何节点同意该候选人成为Master节点，它就会放弃竞选</li>
+</ol>
+<p>在选举Master节点的过程中，各个节点会基于一些条件来决定哪个节点可以成为Master节点，包括节点的版本号、集群名称、节点的稳定性、节点的资源占用情况等。同时，为了防止选举过程中出现“分裂脑”，集群还支持设置优先级、手动指定Master节点等措施来保证选举的正确性和稳定性</p>
+<h4 id="25-ES的分布式原理"><a href="#25-ES的分布式原理" class="headerlink" title="25. ES的分布式原理"></a><font color=DarkOrange>25. ES的分布式原理</font></h4><p>Elasticsearch是一个分布式搜索引擎，可以通过将数据分布在多个节点上来实现高吞吐量、高可用性和水平扩展等特性。下面是Elasticsearch的分布式原理：</p>
+<ol>
+<li>集群：Elasticsearch的所有节点都是集群的一部分，每个节点都有一个唯一的名称，并且可以通过共享相同的集群名称来加入相同的集群</li>
+<li>节点：每个节点是Elasticsearch中的一个实例，可以存储数据、处理搜索请求、管理索引等</li>
+<li>分片：Elasticsearch将数据划分为多个分片，每个分片都是一个独立的Lucene索引，可以存储在不同的节点上</li>
+<li>副本：Elasticsearch还支持将每个分片的副本存储在其他节点上，以提高数据的可用性和容错性</li>
+<li>路由：当客户端发送搜索请求时，Elasticsearch会将请求路由到包含相关数据的分片或副本上，从而最大限度地减少网络流量和响应时间</li>
+<li>负载均衡：Elasticsearch还支持自动均衡分片和副本之间的负载，以确保每个节点都具有相似的负载</li>
+<li>故障转移：当节点失效或无法正常工作时，Elasticsearch会自动将其上的分片和副本重新分配到其他节点上，以确保数据的可用性和一致性</li>
+</ol>
+<p><strong>总结：</strong>Elasticsearch通过将数据分布在多个节点上，以及使用分片、副本、路由、负载均衡和故障转移等机制，实现了高可用性、高性能和水平扩展等特性。这些机制让Elasticsearch可以轻松地处理大规模数据和高并发请求，并保证数据的安全和可靠性</p>
+<h4 id="26-ES如何避免脑裂现象"><a href="#26-ES如何避免脑裂现象" class="headerlink" title="26. ES如何避免脑裂现象"></a><font color=DarkOrange>26. ES如何避免脑裂现象</font></h4><p>脑裂是指当一个分布式系统中的节点之间失去联系或无法通信时，可能导致系统出现不一致的状态。为了避免脑裂现象，Elasticsearch引入了Zen Discovery机制，该机制包括以下几个方面：</p>
+<ol>
+<li>基于quorum的Master选举：Elasticsearch中的每个集群都有一个Master节点，它负责协调整个集群的工作。当Master节点失效或无法通信时，Zen Discovery会使用基于quorum的选举算法来选出新的Master节点，以避免出现脑裂现象</li>
+<li>基于多播协议的节点发现：Elasticsearch中的节点可以使用多播协议来自动发现其他节点，并加入到集群中。这种自动发现机制可以避免手动配置和单点故障</li>
+<li>心跳检测和故障检测：Elasticsearch中的节点会定期发送心跳信息和状态信息到其他节点，以检测节点的状态和故障情况。如果节点无法正常工作，其他节点会将其标记为失效，并将分片和副本重新分配到其他节点上，以确保数据的可用性和一致性</li>
+<li>拆分大型集群：为了避免集群规模过大而导致的管理和维护困难，Elasticsearch建议将大型集群拆分成多个较小的集群，以便更好地管理和维护</li>
+</ol>
+<p><strong>总结：</strong>Elasticsearch通过引入Zen Discovery机制，包括基于quorum的Master选举、基于多播协议的节点发现、心跳检测和故障检测等，来避免脑裂现象，保证集群的可用性和一致性。同时，为了更好地管理和维护集群，Elasticsearch还建议将大型集群拆分成多个较小的集群</p>
+<h4 id="27-ES中的路由（Routing）是什么"><a href="#27-ES中的路由（Routing）是什么" class="headerlink" title="27. ES中的路由（Routing）是什么"></a><font color=DarkOrange>27. ES中的路由（Routing）是什么</font></h4><p>路由（Routing）是指决定文档在分片（Shard）之间分配的规则。具体来说，路由是基于文档ID计算出的分片ID，决定了文档应该存储在哪个分片中</p>
+<p>路由的作用在于，当我们进行搜索时，ElasticSearch只需要搜索涉及到的那些分片，而不需要搜索集群中的所有分片。因此，通过合理地设置路由，我们可以在搜索效率和分片负载均衡之间做出权衡</p>
+<p>默认情况下，ElasticSearch会根据文档的ID来计算路由值。也可以在索引创建时自定义路由值，通过指定文档中的某个字段来计算路由值。这种方式可以让具有相同路由值的文档被分配到同一个分片中，从而加速搜索</p>
+<h4 id="28-怎么样实现数据备份和恢复"><a href="#28-怎么样实现数据备份和恢复" class="headerlink" title="28. 怎么样实现数据备份和恢复"></a><font color=DarkOrange>28. 怎么样实现数据备份和恢复</font></h4><ol>
+<li>使用快照和恢复 API：Elasticsearch的快照和恢复 API 可以将整个索引或者集群进行备份和恢复，同时还支持增量备份和恢复。备份时可以将快照存储在本地或者远程仓库中，例如：Amazon S3，Hadoop Distributed File System（HDFS）等。恢复时可以从存储库中恢复快照到本地或者远程的Elasticsearch集群中</li>
+<li>使用 Elasticsearch Curator：Elasticsearch Curator是一个Python应用程序，它可以管理Elasticsearch索引、快照和集群状态。Curator提供了一系列的命令行工具，可以进行索引删除、备份、快照、还原等操作</li>
+<li>复制索引到远程集群：Elasticsearch支持将本地索引的数据复制到远程集群中，这个功能可以用于实现数据备份和灾难恢复</li>
+<li>通过文件系统备份：可以直接备份Elasticsearch的数据目录，这种方式比较简单但是备份和恢复速度较慢</li>
+</ol>
+<p><strong>注意：</strong>在进行数据备份和恢复时，需要保证备份和恢复的版本和配置与原始数据完全一致，否则可能会导致数据损坏或丢失。因此，建议在备份和恢复数据之前，先进行版本和配置检查</p>
+<h4 id="29-ES支持哪些插件（Plugin）"><a href="#29-ES支持哪些插件（Plugin）" class="headerlink" title="29. ES支持哪些插件（Plugin）"></a><font color=DarkOrange>29. ES支持哪些插件（Plugin）</font></h4><ol>
+<li>Analysis插件：提供了各种文本分析器、过滤器和标记器，用于对文本进行分析和处理</li>
+<li>Ingest插件：用于在ElasticSearch索引数据之前对数据进行预处理，例如将数据解析成JSON格式，对字段进行加密等</li>
+<li>Discovery插件：用于从多个节点中发现ElasticSearch集群，包括Zen Discovery、EC2 Discovery等</li>
+<li>Monitoring插件：用于监控ElasticSearch集群的健康状态、性能指标等</li>
+<li>Security插件：提供了认证、授权和加密等安全功能，用于保护ElasticSearch集群的数据安全</li>
+<li>SQL插件：将ElasticSearch查询语言扩展到SQL语言中，使得用户可以使用SQL来查询ElasticSearch数据</li>
+<li>Machine Learning插件：提供了一系列的机器学习算法和工具，用于对ElasticSearch数据进行预测分析和模型训练</li>
+<li>Graph插件：提供了一种可视化方式来探索ElasticSearch中的数据关系，包括节点和边的展示、聚类分析等</li>
+</ol>
+<h4 id="30-ES的性能优化有哪些方面需要考虑"><a href="#30-ES的性能优化有哪些方面需要考虑" class="headerlink" title="30. ES的性能优化有哪些方面需要考虑"></a><font color=DarkOrange>30. ES的性能优化有哪些方面需要考虑</font></h4><ol>
+<li>索引设计优化：索引的分片、副本数量、映射类型和字段类型的选择等都会影响查询和写入的性能</li>
+<li>硬件优化：优化服务器硬件配置、磁盘的I&#x2F;O、内存、网络带宽等都可以提高ElasticSearch的性能</li>
+<li>查询优化：优化查询语句、合理使用查询缓存、避免不必要的查询等可以提高查询性能</li>
+<li>索引优化：使用bulk API进行批量写入、减少索引更新的频率、使用refresh_interval参数调整刷新间隔等可以提高索引性能</li>
+<li>内存管理优化：合理使用内存、调整内存池大小等可以提高性能</li>
+<li>网络优化：合理设置网络参数、使用高速网络、避免网络拥堵等可以提高性能</li>
+<li>监控和调优：使用ElasticSearch的监控工具和日志，定期检查和调整性能参数，及时发现和解决性能问题</li>
+</ol>
 <hr>
 
       
@@ -411,7 +527,7 @@
   <div style="position: fixed !important; left: 240px; top: 30%;">
     <button class="mdui-fab mdui-fab-mini mdui-ripple" mdui-menu="{target: '#toc'}"><i class="mdui-icon material-icons">toc</i></button>
     <ul class="mdui-menu" id="toc">
-      <li class="mdui-menu-item" disabled><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-ElasticSearch%E5%9F%BA%E7%A1%80"><span class="toc-text">1. ElasticSearch基础</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-%E4%BB%80%E4%B9%88%E6%98%AFElasticsearch"><span class="toc-text">1.1 什么是Elasticsearch</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-Elasticsearch-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">1.2 Elasticsearch 的基本概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-%E4%BB%80%E4%B9%88%E6%98%AF%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95"><span class="toc-text">1.3 什么是倒排索引</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-4-doc-values-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">1.4 doc_values 的作用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-5-text-%E5%92%8C-keyword%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">1.5 text 和 keyword类型的区别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-6-query-%E5%92%8C-filter-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">1.6 query 和 filter 的区别</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-ES%E7%9A%84%E5%86%99%E5%85%A5%E6%B5%81%E7%A8%8B"><span class="toc-text">2. ES的写入流程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-ES%E5%86%99%E6%95%B0%E6%8D%AE%E7%9A%84%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="toc-text">2.1 ES写数据的整体流程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-ES%E4%B8%BB%E5%88%86%E7%89%87%E5%86%99%E6%95%B0%E6%8D%AE%E7%9A%84%E8%AF%A6%E7%BB%86%E6%B5%81%E7%A8%8B"><span class="toc-text">2.2 ES主分片写数据的详细流程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-ES%E7%9A%84%E6%9B%B4%E6%96%B0%E5%92%8C%E5%88%A0%E9%99%A4%E6%B5%81%E7%A8%8B"><span class="toc-text">3. ES的更新和删除流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-ES%E7%9A%84%E6%90%9C%E7%B4%A2%E6%B5%81%E7%A8%8B"><span class="toc-text">4. ES的搜索流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-ES%E5%9C%A8%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8B%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E8%AF%BB%E5%86%99%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-text">5. ES在高并发下如何保证读写一致性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-ES%E9%9B%86%E7%BE%A4%E5%A6%82%E4%BD%95%E9%80%89%E4%B8%BEMaster%E8%8A%82%E7%82%B9"><span class="toc-text">6. ES集群如何选举Master节点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#6-1-Elasticsearch%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E5%8E%9F%E7%90%86"><span class="toc-text">6.1 Elasticsearch的分布式原理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-2-ES%E9%9B%86%E7%BE%A4%E5%A6%82%E4%BD%95%E9%80%89%E4%B8%BEMaster"><span class="toc-text">6.2 ES集群如何选举Master</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-3-Elasticsearch%E6%98%AF%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E8%84%91%E8%A3%82%E7%8E%B0%E8%B1%A1"><span class="toc-text">6.3 Elasticsearch是如何避免脑裂现象</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E5%BB%BA%E7%AB%8B%E7%B4%A2%E5%BC%95%E9%98%B6%E6%AE%B5%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87%E6%96%B9%E6%B3%95"><span class="toc-text">7. 建立索引阶段性能提升方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-ES%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5%E4%B8%8E%E6%BB%9A%E5%8A%A8%E6%90%9C%E7%B4%A2scroll"><span class="toc-text">8. ES的深度分页与滚动搜索scroll</span></a></li></ol></li>
+      <li class="mdui-menu-item" disabled><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFES"><span class="toc-text">1. 什么是ES</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-ES%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-text">2. ES的基本概念有哪些</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-ES%E4%B8%8E%E4%BC%A0%E7%BB%9F%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">3. ES与传统数据库的区别是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-ES%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">4. ES的数据结构是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-ES%E7%9A%84%E7%B4%A2%E5%BC%95%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%88Index%EF%BC%89"><span class="toc-text">5. ES的索引是什么（Index）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E6%80%8E%E4%B9%88%E6%A0%B7%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%B4%A2%E5%BC%95%EF%BC%88Index%EF%BC%89"><span class="toc-text">6. 怎么样创建一个索引（Index）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-ES%E4%B8%AD%E7%9A%84%E6%98%A0%E5%B0%84%EF%BC%88Mapping%EF%BC%89%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">7. ES中的映射（Mapping）是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%86%E7%89%87%EF%BC%88Shard%EF%BC%89%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%88%86%E7%89%87"><span class="toc-text">8. 什么是分片（Shard）？为什么需要分片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-ES%E6%95%B0%E6%8D%AE%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="toc-text">9. ES数据的增删改查</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-ES%E7%9A%84%E5%86%99%E5%85%A5%E6%B5%81%E7%A8%8B"><span class="toc-text">10. ES的写入流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-ES%E7%9A%84%E6%90%9C%E7%B4%A2%E6%B5%81%E7%A8%8B"><span class="toc-text">11. ES的搜索流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-ES%E7%9A%84%E6%9B%B4%E6%96%B0%E6%B5%81%E7%A8%8B"><span class="toc-text">12. ES的更新流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-ES%E7%9A%84%E5%88%A0%E9%99%A4%E6%B5%81%E7%A8%8B"><span class="toc-text">13. ES的删除流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14-ES%E4%B8%ADtext%E5%92%8Ckeyword%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">14. ES中text和keyword类型的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#15-ES%E4%B8%ADquery%E5%92%8Cfilter%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">15. ES中query和filter的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16-ES%E5%9C%A8%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8B%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E8%AF%BB%E5%86%99%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-text">16. ES在高并发下如何保证读写一致性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#17-ES%E6%94%AF%E6%8C%81%E5%93%AA%E4%BA%9B%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F"><span class="toc-text">17. ES支持哪些查询方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#18-%E4%BB%80%E4%B9%88%E6%98%AF%E8%81%9A%E5%90%88%EF%BC%88Aggregation%EF%BC%89"><span class="toc-text">18. 什么是聚合（Aggregation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#19-ES%E4%B8%AD%E7%9A%84%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%88Filter%EF%BC%89%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">19. ES中的过滤器（Filter）是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#20-ES%E4%B8%AD%E7%9A%84%E6%90%9C%E7%B4%A2%E5%BB%BA%E8%AE%AE%EF%BC%88Suggestion%EF%BC%89%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">20. ES中的搜索建议（Suggestion）是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#21-%E4%BB%80%E4%B9%88%E6%98%AF%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95%EF%BC%88Inverted-Index%EF%BC%89"><span class="toc-text">21. 什么是倒排索引（Inverted Index）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22-ES%E4%B8%AD%E7%9A%84%E8%AF%84%E5%88%86%E6%9C%BA%E5%88%B6%EF%BC%88Scoring%EF%BC%89%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">22. ES中的评分机制（Scoring）是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#23-ES%E7%9A%84%E9%9B%86%E7%BE%A4%EF%BC%88Cluster%EF%BC%89%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">23. ES的集群（Cluster）是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#24-ES%E7%9A%84%E9%9B%86%E7%BE%A4%E5%A6%82%E4%BD%95%E9%80%89%E4%B8%BEMaster%E8%8A%82%E7%82%B9"><span class="toc-text">24. ES的集群如何选举Master节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#25-ES%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E5%8E%9F%E7%90%86"><span class="toc-text">25. ES的分布式原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#26-ES%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E8%84%91%E8%A3%82%E7%8E%B0%E8%B1%A1"><span class="toc-text">26. ES如何避免脑裂现象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#27-ES%E4%B8%AD%E7%9A%84%E8%B7%AF%E7%94%B1%EF%BC%88Routing%EF%BC%89%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">27. ES中的路由（Routing）是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#28-%E6%80%8E%E4%B9%88%E6%A0%B7%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD%E5%92%8C%E6%81%A2%E5%A4%8D"><span class="toc-text">28. 怎么样实现数据备份和恢复</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#29-ES%E6%94%AF%E6%8C%81%E5%93%AA%E4%BA%9B%E6%8F%92%E4%BB%B6%EF%BC%88Plugin%EF%BC%89"><span class="toc-text">29. ES支持哪些插件（Plugin）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#30-ES%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E9%9D%A2%E9%9C%80%E8%A6%81%E8%80%83%E8%99%91"><span class="toc-text">30. ES的性能优化有哪些方面需要考虑</span></a></li></ol></li>
     </ul>
   </div>
 

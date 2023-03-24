@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://huajun-chen.github.io/2022/10/28/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
+    
+    <lastmod>2023-03-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://huajun-chen.github.io/2022/10/30/Elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
     
     <lastmod>2023-03-24</lastmod>
@@ -77,15 +86,6 @@
     <loc>https://huajun-chen.github.io/about/index.html</loc>
     
     <lastmod>2023-03-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://huajun-chen.github.io/2022/10/28/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
-    
-    <lastmod>2023-02-27</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -371,7 +371,7 @@
 
   
   <url>
-    <loc>https://huajun-chen.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://huajun-chen.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/</loc>
     <lastmod>2023-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -399,7 +399,7 @@
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/</loc>
+    <loc>https://huajun-chen.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2023-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -413,7 +413,7 @@
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/tags/Python/</loc>
+    <loc>https://huajun-chen.github.io/tags/Linux/</loc>
     <lastmod>2023-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -427,7 +427,7 @@
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/tags/Linux/</loc>
+    <loc>https://huajun-chen.github.io/tags/Python/</loc>
     <lastmod>2023-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

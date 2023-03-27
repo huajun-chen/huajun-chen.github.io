@@ -1,4 +1,5 @@
 https://huajun-chen.github.io/2022/10/28/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/
+https://huajun-chen.github.io/2022/10/28/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/
 https://huajun-chen.github.io/2022/10/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98/
 https://huajun-chen.github.io/about/index.html
 https://huajun-chen.github.io/2022/10/30/Elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98/
@@ -16,7 +17,6 @@ https://huajun-chen.github.io/2022/11/24/Go-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F
 https://huajun-chen.github.io/2022/10/30/Kafka%E9%9D%A2%E8%AF%95%E9%A2%98/
 https://huajun-chen.github.io/2022/10/28/Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%9D%A2%E8%AF%95%E9%A2%98/
 https://huajun-chen.github.io/2022/10/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E8%AF%95%E9%A2%98/
-https://huajun-chen.github.io/2022/10/28/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/
 https://huajun-chen.github.io/2022/11/08/%E4%BA%91%E5%8E%9F%E7%94%9F02-%E7%BC%96%E5%86%99Go%E7%A8%8B%E5%BA%8F/
 https://huajun-chen.github.io/2022/11/08/%E4%BA%91%E5%8E%9F%E7%94%9F01-Go%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7/
 https://huajun-chen.github.io/2022/11/01/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%B6%E6%9E%84/
@@ -40,14 +40,13 @@ https://huajun-chen.github.io/tagcloud/index.html
 https://huajun-chen.github.io/gallery/index.html
 https://huajun-chen.github.io/
 https://huajun-chen.github.io/tags/%E7%AE%97%E6%B3%95/
-https://huajun-chen.github.io/tags/ES/
 https://huajun-chen.github.io/tags/Go/
 https://huajun-chen.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/
 https://huajun-chen.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/
 https://huajun-chen.github.io/tags/Kafka/
+https://huajun-chen.github.io/tags/ES/
 https://huajun-chen.github.io/tags/Linux/
-https://huajun-chen.github.io/tags/MySQL/
-https://huajun-chen.github.io/tags/Redis/
+https://huajun-chen.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/
 https://huajun-chen.github.io/tags/Python/
 https://huajun-chen.github.io/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%B6%E6%9E%84/
 https://huajun-chen.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/

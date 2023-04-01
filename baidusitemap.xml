@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://huajun-chen.github.io/2022/10/28/%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
+    <lastmod>2023-04-01</lastmod>
+  </url>
+  <url>
+    <loc>https://huajun-chen.github.io/2022/10/28/Golang%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
+    <lastmod>2023-04-01</lastmod>
+  </url>
+  <url>
     <loc>https://huajun-chen.github.io/2022/10/28/MySQL%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
     <lastmod>2023-04-01</lastmod>
   </url>
@@ -21,10 +29,6 @@
     <lastmod>2023-03-24</lastmod>
   </url>
   <url>
-    <loc>https://huajun-chen.github.io/2022/10/28/Golang%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
-    <lastmod>2023-03-23</lastmod>
-  </url>
-  <url>
     <loc>https://huajun-chen.github.io/2022/10/27/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2023-03-22</lastmod>
   </url>
@@ -39,10 +43,6 @@
   <url>
     <loc>https://huajun-chen.github.io/2023/03/01/Python%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
     <lastmod>2023-03-21</lastmod>
-  </url>
-  <url>
-    <loc>https://huajun-chen.github.io/2022/10/28/%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
-    <lastmod>2022-12-17</lastmod>
   </url>
   <url>
     <loc>https://huajun-chen.github.io/2022/12/08/Go%E8%AF%AD%E8%A8%80%E4%BD%BF%E7%94%A8Validator%E8%BF%9B%E8%A1%8C%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/</loc>

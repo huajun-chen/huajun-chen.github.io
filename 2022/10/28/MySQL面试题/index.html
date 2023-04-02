@@ -23,7 +23,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://tva1.sinaimg.cn/large/0079DIvogy1h7lczbhkshj318611ik0y.jpg">
 <meta property="article:published_time" content="2022-10-28T06:09:46.000Z">
-<meta property="article:modified_time" content="2023-04-01T06:41:06.618Z">
+<meta property="article:modified_time" content="2023-04-02T12:58:46.605Z">
 <meta property="article:author" content="可可西里">
 <meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
@@ -188,7 +188,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-9.png" style="max-height: 240px;">
+      <img src="/images/random/material-6.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">MySQL、MongoDB、PostgreSQL面试题</div>
@@ -706,14 +706,77 @@
 <li>读写分离：通过将读操作和写操作分开处理，提高系统的性能和可靠性</li>
 </ol>
 <h5 id="25-1-优化查询语句"><a href="#25-1-优化查询语句" class="headerlink" title="25.1 优化查询语句"></a><font color=DarkOrange>25.1 优化查询语句</font></h5><ol>
-<li>创建索引：索引是提高查询性能的一个重要因素。可以通过创建合适的索引来加快查询速度。在 WHERE、ORDER BY、GROUP BY、JOIN 等操作中经常用到的列应该加索引。可以使用 EXPLAIN 命令来查看查询执行计划，分析索引是否被正确地使用</li>
-<li>避免全表扫描：全表扫描是指 MySQL 必须扫描整个表才能找到满足查询条件的数据，这会消耗大量的时间和资源。应该尽量避免全表扫描，可以通过使用索引、分批查询等方式来避免</li>
-<li>减少子查询：子查询会将多个查询合并在一起，会增加查询的执行时间和资源消耗，应该尽量避免使用。如果一定要使用，可以尝试使用 JOIN 来替代子查询</li>
-<li>合理使用 JOIN：JOIN 语句可以将多个表中的数据关联起来，但是过多的 JOIN 会降低性能。应该尽量避免使用 CROSS JOIN，使用 INNER JOIN、LEFT JOIN、RIGHT JOIN 等合适的 JOIN 类型，合理使用 ON 和 USING 子句</li>
-<li>减少数据返回量：尽量只返回需要的数据，减少数据传输的量。可以使用 LIMIT 限制返回的行数，避免一次返回大量数据。同时，应该尽量避免 SELECT *，只返回需要的列，可以减少数据传输的量</li>
-<li>避免使用函数：在查询语句中尽量避免使用函数，特别是一些比较耗时的函数，如字符串函数、日期函数等</li>
-<li>避免使用 LIKE：%和_是通配符，在查询时需要遍历整个表，会影响查询性能。如果能使用其他匹配方式，应该尽量避免使用 LIKE</li>
-<li>避免使用 UNION：UNION 会将多个查询合并在一起，会增加查询的执行时间和资源消耗，应该尽量避免使用</li>
+<li><p><font color=deeppink>使用索引：确保查询涉及的列都有合适的索引</font></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> indexed_column <span class="operator">=</span> <span class="string">&#x27;value&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><font color=deeppink>避免使用SELECT * ：只选择需要的列，避免不必要的数据传输</font></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1, column2 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> column3 <span class="operator">=</span> <span class="string">&#x27;value&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><font color=deeppink>使用JOIN时，避免在被连接的表上使用函数或表达式</font></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> table1.column1, table2.column2 <span class="keyword">FROM</span> table1 <span class="keyword">JOIN</span> table2 <span class="keyword">ON</span> table1.column1 <span class="operator">=</span> CONCAT(<span class="string">&#x27;prefix&#x27;</span>, table2.column2);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><font color=deeppink>避免使用子查询：使用 JOIN 或者其他更好的方式重构查询</font></p>
+<p>示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> column2 <span class="operator">=</span> (<span class="keyword">SELECT</span> column3 <span class="keyword">FROM</span> table2 <span class="keyword">WHERE</span> column4 <span class="operator">=</span> <span class="string">&#x27;value&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>改为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> t1.column1 <span class="keyword">FROM</span> <span class="keyword">table</span> t1 <span class="keyword">JOIN</span> table2 t2 <span class="keyword">ON</span> t1.column2 <span class="operator">=</span> t2.column3 <span class="keyword">WHERE</span> t2.column4 <span class="operator">=</span> <span class="string">&#x27;value&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><font color=deeppink>使用EXPLAIN命令分析查询计划，以便确定查询是否使用了索引</font></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> indexed_column <span class="operator">=</span> <span class="string">&#x27;value&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><font color=deeppink>尽量减少使用OR和IN等操作符</font></p>
+<p>示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> column2 <span class="operator">=</span> <span class="string">&#x27;value&#x27;</span> <span class="keyword">OR</span> column3 <span class="operator">=</span> <span class="string">&#x27;value&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>改为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> column2 <span class="operator">=</span> <span class="string">&#x27;value&#x27;</span> <span class="keyword">UNION</span> <span class="keyword">SELECT</span> column1 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> column3 <span class="operator">=</span> <span class="string">&#x27;value&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><font color=deeppink>避免使用不必要的 GROUP BY 操作符</font></p>
+<p>示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> column2 <span class="operator">=</span> <span class="string">&#x27;value&#x27;</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> column1;</span><br></pre></td></tr></table></figure>
+
+<p>改为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> column1 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> column2 <span class="operator">=</span> <span class="string">&#x27;value&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><font color=deeppink>对于大表，可以使用分区表进行优化</font></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">table</span> <span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">RANGE</span>(column1) (<span class="keyword">PARTITION</span> p1 <span class="keyword">VALUES</span> LESS THAN (<span class="number">100</span>), <span class="keyword">PARTITION</span> p2 <span class="keyword">VALUES</span> LESS THAN (<span class="number">200</span>));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><font color=deeppink>对于大表，可以使用水平分片或垂直分片</font></p>
+<p>水平分片可以根据时间或者ID等条件对表进行分割；垂直分片可以根据列的类型和频率进行划分</p>
+</li>
+<li><p><font color=deeppink>避免在查询中使用通配符（如%），它会使索引无效</font></p>
+<p>示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> column2 <span class="keyword">LIKE</span> <span class="string">&#x27;%value%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>改为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> column2 <span class="keyword">LIKE</span> <span class="string">&#x27;value%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><font color=deeppink>使用合适的数据类型，例如使用整型而不是字符串型</font></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> column2 <span class="operator">=</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><font color=deeppink>在创建表时设置合适的数据类型和字段长度</font></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">table</span> (column1 <span class="type">INT</span>(<span class="number">10</span>), column2 <span class="type">VARCHAR</span>(<span class="number">50</span>));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><font color=deeppink>对于需要重复多次查询的数据，可以考虑使用缓存</font></p>
+<p>使用Redis或Memcached等缓存技术，将查询结果缓存到内存中，以提高查询速度</p>
+</li>
+<li><p><font color=deeppink>如果查询有重复的子查询，可以使用公共表表达式（CTE）进行优化</font></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> subquery <span class="keyword">AS</span> (<span class="keyword">SELECT</span> column1 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> column2 <span class="operator">=</span> <span class="string">&#x27;value&#x27;</span>) <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> subquery <span class="keyword">JOIN</span> table2 <span class="keyword">ON</span> subquery.column1 <span class="operator">=</span> table2.column3;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><font color=deeppink>避免在 WHERE 子句中对列进行函数计算</font></p>
+<p>示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> <span class="keyword">YEAR</span>(column2) <span class="operator">=</span> <span class="number">2023</span>;</span><br></pre></td></tr></table></figure>
+
+<p>改为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> column2 <span class="operator">&gt;=</span> <span class="string">&#x27;2023-01-01&#x27;</span> <span class="keyword">AND</span> column2 <span class="operator">&lt;</span> <span class="string">&#x27;2024-01-01&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><font color=deeppink>避免使用 UNION：UNION 会将多个查询合并在一起，会增加查询的执行时间和资源消耗，应该尽量避免使用</font></p>
+<p>示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1 <span class="keyword">FROM</span> table1 <span class="keyword">WHERE</span> column2 <span class="operator">=</span> <span class="string">&#x27;value1&#x27;</span></span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">SELECT</span> column1 <span class="keyword">FROM</span> table2 <span class="keyword">WHERE</span> column2 <span class="operator">=</span> <span class="string">&#x27;value2&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>改为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> table1.column1 <span class="keyword">FROM</span> table1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> table2 <span class="keyword">ON</span> table1.column2 <span class="operator">=</span> <span class="string">&#x27;value1&#x27;</span> <span class="keyword">AND</span> table2.column2 <span class="operator">=</span> <span class="string">&#x27;value2&#x27;</span>;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h5 id="25-2-优化表结构"><a href="#25-2-优化表结构" class="headerlink" title="25.2 优化表结构"></a><font color=DarkOrange>25.2 优化表结构</font></h5><ol>
 <li>合理设计表结构：在设计表结构时，应该尽量避免冗余字段、过多的索引、过多的数据类型等问题。应该根据具体业务需求设计合理的表结构，避免无谓的字段和表关系</li>

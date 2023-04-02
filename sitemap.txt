@@ -40,12 +40,12 @@ https://huajun-chen.github.io/tagcloud/index.html
 https://huajun-chen.github.io/gallery/index.html
 https://huajun-chen.github.io/
 https://huajun-chen.github.io/tags/%E7%AE%97%E6%B3%95/
-https://huajun-chen.github.io/tags/ES/
 https://huajun-chen.github.io/tags/Go/
 https://huajun-chen.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/
-https://huajun-chen.github.io/tags/Kafka/
 https://huajun-chen.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/
+https://huajun-chen.github.io/tags/Kafka/
 https://huajun-chen.github.io/tags/Linux/
+https://huajun-chen.github.io/tags/ES/
 https://huajun-chen.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/
 https://huajun-chen.github.io/tags/Python/
 https://huajun-chen.github.io/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%B6%E6%9E%84/

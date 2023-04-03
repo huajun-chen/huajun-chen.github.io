@@ -385,13 +385,6 @@
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2023-04-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://huajun-chen.github.io/tags/ES/</loc>
     <lastmod>2023-04-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -399,7 +392,7 @@
   </url>
   
   <url>
-    <loc>https://huajun-chen.github.io/tags/Kafka/</loc>
+    <loc>https://huajun-chen.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2023-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -407,6 +400,13 @@
   
   <url>
     <loc>https://huajun-chen.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/</loc>
+    <lastmod>2023-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://huajun-chen.github.io/tags/Kafka/</loc>
     <lastmod>2023-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
